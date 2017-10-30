@@ -8,7 +8,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dist": "ng build --prod --aot --base-href /undp-vizonomy/",
+    "deploy": "aws s3 cp dist s3://undp-vizonomy --recursive --profile=undp-deploy",
+    "clean-deploy": "aws s3 rm s3://undp-vizonomy --recursive --profile=undp-deploy"
   },
   "private": true,
   "dependencies": {
