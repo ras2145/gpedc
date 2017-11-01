@@ -140,35 +140,6 @@ label.middle{
 label.right-btn{
     border-radius: 0px 50px 50px 0px;
 }
-
-
-
-.container-button-data a{
-    text-decoration: none;
-    float: left;
-    font-size: 12px;
-    cursor: pointer;
-    padding: 7px 24px;
-    transition: 1s;
-}
-.container-button-data a:nth-child(1){
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
- }
-.container-button-data a:nth-child(2){
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-}
-.container-button-data a.active{
-    background: #f07848;
-    color: #fff;
-    border: 1px solid #f07848;
-}
-.container-button-data a.not-active{
-    border: 1px solid #e2e2e2;
-    color: #808080;
-    background-color: #FAFAFA;
-}
 /*FIN estilos para botones naranja y plomo*/
 
 /*Estilo para los botones de export*/
