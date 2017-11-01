@@ -9,6 +9,7 @@ body{
 .row{
     height: 100%;
 }
+/* - -  -  - - - - - - - - - -  - -ESTILOS para los tabs (scroll lado izquierdo) - - - -  - -  - - -  - - - - */
 /*Contenedor para resultado*/
 .result-container{
     max-height: 100%;
@@ -89,7 +90,7 @@ body{
 
 /*Fondo para resultados*/
 .result-background{
-    background-color: #f9f9f9;
+    background-color: #FAFAFA;
     padding-left: 25px;
     padding-right: 25px;
 }
@@ -185,7 +186,7 @@ a.btn-export:hover{
 /*INICIO ESTILOS PARA Input text*/
 .option-input .form-group .form-control{
     background-color: #f5f5f5;
-    border-radius: 20px;
+    border-radius: 30px;
     text-align: center;
     width: 48%;
     height: 45px;
@@ -243,3 +244,109 @@ input.right{
 
 }
 /*ESTILOS de los tabs*/
+
+/* - -  -  - - - - - - - - - -  - -ESTILOS para los tabs (scroll lado izquierdo) - - - -  - -  - - -  - - - - */
+
+
+/* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
+
+.map-header{
+    background-color: #444847;
+    height: 50px;
+}
+.map-header p{
+    font-size: 14px;
+    color: #fff;
+    padding-top: 12px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
+
+
+/* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
+.card-map{
+    position: absolute;
+    top: 60px;
+    right: 25px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #ccc;
+    width: 200px;
+}
+    .head-card p{
+        padding: 0px;
+        margin: 0px;
+        color: #F27844;
+        font-weight: 600;
+        padding-left: 20px;
+    }
+    .head-card p:nth-child(1){
+        padding-top: 10px;
+        font-size: 12px;
+        color: #F27844;
+    }
+    .head-card p:nth-child(2){
+        font-size: 10px;
+        padding-top: 10px;
+        color: #FDC333;
+        padding-bottom: 15px;
+    }
+    .number-card{
+        background-color: #F7F7F7;
+        padding-left: 30px;
+        padding-right: 30px;
+        height: 60px;
+    }
+        .number-card p{
+            padding: 0px;
+            margin: 0px;
+        }
+        .number-card .left-number{
+            float: left;
+        }
+        .number-card .right-number{
+            float: right;
+        }
+        .number-card .left-number p:nth-child(1),
+        .number-card .right-number p:nth-child(1){
+            font-size: 13px;
+            padding-top: 7px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .number-card .left-number p:nth-child(2),
+        .number-card .right-number p:nth-child(2){
+            font-size: 11px;
+            color: #F27844;
+            font-weight: bold;
+            padding-top: 5px;
+            text-align: center;
+        }
+        .content-card{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .content-card p{
+            padding-top: 15px;
+            text-align: justify;
+            font-size: 11px;
+        }
+        .button-card{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .button-card p{
+            text-align: center;
+        }
+        .button-card p a{
+            text-decoration: none;
+            background-color: #FDF1EC;
+            display: block;
+            font-size: 10px;
+            color: #F17846;
+            font-weight: bold;
+            padding: 10px 0px;
+        }
+/* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
