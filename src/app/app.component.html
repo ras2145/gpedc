@@ -1,275 +1,282 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<!-- Contenedor general -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- INICIO Sidebar -->
+                <div class="col-md-4" style="padding-left:0px;">
 
-<!-- INICIO Tab View -->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4" style="padding-left:0px;">
-            <tabset [vertical]="true" type="pills">
+                    <!-- Contenedor tab -->
+                    <tabset [vertical]="true" type="pills">
 
-              <tab heading="">
-                  <template tabHeading>
-                      <i class="mdi mdi-view-quilt"></i>
-                      <span>View</span>
-                  </template>
+                        <tab heading="">
+                            <!-- BOTON TAB VIEW -->
+                            <template tabHeading>
+                                <i class="mdi mdi-view-quilt"></i>
+                                <span>View</span>
+                            </template>
+                            <!-- BOTON TAB VIEW -->
 
-                  <!-- Contenido del Tab View -->
-
-                  <div class="result-container">
-
-                        <div class="row result-space">
-                            <div class="col-12">
-                                <p class="result-title-one">
-                                    Global Partnership for Effective Development<br/>
-                                    Co-operation
-                                </p>
-                                <p class="result-text">
-                                    Sed ut Perspiciatis unde omnisite natus error sit voluptatem
-                                    accusantium doloermque laudantium, totoam rem aperiam,
-                                    eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                    beatae vitae.
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12">
-                            <div class="separator"></div>
-                        </div>
-
-                        <div class="row result-background">
-
-                            <div class="col-12">
-                                <p class="result-subtitle" style="padding-top:20px;">View Data by:</p>
-                                <div class="container-button-data">
-                                    <a href="" class="active">2014</a>
-                                    <a href="" class="not-active">2016</a>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group style-select">
-                                    <label for="inputState" class="result-subtitle">Indicator <i class="mdi mdi-information"></i></label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>1: Developement co-operation is focused on... </option>
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="line-separator">
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group style-select">
-                                    <label for="inputState" class="result-subtitle-one">Show contries with the following criteria: <br><br>Region</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Southeast Asia</option>
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group style-select">
-                                    <label for="inputState" class="result-subtitle">Income</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Low Incomez</option>
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="form-group style-select">
-                                    <label for="inputState" class="result-subtitle">Group Name <i class="mdi mdi-information"></i></label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Arab World</option>
-                                        <option>Option One</option>
-                                        <option>Option Two</option>
-                                        <option>Option Three</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="col-12">
-                                <div class="form-group style-select">
-                                    <label for="inputState" class="result-subtitle">State</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Choose...</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <p class="result-end"></p>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-                  <!-- Fin del Tab View -->
-              </tab>
-
-              <tab heading="">
-                  <template tabHeading>
-                      <i class="mdi mdi-chart-bar"></i>
-                      <span>Analysis</span>
-                  </template>
-
-                  <!-- Contenido de analysis -->
-                  <div class="result-container">
-
-                        <div class="row result-space">
-                            <div class="col-12">
-                                <p class="result-title-one">
-                                    Global Partnership for Effective Development<br/>
-                                    Co-operation
-                                </p>
-                                <p class="result-text">
-                                    Sed ut Perspiciatis unde omnisite natus error sit voluptatem
-                                    accusantium doloermque laudantium, totoam rem aperiam,
-                                    eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                    beatae vitae.
-                                </p>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12">
-                            <div class="separator"></div>
-                        </div>
-
-                        <div class="row result-background">
-
-                            <div class="col-12" style="padding-top:12px;">
-                                <p class="result-subtitle">Compare Contries by indicator <i class="mdi mdi-information"></i></p>
-                                <div class="container-button-data">
-                                    <a href="" class="active">2014</a>
-                                    <a href="" class="not-active">2016</a>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <p class="result-subtitle-one">Select two countries from the map or type their names:</p>
-                                <div class="option-input">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control left" value="Country A">
-                                        <input type="text" class="form-control right" value="Country B">
+                            <!-- Contenido del Tab View -->
+                            <div class="result-container">
+                                <!-- Cabecera -->
+                                <div class="row result-space">
+                                    <div class="col-md-12">
+                                        <p class="result-title-one">
+                                            Global Partnership for Effective Development<br/>
+                                            Co-operation
+                                        </p>
+                                        <p class="result-text">
+                                            Sed ut Perspiciatis unde omnisite natus error sit voluptatem
+                                            accusantium doloermque laudantium, totoam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                                            beatae vitae.
+                                        </p>
                                     </div>
                                 </div>
+
+                                <div class="col-md-12"><div class="separator"></div></div>
+                                <!-- Contenido -->
+                                <div class="row result-background">
+
+                                    <div class="col-md-12">
+                                        <p class="result-subtitle" style="padding-top:20px; padding-bottom:12px;">View Data by:</p>
+                                        <div class="container-button-data">
+                                            <a href="" class="active">2014</a>
+                                            <a href="" class="not-active">2016</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group style-select">
+                                            <label for="inputState" class="result-subtitle" style="padding-top:25px; padding-bottom:10px;">Indicator <i class="mdi mdi-information"></i></label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>1: Developement co-operation is focused on... </option>
+                                                <option>Option One</option>
+                                                <option>Option Two</option>
+                                                <option>Option Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="line-separator"></div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group style-select">
+                                            <label for="inputState" class="result-subtitle-one">Show contries with the following criteria: <br><br>Region</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Southeast Asia</option>
+                                                <option>Option One</option>
+                                                <option>Option Two</option>
+                                                <option>Option Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group style-select">
+                                            <label for="inputState" class="result-subtitle">Income</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Low Incomez</option>
+                                                <option>Option One</option>
+                                                <option>Option Two</option>
+                                                <option>Option Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group style-select">
+                                            <label for="inputState" class="result-subtitle">Group Name <i class="mdi mdi-information"></i></label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Arab World</option>
+                                                <option>Option One</option>
+                                                <option>Option Two</option>
+                                                <option>Option Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group style-select">
+                                            <label for="inputState" class="result-subtitle">State</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12"><p class="result-end"></p></div>
+
+                                </div>
+                                <!-- Contenido -->
                             </div>
+                            <!-- Contenido del Tab View -->
+                        </tab>
 
-                        </div>
+                        <!-- tab analysis -->
+                        <tab heading="">
+                            <!-- Boton tab  -->
+                            <template tabHeading>
+                                <i class="mdi mdi-chart-bar"></i>
+                                <span>Analysis</span>
+                            </template>
 
-                        <div class="row result-background-1">
-                            <div class="col-12">
-                                <table class="table table-sm table-space">
-                                    <thead>
-                                        <tr>
-                                            <th width="55%" class="title-table">Indicators</th>
-                                            <th width="22%" class="title-table-one">Country A</th>
-                                            <th width="23%" class="title-table-one">Country B</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                            <!-- Contenido de analysis -->
+                            <div class="result-container">
+                                <!-- Cabecera -->
+                                <div class="row result-space">
+                                    <div class="col-12">
+                                        <p class="result-title-one">
+                                            Global Partnership for Effective Development<br/>
+                                            Co-operation
+                                        </p>
+                                        <p class="result-text">
+                                            Sed ut Perspiciatis unde omnisite natus error sit voluptatem
+                                            accusantium doloermque laudantium, totoam rem aperiam,
+                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                                            beatae vitae.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-12"><div class="separator"></div></div>
+
+                                <!-- Contenido Input text -->
+                                <div class="row result-background">
+
+                                    <div class="col-12" style="padding-top:12px;">
+                                        <p class="result-subtitle" style="padding-top:20px; padding-bottom:12px;">Compare Contries by indicator <i class="mdi mdi-information"></i></p>
+                                        <div class="container-button-data">
+                                            <a href="" class="active">2014</a>
+                                            <a href="" class="not-active">2016</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <p class="result-subtitle-one" style="padding-bottom:0px; margin-bottom:-8px;">Select two countries from the map or type their names:</p>
+                                        <div class="option-input">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control left" value="Country A">
+                                                <input type="text" class="form-control right" value="Country B">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Contenido Input text -->
+
+                                <!-- Contenido Tabla de resultados -->
+                                <div class="row result-background-table">
+                                    <div class="col-12">
+                                        <table class="table table-sm table-space">
+                                            <thead>
+                                                <tr>
+                                                    <th width="55%" class="title-table">Indicators</th>
+                                                    <th width="22%" class="title-table-one">Country A</th>
+                                                    <th width="23%" class="title-table-one">Country B</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+
+                                    <div class="row result-background-table-item" style="margin-top: -20px;">
+                                        <div class="col-12">
+                                            <table class="table">
+
+                                                <tr>
+                                                    <td width="55%" class="subtitle-table">
+                                                        Development co-operation is
+                                                        focused on result that meet
+                                                        developing countries' priorities
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="subtitle-table">
+                                                        Civil society operates within an
+                                                        environment which maximises
+                                                        its engagement in and
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="subtitle-table">
+                                                        Engagement and contribution
+                                                        of the private sector to
+                                                        development
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="subtitle-table">
+                                                        Trasparency information
+                                                        development co-operation is
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="subtitle-table">
+                                                        Trasparency information
+                                                        development co-operation is
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="subtitle-table">
+                                                        Trasparency information
+                                                        development co-operation is
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="subtitle-table">
+                                                        Trasparency information
+                                                        development co-operation is
+                                                    </td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                    <td class="subtitle-table-one">9999</td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- Boton export  -->
+                                    <a href="#" class="btn-export">ESPORT DATA</a>
+                                </div>
+                                <!-- Contenido Tabla de resultados -->
                             </div>
-                        </div>
+                        </tab>
+                        <!-- tab analysis -->
 
-                        <div class="row result-background-2" style="margin-top: -20px;">
-                            <div class="col-12 normal">
-                                <table class="table">
-                                        <tr>
-                                            <td width="55%" class="subtitle-table">
-                                                Development co-operation is
-                                                focused on result that meet
-                                                developing countries' priorities</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="subtitle-table">
-                                                Civil society operates within an
-                                                environment which maximises
-                                                its engagement in and
-                                            </td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="subtitle-table">
-                                                Engagement and contribution
-                                                of the private sector to
-                                                development
-                                            </td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="subtitle-table">
-                                                Trasparency information
-                                                development co-operation is
-                                            </td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="subtitle-table">
-                                                Trasparency information
-                                                development co-operation is
-                                            </td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="subtitle-table">
-                                                Trasparency information
-                                                development co-operation is
-                                            </td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="subtitle-table">
-                                                Trasparency information
-                                                development co-operation is
-                                            </td>
-                                            <td class="subtitle-table-one">9999</td>
-                                            <td class="subtitle-table-one">9999</td>
-                                        </tr>
-                                </table>
-                            </div>
-                        </div>
+                    </tabset>
+                    <!-- Contenedor tab -->
+                </div>
+            <!-- FIN Sidebar -->
 
-                        <a href="#" class="btn-export">ESPORT DATA</a>
-
+            <!-- INICIO Map -->
+                <div class="col-md-8">
+                    <div class="map-header">
+                        <p>Development co-operation is focused on results that meet developing countries' priorities</p>
                     </div>
-                  <!-- Fin contenido analysis -->
-
-              </tab>
-            </tabset>
-
+                    <img src="assets/map-new-screen-1.png" alt="" width="100%">
+                </div>
+            <!-- FIN Map -->
         </div>
-        <div class="col-8 map-container">
-            <div class="map-header">
-                <p>Development co-operation is focused on results that meet developing countries' priorities</p>
-            </div>
-            <img src="../assets/map-new-screen-1.png" alt="" width="100%">
 
-        </div>
+
+
+
     </div>
-</div>
-<!-- FIN Tab View -->
