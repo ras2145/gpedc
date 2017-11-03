@@ -12,7 +12,7 @@
                             <!-- BOTON TAB VIEW -->
                             <template tabHeading>
                                 <i class="mdi mdi-view-quilt"></i>
-                                <span>View</span>
+                                <span>Map Viewer</span>
                             </template>
                             <!-- BOTON TAB VIEW -->
 
@@ -39,7 +39,7 @@
                                 <div class="row result-background">
 
                                     <div class="col-md-12">
-                                        <p class="result-subtitle" style="padding-top:20px; padding-bottom:12px;">View Data by:</p>
+                                        <p class="result-subtitle" style="padding-top:20px; padding-bottom:12px;">View Data by <a href="#"><i class="mdi mdi-information"></i></a></p>
                                         <div class="radio">
 
                                             <input type="radio" name="radio-btn" id="one" />
@@ -82,7 +82,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle">Income <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                            <label for="inputState" class="result-subtitle">Income Grouping <a href="#"><i class="mdi mdi-information"></i></a></label>
                                             <select id="inputState" class="form-control">
                                                 <option selected>Low Incomez</option>
                                                 <option>Option One</option>
@@ -93,18 +93,13 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle">Group Name <i class="mdi mdi-information"></i></label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Arab World</option>
-                                                <option>Option One</option>
-                                                <option>Option Two</option>
-                                                <option>Option Three</option>
-                                            </select>
+                                        <div class="form-group checkbox-select">
+                                            <input type="checkbox" id="inputCountry">
+                                            <label for="inputCountry" class="result-subtitle" style="padding-top: 7px;">Country Context <i class="mdi mdi-information"></i></label>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="form-group style-select">
                                             <label for="inputState" class="result-subtitle">State</label>
                                             <select id="inputState" class="form-control">
@@ -112,7 +107,7 @@
                                                 <option>...</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="col-md-12"><p class="result-end"></p></div>
 
@@ -127,7 +122,7 @@
                             <!-- Boton tab  -->
                             <template tabHeading>
                                 <i class="mdi mdi-chart-bar"></i>
-                                <span>Analysis</span>
+                                <span>Country Comparison</span>
                             </template>
 
                             <!-- Contenido de analysis -->
@@ -270,7 +265,7 @@
                                         </div>
                                     </div>
                                     <!-- Boton export  -->
-                                    <a href="#" class="btn-export">ESPORT DATA</a>
+                                    <a href="#" class="btn-export">EXPORT DATA</a>
                                 </div>
                                 <!-- Contenido Tabla de resultados -->
                             </div>
@@ -326,6 +321,7 @@
 
 
                     <!-- <img src="assets/map-new-screen-1.png" alt="" width="100%"> -->
+                    <iframe style="padding: 0px;" width="100%" height="90%"frameborder="0" src="https://undp.carto.com/u/undp-admin/builder/0b976f06-2a20-402c-ad37-68185f782ad3/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
 
 
