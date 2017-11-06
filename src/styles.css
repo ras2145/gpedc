@@ -10,6 +10,45 @@ body{
 .row{
     height: 100%;
 }
+/*Estilos generales para quitar bordes dados automaticamente por el navegador*/
+.padding-left-none{
+    padding-left:0px;
+}
+.result-subtitle.space-view-data{
+    padding-top:20px;
+    padding-bottom:15px;
+}
+.space-indicator{
+    padding-top:25px;
+    padding-bottom:10px;
+}
+.space-country{
+    padding-top: 7px;
+}
+.space-top-compare{
+    padding-top:12px;
+}
+.result-subtitle.space-compare{
+    padding-top:8px;
+    padding-bottom:18px;
+}
+.result-subtitle-one.space-selcet-country{
+    padding-bottom:0px;
+    margin-bottom:-3px;
+}
+.space-top-table{
+    margin-top: -20px;
+}
+.border-div-none{
+    padding:0px;
+    background-color: #ddd;
+}
+
+
+
+
+
+
 /* - -  -  - - - - - - - - - -  - -ESTILOS para los tabs (scroll lado izquierdo) - - - -  - -  - - -  - - - - */
 /*Contenedor para resultado*/
 .result-container{
@@ -28,16 +67,16 @@ body{
 /*Estilos para fuentes*/
 .result-title-one{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
 }
 .result-text{
-    font-size: 14px;
+    font-size: 12px;
     text-align: justify;
 }
 .result-subtitle{
     margin: 0px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     padding-bottom: 5px;
 }
 .result-subtitle i,
@@ -48,7 +87,7 @@ body{
 .result-subtitle-one{
     margin: 0px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     padding-top: 24px;
     padding-bottom: 10px;
 }
@@ -72,7 +111,7 @@ body{
 
 /*Separadores entre lineas*/
 .separator{
-    height: 20px;
+    height: 10px;
 }
 .line-separator{
     position: absolute;
@@ -166,7 +205,7 @@ a.btn-export:hover{
     border-radius: 20px;
     height: 45px;
     padding: 0px 25px;
-    font-size: 14px;
+    font-size: 12px;
 }
 .style-select .form-control:focus {
     color: #495057;
@@ -178,7 +217,7 @@ a.btn-export:hover{
     background-image: url("assets/chevron-down.png"); /*aquí deberás escribir la ruta de la imagen que utilizarás como flecha del desplegable*/
     background-repeat: no-repeat;
     background-size: 12px;
-    background-position: 337px;
+    background-position: 90%;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
@@ -193,11 +232,12 @@ a.btn-export:hover{
 /*INICIO ESTILOS PARA Input text*/
 .option-input .form-group .form-control{
     background-color: #f5f5f5;
-    border-radius: 30px;
+    border-radius: 20px;
     text-align: center;
     width: 48%;
-    height: 45px;
-    color: #f17846;
+    height: 35px;
+    color: #212121;
+    font-size: 14px;
 }
 .option-input .form-group .form-control:focus {
     color: #495057;
@@ -210,6 +250,10 @@ input.left{
 }
 input.right{
     float: right;
+}
+input.form-control::placeholder{
+    color: #f17846;
+    font-size: 14px;
 }
 /*FIN ESTILOS PARA Input text*/
 
@@ -248,8 +292,24 @@ input.right{
 .active{
     background: none;
     border: 0px;
-
 }
+/*.not-active{
+    padding-left: 10px;
+    padding-right: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #fff;
+    margin-left: -10px;
+}
+.not-active:hover:after{
+    content: ' Country Comparison';
+    color: #F27844;
+    font-size: 12px;
+    font-family: Roboto;
+    font-style: normal;
+    vertical-align: middle;
+    transition: 1s;
+}*/
 /*ESTILOS de los tabs*/
 
 /*Estilos para checkbox*/
@@ -264,8 +324,8 @@ input.right{
     content: '';
     border: 1px solid #F27844;
     border-radius: 3px;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     position: absolute;
     right: -30px;
     cursor: pointer;
@@ -276,8 +336,9 @@ input.right{
     color: #F27844;
     content: '\F12C';
     font-family: Material Design Icons;
-    padding-left: 3px;
+    padding-left: 2px;
 }
+
 
 
 /* - -  -  - - - - - - - - - -  - -ESTILOS para los tabs (scroll lado izquierdo) - - - -  - -  - - -  - - - - */
@@ -309,6 +370,7 @@ input.right{
     border-radius: 5px;
     box-shadow: 1px 1px 10px #ccc;
     width: 200px;
+    height: 320px;
 }
     .head-card p{
         padding: 0px;
@@ -367,6 +429,7 @@ input.right{
             padding-top: 15px;
             text-align: justify;
             font-size: 11px;
+            max-height: 125px;
         }
         .button-card{
             padding-left: 20px;
@@ -384,5 +447,5 @@ input.right{
             font-weight: bold;
             padding: 10px 0px;
         }
-        
+
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */

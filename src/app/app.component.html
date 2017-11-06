@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div class="col-md-4" style="padding-left:0px;">
+                <div class="col-md-4 padding-left-none">
 
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
@@ -39,7 +39,7 @@
                                 <div class="row result-background">
 
                                     <div class="col-md-12">
-                                        <p class="result-subtitle" style="padding-top:20px; padding-bottom:12px;">View Data by <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                        <p class="result-subtitle space-view-data">View Data by <a href="#"><i class="mdi mdi-information"></i></a></p>
                                         <div class="radio">
 
                                             <input type="radio" name="radio-btn" id="one" />
@@ -56,7 +56,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle" style="padding-top:25px; padding-bottom:10px;">Indicator <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                            <label for="inputState" class="result-subtitle space-indicator">Indicator <a href="#"><i class="mdi mdi-information"></i></a></label>
                                             <select id="inputState" class="form-control">
                                                 <option selected>1: Developement co-operation is focused on... </option>
                                                 <option>Option One</option>
@@ -70,7 +70,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle-one">Show contries with the following criteria: <br><br>Region <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                            <label for="inputState" class="result-subtitle-one">Show countries with the following criteria: <br><br>Region <a href="#"><i class="mdi mdi-information"></i></a></label>
                                             <select id="inputState" class="form-control">
                                                 <option selected>Southeast Asia</option>
                                                 <option>Option One</option>
@@ -95,19 +95,10 @@
                                     <div class="col-md-12">
                                         <div class="form-group checkbox-select">
                                             <input type="checkbox" id="inputCountry">
-                                            <label for="inputCountry" class="result-subtitle" style="padding-top: 7px;">Country Context <i class="mdi mdi-information"></i></label>
+                                            <label for="inputCountry" class="result-subtitle space-country">Country Context <i class="mdi mdi-information"></i></label>
                                         </div>
                                     </div>
 
-                                    <!-- <div class="col-md-12">
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle">State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Choose...</option>
-                                                <option>...</option>
-                                            </select>
-                                        </div>
-                                    </div> -->
 
                                     <div class="col-md-12"><p class="result-end"></p></div>
 
@@ -121,7 +112,7 @@
                         <tab heading="">
                             <!-- Boton tab  -->
                             <template tabHeading>
-                                <i class="mdi mdi-chart-bar"></i>
+                                <i class="mdi mdi-chart-bar not-active"></i>
                                 <span>Country Comparison</span>
                             </template>
 
@@ -148,8 +139,8 @@
                                 <!-- Contenido Input text -->
                                 <div class="row result-background">
 
-                                    <div class="col-12" style="padding-top:12px;">
-                                        <p class="result-subtitle" style="padding-top:8px; padding-bottom:12px;">Compare Contries by indicator <i class="mdi mdi-information"></i></p>
+                                    <div class="col-12 space-top-compare">
+                                        <p class="result-subtitle space-compare">Compare Countries by indicator <i class="mdi mdi-information"></i></p>
                                         <div class="radio">
 
                                             <input type="radio" name="radio-btn-1" id="one-1" />
@@ -165,11 +156,11 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <p class="result-subtitle-one" style="padding-bottom:0px; margin-bottom:-8px;">Select two countries from the map or type their names:</p>
+                                        <p class="result-subtitle-one space-selcet-country">Select two countries from the map or type their names:</p>
                                         <div class="option-input">
                                             <div class="form-group">
-                                                <input type="text" class="form-control left" value="Country A">
-                                                <input type="text" class="form-control right" value="Country B">
+                                                <input type="text" class="form-control left" placeholder="Country A">
+                                                <input type="text" class="form-control right" placeholder="Country B">
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +182,7 @@
                                         </table>
                                     </div>
 
-                                    <div class="row result-background-table-item" style="margin-top: -20px;">
+                                    <div class="row result-background-table-item space-top-table">
                                         <div class="col-12">
                                             <table class="table">
 
@@ -278,7 +269,7 @@
             <!-- FIN Sidebar -->
 
             <!-- INICIO Map -->
-                <div class="col-md-8" style="padding:0px; background-color: #ddd;">
+                <div class="col-md-8 border-div-none">
                     <div class="map-header">
                         <p>Development co-operation is focused on results that meet developing countries' priorities</p>
                     </div>
