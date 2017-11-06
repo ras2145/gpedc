@@ -59,6 +59,9 @@ body{
     /*Color de la fuente por defecto*/
     color: #000;
 }
+.logo img{
+    width: 100%;
+}
 /*Espaciodo para centrar contenido resultado*/
 .result-space{
     padding: 25px 25px 0px 25px;
@@ -72,6 +75,7 @@ body{
 .result-text{
     font-size: 12px;
     text-align: justify;
+    margin-top: 20px;
 }
 .result-subtitle{
     margin: 0px;
@@ -116,7 +120,7 @@ body{
 .line-separator{
     position: absolute;
     left: -10px;
-    top: 420px;
+    top: 390px;
     border-bottom: 1px solid #e2e2e2;
     width: 500px;
 }
@@ -260,7 +264,7 @@ input.form-control::placeholder{
 /*ESTILOS de los tabs*/
 .nav-pills{
     position: absolute;
-    right: -175px;
+    right: -44px;
     z-index: 500;
     top: 58px;
 }
@@ -280,6 +284,7 @@ input.form-control::placeholder{
     margin: 0px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    padding-right: 10px;
 }
 .nav-pills .nav-link{
     color: #9B9B9B;
@@ -292,6 +297,12 @@ input.form-control::placeholder{
 .active{
     background: none;
     border: 0px;
+}
+.space-tab{
+    margin-top: 50px;
+}
+.nav-item{
+    margin-bottom: 5px;
 }
 /*.not-active{
     padding-left: 10px;
@@ -446,6 +457,11 @@ input.form-control::placeholder{
             color: #F17846;
             font-weight: bold;
             padding: 10px 0px;
+        }
+        .button-card p a:hover{
+            color: #fff;
+            background-color: #F17846;
+            transition: 0.8s;
         }
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
