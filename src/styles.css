@@ -1,4 +1,6 @@
 @import "../node_modules/mdi/css/materialdesignicons.min.css";
+@import "../node_modules/mapbox-gl/dist/mapbox-gl.css";
+
 /*Tamaño del 100% para todo el view*/
 html,
 body{
@@ -357,9 +359,12 @@ input.form-control::placeholder{
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
 
-.map-header{
+.map-header {
     background-color: #444847;
     height: 50px;
+    position: absolute;
+    z-index: 500;
+    width: 100%;
 }
 .map-header p{
     font-size: 14px;
@@ -382,6 +387,7 @@ input.form-control::placeholder{
     box-shadow: 1px 1px 10px #ccc;
     width: 200px;
     height: 320px;
+    z-index: 500;
 }
     .head-card p{
         padding: 0px;
@@ -465,3 +471,14 @@ input.form-control::placeholder{
         }
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
+
+.map-container {
+    height: 100vh;
+    width: 100%;
+}
+
+div#map {
+    width: inherit;
+    height: 100%;
+    z-index: 1;
+}
