@@ -12,7 +12,7 @@
                             <!-- BOTON TAB VIEW -->
                             <template tabHeading>
                                 <i class="mdi mdi-view-quilt"></i>
-                                <!-- <span>Map Viewer</span> -->
+                                <span class="ocultar">Map Viewer</span>
                             </template>
                             <!-- BOTON TAB VIEW -->
 
@@ -38,7 +38,7 @@
                                 <div class="row result-background">
 
                                     <div class="col-md-12">
-                                        <p class="result-subtitle space-view-data">View Data by <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                        <p class="result-subtitle space-view-data">Select year <a href="#"><i class="mdi mdi-information"></i></a></p>
                                         <div class="radio">
 
                                             <input type="radio" name="radio-btn" id="one" />
@@ -69,7 +69,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle-one">Show countries with the following criteria: <br><br>Region <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                            <label for="inputState" class="result-subtitle-one">Filter countries by: <br><br>Region <a href="#"><i class="mdi mdi-information"></i></a></label>
                                             <select id="inputState" class="form-control">
                                                 <option selected>Southeast Asia</option>
                                                 <option>Option One</option>
@@ -81,7 +81,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle">Income Grouping <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                            <label for="inputState" class="result-subtitle">Income Group <a href="#"><i class="mdi mdi-information"></i></a></label>
                                             <select id="inputState" class="form-control">
                                                 <option selected>Low Income</option>
                                                 <option>Option One</option>
@@ -91,10 +91,22 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="form-group checkbox-select">
                                             <input type="checkbox" id="inputCountry">
                                             <label for="inputCountry" class="result-subtitle space-country">Country Context <i class="mdi mdi-information"></i></label>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+                                        <div class="form-group style-select">
+                                            <label for="inputState" class="result-subtitle">Country context <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Arab world</option>
+                                                <option>Option One</option>
+                                                <option>Option Two</option>
+                                                <option>Option Three</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -111,8 +123,8 @@
                         <tab heading="">
                             <!-- Boton tab  -->
                             <template tabHeading>
-                                <i class="mdi mdi-chart-bar not-active"></i>
-                                <!-- <span>Country Comparison</span> -->
+                                <i class="mdi mdi-chart-bar"></i>
+                                <span class="ocultar">Country Comparison</span>
                             </template>
 
                             <!-- Contenido de analysis -->
