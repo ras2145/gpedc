@@ -296,7 +296,7 @@ input.form-control::placeholder{
 }
 .nav-pills .nav-link:hover,
 .nav-pills .nav-link.active:hover{
-    width: 157px;
+    width: 163px;
     height: 30px;
     padding-left: 8px;
     padding-right: 0px;
@@ -482,6 +482,7 @@ input.form-control::placeholder{
             color: #fff;
             background-color: #F17846;
             transition: 0.8s;
+            /*transition: 1*/
         }
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
