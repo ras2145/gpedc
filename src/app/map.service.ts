@@ -18,10 +18,17 @@ export class MapService {
       container: mapId,
       preserveDrawingBuffer: true,
       style: this.style,
-      center: [0, 0],
-      zoom: 0.5,
+      center: [13.5, 26],
+      zoom: 1.2,
       maxBounds: [[-180, -90], [180, 90]]
     });
   }
 
 }
+
+
+/*
+1280x800
+center: [13.5, 1.5],
+zoom: 1.2,
+*/
