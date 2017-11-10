@@ -379,8 +379,9 @@ div#map {
     height: 30px;
     padding-left: 8px;
     padding-right: 0px;
-    margin-right: -122px;
+    margin-right: -128px;
 }
+
 .nav-pills .nav-link:hover span.ocultar{
     color: #F27844;
     display: inline-block;
@@ -499,4 +500,39 @@ div#map {
 .tab-map .nav-tabs {
   border-bottom: none;
   width: 731px;
+}
+
+/*Estilos modal*/
+.modal-content{
+    background-color: #fafafa;
+    left: 80px;
+    top: 80px;
+}
+.modal-title,
+.modal-title span{
+    text-transform: uppercase;
+}
+.modal-title{
+    color: #f07848;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px 5px;
+}
+.modal-title span{
+    font-size: 14px;
+    font-weight: 600;
+}
+.result-modal{
+    padding-top: 15px;
+    padding-bottom: 30px;
+    font-size: 14px;
+}
+.modal-body{
+    padding: 2px 0px;
+}
+.background-modal{
+    background-color: #FDF1EC;
+}
+.modal-backdrop {
+   background-color: transparent;
 }

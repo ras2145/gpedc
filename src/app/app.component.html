@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div class="col-md-7 padding-left-none"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
+                <div class="col-md-4 padding-left-none"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
 
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
@@ -24,7 +24,7 @@
 
                             <div class="row padding-top-background">
                                 <div class="col-md-4" style="background-color:485844;">
-                                    <p class="result-subtitle space-view-data">Select year <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                    <p class="result-subtitle space-view-data">Select year <a href="#" (click)="openModal(template)"><i class="mdi mdi-information"></i></a></p>
                                 </div>
                                 <div class="col-md-8 btn-year">
                                     <div class="radio">
@@ -368,7 +368,7 @@
             <!-- FIN Sidebar -->
 
             <!-- INICIO Map -->
-                <div class="col-md-5 border-div-none"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
+                <div class="col-md-8 border-div-none"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header">
                         <p>Indicator 1: Development co-operation is focused on results that meet developing countries' priorities</p>
                     </div>
@@ -409,8 +409,8 @@
                         </div>
                     </div>
 
-                    <!-- TAB MAP -->
-                    <div class="tab-map">
+                    <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
+                    <!-- <div class="tab-map">
                       <tabset #staticTabs>
                         <tab heading="INDICATOR 1">
                           Lorem ipsum dolor sit amet, consectetur adipisicing elit,
@@ -470,9 +470,8 @@
                         <tab heading="3.4">
                           :v :v :v :c
                         </tab>
-                        <!-- <tab heading="Static Title 3" [removable]="true">Static content 3</tab> -->
                       </tabset>
-                    </div>
+                    </div> -->
 
                     <!-- <img src="assets/map-new-screen-1.png" alt="" width="100%"> -->
                     <!-- <iframe style="padding: 0px;" width="100%" height="90%"frameborder="0" src="https://undp.carto.com/u/undp-admin/builder/0b976f06-2a20-402c-ad37-68185f782ad3/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
@@ -486,20 +485,36 @@
     </div>
 
 
-    <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+    <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button> -->
+<!-- Estilos de los modal -->
+    <ng-template #template>
+      <div class="modal-body">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-10">
+                      <p class="modal-title pull-left">What does this indicator measure?<br><span>indicator 1</span></p>
+                  </div>
+                  <div class="col-2">
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              </div>
+              <div class="row background-modal">
+                  <div class="col-md-12">
+                      <p class="result-modal">
+                          This indicator measures the alignment of development partners' new
+                          interventions with the objectives and results defined by countries
+                          themselves. It also looks at development partners' reliance on countries'
+                          own statistical and monitoring and evaluation processes to track progress.<br>
+                          These are both fundamental aspectsof country ownership over the
+                          development process. Data collection for this indicator focuses on the
+                          portfolio of new development interventions approved during 2015 (equal
+                          to or above USD 1 million).
 
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    This is a modal.
-  </div>
-</ng-template>
-
-
-
-<button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Create modal with component</button>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </ng-template>
