@@ -533,6 +533,7 @@ div#map {
 .background-modal{
     background-color: #FDF1EC;
 }
+/*color de fondo del modal*/
 .modal-backdrop {
    background-color: transparent;
 }
