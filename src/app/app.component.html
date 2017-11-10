@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div class="col-md-4 padding-left-none"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
+                <div class="col-md-7 padding-left-none"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
 
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
@@ -192,7 +192,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group style-select">
-                                                <select id="inputState" class="form-control">
+                                                <select id="inputState" class="form-control color-input">
                                                     <option selected>SELECT AGGREGATE</option>
                                                     <option>Option One</option>
                                                     <option>Option Two</option>
@@ -368,7 +368,7 @@
             <!-- FIN Sidebar -->
 
             <!-- INICIO Map -->
-                <div class="col-md-8 border-div-none"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
+                <div class="col-md-5 border-div-none"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header">
                         <p>Indicator 1: Development co-operation is focused on results that meet developing countries' priorities</p>
                     </div>
@@ -484,3 +484,22 @@
             <!-- FIN Map -->
         </div>
     </div>
+
+
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>
+
+
+
+<button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Create modal with component</button>
