@@ -136,6 +136,7 @@ a.btn-export:hover{
     height: 45px;
     padding: 0px 25px;
     font-size: 12px;
+    color: #f17846;
 }
 .style-select .form-control:focus {
     color: #495057;
@@ -300,10 +301,20 @@ input.form-control::placeholder{
 
 
 
-
+.rotate i::before{
+    transform: rotate(90deg);
+}
 
 .border-bottom{
     border-bottom: 1px solid #e2e2e2;
+}
+.border-bottom-1{
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.border-div-none{
+    padding:0px;
+    background-color: #f00;
+    /*margin-left: -1px;*/
 }
 .space-line{
     padding-top: 10px;
@@ -400,20 +411,49 @@ div#map {
 /*ESTILOS de los tabs*/
 
 /*Estilos par tabla view 2*/
+.table{
+    margin-bottom: 0px;
+}
 .table-title-left,
 .table-subtible,
 .table-result{
     font-size: 12px;
     text-transform: uppercase;
 }
-.table-title-left span{
+.table-title-left p span{
     font-weight: 600;
+}
+.table-title-left p{
+    padding: 10px 10px 0px 0px;
+    margin: 0px;
 }
 .table-subtible p{
     color: #9B9B9B;
-    padding-left: 20px;
+    padding: 20px 0px 0px 20px;
 }
 .table-result{
     font-weight: 700;
     text-align: center;
+}
+.table-result.center-td{
+    padding-top: 40px;
+}
+.table-result.center-td-1{
+    padding-top: 24px;
+}
+.background-table{
+    background: rgba(249,237,232,1);
+    background: -moz-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(242,211,199,1) 30%, rgba(242,211,199,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(249,237,232,1)), color-stop(30%, rgba(242,211,199,1)), color-stop(100%, rgba(242,211,199,1)));
+    background: -webkit-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(242,211,199,1) 30%, rgba(242,211,199,1) 100%);
+    background: -o-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(242,211,199,1) 30%, rgba(242,211,199,1) 100%);
+    background: -ms-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(242,211,199,1) 30%, rgba(242,211,199,1) 100%);
+    background: linear-gradient(to right, rgba(249,237,232,1) 0%, rgba(242,211,199,1) 30%, rgba(242,211,199,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9ede8', endColorstr='#f2d3c7', GradientType=1 );
+}
+.background-1{
+    background-color: #F9EDE8;
+}
+.background-2{
+    background-color: #F2D3C7;
 }
