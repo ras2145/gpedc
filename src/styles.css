@@ -398,3 +398,22 @@ div#map {
     margin-bottom: 5px;
 }
 /*ESTILOS de los tabs*/
+
+/*Estilos par tabla view 2*/
+.table-title-left,
+.table-subtible,
+.table-result{
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.table-title-left span{
+    font-weight: 600;
+}
+.table-subtible p{
+    color: #9B9B9B;
+    padding-left: 20px;
+}
+.table-result{
+    font-weight: 700;
+    text-align: center;
+}
