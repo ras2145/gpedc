@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 
 export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
@@ -19,7 +20,8 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
   imports: [
     BrowserModule,
     Ng2BootstrapModule.forRoot(),
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
     MapService,
