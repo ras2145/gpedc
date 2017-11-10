@@ -107,15 +107,11 @@ p.p-none-space{
     background-color: #f07848;
     color: #fff;
 }
-label.middle{
-    margin-left: -5px;
-    margin-right: -6px;
-    border-radius: 0px;
-}
 label.right-btn{
     border-radius: 0px 5px 5px 0px;/*0px 50px 50px 0px*/
 }
 /*FIN estilos para botones naranja y plomo*/
+
 /*Estilo para los botones de export*/
 .btn-export{
     text-decoration: none;
