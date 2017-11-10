@@ -1,90 +1,47 @@
 @import "../node_modules/mdi/css/materialdesignicons.min.css";
 @import "../node_modules/mapbox-gl/dist/mapbox-gl.css";
 
-/*Tamaño del 100% para todo el view*/
+/*Estilos para ocupar toda la pantalla*/
 html,
 body{
     height: 100%;
+    background-color: #fff;/*ccc*/
 }
 .container-fluid{
     height: 100%;
 }
-.row{
+.container-fluid > .row{
     height: 100%;
+    overflow: hidden;
 }
-/*Estilos generales para quitar bordes dados automaticamente por el navegador*/
-.padding-left-none{
-    padding-left:0px;
-}
-.result-subtitle.space-view-data{
-    padding-top:20px;
-    padding-bottom:15px;
-}
-.space-indicator{
-    padding-top:25px;
-    padding-bottom:10px;
-}
-.space-country{
-    padding-top: 7px;
-}
-.space-top-compare{
-    padding-top:12px;
-}
-.result-subtitle.space-compare{
-    padding-top:8px;
-    padding-bottom:15px;
-}
-.result-subtitle-one.space-selcet-country{
-    padding-bottom:0px;
-    margin-bottom:-3px;
-}
-.space-top-table{
-    margin-top: -20px;
-}
-.border-div-none{
-    padding:0px;
-    background-color: #ddd;
-    margin-left: -1px;
-}
-
-
-
-
-
-
-/* - -  -  - - - - - - - - - -  - -ESTILOS para los tabs (scroll lado izquierdo) - - - -  - -  - - -  - - - - */
-/*Contenedor para resultado*/
-.result-container{
-    max-height: 100%;
-    position: absolute;
+.div-scroll{
     overflow-y: scroll;
-    overflow-x: hidden;
-    /*Color de la fuente por defecto*/
-    color: #000;
 }
-.logo img{
-    width: 100%;
+/*reinicio de estilos por defecto*/
+.table thead th,
+.table th, .table td{
+    border: 0px;
 }
-/*Espaciodo para centrar contenido resultado*/
-.result-space{
-    padding: 25px 25px 0px 25px;
-}
+/*Estilos para ocupar toda la pantalla*/
 
-/*Estilos para fuentes*/
-.result-title-one{
-    font-weight: bold;
-    font-size: 14px;
+img.logo{
+    width: 100%;
+    padding: 20px 0px;
 }
-.result-text{
-    font-size: 12px;
-    text-align: justify;
-    margin-top: 20px;
+.row{
+    background-color: #fafafa;
 }
-.result-subtitle{
-    margin: 0px;
+.row.logo{
+    background-color: #fff;
+}
+.row.padding-top-background{
+    padding-top: 20px;
+}
+/*Estilos para fuentes de las letras*/
+.result-subtitle,
+.result-subtitle-one{
     font-weight: 600;
     font-size: 12px;
-    padding-bottom: 5px;
     text-transform: uppercase;
 }
 .result-subtitle i,
@@ -93,70 +50,39 @@ body{
     padding-left: 7px;
 }
 .result-subtitle-one{
+    color: #f07848;
+    padding-top: 10px;
+}
+.result-subtitle-one span{
+    color: #000;
+}
+p.p-none-space{
     margin: 0px;
-    font-weight: 600;
-    font-size: 12px;
-    padding-top: 24px;
-    padding-bottom: 10px;
+    padding: 0px;
+}
+.title-table{
+    color: #5d5d5d;
+    font-size: 10px;
     text-transform: uppercase;
 }
-.title-table,
-.subtitle-table{
-    font-size: 14px;
+.result-table-letter,
+.result-table-number{
+    color: #5d5d5d;
+    font-size: 10px;
+    text-transform: uppercase;
 }
-.title-table-one,
-.subtitle-table-one{
-    font-size: 14px;
+.result-table-number{
     text-align: center;
+    color: #f07848;
 }
-.subtitle-table{
-    background-color: #f9ede8;
-    padding-left: 22px !important;
+.description{
+    font-size: 13px;
 }
-.subtitle-table-one{
-    background-color: #f8e0d6;
-}
-/*Fin estilos para fuente*/
-
-/*Separadores entre lineas*/
-.separator{
-    height: 10px;
-}
-.line-separator{
-    position: absolute;
-    left: -10px;
-    top: 390px;
-    border-bottom: 1px solid #e2e2e2;
-    width: 500px;
-}
-.table-space{
-    margin-top: 30px;
-}
-.table th, .table td{
-    vertical-align: middle;
-    border-top: 0px;
-}
-
-/*Fondo para resultados*/
-.result-background{
-    background-color: #FAFAFA;
-    padding-left: 25px;
-    padding-right: 25px;
-}
-.result-background-table{
-    background-color: #f9f9f9;
-    padding-left: 25px;
-}
-.result-background-table-item{
-    background-color: #f9f9f9;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    /*height: 100px;*/
-    margin-left: -25px;
+.description span{
+    font-weight: bold;;
 }
 
 /*INICIO estilos para botones naranja y plomo*/
-
 .radio input[type="radio"]{
     display: none;
 }
@@ -190,25 +116,23 @@ label.right-btn{
     border-radius: 0px 5px 5px 0px;/*0px 50px 50px 0px*/
 }
 /*FIN estilos para botones naranja y plomo*/
-
 /*Estilo para los botones de export*/
 .btn-export{
     text-decoration: none;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    padding: 13px 40px;
-    border-radius: 5px;
-    position: fixed;
-    top: 86%;
-    left: 130px;
+    padding: 7px 30px;
     background-color: #f17846;
 }
 a.btn-export:hover{
     color: #fff;
     text-decoration: none;
 }
-
+.margin-top-btn{
+    margin-top: 33px;
+}
+/*Estilo para los botones de export*/
 /*INICIO estilos para los campos de select*/
 .style-select .form-control{
     background-color: #f5f5f5;
@@ -227,7 +151,7 @@ a.btn-export:hover{
     background-image: url("assets/chevron-down.png"); /*aquí deberás escribir la ruta de la imagen que utilizarás como flecha del desplegable*/
     background-repeat: no-repeat;
     background-size: 12px;
-    background-position: 90%;
+    background-position: 97%;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
@@ -239,12 +163,12 @@ a.btn-export:hover{
 }
 /*FIN estilos para los campos de select*/
 
-/*INICIO ESTILOS PARA Input text*/
+/*Inicio estilos para los campos input */
 .option-input .form-group .form-control{
     background-color: #f5f5f5;
     border-radius: 5px;
     text-align: center;
-    width: 48%;
+    width: 100%;
     height: 35px;
     color: #212121;
     font-size: 14px;
@@ -255,141 +179,10 @@ a.btn-export:hover{
     border-color: #E2E2E2;
     box-shadow: none;
 }
-input.left{
-    float: left;
-}
-input.right{
-    float: right;
-}
 input.form-control::placeholder{
     color: #f17846;
     font-size: 14px;
 }
-/*FIN ESTILOS PARA Input text*/
-
-/*ESTILOS de los tabs*/
-.nav-pills{
-    position: absolute;
-    right: -34px;
-    z-index: 500;
-    top: 58px;
-}
-/*.nav-pills:hover{
-    right: -156px;
-}*/
-.nav-pills .nav-link.active{
-    color: inherit;
-    background-color: inherit;
-}
-.nav-pills i{
-    font-size: 20px;
-    padding-left: 5px;
-}
-.nav-pills span.ocultar{
-    position: relative;
-    top: -5px;
-    font-size: 12px;
-    padding-right: 10px;
-    vertical-align: middle;
-    color: transparent;
-    display: none;
-}
-.nav-pills .nav-link:hover,
-.nav-pills .nav-link.active:hover{
-    width: 163px;
-    height: 30px;
-    padding-left: 8px;
-    padding-right: 0px;
-    margin-right: -122px;
-}
-.nav-pills .nav-link:hover span.ocultar{
-    color: #F27844;
-    display: inline-block;
-}
-.nav-pills .nav-link{
-    color: #9B9B9B;
-    border-radius: 0.25rem;
-    padding: 0px;
-    background-color: #fff;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    width: 35px;
-    height: 30px;
-    padding-right: 27px;
-}
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
-    background-color: #fff;
-    color: #F27844;
-    padding: 0px;
-    margin: 0px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    padding-right: 10px;
-}
-.active{
-    background: none;
-    border: 0px;
-}
-.space-tab{
-    margin-top: 50px;
-}
-.nav-item{
-    margin-bottom: 5px;
-}
-/*ESTILOS de los tabs*/
-
-/*Estilos para checkbox*/
-.checkbox-select input[type="checkbox"]{
-    display: none;
-}
-.checkbox-select label{
-    padding-right: 16px;
-    position: relative;
-}
-.checkbox-select label:before{
-    content: '';
-    border: 1px solid #F27844;
-    border-radius: 3px;
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    right: -30px;
-    cursor: pointer;
-}
-
-.checkbox-select input[type="checkbox"]:checked + label:before{
-    border-color: #888;
-    color: #F27844;
-    content: '\F12C';
-    font-family: Material Design Icons;
-    padding-left: 2px;
-}
-
-
-
-/* - -  -  - - - - - - - - - -  - -ESTILOS para los tabs (scroll lado izquierdo) - - - -  - -  - - -  - - - - */
-
-
-/* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
-
-.map-header {
-    background-color: #444847;
-    height: 50px;
-    position: absolute;
-    z-index: 500;
-    width: 100%;
-}
-.map-header p{
-    font-size: 14px;
-    color: #fff;
-    padding-top: 12px;
-    font-weight: bold;
-    padding-left: 20px;
-}
-
-/* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
-
-
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
 .card-map{
     position: absolute;
@@ -487,6 +280,45 @@ input.form-control::placeholder{
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
 
+/* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
+
+.map-header {
+    background-color: #444847;
+    height: 50px;
+    position: absolute;
+    z-index: 500;
+    width: 100%;
+}
+.map-header p{
+    font-size: 14px;
+    color: #fff;
+    padding-top: 12px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+/* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
+
+
+
+
+
+
+
+
+.border-bottom{
+    border-bottom: 1px solid #e2e2e2;
+}
+.space-line{
+    padding-top: 10px;
+}
+.space-line-1{
+    padding-top: 20px;
+}
+.no-margin-left{
+    margin-left: -60px;
+}
+
 .map-container {
     height: 100vh;
     width: 100%;
@@ -497,3 +329,76 @@ div#map {
     height: 100%;
     z-index: 1;
 }
+
+
+
+/*ESTILOS de los tabs*/
+.nav-pills{
+    position: absolute;
+    right: -34px;
+    z-index: 500;
+    top: 58px;
+}
+/*.nav-pills:hover{
+    right: -156px;
+}*/
+.nav-pills .nav-link.active{
+    color: inherit;
+    background-color: inherit;
+}
+.nav-pills i{
+    font-size: 20px;
+    padding-left: 5px;
+}
+.nav-pills span.ocultar{
+    position: relative;
+    top: -5px;
+    font-size: 12px;
+    padding-right: 10px;
+    vertical-align: middle;
+    color: transparent;
+    display: none;
+}
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link.active:hover{
+    width: 163px;
+    height: 30px;
+    padding-left: 8px;
+    padding-right: 0px;
+    margin-right: -122px;
+}
+.nav-pills .nav-link:hover span.ocultar{
+    color: #F27844;
+    display: inline-block;
+}
+.nav-pills .nav-link{
+    color: #9B9B9B;
+    border-radius: 0.25rem;
+    padding: 0px;
+    background-color: #fff;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    width: 35px;
+    height: 30px;
+    padding-right: 27px;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    background-color: #fff;
+    color: #F27844;
+    padding: 0px;
+    margin: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-right: 10px;
+}
+.active{
+    background: none;
+    border: 0px;
+}
+.space-tab{
+    margin-top: 50px;
+}
+.nav-item{
+    margin-bottom: 5px;
+}
+/*ESTILOS de los tabs*/

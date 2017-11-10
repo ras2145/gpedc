@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div class="col-md-4 padding-left-none">
+                <div class="col-md-7 padding-left-none"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
 
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
@@ -16,107 +16,117 @@
                             </template>
                             <!-- BOTON TAB VIEW -->
 
-                            <!-- Contenido del Tab View -->
-                            <div class="result-container">
-                                <!-- Cabecera -->
-                                <div class="row result-space">
-                                    <div class="col-md-12">
-                                        <div class="logo">
-                                            <img src="assets/logo-h.png" alt="">
-                                        </div>
-                                        <p class="result-text">
-                                            Sed ut Perspiciatis unde omnisite natus error sit voluptatem
-                                            accusantium doloermque laudantium, totoam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                            beatae vitae.
-                                        </p>
-                                    </div>
+                            <div class="row logo">
+                                <div class="col-md-12">
+                                    <img class="logo" src="assets/logo-h.png" alt="">
                                 </div>
-
-                                <div class="col-md-12"><div class="separator"></div></div>
-                                <!-- Contenido -->
-                                <div class="row result-background">
-
-                                    <div class="col-md-12">
-                                        <p class="result-subtitle space-view-data">Select year <a href="#"><i class="mdi mdi-information"></i></a></p>
-                                        <div class="radio">
-
-                                            <input type="radio" name="radio-btn" id="one" />
-                                            <label for="one">2014</label>
-
-                                            <!-- <input type="radio" name="radio-btn" id="two"/>
-                                            <label for="two" class="middle">2014</label> -->
-
-                                            <input type="radio" name="radio-btn" id="three" checked />
-                                            <label for="three" class="right-btn">2016</label>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle space-indicator">Indicator <a href="#"><i class="mdi mdi-information"></i></a></label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>1: Developement co-operation is focused on... </option>
-                                                <option>Option One</option>
-                                                <option>Option Two</option>
-                                                <option>Option Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="line-separator"></div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle-one">Filter countries by: <br><br>Region <a href="#"><i class="mdi mdi-information"></i></a></label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Southeast Asia</option>
-                                                <option>Option One</option>
-                                                <option>Option Two</option>
-                                                <option>Option Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle">Income Group <a href="#"><i class="mdi mdi-information"></i></a></label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Low Income</option>
-                                                <option>Option One</option>
-                                                <option>Option Two</option>
-                                                <option>Option Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <!-- <div class="col-md-12">
-                                        <div class="form-group checkbox-select">
-                                            <input type="checkbox" id="inputCountry">
-                                            <label for="inputCountry" class="result-subtitle space-country">Country Context <i class="mdi mdi-information"></i></label>
-                                        </div>
-                                    </div> -->
-
-                                    <div class="col-md-12">
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle">Country context <a href="#"><i class="mdi mdi-information"></i></a></label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Arab world</option>
-                                                <option>Option One</option>
-                                                <option>Option Two</option>
-                                                <option>Option Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-12"><p class="result-end"></p></div>
-
-                                </div>
-                                <!-- Contenido -->
                             </div>
-                            <!-- Contenido del Tab View -->
+
+                            <div class="row padding-top-background">
+                                <div class="col-md-4" style="background-color:485844;">
+                                    <p class="result-subtitle space-view-data">Select year <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                </div>
+                                <div class="col-md-8 btn-year">
+                                    <div class="radio">
+                                        <input type="radio" name="radio-btn" id="one" />
+                                        <label for="one">2014</label>
+                                        <input type="radio" name="radio-btn" id="three" checked />
+                                        <label for="three" class="right-btn">2016</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 border-bottom">
+                                    <div class="form-group style-select">
+                                        <label for="inputState" class="result-subtitle space-indicator">Indicator <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>1: Developement co-operation is focused on... </option>
+                                            <option>Option One</option>
+                                            <option>Option Two</option>
+                                            <option>Option Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="inputState" class="result-subtitle space-line">Filter countries by: <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group style-select">
+                                        <label for="inputState" class="result-subtitle">Region <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>Southeast Asia</option>
+                                            <option>Option One</option>
+                                            <option>Option Two</option>
+                                            <option>Option Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group style-select">
+                                        <label for="inputState" class="result-subtitle">Income Group <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>Low Income</option>
+                                            <option>Option One</option>
+                                            <option>Option Two</option>
+                                            <option>Option Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 border-bottom">
+                                    <div class="form-group style-select">
+                                        <label for="inputState" class="result-subtitle">Country context <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>Least Developed Countries (LDC)</option>
+                                            <option>Option One</option>
+                                            <option>Option Two</option>
+                                            <option>Option Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="result-subtitle-one">Compare Scores by Development partners <i class="mdi mdi-information"></i> <br><span>In alphabetical order</span></p>
+                                    <p class="result-subtitle p-none-space"></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-sm table-space">
+                                        <thead>
+                                            <tr>
+                                                <th width="44%"></th>
+                                                <th width="56%" class="title-table">Indicator&nbsp;1&nbsp;(Alignment&nbsp;in&nbsp;objectives)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="result-table-letter">Adaptation fund</td>
+                                                <td class="result-table-number">89%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="result-table-letter">African&nbsp;develpment&nbsp;bank&nbsp;(afdb)</td>
+                                                <td class="result-table-number">32%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
                         </tab>
 
                         <!-- tab analysis -->
@@ -127,149 +137,74 @@
                                 <span class="ocultar">Country Comparison</span>
                             </template>
 
-                            <!-- Contenido de analysis -->
-                            <div class="result-container">
-                                <!-- Cabecera -->
-                                <div class="row result-space">
-                                    <div class="col-12">
-                                        <div class="logo">
-                                            <img src="assets/logo-h.png" alt="">
-                                        </div>
-                                        <p class="result-text">
-                                            Sed ut Perspiciatis unde omnisite natus error sit voluptatem
-                                            accusantium doloermque laudantium, totoam rem aperiam,
-                                            eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                            beatae vitae.
-                                        </p>
+                            <div class="row logo">
+                                <div class="col-md-6">
+                                    <img class="logo" src="assets/logo-h.png" alt="">
+                                </div>
+                                <div class="col-md-6 text-right margin-top-btn">
+                                    <a href="#" class="btn-export">EXPORT</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="description">
+                                        <span>Compare Indicators Acrosss Organizations: </span>Sed ut Perspiciatis unde omnisite natus error sit voluptatem accusantium doloermque laudantium, totoam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row"><div class="col-md-1"></div><div class="col-md-10 border-bottom"></div></div>
+
+                            <div class="row">
+                                <div class="col-md-4 space-line-1">
+                                    <p class="result-subtitle">Select indicator year <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                </div>
+                                <div class="col-md-8 space-line-1">
+                                    <p class="result-subtitle no-margin-left">Select two countries from the map or type their names: </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 btn-year">
+                                    <div class="radio">
+                                        <input type="radio" name="radio-btn" id="one" />
+                                        <label for="one">2014</label>
+                                        <input type="radio" name="radio-btn" id="three" checked />
+                                        <label for="three" class="right-btn">2016</label>
                                     </div>
                                 </div>
-
-                                <div class="col-12"><div class="separator"></div></div>
-
-                                <!-- Contenido Input text -->
-                                <div class="row result-background">
-
-                                    <div class="col-12 space-top-compare">
-                                        <p class="result-subtitle space-compare">Compare Countries by indicator <i class="mdi mdi-information"></i></p>
-                                        <div class="radio">
-
-                                            <input type="radio" name="radio-btn-1" id="one-1" />
-                                            <label for="one-1">2014</label>
-
-                                            <!-- <input type="radio" name="radio-btn-1" id="two-2"/>
-                                            <label for="two-2" class="middle">2014</label> -->
-
-                                            <input type="radio" name="radio-btn-1" id="three-3" checked />
-                                            <label for="three-3" class="right-btn">2016</label>
-
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="option-input">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Country A">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <p class="result-subtitle-one space-selcet-country">Select two countries from the map or type their names:</p>
-                                        <div class="option-input">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control left" placeholder="Country A">
-                                                <input type="text" class="form-control right" placeholder="Country B">
+                                        <div class="col-md-4">
+                                            <div class="option-input">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Country B">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group style-select">
+                                                <select id="inputState" class="form-control">
+                                                    <option selected>SELECT AGGREGATE</option>
+                                                    <option>Option One</option>
+                                                    <option>Option Two</option>
+                                                    <option>Option Three</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-                                <!-- Contenido Input text -->
-
-                                <!-- Contenido Tabla de resultados -->
-                                <div class="row result-background-table">
-                                    <div class="col-12">
-                                        <table class="table table-sm table-space">
-                                            <thead>
-                                                <tr>
-                                                    <th width="55%" class="title-table">Indicators</th>
-                                                    <th width="22%" class="title-table-one">Country A</th>
-                                                    <th width="23%" class="title-table-one">Country B</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-
-                                    <div class="row result-background-table-item space-top-table">
-                                        <div class="col-12">
-                                            <table class="table">
-
-                                                <tr>
-                                                    <td width="55%" class="subtitle-table">
-                                                        Development co-operation is
-                                                        focused on result that meet
-                                                        developing countries' priorities
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="subtitle-table">
-                                                        Civil society operates within an
-                                                        environment which maximises
-                                                        its engagement in and
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="subtitle-table">
-                                                        Engagement and contribution
-                                                        of the private sector to
-                                                        development
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="subtitle-table">
-                                                        Trasparency information
-                                                        development co-operation is
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="subtitle-table">
-                                                        Trasparency information
-                                                        development co-operation is
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="subtitle-table">
-                                                        Trasparency information
-                                                        development co-operation is
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td class="subtitle-table">
-                                                        Trasparency information
-                                                        development co-operation is
-                                                    </td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                    <td class="subtitle-table-one">9999</td>
-                                                </tr>
-
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <!-- Boton export  -->
-                                    <a href="#" class="btn-export">EXPORT DATA</a>
-                                </div>
-                                <!-- Contenido Tabla de resultados -->
                             </div>
+
+
                         </tab>
                         <!-- tab analysis -->
 
@@ -279,7 +214,7 @@
             <!-- FIN Sidebar -->
 
             <!-- INICIO Map -->
-                <div class="col-md-8 border-div-none">
+                <div class="col-md-5 border-div-none"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header">
                         <p>Indicator 1: Development co-operation is focused on results that meet developing countries' priorities</p>
                     </div>
@@ -330,8 +265,4 @@
                 </div>
             <!-- FIN Map -->
         </div>
-
-
-
-
     </div>
