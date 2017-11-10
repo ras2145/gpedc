@@ -1,5 +1,5 @@
+import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
-import {MapService} from './map.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
