@@ -1,5 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, TemplateRef } from '@angular/core';
 import {MapService} from './map.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,18 @@ import {MapService} from './map.service';
 })
 export class AppComponent {
   title = 'app';
-
+  modalRef: BsModalRef;
   constructor(
-    private mapService: MapService
+    private mapService: MapService,
+    private modalService: BsModalService,
   ) {}
 
   ngOnInit() {
     this.mapService.createMap('map');
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }
