@@ -81,6 +81,11 @@ p.p-none-space{
 .description span{
     font-weight: bold;;
 }
+.result-text{
+    font-size: 12px;
+    text-align: justify;
+    margin-top: 20px;
+}
 
 /*INICIO estilos para botones naranja y plomo*/
 .radio input[type="radio"]{
@@ -116,9 +121,13 @@ label.right-btn{
 .btn-export{
     text-decoration: none;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
-    padding: 7px 30px;
+    padding: 10px 40px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: -15px;
+    left: 30%;
     background-color: #f17846;
 }
 a.btn-export:hover{
@@ -311,7 +320,6 @@ input.form-control::placeholder{
 .rotate i::before{
     transform: rotate(90deg);
 }
-
 .border-bottom{
     border-bottom: 1px solid #e2e2e2;
 }
@@ -332,11 +340,9 @@ input.form-control::placeholder{
 .no-margin-left{
     margin-left: -60px;
 }
-
-.map-container {
-    height: 100vh;
-    width: 100%;
-}
+/*.with-scroll{
+    overflow-y: scroll;
+}*/
 
 div#map {
     width: inherit;

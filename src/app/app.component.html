@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div class="col-md-4 padding-left-none" id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
+                <div class="col-md-4 padding-left-none with-scroll" id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
 
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
@@ -22,11 +22,19 @@
                                 </div>
                             </div>
 
+                            <div class="row logo">
+                                <div class="col-md-12">
+                                    <p class="result-text">
+                                        Established in 2012, the Global Partnership’s voluntary and country-led monitoring framework tracks development stakeholders’ progress towards more effective development co-operation based on the agreed development effectiveness principles of country ownership; a focus on results; inclusive partnerships; and transparency and mutual accountability to one another.
+                                    </p>
+                                </div>
+                            </div>
+
                             <div class="row padding-top-background">
-                                <div class="col-md-4" style="background-color:485844;">
+                                <div class="col-md-12"><!-- col-md-4 -->
                                     <p class="result-subtitle space-view-data">Select year <a href="#" (click)="openModal(template)"><i class="mdi mdi-information"></i></a></p>
                                 </div>
-                                <div class="col-md-8 btn-year">
+                                <div class="col-md-12 btn-year"><!-- col-md-8 -->
                                     <div class="radio">
                                         <input type="radio" name="radio-btn" id="one" />
                                         <label for="one">2014</label>
@@ -39,7 +47,14 @@
                             <div class="row">
                                 <div class="col-md-12 border-bottom">
                                     <div class="form-group style-select">
-                                        <label for="inputState" class="result-subtitle space-indicator">Indicator <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <label for="inputState" class="result-subtitle space-indicator">Indicator
+                                            <a href="#">
+                                                <i class="mdi mdi-information"
+                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    placement="right">
+                                                </i>
+                                            </a>
+                                        </label>
                                         <select id="inputState" class="form-control">
                                             <option selected>1: Developement co-operation is focused on... </option>
                                             <option>Option One</option>
@@ -53,14 +68,28 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="inputState" class="result-subtitle space-line">Filter countries by: <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <label for="inputState" class="result-subtitle space-line">Filter countries by:
+                                            <a href="#">
+                                                <i class="mdi mdi-information"
+                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    placement="right">
+                                                </i>
+                                            </a>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12"><!-- col-md-6 -->
                                     <div class="form-group style-select">
-                                        <label for="inputState" class="result-subtitle">Region <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <label for="inputState" class="result-subtitle">Region
+                                            <a href="#">
+                                                <i class="mdi mdi-information"
+                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    placement="right">
+                                                </i>
+                                            </a>
+                                        </label>
                                         <select id="inputState" class="form-control">
                                             <option selected>Southeast Asia</option>
                                             <option>Option One</option>
@@ -69,9 +98,16 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-12"><!-- col-md-4 -->
                                     <div class="form-group style-select">
-                                        <label for="inputState" class="result-subtitle">Income Group <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <label for="inputState" class="result-subtitle">Income Group
+                                            <a href="#">
+                                                <i class="mdi mdi-information"
+                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    placement="right">
+                                                </i>
+                                            </a>
+                                        </label>
                                         <select id="inputState" class="form-control">
                                             <option selected>Low Income</option>
                                             <option>Option One</option>
@@ -85,7 +121,14 @@
                             <div class="row">
                                 <div class="col-md-12 border-bottom">
                                     <div class="form-group style-select">
-                                        <label for="inputState" class="result-subtitle">Country context <a href="#"><i class="mdi mdi-information"></i></a></label>
+                                        <label for="inputState" class="result-subtitle">Country context
+                                            <a href="#">
+                                                <i class="mdi mdi-information"
+                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    placement="right">
+                                                </i>
+                                            </a>
+                                        </label>
                                         <select id="inputState" class="form-control">
                                             <option selected>Least Developed Countries (LDC)</option>
                                             <option>Option One</option>
@@ -98,7 +141,14 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="result-subtitle-one">Compare Scores by Development partners <i class="mdi mdi-information"></i> <br><span>In alphabetical order</span></p>
+                                    <p class="result-subtitle-one">Compare Scores by Development partners
+                                        <a href="#">
+                                            <i class="mdi mdi-information"
+                                                popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                placement="right">
+                                            </i>
+                                        </a>
+                                        <br><span>In alphabetical order</span></p>
                                     <p class="result-subtitle p-none-space"></p>
                                 </div>
                             </div>
@@ -146,6 +196,7 @@
                                 </div>
                             </div>
 
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <p class="description">
@@ -158,7 +209,14 @@
 
                             <div class="row">
                                 <div class="col-md-4 space-line-1">
-                                    <p class="result-subtitle">1. Select indicator year <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                    <p class="result-subtitle">1. Select indicator year
+                                        <a href="#">
+                                            <i class="mdi mdi-information"
+                                                popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                placement="right">
+                                            </i>
+                                        </a>
+                                    </p>
                                 </div>
                                 <div class="col-md-8 space-line-1">
                                     <p class="result-subtitle no-margin-left">2. Select two countries from the map or type their names: </p>
@@ -258,8 +316,8 @@
                         <tab heading="">
                             <!-- Boton tab  -->
                             <template tabHeading>
-                                <span class="rotate"><i class="mdi mdi-chart-bar" id="tab3" (click)="selectTab($event)"></i></span>
-                                <span class="ocultar">Country Comparison</span>
+                                <span><!--class="rotate"--><i class="mdi mdi-hexagon-multiple" id="tab3" (click)="selectTab($event)"></i></span>
+                                <span class="ocultar">Partners Comparison</span>
                             </template>
 
                             <div class="row logo">
@@ -283,7 +341,14 @@
 
                             <div class="row">
                                 <div class="col-md-4 space-line-1">
-                                    <p class="result-subtitle">1. Select indicator year <a href="#"><i class="mdi mdi-information"></i></a></p>
+                                    <p class="result-subtitle">1. Select indicator year
+                                        <a href="#">
+                                            <i class="mdi mdi-information"
+                                                popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                placement="right">
+                                            </i>
+                                        </a>
+                                    </p>
                                 </div>
                                 <div class="col-md-8 space-line-1">
                                     <p class="result-subtitle no-margin-left">2. Select two countries from the map or type their names: </p>
