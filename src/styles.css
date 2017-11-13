@@ -14,8 +14,16 @@ body{
     height: 100%;
     overflow: hidden;
 }
-.div-scroll{
+
+.result-container{
+    height: 100%;
+    position: absolute;
     overflow-y: scroll;
+    overflow-x: hidden;
+    color: #000;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: -15px;
 }
 /*reinicio de estilos por defecto*/
 .table thead th,
@@ -26,7 +34,11 @@ body{
 
 img.logo{
     width: 80%;
-    padding: 20px 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+img.logo.panel-1{
+    padding-bottom: 0px;
 }
 .row{
     background-color: #fafafa;
@@ -37,6 +49,7 @@ img.logo{
 .row.padding-top-background{
     padding-top: 20px;
 }
+
 /*Estilos para fuentes de las letras*/
 .result-subtitle,
 .result-subtitle-one{
@@ -123,12 +136,14 @@ label.right-btn{
     color: #fff;
     font-size: 14px;
     font-weight: 600;
-    padding: 10px 40px;
+    padding: 10px 50px;
     border-radius: 5px;
     position: fixed;
-    bottom: -15px;
-    left: 30%;
+    bottom: 20px;
+    left: 25%;
     background-color: #f17846;
+    z-index: 1000;
+    box-shadow: 2px 1px 30px -2px rgba(116,116,120,1);
 }
 a.btn-export:hover{
     color: #fff;
@@ -144,7 +159,7 @@ a.btn-export:hover{
     border-radius: 5px;/*20*/
     height: 45px;
     padding: 0px 25px;
-    font-size: 12px;
+    font-size: 14px;
 }
 .style-select .form-control.color-input{
     background-color: #f5f5f5;
@@ -153,6 +168,7 @@ a.btn-export:hover{
     padding: 0px 25px;
     font-size: 12px;
     color: #f17846;
+    margin-top: -3px;
 }
 .style-select .form-control:focus {
     color: #495057;
@@ -195,6 +211,9 @@ a.btn-export:hover{
 input.form-control::placeholder{
     color: #f17846;
     font-size: 14px;
+}
+select.form-control:not([size]):not([multiple]){
+    height: 45px;
 }
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
 .card-map{
@@ -302,7 +321,8 @@ input.form-control::placeholder{
     z-index: 500;
     width: 100%;
 }
-.map-header p{
+.map-header p,
+.map-header p a{
     font-size: 14px;
     color: #fff;
     padding-top: 12px;
@@ -322,6 +342,10 @@ input.form-control::placeholder{
 }
 .border-bottom{
     border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 10px;
+}
+.padding-top-line{
+    padding-top: 10px;
 }
 .border-bottom-1{
     border-bottom: 1px solid rgba(255,255,255,0.3);
@@ -486,8 +510,8 @@ div#map {
   border-top-right-radius: 5px;
   background: #f5f5f5;
   color: #5d5d5d;
-  margin-right: 8px;
-  padding: 6px 12px;
+  margin-right: 4px;
+  padding: 6px 10px;
 }
 
 .tab.map .nav-tabs .nav-item.show .nav-link, .tab-map .nav-tabs .nav-link.active {
@@ -505,13 +529,16 @@ div#map {
 }
 .tab-map .nav-tabs {
   border-bottom: none;
-  width: 731px;
+  /*width: 731px;*/
 }
 
 /*Estilos modal*/
+.space-indicator{
+    padding-top: 20px;
+}
 .modal-content{
     background-color: #fafafa;
-    left: 80px;
+    left: 180px;
     top: 115px;
 }
 .modal-title,
