@@ -10,6 +10,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 export class AppComponent {
   title = 'app';
   modalRef: BsModalRef;
+  year: any;
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
@@ -17,10 +18,14 @@ export class AppComponent {
 
   ngOnInit() {
     this.mapService.createMap('map');
+    this.year = 2016;
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+  f(){
+    console.log(this.year)
   }
   selectTab (event) {
     const target = event.target.id;
@@ -34,5 +39,4 @@ export class AppComponent {
       div2.className = 'col-md-5 border-div-none';
     }
   }
-
 }

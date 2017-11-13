@@ -3,17 +3,23 @@ import { Map, MapboxOptions } from 'mapbox-gl';
 import * as mapboxgl from 'mapbox-gl';
 import VectorSource = mapboxgl.VectorSource;
 
+import { Observable } from 'rxjs/Observable';
+
+import { WebService } from './web.service';
 @Injectable()
 export class MapService {
 
   public token: String = 'pk.eyJ1IjoidW5kcC1kYXNoYm9hcmQiLCJhIjoiY2o4bjllc2MzMTdzdTJ3bzFiYmloa3VhZyJ9.XPd1v44RritVjBWqnBNvLg';
   public map: Map;
   public style: string = 'mapbox://styles/undp-dashboard/cj9hjb6j79y7h2rpceuoki95q';
-  constructor() {
+  constructor(
+    private webService: WebService
+  ) {
     (mapboxgl as any).accessToken = this.token;
   }
-
-  createMap(mapId: string) {
+  private countries = 'https://undp-admin.carto.com/api/v2/sql?q=SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin".undp_countries&api_key=e8c2ad6fa1cf884aa2287ff7a5f9ea5030224eab';
+  
+  createMap(mapId: string): Observable<any> {
     this.map = new Map({
       container: mapId,
       preserveDrawingBuffer: true,
@@ -22,7 +28,10 @@ export class MapService {
       zoom: 1.2,
       maxBounds: [[-180, -90], [180, 90]]
     });
+ return this.webService.get(this.countries).map(res => res.json().rows);
   }
+
+
 
 }
 

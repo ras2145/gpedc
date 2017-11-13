@@ -43,10 +43,10 @@
                                         </p>
                                     </div>
                                     <div class="col-md-12 btn-year"><!-- col-md-8 -->
-                                        <div class="radio">
-                                            <input type="radio" name="radio-btn" id="one" />
+                                        <div class="radio" (click)="year=$event.target.value; f()">
+                                            <input value="2014" type="radio" name="radio-btn" id="one" />
                                             <label for="one">2014</label>
-                                            <input type="radio" name="radio-btn" id="two" checked />
+                                            <input value="2016" type="radio" name="radio-btn" id="two" [checked] = true/>
                                             <label for="two" class="right-btn">2016</label>
                                         </div>
                                     </div>
