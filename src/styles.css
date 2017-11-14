@@ -157,6 +157,14 @@ a.btn-export:hover{
 .margin-top-btn{
     margin-top: 33px;
 }
+.padding-left-none{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.filtros-tab{
+  height: 100%;
+  overflow-y: auto;
+}
 /*Estilo para los botones de export*/
 /*INICIO estilos para los campos de select*/
 .style-select .form-control{
@@ -368,6 +376,10 @@ select.form-control:not([size]):not([multiple]){
 }
 .space-line-1{
     padding-top: 20px;
+}
+.width-popup .popover-body{
+    width: 300px;
+    padding-right: 20px;
 }
 
 
@@ -583,19 +595,4 @@ div#map {
         width: 90%;
         margin-left: 10%;
     }
-}
-
-
-/*NEW STYLES*/
-.padding-left-none{
-  padding-left: 0px;
-  padding-right: 0px;
-}
-.filtros-tab{
-  height: 100%;
-  overflow-y: auto;
-}
-.width-popup .popover-body{
-    width: 300px;
-    padding-right: 20px;
 }
