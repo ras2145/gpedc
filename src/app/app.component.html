@@ -12,7 +12,7 @@
                             <!-- BOTON TAB VIEW -->
                             <template tabHeading>
                                 <i class="mdi mdi-view-quilt" id="tab1" (click)="selectTab($event)"></i>
-                                <span class="ocultar">Map Viewer</span>
+                                <span (click)="selectTab($event)" id="tab1" class="ocultar">Map Viewer</span>
                             </template>
                             <!-- BOTON TAB VIEW -->
 
@@ -180,7 +180,7 @@
                             <!-- Boton tab  -->
                             <template tabHeading>
                                 <i class="mdi mdi-chart-bar" id="tab2" (click)="selectTab($event)"></i>
-                                <span class="ocultar">Country Comparison</span>
+                                <span id="tab2" (click)="selectTab($event)" class="ocultar">Country Comparison</span>
                             </template>
 
                             <div class="result-container">
@@ -413,7 +413,7 @@
                             <!-- Boton tab  -->
                             <template tabHeading>
                                 <span><!--class="rotate"--><i class="mdi mdi-hexagon-multiple" id="tab3" (click)="selectTab($event)"></i></span>
-                                <span class="ocultar">Partners Comparison</span>
+                                <span id="tab3" (click)="selectTab($event)" class="ocultar">Partners Comparison</span>
                             </template>
 
                             <div class="result-container">
