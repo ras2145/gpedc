@@ -4,7 +4,7 @@
         <div class="row">
             <!-- INICIO Sidebar -->
                 <div class="col-md-4 padding-left-none with-scroll" id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
-
+                  <div class="filtros-tab">
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
 
@@ -65,7 +65,7 @@
                                             </label>
                                             <select (click) = "indTitleSelect($event.target.value)" id="inputState" class="form-control">
                                                 <option value = "{{item[1]}}"*ngFor="let item of filterItemsOfType()">{{item[2]}}</option>
-                                                
+
                                             </select>
                                         </div>
                                     </div>
@@ -613,6 +613,8 @@
 
                     </tabset>
                     <!-- Contenedor tab -->
+                  </div>
+
                 </div>
             <!-- FIN Sidebar -->
 
