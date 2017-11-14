@@ -61,6 +61,7 @@ img.logo.panel-1{
 .result-subtitle-one i{
     color: #9b9b9b;
     padding-left: 7px;
+    cursor: pointer;
 }
 .result-subtitle-one{
     color: #f07848;
@@ -68,6 +69,9 @@ img.logo.panel-1{
 }
 .result-subtitle-one span{
     color: #000;
+}
+.indicator-p p{
+    float: left;
 }
 p.p-none-space{
     margin: 0px;
@@ -90,6 +94,7 @@ p.p-none-space{
 }
 .description{
     font-size: 13px;
+    text-align: justify;
 }
 .description span{
     font-weight: bold;;
@@ -168,7 +173,6 @@ a.btn-export:hover{
     padding: 0px 25px;
     font-size: 12px;
     color: #f17846;
-    margin-top: -3px;
 }
 .style-select .form-control:focus {
     color: #495057;
@@ -197,10 +201,11 @@ a.btn-export:hover{
     background-color: #f5f5f5;
     border-radius: 5px;
     text-align: center;
-    width: 100%;
+    width: 95%;
     height: 35px;
     color: #212121;
     font-size: 14px;
+    margin-left: 5%;
 }
 .option-input .form-group .form-control:focus {
     color: #495057;
@@ -213,7 +218,7 @@ input.form-control::placeholder{
     font-size: 14px;
 }
 select.form-control:not([size]):not([multiple]){
-    height: 45px;
+    height: 35px;
 }
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
 .card-map{
@@ -329,6 +334,9 @@ select.form-control:not([size]):not([multiple]){
     font-weight: bold;
     padding-left: 20px;
 }
+.map-header i{
+    cursor: pointer;
+}
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
 
@@ -362,7 +370,7 @@ select.form-control:not([size]):not([multiple]){
     padding-top: 20px;
 }
 .no-margin-left{
-    margin-left: -60px;
+    margin-left: 4%;
 }
 /*.with-scroll{
     overflow-y: scroll;
@@ -405,11 +413,11 @@ div#map {
 }
 .nav-pills .nav-link:hover,
 .nav-pills .nav-link.active:hover{
-    width: 163px;
+    width: 180px;
     height: 30px;
     padding-left: 8px;
     padding-right: 0px;
-    margin-right: -128px;
+    margin-right: -145px;
 }
 
 .nav-pills .nav-link:hover span.ocultar{
@@ -573,4 +581,11 @@ div#map {
 /*color de fondo del modal*/
 .modal-backdrop {
    background-color: transparent;
+}
+
+@media (min-width: 1279px) and (max-width: 1400px) {
+    .option-input .form-group .form-control{
+        width: 90%;
+        margin-left: 10%;
+    }
 }
