@@ -64,8 +64,8 @@ export class AppComponent {
     const div1 = document.getElementById('div1');
     const div2 = document.getElementById('div2');
     if (target === 'tab1') {
-      div1.className = 'col-md-5 padding-left-none';
-      div2.className = 'col-md-7 border-div-none';
+      div1.className = 'col-md-4 padding-left-none';
+      div2.className = 'col-md-8 border-div-none';
     } else {
       div1.className = 'col-md-7 padding-left-none';
       div2.className = 'col-md-5 border-div-none';
