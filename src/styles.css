@@ -404,7 +404,7 @@ div#map {
 }
 .nav-pills span.ocultar{
     position: relative;
-    top: -5px;
+    top: -3px;
     font-size: 12px;
     padding-right: 10px;
     vertical-align: middle;
@@ -511,7 +511,7 @@ div#map {
   z-index: 8;
   bottom: 25px;
   padding: 0px 15px;
-  width: 620px;
+  width: 630px;
 }
 .tab-map .nav-tabs .nav-link {
   border: 1px solid transparent;
@@ -534,7 +534,7 @@ div#map {
   padding: 15px;
   font-size: 13px;
   height: 100px;
-  width: 584px;
+  width: 580px;
 }
 .tab-map .nav-tabs {
   border-bottom: none;
