@@ -503,6 +503,7 @@ div#map {
   z-index: 8;
   bottom: 25px;
   padding: 0px 15px;
+  width: 620px;
 }
 .tab-map .nav-tabs .nav-link {
   border: 1px solid transparent;
@@ -530,6 +531,9 @@ div#map {
 .tab-map .nav-tabs {
   border-bottom: none;
   /*width: 731px;*/
+}
+.tab-mrg{
+  margin-right: 0px !important;
 }
 
 /*Estilos modal*/
