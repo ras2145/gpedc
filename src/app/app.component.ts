@@ -1,6 +1,7 @@
 import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { titles } from './titles';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,14 @@ export class AppComponent {
   year: any;
   map: any = {};
   name: any;
+  vector;
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
   ) { }
 
   ngOnInit() {
+    this.vector=titles;
     this.mapService.createMap('map').subscribe(res => {
 
       this.map['type'] = "FeatureCollection";
@@ -44,9 +47,6 @@ export class AppComponent {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  f() {
-    console.log(this.year)
-  }
   selectTab(event) {
     const target = event.target.id;
     const div1 = document.getElementById('div1');
@@ -58,5 +58,17 @@ export class AppComponent {
       div1.className = 'col-md-7 padding-left-none';
       div2.className = 'col-md-5 border-div-none';
     }
+  }
+  updateYear(y){
+    if(y){
+      this.year = y;
+    }
+  }
+
+  filterItemsOfType(){
+    const x = this.vector.filter(x => {
+      return x.length > 0 && x[2].length !== 0 && x[0]===+this.year;
+    });
+    return x;
   }
 }

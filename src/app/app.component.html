@@ -43,7 +43,7 @@
                                         </p>
                                     </div>
                                     <div class="col-md-12 btn-year"><!-- col-md-8 -->
-                                        <div class="radio" (click)="year=$event.target.value; f()">
+                                        <div class="radio" (click)="updateYear($event.target.value)">
                                             <input value="2014" type="radio" name="radio-btn" id="one" />
                                             <label for="one">2014</label>
                                             <input value="2016" type="radio" name="radio-btn" id="two" [checked] = true/>
@@ -64,10 +64,8 @@
                                                 </a>
                                             </label>
                                             <select id="inputState" class="form-control">
-                                                <option selected>1: Developement co-operation is focused on... </option>
-                                                <option>Option One</option>
-                                                <option>Option Two</option>
-                                                <option>Option Three</option>
+                                                <option *ngFor="let item of filterItemsOfType()">{{item[2]}}</option>
+                                                
                                             </select>
                                         </div>
                                     </div>
