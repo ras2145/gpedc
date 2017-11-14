@@ -51,5 +51,4 @@ export let titles=[
 [2016,'8',"","Public allocations systematically tracked",'Indicator 8 Gender equality and women’s empowerment'],
 [2016,'8',"Indicator 8: Public allocations for gender equality and women's empowerment are tracked","",'Indicator 8 Gender equality and women’s empowerment'],
 [2016,'9a',"Indicator 9a: Governments strengthen country systems","",'Indicator 9a Quality of countries’ public financial management systems'],
-[2016,'9b',"Indicator 9b: Development partners use country systems","",'Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation'],
-[]];
+[2016,'9b',"Indicator 9b: Development partners use country systems","",'Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation']];

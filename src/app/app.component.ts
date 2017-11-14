@@ -15,6 +15,7 @@ export class AppComponent {
   map: any = {};
   name: any;
   vector;
+  indicatorTitle: any;
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
@@ -22,8 +23,18 @@ export class AppComponent {
 
   ngOnInit() {
     this.vector=titles;
+    const vec = [];
+      for(let i = 0; i <= 10; i++) {
+        vec.push(''+i);
+        vec.push(i+'a');
+        vec.push(i + 'b');
+      }
+    this.vector.sort(function(a,b) {
+      if (a[0] !== b[0])return a[0] - b[0];
+      let da = a[1], db = b[1];
+      return vec.indexOf(da) - vec.indexOf(db);
+    });
     this.mapService.createMap('map').subscribe(res => {
-
       this.map['type'] = "FeatureCollection";
       this.map['features'] = [];
       for (let x of res) {
@@ -40,6 +51,7 @@ export class AppComponent {
       this.name = res.country;
     });
     this.year = 2016;
+    this.indicatorTitle = "";
   }
   build(){
     this.mapService.build(this.map,this.name);
@@ -58,6 +70,18 @@ export class AppComponent {
       div1.className = 'col-md-7 padding-left-none';
       div2.className = 'col-md-5 border-div-none';
     }
+  }
+  indTitleSelect(event){
+    this.vector.filter(res => {
+      let found = false;
+      for (let x of res){
+        if(found) this.indicatorTitle = x;
+        if(x === event) found = true;
+      }
+    });
+  }
+  set(){
+    return this.indicatorTitle;
   }
   updateYear(y){
     if(y){
