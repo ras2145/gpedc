@@ -6,6 +6,7 @@ import VectorSource = mapboxgl.VectorSource;
 import { Observable } from 'rxjs/Observable';
 
 import { WebService } from './web.service';
+
 @Injectable()
 export class MapService {
 
@@ -18,7 +19,7 @@ export class MapService {
     (mapboxgl as any).accessToken = this.token;
   }
   private countries = 'https://undp-admin.carto.com/api/v2/sql?q=SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin".undp_countries&api_key=e8c2ad6fa1cf884aa2287ff7a5f9ea5030224eab';
-  
+
   createMap(mapId: string): Observable<any> {
     this.map = new Map({
       container: mapId,
@@ -28,10 +29,33 @@ export class MapService {
       zoom: 1.2,
       maxBounds: [[-180, -90], [180, 90]]
     });
- return this.webService.get(this.countries).map(res => res.json().rows);
+    return this.webService.get(this.countries).map(res => res.json().rows);
   }
 
 
+  build(mapa: any, name: any) {
+    this.map.addSource('countries', {
+      "type": "geojson",
+      "data": mapa
+    });
+
+    this.map.addLayer({
+      "id": "state-borders",
+      "type": "line",
+      "source": "countries",
+      "layout": {},
+    });
+    this.map.addLayer({
+      "id": "state-fills",
+      "type": "fill",
+      "source": "countries",
+      "layout": {},
+      "paint": {
+        "fill-color": "#1E4CA9",
+        "fill-opacity": 0.5
+      },
+    });
+  }
 
 }
 
