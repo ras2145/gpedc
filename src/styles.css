@@ -126,9 +126,13 @@ p.p-none-space{
 .radio label:hover{
     background-color: rgba(240,120,72, 0.2);
 }
-.radio input[type="radio"]:checked + label{
+.radio input[type="radio"]:checked + label {
     background-color: #f07848;
     color: #fff;
+}
+.radio-label-checked {
+    background-color: #f07848 !important;
+    color: #fff !important;
 }
 label.right-btn{
     border-radius: 0px 5px 5px 0px;/*0px 50px 50px 0px*/

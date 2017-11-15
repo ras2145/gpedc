@@ -11,10 +11,19 @@ import { titles } from './titles';
 export class AppComponent {
   title = 'app';
   modalRef: BsModalRef;
-  year: any;
+  year: any = '2016';
   map: any = {};
   name: any;
   vector;
+  titles;
+  years;
+  model = {
+    year: null,
+    category: {
+      title: ''
+    },
+    subcategory: null
+  };
   indicatorTitle: any;
   constructor(
     private mapService: MapService,
@@ -22,15 +31,23 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.vector=titles;
+    this.vector = titles;
+    this.titles = titles;
+    titles.forEach(title => {
+      if (title.year == '2016') {
+        this.model.year = title;
+      }
+    });
     const vec = [];
       for(let i = 0; i <= 10; i++) {
         vec.push(''+i);
-        vec.push(i+'a');
+        vec.push(i +'a');
         vec.push(i + 'b');
       }
     this.vector.sort(function(a,b) {
-      if (a[0] !== b[0])return a[0] - b[0];
+      if (a[0] !== b[0]) {
+        return a[0] - b[0];
+      }
       let da = a[1], db = b[1];
       return vec.indexOf(da) - vec.indexOf(db);
     });
@@ -53,7 +70,7 @@ export class AppComponent {
     this.year = 2016;
     this.indicatorTitle = "";
   }
-  build(){
+  build() {
     this.mapService.build(this.map,this.name);
   }
   openModal(template: TemplateRef<any>) {
@@ -71,25 +88,31 @@ export class AppComponent {
       div2.className = 'col-md-5 border-div-none';
     }
   }
-  indTitleSelect(event){
+
+  indTitleSelect(event) {
     this.vector.filter(res => {
       let found = false;
-      for (let x of res){
-        if(found) this.indicatorTitle = x;
-        if(x === event) found = true;
+      for (let x of res) {
+        if (found) {
+          this.indicatorTitle = x;
+        }
+        if (x === event) {
+          found = true;
+        }
       }
     });
   }
-  set(){
+
+  set() {
     return this.indicatorTitle;
   }
-  updateYear(y){
+  updateYear(y) {
     if(y){
       this.year = y;
     }
   }
 
-  filterItemsOfType(){
+  filterItemsOfType() {
     const x = this.vector.filter(x => {
       return x.length > 0 && x[2].length !== 0 && x[0]===+this.year;
     });

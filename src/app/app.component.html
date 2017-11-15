@@ -42,10 +42,10 @@
                                     </div>
                                     <div class="col-md-12 btn-year"><!-- col-md-8 -->
                                         <div class="radio" (click)="updateYear($event.target.value)">
-                                            <input value="2014" type="radio" name="radio-btn" id="one" />
-                                            <label for="one">2014</label>
-                                            <input value="2016" type="radio" name="radio-btn" id="two" [checked] = true/>
-                                            <label for="two" class="right-btn">2016</label>
+                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
+                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" />
+                                                {{title.year}}
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -59,9 +59,8 @@
                                                     placement="right">
                                                 </i>
                                             </label>
-                                            <select (click) = "indTitleSelect($event.target.value)" id="inputState" class="form-control">
-                                                <option value = "{{item[1]}}"*ngFor="let item of filterItemsOfType()">{{item[2]}}</option>
-
+                                            <select id="inputState" class="form-control" [(ngModel)]="model.category">
+                                                <option [ngValue]="category" *ngFor="let category of model.year.categories">{{category.label}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -616,7 +615,7 @@
             <!-- INICIO Map -->
                 <div class="col-md-8 border-div-none" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header">
-                      <p>  {{indicatorTitle}}</p>
+                      <p>  {{model.category.title}}</p>
                     </div>
                     <!-- CARD map -->
                     <div class="card-map">

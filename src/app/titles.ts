@@ -1,54 +1,173 @@
-export let titles=[
-[2014,'10',"Indicator 10: Aid is untied","",'Indicator 10 Aid is untied'],
-[2014,'5a',"Indicator 5a: Development co-operation is predictable (annual)","",'Indicator 5a Development co-operation is more predictable – Annual Predictability'],
-[2014,'5b',"Indicator 5b: Development co-operation is predictable (medium-term)","",'Indicator 5b Development co-operation is more predictable – Medium-term Predictability'],
-[2014,'6',"Indicator 6: Development co-operation included in a national budget subject to parliamentary oversight","",'Indicator 6 Development co-operation is on budgets which are subject to parliamentary scrutiny'],
-[2014,'7',"","Aid or partnership policy is in place",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2014,'7',"","Country-level targets for development co-operation have been established",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2014,'7',"","Government and development partners conduct regular joint assessment towards targets",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2014,'7',"","Joint assessments are made public",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2014,'7',"","Non-executive stakeholders are involved in joint assessments",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2014,'7',"Indicator 7: Mutual accountability is strengthened through inclusive reviews","",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2014,'8',"","Central government units provide leadership and oversight",'Indicator 8 Gender equality and women’s empowerment'],
-[2014,'8',"","Countries have transparent tracking systems",'Indicator 8 Gender equality and women’s empowerment'],
-[2014,'8',"","Existence of a government statement establishing tracking system",'Indicator 8 Gender equality and women’s empowerment'],
-[2014,'8',"","Public allocations systematically tracked",'Indicator 8 Gender equality and women’s empowerment'],
-[2014,'8',"Indicator 8: Public allocations for gender equality and women's empowerment are tracked","",'Indicator 8 Gender equality and women’s empowerment'],
-[2014,'9a',"Indicator 9a: Governments strengthen country systems","",'Indicator 9a Quality of countries’ public financial management systems'],
-[2014,'9b',"Indicator 9b: Development partners use country systems","",'Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation'],
-[2016,'10',"Indicator 10: Aid is untied","",'Indicator 10 Aid is untie'],
-[2016,'1a',"","% of new development interventions that draw objectives from country-led results frameworks",'Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities'],
-[2016,'1a',"","% of new interventions that plan a final evaluation with government involvement",'Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities'],
-[2016,'1a',"","% of results indicators drawn from country-led results frameworks",'Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities'],
-[2016,'1a',"","% of results indicators monitored using the government's own sources",'Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities'],
-[2016,'1a',"Indicator 1a: Development partners use country-led results frameworks","",'Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities'],
-[2016,'2',"","Availability of space for multi-stakeholder dialogue on national development policies",'Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development'],
-[2016,'2',"","CSOs apply the principles of accountability and transparency",'Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development'],
-[2016,'2',"","Legal and regulatory environment in place to maximise CSO engagement",'Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development'],
-[2016,'2',"","Official development co-operation with CSOs",'Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development'],
-[2016,'2',"Indicator 2: CSO enabling environment","",'Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development'],
-[2016,'3',"","Availability of instruments to facilitate dialogue",'Indicator 3 Engagement and contribution of the private sector to development'],
-[2016,'3',"","Existence of potential champions",'Indicator 3 Engagement and contribution of the private sector to development'],
-[2016,'3',"","Government willingness to engage",'Indicator 3 Engagement and contribution of the private sector to development'],
-[2016,'3',"","Private sector willingness to engage",'Indicator 3 Engagement and contribution of the private sector to development'],
-[2016,'3',"Indicator 3: Public-private dialogue and private sector engagement","",'Indicator 3 Engagement and contribution of the private sector to development'],
-[2016,'4',"","Assessment by International Aid Transparency Initiative (IATI)",'Indicator 4 Transparency: information on development co-operation is publicly available'],
-[2016,'4',"","Assessment by OECD Creditor Reporting System",'Indicator 4 Transparency: information on development co-operation is publicly available'],
-[2016,'4',"","Assessment by OECD Forward Spending Survey",'Indicator 4 Transparency: information on development co-operation is publicly available'],
-[2016,'4',"Indicator 4: Transparent information on development co-operation is publicly available","",'Indicator 4 Transparency: information on development co-operation is publicly available'],
-[2016,'51',"Indicator 5a: Development co-operation is predictable (annual)","",'Indicator 5a Development co-operation is more predictable – Annual Predictability'],
-[2016,'5b',"Indicator 5b: Development co-operation is predictable (medium-term)","",'Indicator 5b Development co-operation is more predictable – Medium-term Predictability'],
-[2016,'6',"Indicator 6: Development co-operation included in a national budget subject to parliamentary oversight","",'Indicator 6 Development co-operation is on budgets which are subject to parliamentary scrutiny'],
-[2016,'7',"","Aid or partnership policy is in place",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2016,'7',"","Country-level targets for development co-operation have been established",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2016,'7',"","Government and development partners conduct regular joint assessment towards targets",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2016,'7',"","Joint assessments are made public",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2016,'7',"","Non-executive stakeholders are involved in joint assessments",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2016,'7',"Indicator 7: Mutual accountability is strengthened through inclusive reviews","",'Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews'],
-[2016,'8',"","Central government units provide leadership and oversight",'Indicator 8 Gender equality and women’s empowerment'],
-[2016,'8',"","Existence of a government statement establishing tracking system",'Indicator 8 Gender equality and women’s empowerment'],
-[2016,'8',"","Indicator 8: Public allocations for gender equality and women's empowerment are tracked",'Indicator 8 Gender equality and women’s empowerment'],
-[2016,'8',"","Public allocations systematically tracked",'Indicator 8 Gender equality and women’s empowerment'],
-[2016,'8',"Indicator 8: Public allocations for gender equality and women's empowerment are tracked","",'Indicator 8 Gender equality and women’s empowerment'],
-[2016,'9a',"Indicator 9a: Governments strengthen country systems","",'Indicator 9a Quality of countries’ public financial management systems'],
-[2016,'9b',"Indicator 9b: Development partners use country systems","",'Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation']];
+export let titles = [
+  {
+    "year": "2014",
+    "categories": [
+      {
+        "id": "5a",
+        "label": "Indicator 5a: Development co-operation is predictable (annual)",
+        "title": "Indicator 5a Development co-operation is more predictable – Annual Predictability",
+        "subcategories": []
+      },
+      {
+        "id": "5b",
+        "label": "Indicator 5b: Development co-operation is predictable (medium-term)",
+        "title": "Indicator 5b Development co-operation is more predictable – Medium-term Predictability",
+        "subcategories": []
+      },
+      {
+        "id": "6",
+        "label": "Indicator 6: Development co-operation included in a national budget subject to parliamentary oversight",
+        "title": "Indicator 6 Development co-operation is on budgets which are subject to parliamentary scrutiny",
+        "subcategories": []
+      },
+      {
+        "id": "7",
+        "label": "Indicator 7: Mutual accountability is strengthened through inclusive reviews",
+        "title": "Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews",
+        "subcategories": [
+          "Aid or partnership policy is in place",
+          "Country-level targets for development co-operation have been established",
+          "Government and development partners conduct regular joint assessment towards targets",
+          "Non-executive stakeholders are involved in joint assessments",
+          "Joint assessments are made public"
+        ]
+      },
+      {
+        "id": "8",
+        "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
+        "title": "Indicator 8 Gender equality and women’s empowerment",
+        "subcategories": [
+          "Existence of a government statement establishing tracking system",
+          "Public allocations systematically tracked",
+          "Central government units provide leadership and oversight",
+          "Countries have transparent tracking systems"
+        ]
+      },
+      {
+        "id": "9a",
+        "label": "Indicator 9a: Governments strengthen country systems",
+        "title": "Indicator 9a Quality of countries’ public financial management systems",
+        "subcategories": []
+      },
+      {
+        "id": "9b",
+        "label": "Indicator 9b: Development partners use country systems",
+        "title": "Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation",
+        "subcategories": []
+      },
+      {
+        "id": "10",
+        "label": "Indicator 10: Aid is untied",
+        "title": "Indicator 10 Aid is untied",
+        "subcategories": []
+      }
+    ]
+  },
+  {
+    "year": "2016",
+    "categories": [
+      {
+        "id": "1a",
+        "label": "Indicator 1a: Development partners use country-led results frameworks",
+        "title": "Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities",
+        "subcategories": [
+          "% of new development interventions that draw objectives from country-led results frameworks",
+          "% of results indicators drawn from country-led results frameworks",
+          "% of results indicators monitored using the government's own sources",
+          "% of new interventions that plan a final evaluation with government involvement"
+        ]
+      },
+      {
+        "id": "2",
+        "label": "Indicator 2: CSO enabling environment",
+        "title": "Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development",
+        "subcategories": [
+          "Availability of space for multi-stakeholder dialogue on national development policies",
+          "CSOs apply the principles of accountability and transparency",
+          "Official development co-operation with CSOs",
+          "Legal and regulatory environment in place to maximise CSO engagement"
+        ]
+      },
+      {
+        "id": "3",
+        "label": "Indicator 3: Public-private dialogue and private sector engagement",
+        "title": "Indicator 3 Engagement and contribution of the private sector to development",
+        "subcategories": [
+          "Private sector willingness to engage",
+          "Government willingness to engage",
+          "Existence of potential champions",
+          "Availability of instruments to facilitate dialogue"
+        ]
+      },
+      {
+        "id": "4",
+        "label": "Indicator 4: Transparent information on development co-operation is publicly available",
+        "title": "Indicator 4 Transparency: information on development co-operation is publicly available",
+        "subcategories": [
+          "Assessment by OECD Creditor Reporting System",
+          "Assessment by OECD Forward Spending Survey",
+          "Assessment by International Aid Transparency Initiative (IATI)"
+        ]
+      },
+      {
+        "id": "51",
+        "label": "Indicator 5a: Development co-operation is predictable (annual)",
+        "title": "Indicator 5a Development co-operation is more predictable – Annual Predictability",
+        "subcategories": []
+      },
+      {
+        "id": "5b",
+        "label": "Indicator 5b: Development co-operation is predictable (medium-term)",
+        "title": "Indicator 5b Development co-operation is more predictable – Medium-term Predictability",
+        "subcategories": []
+      },
+      {
+        "id": "6",
+        "label": "Indicator 6: Development co-operation included in a national budget subject to parliamentary oversight",
+        "title": "Indicator 6 Development co-operation is on budgets which are subject to parliamentary scrutiny",
+        "subcategories": []
+      },
+      {
+        "id": "7",
+        "label": "Indicator 7: Mutual accountability is strengthened through inclusive reviews",
+        "title": "Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews",
+        "subcategories": [
+          "Aid or partnership policy is in place",
+          "Country-level targets for development co-operation have been established",
+          "Government and development partners conduct regular joint assessment towards targets",
+          "Non-executive stakeholders are involved in joint assessments",
+          "Joint assessments are made public"
+        ]
+      },
+      {
+        "id": "8",
+        "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
+        "title": "Indicator 8 Gender equality and women’s empowerment",
+        "subcategories": [
+          "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
+          "Existence of a government statement establishing tracking system",
+          "Public allocations systematically tracked",
+          "Central government units provide leadership and oversight"
+        ]
+      },
+      {
+        "id": "9a",
+        "label": "Indicator 9a: Governments strengthen country systems",
+        "title": "Indicator 9a Quality of countries’ public financial management systems",
+        "subcategories": []
+      },
+      {
+        "id": "9b",
+        "label": "Indicator 9b: Development partners use country systems",
+        "title": "Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation",
+        "subcategories": []
+      },
+      {
+        "id": "10",
+        "label": "Indicator 10: Aid is untied",
+        "title": "Indicator 10 Aid is untied",
+        "subcategories": []
+      }
+    ]
+  }
+];
