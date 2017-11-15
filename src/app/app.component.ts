@@ -69,6 +69,7 @@ export class AppComponent {
     });
     this.year = 2016;
     this.indicatorTitle = "";
+    this.mapService.pickCountry();
   }
   build() {
     this.mapService.build(this.map,this.name);

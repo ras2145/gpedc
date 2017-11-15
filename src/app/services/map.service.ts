@@ -19,6 +19,7 @@ export class MapService {
     (mapboxgl as any).accessToken = this.token;
   }
   private countries = 'https://undp-admin.carto.com/api/v2/sql?q=SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin".undp_countries&api_key=e8c2ad6fa1cf884aa2287ff7a5f9ea5030224eab';
+  private filter=["in", "name"];
 
   createMap(mapId: string): Observable<any> {
     this.map = new Map({
@@ -55,8 +56,31 @@ export class MapService {
         "fill-opacity": 0.5
       },
     });
+    this.map.addLayer({
+      "id": "state-fills-hover",
+      "type": "fill",
+      "source": "countries",
+      "layout": {},
+      "paint": {
+        "fill-color": "#627BC1",
+        "fill-opacity": 1
+      },
+      "filter": this.filter
+    });
   }
-
+  pickCountry(){
+    const _this=this;
+    this.map.on('click', 'state-fills', function(e) {
+      let countryName=e.features[0].properties.name;
+      if (!_this.filter.includes(countryName)) {
+        _this.filter=["in", "name", countryName];
+        _this.map.setFilter('state-fills-hover', _this.filter);
+      } else {
+        _this.filter=["in","name"];
+        _this.map.setFilter('state-fills-hover', _this.filter);
+      }
+    } );
+  }
 }
 
 
