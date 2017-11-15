@@ -6,6 +6,7 @@ import VectorSource = mapboxgl.VectorSource;
 import { Observable } from 'rxjs/Observable';
 
 import { WebService } from './web.service';
+import { SERVER } from '../server.config';
 
 @Injectable()
 export class MapService {
@@ -18,9 +19,8 @@ export class MapService {
   ) {
     (mapboxgl as any).accessToken = this.token;
   }
-  private countries = 'https://undp-admin.carto.com/api/v2/sql?q=SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin".undp_countries&api_key=e8c2ad6fa1cf884aa2287ff7a5f9ea5030224eab';
   private filter=["in", "name"];
-
+  private countries = SERVER.GET_QUERY('SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin" .undp_countries');
   createMap(mapId: string): Observable<any> {
     this.map = new Map({
       container: mapId,
@@ -33,11 +33,13 @@ export class MapService {
     return this.webService.get(this.countries).map(res => res.json().rows);
   }
 
-
-  build(mapa: any, name: any) {
+  onLoading(cb: Function){
+    this.map.on('load', cb);
+  }
+  build(geojson: any, name: any) {
     this.map.addSource('countries', {
       "type": "geojson",
-      "data": mapa
+      "data": geojson
     });
 
     this.map.addLayer({
@@ -80,6 +82,10 @@ export class MapService {
         _this.map.setFilter('state-fills-hover', _this.filter);
       }
     } );
+  }
+
+  mouseCountryHover(cb: Function){
+    this.map.on('mousemove','state-fills', cb);
   }
 }
 

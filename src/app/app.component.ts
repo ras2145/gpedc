@@ -9,6 +9,7 @@ import { titles } from './titles';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  countryName: String;
   title = 'app';
   modalRef: BsModalRef;
   year: any = '2016';
@@ -72,7 +73,12 @@ export class AppComponent {
     this.mapService.pickCountry();
   }
   build() {
-    this.mapService.build(this.map,this.name);
+    this.mapService.onLoading( () => {
+      this.mapService.build(this.map, this.name);
+      this.mapService.mouseCountryHover(data => {
+        this.countryName = data.features[0].properties.name;
+      });
+    });
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
