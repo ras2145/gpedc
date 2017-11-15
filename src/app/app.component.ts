@@ -9,7 +9,8 @@ import { titles } from './titles';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  countryName: String;
+  countryName: string;
+  countryNameOnClick: string;
   title = 'app';
   modalRef: BsModalRef;
   year: any = '2016';
@@ -32,6 +33,7 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
+    this.countryNameOnClick="";
     this.vector = titles;
     this.titles = titles;
     titles.forEach(title => {
@@ -70,7 +72,7 @@ export class AppComponent {
     });
     this.year = 2016;
     this.indicatorTitle = "";
-    this.mapService.pickCountry();
+    this.pickCountry();
   }
   build() {
     this.mapService.onLoading( () => {
@@ -125,4 +127,16 @@ export class AppComponent {
     });
     return x;
   }
+
+  pickCountry() {
+    const _this = this;
+    this.mapService.clickCountry((ev) => {
+      _this.countryNameOnClick = ev.features[0].properties.name;
+      if(!_this.mapService.pickCountry(ev)) {
+        _this.countryNameOnClick = "";
+      }
+    });
+  }
+
+
 }

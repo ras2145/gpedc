@@ -708,7 +708,7 @@
                     </div>
 
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
-                    <div class="tab-map">
+                    <div class="tab-map" *ngIf="countryNameOnClick.length!==0">
                       <tabset #staticTabs>
                         <tab heading="INDICATOR 1">
                           Lorem ipsum dolor sit amet, consectetur adipisicing elit,

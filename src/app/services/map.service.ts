@@ -21,6 +21,10 @@ export class MapService {
   }
   private filter=["in", "name"];
   private countries = SERVER.GET_QUERY('SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin" .undp_countries');
+  
+  getMap(){
+    return this.map;
+  }
   createMap(mapId: string): Observable<any> {
     this.map = new Map({
       container: mapId,
@@ -70,22 +74,26 @@ export class MapService {
       "filter": this.filter
     });
   }
-  pickCountry(){
-    const _this=this;
-    this.map.on('click', 'state-fills', function(e) {
-      let countryName=e.features[0].properties.name;
-      if (!_this.filter.includes(countryName)) {
-        _this.filter=["in", "name", countryName];
-        _this.map.setFilter('state-fills-hover', _this.filter);
-      } else {
-        _this.filter=["in","name"];
-        _this.map.setFilter('state-fills-hover', _this.filter);
-      }
-    } );
+  pickCountry(ev: any) : boolean{
+    const _this = this;
+    let countryName=ev.features[0].properties.name;
+    if (!_this.filter.includes(countryName)) {
+      _this.filter=["in", "name", countryName];
+      _this.map.setFilter('state-fills-hover', _this.filter);
+      return true;
+    } else {
+      _this.filter=["in","name"];
+      _this.map.setFilter('state-fills-hover', _this.filter);
+      return false;
+    }
   }
 
   mouseCountryHover(cb: Function){
     this.map.on('mousemove','state-fills', cb);
+  }
+
+  clickCountry(cb: Function){
+    this.map.on('click','state-fills', cb);
   }
 }
 
