@@ -184,7 +184,7 @@ a.btn-export:hover{
 }
 .style-select .form-control:focus {
     color: #495057;
-    background-color: #fff;
+    background-color: #f5f5f5;
     border-color: #E2E2E2;
     box-shadow: none;
 }
@@ -209,20 +209,25 @@ a.btn-export:hover{
     background-color: #f5f5f5;
     border-radius: 5px;
     text-align: center;
-    width: 95%;
-    height: 35px;
+    width: 74%;
+    height: 30px;
     color: #212121;
     font-size: 14px;
-    margin-left: 5%;
+    position: absolute;
+    top: 3px;
+    left: 20px;
+    z-index: 5;
+    border: 0px;
+    cursor: pointer;
 }
 .option-input .form-group .form-control:focus {
     color: #495057;
-    background-color: #fff;
     border-color: #E2E2E2;
     box-shadow: none;
 }
 input.form-control::placeholder{
     color: #f17846;
+    background-color: #f5f5f5;
     font-size: 14px;
 }
 select.form-control:not([size]):not([multiple]){
@@ -599,9 +604,23 @@ div#map {
    background-color: transparent;
 }
 
-@media (min-width: 1279px) and (max-width: 1400px) {
+/*Icono para cerrar*/
+.icon-close{
+    position: absolute;
+    z-index: 100;
+    color: #777;
+    right: 40px;
+    top: 10px;
+    font-size: 10px;
+    text-decoration: none;
+}
+.icon-close:hover{
+    color: #f00;
+}
+
+/*@media (min-width: 1279px) and (max-width: 1400px) {
     .option-input .form-group .form-control{
         width: 90%;
         margin-left: 10%;
     }
-}
+}*/
