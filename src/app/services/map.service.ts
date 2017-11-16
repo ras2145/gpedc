@@ -19,10 +19,9 @@ export class MapService {
   ) {
     (mapboxgl as any).accessToken = this.token;
   }
-  private filter=["in", "name"];
+  private filter = ['in', 'name'];
   private countries = SERVER.GET_QUERY('SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin" .undp_countries');
-  
-  getMap(){
+  getMap() {
     return this.map;
   }
   createMap(mapId: string): Observable<any> {
@@ -37,7 +36,7 @@ export class MapService {
     return this.webService.get(this.countries).map(res => res.json().rows);
   }
 
-  onLoading(cb: Function){
+  onLoading(cb: Function) {
     this.map.on('load', cb);
   }
 
@@ -51,13 +50,13 @@ export class MapService {
     });
 
     this.map.addLayer({
-      "id": "state-borders",
+      "id": "country-borders",
       "type": "line",
       "source": "countries",
       "layout": {},
     });
     this.map.addLayer({
-      "id": "state-fills",
+      "id": "country-fills",
       "type": "fill",
       "source": "countries",
       "layout": {},
@@ -67,7 +66,7 @@ export class MapService {
       },
     });
     this.map.addLayer({
-      "id": "state-fills-hover",
+      "id": "country-fills-hover",
       "type": "fill",
       "source": "countries",
       "layout": {},
@@ -83,21 +82,21 @@ export class MapService {
     let countryName=ev.features[0].properties.name;
     if (!_this.filter.includes(countryName)) {
       _this.filter=["in", "name", countryName];
-      _this.map.setFilter('state-fills-hover', _this.filter);
+      _this.map.setFilter('country-fills-hover', _this.filter);
       return true;
     } else {
       _this.filter=["in","name"];
-      _this.map.setFilter('state-fills-hover', _this.filter);
+      _this.map.setFilter('country-fills-hover', _this.filter);
       return false;
     }
   }
 
   mouseCountryHover(cb: Function){
-    this.map.on('mousemove','state-fills', cb);
+    this.map.on('mousemove', 'country-fills', cb);
   }
 
   clickCountry(cb: Function){
-    this.map.on('click','state-fills', cb);
+    this.map.on('click', 'country-fills', cb);
   }
 }
 
