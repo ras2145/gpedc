@@ -75,10 +75,14 @@ export class AppComponent {
     this.pickCountry();
   }
   build() {
-    this.mapService.onLoading( () => {
+    let self = this;
+    this.mapService.onLoading(() => {
       this.mapService.build(this.map, this.name);
       this.mapService.mouseCountryHover(data => {
         this.countryName = data.features[0].properties.name;
+        let countries = self.mapService.map.queryRenderedFeatures(data.point, {
+          layers: ['state-fills']
+        });
       });
     });
   }
@@ -116,14 +120,14 @@ export class AppComponent {
     return this.indicatorTitle;
   }
   updateYear(y) {
-    if(y){
+    if (y) {
       this.year = y;
     }
   }
 
   filterItemsOfType() {
     const x = this.vector.filter(x => {
-      return x.length > 0 && x[2].length !== 0 && x[0]===+this.year;
+      return x.length > 0 && x[2].length !== 0 && x[0] === +this.year;
     });
     return x;
   }

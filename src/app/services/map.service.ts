@@ -40,6 +40,10 @@ export class MapService {
   onLoading(cb: Function){
     this.map.on('load', cb);
   }
+
+  get _map(){
+    return this.map;
+  }
   build(geojson: any, name: any) {
     this.map.addSource('countries', {
       "type": "geojson",
