@@ -338,7 +338,7 @@ export let titles = [
         "noText": ""
       },
       {
-        "id": "51",
+        "id": "5a",
         "label": "Indicator 5a: Development co-operation is predictable (annual)",
         "title": "Indicator 5a Development co-operation is more predictable – Annual Predictability",
         "subcategories": [],

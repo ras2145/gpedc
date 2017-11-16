@@ -41,7 +41,6 @@ export class MapService {
         };
         geojson.features.push(feature);
       }
-      console.log(geojson);
       return geojson;
     });
   }
@@ -67,7 +66,6 @@ export class MapService {
   }
 
   build(geojson: any) {
-    console.log(geojson);
     this.map.addSource('countries', {
       "type": "geojson",
       "data": geojson
@@ -144,6 +142,13 @@ export class MapService {
   }
   clickCountry(cb: Function) {
     this.map.on('click', 'country-fills', cb);
+  }
+  getIndicatorCountry(country: any): Observable<any> {
+    const query = SERVER.GET_QUERY(`select * from "undp-admin".undp_countries_copy where country='${country}'`);
+    return this.webService.get(query).map( ans => {
+      return ans.json().rows[0];
+    });
+
   }
 }
 

@@ -14,7 +14,6 @@ export class AppComponent {
   selectedCountry: any = false;
   selectedTab = 'tab1';
   countryName = 'Country';
-  countryNameOnClick: string;
   title = 'app';
   modalRef: BsModalRef;
   year: any = '2016';
@@ -25,6 +24,7 @@ export class AppComponent {
   regions: any;
   incomeGroups: any;
   countryContexts: any;
+  footerText = '';
   model = {
     year: null,
     category: {
@@ -44,7 +44,6 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.countryNameOnClick = '';
     this.titles = titles;
     this.regions = regions;
     this.incomeGroups = incomeGroups;
@@ -59,6 +58,13 @@ export class AppComponent {
     this.model.countryContext = this.countryContexts[0];
     this.mapService.createMap('map');
     this.mapConfig();
+  }
+  getCategories() {
+    for (const ele of this.titles){
+      if (ele.year === this.model.year['year']) {
+        return ele.categories;
+      }
+    }
   }
   mapConfig() {
     const self = this;
@@ -129,4 +135,27 @@ export class AppComponent {
     //TODO grisaf update geojson
   }
 
+  getIndicator(indicator: any) {
+    //TODO arreglar texto y primer tab
+    this.footerText = '';
+    if (this.selectedCountry) {
+      this.mapService.getIndicatorCountry(this.selectedCountry)
+      .subscribe( res => {
+        const categories = this.getCategories();
+        for ( let i of categories ) {
+          if (i.id === indicator) {
+            for (let j of i.subcategories) {
+              if (res[j.column] === 'Yes' ) {
+                this.footerText = this.footerText + j.yesText + '\n';
+              } else if (res[j.column] === 'No') {
+                this.footerText = this.footerText + j.noText + '\n';
+              } else {
+                this.footerText = this.footerText + (j.prefix + ' ' + res[j.column] + ' ' + j.suffix) + '\n';
+              }
+            }
+          }
+        }
+      });
+    }
+  }
 }
