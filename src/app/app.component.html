@@ -43,6 +43,7 @@
                                             </i>
                                         </p>
                                     </div>
+
                                     <div class="col-md-12 btn-year"><!-- col-md-8 -->
                                         <div class="radio" (click)="updateYear($event.target.value)">
                                             <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
@@ -111,9 +112,9 @@
                                                     <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
                                                     <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
-                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
                                                     <li role="menuitem" *ngFor="let region of regions">
-                                                        <a class="dropdown-item contenido-dropdown" href="#" (click)="selectRegion(region)">
+                                                        <a class="dropdown-item style-a-default" href="#" (click)="selectRegion(region)">
                                                             {{region.label}}
                                                         </a>
                                                     </li>
@@ -134,9 +135,9 @@
                                                     <span class="font-selet-dropdown content-select-default">{{model.incomeGroup.label}}</span>
                                                     <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
-                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
                                                     <li role="menuitem" *ngFor="let incomeGroup of incomeGroups">
-                                                        <a class="dropdown-item contenido-dropdown" href="#" (click)="selectIncomeGroup(incomeGroup)">
+                                                        <a class="dropdown-item style-a-default contenido-dropdown" href="#" (click)="selectIncomeGroup(incomeGroup)">
                                                             {{incomeGroup.label}}
                                                         </a>
                                                     </li>
@@ -160,9 +161,9 @@
                                                     <span class="font-selet-dropdown content-select-default">{{model.countryContext.label}}</span>
                                                     <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
-                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
                                                     <li role="menuitem" *ngFor="let countryContext of countryContexts">
-                                                        <a class="dropdown-item contenido-dropdown" href="#" (click)="selectCountryContext(countryContext)">
+                                                        <a class="dropdown-item style-a-default contenido-dropdown" href="#" (click)="selectCountryContext(countryContext)">
                                                             {{countryContext.label}}
                                                         </a>
                                                     </li>
@@ -255,7 +256,6 @@
                                         <p class="result-subtitle space-left">2. Select two countries from the map or type their names: </p>
                                     </div>
                                 </div>
-
 
                                 <div class="row">
                                     <div class="col-md-3 btn-year">

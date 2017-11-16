@@ -99,6 +99,10 @@ p.p-none-space{
     font-size: 12px;
     padding: 6px 5px;
 }
+.dropdown-item.style-a-default{
+    font-size: 14px;
+    padding: 6px 17px;
+}
 .description{
     font-size: 13px;
     text-align: justify;
@@ -116,8 +120,7 @@ p.p-none-space{
 .radio input[type="radio"]{
     display: none;
 }
-.radio label:nth-child(1),
-.radio label:nth-child(2){
+.radio label{
     color: #808080;
     background-color: #fafafa;
     padding: 0px;
@@ -129,7 +132,7 @@ p.p-none-space{
     font-size: 12px;
     cursor: pointer;
     transition: all 0.5s ease;
-    margin-left: -5px;
+    margin-left: -3px;
 }
 .radio label:nth-child(2){
     border-radius: 0px 5px 5px 0px;
@@ -743,6 +746,9 @@ div#map {
 
 .dropdown-menu{
     max-width: 400px;
+}
+.dropdown-menu.style-default{
+    width: 100%;
 }
 .btn-dropdown {
     width: 100%;
