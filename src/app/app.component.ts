@@ -2,6 +2,7 @@ import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
+import { regions, incomeGroups, countryContexts } from './filterCountries';
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,19 @@ export class AppComponent {
   name: any;
   titles: any;
   years: any;
+  regions: any;
+  incomeGroups: any;
+  countryContexts: any;
   model = {
     year: null,
     category: {
       label: 'Select indicator',
       title: ''
     },
-    subcategory: null
+    subcategory: null,
+    region: null,
+    incomeGroup: null,
+    countryContext: null
   };
   openedIndicator: string;
   indicatorTitle: any;
@@ -38,11 +45,17 @@ export class AppComponent {
   ngOnInit() {
     this.countryNameOnClick = '';
     this.titles = titles;
+    this.regions = regions;
+    this.incomeGroups = incomeGroups;
+    this.countryContexts = countryContexts;
     titles.forEach(title => {
       if (title.year === '2016') {
         this.model.year = title;
       }
     });
+    this.model.region = this.regions[0];
+    this.model.incomeGroup = this.incomeGroups[0];
+    this.model.countryContext = this.countryContexts[0];
     this.mapService.createMap('map');
     this.mapConfig();
   }
@@ -92,6 +105,18 @@ export class AppComponent {
   }
   onIndicatorOver(category) {
     this.openedIndicator = category.id;
+  }
+  selectRegion(region) {
+    this.model.region = region;
+  }
+  selectIncomeGroup(incomeGroup) {
+    this.model.incomeGroup = incomeGroup;
+  }
+  selectCountryContext(countryContext) {
+    this.model.countryContext = countryContext;
+  }
+  updateIndicatorGeojson() {
+    //TODO grisaf update geojson
   }
 
 }

@@ -70,7 +70,7 @@
                                                 <ul *dropdownMenu class="dropdown-menu" role="menu">
                                                     <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
                                                         <a class="dropdown-item contenido-dropdown" href="#" dropdownToggle (click)="selectCategory(category)">
-                                                            {{category.label}} ({{category.subcategories.length}})
+                                                            {{category.label}}
                                                             <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>
                                                         <ul *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
@@ -106,16 +106,19 @@
                                                     placement="right">
                                                 </i>
                                             </label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Select Region</option>
-                                                <option>Africa</option>
-                                                <option>East Asia</option>
-                                                <option>Eastern Europe and Central Asia</option>
-                                                <option>Latin America and the Caribbean</option>
-                                                <option>Pacific</option>
-                                                <option>South Asia</option>
-                                                <option>Southeast Asia Souteast Asia</option>
-                                            </select>
+                                            <div class="btn-group btn-dropdown" dropdown>
+                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                    <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
+                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                                </button>
+                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                    <li role="menuitem" *ngFor="let region of regions">
+                                                        <a class="dropdown-item contenido-dropdown" href="#" (click)="selectRegion(region)">
+                                                            {{region.label}}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><!-- col-md-4 -->
@@ -126,12 +129,19 @@
                                                     placement="right">
                                                 </i>
                                             </label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Select Income Group</option>
-                                                <option>Low Income</option>
-                                                <option>Lower middle income</option>
-                                                <option>Upper middle income</option>
-                                            </select>
+                                            <div class="btn-group btn-dropdown" dropdown>
+                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                    <span class="font-selet-dropdown content-select-default">{{model.incomeGroup.label}}</span>
+                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                                </button>
+                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                    <li role="menuitem" *ngFor="let incomeGroup of incomeGroups">
+                                                        <a class="dropdown-item contenido-dropdown" href="#" (click)="selectIncomeGroup(incomeGroup)">
+                                                            {{incomeGroup.label}}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -145,11 +155,19 @@
                                                     placement="right">
                                                 </i>
                                             </label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Select Country Context</option>
-                                                <option>Least Developed Countries (LDC)</option>
-                                                <option>Small Island Developing States (SIDS)</option>
-                                            </select>
+                                            <div class="btn-group btn-dropdown" dropdown>
+                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                    <span class="font-selet-dropdown content-select-default">{{model.countryContext.label}}</span>
+                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                                </button>
+                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                    <li role="menuitem" *ngFor="let countryContext of countryContexts">
+                                                        <a class="dropdown-item contenido-dropdown" href="#" (click)="selectCountryContext(countryContext)">
+                                                            {{countryContext.label}}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
