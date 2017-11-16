@@ -92,6 +92,13 @@ p.p-none-space{
     text-align: center;
     color: #f07848;
 }
+.font-selet-dropdown{
+    font-size: 12px;
+}
+.dropdown-item{
+    font-size: 12px;
+    padding: 6px 5px;
+}
 .description{
     font-size: 13px;
     text-align: justify;
@@ -109,7 +116,8 @@ p.p-none-space{
 .radio input[type="radio"]{
     display: none;
 }
-.radio label{
+.radio label:nth-child(1),
+.radio label:nth-child(2){
     color: #808080;
     background-color: #fafafa;
     padding: 0px;
@@ -122,6 +130,9 @@ p.p-none-space{
     cursor: pointer;
     transition: all 0.5s ease;
     margin-left: -5px;
+}
+.radio label:nth-child(2){
+    border-radius: 0px 5px 5px 0px;
 }
 .radio label:hover{
     background-color: rgba(240,120,72, 0.2);
@@ -168,6 +179,7 @@ a.btn-export:hover{
 .filtros-tab{
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 /*Estilo para los botones de export*/
 /*INICIO estilos para los campos de select*/
@@ -728,13 +740,44 @@ div#map {
 .cont_select_int .active {
   background-color: #EEEEEE;
 }
-.btn-dropdown {
-  width: 100%;
-  text-align: left;
+
+.dropdown-menu{
+    max-width: 400px;
 }
-.dropdown-toggle::after {
-  content: none;
+.btn-dropdown {
+    width: 100%;
+    text-align: left;
+    background-color: #f5f5f5;
+    border: 1px solid rgba(206,212,218, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn.focus, .btn:focus {
+  box-shadow: 0 0 0 0 transparent;
 }
 .dropdown-caret {
   float: right;
+  position: absolute;
+  right: 5px;
+}
+.dropdown-toggle::after{
+    color: transparent;
+}
+.contenido-dropdown{
+    width:95%;
+    font-size:14px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.content-select-default{
+    color: #495057;
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    width:90%;
+    font-size:14px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }

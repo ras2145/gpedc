@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div   
+                <div
                 class="col-md-4 padding-left-none with-scroll"
                 [ngClass]="{'col-md-4': selectedTab==='tab1', 'col-md-7': selectedTab!=='tab1', 'padding-left-none with-scroll': true}"
                 id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
@@ -64,18 +64,18 @@
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span>{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
-                                                    <span class="dropdown-caret mdi mdi-menu-down"></span>
+                                                    <span class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
+                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu" role="menu">
                                                     <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
-                                                        <a class="dropdown-item" href="#" dropdownToggle (click)="selectCategory(category)">
+                                                        <a class="dropdown-item contenido-dropdown" href="#" dropdownToggle (click)="selectCategory(category)">
                                                             {{category.label}} ({{category.subcategories.length}})
                                                             <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>
                                                         <ul *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
                                                             <li role="menuitem" *ngFor="let subcategory of category.subcategories">
-                                                                <a class="dropdown-item" href="#" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
+                                                                <a class="dropdown-item contenido-dropdown" href="#" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -685,7 +685,7 @@
             <!-- FIN Sidebar -->
 
             <!-- INICIO Map -->
-                <div 
+                <div
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header">
