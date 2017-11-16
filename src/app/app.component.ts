@@ -9,17 +9,17 @@ import { titles } from './titles';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  selectedCountry: any = false;
   selectedTab = 'tab1';
-  countryName: string;
+  countryName = 'Country';
   countryNameOnClick: string;
   title = 'app';
   modalRef: BsModalRef;
   year: any = '2016';
-  map: any = {};
+  geojson: any = {};
   name: any;
-  vector;
-  titles;
-  years;
+  titles: any;
+  years: any;
   model = {
     year: null,
     category: {
@@ -36,57 +36,36 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    this.countryNameOnClick="";
-    this.vector = titles;
+    this.countryNameOnClick = '';
     this.titles = titles;
     titles.forEach(title => {
-      if (title.year == '2016') {
+      if (title.year === '2016') {
         this.model.year = title;
       }
     });
-    const vec = [];
-      for(let i = 0; i <= 10; i++) {
-        vec.push(''+i);
-        vec.push(i +'a');
-        vec.push(i + 'b');
-      }
-    this.vector.sort(function(a,b) {
-      if (a[0] !== b[0]) {
-        return a[0] - b[0];
-      }
-      let da = a[1], db = b[1];
-      return vec.indexOf(da) - vec.indexOf(db);
-    });
-    this.mapService.createMap('map').subscribe(res => {
-      this.map['type'] = "FeatureCollection";
-      this.map['features'] = [];
-      for (let x of res) {
-        let object = {
-          type: 'Feature',
-          properties: {
-            name: x.country
-          },
-          geometry: JSON.parse(x.geom)
-        }
-        this.map.features.push(object);
-      }
-      this.build();
-      this.name = res.country;
-    });
-    this.year = 2016;
-    this.indicatorTitle = "";
-    this.pickCountry();
+    this.mapService.createMap('map');
+    this.mapConfig();
   }
-  build() {
-    let self = this;
-    this.mapService.onLoading(() => {
-      this.mapService.build(this.map, this.name);
-      this.mapService.mouseCountryHover(data => {
-        this.countryName = data.features[0].properties.name;
-        console.log(data);
-        let countries = self.mapService.map.queryRenderedFeatures(data.point, {
+  mapConfig() {
+    const self = this;
+    this.mapService.onLoad(() => {
+      this.mapService.getCountriesGeoJSON().subscribe(geojson => {
+        self.mapService.build(geojson);
+      });
+      this.mapService.mouseCountryHover(event => {
+        const countries = self.mapService.map.queryRenderedFeatures(event.point, {
           layers: ['country-fills']
         });
+        this.countryName = countries[0].properties.country;
+      });
+      this.mapService.mouseLeave( () => {
+        this.countryName = 'Country';
+      });
+      this.mapService.clickCountry(event => {
+        const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
+          layers: ['country-fills']
+        });
+        this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
       });
     });
   }
@@ -97,44 +76,10 @@ export class AppComponent {
     this.selectedTab = event.target.id;
   }
 
-  indTitleSelect(event) {
-    this.vector.filter(res => {
-      let found = false;
-      for (let x of res) {
-        if (found) {
-          this.indicatorTitle = x;
-        }
-        if (x === event) {
-          found = true;
-        }
-      }
-    });
-  }
-
-  set() {
-    return this.indicatorTitle;
-  }
   updateYear(y) {
     if (y) {
       this.year = y;
     }
-  }
-
-  filterItemsOfType() {
-    const x = this.vector.filter(x => {
-      return x.length > 0 && x[2].length !== 0 && x[0] === +this.year;
-    });
-    return x;
-  }
-
-  pickCountry() {
-    const _this = this;
-    this.mapService.clickCountry((ev) => {
-      _this.countryNameOnClick = ev.features[0].properties.name;
-      if(!_this.mapService.pickCountry(ev)) {
-        _this.countryNameOnClick = "";
-      }
-    });
   }
 
   selectCategory(category) {
