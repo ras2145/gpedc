@@ -707,7 +707,7 @@
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header">
-                      <p>  {{model.category.title}}</p>
+                      <p>  {{model.category.title}} <i class="mdi mdi-information" (click)="openModal(template)"></i></p>
                     </div>
                     <!-- CARD map -->
                     <div class="card-map">
