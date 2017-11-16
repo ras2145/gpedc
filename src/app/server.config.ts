@@ -1,11 +1,18 @@
 
 export const SERVER = (function () {
-    const BASE_URL = 'https://undp-admin.carto.com/api/v2';
-    const API_KEY = '&api_key=e8c2ad6fa1cf884aa2287ff7a5f9ea5030224eab';
+    const USERNAME = 'undp-admin';
+    const CARTO_TOKEN = 'e8c2ad6fa1cf884aa2287ff7a5f9ea5030224eab';
+    const API_KEY = `&api_key=${CARTO_TOKEN}`;
+    const BASE_URL = `https://${USERNAME}.carto.com/api/v2`;
+    const COUNTRY_TABLE = 'undp_countries';
     return {
+        API_KEY: API_KEY,
         BASE_URL: BASE_URL,
+        CARTO_TOKEN: CARTO_TOKEN,
+        COUNTRY_TABLE: COUNTRY_TABLE,
         GET_QUERY: function (sql) {
             return `${BASE_URL}/sql?q=${sql}${API_KEY}`;
-        }
+        },
+        USERNAME: USERNAME
     };
 })();
