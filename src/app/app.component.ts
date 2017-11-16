@@ -10,6 +10,7 @@ import { regions, incomeGroups, countryContexts } from './filterCountries';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  twoCountries = [];
   selectedCountry: any = false;
   selectedTab = 'tab1';
   countryName = 'Country';
@@ -75,10 +76,17 @@ export class AppComponent {
         this.countryName = 'Country';
       });
       this.mapService.clickCountry(event => {
-        const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
-          layers: ['country-fills']
-        });
-        this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+        if (this.selectedTab === 'tab1') {
+          const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
+            layers: ['country-fills']
+          });
+          this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+        } else if (this.selectedTab === 'tab2') {
+          const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
+            layers: ['country-fills']
+          });
+          this.twoCountries = self.mapService.paintTwoCountry(selectedCountry[0].properties.country);
+        }
       });
     });
   }
@@ -87,6 +95,8 @@ export class AppComponent {
   }
   selectTab(event) {
     this.selectedTab = event.target.id;
+    this.mapService.applyFilters(event.target.id);
+    this.mapService.resetClickLayer();
   }
 
   updateYear(y) {

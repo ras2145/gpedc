@@ -14,6 +14,7 @@ export class MapService {
   public token: String = 'pk.eyJ1IjoidW5kcC1kYXNoYm9hcmQiLCJhIjoiY2o4bjllc2MzMTdzdTJ3bzFiYmloa3VhZyJ9.XPd1v44RritVjBWqnBNvLg';
   public _map: Map;
   public style: string = 'mapbox://styles/undp-dashboard/cj9hjb6j79y7h2rpceuoki95q';
+  private twoCountriesFilter = ['in', 'country'];
   constructor(
     private webService: WebService
   ) {
@@ -21,8 +22,10 @@ export class MapService {
   }
   private filterOneCountry = ['in', 'country'];
   getCountriesGeoJSON(): Observable<any> {
-    const query = SERVER.GET_QUERY('SELECT ST_ASGEOJSON(the_geom) geom, country FROM "undp-admin" .undp_countries');
+    const query = SERVER.GET_QUERY(`SELECT ST_ASGEOJSON(the_geom) geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`);
+    console.log(query);
     return this.webService.get(query).map(ans => {
+      console.log('ans ', ans);
       ans = ans.json();
       let geojson = {
         type: 'FeatureCollection',
@@ -98,8 +101,25 @@ export class MapService {
       filter: ['in', 'country']
     });
   }
+  paintTwoCountry(country) {
+    if (this.twoCountriesFilter.includes(country)) {
+      this.twoCountriesFilter.splice(this.twoCountriesFilter.indexOf(country), 1);
+    } else if (this.twoCountriesFilter.length < 4 && !this.twoCountriesFilter.includes(country)) {
+        this.twoCountriesFilter.push(country);
+    }
+    this.map.setFilter('country-fills-click', this.twoCountriesFilter);
+    return this.twoCountriesFilter.slice(2, this.twoCountriesFilter.length);
+  }
+  applyFilters(tab) {
+    if (tab !== 'tab3') {
+      this.map.setFilter('country-borders', ['!in', 'country']);
+      this.map.setFilter('country-fills', ['!in', 'country']);
+    } else {
+      this.map.setFilter('country-borders', ['in', 'country']);
+      this.map.setFilter('country-fills', ['in', 'country']);
+    }
+  }
   paintOneCountry(country) {
-    console.log(country);
     if (this.filterOneCountry.includes(country)) {
       this.filterOneCountry.pop();
       this.map.setFilter('country-fills-click', this.filterOneCountry);
@@ -112,6 +132,9 @@ export class MapService {
       this.map.setFilter('country-fills-click', this.filterOneCountry);
       return country;
     }
+  }
+  resetClickLayer() {
+    this.map.setFilter('country-fills-click', ['in', 'country']);
   }
   mouseCountryHover(cb: Function) {
     this.map.on('mousemove', 'country-fills', cb);
