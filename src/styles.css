@@ -728,3 +728,13 @@ div#map {
 .cont_select_int .active {
   background-color: #EEEEEE;
 }
+.btn-dropdown {
+  width: 100%;
+  text-align: left;
+}
+.dropdown-toggle::after {
+  content: none;
+}
+.dropdown-caret {
+  float: right;
+}

@@ -23,10 +23,12 @@ export class AppComponent {
   model = {
     year: null,
     category: {
+      label: 'Select indicator',
       title: ''
     },
     subcategory: null
   };
+  openedIndicator: string;
   indicatorTitle: any;
   constructor(
     private mapService: MapService,
@@ -135,5 +137,16 @@ export class AppComponent {
     });
   }
 
+  selectCategory(category) {
+    this.model.category = category;
+    this.model.subcategory = null;
+  }
+  selectSubcategory(category, subcategory) {
+    this.model.category = category;
+    this.model.subcategory = subcategory;
+  }
+  onIndicatorOver(category) {
+    this.openedIndicator = category.id;
+  }
 
 }

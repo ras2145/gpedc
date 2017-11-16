@@ -62,9 +62,25 @@
                                                     placement="right">
                                                 </i>
                                             </label>
-                                            <select id="inputState" class="form-control" [(ngModel)]="model.category">
-                                                <option [ngValue]="category" *ngFor="let category of model.year.categories">{{category.label}}</option>
-                                            </select>
+                                            <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                    <span>{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
+                                                    <span class="dropdown-caret mdi mdi-menu-down"></span>
+                                                </button>
+                                                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                    <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
+                                                        <a class="dropdown-item" href="#" dropdownToggle (click)="selectCategory(category)">
+                                                            {{category.label}} ({{category.subcategories.length}})
+                                                            <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
+                                                        </a>
+                                                        <ul *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
+                                                            <li role="menuitem" *ngFor="let subcategory of category.subcategories">
+                                                                <a class="dropdown-item" href="#" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
