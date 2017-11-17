@@ -83,9 +83,10 @@ export class AppComponent {
       });
       this.mapService.clickCountry(event => {
         if (this.selectedTab === 'tab1') {
-          
           self.mapUrlProfile = event.features[0].properties.profile;
-          if(!self.mapUrlProfile.includes("http://")){
+          if(self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
+            self.mapUrlProfile = "#";
+          }else if(!self.mapUrlProfile.includes("http://")){
             self.mapUrlProfile = "http://" + self.mapUrlProfile;
           }
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
