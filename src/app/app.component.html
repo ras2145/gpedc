@@ -14,8 +14,10 @@
                         <tab heading="">
                             <!-- BOTON TAB VIEW -->
                             <template tabHeading>
-                                <i class="mdi mdi-view-quilt" id="tab1" (click)="selectTab($event)"></i>
-                                <span class="ocultar" id="tab1" (click)="selectTab($event)">Map Viewer</span>
+                                <nav id="tab1"(click)="selectTab($event)">
+                                    <i class="mdi mdi-view-quilt" id="tab1" ></i>
+                                    <span class="ocultar" id="tab1" >Map Viewer</span>
+                                </nav>
                             </template>
                             <!-- BOTON TAB VIEW -->
 
@@ -216,8 +218,10 @@
                         <tab heading="">
                             <!-- Boton tab  -->
                             <template tabHeading>
-                                <i class="mdi mdi-chart-bar" id="tab2" (click)="selectTab($event)"></i>
-                                <span class="ocultar" id="tab2" (click)="selectTab($event)">Country Comparison</span>
+                                <nav id = "tab2" (click)="selectTab($event)" >
+                                    <i class="mdi mdi-chart-bar" id="tab2" ></i>
+                                    <span class="ocultar" id="tab2" >Country Comparison</span>
+                                </nav>
                             </template>
 
                             <div class="result-container">
@@ -396,8 +400,10 @@
                         <tab heading="">
                             <!-- Boton tab  -->
                             <template tabHeading>
-                                <span><!--class="rotate"--><i class="mdi mdi-hexagon-multiple" id="tab3" (click)="selectTab($event)"></i></span>
-                                <span id="tab3" (click)="selectTab($event)" class="ocultar">Partners Comparison</span>
+                                <nav id = "tab3" (click)="selectTab($event)">
+                                <span><!--class="rotate"--><i class="mdi mdi-hexagon-multiple" ></i></span>
+                                <span id="tab3" d class="ocultar">Partners Comparison</span>
+                                </nav>
                             </template>
 
                             <div class="result-container">

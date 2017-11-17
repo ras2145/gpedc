@@ -105,6 +105,7 @@ export class AppComponent {
     this.modalRef = this.modalService.show(template);
   }
   selectTab(event) {
+    console.log(event.target.id);
     if (event.target.id) {
       this.selectedTab = event.target.id;
       this.mapService.applyFilters(event.target.id);
