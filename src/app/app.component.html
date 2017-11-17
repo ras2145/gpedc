@@ -401,7 +401,7 @@
                             <!-- Boton tab  -->
                             <template tabHeading>
                                 <nav id = "tab3" (click)="selectTab($event)">
-                                <span><!--class="rotate"--><i class="mdi mdi-hexagon-multiple" ></i></span>
+                                <span><!--class="rotate"--><i id="tab3" class="mdi mdi-hexagon-multiple" ></i></span>
                                 <span id="tab3" d class="ocultar">Partners Comparison</span>
                                 </nav>
                             </template>
@@ -593,7 +593,7 @@
 
                                 <div class="button-card">
                                     <p>
-                                        <a href="#">PROFILE</a>
+                                        <a href="{{this.mapUrlProfile}}">PROFILE</a>
                                     </p>
                                 </div>
 

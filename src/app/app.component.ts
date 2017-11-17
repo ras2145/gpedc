@@ -27,6 +27,7 @@ export class AppComponent {
   incomeGroups: any;
   countryContexts: any;
   footerText = '';
+  mapUrlProfile: any;
   model = {
     year: null,
     category: {
@@ -51,6 +52,7 @@ export class AppComponent {
     this.regions = regions;
     this.incomeGroups = incomeGroups;
     this.countryContexts = countryContexts;
+    this.mapUrlProfile = "#";
     titles.forEach(title => {
       if (title.year === '2016') {
         this.model.year = title;
@@ -81,6 +83,11 @@ export class AppComponent {
       });
       this.mapService.clickCountry(event => {
         if (this.selectedTab === 'tab1') {
+          
+          self.mapUrlProfile = event.features[0].properties.profile;
+          if(!self.mapUrlProfile.includes("http://")){
+            self.mapUrlProfile = "http://" + self.mapUrlProfile;
+          }
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
             layers: ['country-fills']
           });
