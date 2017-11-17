@@ -60,6 +60,7 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
+    console.log(this.model);
   }
   mapConfig() {
     const self = this;

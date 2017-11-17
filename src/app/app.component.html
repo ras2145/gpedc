@@ -260,10 +260,10 @@
                                 <div class="row">
                                     <div class="col-md-3 btn-year">
                                         <div class="radio">
-                                            <input type="radio" name="radio-btn-panel-2" id="panel-2-2014" />
-                                            <label for="panel-2-2014">2014</label>
-                                            <input type="radio" name="radio-btn-panel-2" id="panel-2-2016" checked />
-                                            <label for="panel-2-2016" class="right-btn">2016</label>
+                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"  (change)="getIndicator(model.year.categories[0].id)"/>
+                                                {{title.year}}
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="col-md-9">
@@ -359,21 +359,20 @@
 
                                 <div class="row">
                                     <div class="col-md-12 background-table">
-                                        <table class="table table-sm table-space">
-                                            <tr class="border-bottom-1">
-                                                <td class="table-title-left background-1" width="25%">
+                                        <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
+                                            <tr class="border-bottom-1" >
+                                                <td class="table-title-left background-1" width="25%" >
                                                     <p>
-                                                        <span>INDICATOR 1A. </span>
-                                                        Development co-operation is focused on<br>results&nbsp;that&nbsp;meet&nbsp;developing<br>countries'&nbsp;priorities
+                                                        {{indicator.title}}
                                                     </p>
                                                 </td>
                                                 <td width="25%" class="background-2"></td>
                                                 <td width="25%"></td>
                                                 <td width="25%"></td>
                                             </tr>
-                                            <tr class="border-bottom-1">
+                                            <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                 <td class="table-subtible background-1">
-                                                    <p>% of new develpment ingervations that draw objectives from country-led results framework</p>
+                                                    <p>{{subcategory.label}}</p>
                                                 </td>
                                                 <td class="table-result center-td background-2">
                                                     Alignment in<br>Objectives: 89%
@@ -383,90 +382,6 @@
                                                 </td>
                                                 <td class="table-result center-td background-2">
                                                     Alignment in<br>Objectives: 89%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-subtible background-1">
-                                                    <p>% of results indicators drawn from country-</p>
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-subtible background-1">
-                                                    <p>% of results indicators drawn from country-</p>
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-subtible background-1">
-                                                    <p>% of results indicators drawn from country-</p>
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-subtible background-1">
-                                                    <p>% of results indicators drawn from country-</p>
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-subtible background-1">
-                                                    <p>% of results indicators drawn from country-</p>
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="table-subtible background-1">
-                                                    <p>% of results indicators drawn from country-</p>
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
-                                                </td>
-                                                <td class="table-result center-td-1 background-2">
-                                                    Alignment in<br>Objectives: 58%
                                                 </td>
                                             </tr>
                                         </table>
