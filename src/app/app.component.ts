@@ -30,7 +30,8 @@ export class AppComponent {
     year: null,
     category: {
       label: 'Select indicator',
-      title: ''
+      title: '',
+      column: ''
     },
     subcategory: null,
     region: null,
@@ -52,6 +53,7 @@ export class AppComponent {
     titles.forEach(title => {
       if (title.year === '2016') {
         this.model.year = title;
+        this.model.category = title.categories[0];
       }
     });
     this.model.region = this.regions[0];
@@ -65,7 +67,7 @@ export class AppComponent {
   mapConfig() {
     const self = this;
     this.mapService.onLoad(() => {
-      this.mapService.getCountriesGeoJSON().subscribe(geojson => {
+      this.mapService.getIndicatorFilterGeoJSON(this.model.category.column).subscribe(geojson => {
         self.mapService.build(geojson);
       });
       this.mapService.mouseCountryHover(event => {
@@ -116,25 +118,37 @@ export class AppComponent {
   selectCategory(category) {
     this.model.category = category;
     this.model.subcategory = null;
+    this.updateIndicatorGeojson();
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
     this.model.subcategory = subcategory;
+    this.updateIndicatorGeojson();
   }
   onIndicatorOver(category) {
     this.openedIndicator = category.id;
   }
   selectRegion(region) {
     this.model.region = region;
+    this.updateIndicatorGeojson();
   }
   selectIncomeGroup(incomeGroup) {
     this.model.incomeGroup = incomeGroup;
+    this.updateIndicatorGeojson();
   }
   selectCountryContext(countryContext) {
     this.model.countryContext = countryContext;
+    this.updateIndicatorGeojson();
   }
   updateIndicatorGeojson() {
     //TODO grisaf update geojson
+    const indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
+    const region = this.model.region.value;
+    const incomeGroup = this.model.incomeGroup.value;
+    const countryContext = this.model.countryContext.value;
+    this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext).subscribe(geojson => {
+      this.mapService.update(geojson);
+    });
   }
 
   getIndicator(indicator: any) {

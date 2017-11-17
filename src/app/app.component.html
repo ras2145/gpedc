@@ -72,13 +72,13 @@
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu" role="menu">
                                                     <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
-                                                        <a class="dropdown-item contenido-dropdown" href="#" dropdownToggle (click)="selectCategory(category)">
+                                                        <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectCategory(category)">
                                                             {{category.label}}
                                                             <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>
                                                         <ul *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
                                                             <li role="menuitem" *ngFor="let subcategory of category.subcategories">
-                                                                <a class="dropdown-item contenido-dropdown" href="#" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
+                                                                <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -116,7 +116,7 @@
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
                                                     <li role="menuitem" *ngFor="let region of regions">
-                                                        <a class="dropdown-item style-a-default" href="#" (click)="selectRegion(region)">
+                                                        <a class="dropdown-item style-a-default" (click)="selectRegion(region)">
                                                             {{region.label}}
                                                         </a>
                                                     </li>
@@ -139,7 +139,7 @@
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
                                                     <li role="menuitem" *ngFor="let incomeGroup of incomeGroups">
-                                                        <a class="dropdown-item style-a-default contenido-dropdown" href="#" (click)="selectIncomeGroup(incomeGroup)">
+                                                        <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectIncomeGroup(incomeGroup)">
                                                             {{incomeGroup.label}}
                                                         </a>
                                                     </li>
@@ -165,7 +165,7 @@
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
                                                     <li role="menuitem" *ngFor="let countryContext of countryContexts">
-                                                        <a class="dropdown-item style-a-default contenido-dropdown" href="#" (click)="selectCountryContext(countryContext)">
+                                                        <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectCountryContext(countryContext)">
                                                             {{countryContext.label}}
                                                         </a>
                                                     </li>

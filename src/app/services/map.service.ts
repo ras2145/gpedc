@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Map, MapboxOptions } from 'mapbox-gl';
+import { Map, MapboxOptions, GeoJSONSource } from 'mapbox-gl';
 import * as mapboxgl from 'mapbox-gl';
 import VectorSource = mapboxgl.VectorSource;
 
@@ -21,29 +21,6 @@ export class MapService {
     (mapboxgl as any).accessToken = this.token;
   }
   private filterOneCountry = ['in', 'country'];
-  getCountriesGeoJSON(): Observable<any> {
-    const query = SERVER.GET_QUERY(`SELECT ST_ASGEOJSON(the_geom) geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`);
-    console.log(query);
-    return this.webService.get(query).map(ans => {
-      console.log('ans ', ans);
-      ans = ans.json();
-      let geojson = {
-        type: 'FeatureCollection',
-        features: []
-      };
-      for (const item of ans.rows) {
-        const feature = {
-          type: 'Feature',
-          geometry: JSON.parse(item.geom),
-          properties: {
-            country: item.country
-          }
-        };
-        geojson.features.push(feature);
-      }
-      return geojson;
-    });
-  }
   get map() {
     return this._map;
   }
@@ -99,6 +76,11 @@ export class MapService {
       filter: ['in', 'country']
     });
   }
+  update(geojson: any) {
+    let source: GeoJSONSource;
+    source = this.map.getSource('countries') as GeoJSONSource;
+    source.setData(geojson);
+  }
   paintTwoCountry(country) {
     if (this.twoCountriesFilter.includes(country)) {
       this.twoCountriesFilter.splice(this.twoCountriesFilter.indexOf(country), 1);
@@ -148,7 +130,39 @@ export class MapService {
     return this.webService.get(query).map( ans => {
       return ans.json().rows[0];
     });
-
+  }
+  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string): Observable<any> {
+    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
+    let where = '';
+    if (indicator != '') {
+      where = where + ' ' + indicator + ' IS NOT NULL ';
+    }
+    if (region != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + " region = '" + region + "' ";
+    }
+    if (incomeGroup != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + " inc_group = '" + incomeGroup + "' ";
+    }
+    if (countryContext != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + ' upper(' + countryContext + ") = 'YES'";
+    }
+    if (where != '') {
+      sql = sql + ' WHERE ' + where;
+    }
+    let query = SERVER.GET_QUERY(sql, true);
+    console.log(query);
+    return this.webService.get(query).map(ans => {
+      return ans.json();
+    });
   }
 }
 
