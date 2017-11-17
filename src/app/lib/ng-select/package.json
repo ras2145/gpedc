@@ -1,0 +1,60 @@
+{
+  "_from": "ng-select",
+  "_id": "ng-select@1.0.0-rc.3",
+  "_inBundle": false,
+  "_integrity": "sha512-anZlAnqyoHhRcbwMPFN6Gp/5TANnT8rWn1+9NDy/UU2ato3DarTX/rdT8vzh77NzuJDBwgmgCdluR78pdKtnnQ==",
+  "_location": "/ng-select",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ng-select",
+    "name": "ng-select",
+    "escapedName": "ng-select",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-select/-/ng-select-1.0.0-rc.3.tgz",
+  "_shasum": "0d6ca53a475a0301e6d01e0c0a5568e183cb7a0d",
+  "_spec": "ng-select",
+  "_where": "/home/nvd-2-1-3/Documents/vizonomy/undp-frontend",
+  "author": {
+    "name": "Bastiaan van den Berg",
+    "email": "b.a.vandenberg@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/basvandenberg/ng-select/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Select component for angular.",
+  "es2015": "ng-select.js",
+  "homepage": "https://basvandenberg.github.io/ng-select",
+  "keywords": [
+    "angular",
+    "select",
+    "select2",
+    "selectize",
+    "chosen"
+  ],
+  "license": "ISC",
+  "main": "bundles/ng-select.umd.js",
+  "metadata": "ng-select.metadata.json",
+  "module": "ng-select.es5.js",
+  "name": "ng-select",
+  "peerDependencies": {
+    "@angular/core": "^5.0.0",
+    "@angular/common": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/basvandenberg/ng-select.git"
+  },
+  "typings": "ng-select.d.ts",
+  "version": "1.0.0-rc.3"
+}
