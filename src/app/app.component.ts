@@ -15,6 +15,7 @@ export class AppComponent {
   selectedCountry: any = false;
   indicatorsSelectedCountry: any;
   indicatorSelectedFooter: any;
+  categoriesNotNull: any;
   selectedTab = 'tab1';
   countryName = 'Country';
   title = 'app';
@@ -62,7 +63,6 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
-    console.log(this.model);
   }
   mapConfig() {
     const self = this;
@@ -89,6 +89,7 @@ export class AppComponent {
             this.mapService.getIndicatorCountry(this.selectedCountry)
             .subscribe( res => {
               this.indicatorsSelectedCountry = res;
+              this.getCategoriesNotNull();
               this.getIndicator(this.indicatorSelectedFooter);
             });
           } else {
@@ -150,7 +151,23 @@ export class AppComponent {
       this.mapService.update(geojson);
     });
   }
-
+  getCategoriesNotNull() {
+    this.categoriesNotNull = [];
+    for ( const i of this.model.year.categories ) {
+      let sw = false;
+      if ( this.indicatorsSelectedCountry[i.column] !== null ) {
+        sw = true;
+      }
+      for ( const j of i.subcategories ) {
+        if ( this.indicatorsSelectedCountry[j.column] !== null ) {
+          sw = true;
+        }
+      }
+      if ( sw ) {
+        this.categoriesNotNull.push(i);
+      }
+    }
+  }
   getIndicator(indicator: any) {
     this.indicatorSelectedFooter = indicator;
     this.footerText = '';
@@ -158,6 +175,13 @@ export class AppComponent {
       const categories = this.model.year.categories;
       for ( const i of categories ) {
         if (i.id === indicator) {
+          if (this.indicatorsSelectedCountry[i.id] === 'Yes' ) {
+            this.footerText = this.footerText + i.label + '<br>' + i.yesText + '<br>';
+          } else if (this.indicatorsSelectedCountry[i.id] === 'No') {
+            this.footerText = this.footerText + i.label + '<br>' + i.noText + '<br>';
+          } else {
+            this.footerText = this.footerText + i.label + '<br>' + (i.prefix + ' ' + this.indicatorsSelectedCountry[i.column] + ' ' + i.suffix) + '<br>';
+          }
           for (const j of i.subcategories) {
             if (this.indicatorsSelectedCountry[j.column] === 'Yes' ) {
               this.footerText = this.footerText + j.yesText + '<br>';

@@ -5,7 +5,7 @@ export const SERVER = (function () {
     const API_KEY = `&api_key=${CARTO_TOKEN}`;
     const FORMAT = '&format=GeoJSON';
     const BASE_URL = `https://${USERNAME}.carto.com/api/v2`;
-    const COUNTRY_TABLE = 'undp_countries';
+    const COUNTRY_TABLE = 'undp_countries_copy';
     return {
         API_KEY: API_KEY,
         BASE_URL: BASE_URL,
