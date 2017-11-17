@@ -1,17 +1,21 @@
+import { IOption } from './lib/ng-select/option.interface.d';
+import { countryComparison } from './countryComparison';
 import { WebService } from './services/web.service';
 import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
 import { regions, incomeGroups, countryContexts } from './filterCountries';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  twoCountries = [];
+  allLabels = {};
+  countryComparer: any;
+  countryComparisonOptions: any;
+  countrySelectors = [];
   selectedCountry: any = false;
   indicatorsSelectedCountry: any;
   indicatorSelectedFooter: any;
@@ -49,6 +53,13 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
+    this.countryComparer = {
+      firstCountry: '',
+      secondCountry: '',
+      region: ''
+    };
+    this.countryComparisonOptions = countryComparison;
+    this.chargeCountryComparison();
     this.titles = titles;
     this.regions = regions;
     this.incomeGroups = incomeGroups;
@@ -67,6 +78,36 @@ export class AppComponent {
     this.mapConfig();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.getPartners();
+  }
+  chargeCountryComparison() {
+    for (const key in countryComparison) {
+      this.countrySelectors.push({
+        key: key,
+        value: new Array<IOption>()
+      });
+      const size = this.countrySelectors.length;
+      // tslint:disable-next-line:forin
+      for (const arrays in countryComparison[key]) {
+        this.countrySelectors[size - 1]['value'].push({
+          value: arrays, label: arrays, disabled: true
+        });
+        for (const ele of countryComparison[key][arrays]) {
+          this.countrySelectors[size - 1]['value'].push({
+              value: ele, label: ele
+          });
+        }
+      }
+    }
+  }
+  onSelected(event) {
+    if (this.countryComparer.firstCountry === this.countryComparer.secondCountry) {
+      this.countryComparer.secondCountry = '';
+      return;
+    }
+    this.mapService.paintTwoCountry(event.value);
+  }
+  onDeselected(event) {
+    this.mapService.paintTwoCountry(event.value);
   }
   mapConfig() {
     const self = this;
@@ -109,7 +150,9 @@ export class AppComponent {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
             layers: ['country-fills']
           });
-          this.twoCountries = self.mapService.paintTwoCountry(selectedCountry[0].properties.country);
+          const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country);
+          this.countryComparer.firstCountry = aux[0];
+          this.countryComparer.secondCountry = aux[1];
         }
       });
     });
@@ -178,6 +221,37 @@ export class AppComponent {
       }
     }
   }
+  getLabelCountry(id, country) {
+    // TODO re implement charge logic 
+    if (!id) {
+      return '';
+    }
+    if (this.allLabels[id]) {
+      console.log('my id ', id);
+      return this.allLabels[id];
+    }
+    const _country = ( (country === 'first') ? this.countryComparer.firstCountry : this.countryComparer.secondCountry);
+    if (_country) {
+      const categories = this.model.year.categories;
+      for ( const category of categories ) {
+        if (id === category.id) {
+          let text = '';
+          this.mapService.getIndicatorCountry(_country).subscribe(val => {
+            if (val[category.id] === 'Yes' ) {
+              text = text + category.label + '<br>' + category.yesText + '<br>';
+            } else if (val[category.id] === 'No') {
+              text = text  + category.label + '<br>' + category.noText + '<br>';
+            } else {
+              text = text + category.label + '<br>' + (category.prefix + ' ' + val[category.column] + ' ' + category.suffix) + '<br>';
+            }
+            return this.allLabels[id] = text;
+          });
+          return text;
+        }
+      }
+    }
+    return '';
+  }
   getIndicator(indicator: any) {
     this.indicatorSelectedFooter = indicator;
     this.footerText = '';
@@ -188,7 +262,7 @@ export class AppComponent {
           if (this.indicatorsSelectedCountry[i.id] === 'Yes' ) {
             this.footerText = this.footerText + i.label + '<br>' + i.yesText + '<br>';
           } else if (this.indicatorsSelectedCountry[i.id] === 'No') {
-            this.footerText = this.footerText + i.label + '<br>' + i.noText + '<br>';
+            this.footerText = this.footerText  + i.label + '<br>' + i.noText + '<br>';
           } else {
             this.footerText = this.footerText + i.label + '<br>' + (i.prefix + ' ' + this.indicatorsSelectedCountry[i.column] + ' ' + i.suffix) + '<br>';
           }

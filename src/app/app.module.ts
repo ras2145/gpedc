@@ -5,7 +5,7 @@ import {HttpModule, RequestOptions, XHRBackend} from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
-
+import { SelectModule } from '../app/lib/ng-select';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
@@ -21,7 +21,8 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     BrowserModule,
     Ng2BootstrapModule.forRoot(),
     HttpModule,
-    FormsModule
+    FormsModule,
+    SelectModule
   ],
   providers: [
     MapService,
