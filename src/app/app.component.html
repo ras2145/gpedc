@@ -193,17 +193,13 @@
                                             <thead>
                                                 <tr>
                                                     <th width="44%"></th>
-                                                    <th width="56%" class="title-table">Indicator&nbsp;1&nbsp;(Alignment&nbsp;in&nbsp;objectives)</th>
+                                                    <th width="56%" class="title-table">{{model.category.title}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="result-table-letter">Adaptation fund</td>
+                                                <tr *ngFor="let partner of partners">
+                                                    <td class="result-table-letter">{{partner.partner}}</td>
                                                     <td class="result-table-number">89%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="result-table-letter">African&nbsp;develpment&nbsp;bank&nbsp;(afdb)</td>
-                                                    <td class="result-table-number">32%</td>
                                                 </tr>
                                             </tbody>
                                         </table>

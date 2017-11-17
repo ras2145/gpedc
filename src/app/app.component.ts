@@ -17,6 +17,7 @@ export class AppComponent {
   indicatorSelectedFooter: any;
   categoriesNotNull: any;
   selectedTab = 'tab1';
+  partners: any;
   countryName = 'Country';
   title = 'app';
   modalRef: BsModalRef;
@@ -65,6 +66,7 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
+    this.getPartners();
   }
   mapConfig() {
     const self = this;
@@ -202,5 +204,10 @@ export class AppComponent {
         }
       }
     }
+  }
+  getPartners() {
+    this.mapService.getPartners().subscribe( res => {
+      this.partners = res;
+    });
   }
 }

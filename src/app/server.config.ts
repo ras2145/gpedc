@@ -6,11 +6,13 @@ export const SERVER = (function () {
     const FORMAT = '&format=GeoJSON';
     const BASE_URL = `https://${USERNAME}.carto.com/api/v2`;
     const COUNTRY_TABLE = 'undp_countries_copy';
+    const PARTNER_TABLE = 'undp_partners_copy';
     return {
         API_KEY: API_KEY,
         BASE_URL: BASE_URL,
         CARTO_TOKEN: CARTO_TOKEN,
         COUNTRY_TABLE: COUNTRY_TABLE,
+        PARTNER_TABLE: PARTNER_TABLE,
         GET_QUERY: function (sql, geojson?: boolean) {
             let url = `${BASE_URL}/sql?q=${sql}${API_KEY}`;
             if (geojson) {
