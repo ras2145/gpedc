@@ -750,7 +750,8 @@
                     <div class="tab-map" *ngIf="selectedCountry">
                       <tabset #staticTabs>
                         <tab *ngFor="let indicator of getCategories()" heading="{{indicator.id}}" (select)=getIndicator(indicator.id)>
-                            {{footerText}}
+                          <p [innerHTML]="footerText">
+                          </p>
                         </tab>
                       </tabset>
                     </div>
