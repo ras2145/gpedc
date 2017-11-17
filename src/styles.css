@@ -581,6 +581,8 @@ div#map {
   font-size: 13px;
   height: 100px;
   width: 601px;
+  max-height: 110px;
+  overflow-x: hidden;
 }
 .tab-map .nav-tabs {
   border-bottom: none;
