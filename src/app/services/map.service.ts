@@ -144,7 +144,7 @@ export class MapService {
     this.map.on('click', 'country-fills', cb);
   }
   getIndicatorCountry(country: any): Observable<any> {
-    const query = SERVER.GET_QUERY(`select * from "undp-admin".undp_countries_copy where country='${country}'`);
+    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".undp_countries_copy where country='${country}'`);
     return this.webService.get(query).map( ans => {
       return ans.json().rows[0];
     });

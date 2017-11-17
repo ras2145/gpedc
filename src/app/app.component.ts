@@ -1,3 +1,4 @@
+import { WebService } from './services/web.service';
 import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
@@ -12,15 +13,15 @@ import { regions, incomeGroups, countryContexts } from './filterCountries';
 export class AppComponent {
   twoCountries = [];
   selectedCountry: any = false;
+  indicatorsSelectedCountry: any;
+  indicatorSelectedFooter: any;
   selectedTab = 'tab1';
   countryName = 'Country';
   title = 'app';
   modalRef: BsModalRef;
-  year: any = '2016';
   geojson: any = {};
   name: any;
   titles: any;
-  years: any;
   regions: any;
   incomeGroups: any;
   countryContexts: any;
@@ -58,13 +59,7 @@ export class AppComponent {
     this.model.countryContext = this.countryContexts[0];
     this.mapService.createMap('map');
     this.mapConfig();
-  }
-  getCategories() {
-    for (const ele of this.titles){
-      if (ele.year === this.model.year['year']) {
-        return ele.categories;
-      }
-    }
+    this.indicatorSelectedFooter = this.model.year.categories[0].id;
   }
   mapConfig() {
     const self = this;
@@ -87,6 +82,15 @@ export class AppComponent {
             layers: ['country-fills']
           });
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+          if ( this.selectedCountry ) {
+            this.mapService.getIndicatorCountry(this.selectedCountry)
+            .subscribe( res => {
+              this.indicatorsSelectedCountry = res;
+              this.getIndicator(this.indicatorSelectedFooter);
+            });
+          } else {
+            this.indicatorSelectedFooter = this.model.year.categories[0].id;
+          }
         } else if (this.selectedTab === 'tab2') {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
             layers: ['country-fills']
@@ -104,13 +108,6 @@ export class AppComponent {
     this.mapService.applyFilters(event.target.id);
     this.mapService.resetClickLayer();
   }
-
-  updateYear(y) {
-    if (y) {
-      this.year = y;
-    }
-  }
-
   selectCategory(category) {
     this.model.category = category;
     this.model.subcategory = null;
@@ -136,26 +133,23 @@ export class AppComponent {
   }
 
   getIndicator(indicator: any) {
-    //TODO arreglar texto y primer tab
+    this.indicatorSelectedFooter = indicator;
     this.footerText = '';
     if (this.selectedCountry) {
-      this.mapService.getIndicatorCountry(this.selectedCountry)
-      .subscribe( res => {
-        const categories = this.getCategories();
-        for ( let i of categories ) {
-          if (i.id === indicator) {
-            for (let j of i.subcategories) {
-              if (res[j.column] === 'Yes' ) {
-                this.footerText = this.footerText + j.yesText + '\n';
-              } else if (res[j.column] === 'No') {
-                this.footerText = this.footerText + j.noText + '\n';
-              } else {
-                this.footerText = this.footerText + (j.prefix + ' ' + res[j.column] + ' ' + j.suffix) + '\n';
-              }
+      const categories = this.model.year.categories;
+      for ( const i of categories ) {
+        if (i.id === indicator) {
+          for (const j of i.subcategories) {
+            if (this.indicatorsSelectedCountry[j.column] === 'Yes' ) {
+              this.footerText = this.footerText + j.yesText + '<br>';
+            } else if (this.indicatorsSelectedCountry[j.column] === 'No') {
+              this.footerText = this.footerText + j.noText + '<br>';
+            } else {
+              this.footerText = this.footerText + (j.prefix + ' ' + this.indicatorsSelectedCountry[j.column] + ' ' + j.suffix) + '<br>';
             }
           }
         }
-      });
+      }
     }
   }
 }

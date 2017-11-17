@@ -45,9 +45,9 @@
                                     </div>
 
                                     <div class="col-md-12 btn-year"><!-- col-md-8 -->
-                                        <div class="radio" (click)="updateYear($event.target.value)">
-                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
-                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" />
+                                        <div class="radio">
+                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"  (change)="getIndicator(model.year.categories[0].id)"/>
                                                 {{title.year}}
                                             </label>
                                         </div>
@@ -749,7 +749,7 @@
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
                     <div class="tab-map" *ngIf="selectedCountry">
                       <tabset #staticTabs>
-                        <tab *ngFor="let indicator of getCategories()" heading="{{indicator.id}}" (select)=getIndicator(indicator.id)>
+                        <tab *ngFor="let category of model.year.categories" heading="{{category.id}}" (select)=getIndicator(category.id)>
                           <p [innerHTML]="footerText">
                           </p>
                         </tab>
