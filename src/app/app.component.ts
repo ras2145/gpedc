@@ -104,9 +104,12 @@ export class AppComponent {
     this.modalRef = this.modalService.show(template);
   }
   selectTab(event) {
-    this.selectedTab = event.target.id;
-    this.mapService.applyFilters(event.target.id);
-    this.mapService.resetClickLayer();
+    if (event.target.id) {
+      this.selectedTab = event.target.id;
+      this.mapService.applyFilters(event.target.id);
+      this.mapService.resetClickLayer();
+      this.selectedCountry = '';
+    }
   }
   selectCategory(category) {
     this.model.category = category;
