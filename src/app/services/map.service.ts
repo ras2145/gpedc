@@ -134,22 +134,22 @@ export class MapService {
   getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string): Observable<any> {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
     let where = '';
-    if (indicator != '') {
+    if (indicator != null && indicator != '') {
       where = where + ' ' + indicator + ' IS NOT NULL ';
     }
-    if (region != '') {
+    if (region  != null && region != '') {
       if (where != '') {
         where = where + ' AND ';
       }
       where = where + " region = '" + region + "' ";
     }
-    if (incomeGroup != '') {
+    if (incomeGroup != null && incomeGroup != '') {
       if (where != '') {
         where = where + ' AND ';
       }
       where = where + " inc_group = '" + incomeGroup + "' ";
     }
-    if (countryContext != '') {
+    if (countryContext != null && countryContext != '') {
       if (where != '') {
         where = where + ' AND ';
       }
