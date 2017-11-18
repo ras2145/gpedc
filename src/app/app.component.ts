@@ -226,7 +226,7 @@ export class AppComponent {
     if (!id) {
       return '';
     }
-    if (this.allLabels[id]) {
+    /*if (this.allLabels[id]) {
       console.log('my id ', id);
       return this.allLabels[id];
     }
@@ -249,7 +249,7 @@ export class AppComponent {
           return text;
         }
       }
-    }
+    }*/
     return '';
   }
   getIndicator(indicator: any) {
