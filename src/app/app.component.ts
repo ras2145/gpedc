@@ -222,7 +222,7 @@ export class AppComponent {
     }
   }
   getLabelCountry(id, country) {
-    // TODO re implement charge logic 
+    // re implement charge logic 
     if (!id) {
       return '';
     }
