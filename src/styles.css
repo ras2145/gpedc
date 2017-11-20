@@ -568,12 +568,14 @@ div#map {
   color: #5d5d5d;
   margin-right: 4px;
   padding: 6px 10px;
+  width: 40px;
 }
 
 .tab.map .nav-tabs .nav-item.show .nav-link, .tab-map .nav-tabs .nav-link.active {
   color: #fff;
   background-color: #f07848;
   border-color: #ddd #ddd #fff;
+  width: 100%;
 }
 .tab-map .tab-content>.active {
   display: block;
@@ -581,7 +583,7 @@ div#map {
   padding: 15px;
   font-size: 13px;
   width: 601px;
-  max-height: 130px;
+  height: 130px;
   overflow-x: hidden;
 }
 .tab-map .nav-tabs {
