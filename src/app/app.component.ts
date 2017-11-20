@@ -12,6 +12,7 @@ import { regions, incomeGroups, countryContexts } from './filterCountries';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  footerTab = '';
   allLabels = {};
   countryComparer: any;
   countryComparisonOptions: any;
@@ -53,6 +54,9 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
+    this.mapService.randomQuery().subscribe(val => {
+      console.log(val);
+    });
     this.countryComparer = {
       firstCountry: '',
       secondCountry: '',
@@ -64,7 +68,7 @@ export class AppComponent {
     this.regions = regions;
     this.incomeGroups = incomeGroups;
     this.countryContexts = countryContexts;
-    this.mapUrlProfile = "#";
+    this.mapUrlProfile = '#';
     titles.forEach(title => {
       if (title.year === '2016') {
         this.model.year = title;
@@ -127,10 +131,10 @@ export class AppComponent {
       this.mapService.clickCountry(event => {
         if (this.selectedTab === 'tab1') {
           self.mapUrlProfile = event.features[0].properties.profile;
-          if(self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
-            self.mapUrlProfile = "#";
-          }else if(!self.mapUrlProfile.includes("http://")){
-            self.mapUrlProfile = "http://" + self.mapUrlProfile;
+          if (self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
+            self.mapUrlProfile = '#';
+          }else if (!self.mapUrlProfile.includes('http://')) {
+            self.mapUrlProfile = 'http://' + self.mapUrlProfile;
           }
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
             layers: ['country-fills']
@@ -222,7 +226,7 @@ export class AppComponent {
     }
   }
   getLabelCountry(id, country) {
-    // re implement charge logic 
+    // re implement charge logic
     if (!id) {
       return '';
     }
@@ -253,6 +257,7 @@ export class AppComponent {
     return '';
   }
   getIndicator(indicator: any) {
+    this.footerTab = indicator;
     this.indicatorSelectedFooter = indicator;
     this.footerText = '';
     if (this.selectedCountry) {

@@ -41,8 +41,7 @@
                                         <p class="result-subtitle space-view-data">Select year
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                placement="right"
-                                                triggers="mouseenter:mouseleave">
+                                                placement="right">
                                             </i>
                                         </p>
                                     </div>
@@ -63,8 +62,7 @@
                                             <label for="inputState" class="result-subtitle space-indicator">Indicator
                                                 <i class="mdi mdi-information"
                                                     popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
+                                                    placement="right">
                                                 </i>
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
@@ -96,8 +94,7 @@
                                             <label for="inputState" class="result-subtitle space-line">Filter countries by:
                                                 <i class="mdi mdi-information"
                                                     popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
+                                                    placement="right">
                                                 </i>
                                             </label>
                                         </div>
@@ -109,8 +106,7 @@
                                             <label for="inputState" class="result-subtitle">Region
                                                 <i class="mdi mdi-information"
                                                     popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
+                                                    placement="right">
                                                 </i>
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown>
@@ -133,8 +129,7 @@
                                             <label for="inputState" class="result-subtitle">Income Group
                                                 <i class="mdi mdi-information"
                                                     popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
+                                                    placement="right">
                                                 </i>
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown>
@@ -160,8 +155,7 @@
                                             <label for="inputState" class="result-subtitle">Country context
                                                 <i class="mdi mdi-information"
                                                     popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
+                                                    placement="right">
                                                 </i>
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown>
@@ -186,8 +180,7 @@
                                         <p class="result-subtitle-one">Compare Scores by Development partners
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                placement="top"
-                                                triggers="mouseenter:mouseleave">
+                                                placement="right">
                                             </i>
                                             <br><span>In alphabetical order</span></p>
                                         <p class="result-subtitle p-none-space"></p>
@@ -255,8 +248,7 @@
                                         <p class="result-subtitle width-popup">1. Select indicator year
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                placement="right"
-                                                triggers="mouseenter:mouseleave">
+                                                placement="right">
                                             </i>
                                         </p>
                                     </div>
@@ -275,27 +267,27 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="row" id="select-item">
+                                        <div class="row">
                                             <div class="col-md-4">
-                                              <ng-select
+                                              <ng-select 
                                               (deselected)="onDeselected($event)"
-                                              (selected)="onSelected($event)"
-                                              [(ngModel)]="countryComparer.firstCountry"
-                                              [allowClear]="true"
+                                              (selected)="onSelected($event)" 
+                                              [(ngModel)]="countryComparer.firstCountry" 
+                                              [allowClear]="true" 
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
                                             <div class="col-md-4">
-                                              <ng-select
+                                              <ng-select 
                                               (deselected)="onDeselected($event)"
-                                              (selected)="onSelected($event)"
-                                              [allowClear]="true"
+                                              (selected)="onSelected($event)" 
+                                              [allowClear]="true" 
                                               [(ngModel)]="countryComparer.secondCountry" [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
                                             <div class="col-md-4">
                                               <ng-select
-                                              [allowClear]="true"
+                                              [allowClear]="true"  
                                               [(ngModel)]="countryComparer.region" [options]="countrySelectors[2]['value']"></ng-select>
                                             </div>
                                         </div>
@@ -372,8 +364,7 @@
                                         <p class="result-subtitle width-popup">1. Select indicator year
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-                                                placement="right"
-                                                triggers="mouseenter:mouseleave">
+                                                placement="right">
                                             </i>
                                         </p>
                                     </div>
@@ -482,7 +473,7 @@
                                                     Alignment in<br>Objectives: 89%
                                                 </td>
                                             </tr>
-
+                                          
                                         </table>
                                     </div>
                                 </div>
@@ -546,7 +537,7 @@
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
                     <div class="tab-map" *ngIf="selectedCountry">
                       <tabset #staticTabs>
-                        <tab *ngFor="let category of categoriesNotNull" heading="{{category.id}}" (select)=getIndicator(category.id)>
+                        <tab *ngFor="let category of categoriesNotNull" heading="{{(footerTab===category.id?'Indicator '+category.id:category.id)}}" (select)=getIndicator(category.id)>
                           <p [innerHTML]="footerText">
                           </p>
                         </tab>
