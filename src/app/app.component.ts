@@ -126,10 +126,11 @@ export class AppComponent {
           layers: ['country-fills']
         });
         this.countryName = countries[0].properties.country;
-        //this.popupText = 
+        this.getTextPopUp();
       });
       this.mapService.mouseLeave( () => {
         this.countryName = 'Country';
+        this.popupText = '';
       });
       this.mapService.clickCountry(event => {
         if (this.selectedTab === 'tab1') {
@@ -210,7 +211,7 @@ export class AppComponent {
   }
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
-    if (this.selectedCountry){
+    if (this.selectedCountry) {
       for ( const i of this.model.year.categories ) {
         let sw = false;
         if ( this.indicatorsSelectedCountry[i.column] !== null ) {
@@ -226,7 +227,6 @@ export class AppComponent {
         }
       }
     }
-    
   }
   getLabelCountry(id, country) {
     // re implement charge logic
@@ -258,6 +258,37 @@ export class AppComponent {
       }
     }*/
     return '';
+  }
+  getTextPopUp() {
+    this.popupText = '';
+    if (this.countryName !== 'Country') {
+      const country = this.countriesQuery.filter( (a) => a.country === this.countryName)[0];
+      if (this.model.category == null) {
+        this.popupText = 'No indicator selected.<br>';
+      } else if (this.model.category != null && this.model.subcategory == null ) {
+        if (country[this.model.category.column] != null ) {
+          this.popupText = this.model.category.label;
+          if (country[this.model.category.column] === 'Yes') {
+            this.popupText = this.popupText + ' ' + this.model.category['yesText'];
+          }else if (country[this.model.category.column] === 'No') {
+            this.popupText = this.popupText + ' ' + this.model.category['noText'];
+          } else {
+            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + country[this.model.category.column] + ' ' + this.model.category['suffix'];
+          }
+        }
+      } else if (this.model.category != null && this.model.subcategory != null) {
+        this.popupText = this.model.subcategory.label;
+        if (country[this.model.subcategory.column] != null) {
+          if (country[this.model.subcategory.column] === 'Yes') {
+            this.popupText = this.popupText + ' ' + this.model.subcategory.yesText;
+          }else if (country[this.model.subcategory.column] === 'No') {
+            this.popupText = this.popupText + ' ' + this.model.subcategory.noText;
+          } else {
+            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + country[this.model.subcategory.column] + ' ' + this.model.subcategory.suffix;
+          }
+        }
+      }
+    }
   }
   getIndicator(indicator: any) {
     this.footerTab = indicator;
