@@ -12,6 +12,7 @@ import { regions, incomeGroups, countryContexts } from './filterCountries';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  popupText: any;
   countriesQuery: any;
   footerTab = '';
   allLabels = {};
@@ -125,6 +126,7 @@ export class AppComponent {
           layers: ['country-fills']
         });
         this.countryName = countries[0].properties.country;
+        //this.popupText = 
       });
       this.mapService.mouseLeave( () => {
         this.countryName = 'Country';
@@ -208,20 +210,23 @@ export class AppComponent {
   }
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
-    for ( const i of this.model.year.categories ) {
-      let sw = false;
-      if ( this.indicatorsSelectedCountry[i.column] !== null ) {
-        sw = true;
-      }
-      for ( const j of i.subcategories ) {
-        if ( this.indicatorsSelectedCountry[j.column] !== null ) {
+    if (this.selectedCountry){
+      for ( const i of this.model.year.categories ) {
+        let sw = false;
+        if ( this.indicatorsSelectedCountry[i.column] !== null ) {
           sw = true;
         }
-      }
-      if ( sw ) {
-        this.categoriesNotNull.push(i);
+        for ( const j of i.subcategories ) {
+          if ( this.indicatorsSelectedCountry[j.column] !== null ) {
+            sw = true;
+          }
+        }
+        if ( sw ) {
+          this.categoriesNotNull.push(i);
+        }
       }
     }
+    
   }
   getLabelCountry(id, country) {
     // re implement charge logic
