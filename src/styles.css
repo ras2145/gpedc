@@ -267,7 +267,7 @@ select.form-control:not([size]):not([multiple]){
     border-radius: 5px;
     box-shadow: 1px 1px 10px #ccc;
     width: 200px;
-    height: 320px;
+    /*height: 320px;*/
     z-index: 500;
 }
     .head-card p{
@@ -275,7 +275,8 @@ select.form-control:not([size]):not([multiple]){
         margin: 0px;
         color: #F27844;
         font-weight: 600;
-        padding-left: 20px;
+        /*padding-left: 20px;*/
+        padding: 0px 20px;
     }
     .head-card p:nth-child(1){
         padding-top: 10px;
