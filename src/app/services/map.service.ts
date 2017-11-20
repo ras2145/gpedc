@@ -34,8 +34,12 @@ export class MapService {
       style: this.style,
       center: [13.5, 26],
       zoom: 1.2,
-      maxBounds: [[-180, -90], [180, 90]]
+      maxBounds: [[-180, -90], [180, 90]],
+      maxZoom: 5,
+      pitch: 0
     });
+    this.map.dragRotate.disable();
+    this.map.touchZoomRotate.disableRotation();
   }
 
   onLoad(cb: Function) {
@@ -142,7 +146,7 @@ export class MapService {
     return this.webService.get(query).map( res => res.json().rows);
   }
   getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string): Observable<any> {
-    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
+    let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
     let where = '';
     if (indicator != null && indicator != '') {
       where = where + ' ' + indicator + ' IS NOT NULL ';
