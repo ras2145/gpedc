@@ -12,6 +12,7 @@ import { regions, incomeGroups, countryContexts } from './filterCountries';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  countriesQuery: any;
   footerTab = '';
   allLabels = {};
   countryComparer: any;
@@ -55,7 +56,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.mapService.randomQuery().subscribe(val => {
-      console.log(val);
+      this.countriesQuery = val;
     });
     this.countryComparer = {
       firstCountry: '',
@@ -141,12 +142,9 @@ export class AppComponent {
           });
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           if ( this.selectedCountry ) {
-            this.mapService.getIndicatorCountry(this.selectedCountry)
-            .subscribe( res => {
-              this.indicatorsSelectedCountry = res;
-              this.getCategoriesNotNull();
-              this.getIndicator(this.indicatorSelectedFooter);
-            });
+            this.indicatorsSelectedCountry = this.countriesQuery.filter( (a) => a.country === this.selectedCountry)[0];
+            this.getCategoriesNotNull();
+            this.getIndicator(this.indicatorSelectedFooter);
           } else {
             this.indicatorSelectedFooter = this.model.year.categories[0].id;
           }

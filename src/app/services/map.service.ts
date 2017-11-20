@@ -135,12 +135,6 @@ export class MapService {
       return ans.json().rows;
     });
   }
-  getIndicatorCountry(country: any): Observable<any> {
-    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".undp_countries_copy where country='${country}'`);
-    return this.webService.get(query).map( ans => {
-      return ans.json().rows[0];
-    });
-  }
   getPartners(): Observable <any> {
     const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".${SERVER.PARTNER_TABLE} order by partner`, false);
     return this.webService.get(query).map( res => res.json().rows);
