@@ -28,8 +28,8 @@ export const regions = [
     value: 'South Asia'
   },
   {
-    label: 'Southeast Asia Souteast Asia',
-    value: 'Southeast Asia Souteast Asia'
+    label: 'Southeast Asia',
+    value: 'Southeast Asia'
   }
 ];
 export const incomeGroups = [
