@@ -835,7 +835,16 @@ select-dropdown .disabled {
     cursor: default;
     pointer-events: none;
  }
-
+/*select-dropdown > div .filter input:focus{
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    outline: none;
+}*/
+select-dropdown li.highlighted,
+select-dropdown li.selected.highlighted {
+    background-color: #f7f7f7;
+    color: #212121;
+}
 
 
 /*NEW STYLES*/
