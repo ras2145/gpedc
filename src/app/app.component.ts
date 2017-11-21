@@ -214,7 +214,11 @@ export class AppComponent {
         if (this.selectedTab === 'tab2') {
           this.indicator = false;
           this.resetComparer();
-          this.model.category.title = 'Select two countries for comparing indicators: ';
+          this.model.category = {
+            label: '',
+            title: 'Select two countries for comparing indicators: ',
+            column: ''
+          }
         }
 
       }
