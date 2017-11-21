@@ -99,8 +99,7 @@ p.p-none-space{
 .dropdown-item{
     font-size: 12px;
     padding: 7px 12px;
-    white-space: normal;
-    text-align: justify;
+    white-space:nowrap;
 }
 .dropdown-item:hover{
     background-color: #F7F7F7;
@@ -332,6 +331,7 @@ select.form-control:not([size]):not([multiple]){
         .content-card{
             padding-left: 20px;
             padding-right: 20px;
+            padding-bottom: 20px;
         }
         .content-card p{
             padding-top: 15px;
@@ -850,7 +850,8 @@ select-dropdown li.selected.highlighted {
 
 /*NEW STYLES*/
 .dropdown-width {
-    max-width: 100% !important;
+    /*max-width: 100% !important;*/
+  padding: .3rem 0 !important;
 }
 .row-margin{
   margin-bottom: 22px;
