@@ -336,40 +336,43 @@ export class AppComponent {
       }
     }
   }
-  getLabelCountry(indicator, typeOfCountry) {
-    const countryName = this.countryComparer[typeOfCountry];
+  getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
+    const countryName = isOrganization ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
     if (!countryName || !indicator) {
-      return '';
+      return '-';
     }
-    const country = this.countriesQuery.filter( (a) => {
-      if (!a.country) {
+    const dataObject = isOrganization ? this.partners : this.countriesQuery;
+    const field = isOrganization ? 'partner' : 'country';
+    const country = dataObject.filter( (a) => {
+      if (!a[field]) {
         return false;
       }
-      return a.country.toLowerCase().trim() === countryName.toLowerCase().trim();
+      return a[field].toLowerCase().trim() === countryName.toLowerCase().trim();
     })[0];
     let text = '';
     if (!country) {
-      return '';
+      return '-';
     }
+    const value = country[indicator.column] ? country[indicator.column] : '-';
     if (indicator['subcategories']) {
-      if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'YES') {
+      if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator['yesText'];
-      }else if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'NO') {
+      }else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator['noText'];
       } else {
-        text = text + ' ' + indicator['prefix'] + ' ' + country[indicator.column] + ' ' + indicator['suffix'];
+        text = text + ' ' + indicator['prefix'] + ' ' + value + ' ' + indicator['suffix'];
       }
     } else {
-      if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'YES') {
+      if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator.yesText;
-      } else if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'NO') {
+      } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator.noText;
       } else {
-        text = text + ' ' + indicator.prefix + ' ' + country[indicator.column] + ' ' + indicator.suffix;
+        text = text + ' ' + indicator.prefix + ' ' + value + ' ' + indicator.suffix;
       }
     }
-    if (text == null || text.trim() == 'null') {
-      return '';
+    if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
+      return '-';
     }
     return text;
   }
@@ -449,7 +452,8 @@ export class AppComponent {
     };
     this.organizationComparer = {
       firstOrganization: '',
-      ssecondOrganization: ''
+      ssecondOrganization: '',
+      aggregate: ''
     };
     titles.forEach(title => {
       if (title.year === '2016') {
@@ -464,52 +468,53 @@ export class AppComponent {
     this.subIndicator = true;
     this.isNumber = false;
   }
-  exportCsv() {
-    if (this.countryComparer.firstCountry != '' || this.countryComparer.secondCountry != '' || this.countryComparer.aggregate != '') {
-      const lines = [];
-      const headers = ['Indicator'];
-      if (this.countryComparer.firstCountry != '') {
-        headers.push(this.countryComparer.firstCountry);
+  exportCsv(isOrganization?: boolean) {
+    const comparer = isOrganization ? this.organizationComparer : this.countryComparer;
+    const first = isOrganization ? 'firstOrganization' : 'firstCountry';
+    const second = isOrganization ? 'secondOrganization' : 'secondCountry';
+    const lines = [];
+    const headers = ['Indicator'];
+    if (comparer[first] != '') {
+      headers.push(comparer[first]);
+    }
+    if (comparer[second] != '') {
+      headers.push(comparer[second]);
+    }
+    if (comparer.aggregate != '') {
+      headers.push(comparer.aggregate);
+    }
+    lines.push(headers);
+    this.model.year.categories.forEach(category => {
+      let line = [];
+      line.push(category.title);
+      if (comparer[first] != '') {
+        line.push(this.getLabelCountry(category, first, isOrganization).trim());
       }
-      if (this.countryComparer.secondCountry != '') {
-        headers.push(this.countryComparer.secondCountry);
+      if (comparer[second] != '') {
+        line.push(this.getLabelCountry(category, second, isOrganization).trim());
       }
-      if (this.countryComparer.aggregate != '') {
-        headers.push(this.countryComparer.aggregate);
+      if (comparer.aggregate != '') {
+        line.push(this.getLabelCountry(category, 'aggregate', isOrganization).trim());
       }
-      lines.push(headers);
-      this.model.year.categories.forEach(category => {
-        let line = [];
-        line.push(category.title);
-        if (this.countryComparer.firstCountry != '') {
-          line.push(this.getLabelCountry(category, 'firstCountry').trim());
+      lines.push(line);
+      category.subcategories.forEach(subcategory => {
+        line = [];
+        line.push(subcategory.label);
+        if (comparer[first] != '') {
+          line.push(this.getLabelCountry(subcategory, first, isOrganization).trim());
         }
-        if (this.countryComparer.secondCountry != '') {
-          line.push(this.getLabelCountry(category, 'secondCountry').trim());
+        if (comparer[second] != '') {
+          line.push(this.getLabelCountry(subcategory, second, isOrganization).trim());
         }
-        if (this.countryComparer.aggregate != '') {
-          line.push(this.getLabelCountry(category, 'aggregate').trim());
+        if (comparer.aggregate != '') {
+          line.push(this.getLabelCountry(subcategory, 'aggregate', isOrganization).trim());
         }
         lines.push(line);
-        category.subcategories.forEach(subcategory => {
-          line = [];
-          line.push(subcategory.label);
-          if (this.countryComparer.firstCountry != '') {
-            line.push(this.getLabelCountry(subcategory, 'firstCountry').trim());
-          }
-          if (this.countryComparer.secondCountry != '') {
-            line.push(this.getLabelCountry(subcategory, 'secondCountry').trim());
-          }
-          if (this.countryComparer.aggregate != '') {
-            line.push(this.getLabelCountry(subcategory, 'aggregate').trim());
-          }
-          lines.push(line);
-        });
       });
-      let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
-      let result = linesString.join('\n');
-      let blob = new Blob([result], { type: 'text/csv' });
-      saveAs(blob, 'export.csv');
-    }
+    });
+    let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
+    let result = linesString.join('\n');
+    let blob = new Blob([result], { type: 'text/csv' });
+    saveAs(blob, 'export.csv');
   }
 }
