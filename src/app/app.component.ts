@@ -195,6 +195,40 @@ export class AppComponent {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+  getIndicatorValue(country, year) {
+    if (!country) {
+      return '-';
+    }
+    let ind = '', index = -1;
+    for (const indicator of this.model.year.categories) {
+      if (this.model.category && this.model.category.label === indicator.label) {
+        ind = indicator.id;
+      }
+      indicator.subcategories.forEach((ele, idx) => {
+        if (this.model.subcategory && this.model.subcategory.label === ele.label) {
+          ind = indicator.id;
+          index = idx + 1;
+        }
+      });
+    }
+
+    if (ind === '1a') {
+      ind = ind.replace('a', '');
+    }
+    ind = `_${year}_${ind}`;
+    if (index !== -1) {
+      ind = `${ind}_${index}`;
+    }
+    if (this.countriesQuery) {
+      const countryQuery = this.countriesQuery.filter(ele => {
+        return ele.country === country;
+      })[0];
+      if (countryQuery && countryQuery.hasOwnProperty(ind)) {
+        return countryQuery[ind] ? countryQuery[ind] : '-';
+      }
+    }
+    return '-';
+  }
   selectTab(event) {
     console.log(event.target.id);
     if (event.target.id) {
