@@ -38,8 +38,8 @@ export const incomeGroups = [
     value: ''
   },
   {
-    label: 'Low Income',
-    value: 'Low Income'
+    label: 'Low income',
+    value: 'Low income'
   },
   {
     label: 'Lower middle income',
