@@ -319,7 +319,9 @@ export class AppComponent {
     }*/
     return '';
   }
-
+  checkIfString(val) {
+    return typeof val === 'string';
+  }
   getTextPopUp(countryName) {
     this.popupText = '';
     if (countryName !== 'Country') {
@@ -328,21 +330,24 @@ export class AppComponent {
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null ) {
         if (country[this.model.category.column] != null ) {
-          this.popupText = this.model.category.label + ' ' + country[this.model.category.column] + '<br>';
-          if (country[this.model.category.column] === 'Yes') {
+          console.log('enter to this if');
+          this.popupText = '';
+          if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'YES') {
             this.popupText = this.popupText + ' ' + this.model.category['yesText'];
-          }else if (country[this.model.category.column] === 'No') {
+          }else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
             this.popupText = this.popupText + ' ' + this.model.category['noText'];
           } else {
+            console.log('enter here');
             this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + country[this.model.category.column] + ' ' + this.model.category['suffix'];
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
-        this.popupText = this.model.subcategory.label + '<br>';
+        this.popupText = '';
+        console.log('here');
         if (country[this.model.subcategory.column] != null) {
-          if (country[this.model.subcategory.column] === 'Yes') {
+          if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'YES') {
             this.popupText = this.popupText + ' ' + this.model.subcategory.yesText;
-          }else if (country[this.model.subcategory.column] === 'No') {
+          }else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
             this.popupText = this.popupText + ' ' + this.model.subcategory.noText;
           } else {
             this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + country[this.model.subcategory.column] + ' ' + this.model.subcategory.suffix;

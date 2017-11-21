@@ -335,7 +335,7 @@ select.form-control:not([size]):not([multiple]){
         }
         .content-card p{
             padding-top: 15px;
-            text-align: justify;
+            text-align: left;
             font-size: 11px;
             max-height: 125px;
         }
