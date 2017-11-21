@@ -291,9 +291,11 @@ export class AppComponent {
     this.selectedCountry = null;
   }
   getText(param) {
+    if (!param) {
+      return '-';
+    }
     return param + (typeof param === 'number' ? '%' : '');
   }
-  
   onIndicatorOver(category) {
     this.openedIndicator = category.id;
   }
