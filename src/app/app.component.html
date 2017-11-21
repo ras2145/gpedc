@@ -360,23 +360,17 @@
                                                         {{indicator.title}}
                                                     </p>
                                                 </td>
-                                                <td width="25%" class="background-2" [innerHTML]="getLabelCountry(indicator.id, 'first')"></td>
-                                                <td width="25%" [innerHTML]="getLabelCountry(indicator.id, 'second')"></td>
+                                                <td width="25%" class="background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
+                                                <td width="25%" [innerHTML]="getLabelCountry(indicator, 'secondCountry')"></td>
                                                 <td width="25%"></td>
                                             </tr>
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                 <td class="table-subtible background-1">
                                                     <p>{{subcategory.label}}</p>
                                                 </td>
-                                                <td class="table-result center-td background-2">
-                                                    Alignment in<br>Objectives: 89%
-                                                </td>
-                                                <td class="table-result center-td background-2">
-                                                    Alignment in<br>Objectives: 89%
-                                                </td>
-                                                <td class="table-result center-td background-2">
-                                                    Alignment in<br>Objectives: 89%
-                                                </td>
+                                                <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
+                                                <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
+                                                <td class="table-result center-td background-2"></td>
                                             </tr>
                                         </table>
                                     </div>

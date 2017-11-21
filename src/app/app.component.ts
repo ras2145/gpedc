@@ -300,36 +300,34 @@ export class AppComponent {
       }
     }
   }
-  getLabelCountry(id, country) {
-    // re implement charge logic
-    if (!id) {
+  getLabelCountry(indicator, typeOfCountry) {
+    const countryName = this.countryComparer[typeOfCountry];
+    if (!countryName || !indicator) {
       return '';
     }
-    /*if (this.allLabels[id]) {
-      console.log('my id ', id);
-      return this.allLabels[id];
+    const country = this.countriesQuery.filter( (a) => a.country === countryName)[0];
+    let text = '';
+    if (!country) {
+      return '';
     }
-    const _country = ( (country === 'first') ? this.countryComparer.firstCountry : this.countryComparer.secondCountry);
-    if (_country) {
-      const categories = this.model.year.categories;
-      for ( const category of categories ) {
-        if (id === category.id) {
-          let text = '';
-          this.mapService.getIndicatorCountry(_country).subscribe(val => {
-            if (val[category.id] === 'Yes' ) {
-              text = text + category.label + '<br>' + category.yesText + '<br>';
-            } else if (val[category.id] === 'No') {
-              text = text  + category.label + '<br>' + category.noText + '<br>';
-            } else {
-              text = text + category.label + '<br>' + (category.prefix + ' ' + val[category.column] + ' ' + category.suffix) + '<br>';
-            }
-            return this.allLabels[id] = text;
-          });
-          return text;
-        }
+    if (indicator['subcategories']) {
+      if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'YES') {
+        text = text + ' ' + indicator['yesText'];
+      }else if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'NO') {
+        text = text + ' ' + indicator['noText'];
+      } else {
+        text = text + ' ' + indicator['prefix'] + ' ' + country[indicator.column] + ' ' + indicator['suffix'];
       }
-    }*/
-    return '';
+    } else {
+      if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'YES') {
+        text = text + ' ' + indicator.yesText;
+      } else if (this.checkIfString(country[indicator.column]) && country[indicator.column].toUpperCase() === 'NO') {
+        text = text + ' ' + indicator.noText;
+      } else {
+        text = text + ' ' + indicator.prefix + ' ' + country[indicator.column] + ' ' + indicator.suffix;
+      }
+    }
+    return text;
   }
   checkIfString(val) {
     return typeof val === 'string';
