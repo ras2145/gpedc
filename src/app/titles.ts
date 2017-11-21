@@ -8,8 +8,8 @@ export let titles = [
         "title": "Indicator 5a: Development co-operation is more predictable – Annual Predictability",
         "subcategories": [],
         "column": "_2014_5a",
-        "prefix": "",
-        "suffix": "",
+        "prefix": "Annual Predictability:",
+        "suffix": "of development co-operation funding was disbursed within the fiscal year within which it was scheduled.",
         "yesText": "",
         "noText": ""
       },
@@ -19,8 +19,8 @@ export let titles = [
         "title": "Indicator 5b: Development co-operation is more predictable – Medium-term Predictability",
         "subcategories": [],
         "column": "_2014_5b",
-        "prefix": "",
-        "suffix": "",
+        "prefix": "Medium-term Predictability:",
+        "suffix": "of development co-operation funding is covered by indicative forward spending plans provided at country level.",
         "yesText": "",
         "noText": ""
       },
@@ -31,7 +31,7 @@ export let titles = [
         "subcategories": [],
         "column": "_2014_6",
         "prefix": "",
-        "suffix": "",
+        "suffix": "of development co-operation funding scheduled for disbursement is included in national budgets subject to parliamentary oversight.",
         "yesText": "",
         "noText": ""
       },
@@ -53,8 +53,8 @@ export let titles = [
             "column": "_2014_7_2",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 2: Local targets for development \nco-operation have been established.",
-            "noText": "Criterion 2: Local targets for development \nco-operation have not been established."
+            "yesText": "Criterion 2: Local targets for development co-operation have been established.",
+            "noText": "Criterion 2: Local targets for development co-operation have not been established."
           },
           {
             "label": "Government and development partners conduct regular joint assessment towards targets",
@@ -137,7 +137,7 @@ export let titles = [
         "title": "Indicator 9a: Quality of countries’ public financial management systems",
         "subcategories": [],
         "column": "_2014_9a",
-        "prefix": "",
+        "prefix": "Country Policy and Institutional Assessment Score:",
         "suffix": "",
         "yesText": "",
         "noText": ""
@@ -149,7 +149,7 @@ export let titles = [
         "subcategories": [],
         "column": "_2014_9b",
         "prefix": "",
-        "suffix": "",
+        "suffix": "of development co-operation funding disbursed for the government sector used public financial management and procurement systems.",
         "yesText": "",
         "noText": ""
       },
@@ -159,7 +159,7 @@ export let titles = [
         "title": "Indicator 10: Aid is untied",
         "subcategories": [],
         "column": "_2014_10",
-        "prefix": "",
+        "prefix": "Share of untied aid:",
         "suffix": "",
         "yesText": "",
         "noText": ""
@@ -343,8 +343,8 @@ export let titles = [
         "title": "Indicator 5a: Development co-operation is more predictable – Annual Predictability",
         "subcategories": [],
         "column": "_2016_5a",
-        "prefix": "",
-        "suffix": "",
+        "prefix": "Annual Predictability:",
+        "suffix": "of development co-operation funding was disbursed within the fiscal year within which it was scheduled.",
         "yesText": "",
         "noText": ""
       },
@@ -354,8 +354,8 @@ export let titles = [
         "title": "Indicator 5b: Development co-operation is more predictable – Medium-term Predictability",
         "subcategories": [],
         "column": "_2016_5b",
-        "prefix": "",
-        "suffix": "",
+        "prefix": "Medium-term Predictability:",
+        "suffix": "of development co-operation funding is covered by indicative forward spending plans provided at country level.",
         "yesText": "",
         "noText": ""
       },
@@ -366,7 +366,7 @@ export let titles = [
         "subcategories": [],
         "column": "_2016_6",
         "prefix": "",
-        "suffix": "",
+        "suffix": "of development co-operation funding scheduled for disbursement is included in national budgets subject to parliamentary oversight.",
         "yesText": "",
         "noText": ""
       },
@@ -388,8 +388,8 @@ export let titles = [
             "column": "_2016_7_2",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 2: Local targets for development \nco-operation have been established.",
-            "noText": "Criterion 2: Local targets for development \nco-operation have not been established."
+            "yesText": "Criterion 2: Local targets for development co-operation have been established.",
+            "noText": "Criterion 2: Local targets for development co-operation have not been established."
           },
           {
             "label": "Government and development partners conduct regular joint assessment towards targets",
@@ -472,7 +472,7 @@ export let titles = [
         "title": "Indicator 9a: Quality of countries’ public financial management systems",
         "subcategories": [],
         "column": "_2016_9a",
-        "prefix": "",
+        "prefix": "Country Policy and Institutional Assessment Score:",
         "suffix": "",
         "yesText": "",
         "noText": ""
@@ -484,7 +484,7 @@ export let titles = [
         "subcategories": [],
         "column": "_2016_9b",
         "prefix": "",
-        "suffix": "",
+        "suffix": "of development co-operation funding disbursed for the government sector used public financial management and procurement systems.",
         "yesText": "",
         "noText": ""
       },
@@ -494,7 +494,7 @@ export let titles = [
         "title": "Indicator 10: Aid is untied",
         "subcategories": [],
         "column": "_2016_10",
-        "prefix": "",
+        "prefix": "Share of untied aid:",
         "suffix": "",
         "yesText": "",
         "noText": ""
