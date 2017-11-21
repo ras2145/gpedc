@@ -41,6 +41,15 @@ export let titles = [
         "title": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "subcategories": [
           {
+            "id": "7",
+            "label": "Indicator 7 Summary",
+            "column": "_2014_7",
+            "prefix": "",
+            "suffix": "",
+            "yesText": "At least 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
+            "noText": "Less than 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place."
+          },
+          {
             "label": "Aid or partnership policy is in place",
             "column": "_2014_7_1",
             "prefix": "",
@@ -92,6 +101,15 @@ export let titles = [
         "label": " 8: Public allocations for gender equality and women's empowerment are tracked",
         "title": "Indicator 8: Gender equality and women’s empowerment",
         "subcategories": [
+          {
+            "id": "8",
+            "label": "Indicator 8 Summary",
+            "column": "_2014_8",
+            "prefix": "",
+            "suffix": "",
+            "yesText": "There is a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
+            "noText": "There is not a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available."
+          },
           {
             "label": "Existence of a government statement establishing tracking system",
             "column": "_2014_8_1_1",
@@ -376,6 +394,15 @@ export let titles = [
         "title": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "subcategories": [
           {
+            "id": "7",
+            "label": "Indicator 7 Summary",
+            "column": "_2016_7",
+            "prefix": "",
+            "suffix": "",
+            "yesText": "At least 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
+            "noText": "Less than 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place."
+          },
+          {
             "label": "Aid or partnership policy is in place",
             "column": "_2016_7_1",
             "prefix": "",
@@ -427,6 +454,15 @@ export let titles = [
         "label": " 8: Public allocations for gender equality and women's empowerment are tracked",
         "title": "Indicator 8: Gender equality and women’s empowerment",
         "subcategories": [
+          {
+            "id": "8",
+            "label": "Indicator 8 Summary",
+            "column": "_2016_8",
+            "prefix": "",
+            "suffix": "",
+            "yesText": "There is a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
+            "noText": "There is not a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available."
+          },
           {
             "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
             "column": "_2016_8_1_1",
