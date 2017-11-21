@@ -50,7 +50,7 @@
                                     <div class="col-md-12 btn-year"><!-- col-md-8 -->
                                         <div class="radio">
                                             <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
-                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull()" (change)="getIndicator(model.year.categories[0].id)" (change)="changeYearLabel(title)"/>
+                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
                                                 {{title.year}}
                                             </label>
                                         </div>
@@ -105,9 +105,10 @@
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
                                             </label>
-                                            <div class="btn-group btn-dropdown" dropdown [autoClose]="true">
+                                            <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
+                                                    <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
+                                                    <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select an Indicator</span>
                                                     <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
@@ -118,7 +119,7 @@
                                                         </a>
                                                         <ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
                                                             <li role="menuitem" *ngFor="let subcategory of category.subcategories">
-                                                                <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
+                                                                <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)"> {{subcategory.label}}</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -433,7 +434,7 @@
                                         </p>
                                     </div>
                                     <div class="col-md-8 space-line-1">
-                                        <p class="result-subtitle space-left">2. Select two countries from the map or type their names: </p>
+                                        <p class="result-subtitle space-left">2. Select two countries from the map or type their names:</p>
                                     </div>
                                 </div>
 
@@ -512,7 +513,7 @@
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab!=='tab3'">
-                      <p>  {{model.category.title}} &nbsp; <i *ngIf="selectedTab==='tab1'" class="mdi mdi-information" (click)="openModal(template)"></i></p>
+                      <p>  {{ !indicator ? model.category.title : 'Select Indicator'}} &nbsp; <i *ngIf="selectedTab==='tab1' && !indicator" class="mdi mdi-information" (click)="openModal(template)"></i></p>
                     </div>
                     <!-- CARD map -->
                     <div class="card-map" *ngIf="selectedTab==='tab1'">
@@ -547,7 +548,7 @@
                     <div class="tab-map" *ngIf="selectedCountry">
                       <tabset #staticTabs>
                         <tab *ngFor="let category of categoriesNotNull" heading="{{(footerTab===category.id?'Indicator '+category.id:category.id)}}" (select)=getIndicator(category.id)>
-                          <p [innerHTML]="footerText">
+                            <p [innerHTML]="footerText">
                           </p>
                         </tab>
                       </tabset>

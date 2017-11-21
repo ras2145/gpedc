@@ -40,6 +40,7 @@ export class AppComponent {
   mapUrlProfile: any;
   subIndicator: any;
   isNumber: any;
+  indicator: any;
   model = {
     year: null,
     category: {
@@ -74,6 +75,7 @@ export class AppComponent {
     this.resetModels();
     this.mapService.createMap('map');
     this.mapConfig();
+    this.indicator = true;
   }
   chargeOrganizationComparison() {
     this.organizationSelectors.push({
@@ -205,35 +207,46 @@ export class AppComponent {
             this.model.category = title.categories[0];
           }
         });
+        this.indicator = true;
         if (this.selectedTab === 'tab1') {
           this.updateIndicatorGeojson();
         }
         if (this.selectedTab === 'tab2') {
+          this.indicator = false;
           this.resetComparer();
           this.model.category.title = 'Select two countries for comparing indicators: ';
         }
+
       }
     }
   }
   selectCategory(category) {
     this.model.category = category;
     this.model.subcategory = null;
+    this.indicator = false;
     this.updateIndicatorGeojson();
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
+    this.indicator = false;
     this.updateIndicatorGeojson();
   }
-  changeYearLabel(y){
-     titles.forEach(title => {
+  changeYearLabel(y) {
+    titles.forEach(title => {
       if (y.year === title.year) {
         this.model.year = title;
         this.model.category = title.categories[0];
         this.model.subcategory = null;
       }
     });
+    this.footerTab = '';
+    this.footerText = '';
+    this.mapService.resetClickLayer();
+    this.indicatorSelectedFooter = this.model.year.categories[0].id;
+    this.indicator = true;
+    this.selectedCountry = null;
   }
   getText(param) {
     return param + (typeof param === 'number' ? '%' : '');
@@ -357,11 +370,11 @@ export class AppComponent {
       for (const i of categories) {
         if (i.id === indicator) {
           if (this.indicatorsSelectedCountry[i.id] === 'Yes') {
-            this.footerText = this.footerText + i.label + '<br>' + i.yesText + '<br>';
+            this.footerText = this.footerText + i.label + ': ' + i.yesText + '<br>';
           } else if (this.indicatorsSelectedCountry[i.id] === 'No') {
-            this.footerText = this.footerText + i.label + '<br>' + i.noText + '<br>';
+            this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
           } else {
-            this.footerText = this.footerText + i.label + '<br>' + (i.prefix + ' ' + this.indicatorsSelectedCountry[i.column] + ' ' + i.suffix) + '<br>';
+            this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + this.indicatorsSelectedCountry[i.column] + ' ' + i.suffix) + '<br>';
           }
           for (const j of i.subcategories) {
             if (this.indicatorsSelectedCountry[j.column] === 'Yes') {
