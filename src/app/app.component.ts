@@ -17,8 +17,10 @@ export class AppComponent {
   footerTab = '';
   allLabels = {};
   countryComparer: any;
+  organizationComparer: any;
   countryComparisonOptions: any;
   countrySelectors = [];
+  organizationSelectors = [];
   selectedCountry: any = false;
   indicatorsSelectedCountry: any;
   indicatorSelectedFooter: any;
@@ -66,6 +68,11 @@ export class AppComponent {
       secondCountry: '',
       region: ''
     };
+    this.organizationComparer = {
+      firstOrganization: '',
+      ssecondOrganization: ''
+    };
+    this.getPartners();
     this.countryComparisonOptions = countryComparison;
     this.chargeCountryComparison();
     this.titles = titles;
@@ -85,9 +92,32 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
-    this.getPartners();
     this.subIndicator = true;
     this.isNumber = false;
+  }
+  chargeOrganizationComparison() {
+    this.organizationSelectors.push({
+      key: '2014',
+      value: new Array<IOption>()
+    });
+    this.organizationSelectors.push({
+      key: '2016',
+      value: new Array<IOption>()
+    });
+    for (const partner of this.partners) {
+      if (partner['_2016'].toUpperCase() === 'YES') {
+        this.organizationSelectors[1]['value'].push({
+          value: partner['partner'],
+          label: partner['partner']
+        });
+      }
+      if (partner['_2014'].toUpperCase() === 'YES') {
+        this.organizationSelectors[0]['value'].push({
+          value: partner['partner'],
+          label: partner['partner']
+        });
+      }
+    }
   }
   chargeCountryComparison() {
     for (const key in countryComparison) {
@@ -109,12 +139,15 @@ export class AppComponent {
       }
     }
   }
-  onSelected(event) {
+  onSelectedCountry(event) {
     if (this.countryComparer.firstCountry === this.countryComparer.secondCountry) {
       this.countryComparer.secondCountry = '';
       return;
     }
     this.mapService.paintTwoCountry(event.value);
+  }
+  onSelectedOrganization(event) {
+    // TODO organization data
   }
   onDeselected(event) {
     this.mapService.paintTwoCountry(event.value);
@@ -130,7 +163,7 @@ export class AppComponent {
           layers: ['country-fills']
         });
         this.countryName = countries[0].properties.country;
-        this.getTextPopUp();
+        this.getTextPopUp(this.countryName);
       });
       this.mapService.mouseLeave(() => {
         this.countryName = 'Country';
@@ -165,6 +198,12 @@ export class AppComponent {
         }
       });
     });
+  }
+  resetComparer() {
+    this.mapService.paintTwoCountry(this.countryComparer.secondCountry);
+    this.mapService.paintTwoCountry(this.countryComparer.firstCountry);
+    this.countryComparer.firstCountry = '';
+    this.countryComparer.secondCountry = '';
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -268,15 +307,16 @@ export class AppComponent {
     }*/
     return '';
   }
-  getTextPopUp() {
+
+  getTextPopUp(countryName) {
     this.popupText = '';
-    if (this.countryName !== 'Country') {
-      const country = this.countriesQuery.filter( (a) => a.country === this.countryName)[0];
+    if (countryName !== 'Country') {
+      const country = this.countriesQuery.filter( (a) => a.country === countryName)[0];
       if (this.model.category == null) {
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null ) {
         if (country[this.model.category.column] != null ) {
-          this.popupText = this.model.category.label;
+          this.popupText = this.model.category.label + ' ' + country[this.model.category.column] + '<br>';
           if (country[this.model.category.column] === 'Yes') {
             this.popupText = this.popupText + ' ' + this.model.category['yesText'];
           }else if (country[this.model.category.column] === 'No') {
@@ -286,7 +326,7 @@ export class AppComponent {
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
-        this.popupText = this.model.subcategory.label;
+        this.popupText = this.model.subcategory.label + '<br>';
         if (country[this.model.subcategory.column] != null) {
           if (country[this.model.subcategory.column] === 'Yes') {
             this.popupText = this.popupText + ' ' + this.model.subcategory.yesText;
@@ -330,6 +370,7 @@ export class AppComponent {
   getPartners() {
     this.mapService.getPartners().subscribe(res => {
       this.partners = res;
+      this.chargeOrganizationComparison();
     });
   }
 }
