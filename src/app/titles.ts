@@ -4,8 +4,8 @@ export let titles = [
     "categories": [
       {
         "id": "5a",
-        "label": "Indicator 5a: Development co-operation is predictable (annual)",
-        "title": "Indicator 5a Development co-operation is more predictable – Annual Predictability",
+        "label": " 5a: Development co-operation is predictable (annual)",
+        "title": "Indicator 5a: Development co-operation is more predictable – Annual Predictability",
         "subcategories": [],
         "column": "_2014_5a",
         "prefix": "",
@@ -15,8 +15,8 @@ export let titles = [
       },
       {
         "id": "5b",
-        "label": "Indicator 5b: Development co-operation is predictable (medium-term)",
-        "title": "Indicator 5b Development co-operation is more predictable – Medium-term Predictability",
+        "label": " 5b: Development co-operation is predictable (medium-term)",
+        "title": "Indicator 5b: Development co-operation is more predictable – Medium-term Predictability",
         "subcategories": [],
         "column": "_2014_5b",
         "prefix": "",
@@ -26,8 +26,8 @@ export let titles = [
       },
       {
         "id": "6",
-        "label": "Indicator 6: Development co-operation included in a national budget subject to parliamentary oversight",
-        "title": "Indicator 6 Development co-operation is on budgets which are subject to parliamentary scrutiny",
+        "label": " 6: Development co-operation included in a national budget subject to parliamentary oversight",
+        "title": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "subcategories": [],
         "column": "_2014_6",
         "prefix": "",
@@ -37,8 +37,8 @@ export let titles = [
       },
       {
         "id": "7",
-        "label": "Indicator 7: Mutual accountability is strengthened through inclusive reviews",
-        "title": "Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews",
+        "label": " 7: Mutual accountability is strengthened through inclusive reviews",
+        "title": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "subcategories": [
           {
             "label": "Aid or partnership policy is in place",
@@ -89,12 +89,12 @@ export let titles = [
       },
       {
         "id": "8",
-        "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
-        "title": "Indicator 8 Gender equality and women’s empowerment",
+        "label": " 8: Public allocations for gender equality and women's empowerment are tracked",
+        "title": "Indicator 8: Gender equality and women’s empowerment",
         "subcategories": [
           {
             "label": "Existence of a government statement establishing tracking system",
-            "column": "_2014_8_1",
+            "column": "_2014_8_1_1",
             "prefix": "Criterion 1 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
@@ -102,7 +102,7 @@ export let titles = [
           },
           {
             "label": "Public allocations systematically tracked",
-            "column": "_2014_8_2",
+            "column": "_2014_8_1_2",
             "prefix": "Criterion 2 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "Gender allocations are systematically tracked.",
@@ -110,7 +110,7 @@ export let titles = [
           },
           {
             "label": "Central government units provide leadership and oversight",
-            "column": "_2014_8_3",
+            "column": "_2014_8_1_3",
             "prefix": "Criterion 3 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is system oversight by central government unit.",
@@ -118,7 +118,7 @@ export let titles = [
           },
           {
             "label": "Countries have transparent tracking systems",
-            "column": "_2014_8_4",
+            "column": "_2014_8_2",
             "prefix": "Criterion 4 for making gender-related budget information publicly available:",
             "suffix": "",
             "yesText": "Gender-related budget information is publicly available.",
@@ -133,8 +133,8 @@ export let titles = [
       },
       {
         "id": "9a",
-        "label": "Indicator 9a: Governments strengthen country systems",
-        "title": "Indicator 9a Quality of countries’ public financial management systems",
+        "label": " 9a: Governments strengthen country systems",
+        "title": "Indicator 9a: Quality of countries’ public financial management systems",
         "subcategories": [],
         "column": "_2014_9a",
         "prefix": "",
@@ -144,8 +144,8 @@ export let titles = [
       },
       {
         "id": "9b",
-        "label": "Indicator 9b: Development partners use country systems",
-        "title": "Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation",
+        "label": " 9b: Development partners use country systems",
+        "title": "Indicator 9b: Use of countries’ public financial management and procurement systems to deliver development co-operation",
         "subcategories": [],
         "column": "_2014_9b",
         "prefix": "",
@@ -155,8 +155,8 @@ export let titles = [
       },
       {
         "id": "10",
-        "label": "Indicator 10: Aid is untied",
-        "title": "Indicator 10 Aid is untied",
+        "label": " 10: Aid is untied",
+        "title": "Indicator 10: Aid is untied",
         "subcategories": [],
         "column": "_2014_10",
         "prefix": "",
@@ -171,8 +171,8 @@ export let titles = [
     "categories": [
       {
         "id": "1a",
-        "label": "Indicator 1a: Development partners use country-led results frameworks",
-        "title": "Indicator 1 Development co-operation is focused on results that meet developing countries’ priorities",
+        "label": " 1a: Development partners use country-led results frameworks",
+        "title": "Indicator 1: Development co-operation is focused on results that meet developing countries’ priorities",
         "subcategories": [
           {
             "label": "% of new development interventions that draw objectives from country-led results frameworks",
@@ -215,8 +215,8 @@ export let titles = [
       },
       {
         "id": "2",
-        "label": "Indicator 2: CSO enabling environment",
-        "title": "Indicator 2 Civil society operates within an environment which maximises its engagement in and contribution to development",
+        "label": " 2: CSO enabling environment",
+        "title": "Indicator 2: Civil society operates within an environment which maximises its engagement in and contribution to development",
         "subcategories": [
           {
             "label": "Availability of space for multi-stakeholder dialogue on national development policies",
@@ -259,8 +259,8 @@ export let titles = [
       },
       {
         "id": "3",
-        "label": "Indicator 3: Public-private dialogue and private sector engagement",
-        "title": "Indicator 3 Engagement and contribution of the private sector to development",
+        "label": " 3: Public-private dialogue and private sector engagement",
+        "title": "Indicator 3: Engagement and contribution of the private sector to development",
         "subcategories": [
           {
             "label": "Private sector willingness to engage",
@@ -303,8 +303,8 @@ export let titles = [
       },
       {
         "id": "4",
-        "label": "Indicator 4: Transparent information on development co-operation is publicly available",
-        "title": "Indicator 4 Transparency: information on development co-operation is publicly available",
+        "label": " 4: Transparent information on development co-operation is publicly available",
+        "title": "Indicator 4: Transparency: information on development co-operation is publicly available",
         "subcategories": [
           {
             "label": "Assessment by OECD Creditor Reporting System",
@@ -338,9 +338,9 @@ export let titles = [
         "noText": ""
       },
       {
-        "id": "5a",
-        "label": "Indicator 5a: Development co-operation is predictable (annual)",
-        "title": "Indicator 5a Development co-operation is more predictable – Annual Predictability",
+        "id": "51",
+        "label": " 5a: Development co-operation is predictable (annual)",
+        "title": "Indicator 5a: Development co-operation is more predictable – Annual Predictability",
         "subcategories": [],
         "column": "_2016_5a",
         "prefix": "",
@@ -350,8 +350,8 @@ export let titles = [
       },
       {
         "id": "5b",
-        "label": "Indicator 5b: Development co-operation is predictable (medium-term)",
-        "title": "Indicator 5b Development co-operation is more predictable – Medium-term Predictability",
+        "label": " 5b: Development co-operation is predictable (medium-term)",
+        "title": "Indicator 5b: Development co-operation is more predictable – Medium-term Predictability",
         "subcategories": [],
         "column": "_2016_5b",
         "prefix": "",
@@ -361,8 +361,8 @@ export let titles = [
       },
       {
         "id": "6",
-        "label": "Indicator 6: Development co-operation included in a national budget subject to parliamentary oversight",
-        "title": "Indicator 6 Development co-operation is on budgets which are subject to parliamentary scrutiny",
+        "label": " 6: Development co-operation included in a national budget subject to parliamentary oversight",
+        "title": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "subcategories": [],
         "column": "_2016_6",
         "prefix": "",
@@ -372,8 +372,8 @@ export let titles = [
       },
       {
         "id": "7",
-        "label": "Indicator 7: Mutual accountability is strengthened through inclusive reviews",
-        "title": "Indicator 7 Mutual accountability among development partners is strengthened through inclusive reviews",
+        "label": " 7: Mutual accountability is strengthened through inclusive reviews",
+        "title": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "subcategories": [
           {
             "label": "Aid or partnership policy is in place",
@@ -424,12 +424,12 @@ export let titles = [
       },
       {
         "id": "8",
-        "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
-        "title": "Indicator 8 Gender equality and women’s empowerment",
+        "label": " 8: Public allocations for gender equality and women's empowerment are tracked",
+        "title": "Indicator 8: Gender equality and women’s empowerment",
         "subcategories": [
           {
             "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
-            "column": "_2016_8_1",
+            "column": "_2016_8_1_1",
             "prefix": "Criterion 1 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
@@ -437,7 +437,7 @@ export let titles = [
           },
           {
             "label": "Existence of a government statement establishing tracking system",
-            "column": "_2016_8_2",
+            "column": "_2016_8_1_2",
             "prefix": "Criterion 2 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "Gender allocations are systematically tracked.",
@@ -445,7 +445,7 @@ export let titles = [
           },
           {
             "label": "Public allocations systematically tracked",
-            "column": "_2016_8_3",
+            "column": "_2016_8_1_3",
             "prefix": "Criterion 3 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is system oversight by central government unit.",
@@ -453,7 +453,7 @@ export let titles = [
           },
           {
             "label": "Central government units provide leadership and oversight",
-            "column": "_2016_8_4",
+            "column": "_2016_8_2",
             "prefix": "Criterion 4 for making gender-related budget information publicly available:",
             "suffix": "",
             "yesText": "Gender-related budget information is publicly available.",
@@ -468,8 +468,8 @@ export let titles = [
       },
       {
         "id": "9a",
-        "label": "Indicator 9a: Governments strengthen country systems",
-        "title": "Indicator 9a Quality of countries’ public financial management systems",
+        "label": " 9a: Governments strengthen country systems",
+        "title": "Indicator 9a: Quality of countries’ public financial management systems",
         "subcategories": [],
         "column": "_2016_9a",
         "prefix": "",
@@ -479,8 +479,8 @@ export let titles = [
       },
       {
         "id": "9b",
-        "label": "Indicator 9b: Development partners use country systems",
-        "title": "Indicator 9b Use of countries’ public financial management and procurement systems to deliver development co-operation",
+        "label": " 9b: Development partners use country systems",
+        "title": "Indicator 9b: Use of countries’ public financial management and procurement systems to deliver development co-operation",
         "subcategories": [],
         "column": "_2016_9b",
         "prefix": "",
@@ -490,8 +490,8 @@ export let titles = [
       },
       {
         "id": "10",
-        "label": "Indicator 10: Aid is untied",
-        "title": "Indicator 10 Aid is untied",
+        "label": " 10: Aid is untied",
+        "title": "Indicator 10: Aid is untied",
         "subcategories": [],
         "column": "_2016_10",
         "prefix": "",
