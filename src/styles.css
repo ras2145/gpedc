@@ -587,8 +587,8 @@ div#map {
 .tab.map .nav-tabs .nav-item.show .nav-link, .tab-map .nav-tabs .nav-link.active {
   color: #fff;
   background-color: #f07848;
-  border-color: #ddd #ddd #fff;
-  width: 100%;
+  /*border-color: #ddd #ddd #fff;*/
+  width: 110px;
 }
 .tab-map .tab-content>.active {
   display: block;
@@ -606,9 +606,9 @@ div#map {
 .tab-mrg{
   margin-right: 0px !important;
 }
-.tab-map .nav-item.active{
+/*.tab-map .nav-item.active{
     margin-right: 4px;
-}
+}*/
 /*Estilos modal*/
 .space-indicator{
     padding-top: 20px;
@@ -851,4 +851,7 @@ select-dropdown li.selected.highlighted {
 /*NEW STYLES*/
 .dropdown-width {
     max-width: 100% !important;
+}
+.row-margin{
+  margin-bottom: 22px;
 }
