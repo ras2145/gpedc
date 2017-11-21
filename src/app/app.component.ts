@@ -36,6 +36,8 @@ export class AppComponent {
   countryContexts: any;
   footerText = '';
   mapUrlProfile: any;
+  subIndicator: any;
+  isNumber: any;
   model = {
     year: null,
     category: {
@@ -84,6 +86,8 @@ export class AppComponent {
     this.mapConfig();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.getPartners();
+    this.subIndicator = true;
+    this.isNumber = false;
   }
   chargeCountryComparison() {
     for (const key in countryComparison) {
@@ -99,7 +103,7 @@ export class AppComponent {
         });
         for (const ele of countryComparison[key][arrays]) {
           this.countrySelectors[size - 1]['value'].push({
-              value: ele, label: ele
+            value: ele, label: ele
           });
         }
       }
@@ -128,7 +132,7 @@ export class AppComponent {
         this.countryName = countries[0].properties.country;
         this.getTextPopUp();
       });
-      this.mapService.mouseLeave( () => {
+      this.mapService.mouseLeave(() => {
         this.countryName = 'Country';
         this.popupText = '';
       });
@@ -137,15 +141,15 @@ export class AppComponent {
           self.mapUrlProfile = event.features[0].properties.profile;
           if (self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
             self.mapUrlProfile = '#';
-          }else if (!self.mapUrlProfile.includes('http://')) {
+          } else if (!self.mapUrlProfile.includes('http://')) {
             self.mapUrlProfile = 'http://' + self.mapUrlProfile;
           }
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
             layers: ['country-fills']
           });
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-          if ( this.selectedCountry ) {
-            this.indicatorsSelectedCountry = this.countriesQuery.filter( (a) => a.country === this.selectedCountry)[0];
+          if (this.selectedCountry) {
+            this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
             this.getCategoriesNotNull();
             this.getIndicator(this.indicatorSelectedFooter);
           } else {
@@ -182,8 +186,13 @@ export class AppComponent {
   selectSubcategory(category, subcategory) {
     this.model.category = category;
     this.model.subcategory = subcategory;
+    this.subIndicator = false;
     this.updateIndicatorGeojson();
   }
+  getText(param) {
+    return param + (typeof param === 'number' ? '%' : '');
+  }
+  
   onIndicatorOver(category) {
     this.openedIndicator = category.id;
   }
@@ -296,17 +305,17 @@ export class AppComponent {
     this.footerText = '';
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
-      for ( const i of categories ) {
+      for (const i of categories) {
         if (i.id === indicator) {
-          if (this.indicatorsSelectedCountry[i.id] === 'Yes' ) {
+          if (this.indicatorsSelectedCountry[i.id] === 'Yes') {
             this.footerText = this.footerText + i.label + '<br>' + i.yesText + '<br>';
           } else if (this.indicatorsSelectedCountry[i.id] === 'No') {
-            this.footerText = this.footerText  + i.label + '<br>' + i.noText + '<br>';
+            this.footerText = this.footerText + i.label + '<br>' + i.noText + '<br>';
           } else {
             this.footerText = this.footerText + i.label + '<br>' + (i.prefix + ' ' + this.indicatorsSelectedCountry[i.column] + ' ' + i.suffix) + '<br>';
           }
           for (const j of i.subcategories) {
-            if (this.indicatorsSelectedCountry[j.column] === 'Yes' ) {
+            if (this.indicatorsSelectedCountry[j.column] === 'Yes') {
               this.footerText = this.footerText + j.yesText + '<br>';
             } else if (this.indicatorsSelectedCountry[j.column] === 'No') {
               this.footerText = this.footerText + j.noText + '<br>';
@@ -319,7 +328,7 @@ export class AppComponent {
     }
   }
   getPartners() {
-    this.mapService.getPartners().subscribe( res => {
+    this.mapService.getPartners().subscribe(res => {
       this.partners = res;
     });
   }

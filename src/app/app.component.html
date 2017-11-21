@@ -206,7 +206,8 @@
                                             <tbody>
                                                 <tr *ngFor="let partner of partners">
                                                     <td class="result-table-letter">{{partner.partner}}</td>
-                                                    <td class="result-table-number">89%</td>
+                                                    <td *ngIf="model.subcategory == null" class="result-table-number">{{getText(partner[model.category.column])}} </td>
+                                                    <td *ngIf="model.subcategory != null" class="result-table-number">{{getText(partner[model.subcategory.column])}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

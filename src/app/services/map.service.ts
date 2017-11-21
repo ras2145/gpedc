@@ -136,7 +136,7 @@ export class MapService {
     });
   }
   getPartners(): Observable <any> {
-    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".${SERVER.PARTNER_TABLE} order by partner`, false);
+    const query = SERVER.GET_QUERY(`select cartodb_id,_2016_8_4,_2016_8_3,_2016_8_2,_2016_8_1,_2016_8,_2016_7_5,_2016_7_4,_2016_7_3,_2016_7_2,_2016_7_1,_2016_7,_2016_4_3,_2016_4_2,_2016_4_1,_2016_4,_2016_3,_2016_2,_2016_1,_2014_8_4,_2014_8_3,_2014_8_2,_2014_8_1,_2014_8,_2014_7_5,_2014_7_4,_2014_7_3,_2014_7_2,_2014_7_1,_2014_7,_2014,_2016,partner,_2016_10,_2016_9b,_2016_9a,_2016_6,_2016_5b,_2016_5a,_2016_3_4,_2016_3_3,_2016_3_2,_2016_3_1,_2016_2_4,_2016_2_3,_2016_2_2,_2016_2_1,_2016_1_4,_2016_1_3,_2016_1_2,_2016_1_1,_2014_10,_2014_9b,_2014_9a,_2014_6,_2014_5b,_2014_5a from "${SERVER.USERNAME}".${SERVER.PARTNER_TABLE} order by partner`, false);
     return this.webService.get(query).map( res => res.json().rows);
   }
   getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string): Observable<any> {
