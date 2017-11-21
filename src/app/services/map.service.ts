@@ -13,7 +13,7 @@ export class MapService {
 
   public token: String = 'pk.eyJ1IjoidW5kcC1kYXNoYm9hcmQiLCJhIjoiY2o4bjllc2MzMTdzdTJ3bzFiYmloa3VhZyJ9.XPd1v44RritVjBWqnBNvLg';
   public _map: Map;
-  public style: string = 'mapbox://styles/undp-dashboard/cj9hjb6j79y7h2rpceuoki95q';
+  public style: string = 'mapbox://styles/undp-dashboard/cja98kikh1amc2spohea7voeh';
   private twoCountriesFilter = ['in', 'country'];
   constructor(
     private webService: WebService
