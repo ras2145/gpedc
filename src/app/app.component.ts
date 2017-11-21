@@ -515,6 +515,7 @@ export class AppComponent {
     let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
     let result = linesString.join('\n');
     let blob = new Blob([result], { type: 'text/csv' });
-    saveAs(blob, 'export.csv');
+    const fileName = isOrganization? 'organizations' : 'countries';
+    saveAs(blob, fileName + '.csv');
   }
 }
