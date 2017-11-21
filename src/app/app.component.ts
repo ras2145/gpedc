@@ -231,6 +231,15 @@ export class AppComponent {
     this.subIndicator = false;
     this.updateIndicatorGeojson();
   }
+  changeYearLabel(y){
+     titles.forEach(title => {
+      if (y.year === title.year) {
+        this.model.year = title;
+        this.model.category = title.categories[0];
+        this.model.subcategory = null;
+      }
+    });
+  }
   getText(param) {
     return param + (typeof param === 'number' ? '%' : '');
   }
