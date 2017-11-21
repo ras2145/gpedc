@@ -70,6 +70,7 @@ img.logo.panel-1{
 .result-subtitle-one span{
     color: #000;
 }
+
 .space-left{
     margin-left: -13%;
 }
@@ -97,7 +98,15 @@ p.p-none-space{
 }
 .dropdown-item{
     font-size: 12px;
-    padding: 6px 5px;
+    padding: 7px 12px;
+    white-space: normal;
+    text-align: justify;
+}
+.dropdown-item:hover{
+    background-color: #F7F7F7;
+}
+#second-dropdown .dropdown-item{
+    white-space: nowrap;
 }
 .dropdown-item.style-a-default{
     font-size: 14px;
@@ -411,6 +420,9 @@ select.form-control:not([size]):not([multiple]){
 .width-popup .popover-body{
     width: 300px;
     padding-right: 20px;
+}
+.popover{
+    font-size: 12px;
 }
 
 
@@ -788,7 +800,7 @@ div#map {
     color: #495057;
     position: absolute;
     top: 8px;
-    left: 20px;
+    left: 12px;
     width:90%;
     font-size:14px;
     overflow:hidden;

@@ -57,6 +57,44 @@
                                     </div>
                                 </div>
 
+                                <!-- <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="btn-group" dropdown [autoClose]="false" container="body">
+                                          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                                            This dropdown has nested submenu <span class="caret"></span>
+                                          </button>
+                                          <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                            <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
+
+                                            <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
+                                              <a dropdownToggle class="dropdown-item dropdown-toggle"
+                                                 (click)="false">Hover me for nested dropdown <span class="caret"></span></a>
+                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
+                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action1</a></li>
+                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action2</a></li>
+                                              </ul>
+                                            </li>
+
+                                            <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
+                                              <a dropdownToggle class="dropdown-item dropdown-toggle"
+                                                 (click)="false">Hover me for nested dropdown <span class="caret"></span></a>
+                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
+                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action1</a></li>
+                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action2</a></li>
+                                              </ul>
+                                            </li>
+
+                                            <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Something else here</a></li>
+                                            <li class="divider dropdown-divider"></li>
+                                            <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Separated link</a></li>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
                                 <div class="row">
                                     <div class="col-md-12 border-bottom">
                                         <div class="form-group style-select">
@@ -78,7 +116,7 @@
                                                             {{category.label}}
                                                             <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>
-                                                        <ul *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
+                                                        <ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
                                                             <li role="menuitem" *ngFor="let subcategory of category.subcategories">
                                                                 <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)">{{subcategory.label}}</a>
                                                             </li>
@@ -369,7 +407,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row"><div class="col-md-1"></div><div class="col-md-10 border-bottom"></div></div>
+                                <div class="row"><div class="col-md-1"></div><div class="col-md-10 select year"></div></div>
 
                                 <div class="row">
                                     <div class="col-md-4 space-line-1">
