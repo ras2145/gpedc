@@ -345,7 +345,7 @@
                                               <ng-select
                                               [allowClear]="true"
                                               placeholder="Select Aggregate"
-                                              [(ngModel)]="countryComparer.region" [options]="countrySelectors[2]['value']"></ng-select>
+                                              [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[2]['value']"></ng-select>
                                             </div>
                                         </div>
                                     </div>
@@ -362,7 +362,7 @@
                                                 </td>
                                                 <td width="25%" class="background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
                                                 <td width="25%" [innerHTML]="getLabelCountry(indicator, 'secondCountry')"></td>
-                                                <td width="25%"></td>
+                                                <td width="25%" [innerHTML]="getLabelCountry(indicator, 'aggregate')"></td>
                                             </tr>
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                 <td class="table-subtible background-1">
@@ -370,7 +370,7 @@
                                                 </td>
                                                 <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
                                                 <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
-                                                <td class="table-result center-td background-2"></td>
+                                                <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')"></td>
                                             </tr>
                                         </table>
                                     </div>

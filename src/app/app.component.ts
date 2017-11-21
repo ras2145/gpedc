@@ -305,7 +305,12 @@ export class AppComponent {
     if (!countryName || !indicator) {
       return '';
     }
-    const country = this.countriesQuery.filter( (a) => a.country === countryName)[0];
+    const country = this.countriesQuery.filter( (a) => {
+      if (!a.country) {
+        return false;
+      }
+      return a.country.toLowerCase().trim() === countryName.toLowerCase().trim();
+    })[0];
     let text = '';
     if (!country) {
       return '';
@@ -401,7 +406,7 @@ export class AppComponent {
     this.countryComparer = {
       firstCountry: '',
       secondCountry: '',
-      region: ''
+      aggregate: ''
     };
     this.organizationComparer = {
       firstOrganization: '',
