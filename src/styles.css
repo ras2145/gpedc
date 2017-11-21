@@ -581,6 +581,7 @@ div#map {
   margin-right: 4px;
   padding: 6px 10px;
   width: 40px;
+  text-align: center;
 }
 
 .tab.map .nav-tabs .nav-item.show .nav-link, .tab-map .nav-tabs .nav-link.active {
