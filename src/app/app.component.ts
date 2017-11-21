@@ -63,15 +63,6 @@ export class AppComponent {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
-    this.countryComparer = {
-      firstCountry: '',
-      secondCountry: '',
-      region: ''
-    };
-    this.organizationComparer = {
-      firstOrganization: '',
-      ssecondOrganization: ''
-    };
     this.getPartners();
     this.countryComparisonOptions = countryComparison;
     this.chargeCountryComparison();
@@ -80,20 +71,9 @@ export class AppComponent {
     this.incomeGroups = incomeGroups;
     this.countryContexts = countryContexts;
     this.mapUrlProfile = '#';
-    titles.forEach(title => {
-      if (title.year === '2016') {
-        this.model.year = title;
-        this.model.category = title.categories[0];
-      }
-    });
-    this.model.region = this.regions[0];
-    this.model.incomeGroup = this.incomeGroups[0];
-    this.model.countryContext = this.countryContexts[0];
+    this.resetModels();
     this.mapService.createMap('map');
     this.mapConfig();
-    this.indicatorSelectedFooter = this.model.year.categories[0].id;
-    this.subIndicator = true;
-    this.isNumber = false;
   }
   chargeOrganizationComparison() {
     this.organizationSelectors.push({
@@ -204,19 +184,34 @@ export class AppComponent {
     this.mapService.paintTwoCountry(this.countryComparer.firstCountry);
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
-  }
+    this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+      this.mapService.update(geojson);
+    });
+}
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
   selectTab(event) {
     console.log(event.target.id);
     if (event.target.id) {
-      this.selectedTab = event.target.id;
-      this.mapService.applyFilters(event.target.id);
-      this.mapService.resetClickLayer();
-      this.selectedCountry = '';
-      if (this.selectedTab === 'tab2') {
-        this.model.category.title = 'Select two countries for comparing indicators: ';
+      if (event.target.id != this.selectedTab) {
+        this.selectedTab = event.target.id;
+        this.mapService.applyFilters(event.target.id);
+        this.mapService.resetClickLayer();
+        this.selectedCountry = '';
+        titles.forEach(title => {
+          if (title.year === '2016') {
+            this.model.year = title;
+            this.model.category = title.categories[0];
+          }
+        });
+        if (this.selectedTab === 'tab1') {
+          this.updateIndicatorGeojson();
+        }
+        if (this.selectedTab === 'tab2') {
+          this.resetComparer();
+          this.model.category.title = 'Select two countries for comparing indicators: ';
+        }
       }
     }
   }
@@ -386,5 +381,28 @@ export class AppComponent {
       this.partners = res;
       this.chargeOrganizationComparison();
     });
+  }
+  resetModels() {
+    this.countryComparer = {
+      firstCountry: '',
+      secondCountry: '',
+      region: ''
+    };
+    this.organizationComparer = {
+      firstOrganization: '',
+      ssecondOrganization: ''
+    };
+    titles.forEach(title => {
+      if (title.year === '2016') {
+        this.model.year = title;
+        this.model.category = title.categories[0];
+      }
+    });
+    this.model.region = this.regions[0];
+    this.model.incomeGroup = this.incomeGroups[0];
+    this.model.countryContext = this.countryContexts[0];
+    this.indicatorSelectedFooter = this.model.year.categories[0].id;
+    this.subIndicator = true;
+    this.isNumber = false;
   }
 }

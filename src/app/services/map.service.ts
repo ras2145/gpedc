@@ -141,6 +141,14 @@ export class MapService {
     const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".${SERVER.PARTNER_TABLE} order by partner`, false);
     return this.webService.get(query).map( res => res.json().rows);
   }
+  getCountriesYearGeoJSON(year: string): Observable<any> {
+    let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
+    let query = SERVER.GET_QUERY(sql, true);
+    console.log(query);
+    return this.webService.get(query).map(ans => {
+      return ans.json();
+    });
+  }
   getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string): Observable<any> {
     let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
     let where = '';
