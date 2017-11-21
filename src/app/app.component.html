@@ -283,6 +283,7 @@
                                               (selected)="onSelectedCountry($event)"
                                               [(ngModel)]="countryComparer.firstCountry"
                                               [allowClear]="true"
+                                              placeholder="Country A"
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
@@ -291,12 +292,14 @@
                                               (deselected)="onDeselected($event)"
                                               (selected)="onSelectedCountry($event)"
                                               [allowClear]="true"
+                                              placeholder="Country B"
                                               [(ngModel)]="countryComparer.secondCountry" [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
                                             <div class="col-md-4">
                                               <ng-select
                                               [allowClear]="true"
+                                              placeholder="Select Aggregate"
                                               [(ngModel)]="countryComparer.region" [options]="countrySelectors[2]['value']"></ng-select>
                                             </div>
                                         </div>
