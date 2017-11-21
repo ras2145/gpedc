@@ -6,6 +6,8 @@ import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
 import { regions, incomeGroups, countryContexts } from './filterCountries';
+import { saveAs } from 'file-saver';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -332,6 +334,9 @@ export class AppComponent {
         text = text + ' ' + indicator.prefix + ' ' + country[indicator.column] + ' ' + indicator.suffix;
       }
     }
+    if (text == null || text.trim() == 'null') {
+      return '';
+    }
     return text;
   }
   checkIfString(val) {
@@ -424,5 +429,53 @@ export class AppComponent {
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.subIndicator = true;
     this.isNumber = false;
+  }
+  exportCsv() {
+    if (this.countryComparer.firstCountry != '' || this.countryComparer.secondCountry != '' || this.countryComparer.aggregate != '') {
+      const lines = [];
+      const headers = ['Indicator'];
+      if (this.countryComparer.firstCountry != '') {
+        headers.push(this.countryComparer.firstCountry);
+      }
+      if (this.countryComparer.secondCountry != '') {
+        headers.push(this.countryComparer.secondCountry);
+      }
+      if (this.countryComparer.aggregate != '') {
+        headers.push(this.countryComparer.aggregate);
+      }
+      lines.push(headers);
+      this.model.year.categories.forEach(category => {
+        let line = [];
+        line.push(category.title);
+        if (this.countryComparer.firstCountry != '') {
+          line.push(this.getLabelCountry(category, 'firstCountry').trim());
+        }
+        if (this.countryComparer.secondCountry != '') {
+          line.push(this.getLabelCountry(category, 'secondCountry').trim());
+        }
+        if (this.countryComparer.aggregate != '') {
+          line.push(this.getLabelCountry(category, 'aggregate').trim());
+        }
+        lines.push(line);
+        category.subcategories.forEach(subcategory => {
+          line = [];
+          line.push(subcategory.label);
+          if (this.countryComparer.firstCountry != '') {
+            line.push(this.getLabelCountry(subcategory, 'firstCountry').trim());
+          }
+          if (this.countryComparer.secondCountry != '') {
+            line.push(this.getLabelCountry(subcategory, 'secondCountry').trim());
+          }
+          if (this.countryComparer.aggregate != '') {
+            line.push(this.getLabelCountry(subcategory, 'aggregate').trim());
+          }
+          lines.push(line);
+        });
+      });
+      let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
+      let result = linesString.join('\n');
+      let blob = new Blob([result], { type: 'text/csv' });
+      saveAs(blob, 'export.csv');
+    }
   }
 }
