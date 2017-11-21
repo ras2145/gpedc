@@ -113,7 +113,7 @@
                                                 </button>
                                                 <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
                                                     <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
-                                                        <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectCategory(category)">
+                                                        <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsSevenOrEight(category) && selectCategory(category)">
                                                             {{category.label}}
                                                             <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>

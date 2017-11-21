@@ -133,6 +133,7 @@ export class AppComponent {
   }
   onSelectedOrganization(event) {
     // TODO organization data
+    // LOL
   }
   onDeselected(event) {
     this.mapService.paintTwoCountry(event.value);
@@ -208,6 +209,9 @@ export class AppComponent {
       indicator.subcategories.forEach((ele, idx) => {
         if (this.model.subcategory && this.model.subcategory.label === ele.label) {
           ind = indicator.id;
+          if (this.model.subcategory.id) {
+            index = -1;
+          }
           index = idx + 1;
         }
       });
@@ -521,5 +525,8 @@ export class AppComponent {
     let blob = new Blob([result], { type: 'text/csv' });
     const fileName = isOrganization? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
+  }
+  noIsSevenOrEight(category) {
+    return !(category.id === '7' || category.id === '8');
   }
 }
