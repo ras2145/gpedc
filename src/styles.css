@@ -100,6 +100,7 @@ p.p-none-space{
     font-size: 12px;
     padding: 7px 12px;
     white-space:nowrap;
+    cursor: pointer;
 }
 .dropdown-item:hover{
     background-color: #F7F7F7;
@@ -108,7 +109,7 @@ p.p-none-space{
     white-space: nowrap;
 }
 .dropdown-item.style-a-default{
-    font-size: 14px;
+    font-size: 12px;
     padding: 6px 17px;
 }
 .description{
@@ -855,4 +856,7 @@ select-dropdown li.selected.highlighted {
 }
 .row-margin{
   margin-bottom: 22px;
+}
+#second-dropdown{
+  margin-top: -18px;
 }
