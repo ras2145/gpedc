@@ -34,7 +34,7 @@ export class MapService {
       style: this.style,
       center: [13.5, 26],
       zoom: 1.2,
-      maxBounds: [[-180, -90], [180, 90]],
+      maxBounds: [[-220, -90], [220, 90]],
       maxZoom: 5,
       pitch: 0
     });
