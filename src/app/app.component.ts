@@ -48,7 +48,8 @@ export class AppComponent {
     category: {
       label: 'Select indicator',
       title: '',
-      column: ''
+      column: '',
+      id: ''
     },
     subcategory: null,
     region: null,
@@ -253,8 +254,9 @@ export class AppComponent {
           this.model.category = {
             label: '',
             title: 'Select two countries for comparing indicators: ',
-            column: ''
-          }
+            column: '',
+            id: ''
+          };
         }
 
       }
