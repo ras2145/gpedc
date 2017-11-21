@@ -823,3 +823,10 @@ select-dropdown .disabled {
     cursor: default;
     pointer-events: none;
  }
+
+
+
+/*NEW STYLES*/
+.dropdown-width {
+    max-width: 100% !important;
+}
