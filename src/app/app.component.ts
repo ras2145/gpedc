@@ -215,6 +215,9 @@ export class AppComponent {
       this.mapService.applyFilters(event.target.id);
       this.mapService.resetClickLayer();
       this.selectedCountry = '';
+      if (this.selectedTab === 'tab2') {
+        this.model.category.title = 'Select two countries for comparing indicators: ';
+      }
     }
   }
   selectCategory(category) {
