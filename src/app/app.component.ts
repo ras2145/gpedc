@@ -274,7 +274,11 @@ export class AppComponent {
             id: ''
           };
         }
-
+        if (this.selectedTab === 'tab1') {
+          setTimeout(() => {
+            this.mapService.resize();
+          }, 100);
+        }
       }
     }
   }

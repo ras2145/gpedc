@@ -87,6 +87,9 @@ export class MapService {
       source.setData(geojson);
     }
   }
+  resize() {
+    this.map.resize();
+  }
   paintTwoCountry(country) {
     if (this.twoCountriesFilter.includes(country)) {
       this.twoCountriesFilter.splice(this.twoCountriesFilter.indexOf(country), 1);
