@@ -325,7 +325,7 @@
                                             <div class="col-md-4">
                                               <ng-select
                                               (deselected)="onDeselected($event)"
-                                              (selected)="onSelectedCountry($event)"
+                                              (selected)="onSelectedCountry($event, 'first')"
                                               [(ngModel)]="countryComparer.firstCountry"
                                               [allowClear]="true"
                                               placeholder="Country A"
@@ -335,10 +335,11 @@
                                             <div class="col-md-4">
                                               <ng-select
                                               (deselected)="onDeselected($event)"
-                                              (selected)="onSelectedCountry($event)"
+                                              (selected)="onSelectedCountry($event, 'second')"
                                               [allowClear]="true"
                                               placeholder="Country B"
-                                              [(ngModel)]="countryComparer.secondCountry" [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
+                                              [(ngModel)]="countryComparer.secondCountry"
+                                              [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
                                             <div class="col-md-4">

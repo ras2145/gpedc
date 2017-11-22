@@ -44,6 +44,8 @@ export class AppComponent {
   subIndicator: any;
   isNumber: any;
   indicator: any;
+  firstCountry: any;
+  secondCountry: any;
   model = {
     year: null,
     category: {
@@ -80,6 +82,8 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicator = true;
+    this.firstCountry = '';
+    this.secondCountry = '';
   }
   chargeOrganizationComparison() {
     this.organizationSelectors.push({
@@ -135,10 +139,17 @@ export class AppComponent {
       }
     }
   }
-  onSelectedCountry(event) {
+  onSelectedCountry(event, type) {
     if (this.countryComparer.firstCountry === this.countryComparer.secondCountry) {
       this.countryComparer.secondCountry = '';
       return;
+    }
+    if(type == 'first'){
+      this.mapService.paintTwoCountry(this.firstCountry);
+      this.firstCountry = event.value;
+    }else{
+      this.mapService.paintTwoCountry(this.secondCountry);
+      this.secondCountry = event.value;
     }
     this.mapService.paintTwoCountry(event.value);
   }
