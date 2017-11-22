@@ -32,7 +32,7 @@ export class MapService {
       container: mapId,
       preserveDrawingBuffer: true,
       style: this.style,
-      center: [13.5, 26],
+      center: [19, 37],
       zoom: 1.2,
       maxBounds: [[-220, -90], [220, 90]],
       maxZoom: 5,
