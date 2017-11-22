@@ -324,7 +324,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                               <ng-select
-                                              (deselected)="onDeselected($event)"
+                                              (deselected)="onDeselected($event,'first')"
                                               (selected)="onSelectedCountry($event, 'first')"
                                               [(ngModel)]="countryComparer.firstCountry"
                                               [allowClear]="true"
@@ -334,7 +334,7 @@
 
                                             <div class="col-md-4">
                                               <ng-select
-                                              (deselected)="onDeselected($event)"
+                                              (deselected)="onDeselected($event,'second')"
                                               (selected)="onSelectedCountry($event, 'second')"
                                               [allowClear]="true"
                                               placeholder="Country B"

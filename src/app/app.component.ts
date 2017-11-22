@@ -140,15 +140,28 @@ export class AppComponent {
     }
   }
   onSelectedCountry(event, type) {
-    if (this.countryComparer.firstCountry === this.countryComparer.secondCountry) {
-      this.countryComparer.secondCountry = '';
-      return;
-    }
-    if(type == 'first'){
-      this.mapService.paintTwoCountry(this.firstCountry);
+
+    if (type === 'first') {
+      if (event.value === this.countryComparer.secondCountry) {
+        this.countryComparer.secondCountry = '';
+        this.firstCountry = this.secondCountry;
+        this.secondCountry = '';
+        return;
+      }
+      if (this.firstCountry !== '') {
+        this.mapService.paintTwoCountry(this.firstCountry);
+      }
       this.firstCountry = event.value;
-    }else{
-      this.mapService.paintTwoCountry(this.secondCountry);
+    } else {
+      if (event.value === this.countryComparer.firstCountry) {
+        this.countryComparer.firstCountry = '';
+        this.secondCountry = this.firstCountry;
+        this.firstCountry = '';
+        return;
+      }
+      if (this.secondCountry !== '') {
+        this.mapService.paintTwoCountry(this.secondCountry);
+      }
       this.secondCountry = event.value;
     }
     this.mapService.paintTwoCountry(event.value);
@@ -157,7 +170,12 @@ export class AppComponent {
     // TODO organization data
     // LOL
   }
-  onDeselected(event) {
+  onDeselected(event, type) {
+    if (type === 'first') {
+      this.firstCountry = '';
+    } else {
+      this.secondCountry = '';
+    }
     this.mapService.paintTwoCountry(event.value);
   }
   mapConfig() {
@@ -205,8 +223,11 @@ export class AppComponent {
             layers: ['country-fills']
           });
           const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country);
+        
           this.countryComparer.firstCountry = aux[0];
+          this.firstCountry = aux[0];
           this.countryComparer.secondCountry = aux[1];
+          this.secondCountry = aux[1];
         }
       });
     });
@@ -373,17 +394,17 @@ export class AppComponent {
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
     if (this.selectedCountry) {
-      for ( const i of this.model.year.categories ) {
+      for (const i of this.model.year.categories) {
         let sw = false;
-        if ( this.indicatorsSelectedCountry[i.column] !== null ) {
+        if (this.indicatorsSelectedCountry[i.column] !== null) {
           sw = true;
         }
-        for ( const j of i.subcategories ) {
-          if ( this.indicatorsSelectedCountry[j.column] !== null ) {
+        for (const j of i.subcategories) {
+          if (this.indicatorsSelectedCountry[j.column] !== null) {
             sw = true;
           }
         }
-        if ( sw ) {
+        if (sw) {
           this.categoriesNotNull.push(i);
         }
       }
@@ -396,7 +417,7 @@ export class AppComponent {
     }
     const dataObject = isOrganization ? this.partners : this.countriesQuery;
     const field = isOrganization ? 'partner' : 'country';
-    const country = dataObject.filter( (a) => {
+    const country = dataObject.filter((a) => {
       if (!a[field]) {
         return false;
       }
@@ -410,7 +431,7 @@ export class AppComponent {
     if (indicator['subcategories']) {
       if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator['yesText'];
-      }else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
+      } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator['noText'];
       } else {
         text = text + ' ' + indicator['prefix'] + ' ' + value + ' ' + indicator['suffix'];
@@ -446,15 +467,15 @@ export class AppComponent {
   getTextPopUp(countryName) {
     this.popupText = '';
     if (countryName !== 'Country') {
-      const country = this.countriesQuery.filter( (a) => a.country === countryName)[0];
+      const country = this.countriesQuery.filter((a) => a.country === countryName)[0];
       if (this.model.category == null) {
         this.popupText = 'No indicator selected.<br>';
-      } else if (this.model.category != null && this.model.subcategory == null ) {
-        if (country[this.model.category.column] != null ) {
+      } else if (this.model.category != null && this.model.subcategory == null) {
+        if (country[this.model.category.column] != null) {
           this.popupText = '';
           if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'YES') {
             this.popupText = this.popupText + ' ' + this.model.category['yesText'];
-          }else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
+          } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
             this.popupText = this.popupText + ' ' + this.model.category['noText'];
           } else {
             this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + this.formatValue(this.model.category, country[this.model.category.column]) + ' ' + this.model.category['suffix'];
@@ -465,7 +486,7 @@ export class AppComponent {
         if (country[this.model.subcategory.column] != null) {
           if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'YES') {
             this.popupText = this.popupText + ' ' + this.model.subcategory.yesText;
-          }else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
+          } else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
             this.popupText = this.popupText + ' ' + this.model.subcategory.noText;
           } else {
             this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + this.formatValue(this.model.subcategory, country[this.model.subcategory.column]) + ' ' + this.model.subcategory.suffix;
@@ -535,6 +556,10 @@ export class AppComponent {
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.subIndicator = true;
     this.isNumber = false;
+    this.countryComparer.firstCountry = '';
+    this.countryComparer.secondCountry = '';
+    this.firstCountry = '';
+    this.secondCountry = '';
   }
   exportCsv(isOrganization?: boolean) {
     const comparer = isOrganization ? this.organizationComparer : this.countryComparer;
@@ -583,7 +608,7 @@ export class AppComponent {
     let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
     let result = linesString.join('\n');
     let blob = new Blob([result], { type: 'text/csv' });
-    const fileName = isOrganization? 'organizations' : 'countries';
+    const fileName = isOrganization ? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
   }
   noIsSevenOrEight(category) {
