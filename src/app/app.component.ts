@@ -442,7 +442,7 @@ export class AppComponent {
           }else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
             this.popupText = this.popupText + ' ' + this.model.category['noText'];
           } else {
-            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + country[this.model.category.column] + ' ' + this.model.category['suffix'];
+            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + this.formatValue(this.model.category, country) + ' ' + this.model.category['suffix'];
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
@@ -453,7 +453,7 @@ export class AppComponent {
           }else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
             this.popupText = this.popupText + ' ' + this.model.subcategory.noText;
           } else {
-            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + country[this.model.subcategory.column] + ' ' + this.model.subcategory.suffix;
+            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + this.formatValue(this.model.subcategory, country) + ' ' + this.model.subcategory.suffix;
           }
         }
       }
