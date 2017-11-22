@@ -260,7 +260,9 @@ export class AppComponent {
         });
         this.indicator = true;
         if (this.selectedTab === 'tab1') {
-          this.updateIndicatorGeojson();
+          this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+            this.mapService.update(geojson);
+          });
         }
         if (this.selectedTab === 'tab2') {
           this.indicator = false;
