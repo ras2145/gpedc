@@ -47,7 +47,7 @@ img.logo.panel-1{
     background-color: #fff;
 }
 .row.padding-top-background{
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 /*Estilos para fuentes de las letras*/
@@ -852,7 +852,7 @@ select-dropdown li.selected.highlighted {
 /*NEW STYLES*/
 .dropdown-width {
     /*max-width: 100% !important;*/
-  padding: .3rem 0 !important;
+  padding: .2rem 0 !important;
 }
 .row-margin{
   margin-bottom: 22px;
