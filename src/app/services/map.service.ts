@@ -154,15 +154,20 @@ export class MapService {
   getCountriesYearGeoJSON(year: string): Observable<any> {
     let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
     let query = SERVER.GET_QUERY(sql, true);
-    console.log(query);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
   }
-  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string): Observable<any> {
+  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
     let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
     let where = '';
+    if (year != null && year != '') {
+      where = where + ' upper(' + `_${year}` + ") = 'YES'";
+    }
     if (indicator != null && indicator != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
       where = where + ' ' + indicator + ' IS NOT NULL ';
     }
     if (region  != null && region != '') {
@@ -187,7 +192,6 @@ export class MapService {
       sql = sql + ' WHERE ' + where;
     }
     let query = SERVER.GET_QUERY(sql, true);
-    console.log(query);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });

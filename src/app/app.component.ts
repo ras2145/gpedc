@@ -264,7 +264,6 @@ export class AppComponent {
     return '-';
   }
   selectTab(event) {
-    console.log(event.target.id);
     if (event.target.id) {
       if (event.target.id != this.selectedTab) {
         this.selectedTab = event.target.id;
@@ -359,11 +358,15 @@ export class AppComponent {
   updateIndicatorGeojson() {
     this.selectedCountry = '';
     this.mapService.resetClickLayer();
-    const indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
+    let indicator = null;
+    if (!this.indicator) {
+      indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
+    }
     const region = this.model.region.value;
     const incomeGroup = this.model.incomeGroup.value;
     const countryContext = this.model.countryContext.value;
-    this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext).subscribe(geojson => {
+    const year = this.model.year.year;
+    this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext, year).subscribe(geojson => {
       this.mapService.update(geojson);
     });
   }
@@ -430,7 +433,6 @@ export class AppComponent {
     let value = '';
     if (indicator.type === 'percent') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision) + '%') : '-';
-      //console.log(value);
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : '-';
     } else if (indicator.type === 'text') {
@@ -522,7 +524,9 @@ export class AppComponent {
     titles.forEach(title => {
       if (title.year === '2016') {
         this.model.year = title;
+        //this.model.category = null;
         this.model.category = title.categories[0];
+        console.log(titles);
       }
     });
     this.model.region = this.regions[0];
