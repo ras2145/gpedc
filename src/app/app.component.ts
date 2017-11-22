@@ -179,8 +179,12 @@ export class AppComponent {
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           if (this.selectedCountry) {
             this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
-            this.getCategoriesNotNull();
-            this.getIndicator(this.indicatorSelectedFooter);
+            this.categoriesNotNull = [];
+            setTimeout(() => {
+              this.getCategoriesNotNull();
+              this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
+              this.getIndicator(this.indicatorSelectedFooter);
+            }, 100);
           } else {
             this.indicatorSelectedFooter = this.model.year.categories[0].id;
           }
@@ -338,7 +342,8 @@ export class AppComponent {
     this.updateIndicatorGeojson();
   }
   updateIndicatorGeojson() {
-    //TODO grisaf update geojson
+    this.selectedCountry = '';
+    this.mapService.resetClickLayer();
     const indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     const region = this.model.region.value;
     const incomeGroup = this.model.incomeGroup.value;
