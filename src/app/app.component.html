@@ -245,8 +245,8 @@
                                             <tbody>
                                                 <tr *ngFor="let partner of partners">
                                                     <td class="result-table-letter">{{partner.partner}}</td>
-                                                    <td *ngIf="model.subcategory == null" class="result-table-number">{{getText(partner[model.category.column])}} </td>
-                                                    <td *ngIf="model.subcategory != null" class="result-table-number">{{getText(partner[model.subcategory.column])}}</td>
+                                                    <td *ngIf="model.subcategory == null" class="result-table-number">{{getText(partner[model.category.column], model.category)}} </td>
+                                                    <td *ngIf="model.subcategory != null" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

@@ -7,6 +7,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
 import { regions, incomeGroups, countryContexts, partnerAggregate } from './filterCountries';
 import { saveAs } from 'file-saver';
+import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 
 @Component({
   selector: 'app-root',
@@ -207,7 +208,7 @@ export class AppComponent {
     this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
       this.mapService.update(geojson);
     });
-}
+  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
@@ -323,11 +324,8 @@ export class AppComponent {
       this.mapService.update(geojson);
     });
   }
-  getText(param) {
-    if (!param) {
-      return '-';
-    }
-    return param + (typeof param === 'number' ? '%' : '');
+  getText(value, indicator) {
+    return this.formatValue(indicator, value);
   }
   onIndicatorOver(category) {
     this.openedIndicator = category.id;
@@ -391,7 +389,7 @@ export class AppComponent {
     if (!country) {
       return '-';
     }
-    const value = this.formatValue(indicator, country);
+    const value = this.formatValue(indicator, country[indicator.column]);
     if (indicator['subcategories']) {
       if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator['yesText'];
@@ -414,14 +412,14 @@ export class AppComponent {
     }
     return text;
   }
-  formatValue(indicator, country) {
+  formatValue(indicator, oldValue) {
     let value = '';
     if (indicator.type === 'percent') {
-      value = country[indicator.column] ? (parseFloat(country[indicator.column]).toFixed(indicator.precision) + '%') : '-';
+      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision) + '%') : '-';
     } else if (indicator.type === 'number') {
-      value = country[indicator.column] ? (parseFloat(country[indicator.column]).toFixed(indicator.precision)) : '-';
+      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : '-';
     } else if (indicator.type === 'text') {
-      value = country[indicator.column] ? country[indicator.column] : '-';
+      value = oldValue ? oldValue : '-';
     }
     return value;
   }
@@ -467,20 +465,22 @@ export class AppComponent {
       const categories = this.model.year.categories;
       for (const i of categories) {
         if (i.id === indicator) {
-          if (this.indicatorsSelectedCountry[i.id] === 'Yes') {
+          let value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
+          if (value === 'Yes') {
             this.footerText = this.footerText + i.label + ': ' + i.yesText + '<br>';
-          } else if (this.indicatorsSelectedCountry[i.id] === 'No') {
+          } else if (value === 'No') {
             this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
           } else {
-            this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + this.indicatorsSelectedCountry[i.column] + ' ' + i.suffix) + '<br>';
+            this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br>';
           }
           for (const j of i.subcategories) {
-            if (this.indicatorsSelectedCountry[j.column] === 'Yes') {
+            let subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
+            if (subvalue === 'Yes') {
               this.footerText = this.footerText + j.yesText + '<br>';
-            } else if (this.indicatorsSelectedCountry[j.column] === 'No') {
+            } else if (subvalue === 'No') {
               this.footerText = this.footerText + j.noText + '<br>';
             } else {
-              this.footerText = this.footerText + (j.prefix + ' ' + this.indicatorsSelectedCountry[j.column] + ' ' + j.suffix) + '<br>';
+              this.footerText = this.footerText + (j.prefix + ' ' + subvalue + ' ' + j.suffix) + '<br>';
             }
           }
         }
