@@ -589,14 +589,14 @@ div#map {
   color: #fff;
   background-color: #f07848;
   /*border-color: #ddd #ddd #fff;*/
-  width: 110px;
+  width: 100%;
 }
 .tab-map .tab-content>.active {
   display: block;
   background: #fff;
   padding: 15px;
   font-size: 13px;
-  width: 594px;
+  width: 615px;
   height: 130px;
   overflow-x: hidden;
 }
@@ -607,9 +607,9 @@ div#map {
 .tab-mrg{
   margin-right: 0px !important;
 }
-/*.tab-map .nav-item.active{
-    margin-right: 4px;
-}*/
+.tab-map .nav-item.active{
+  margin-right: 4px;
+}
 /*Estilos modal*/
 .space-indicator{
     padding-top: 20px;
