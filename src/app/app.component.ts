@@ -151,7 +151,7 @@ export class AppComponent {
   mapConfig() {
     const self = this;
     this.mapService.onLoad(() => {
-      this.mapService.getIndicatorFilterGeoJSON(this.model.category.column).subscribe(geojson => {
+      this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
         self.mapService.build(geojson);
       });
       this.mapService.mouseCountryHover(event => {
@@ -303,6 +303,12 @@ export class AppComponent {
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.indicator = true;
     this.selectedCountry = null;
+    this.model.region = this.regions[0];
+    this.model.countryContext = this.countryContexts[0];
+    this.model.incomeGroup = this.incomeGroups[0];
+    this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+      this.mapService.update(geojson);
+    });
   }
   getText(param) {
     if (!param) {
