@@ -377,7 +377,7 @@ export class AppComponent {
     if (!country) {
       return '-';
     }
-    const value = country[indicator.column] ? country[indicator.column] : '-';
+    const value = this.formatValue(indicator, country);
     if (indicator['subcategories']) {
       if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator['yesText'];
@@ -399,6 +399,17 @@ export class AppComponent {
       return '-';
     }
     return text;
+  }
+  formatValue(indicator, country) {
+    let value = '';
+    if (indicator.type === 'percent') {
+      value = country[indicator.column] ? (parseFloat(country[indicator.column]).toFixed(indicator.precision) + '%') : '-';
+    } else if (indicator.type === 'number') {
+      value = country[indicator.column] ? (parseFloat(country[indicator.column]).toFixed(indicator.precision)) : '-';
+    } else if (indicator.type === 'text') {
+      value = country[indicator.column] ? country[indicator.column] : '-';
+    }
+    return value;
   }
   checkIfString(val) {
     return typeof val === 'string';
