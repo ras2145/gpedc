@@ -432,7 +432,7 @@ export let titles = [
         "precision": "0"
       },
       {
-        "id": "51",
+        "id": "5a",
         "label": " 5a: Development co-operation is predictable (annual)",
         "title": "Indicator 5a: Development co-operation is more predictable – Annual Predictability",
         "subcategories": [],
