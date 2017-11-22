@@ -5,7 +5,7 @@ import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
-import { regions, incomeGroups, countryContexts } from './filterCountries';
+import { regions, incomeGroups, countryContexts, partnerAggregate } from './filterCountries';
 import { saveAs } from 'file-saver';
 
 @Component({
@@ -89,6 +89,10 @@ export class AppComponent {
       key: '2016',
       value: new Array<IOption>()
     });
+    this.organizationSelectors.push({
+      key: 'Aggregate',
+      value: new Array<IOption>()
+    });
     for (const partner of this.partners) {
       if (partner['_2016'].toUpperCase() === 'YES') {
         this.organizationSelectors[1]['value'].push({
@@ -102,6 +106,12 @@ export class AppComponent {
           label: partner['partner']
         });
       }
+    }
+    for (const aggregate of partnerAggregate) {
+      this.organizationSelectors[2]['value'].push({
+        value: aggregate.value,
+        label: aggregate.label
+      });
     }
   }
   chargeCountryComparison() {
