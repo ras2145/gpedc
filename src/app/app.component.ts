@@ -216,18 +216,21 @@ export class AppComponent {
     if (!country) {
       return '-';
     }
+    let category;
     let ind = '', index = -1;
     for (const indicator of this.model.year.categories) {
       if (this.model.category && this.model.category.label === indicator.label) {
         ind = indicator.id;
+        category = indicator;
       }
       indicator.subcategories.forEach((ele, idx) => {
         if (this.model.subcategory && this.model.subcategory.label === ele.label) {
+          category = indicator;
           ind = indicator.id;
+          index = idx + 1;
           if (this.model.subcategory.id) {
             index = -1;
           }
-          index = idx + 1;
         }
       });
     }
@@ -244,7 +247,7 @@ export class AppComponent {
         return ele.country === country;
       })[0];
       if (countryQuery && countryQuery.hasOwnProperty(ind)) {
-        return countryQuery[ind] ? countryQuery[ind] : '-';
+        return this.formatValue(category, countryQuery[ind]);
       }
     }
     return '-';
