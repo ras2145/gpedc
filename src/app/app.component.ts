@@ -264,6 +264,9 @@ export class AppComponent {
         });
         this.indicator = true;
         if (this.selectedTab === 'tab1') {
+          this.model.region = this.regions[0];
+          this.model.countryContext = this.countryContexts[0];
+          this.model.incomeGroup = this.incomeGroups[0];
           this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
             this.mapService.update(geojson);
           });
