@@ -467,7 +467,6 @@ export class AppComponent {
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null) {
         if (country[this.model.category.column] != null) {
-          this.popupText = this.model.category['prefix'];
           if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'YES') {
             this.popupText = this.popupText + ' ' + this.model.category['yesText'];
           } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
