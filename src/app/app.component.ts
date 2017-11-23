@@ -140,14 +140,17 @@ export class AppComponent {
   onSelectedCountry(event, type) {
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
+        this.mapService.paintTwoClearOne('first');
+        this.countryComparer.firstCountry = '';
         return;
       }
       if (this.countryComparer.firstCountry !== '') {
-        this.mapService.firstCountry = '';
         this.mapService.paintTwoCountry(this.countryComparer.firstCountry, 'first');
       }
     } else {
       if (event.value === this.countryComparer.firstCountry) {
+        this.countryComparer.secondCountry = '';
+        this.mapService.paintTwoClearOne('second');
         return;
       }
       if (this.countryComparer.secondCountry !== '') {

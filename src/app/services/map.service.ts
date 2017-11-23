@@ -104,6 +104,15 @@ export class MapService {
   resize() {
     this.map.resize();
   }
+  paintTwoClearOne(toClear) {
+    if(toClear === 'first') {
+      this.firstCountry = '';
+    } else {
+      this.secondCountry = '';
+    }
+    this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
+    this.map.setFilter('country-fills-click', this.twoCountriesFilter);
+  }
   paintTwoCountryClear() {
     this.firstCountry = '';
     this.secondCountry = '';
