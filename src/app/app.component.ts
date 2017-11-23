@@ -141,7 +141,7 @@ export class AppComponent {
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
         this.mapService.paintTwoClearOne('first');
-        this.countryComparer.firstCountry = '';
+        this.countryComparer.firstCountry = undefined;
         return;
       }
       if (this.countryComparer.firstCountry !== '') {
@@ -149,7 +149,7 @@ export class AppComponent {
       }
     } else {
       if (event.value === this.countryComparer.firstCountry) {
-        this.countryComparer.secondCountry = '';
+        this.countryComparer.secondCountry = undefined;
         this.mapService.paintTwoClearOne('second');
         return;
       }
