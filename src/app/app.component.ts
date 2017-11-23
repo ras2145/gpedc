@@ -141,7 +141,9 @@ export class AppComponent {
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
         this.mapService.paintTwoClearOne('first');
-        this.countryComparer.firstCountry = undefined;
+        setTimeout(() => {
+            this.countryComparer.firstCountry = undefined;
+        }, 10);         
         return;
       }
       if (this.countryComparer.firstCountry !== '') {
@@ -149,7 +151,9 @@ export class AppComponent {
       }
     } else {
       if (event.value === this.countryComparer.firstCountry) {
-        this.countryComparer.secondCountry = undefined;
+        setTimeout(() => {
+          this.countryComparer.secondCountry = undefined;
+        },10);
         this.mapService.paintTwoClearOne('second');
         return;
       }
@@ -469,20 +473,19 @@ export class AppComponent {
       } else if (this.model.category != null && this.model.subcategory == null) {
         if (country[this.model.category.column] != null) {
           if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'YES') {
-            this.popupText = this.popupText + ' ' + this.model.category['yesText'];
+            this.popupText = this.model.category['prefix'] + ' ' + this.model.category['yesText'];
           } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
-            this.popupText = this.popupText + ' ' + this.model.category['noText'];
+            this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
           } else {
             this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + this.formatValue(this.model.category, country[this.model.category.column]) + ' ' + this.model.category['suffix'];
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
-        this.popupText = this.model.subcategory['prefix'];
         if (country[this.model.subcategory.column] != null) {
           if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'YES') {
-            this.popupText = this.popupText + ' ' + this.model.subcategory.yesText;
+            this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.yesText;
           } else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
-            this.popupText = this.popupText + ' ' + this.model.subcategory.noText;
+            this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.noText;
           } else {
             this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + this.formatValue(this.model.subcategory, country[this.model.subcategory.column]) + ' ' + this.model.subcategory.suffix;
           }
