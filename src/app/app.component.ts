@@ -290,6 +290,7 @@ export class AppComponent {
           if (title.year === '2016') {
             this.model.year = title;
             this.model.category = title.categories[0];
+            this.model.subcategory = null;
           }
         });
         this.indicator = true;
