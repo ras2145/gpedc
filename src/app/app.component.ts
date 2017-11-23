@@ -163,7 +163,20 @@ export class AppComponent {
       }
     }
   }
-  onSelectedOrganization(event) {
+  onSelectedOrganization(event, type) {
+    if (type === 'first') {
+      if (event.value === this.organizationComparer.secondOrganization) {
+        setTimeout(()=> {
+          this.organizationComparer.firstOrganization = undefined;
+        }, 10);
+      }
+    } else {
+      if (event.value === this.organizationComparer.firstOrganization) {
+        setTimeout(() => {
+          this.organizationComparer.secondOrganization = undefined;
+        }, 10);
+      }
+    }
     // TODO organization data
     // LOL
   }

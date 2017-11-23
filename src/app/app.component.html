@@ -446,7 +446,7 @@
                                       <div class="row" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
                                         <div class="col-md-4">
                                           <ng-select
-                                          (selected)="onSelectedOrganization($event)"
+                                          (selected)="onSelectedOrganization($event, 'first')"
                                           [(ngModel)]="organizationComparer.firstOrganization"
                                           [allowClear]="true"
                                           placeholder="Organization A"
@@ -455,7 +455,7 @@
 
                                         <div class="col-md-4">
                                           <ng-select
-                                          (selected)="onSelectedOrganization($event)"
+                                          (selected)="onSelectedOrganization($event, 'second')"
                                           [(ngModel)]="organizationComparer.secondOrganization"
                                           [allowClear]="true"
                                           placeholder="Organization B"
