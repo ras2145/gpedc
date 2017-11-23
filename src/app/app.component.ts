@@ -82,8 +82,6 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicator = true;
-    this.firstCountry = '';
-    this.secondCountry = '';
   }
   chargeOrganizationComparison() {
     this.organizationSelectors.push({
@@ -140,31 +138,23 @@ export class AppComponent {
     }
   }
   onSelectedCountry(event, type) {
-
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
-        this.countryComparer.secondCountry = '';
-        this.firstCountry = this.secondCountry;
-        this.secondCountry = '';
         return;
       }
-      if (this.firstCountry !== '') {
-        this.mapService.paintTwoCountry(this.firstCountry);
+      if (this.countryComparer.firstCountry !== '') {
+        this.mapService.firstCountry = '';
+        this.mapService.paintTwoCountry(this.countryComparer.firstCountry, 'first');
       }
-      this.firstCountry = event.value;
     } else {
       if (event.value === this.countryComparer.firstCountry) {
-        this.countryComparer.firstCountry = '';
-        this.secondCountry = this.firstCountry;
-        this.firstCountry = '';
         return;
       }
-      if (this.secondCountry !== '') {
-        this.mapService.paintTwoCountry(this.secondCountry);
+      if (this.countryComparer.secondCountry !== '') {
+        this.mapService.secondCountry = '';
+        this.mapService.paintTwoCountry(this.countryComparer.secondCountry, 'second');
       }
-      this.secondCountry = event.value;
     }
-    this.mapService.paintTwoCountry(event.value);
   }
   onSelectedOrganization(event) {
     // TODO organization data
@@ -172,11 +162,11 @@ export class AppComponent {
   }
   onDeselected(event, type) {
     if (type === 'first') {
-      this.firstCountry = '';
+      this.countryComparer.firstCountry = '';
     } else {
-      this.secondCountry = '';
+      this.countryComparer.secondCountry = '';
     }
-    this.mapService.paintTwoCountry(event.value);
+    this.mapService.paintTwoCountry(event.value, 'ok');
   }
   mapConfig() {
     const self = this;
@@ -222,19 +212,21 @@ export class AppComponent {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
             layers: ['country-fills']
           });
-          const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country);
-        
+          let send = 'bad';
+          if (!this.countryComparer.firstCountry) {
+            send = 'first';
+          } else if (!this.countryComparer.secondCountry) {
+            send = 'second';
+          }
+          const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
           this.countryComparer.firstCountry = aux[0];
-          this.firstCountry = aux[0];
           this.countryComparer.secondCountry = aux[1];
-          this.secondCountry = aux[1];
         }
       });
     });
   }
   resetComparer() {
-    this.mapService.paintTwoCountry(this.countryComparer.secondCountry);
-    this.mapService.paintTwoCountry(this.countryComparer.firstCountry);
+    this.mapService.paintTwoCountryClear();
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
     this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
@@ -558,8 +550,6 @@ export class AppComponent {
     this.isNumber = false;
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
-    this.firstCountry = '';
-    this.secondCountry = '';
   }
   exportCsv(isOrganization?: boolean) {
     const comparer = isOrganization ? this.organizationComparer : this.countryComparer;

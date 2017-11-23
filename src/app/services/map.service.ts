@@ -15,6 +15,20 @@ export class MapService {
   public _map: Map;
   public style: string = 'mapbox://styles/undp-dashboard/cja98kikh1amc2spohea7voeh';
   private twoCountriesFilter = ['in', 'country'];
+  private _firstCountry =  '';
+  private _secondCountry = '';
+  public get firstCountry() {
+    return this._firstCountry;
+  };
+  public get secondCountry() {
+    return this._secondCountry;
+  }
+  public set firstCountry(country) {
+    this._firstCountry = country;
+  }
+  public set secondCountry(country) {
+    this._secondCountry = country;
+  }
   constructor(
     private webService: WebService
   ) {
@@ -90,14 +104,43 @@ export class MapService {
   resize() {
     this.map.resize();
   }
-  paintTwoCountry(country) {
+  paintTwoCountryClear() {
+    this.firstCountry = '';
+    this.secondCountry = '';
+    this.twoCountriesFilter = ['in', 'country'];
+    this.map.setFilter('country-fills-click', this.twoCountriesFilter);
+  }
+  paintTwoCountry(country, firstOrSecond) {
+    if (firstOrSecond === 'bad') {
+      if (this.twoCountriesFilter.includes(country)) {
+        if (this.firstCountry === country) {
+          this.firstCountry = '';
+        } else {
+          this.secondCountry = '';
+        }  
+      }
+      this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
+      this.map.setFilter('country-fills-click', this.twoCountriesFilter);  
+      return [this.firstCountry, this.secondCountry];
+    }
     if (this.twoCountriesFilter.includes(country)) {
-      this.twoCountriesFilter.splice(this.twoCountriesFilter.indexOf(country), 1);
-    } else if (this.twoCountriesFilter.length < 4 && !this.twoCountriesFilter.includes(country)) {
-        this.twoCountriesFilter.push(country);
+      if (this.firstCountry === country) {
+        this.firstCountry = '';
+      } else {
+        this.secondCountry = '';
+      }
+      this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
+    } else {
+        if (firstOrSecond === 'first') {
+          this.firstCountry = country;
+        }
+        else {
+          this.secondCountry = country;
+        }
+        this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
     }
     this.map.setFilter('country-fills-click', this.twoCountriesFilter);
-    return this.twoCountriesFilter.slice(2, this.twoCountriesFilter.length);
+    return [this.firstCountry, this.secondCountry];
   }
   applyFilters(tab) {
     if (tab !== 'tab3') {
