@@ -564,7 +564,11 @@
                     <div class="map-legend" *ngIf="selectedTab==='tab1' && legendMap.length">
                         <div *ngFor='let x of legendMap'>
                             <i class="mdi mdi-checkbox-blank float-left" [ngStyle]="{'color': x.color}"></i>
-                            <span>{{x.text}}</span>
+                            <span class="map-legend-text-first">{{x.textFirst}}</span>
+                            <span class="map-legend-text-middle">{{x.textMiddle}}</span>
+                            <span class="map-legend-text-last">{{x.textLast}}</span>
+                            <span class="map-legend-text-percent" *ngIf="percent">%</span>
+                            <br>   
                         </div>
                     </div>
                 </div>

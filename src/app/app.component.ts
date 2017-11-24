@@ -15,6 +15,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  percent: any;
   legendMap = [];
   popupText: any;
   countriesQuery: any;
@@ -51,67 +52,103 @@ export class AppComponent {
   legendPercent = [
     {
     color: '#1FAB9E',
-    text: '0 - 20 %'
+    textFirst: '0',
+    textMiddle: '-',
+    textLast: '20'
     }, {
     color: '#B1D781',
-    text: '20 - 40 %'
+    textFirst: '20',
+    textMiddle: '-',
+    textLast: '40'
     }, {
     color: '#FAD02F',
-    text: '40 - 60 %'
+    textFirst: '40',
+    textMiddle: '-',
+    textLast: '60'
     }, {
     color: '#F69229',
-    text: '60 - 80 %'
+    textFirst: '60',
+    textMiddle: '-',
+    textLast: '80'
     }, {
-      color: '#F16950',
-      text: '80 - 100%'
+    color: '#F16950',
+    textFirst: '80',
+    textMiddle: '-',
+    textLast: '100'
     }
   ];
   legendYesNo = [
     {
     color: '#1FAB9E',
-    text: 'Yes'
+    textFirst: 'Yes',
+    textMiddle: '',
+    textLast: ''
     }, {
     color: '#F16950',
-    text: 'No'
+    textFirst: 'No',
+    textMiddle: '',
+    textLast: ''
     }
   ];
   legendNumber = [
     {
       color: '#1FAB9E',
-      text: '0-2'
+      textFirst: '0',
+      textMiddle: '-',
+      textLast: '2'
     }, {
       color: '#B1D781',
-      text: '3-4'
+      textFirst: '3',
+      textMiddle: '-',
+      textLast: '4'
     }, {
       color: '#FAD02F',
-      text: '5-6'
+      textFirst: '5',
+      textMiddle: '-',
+      textLast: '6'
     }, {
       color: '#F69229',
-      text: '7-8'
+      textFirst: '7',
+      textMiddle: '-',
+      textLast: '8'
     }, {
       color: '#F16950',
-      text: '9-10'
+      textFirst: '9',
+      textMiddle: '-',
+      textLast: '10'
     }
   ];
   legendNumber2 = [
     {
       color: '#1FAB9E',
-      text: '1'
+      textFirst: '1',
+      textMiddle: '-',
+      textLast: '2'
     }, {
       color: '#B1D781',
-      text: '2'
+      textFirst: '2',
+      textMiddle: '-',
+      textLast: '3'
     }, {
       color: '#FAD02F',
-      text: '3'
+      textFirst: '3',
+      textMiddle: '-',
+      textLast: '4'
     }, {
       color: '#F69229',
-      text: '4'
+      textFirst: '4',
+      textMiddle: '-',
+      textLast: '5'
     }, {
       color: '#F16950',
-      text: '5'
+      textFirst: '5',
+      textMiddle: '-',
+      textLast: '6'
     }, {
       color: '#C556F1',
-      text: '6'
+      textFirst: '6',
+      textMiddle: '-',
+      textLast: '7'
     }
   ];
   model = {
@@ -702,11 +739,13 @@ export class AppComponent {
     const category = this.model.category;
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
+    this.percent = false;
     if ( subcategory != null ) {
       if (subcategory.type === 'text') {
         this.legendMap = this.legendYesNo;
       } else if (subcategory.type === 'percent') {
         this.legendMap = this.legendPercent;
+        this.percent = true;
       } else if (subcategory.type === 'number' && subcategory.precision === '2') {
         this.legendMap = this.legendNumber2;
       } else if (subcategory.type === 'number' && subcategory.precision === '0') {
@@ -716,6 +755,7 @@ export class AppComponent {
       if (category['type'] === 'text') {
         this.legendMap = this.legendYesNo;
       } else if (category['type'] === 'percent') {
+        this.percent = true;
         this.legendMap = this.legendPercent;
       } else if (category['type'] === 'number' && category['precision'] === '2') {
         this.legendMap = this.legendNumber2;
