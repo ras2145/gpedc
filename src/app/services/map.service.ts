@@ -241,6 +241,20 @@ export class MapService {
       return ans.json();
     });
   }
+
+  resetLayer(){
+    this.map.removeLayer('country-fills');
+    this.map.addLayer({
+      "id": "country-fills",
+      "type": "fill",
+      "source": "countries",
+      "layout": {},
+      "paint": {
+        "fill-color": "#F07848",
+        "fill-opacity": 0.5
+      },
+    });
+  }
   paintForIndicator(category: any, subcategory: any, year: any) {
     this.map.removeLayer('country-fills');
     let indicator: any;
