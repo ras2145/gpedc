@@ -46,6 +46,7 @@ export class AppComponent {
   indicator: any;
   firstCountry: any;
   secondCountry: any;
+  geoJson: any;
   model = {
     year: null,
     category: {
@@ -143,7 +144,7 @@ export class AppComponent {
         this.mapService.paintTwoClearOne('first');
         setTimeout(() => {
             this.countryComparer.firstCountry = undefined;
-        }, 10);         
+        }, 10);
         return;
       }
       if (this.countryComparer.firstCountry !== '') {
@@ -153,7 +154,7 @@ export class AppComponent {
       if (event.value === this.countryComparer.firstCountry) {
         setTimeout(() => {
           this.countryComparer.secondCountry = undefined;
-        },10);
+        }, 10);
         this.mapService.paintTwoClearOne('second');
         return;
       }
@@ -166,7 +167,7 @@ export class AppComponent {
   onSelectedOrganization(event, type) {
     if (type === 'first') {
       if (event.value === this.organizationComparer.secondOrganization) {
-        setTimeout(()=> {
+        setTimeout(() => {
           this.organizationComparer.firstOrganization = undefined;
         }, 10);
       }
@@ -193,6 +194,7 @@ export class AppComponent {
     this.mapService.onLoad(() => {
       this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
         self.mapService.build(geojson);
+        self.geoJson = geojson;
       });
       this.mapService.mouseCountryHover(event => {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
@@ -390,6 +392,7 @@ export class AppComponent {
     this.updateIndicatorGeojson();
   }
   updateIndicatorGeojson() {
+    const self = this;
     this.selectedCountry = '';
     this.mapService.resetClickLayer();
     let indicator = null;
@@ -401,6 +404,8 @@ export class AppComponent {
     const countryContext = this.model.countryContext.value;
     const year = this.model.year.year;
     this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext, year).subscribe(geojson => {
+      self.geoJson = geojson;
+      console.log(self.geoJson);
       this.mapService.update(geojson);
     });
   }
@@ -514,7 +519,7 @@ export class AppComponent {
       const categories = this.model.year.categories;
       for (const i of categories) {
         if (i.id === indicator) {
-          let value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
+          const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
           if (value === 'Yes') {
             this.footerText = this.footerText + i.label + ': ' + i.yesText + '<br>';
           } else if (value === 'No') {
@@ -523,7 +528,7 @@ export class AppComponent {
             this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br>';
           }
           for (const j of i.subcategories) {
-            let subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
+            const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             if (subvalue === 'Yes') {
               this.footerText = this.footerText + j.yesText + '<br>';
             } else if (subvalue === 'No') {
@@ -556,9 +561,7 @@ export class AppComponent {
     titles.forEach(title => {
       if (title.year === '2016') {
         this.model.year = title;
-        //this.model.category = null;
         this.model.category = title.categories[0];
-        console.log(titles);
       }
     });
     this.model.region = this.regions[0];
@@ -620,7 +623,7 @@ export class AppComponent {
     const fileName = isOrganization ? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
   }
-  noIsSevenOrEight(category) {
-    return !(category.id === '7' || category.id === '8');
+  noIsInvalidSelection(category) {
+    return !(category.id === '7' || category.id === '8' || category.id === '1a'|| category.id === '2'|| category.id === '3'|| category.id === '4' );
   }
 }

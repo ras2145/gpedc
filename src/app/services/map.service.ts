@@ -19,7 +19,7 @@ export class MapService {
   private _secondCountry = '';
   public get firstCountry() {
     return this._firstCountry;
-  };
+  }
   public get secondCountry() {
     return this._secondCountry;
   }
@@ -105,7 +105,7 @@ export class MapService {
     this.map.resize();
   }
   paintTwoClearOne(toClear) {
-    if(toClear === 'first') {
+    if (toClear === 'first') {
       this.firstCountry = '';
     } else {
       this.secondCountry = '';
@@ -126,7 +126,7 @@ export class MapService {
           this.firstCountry = '';
         } else {
           this.secondCountry = '';
-        }  
+        }
       }
       this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
       this.map.setFilter('country-fills-click', this.twoCountriesFilter);  
@@ -204,7 +204,7 @@ export class MapService {
     });
   }
   getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
-    let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`
+    let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`;
     let where = '';
     if (year != null && year != '') {
       where = where + ' upper(' + `_${year}` + ") = 'YES'";
