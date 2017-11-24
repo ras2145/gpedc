@@ -197,14 +197,14 @@ export class MapService {
     return this.webService.get(query).map( res => res.json().rows);
   }
   getCountriesYearGeoJSON(year: string): Observable<any> {
-    let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
+    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
     let query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
   }
   getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
-    let sql = `SELECT the_geom, country FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`;
+    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`;
     let where = '';
     if (year != null && year != '') {
       where = where + ' upper(' + `_${year}` + ") = 'YES'";
@@ -240,6 +240,49 @@ export class MapService {
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
+  }
+  paintForIndicator(category: any, subcategory: any, year: any) {
+    let indicator: any;
+    if (subcategory != null) {
+      indicator = subcategory.column;
+      if (subcategory.type === 'text') {
+        this.map.addLayer({
+          'id': category.id,
+          'source': 'countries',
+          'type': 'fill',
+          'paint': {
+              'fill-color': {
+                  property: indicator,
+                  type: 'categorical',
+                  stops: [
+                      ['Yes', '#1FAB9E'],
+                      ['No', '#F16950']
+                  ]
+              },
+              'fill-opacity': 0.75
+          }
+        }, 'waterway-label');
+      } else if (subcategory.type === 'percent') {
+        this.map.addLayer({
+          'id': category.id,
+          'source': 'countries',
+          'type': 'fill',
+          'paint': {
+              'fill-color': {
+                  property: indicator,
+                  stops: [
+                      [20, '#1FAB9E'],
+                      [40, '#B1D781'],
+                      [60, '#FAD02F'],
+                      [80, '#F69229'],
+                      [100, '#F16950']
+                  ]
+              },
+              'fill-opacity': 0.75
+          }
+        }, 'waterway-label');
+      }
+    }
   }
 }
 

@@ -405,8 +405,8 @@ export class AppComponent {
     const year = this.model.year.year;
     this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext, year).subscribe(geojson => {
       self.geoJson = geojson;
-      console.log(self.geoJson);
       this.mapService.update(geojson);
+      this.setColor();
     });
   }
   getCategoriesNotNull() {
@@ -625,5 +625,11 @@ export class AppComponent {
   }
   noIsInvalidSelection(category) {
     return !(category.id === '7' || category.id === '8' || category.id === '1a'|| category.id === '2'|| category.id === '3'|| category.id === '4' );
+  }
+  setColor() {
+    const category = this.model.category;
+    const subcategory = this.model.subcategory;
+    const year = this.model.year.year;
+    return this.mapService.paintForIndicator(category, subcategory, year);
   }
 }
