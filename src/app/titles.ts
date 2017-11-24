@@ -134,7 +134,7 @@ export let titles = [
           },
           {
             "label": "Existence of a government statement establishing tracking system",
-            "column": "_2014_8_1_1",
+            "column": "_2014_8_1",
             "prefix": "Criterion 1 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
@@ -144,7 +144,7 @@ export let titles = [
           },
           {
             "label": "Public allocations systematically tracked",
-            "column": "_2014_8_1_2",
+            "column": "_2014_8_2",
             "prefix": "Criterion 2 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "Gender allocations are systematically tracked.",
@@ -154,7 +154,7 @@ export let titles = [
           },
           {
             "label": "Central government units provide leadership and oversight",
-            "column": "_2014_8_1_3",
+            "column": "_2014_8_3",
             "prefix": "Criterion 3 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is system oversight by central government unit.",
@@ -164,7 +164,7 @@ export let titles = [
           },
           {
             "label": "Countries have transparent tracking systems",
-            "column": "_2014_8_2",
+            "column": "_2014_8_4",
             "prefix": "Criterion 4 for making gender-related budget information publicly available:",
             "suffix": "",
             "yesText": "Gender-related budget information is publicly available.",
@@ -563,7 +563,7 @@ export let titles = [
           },
           {
             "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
-            "column": "_2016_8_1_1",
+            "column": "_2016_8_1",
             "prefix": "Criterion 1 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
@@ -573,7 +573,7 @@ export let titles = [
           },
           {
             "label": "Existence of a government statement establishing tracking system",
-            "column": "_2016_8_1_2",
+            "column": "_2016_8_2",
             "prefix": "Criterion 2 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "Gender allocations are systematically tracked.",
@@ -583,7 +583,7 @@ export let titles = [
           },
           {
             "label": "Public allocations systematically tracked",
-            "column": "_2016_8_1_3",
+            "column": "_2016_8_3",
             "prefix": "Criterion 3 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
             "yesText": "There is system oversight by central government unit.",
@@ -593,7 +593,7 @@ export let titles = [
           },
           {
             "label": "Central government units provide leadership and oversight",
-            "column": "_2016_8_2",
+            "column": "_2016_8_4",
             "prefix": "Criterion 4 for making gender-related budget information publicly available:",
             "suffix": "",
             "yesText": "Gender-related budget information is publicly available.",
