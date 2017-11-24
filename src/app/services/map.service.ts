@@ -243,7 +243,6 @@ export class MapService {
   }
   paintForIndicator(category: any, subcategory: any, year: any) {
     this.map.removeLayer('country-fills');
-    console.log(subcategory);
     let indicator: any;
     if (subcategory != null) {
       indicator = subcategory.column;
@@ -253,15 +252,15 @@ export class MapService {
           'source': 'countries',
           'type': 'fill',
           'paint': {
-              'fill-color': {
-                  property: indicator,
-                  type: 'categorical',
-                  stops: [
-                      ['Yes', '#1FAB9E'],
-                      ['No', '#F16950']
-                  ]
-              },
-              'fill-opacity': 0.75
+            'fill-color': {
+              property: indicator,
+              type: 'categorical',
+              stops: [
+                ['Yes', '#1FAB9E'],
+                ['No', '#F16950']
+              ]
+            },
+            'fill-opacity': 0.75
           }
         }, 'waterway-label');
       } else if (subcategory.type === 'percent') {
@@ -270,17 +269,57 @@ export class MapService {
           'source': 'countries',
           'type': 'fill',
           'paint': {
-              'fill-color': {
-                  property: indicator,
-                  stops: [
-                      [0.20, '#1FAB9E'],
-                      [0.40, '#B1D781'],
-                      [0.60, '#FAD02F'],
-                      [0.80, '#F69229'],
-                      [1, '#F16950']
-                  ]
-              },
-              'fill-opacity': 0.75
+            'fill-color': {
+              property: indicator,
+              stops: [
+                [0.20, '#1FAB9E'],
+                [0.40, '#B1D781'],
+                [0.60, '#FAD02F'],
+                [0.80, '#F69229'],
+                [1, '#F16950']
+              ]
+            },
+            'fill-opacity': 0.75
+
+          }
+        }, 'waterway-label');
+      } else if (subcategory.type === 'number' && subcategory.precision === '0') {
+        this.map.addLayer({
+          'id': 'country-fills',
+          'source': 'countries',
+          'type': 'fill',
+          'paint': {
+            'fill-color': {
+              property: indicator,
+              stops: [
+                [0, '#1FAB9E'],
+                [3, '#B1D781'],
+                [5, '#FAD02F'],
+                [7, '#F69229'],
+                [9, '#F16950'],
+              ]
+            },
+            'fill-opacity': 0.75
+          }
+        }, 'waterway-label');
+      } else if (subcategory.type === 'number' && subcategory.precision === '2') {
+        this.map.addLayer({
+          'id': 'country-fills',
+          'source': 'countries',
+          'type': 'fill',
+          'paint': {
+            'fill-color': {
+              property: indicator,
+              stops: [
+                [1, '#1FAB9E'],
+                [2, '#B1D781'],
+                [3, '#FAD02F'],
+                [4, '#F69229'],
+                [5, '#F16950'],
+                [6, '#C556F1'],
+              ]
+            },
+            'fill-opacity': 0.75
           }
         }, 'waterway-label');
       }
@@ -293,15 +332,15 @@ export class MapService {
             'source': 'countries',
             'type': 'fill',
             'paint': {
-                'fill-color': {
-                    property: indicator,
-                    type: 'categorical',
-                    stops: [
-                        ['Yes', '#1FAB9E'],
-                        ['No', '#F16950']
-                    ]
-                },
-                'fill-opacity': 0.75
+              'fill-color': {
+                property: indicator,
+                type: 'categorical',
+                stops: [
+                  ['Yes', '#1FAB9E'],
+                  ['No', '#F16950']
+                ]
+              },
+              'fill-opacity': 0.75
             }
           }, 'waterway-label');
         } else if (category.type === 'percent') {
@@ -310,17 +349,56 @@ export class MapService {
             'source': 'countries',
             'type': 'fill',
             'paint': {
-                'fill-color': {
-                    property: indicator,
-                    stops: [
-                        [0.20, '#1FAB9E'],
-                        [0.40, '#B1D781'],
-                        [0.60, '#FAD02F'],
-                        [0.80, '#F69229'],
-                        [1, '#F16950']
-                    ]
-                },
-                'fill-opacity': 0.75
+              'fill-color': {
+                property: indicator,
+                stops: [
+                  [0.20, '#1FAB9E'],
+                  [0.40, '#B1D781'],
+                  [0.60, '#FAD02F'],
+                  [0.80, '#F69229'],
+                  [1, '#F16950']
+                ]
+              },
+              'fill-opacity': 0.75
+            }
+          }, 'waterway-label');
+        } else if (category.type === 'number' && category.precision === '0') {
+          this.map.addLayer({
+            'id': 'country-fills',
+            'source': 'countries',
+            'type': 'fill',
+            'paint': {
+              'fill-color': {
+                property: indicator,
+                stops: [
+                  [0, '#1FAB9E'],
+                  [3, '#B1D781'],
+                  [5, '#FAD02F'],
+                  [7, '#F69229'],
+                  [9, '#F16950'],
+                ]
+              },
+              'fill-opacity': 0.75
+            }
+          }, 'waterway-label');
+        } else if (category.type === 'number' && category.precision === '2') {
+          this.map.addLayer({
+            'id': 'country-fills',
+            'source': 'countries',
+            'type': 'fill',
+            'paint': {
+              'fill-color': {
+                property: indicator,
+                stops: [
+                  [1, '#1FAB9E'],
+                  [2, '#B1D781'],
+                  [3, '#FAD02F'],
+                  [4, '#F69229'],
+                  [5, '#F16950'],
+                  [6, '#C556F1'],
+                ]
+              },
+              'fill-opacity': 0.75
             }
           }, 'waterway-label');
         }
