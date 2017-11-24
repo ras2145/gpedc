@@ -15,6 +15,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  legendMap = [];
   popupText: any;
   countriesQuery: any;
   footerTab = '';
@@ -47,6 +48,72 @@ export class AppComponent {
   firstCountry: any;
   secondCountry: any;
   geoJson: any;
+  legendPercent = [
+    {
+    color: '#1FAB9E',
+    text: '0 - 20 %'
+    }, {
+    color: '#B1D781',
+    text: '20 - 40 %'
+    }, {
+    color: '#FAD02F',
+    text: '40 - 60 %'
+    }, {
+    color: '#F69229',
+    text: '60 - 80 %'
+    }, {
+      color: '#F16950',
+      text: '80 - 100%'
+    }
+  ];
+  legendYesNo = [
+    {
+    color: '#1FAB9E',
+    text: 'Yes'
+    }, {
+    color: '#F16950',
+    text: 'No'
+    }
+  ];
+  legendNumber = [
+    {
+      color: '#1FAB9E',
+      text: '0'
+    }, {
+      color: '#B1D781',
+      text: '3'
+    }, {
+      color: '#FAD02F',
+      text: '5'
+    }, {
+      color: '#F69229',
+      text: '7'
+    }, {
+      color: '#F16950',
+      text: '9'
+    }
+  ];
+  legendNumber2 = [
+    {
+      color: '#1FAB9E',
+      text: '1'
+    }, {
+      color: '#B1D781',
+      text: '2'
+    }, {
+      color: '#FAD02F',
+      text: '3'
+    }, {
+      color: '#F69229',
+      text: '4'
+    }, {
+      color: '#F16950',
+      text: '5'
+    }, {
+      color: '#C556F1',
+      text: '6'
+    }
+  ];
   model = {
     year: null,
     category: {
@@ -631,6 +698,27 @@ export class AppComponent {
     const category = this.model.category;
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
+    if ( subcategory != null ) {
+      if (subcategory.type === 'text') {
+        this.legendMap = this.legendYesNo;
+      } else if (subcategory.type === 'percent') {
+        this.legendMap = this.legendPercent;
+      } else if (subcategory.type === 'number' && subcategory.precision === '2') {
+        this.legendMap = this.legendNumber2;
+      } else if (subcategory.type === 'number' && subcategory.precision === '0') {
+        this.legendMap = this.legendNumber;
+      }
+    } else {
+      if (category['type'] === 'text') {
+        this.legendMap = this.legendYesNo;
+      } else if (category['type'] === 'percent') {
+        this.legendMap = this.legendPercent;
+      } else if (category['type'] === 'number' && category['precision'] === '2') {
+        this.legendMap = this.legendNumber2;
+      } else if (category['type'] === 'numer' && category['precision'] === '0') {
+        this.legendMap = this.legendNumber;
+      }
+    }
     return this.mapService.paintForIndicator(category, subcategory, year);
   }
 }

@@ -561,40 +561,11 @@
                     <div id="map"></div>
                     <!-- TAB MAP END -->
 
-                    <div class="map-legend">
-                      <i class="mdi mdi-checkbox-blank float-left color-01"></i>
-                      <span class="map-legend-text-first">0</span>
-                      <span class="map-legend-text-middle">-</span>
-                      <span class="map-legend-text-last">20</span>
-                      <span class="map-legend-text-percent">%</span>
-                      <br />
-                      <i class="mdi mdi-checkbox-blank float-left color-02"></i>
-                      <span class="map-legend-text-first">20</span>
-                      <span class="map-legend-text-middle">-</span>
-                      <span class="map-legend-text-last">40</span>
-                      <span class="map-legend-text-percent">%</span>
-                      <br />
-                      <i class="mdi mdi-checkbox-blank float-left color-03"></i>
-                      <span class="map-legend-text-first">40</span>
-                      <span class="map-legend-text-middle">-</span>
-                      <span class="map-legend-text-last">60</span>
-                      <span class="map-legend-text-percent">%</span>
-                      <br />
-                      <i class="mdi mdi-checkbox-blank float-left color-04"></i>
-                      <span class="map-legend-text-first">60</span>
-                      <span class="map-legend-text-middle">-</span>
-                      <span class="map-legend-text-last">80</span>
-                      <span class="map-legend-text-percent">%</span>
-                      <br />
-                      <i class="mdi mdi-checkbox-blank float-left color-05"></i>
-                      <span class="map-legend-text-first">80</span>
-                      <span class="map-legend-text-middle">-</span>
-                      <span class="map-legend-text-last">100</span>
-                      <span class="map-legend-text-percent">%</span>
-                      <br />
-                      <i class="mdi mdi-checkbox-blank float-left color-06"></i>
-                      <span class="map-legend-text">No data</span>
-                      <br />
+                    <div class="map-legend" >
+                        <div *ngFor='let x of legendMap'>
+                            <i class="mdi mdi-checkbox-blank float-left" [ngStyle]="{'color': x.color}"></i>
+                            <span>{{x.text}}</span>
+                        </div>
                     </div>
                 </div>
             <!-- FIN Map -->
