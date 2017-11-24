@@ -586,7 +586,7 @@ export class AppComponent {
     } else if (indicator.type === 'text') {
       value = oldValue ? oldValue : '-';
     }
-    return value;
+    return  value;
   }
   checkIfString(val) {
     return typeof val === 'string';
@@ -604,7 +604,7 @@ export class AppComponent {
           } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
           } else {
-            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' ' + this.formatValue(this.model.category, country[this.model.category.column]) + ' ' + this.model.category['suffix'];
+            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValue(this.model.category, country[this.model.category.column]) + '</b> ' + this.model.category['suffix'];
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
@@ -614,7 +614,7 @@ export class AppComponent {
           } else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.noText;
           } else {
-            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' ' + this.formatValue(this.model.subcategory, country[this.model.subcategory.column]) + ' ' + this.model.subcategory.suffix;
+            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValue(this.model.subcategory, country[this.model.subcategory.column]) + ' </b>' + this.model.subcategory.suffix;
           }
         }
       }
@@ -634,18 +634,22 @@ export class AppComponent {
           } else if (value === 'No') {
             this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
           } else {
-            this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br>';
+            this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <b>' + value + ' </b>' + i.suffix) + '<br>';
           }
+          this.footerText = this.footerText + '<br>';
+          let jumps = 0;
           for (const j of i.subcategories) {
+            jumps = 1;
             const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             if (subvalue === 'Yes') {
               this.footerText = this.footerText + j.yesText + '<br>';
             } else if (subvalue === 'No') {
               this.footerText = this.footerText + j.noText + '<br>';
             } else {
-              this.footerText = this.footerText + (j.prefix + ' ' + subvalue + ' ' + j.suffix) + '<br>';
+              this.footerText = this.footerText + (j.prefix + ' <b>' + subvalue + '</b> ' + j.suffix) + '<br><br>';
             }
           }
+         
         }
       }
     }
