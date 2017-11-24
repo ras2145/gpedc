@@ -871,3 +871,58 @@ select-dropdown li.selected.highlighted {
 #second-dropdown{
   margin-top: -18px;
 }
+
+/*MAP LEGEND*/
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  z-index: 1;
+  background-color: #fff;
+  right: 23px;
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: 1px 1px 10px #ccc;
+  font-size: 14px;
+}
+.map-legend-text {
+  padding: 0 6px;
+}
+.map-legend-text-first {
+  width: 28px;
+  text-align: center;
+  float: left;
+}
+
+.map-legend-text-middle {
+  width: 10px;
+  text-align: center;
+  float: left;
+}
+.map-legend-text-last {
+  width: 24px;
+  text-align: center;
+  float: left;
+}
+.map-legend-text-percent {
+  width: 20px;
+  text-align: center;
+  float: left;
+}
+.color-01{
+  color:rgb(250, 221, 205);
+}
+.color-02{
+  color:rgb(245, 183, 154);
+}
+.color-03{
+  color:rgb(248, 158, 108);
+}
+.color-04{
+  color:rgb(184, 117, 78);
+}
+.color-05{
+  color:rgb(120, 77, 53);
+}
+.color-06{
+  color:#d8d8d8;
+}
