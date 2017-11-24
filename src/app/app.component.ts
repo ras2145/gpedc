@@ -78,19 +78,19 @@ export class AppComponent {
   legendNumber = [
     {
       color: '#1FAB9E',
-      text: '0'
+      text: '0-2'
     }, {
       color: '#B1D781',
-      text: '3'
+      text: '3-4'
     }, {
       color: '#FAD02F',
-      text: '5'
+      text: '5-6'
     }, {
       color: '#F69229',
-      text: '7'
+      text: '7-8'
     }, {
       color: '#F16950',
-      text: '9'
+      text: '9-10'
     }
   ];
   legendNumber2 = [
