@@ -366,6 +366,8 @@ export class AppComponent {
     return '-';
   }
   selectTab(event) {
+    this.mapService.map.setPaintProperty('country-fills', 'fill-color', '#F07848');
+    this.mapService.map.setPaintProperty('country-fills', 'fill-opacity', 0.5);
     if (event.target.id) {
       if (event.target.id != this.selectedTab) {
         this.selectedTab = event.target.id;
@@ -420,6 +422,9 @@ export class AppComponent {
     this.updateIndicatorGeojson();
   }
   changeYearLabel(y) {
+
+    this.mapService.map.setPaintProperty('country-fills', 'fill-color', '#F07848');
+    this.mapService.map.setPaintProperty('country-fills', 'fill-opacity', 0.5);
     titles.forEach(title => {
       if (y.year === title.year) {
         this.model.year = title;
