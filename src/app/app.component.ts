@@ -271,7 +271,7 @@ export class AppComponent {
       }
       indicator.subcategories.forEach((ele, idx) => {
         if (this.model.subcategory && this.model.subcategory.label === ele.label) {
-          category = indicator;
+          category = ele;
           ind = indicator.id;
           index = idx + 1;
           if (this.model.subcategory.id) {
