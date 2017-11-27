@@ -647,9 +647,9 @@ export class AppComponent {
             jumps = 1;
             const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             if (subvalue === 'Yes') {
-              this.footerText = this.footerText + j.yesText + '<br>';
+              this.footerText = this.footerText + j.yesText + '<br><br>';
             } else if (subvalue === 'No') {
-              this.footerText = this.footerText + j.noText + '<br>';
+              this.footerText = this.footerText + j.noText + '<br><br>';
             } else {
               this.footerText = this.footerText + (j.prefix + ' <b>' + subvalue + '</b> ' + j.suffix) + '<br><br>';
             }
