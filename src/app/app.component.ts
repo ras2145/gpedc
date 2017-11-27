@@ -734,6 +734,9 @@ export class AppComponent {
     let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
     let result = linesString.join('\n');
     result = result.replace(/ ?<\/?b> ?/g, ' ');
+    result = result.replace(/," /g, ',"');
+    result = result.replace(/ ",/g, '",');
+    console.log(result);
     let blob = new Blob([result], { type: 'text/csv' });
     const fileName = isOrganization ? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
