@@ -560,7 +560,7 @@ export class AppComponent {
       } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator['noText'];
       } else {
-        text = text + ' ' + indicator['prefix'] + ' ' + value + ' ' + indicator['suffix'];
+        text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
       }
     } else {
       if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
@@ -568,7 +568,7 @@ export class AppComponent {
       } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator.noText;
       } else {
-        text = text + ' ' + indicator.prefix + ' ' + value + ' ' + indicator.suffix;
+        text = text + ' ' + indicator.prefix + ' <b>' + value + '</b> ' + indicator.suffix;
       }
     }
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
