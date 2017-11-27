@@ -605,6 +605,7 @@ div#map {
   /*overflow-x: hidden;*/
   padding-right: 0px;
   padding-bottom: 25px;
+  border-radius: 0px 5px 0px 0px;
 }
 .tab.map .nav-tabs .nav-link:focus, .tab-map .nav-tabs .nav-link:hover {
   color: #fff;
