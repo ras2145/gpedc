@@ -50,6 +50,7 @@ export class MapService {
       zoom: 1.2,
       maxBounds: [[-220, -90], [220, 90]],
       maxZoom: 5,
+      minZoom: 0.9,
       pitch: 0
     });
     this.map.dragRotate.disable();
