@@ -34,6 +34,20 @@ export class MapService {
   ) {
     (mapboxgl as any).accessToken = this.token;
   }
+  private mapDefault = {
+    tab1: {
+      center: [19, 37],
+      zoom: 1.2
+    },
+    tab2: {
+      center: [48, 37],
+      zoom: 1.2
+    },
+    tab3: {
+      center: [48, 37],
+      zoom: 1.2
+    }
+  };
   private filterOneCountry = ['in', 'country'];
   get map() {
     return this._map;
@@ -46,8 +60,8 @@ export class MapService {
       container: mapId,
       preserveDrawingBuffer: true,
       style: this.style,
-      center: [19, 37],
-      zoom: 1.2,
+      center: this.mapDefault.tab1.center,
+      zoom: this.mapDefault.tab1.zoom,
       maxBounds: [[-220, -90], [220, 90]],
       maxZoom: 5,
       minZoom: 0.9,
@@ -55,6 +69,11 @@ export class MapService {
     });
     this.map.dragRotate.disable();
     this.map.touchZoomRotate.disableRotation();
+  }
+  switchMapCenter(index) {
+    console.log(this.mapDefault[index]);
+    this.map.setCenter(this.mapDefault[index].center);
+    this.map.setZoom(this.mapDefault[index].zoom);
   }
 
   onLoad(cb: Function) {
@@ -174,10 +193,6 @@ export class MapService {
       this.map.setFilter('country-fills-click', this.filterOneCountry);
       return country;
     }
-  }
-  reCenter() {
-    this.map.setCenter([19, 37]);
-    this.map.setZoom(1.2);
   }
   resetClickLayer() {
     this.map.setFilter('country-fills-click', ['in', 'country']);

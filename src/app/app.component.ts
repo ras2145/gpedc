@@ -407,7 +407,6 @@ export class AppComponent {
     this.legendMap = [];
     if (event.target.id) {
       if (event.target.id != this.selectedTab) {
-        this.mapService.reCenter();
         this.selectedTab = event.target.id;
         this.mapService.applyFilters(event.target.id);
         this.mapService.resetClickLayer();
@@ -441,6 +440,11 @@ export class AppComponent {
         if (this.selectedTab === 'tab1') {
           setTimeout(() => {
             this.mapService.resize();
+            this.mapService.switchMapCenter(event.target.id);
+          }, 100);
+        } else {
+          setTimeout(() => {
+            this.mapService.switchMapCenter(event.target.id);
           }, 100);
         }
       }
