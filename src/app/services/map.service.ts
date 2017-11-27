@@ -174,6 +174,10 @@ export class MapService {
       return country;
     }
   }
+  reCenter() {
+    this.map.setCenter([19, 37]);
+    this.map.setZoom(1.2);
+  }
   resetClickLayer() {
     this.map.setFilter('country-fills-click', ['in', 'country']);
   }

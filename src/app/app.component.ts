@@ -407,6 +407,7 @@ export class AppComponent {
     this.legendMap = [];
     if (event.target.id) {
       if (event.target.id != this.selectedTab) {
+        this.mapService.reCenter();
         this.selectedTab = event.target.id;
         this.mapService.applyFilters(event.target.id);
         this.mapService.resetClickLayer();
