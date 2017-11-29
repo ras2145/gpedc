@@ -585,8 +585,9 @@ export class AppComponent {
   formatValue(indicator, oldValue) {
     let value = '';
     if (indicator.type === 'percent') {
+      const previousValue = oldValue;
       oldValue = oldValue * 100;
-      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision) + '%') : '-';
+      value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : '-';
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : '-';
     } else if (indicator.type === 'text') {
