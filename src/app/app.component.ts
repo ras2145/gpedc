@@ -201,6 +201,7 @@ export class AppComponent {
       key: 'Aggregate',
       value: new Array<IOption>()
     });
+    console.log(this.partners);
     for (const partner of this.partners) {
       if (partner['_2016'].toUpperCase() === 'YES') {
         this.organizationSelectors[1]['value'].push({
