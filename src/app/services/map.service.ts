@@ -386,11 +386,11 @@ export class MapService {
               'fill-color': {
                 property: indicator,
                 stops: [
-                  [0.20, '#1FAB9E'],
-                  [0.40, '#B1D781'],
+                  [0.20, '#F16950'],
+                  [0.40, '#F69229'],
                   [0.60, '#FAD02F'],
-                  [0.80, '#F69229'],
-                  [1, '#F16950']
+                  [0.80, '#B1D781'],
+                  [1, '#1FAB9E']
                 ]
               },
               'fill-opacity': 0.75
