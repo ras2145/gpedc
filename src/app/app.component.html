@@ -367,7 +367,7 @@
                                             <tr class="border-bottom-1" >
                                                 <td class="table-title-left background-1" width="25%" >
                                                     <p>
-                                                        {{indicator.title}}
+                                                        {{indicator.title}} 
                                                     </p>
                                                 </td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
@@ -524,7 +524,7 @@
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab!=='tab3'">
-                      <p>  {{ !indicator ? model.category.title : 'Select an Indicator from the left panel:'}} &nbsp; <i *ngIf="selectedTab==='tab1' && !indicator" class="mdi mdi-information" (click)="openModal(template)"></i></p>
+                      <p>  {{ !indicator ? model.category.title : ''}} &nbsp; <i *ngIf="selectedTab==='tab1' && !indicator" class="mdi mdi-information" (click)="openModal(template)"></i></p>
                     </div>
                     <!-- CARD map -->
                     <div class="card-map" *ngIf="selectedTab==='tab1' && countryName !== 'Country'">
