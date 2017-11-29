@@ -458,7 +458,7 @@
                                           (selected)="onSelectedOrganization($event, 'first')"
                                           [(ngModel)]="organizationComparer.firstOrganization"
                                           [allowClear]="true"
-                                          placeholder="Organization A"
+                                          placeholder="Select Organization"
                                           [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                         </div>
 
@@ -467,7 +467,7 @@
                                           (selected)="onSelectedOrganization($event, 'second')"
                                           [(ngModel)]="organizationComparer.secondOrganization"
                                           [allowClear]="true"
-                                          placeholder="Organization B"
+                                          placeholder="Select Organization"
                                           [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                         </div>
 
