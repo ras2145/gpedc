@@ -51,12 +51,12 @@ export class AppComponent {
   geoJson: any;
   legendPercent = [
     {
-    color: '#1FAB9E',
+    color: '#F16950',
     textFirst: '0',
     textMiddle: '-',
     textLast: '20'
     }, {
-    color: '#B1D781',
+    color: '#F69229',
     textFirst: '20',
     textMiddle: '-',
     textLast: '40'
@@ -66,12 +66,12 @@ export class AppComponent {
     textMiddle: '-',
     textLast: '60'
     }, {
-    color: '#F69229',
+    color: '#B1D781',
     textFirst: '60',
     textMiddle: '-',
     textLast: '80'
     }, {
-    color: '#F16950',
+    color: '#1FAB9E',
     textFirst: '80',
     textMiddle: '-',
     textLast: '100'
