@@ -561,21 +561,22 @@ export class AppComponent {
     }
     const value = this.formatValue(indicator, country[indicator.column]);
     if (indicator['subcategories']) {
-      if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
-        text = text + ' ' + indicator['yesText'];
-      } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
-        text = text + ' ' + indicator['noText'];
-      } else {
-        text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
-      }
+     // if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
+       // text = text + ' ' + indicator['yesText'];
+     // } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
+      //  text = text + ' ' + indicator['noText'];
+      //} else {
+       // text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
+        text = text + '<b>' + value + '</b>'; 
+       //}
     } else {
-      if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
+      /*if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator.yesText;
       } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator.noText;
-      } else {
-        text = text + ' ' + indicator.prefix + ' <b>' + value + '</b> ' + indicator.suffix;
-      }
+      } else {*/
+        text = text + '<b>' + value + '</b>'; 
+     // }
     }
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
       return '-';
