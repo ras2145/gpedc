@@ -31,7 +31,8 @@
                                 <div class="row logo">
                                     <div class="col-md-12">
                                         <p class="result-text">
-                                            Established in 2012, the Global Partnership’s voluntary and country-led monitoring framework tracks development stakeholders’ progress towards more effective development co-operation based on the agreed development effectiveness principles of country ownership; a focus on results; inclusive partnerships; and transparency and mutual accountability to one another.
+                                            On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
+                                            Available data may also be filtered by region, income group or country context.
                                         </p>
                                     </div>
                                 </div>
@@ -40,7 +41,7 @@
                                     <div class="col-md-12"><!-- col-md-4 -->
                                         <p class="result-subtitle space-view-data">Select year
                                             <i class="mdi mdi-information"
-                                                popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds."
                                                 placement="right"
                                                 triggers="mouseenter:mouseleave">
                                             </i>
@@ -100,7 +101,7 @@
                                         <div class="form-group style-select">
                                             <label for="inputState" class="result-subtitle space-indicator">Indicator
                                                 <i class="mdi mdi-information"
-                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
@@ -134,7 +135,7 @@
                                         <div class="form-group">
                                             <label for="inputState" class="result-subtitle space-line">Filter countries by:
                                                 <i class="mdi mdi-information"
-                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    popover="Below you may choose to filter countries by their region, income group or country context. Selecting two or more filters will display data that is relevant to all selected criteria."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
@@ -147,7 +148,7 @@
                                         <div class="form-group style-select">
                                             <label for="inputState" class="result-subtitle">Region
                                                 <i class="mdi mdi-information"
-                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    popover="The following regional groupings are based on the OECD classification."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
@@ -173,7 +174,7 @@
                                         <div class="form-group style-select">
                                             <label for="inputState" class="result-subtitle">Income Group
                                                 <i class="mdi mdi-information"
-                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    popover="The following income groupings are based on the 2017 World Bank income classification."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
@@ -200,7 +201,7 @@
                                         <div class="form-group style-select">
                                             <label for="inputState" class="result-subtitle">Country context
                                                 <i class="mdi mdi-information"
-                                                    popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+                                                    popover="TBD."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
@@ -284,7 +285,7 @@
                                 <div class="row logo">
                                     <div class="col-md-12">
                                         <p class="result-text">
-                                            Established in 2012, the Global Partnership’s voluntary and country-led monitoring framework tracks development stakeholders’ progress towards more effective development co-operation based on the agreed development effectiveness principles of country ownership; a focus on results; inclusive partnerships; and transparency and mutual accountability to one another.
+                                            On this tab, Global Partnership monitoring data can be compared across two countries and / or against a regional aggregate for a given year.
                                         </p>
                                     </div>
                                 </div>
@@ -300,7 +301,7 @@
 
                                 <div class="row">
                                     <div class="col-md-4 space-line-1">
-                                        <p class="result-subtitle width-popup">1. Select indicator year
+                                        <p class="result-subtitle width-popup">1. Select year
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
                                                 placement="right"
@@ -309,7 +310,13 @@
                                         </p>
                                     </div>
                                     <div class="col-md-8 space-line-1">
-                                        <p class="result-subtitle space-left">2. Select two countries to compare indicator results: </p>
+                                        <p class="result-subtitle space-left">2. Select two countries to compare results:
+                                          <i class="mdi mdi-information"
+                                              popover="Aggregate groupings are based on 2017 OECD classification."
+                                              placement="right"
+                                              triggers="mouseenter:mouseleave">
+                                          </i>
+                                        </p>
                                     </div>
                                 </div>
 
@@ -330,7 +337,7 @@
                                               (selected)="onSelectedCountry($event, 'first')"
                                               [(ngModel)]="countryComparer.firstCountry"
                                               [allowClear]="true"
-                                              placeholder="Country A"
+                                              placeholder="Select country"
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
@@ -339,7 +346,7 @@
                                               (deselected)="onDeselected($event,'second')"
                                               (selected)="onSelectedCountry($event, 'second')"
                                               [allowClear]="true"
-                                              placeholder="Country B"
+                                              placeholder="Select country"
                                               [(ngModel)]="countryComparer.secondCountry"
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
@@ -413,7 +420,7 @@
                                 <div class="row logo">
                                     <div class="col-md-12">
                                         <p class="result-text">
-                                            Established in 2012, the Global Partnership’s voluntary and country-led monitoring framework tracks development stakeholders’ progress towards more effective development co-operation based on the agreed development effectiveness principles of country ownership; a focus on results; inclusive partnerships; and transparency and mutual accountability to one another.
+                                            On this tab, Global Partnership monitoring results can be compared across two development partners (countries or organisations) and against an average by type of development partner (bilateral donor, international organisation, etc).
                                         </p>
                                     </div>
                                 </div>
@@ -422,7 +429,7 @@
 
                                 <div class="row">
                                     <div class="col-md-4 space-line-1">
-                                        <p class="result-subtitle width-popup">1. Select indicator year
+                                        <p class="result-subtitle width-popup">1. Select year
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
                                                 placement="right"
