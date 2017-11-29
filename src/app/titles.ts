@@ -48,7 +48,7 @@ export let titles = [
         "subcategories": [
           {
             "id": "7",
-            "label": "Indicator 7 Summary",
+            "label": "7: Summary",
             "column": "_2014_7",
             "prefix": "",
             "suffix": "",
@@ -119,11 +119,11 @@ export let titles = [
       {
         "id": "8",
         "label": " 8: Public allocations for gender equality and women's empowerment are tracked",
-        "title": "Indicator 8: Gender equality and women’s empowerment",
+        "title": "8: Gender equality and women’s empowerment",
         "subcategories": [
           {
             "id": "8",
-            "label": "Indicator 8 Summary",
+            "label": "8: Summary",
             "column": "_2014_8",
             "prefix": "",
             "suffix": "",
@@ -477,7 +477,7 @@ export let titles = [
         "subcategories": [
           {
             "id": "7",
-            "label": "Indicator 7 Summary",
+            "label": "7: Summary",
             "column": "_2016_7",
             "prefix": "",
             "suffix": "",
@@ -548,11 +548,11 @@ export let titles = [
       {
         "id": "8",
         "label": " 8: Public allocations for gender equality and women's empowerment are tracked",
-        "title": "Indicator 8: Gender equality and women’s empowerment",
+        "title": "8: Gender equality and women’s empowerment",
         "subcategories": [
           {
             "id": "8",
-            "label": "Indicator 8 Summary",
+            "label": "8: Summary",
             "column": "_2016_8",
             "prefix": "",
             "suffix": "",
@@ -562,7 +562,7 @@ export let titles = [
             "precision": "0"
           },
           {
-            "label": "Indicator 8: Public allocations for gender equality and women's empowerment are tracked",
+            "label": "8: Public allocations for gender equality and women's empowerment are tracked",
             "column": "_2016_8_1",
             "prefix": "Criterion 1 for tracking public allocations for gender equality and women's empowerment:",
             "suffix": "",
