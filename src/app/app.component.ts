@@ -16,6 +16,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 })
 export class AppComponent {
   percent: any;
+  legendTitle: any;
   legendMap = [];
   popupText: any;
   countriesQuery: any;
@@ -756,6 +757,11 @@ export class AppComponent {
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
     this.percent = false;
+    if (category.id === '1a') {
+      this.legendTitle = 'Indicator 1';
+    } else {
+      this.legendTitle = 'Indicator ' + category.id;
+    }
     if ( subcategory != null ) {
       if (subcategory.type === 'text') {
         this.legendMap = this.legendYesNo;

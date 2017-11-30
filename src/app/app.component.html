@@ -571,6 +571,7 @@
                     <!-- TAB MAP END -->
 
                     <div class="map-legend" *ngIf="selectedTab==='tab1' && legendMap.length">
+                        <div>{{legendTitle}}</div>
                         <div *ngFor='let x of legendMap'>
                             <i class="mdi mdi-checkbox-blank" [ngStyle]="{'color': x.color}"></i>
                             <span class="map-legend-text-first">{{x.textFirst}}</span>
