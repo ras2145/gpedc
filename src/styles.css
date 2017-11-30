@@ -424,6 +424,9 @@ select.form-control:not([size]):not([multiple]){
     width: 300px;
     padding-right: 20px;
 }
+.width-popUp .popover-content.popover-body{
+    width: 250px
+}
 .popover{
     font-size: 12px;
 }
