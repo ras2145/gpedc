@@ -55,27 +55,27 @@ export class AppComponent {
     color: '#F16950',
     textFirst: '0',
     textMiddle: '-',
-    textLast: '20'
+    textLast: '20%'
     }, {
     color: '#F69229',
     textFirst: '20',
     textMiddle: '-',
-    textLast: '40'
+    textLast: '40%'
     }, {
     color: '#FAD02F',
     textFirst: '40',
     textMiddle: '-',
-    textLast: '60'
+    textLast: '60%'
     }, {
     color: '#B1D781',
     textFirst: '60',
     textMiddle: '-',
-    textLast: '80'
+    textLast: '80%'
     }, {
     color: '#1FAB9E',
     textFirst: '80',
     textMiddle: '-',
-    textLast: '100'
+    textLast: '100%'
     }
   ];
   legendYesNo = [
