@@ -330,7 +330,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="row">
+                                        <div class="row with-placeholder-conutry">
                                             <div class="col-md-4">
                                               <ng-select
                                               (deselected)="onDeselected($event,'first')"
@@ -452,7 +452,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9">
-                                      <div class="row" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
+                                      <div class="row with-placeholder" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
                                         <div class="col-md-4">
                                           <ng-select
                                           (selected)="onSelectedOrganization($event, 'first')"
@@ -571,15 +571,34 @@
                     <!-- TAB MAP END -->
 
                     <div class="map-legend" *ngIf="selectedTab==='tab1' && legendMap.length">
-                        <div>{{legendTitle}}</div>
-                        <div *ngFor='let x of legendMap'>
+                        <div class="title">{{legendTitle}}</div>
+
+                        <table>
+                            <tr *ngFor='let x of legendMap'>
+                                <td>
+                                    <i class="mdi mdi-checkbox-blank" [ngStyle]="{'color': x.color}"></i>
+                                </td>
+                                <td class="aling-center">
+                                    <span class="map-legend-text-first">{{x.textFirst}}</span>
+                                </td>
+                                <td class="aling-center line">
+                                    <span class="map-legend-text-middle">{{x.textMiddle}}</span>
+                                </td>
+                                <td class="aling-right">
+                                    <span class="map-legend-text-last">{{x.textLast}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- <div *ngFor='let x of legendMap'>
                             <i class="mdi mdi-checkbox-blank" [ngStyle]="{'color': x.color}"></i>
-                            <span class="map-legend-text-first">{{x.textFirst}}</span>
+                            <span class="map-legend-text-first">&nbsp;{{x.textFirst}}</span>
                             <span class="map-legend-text-middle">{{x.textMiddle}}</span>
                             <span class="map-legend-text-last">{{x.textLast}}</span>
-                            <!--span class="map-legend-text-percent" *ngIf="percent">%</span-->
                             <br>
-                        </div>
+                        </div> -->
+
+
+
                     </div>
                 </div>
             <!-- FIN Map -->
