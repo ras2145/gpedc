@@ -996,3 +996,9 @@ select-dropdown li.selected.highlighted {
   font-size: 14px;
   padding: 0px 10px !important;
 }
+.acordion .card-header:first-child {
+    background: #fff;
+}
+.acordion .card{
+  border: none;
+}

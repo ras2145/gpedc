@@ -225,7 +225,7 @@
 
                                 <div class="row padding-top-line">
                                     <div class="col-md-12">
-                                        <p class="result-subtitle-one">Compare Scores by Development partners
+                                        <p class="result-subtitle-one">COMPARE SCORES FOR {{INDICATOR}} BY DEVELOPMENT PARTNER
                                             <i class="mdi mdi-information"
                                                 popover="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
                                                 placement="top"
@@ -233,6 +233,33 @@
                                             </i>
                                             <br><span>In alphabetical order</span></p>
                                         <p class="result-subtitle p-none-space"></p>
+
+                                        <!-- ACORDION -->
+                                        <div class="acordion">
+                                          <accordion>
+                                            <accordion-group #group>
+                                              <div accordion-heading class="clearfix">
+                                                I can have markup, too!
+                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
+                                              </div>
+                                              This is just some content to illustrate fancy headings.
+                                            </accordion-group>
+                                            <accordion-group heading="Static Header, initially expanded">
+                                              This content is straight in the template.
+                                            </accordion-group>
+                                            <accordion-group heading="Static Header, initially expanded">
+                                              This content is straight in the template.
+                                            </accordion-group>
+                                            <accordion-group heading="Static Header, initially expanded">
+                                              This content is straight in the template.
+                                            </accordion-group>
+                                            <accordion-group heading="Static Header, initially expanded">
+                                              This content is straight in the template.
+                                            </accordion-group>
+                                          </accordion>
+                                            <br>
+                                        </div>
+                                        <!-- ACORDION -->
                                     </div>
                                 </div>
 
@@ -534,7 +561,13 @@
                       </div>
                       <div class="btn-group" dropdown>
                         <button dropdownToggle type="button" class="btn dropdown-toggle drop-map">
-                          View SID countries <span class="caret"></span>
+                          View SID countries
+                          <i class="mdi mdi-information"
+                              popover="Small Island Developing countries (SIDs)"
+                              placement="right"
+                              triggers="mouseenter:mouseleave">
+                          </i>
+                          <span class="caret"></span>
                         </button>
                         <ul *dropdownMenu class="dropdown-menu" role="menu">
                           <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
