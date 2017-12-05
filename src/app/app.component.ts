@@ -15,6 +15,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  validIndicator: any;
   percent: any;
   legendTitle: any;
   legendMap = [];
@@ -52,43 +53,43 @@ export class AppComponent {
   geoJson: any;
   legendPercent = [
     {
-    color: '#F16950',
-    textFirst: '0',
-    textMiddle: '-',
-    textLast: '20%'
+      color: '#F16950',
+      textFirst: '0',
+      textMiddle: '-',
+      textLast: '20%'
     }, {
-    color: '#F69229',
-    textFirst: '20',
-    textMiddle: '-',
-    textLast: '40%'
+      color: '#F69229',
+      textFirst: '20',
+      textMiddle: '-',
+      textLast: '40%'
     }, {
-    color: '#FAD02F',
-    textFirst: '40',
-    textMiddle: '-',
-    textLast: '60%'
+      color: '#FAD02F',
+      textFirst: '40',
+      textMiddle: '-',
+      textLast: '60%'
     }, {
-    color: '#B1D781',
-    textFirst: '60',
-    textMiddle: '-',
-    textLast: '80%'
+      color: '#B1D781',
+      textFirst: '60',
+      textMiddle: '-',
+      textLast: '80%'
     }, {
-    color: '#1FAB9E',
-    textFirst: '80',
-    textMiddle: '-',
-    textLast: '100%'
+      color: '#1FAB9E',
+      textFirst: '80',
+      textMiddle: '-',
+      textLast: '100%'
     }
   ];
   legendYesNo = [
     {
-    color: '#1FAB9E',
-    textFirst: 'Yes',
-    textMiddle: '',
-    textLast: ''
+      color: '#1FAB9E',
+      textFirst: 'Yes',
+      textMiddle: '',
+      textLast: ''
     }, {
-    color: '#F16950',
-    textFirst: 'No',
-    textMiddle: '',
-    textLast: ''
+      color: '#F16950',
+      textFirst: 'No',
+      textMiddle: '',
+      textLast: ''
     }
   ];
   legendNumber = [
@@ -188,6 +189,7 @@ export class AppComponent {
     this.mapService.createMap('map');
     this.mapConfig();
     this.indicator = true;
+    this.validIndicator = false;
   }
   chargeOrganizationComparison() {
     this.organizationSelectors.push({
@@ -249,7 +251,7 @@ export class AppComponent {
       if (event.value === this.countryComparer.secondCountry) {
         this.mapService.paintTwoClearOne('first');
         setTimeout(() => {
-            this.countryComparer.firstCountry = undefined;
+          this.countryComparer.firstCountry = undefined;
         }, 10);
         return;
       }
@@ -457,6 +459,7 @@ export class AppComponent {
     this.model.subcategory = null;
     this.indicator = false;
     this.updateIndicatorGeojson();
+    this.validIndicator = true;
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
@@ -464,15 +467,26 @@ export class AppComponent {
     this.subIndicator = false;
     this.indicator = false;
     this.updateIndicatorGeojson();
+    this.validIndicator = true;
   }
   changeYearLabel(y) {
     this.mapService.resetLayer();
     this.legendMap = [];
+    let currentCategory = this.model.category;
+    let currentSubCategory = this.model.subcategory;
+    let keepLayer = 0;
     titles.forEach(title => {
       if (y.year === title.year) {
         this.model.year = title;
         this.model.category = title.categories[0];
         this.model.subcategory = null;
+        title.categories.forEach(category => {
+          if (category.label === currentCategory.label) {
+            keepLayer = 1
+            currentCategory = category;
+            currentSubCategory = category.subcategories[currentSubCategory];
+          }
+        });
       }
     });
     this.footerTab = '';
@@ -484,9 +498,14 @@ export class AppComponent {
     this.model.region = this.regions[0];
     this.model.countryContext = this.countryContexts[0];
     this.model.incomeGroup = this.incomeGroups[0];
-    this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
-      this.mapService.update(geojson);
-    });
+    if (keepLayer === 1 && this.validIndicator === true) {
+      this.selectSubcategory(currentCategory, currentSubCategory);
+    } else {
+      this.validIndicator = false;
+      this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+        this.mapService.update(geojson);
+      });
+    }
   }
   getText(value, indicator) {
     return this.formatValue(indicator, value);
@@ -562,22 +581,22 @@ export class AppComponent {
     }
     const value = this.formatValue(indicator, country[indicator.column]);
     if (indicator['subcategories']) {
-     // if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
-       // text = text + ' ' + indicator['yesText'];
-     // } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
+      // if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
+      // text = text + ' ' + indicator['yesText'];
+      // } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
       //  text = text + ' ' + indicator['noText'];
       //} else {
-       // text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
-        text = text + '<b>' + value + '</b>'; 
-       //}
+      // text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
+      text = text + '<b>' + value + '</b>';
+      //}
     } else {
       /*if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
         text = text + ' ' + indicator.yesText;
       } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator.noText;
       } else {*/
-        text = text + '<b>' + value + '</b>'; 
-     // }
+      text = text + '<b>' + value + '</b>';
+      // }
     }
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
       return '-';
@@ -595,7 +614,7 @@ export class AppComponent {
     } else if (indicator.type === 'text') {
       value = oldValue ? oldValue : '-';
     }
-    return  value;
+    return value;
   }
   checkIfString(val) {
     return typeof val === 'string';
@@ -658,7 +677,7 @@ export class AppComponent {
               this.footerText = this.footerText + (j.prefix + ' <b>' + subvalue + '</b> ' + j.suffix) + '<br><br>';
             }
           }
-         
+
         }
       }
     }
@@ -750,7 +769,7 @@ export class AppComponent {
     saveAs(blob, fileName + '.csv');
   }
   noIsInvalidSelection(category) {
-    return !(category.id === '7' || category.id === '8' || category.id === '1a'|| category.id === '2'|| category.id === '3'|| category.id === '4' );
+    return !(category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
   }
   setColor() {
     const category = this.model.category;
@@ -762,7 +781,7 @@ export class AppComponent {
     } else {
       this.legendTitle = 'Indicator ' + category.id;
     }
-    if ( subcategory != null ) {
+    if (subcategory != null) {
       if (subcategory.type === 'text') {
         this.legendMap = this.legendYesNo;
       } else if (subcategory.type === 'percent') {
