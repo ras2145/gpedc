@@ -401,7 +401,7 @@ export class AppComponent {
         return ele.country === country;
       })[0];
       if (countryQuery && countryQuery.hasOwnProperty(ind)) {
-        return this.formatValue(category, countryQuery[ind]);
+        return this.formatValuePopUp(category, countryQuery[ind]);
       }
     }
     return '-';
@@ -608,6 +608,19 @@ export class AppComponent {
     if (indicator.type === 'percent') {
       const previousValue = oldValue;
       oldValue = oldValue * 100;
+      value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data available';
+    } else if (indicator.type === 'number') {
+      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
+    } else if (indicator.type === 'text') {
+      value = oldValue ? oldValue : 'No data available';
+    }
+    return value;
+  }
+  formatValuePopUp(indicator, oldValue) {
+    let value = '';
+    if (indicator.type === 'percent') {
+      const previousValue = oldValue;
+      oldValue = oldValue * 100;
       value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : '-';
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : '-';
@@ -632,7 +645,7 @@ export class AppComponent {
           } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
           } else {
-            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValue(this.model.category, country[this.model.category.column]) + '</b> ' + this.model.category['suffix'];
+            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValuePopUp(this.model.category, country[this.model.category.column]) + '</b> ' + this.model.category['suffix'];
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
@@ -642,7 +655,7 @@ export class AppComponent {
           } else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.noText;
           } else {
-            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValue(this.model.subcategory, country[this.model.subcategory.column]) + ' </b>' + this.model.subcategory.suffix;
+            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValuePopUp(this.model.subcategory, country[this.model.subcategory.column]) + ' </b>' + this.model.subcategory.suffix;
           }
         }
       }
