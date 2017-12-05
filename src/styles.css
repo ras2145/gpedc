@@ -445,7 +445,7 @@ div#map {
     position: absolute;
     right: -34px;
     z-index: 500;
-    top: 58px;
+    top: 100px;
 }
 /*.nav-pills:hover{
     right: -156px;
@@ -557,19 +557,19 @@ div#map {
 }
 .background-table{
     background: rgba(249,237,232,1);
-    background: -moz-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(224,224,224,1) 30%, rgba(224,224,224,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(249,237,232,1)), color-stop(30%, rgba(224,224,224,1)), color-stop(100%, rgba(224,224,224,1)));
-    background: -webkit-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(224,224,224,1) 30%, rgba(224,224,224,1) 100%);
-    background: -o-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(224,224,224,1) 30%, rgba(224,224,224,1) 100%);
-    background: -ms-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(224,224,224,1) 30%, rgba(224,224,224,1) 100%);
-    background: linear-gradient(to right, rgba(249,237,232,1) 0%, rgba(224,224,224,1) 30%, rgba(224,224,224,1) 100%);
+    background: -moz-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(250,250,250,1) 30%, rgba(250,250,250,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(249,237,232,1)), color-stop(30%, rgba(250,250,250,1)), color-stop(100%, rgba(250,250,250,1)));
+    background: -webkit-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(250,250,250,1) 30%, rgba(250,250,250,1) 100%);
+    background: -o-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(250,250,250,1) 30%, rgba(250,250,250,1) 100%);
+    background: -ms-linear-gradient(left, rgba(249,237,232,1) 0%, rgba(250,250,250,1) 30%, rgba(250,250,250,1) 100%);
+    background: linear-gradient(to right, rgba(249,237,232,1) 0%, rgba(250,250,250,1) 30%, rgba(250,250,250,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9ede8', endColorstr='#e0e0e0', GradientType=1 );
 }
 .background-1{
     background-color: #F9EDE8;
 }
 .background-2{
-    background-color: #e0e0e0;
+    background-color: #FAFAFA;
 }
 
 
@@ -835,7 +835,7 @@ div#map {
     border-radius: 5px;
 }
 .options ul li{
-    font-size: 14px;
+    font-size: 12px;
 }
 #select-item div.clear{
     color: #f00;
@@ -958,4 +958,41 @@ select-dropdown li.selected.highlighted {
 .row.with-placeholder-conutry div.placeholder{
     text-transform: capitalize;
     font-size: 12px
+}
+
+
+/*MAP BUTTONS*/
+.map-btn{
+  margin-left: 5px;
+}
+.map-button{
+  height: 32px;
+  width: 32px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  color: #7d7d7d;
+  padding: 4px;
+  cursor: pointer;
+}
+.map-button:hover, .map-button:focus, .map-button:active {
+    color: #f07848;
+    cursor: pointer;
+}
+.context-pop .popover-content.popover-body{
+  width: 230px;
+}
+.map-option{
+  z-index: 500;
+  position: absolute;
+  top: 58px;
+}
+.map-option .dropdown-toggle::after{
+  color: #fff !important;
+}
+.drop-map{
+  background: #f07848 !important;
+  color: #fff;
+  height: 32px;
+  font-size: 14px;
+  padding: 0px 10px !important;
 }
