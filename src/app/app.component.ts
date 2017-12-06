@@ -92,6 +92,12 @@ export class AppComponent {
       textLast: ''
     }
   ];
+  noLegend = [
+    {
+      color: "#FFFFFF",
+      textfirst: 'this is a test'
+    }
+  ];
   legendNumber = [
     {
       color: '#1FAB9E',
@@ -789,6 +795,12 @@ export class AppComponent {
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
     this.percent = false;
+   /*if(this.indicator){
+     console.log("here");
+      this.legendTitle = 'still a test';
+      this.legendMap = this.noLegend;
+      return;
+   }*/
     if (category.id === '1a') {
       this.legendTitle = 'Indicator 1';
     } else {

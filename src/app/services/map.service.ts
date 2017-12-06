@@ -90,9 +90,8 @@ export class MapService {
       "id": "country-borders",
       "type": "line",
       "source": "countries",
-      "layout": {},
-      "paint":{
-        "fill-opacity": 0
+      "layout": {
+        "visibility": 'none',
       },
     });
     this.map.addLayer({
