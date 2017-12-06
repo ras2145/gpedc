@@ -91,6 +91,9 @@ export class MapService {
       "type": "line",
       "source": "countries",
       "layout": {},
+      "paint":{
+        "fill-opacity": 0
+      },
     });
     this.map.addLayer({
       "id": "country-fills",
