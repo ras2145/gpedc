@@ -15,6 +15,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  mapTitle: any;
   validIndicator: any;
   percent: any;
   legendTitle: any;
@@ -431,6 +432,7 @@ export class AppComponent {
         });
         this.indicator = true;
         if (this.selectedTab === 'tab1') {
+          this.mapTitle = '';
           this.model.region = this.regions[0];
           this.model.countryContext = this.countryContexts[0];
           this.model.incomeGroup = this.incomeGroups[0];
@@ -440,6 +442,7 @@ export class AppComponent {
         }
         if (this.selectedTab === 'tab2') {
           this.indicator = false;
+          this.mapTitle = '';
           this.resetComparer();
           this.model.category = {
             label: '',
@@ -465,8 +468,10 @@ export class AppComponent {
     this.model.category = category;
     this.model.subcategory = null;
     this.indicator = false;
+    this.subIndicator = true;
     this.updateIndicatorGeojson();
     this.validIndicator = true;
+    this.updateMapTitle();
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
@@ -475,6 +480,7 @@ export class AppComponent {
     this.indicator = false;
     this.updateIndicatorGeojson();
     this.validIndicator = true;
+    this.updateMapTitle();
   }
   changeYearLabel(y) {
     this.mapService.resetLayer();
@@ -836,5 +842,15 @@ export class AppComponent {
   }
   zoomOut() {
     this.mapService.zoomOut();
+  }
+  updateMapTitle() {
+    console.log(this.subIndicator);
+    if (!this.indicator && !this.subIndicator) {
+      this.mapTitle = this.model.subcategory.title;
+    } else if (!this.indicator) {
+      this.mapTitle = this.model['category']['title'];
+    } else {
+      this.mapTitle = '';
+    }
   }
 }

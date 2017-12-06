@@ -570,7 +570,7 @@
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab!=='tab3'">
-                      <p>  {{ !indicator ? subindicator ? model.category.title: model.subcategory.title : ''}} &nbsp; <i *ngIf="selectedTab==='tab1' && !indicator" class="mdi mdi-information" (click)="openModal(template)"></i></p>
+                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp; <i *ngIf="selectedTab==='tab1' && !indicator" class="mdi mdi-information" (click)="openModal(template)"></i></p>
                     </div>
                     <div class="map-option">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
