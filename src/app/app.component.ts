@@ -439,6 +439,7 @@ export class AppComponent {
           this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
             this.mapService.update(geojson);
           });
+          this.setColor();
         }
         if (this.selectedTab === 'tab2') {
           this.indicator = false;
