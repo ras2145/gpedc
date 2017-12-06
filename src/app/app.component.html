@@ -409,11 +409,17 @@
                                 <div class="row">
                                     <div class="col-md-12 background-table">
                                         <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
-                                            <tr class="border-bottom-1" >
-                                                <td class="table-title-left background-1" width="25%" >
+                                            <tr class="border-bottom-1">
+                                                <td class="table-title-left background-1" width="25%">
                                                     <p>
-                                                        {{indicator.title}}
+                                                        {{indicator.label}}
+                                                        <i class="mdi mdi-information" 
+                                                        popover="this is on beta" 
+                                                        placement="right" 
+                                                        triggers="mouseenter:mouseleave">
+                                                        </i>
                                                     </p>
+                                
                                                 </td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
                                                 <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')"></td>
@@ -421,7 +427,14 @@
                                             </tr>
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                 <td class="table-subtible background-1">
-                                                    <p>{{subcategory.label}}</p>
+                                                    <p>
+                                                        {{subcategory.label}}
+                                                        <i class="mdi mdi-information" 
+                                                        popover="this is on beta" 
+                                                        placement="right" 
+                                                        triggers="mouseenter:mouseleave">
+                                                        </i>
+                                                    </p>
                                                 </td>
                                                 <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
                                                 <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
@@ -430,7 +443,7 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
 
                         </tab>
                         <!-- tab analysis -->
