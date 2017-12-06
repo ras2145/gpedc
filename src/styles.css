@@ -293,12 +293,14 @@ select.form-control:not([size]):not([multiple]){
         font-size: 18px;
         color: #F27844;
         line-height: 20px;
+        padding-bottom: 10px;
     }
     .head-card p:nth-child(2){
         font-size: 10px;
         padding-top: 3px;
         color: #FDC333;
         padding-bottom: 7px;
+        margin-top: -5px;
     }
     .number-card{
         background-color: #F7F7F7;
