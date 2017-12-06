@@ -41,7 +41,7 @@
                                     <div class="col-md-12"><!-- col-md-4 -->
                                         <p class="result-subtitle space-view-data">Select year
                                             <i class="mdi mdi-information"
-                                                popover="Data for Indicators 1-4 is only available for the 2015-2016 round."
+                                                popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
                                                 placement="right"
                                                 triggers="mouseenter:mouseleave">
                                             </i>
@@ -126,6 +126,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <button type="button" name="button" class="btn btn-learn">What does this indicator measure?</button>
                                         </div>
                                     </div>
                                 </div>
@@ -199,11 +200,11 @@
                                 <div class="row">
                                     <div class="col-md-8 border-bottom">
                                         <div class="form-group style-select context-pop">
-                                            <label for="inputState" class="result-subtitle context-pop">Country context
+                                            <label for="inputState" class="result-subtitle space-indicator">Country context
                                                 <i class="mdi mdi-information"
                                                     popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
                                                     placement="right"
-                                                    >
+                                                    triggers="mouseenter:mouseleave">
                                                 </i>
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown>
@@ -347,7 +348,7 @@
                                     <div class="col-md-4 space-line-1">
                                         <p class="result-subtitle width-popup">1. Select year
                                             <i class="mdi mdi-information"
-                                                popover="Data for Indicators 1-4 is only available for the 2015-2016 round."
+                                                popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
                                                 placement="right"
                                                 triggers="mouseenter:mouseleave">
                                             </i>
@@ -476,7 +477,7 @@
                                     <div class="col-md-4 space-line-1">
                                         <p class="result-subtitle width-popup">1. Select year
                                             <i class="mdi mdi-information"
-                                                popover="Data for Indicators 1-4 is only available for the 2015-2016 round."
+                                                popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
                                                 placement="right"
                                                 triggers="mouseenter:mouseleave">
                                             </i>
@@ -576,7 +577,7 @@
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>
                       </div>
-                      <div class="btn-group" dropdown>
+                      <div class="btn-group map-drop" dropdown>
                         <button dropdownToggle type="button" class="btn dropdown-toggle drop-map">
                           View SID countries
                           <i class="mdi mdi-information"
@@ -600,7 +601,7 @@
                     </div>
 
                     <!-- CARD map -->
-                    <div class="card-map">
+                    <div class="card-map" *ngIf="selectedTab==='tab1' && countryName !== 'Country'">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="head-card">
