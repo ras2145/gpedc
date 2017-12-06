@@ -844,11 +844,10 @@ export class AppComponent {
     this.mapService.zoomOut();
   }
   updateMapTitle() {
-    console.log(this.subIndicator);
     if (!this.indicator && !this.subIndicator) {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator) {
-      this.mapTitle = this.model['category']['title'];
+      this.mapTitle = this.model.category.title;
     } else {
       this.mapTitle = '';
     }
