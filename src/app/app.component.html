@@ -603,13 +603,12 @@
                     <div class="card-map">
                         <div class="row">
                             <div class="col-md-12">
-
                                 <div class="head-card">
                                     <p>{{countryName}}</p>
-                                    <p>INDICATOR {{!indicator?model.category.id:''}}</p>
+                                    <p *ngIf="!indicator">INDICATOR {{!indicator?model.category.id:''}}</p>
                                 </div>
 
-                                <div class="number-card">
+                                <div *ngIf="!indicator" class="number-card">
                                     <div class="left-number">
                                         <p>{{getIndicatorValue(countryName, '2014')}}</p>
                                         <p>2014</p>
@@ -620,7 +619,7 @@
                                     </div>
                                 </div>
 
-                                <div class="content-card">
+                                <div *ngIf="!indicator" class="content-card">
                                     <p [innerHTML]="popupText">
                                     </p>
                                 </div>
