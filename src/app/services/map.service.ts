@@ -275,6 +275,12 @@ export class MapService {
       },
     });
   }
+  zoomIn() {
+    this.map.zoomIn();
+  }
+  zoomOut() {
+    this.map.zoomOut();
+  }
   paintForIndicator(category: any, subcategory: any, year: any) {
     this.map.removeLayer('country-fills');
     let indicator: any;

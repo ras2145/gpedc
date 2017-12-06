@@ -819,4 +819,10 @@ export class AppComponent {
     }
     return this.mapService.paintForIndicator(category, subcategory, year);
   }
+  zoomIn() {
+    this.mapService.zoomIn();
+  }
+  zoomOut() {
+    this.mapService.zoomOut();
+  }
 }
