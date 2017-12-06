@@ -239,22 +239,38 @@
                                           <accordion>
                                             <accordion-group #group>
                                               <div accordion-heading class="clearfix">
-                                                I can have markup, too!
+                                              Average for all development partners
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
                                               This is just some content to illustrate fancy headings.
                                             </accordion-group>
-                                            <accordion-group heading="Static Header, initially expanded">
-                                              This content is straight in the template.
+                                            <accordion-group #group>
+                                              <div accordion-heading class="clearfix">
+                                                Bilateral partners (DAC members)
+                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
+                                              </div>
+                                              This is just some content to illustrate fancy headings.
                                             </accordion-group>
-                                            <accordion-group heading="Static Header, initially expanded">
-                                              This content is straight in the template.
+                                            <accordion-group #group>
+                                              <div accordion-heading class="clearfix">
+                                                Other bilateral partners (non-DAC members)
+                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
+                                              </div>
+                                              This is just some content to illustrate fancy headings.
                                             </accordion-group>
-                                            <accordion-group heading="Static Header, initially expanded">
-                                              This content is straight in the template.
+                                            <accordion-group #group>
+                                              <div accordion-heading class="clearfix">
+                                                Multilateral development banks
+                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
+                                              </div>
+                                              This is just some content to illustrate fancy headings.
                                             </accordion-group>
-                                            <accordion-group heading="Static Header, initially expanded">
-                                              This content is straight in the template.
+                                            <accordion-group #group>
+                                              <div accordion-heading class="clearfix">
+                                                Multilateral development banks
+                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
+                                              </div>
+                                              This is just some content to illustrate fancy headings.
                                             </accordion-group>
                                           </accordion>
                                             <br>
@@ -449,6 +465,7 @@
                                     <div class="col-md-12">
                                         <p class="result-text">
                                             On this tab, Global Partnership monitoring results can be compared across two development partners (countries or organisations) and against an average by type of development partner (bilateral donor, international organisation, etc).
+                                            Results will only be shown for those indicators with available data.
                                         </p>
                                     </div>
                                 </div>
@@ -570,18 +587,20 @@
                           <span class="caret"></span>
                         </button>
                         <ul *dropdownMenu class="dropdown-menu" role="menu">
-                          <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-                          <li class="divider dropdown-divider"></li>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Cabo Verde</a></li>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Comorros</a></li>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Dominican Republic</a></li>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Fiji</a>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Guinnea-Bissau</a>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Jamaica</a>
+                          <li role="menuitem"><a class="dropdown-item" href="#">Kiribati</a>
                           </li>
                         </ul>
                       </div>
                     </div>
 
                     <!-- CARD map -->
-                    <div class="card-map" *ngIf="selectedTab==='tab1' && countryName !== 'Country'">
+                    <div class="card-map">
                         <div class="row">
                             <div class="col-md-12">
 
