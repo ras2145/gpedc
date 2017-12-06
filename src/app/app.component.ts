@@ -94,8 +94,8 @@ export class AppComponent {
   ];
   noLegend = [
     {
-      color: "#FFFFFF",
-      textfirst: 'this is a test'
+      color: "#F07848",
+      textFirst: 'No data available for this countries'
     }
   ];
   legendNumber = [
@@ -306,6 +306,7 @@ export class AppComponent {
   mapConfig() {
     const self = this;
     this.mapService.onLoad(() => {
+      this.setColor();
       this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
         self.mapService.build(geojson);
         self.geoJson = geojson;
@@ -512,6 +513,7 @@ export class AppComponent {
         this.mapService.update(geojson);
       });
     }
+    this.setColor();
   }
   getText(value, indicator) {
     return this.formatValue(indicator, value);
@@ -795,14 +797,12 @@ export class AppComponent {
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
     this.percent = false;
-   /*if(this.indicator){
-     console.log("here");
-      this.legendTitle = 'still a test';
+   if(this.indicator){
+      this.legendTitle = '';
       this.legendMap = this.noLegend;
       return;
-   }*/
+   }
     if (category.id === '1a') {
-      this.legendTitle = 'Indicator 1';
     } else {
       this.legendTitle = 'Indicator ' + category.id;
     }
