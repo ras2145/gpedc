@@ -96,7 +96,7 @@ export class AppComponent {
   noLegend = [
     {
       color: "#F07848",
-      textFirst: 'No data available for this countries'
+      textFirst: 'Data available for this countries'
     }
   ];
   legendNumber = [
