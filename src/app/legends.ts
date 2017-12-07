@@ -69,14 +69,15 @@ export let legends = {
           textFirst: 'Data available for'
         }
       ],
+      //indicator 3
       'number' : [
         {
-          color: '#1FAB9E',
+          color: '#F16950',
           textFirst: '0',
           textMiddle: '-',
           textLast: '2'
         }, {
-          color: '#B1D781',
+          color: '#F69229',
           textFirst: '3',
           textMiddle: '-',
           textLast: '4'
@@ -86,17 +87,18 @@ export let legends = {
           textMiddle: '-',
           textLast: '6'
         }, {
-          color: '#F69229',
+          color: '#B1D781',
           textFirst: '7',
           textMiddle: '-',
           textLast: '8'
         }, {
-          color: '#F16950',
+          color: '#1FAB9E',
           textFirst: '9',
           textMiddle: '-',
           textLast: '10'
         }
       ],
+
       'number2' : [
         {
           color: '#1FAB9E',
@@ -128,6 +130,133 @@ export let legends = {
           textFirst: '6',
           textMiddle: '-',
           textLast: '7'
+        }
+      ],
+      'indicator9a' : [
+        {
+          color: '#E17058',
+          textFirst: '1',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#E19469',
+          textFirst: '1.5',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#e99643',
+          textFirst: '2',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#E9BB64',
+          textFirst: '2.5',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#f4d053',
+          textFirst: '3',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#E6F477',
+          textFirst: '3.5',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#b9d58a',
+          textFirst: '4',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#86D584',
+          textFirst: '4.5',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#50a89e',
+          textFirst: '5',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#599BA8',
+          textFirst: '5.5',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#5878A8',
+          textFirst: '6',
+          textMiddle: '',
+          textLast: ''
+        }
+      ],
+      'indicator2_1' : [
+        {
+          color: '#F16950',
+          textFirst: '1',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#FAD02F',
+          textFirst: '2',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#1FAB9E',
+          textFirst: '3',
+          textMiddle: '',
+          textLast: ''
+        }
+      ],
+      'indicator2_2' : [
+        {
+          color: '#F16950',
+          textFirst: '1',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#F69229',
+          textFirst: '2',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#FAD02F',
+          textFirst: '3',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#B1D781',
+          textFirst: '4',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#1FAB9E',
+          textFirst: '5',
+          textMiddle: '',
+          textLast: ''
+        }
+      ],
+      'indicator2_34' : [
+        {
+          color: '#F16950',
+          textFirst: '1',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#F69229',
+          textFirst: '2',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#B1D781',
+          textFirst: '3',
+          textMiddle: '',
+          textLast: ''
+        }, {
+          color: '#1FAB9E',
+          textFirst: '4',
+          textMiddle: '',
+          textLast: ''
         }
       ]
 };

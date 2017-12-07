@@ -776,10 +776,16 @@ export class AppComponent {
         }
       } else if (subcategory.type === 'percent') {
         this.legendMap = this.legends.percent;
-      } else if (subcategory.type === 'number' && subcategory.precision === '2') {
-        this.legendMap = this.legends.number2;
-      } else if (subcategory.type === 'number' && subcategory.precision === '0') {
-        this.legendMap = this.legends.number;
+      } else if (subcategory.type === 'number') {
+        if (subcategory.column.includes('2_1')) {
+          this.legendMap = this.legends.indicator2_1;
+        } else if (subcategory.column.includes('2_2')) {
+          this.legendMap = this.legends.indicator2_2;
+        } else if (subcategory.column.includes('2_3') || subcategory.column.includes('2_4')) {
+          this.legendMap = this.legends.indicator2_34;
+        } else if (subcategory.column.includes('_3_')) {
+          this.legendMap = this.legends.number;
+        }
       }
     } else {
       if (category['type'] === 'text') {
@@ -787,7 +793,11 @@ export class AppComponent {
       } else if (category['type'] === 'percent') {
         this.legendMap = this.legends.percent;
       } else if (category['type'] === 'number' && category['precision'] === '2') {
-        this.legendMap = this.legends.number2;
+        if (category.id === '9a') {
+          this.legendMap = this.legends.indicator9a;
+        } else {
+          this.legendMap = this.legends.number2;
+        }
       } else if (category['type'] === 'numer' && category['precision'] === '0') {
         this.legendMap = this.legends.number;
       }
