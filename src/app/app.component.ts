@@ -398,8 +398,13 @@ export class AppComponent {
     this.updateIndicatorGeojson();
     this.validIndicator = true;
     this.updateMapTitle();
+    console.log(this.model);
+
+    console.log(this.indicator);
+    console.log(this.subIndicator);
   }
   selectSubcategory(category, subcategory) {
+    
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
@@ -407,6 +412,9 @@ export class AppComponent {
     this.updateIndicatorGeojson();
     this.validIndicator = true;
     this.updateMapTitle();
+    console.log(this.model);
+    console.log(this.indicator);
+    console.log(this.subIndicator);
   }
   changeYearLabel(y) {
     this.mapService.resetLayer();
