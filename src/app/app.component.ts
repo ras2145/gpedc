@@ -733,17 +733,20 @@ export class AppComponent {
     this.footerText = '';
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
+      let notPrint = ['1a', '2', '3', '4']
       for (const i of categories) {
         if (i.id === indicator) {
           const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
-          if (value === 'Yes') {
-            this.footerText = this.footerText + i.label + ': ' + i.yesText + '<br>';
-          } else if (value === 'No') {
-            this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
-          } else {
-            this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <b>' + value + ' </b>' + i.suffix) + '<br>';
+          if (!notPrint.includes(i.id)) {
+            if (value === 'Yes') {
+              this.footerText = this.footerText + i.label + ': ' + i.yesText + '<br>';
+            } else if (value === 'No') {
+              this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
+            } else if (i.label != '1a') {
+              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <b>' + value + ' </b>' + i.suffix) + '<br>';
+            }
+            this.footerText = this.footerText + '<br>';
           }
-          this.footerText = this.footerText + '<br>';
           let jumps = 0;
           for (const j of i.subcategories) {
             jumps = 1;
