@@ -299,7 +299,7 @@ export class AppComponent {
   }
   getIndicatorValue(country, year) {
     if (!country) {
-      return '-';
+      return 'No data';
     }
     let category;
     let ind = '', index = -1;
@@ -335,7 +335,7 @@ export class AppComponent {
         return this.formatValuePopUp(category, countryQuery[ind]);
       }
     }
-    return '-';
+    return 'No data';
   }
   selectTab(event) {
     this.mapService.resetLayer();
@@ -561,11 +561,11 @@ export class AppComponent {
     if (indicator.type === 'percent') {
       const previousValue = oldValue;
       oldValue = oldValue * 100;
-      value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : '-';
+      value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data';
     } else if (indicator.type === 'number') {
-      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : '-';
+      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
     } else if (indicator.type === 'text') {
-      value = oldValue ? oldValue : '-';
+      value = oldValue ? oldValue : 'No data';
     }
     return value;
   }
