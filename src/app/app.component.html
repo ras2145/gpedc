@@ -404,8 +404,8 @@
                                 <div class="row logo">
                                     <div class="col-md-12">
                                         <p class="result-text">
-                                            On this tab, Global Partnership monitoring data can be compared across two countries and / or against a regional aggregate for a given year.
-                                            Select two countries and / or a regional grouping to compare results across indicators. Results will only be shown for those indicators with available data.
+                                             On this tab, Global Partnership monitoring results can be compared across two development partners and / or against an average by type of development partner (bilateral,
+                                             international organisation, UN agency, etc.). Results will only be shown for those indicators with available data.
                                         </p>
                                     </div>
                                 </div>
@@ -488,11 +488,7 @@
                                                 <td class="table-title-left background-1" width="25%">
                                                     <p>
                                                         Indicator {{indicator.label}}
-                                                        <i class="mdi mdi-information"
-                                                        popover="this is on beta"
-                                                        placement="right"
-                                                        triggers="mouseenter:mouseleave">
-                                                        </i>
+                                                        <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
                                                     </p>
 
                                                 </td>
@@ -504,11 +500,7 @@
                                                 <td class="table-subtible background-1">
                                                     <p>
                                                         {{subcategory.label}}
-                                                        <i class="mdi mdi-information"
-                                                        popover="this is on beta"
-                                                        placement="right"
-                                                        triggers="mouseenter:mouseleave">
-                                                        </i>
+                                                        <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
                                                     </p>
                                                 </td>
                                                 <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
@@ -658,7 +650,7 @@
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab!=='tab3'">
-                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp; <i *ngIf="selectedTab==='tab1' && !indicator" class="mdi mdi-information" (click)="openModal(template)"></i></p>
+                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
                     </div>
                     <div class="map-option">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
@@ -667,7 +659,7 @@
                       </div>
                       <div class="btn-group map-drop" dropdown>
                         <button dropdownToggle type="button" class="btn dropdown-toggle drop-map">
-                          View SID countries
+                          View SIDS countries
                           <i class="mdi mdi-information"
                               popover="Small Island Developing countries (SIDs)"
                               placement="right"

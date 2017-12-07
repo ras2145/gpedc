@@ -894,7 +894,7 @@ select-dropdown li.selected.highlighted {
   background-color: #fff;
   right: 23px;
   border-radius: 5px;
-  padding: 16px;
+  padding: 10px;
   box-shadow: 1px 1px 10px #ccc;
   font-size: 14px;
 }
@@ -1004,6 +1004,9 @@ select-dropdown li.selected.highlighted {
   min-width: 100% !important;
   margin-top: -1px;
 }
+.map-drop .popover-body{
+  width: 160px;
+}
 .acordion .card-header:first-child {
   background: #fff;
   cursor: pointer;
@@ -1026,4 +1029,7 @@ select-dropdown li.selected.highlighted {
   font-size: 14px;
   cursor: pointer;
   margin-top: 20px;
+}
+.mdi-cursor{
+  cursor: pointer;
 }
