@@ -310,22 +310,44 @@ export class MapService {
     if (subcategory != null) {
       indicator = subcategory.column;
       if (subcategory.type === 'text') {
-        this.map.addLayer({
-          'id': 'country-fills',
-          'source': 'countries',
-          'type': 'fill',
-          'paint': {
-            'fill-color': {
-              property: indicator,
-              type: 'categorical',
-              stops: [
-                ['Yes', '#1FAB9E'],
-                ['No', '#F16950']
-              ]
-            },
-            'fill-opacity': 0.75
-          }
-        }, 'waterway-label');
+        console.log(category);
+        if (category.id === '4') {
+          this.map.addLayer({
+            'id': 'country-fills',
+            'source': 'countries',
+            'type': 'fill',
+            'paint': {
+              'fill-color': {
+                property: indicator,
+                type: 'categorical',
+                stops: [
+                  ['Needs Improvement', '#F16950'],
+                  ['Fair', '#F69229'],
+                  ['Good', '#B1D781'],
+                  ['Excellent', '#1FAB9E']
+                ]
+              },
+              'fill-opacity': 0.75
+            }
+          }, 'waterway-label');
+        } else {
+          this.map.addLayer({
+            'id': 'country-fills',
+            'source': 'countries',
+            'type': 'fill',
+            'paint': {
+              'fill-color': {
+                property: indicator,
+                type: 'categorical',
+                stops: [
+                  ['Yes', '#1FAB9E'],
+                  ['No', '#F16950']
+                ]
+              },
+              'fill-opacity': 0.75
+            }
+          }, 'waterway-label');
+        }
       } else if (subcategory.type === 'percent') {
         this.map.addLayer({
           'id': 'country-fills',

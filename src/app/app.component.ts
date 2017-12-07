@@ -55,7 +55,7 @@ export class AppComponent {
   legendPercent = [
     {
       color: '#F16950',
-      textFirst: '0',
+      textFirst: ' 0',
       textMiddle: '-',
       textLast: '20%'
     }, {
@@ -89,6 +89,29 @@ export class AppComponent {
     }, {
       color: '#F16950',
       textFirst: 'No',
+      textMiddle: '',
+      textLast: ''
+    }
+  ];
+  legendIndicator4 = [
+    {
+      color: '#F16950',
+      textFirst: 'Needs Improvement',
+      textMiddle: '',
+      textLast: ''
+    }, {
+      color: '#F69229',
+      textFirst: 'Fair',
+      textMiddle: '',
+      textLast: ''
+    }, {
+      color: '#B1D781',
+      textFirst: 'Good',
+      textMiddle: '',
+      textLast: ''
+    }, {
+      color: '#1FAB9E',
+      textFirst: 'Excellent',
       textMiddle: '',
       textLast: ''
     }
@@ -840,7 +863,11 @@ export class AppComponent {
     this.legendTitle = 'Indicator ' + category.id;
     if (subcategory != null) {
       if (subcategory.type === 'text') {
-        this.legendMap = this.legendYesNo;
+        if (category.id === '4') {
+          this.legendMap = this.legendIndicator4;
+        } else {
+          this.legendMap = this.legendYesNo;
+        }
       } else if (subcategory.type === 'percent') {
         this.legendMap = this.legendPercent;
         this.percent = true;
