@@ -126,7 +126,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <button type="button" name="button" class="btn btn-learn">What does this indicator measure?</button>
+                                            <button type="button" name="button" class="btn btn-learn" (click)="openModal(template)">What does this indicator measure?</button>
                                         </div>
                                     </div>
                                 </div>
@@ -243,35 +243,110 @@
                                               Average for all development partners
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
-                                              This is just some content to illustrate fancy headings.
+                                              <table class="table table-sm">
+                                                <tbody>
+                                                  <tr>
+                                                    <td>Adaptation Fund</td>
+                                                    <td class="text-right">100.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
+                                                    <td class="text-right">0.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African Union</td>
+                                                    <td class="text-right">84.09%</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                             </accordion-group>
                                             <accordion-group #group>
                                               <div accordion-heading class="clearfix">
                                                 Bilateral partners (DAC members)
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
-                                              This is just some content to illustrate fancy headings.
+                                              <table class="table table-sm">
+                                                <tbody>
+                                                  <tr>
+                                                    <td>Adaptation Fund</td>
+                                                    <td class="text-right">100.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
+                                                    <td class="text-right">0.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African Union</td>
+                                                    <td class="text-right">84.09%</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                             </accordion-group>
                                             <accordion-group #group>
                                               <div accordion-heading class="clearfix">
                                                 Other bilateral partners (non-DAC members)
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
-                                              This is just some content to illustrate fancy headings.
+                                              <table class="table table-sm">
+                                                <tbody>
+                                                  <tr>
+                                                    <td>Adaptation Fund</td>
+                                                    <td class="text-right">100.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
+                                                    <td class="text-right">0.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African Union</td>
+                                                    <td class="text-right">84.09%</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                             </accordion-group>
                                             <accordion-group #group>
                                               <div accordion-heading class="clearfix">
                                                 Multilateral development banks
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
-                                              This is just some content to illustrate fancy headings.
+                                              <table class="table table-sm">
+                                                <tbody>
+                                                  <tr>
+                                                    <td>Adaptation Fund</td>
+                                                    <td class="text-right">100.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
+                                                    <td class="text-right">0.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African Union</td>
+                                                    <td class="text-right">84.09%</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                             </accordion-group>
                                             <accordion-group #group>
                                               <div accordion-heading class="clearfix">
                                                 Multilateral development banks
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
-                                              This is just some content to illustrate fancy headings.
+                                              <table class="table table-sm">
+                                                <tbody>
+                                                  <tr>
+                                                    <td>Adaptation Fund</td>
+                                                    <td class="text-right">100.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
+                                                    <td class="text-right">0.00%</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>African Union</td>
+                                                    <td class="text-right">84.09%</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                             </accordion-group>
                                           </accordion>
                                             <br>
@@ -413,13 +488,13 @@
                                                 <td class="table-title-left background-1" width="25%">
                                                     <p>
                                                         Indicator {{indicator.label}}
-                                                        <i class="mdi mdi-information" 
-                                                        popover="this is on beta" 
-                                                        placement="right" 
+                                                        <i class="mdi mdi-information"
+                                                        popover="this is on beta"
+                                                        placement="right"
                                                         triggers="mouseenter:mouseleave">
                                                         </i>
                                                     </p>
-                                
+
                                                 </td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
                                                 <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')"></td>
@@ -429,9 +504,9 @@
                                                 <td class="table-subtible background-1">
                                                     <p>
                                                         {{subcategory.label}}
-                                                        <i class="mdi mdi-information" 
-                                                        popover="this is on beta" 
-                                                        placement="right" 
+                                                        <i class="mdi mdi-information"
+                                                        popover="this is on beta"
+                                                        placement="right"
                                                         triggers="mouseenter:mouseleave">
                                                         </i>
                                                     </p>

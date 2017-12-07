@@ -641,8 +641,8 @@ div#map {
 }
 .modal-content{
     background-color: #fafafa;
-    left: 180px;
-    top: 115px;
+    /*left: 180px;*/
+    top: 190px;
 }
 .modal-title,
 .modal-title span{
@@ -659,16 +659,16 @@ div#map {
     font-weight: 600;
 }
 .result-modal{
-    padding-top: 15px;
-    padding-bottom: 30px;
+    /*padding-top: 15px;*/
+    padding-bottom: 15px;
     font-size: 14px;
 }
 .modal-body{
     padding: 2px 0px;
 }
-.background-modal{
+/*.background-modal{
     background-color: #FDF1EC;
-}
+}*/
 /*color de fondo del modal*/
 .modal-backdrop {
    background-color: transparent;
@@ -1005,10 +1005,20 @@ select-dropdown li.selected.highlighted {
   margin-top: -1px;
 }
 .acordion .card-header:first-child {
-    background: #fff;
+  background: #fff;
+  cursor: pointer;
+  background: #fff;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-weight: 500;
 }
 .acordion .card{
   border: none;
+}
+.acordion .card-body{
+  color: #f07848;
+  font-size: 12px;
+  padding: 5px 10px;
 }
 .btn-learn{
   background: #f07848 !important;
