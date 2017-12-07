@@ -35,6 +35,7 @@ export class AppComponent {
   categoriesNotNull: any;
   selectedTab = 'tab1';
   partners: any;
+  categorizedPartners: any;
   countryName = 'Country';
   title = 'app';
   modalRef: BsModalRef;
@@ -767,6 +768,28 @@ export class AppComponent {
   getPartners() {
     this.mapService.getPartners().subscribe(res => {
       this.partners = res;
+      const categorizedPartners = {};
+      for (const partner of this.partners) {
+        if (!categorizedPartners[partner.type_partner]) {
+          categorizedPartners[partner.type_partner] = [];
+        }
+        categorizedPartners[partner.type_partner].push(partner);
+      }
+      this.categorizedPartners = [];
+      for (const partnerName in categorizedPartners) {
+        this.categorizedPartners.push({
+          name: partnerName,
+          partners: categorizedPartners[partnerName]
+        });
+      }
+      this.categorizedPartners.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        } else if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
       this.chargeOrganizationComparison();
     });
   }

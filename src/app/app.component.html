@@ -238,112 +238,17 @@
                                         <!-- ACORDION -->
                                         <div class="acordion">
                                           <accordion>
-                                            <accordion-group #group>
+                                            <accordion-group #group *ngFor="let partnerGroup of categorizedPartners">
                                               <div accordion-heading class="clearfix">
-                                              Average for all development partners
+                                                {{partnerGroup.name}}
                                                 <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
                                               </div>
                                               <table class="table table-sm">
                                                 <tbody>
-                                                  <tr>
-                                                    <td>Adaptation Fund</td>
-                                                    <td class="text-right">100.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
-                                                    <td class="text-right">0.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African Union</td>
-                                                    <td class="text-right">84.09%</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </accordion-group>
-                                            <accordion-group #group>
-                                              <div accordion-heading class="clearfix">
-                                                Bilateral partners (DAC members)
-                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
-                                              </div>
-                                              <table class="table table-sm">
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Adaptation Fund</td>
-                                                    <td class="text-right">100.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
-                                                    <td class="text-right">0.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African Union</td>
-                                                    <td class="text-right">84.09%</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </accordion-group>
-                                            <accordion-group #group>
-                                              <div accordion-heading class="clearfix">
-                                                Other bilateral partners (non-DAC members)
-                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
-                                              </div>
-                                              <table class="table table-sm">
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Adaptation Fund</td>
-                                                    <td class="text-right">100.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
-                                                    <td class="text-right">0.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African Union</td>
-                                                    <td class="text-right">84.09%</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </accordion-group>
-                                            <accordion-group #group>
-                                              <div accordion-heading class="clearfix">
-                                                Multilateral development banks
-                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
-                                              </div>
-                                              <table class="table table-sm">
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Adaptation Fund</td>
-                                                    <td class="text-right">100.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
-                                                    <td class="text-right">0.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African Union</td>
-                                                    <td class="text-right">84.09%</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </accordion-group>
-                                            <accordion-group #group>
-                                              <div accordion-heading class="clearfix">
-                                                Multilateral development banks
-                                                <span class="float-right pull-right"><i class="mdi mdi-menu-down"></i></span>
-                                              </div>
-                                              <table class="table table-sm">
-                                                <tbody>
-                                                  <tr>
-                                                    <td>Adaptation Fund</td>
-                                                    <td class="text-right">100.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African CApacity BuildingFoundation (ACBF)</td>
-                                                    <td class="text-right">0.00%</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>African Union</td>
-                                                    <td class="text-right">84.09%</td>
+                                                  <tr *ngFor="let partner of partnerGroup.partners">
+                                                    <td class="result-table-letter">{{partner.partner}}</td>
+                                                    <td *ngIf="model.subcategory == null" class="result-table-number">{{getText(partner[model.category.column], model.category)}} </td>
+                                                    <td *ngIf="model.subcategory != null" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
                                                   </tr>
                                                 </tbody>
                                               </table>
@@ -355,25 +260,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table table-sm table-space">
-                                            <thead>
-                                                <tr>
-                                                    <th width="44%"></th>
-                                                    <th width="56%" class="title-table">{{mapTitle}}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let partner of partners">
-                                                    <td class="result-table-letter">{{partner.partner}}</td>
-                                                    <td *ngIf="model.subcategory == null" class="result-table-number">{{getText(partner[model.category.column], model.category)}} </td>
-                                                    <td *ngIf="model.subcategory != null" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
                             </div>
 
 
