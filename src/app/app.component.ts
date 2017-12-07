@@ -5,6 +5,7 @@ import { MapService } from './services/map.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
+import { legends } from './legends';
 import { regions, incomeGroups, countryContexts, partnerAggregate } from './filterCountries';
 import { saveAs } from 'file-saver';
 import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
@@ -42,6 +43,7 @@ export class AppComponent {
   geojson: any = {};
   name: any;
   titles: any;
+  legends: any;
   regions: any;
   incomeGroups: any;
   countryContexts: any;
@@ -53,137 +55,6 @@ export class AppComponent {
   firstCountry: any;
   secondCountry: any;
   geoJson: any;
-  legendPercent = [
-    {
-      color: '#F16950',
-      textFirst: ' 0',
-      textMiddle: '-',
-      textLast: '20%'
-    }, {
-      color: '#F69229',
-      textFirst: '20',
-      textMiddle: '-',
-      textLast: '40%'
-    }, {
-      color: '#FAD02F',
-      textFirst: '40',
-      textMiddle: '-',
-      textLast: '60%'
-    }, {
-      color: '#B1D781',
-      textFirst: '60',
-      textMiddle: '-',
-      textLast: '80%'
-    }, {
-      color: '#1FAB9E',
-      textFirst: '80',
-      textMiddle: '-',
-      textLast: '100%'
-    }
-  ];
-  legendYesNo = [
-    {
-      color: '#1FAB9E',
-      textFirst: 'Yes',
-      textMiddle: '',
-      textLast: ''
-    }, {
-      color: '#F16950',
-      textFirst: 'No',
-      textMiddle: '',
-      textLast: ''
-    }
-  ];
-  legendIndicator4 = [
-    {
-      color: '#F16950',
-      textFirst: 'Needs Improvement',
-      textMiddle: '',
-      textLast: ''
-    }, {
-      color: '#F69229',
-      textFirst: 'Fair',
-      textMiddle: '',
-      textLast: ''
-    }, {
-      color: '#B1D781',
-      textFirst: 'Good',
-      textMiddle: '',
-      textLast: ''
-    }, {
-      color: '#1FAB9E',
-      textFirst: 'Excellent',
-      textMiddle: '',
-      textLast: ''
-    }
-  ];
-  noLegend = [
-    {
-      color: '#F07848',
-      textFirst: 'Data available for these countries'
-    }
-  ];
-  legendNumber = [
-    {
-      color: '#1FAB9E',
-      textFirst: '0',
-      textMiddle: '-',
-      textLast: '2'
-    }, {
-      color: '#B1D781',
-      textFirst: '3',
-      textMiddle: '-',
-      textLast: '4'
-    }, {
-      color: '#FAD02F',
-      textFirst: '5',
-      textMiddle: '-',
-      textLast: '6'
-    }, {
-      color: '#F69229',
-      textFirst: '7',
-      textMiddle: '-',
-      textLast: '8'
-    }, {
-      color: '#F16950',
-      textFirst: '9',
-      textMiddle: '-',
-      textLast: '10'
-    }
-  ];
-  legendNumber2 = [
-    {
-      color: '#1FAB9E',
-      textFirst: '1',
-      textMiddle: '-',
-      textLast: '2'
-    }, {
-      color: '#B1D781',
-      textFirst: '2',
-      textMiddle: '-',
-      textLast: '3'
-    }, {
-      color: '#FAD02F',
-      textFirst: '3',
-      textMiddle: '-',
-      textLast: '4'
-    }, {
-      color: '#F69229',
-      textFirst: '4',
-      textMiddle: '-',
-      textLast: '5'
-    }, {
-      color: '#F16950',
-      textFirst: '5',
-      textMiddle: '-',
-      textLast: '6'
-    }, {
-      color: '#C556F1',
-      textFirst: '6',
-      textMiddle: '-',
-      textLast: '7'
-    }
-  ];
   model = {
     year: null,
     category: {
@@ -230,6 +101,7 @@ export class AppComponent {
     this.countryComparisonOptions = countryComparison;
     this.chargeCountryComparison();
     this.titles = titles;
+    this.legends = legends;
     this.regions = regions;
     this.incomeGroups = incomeGroups;
     this.countryContexts = countryContexts;
@@ -493,7 +365,7 @@ export class AppComponent {
         }
         if (this.selectedTab === 'tab2') {
           this.legendTitle = '';
-          this.legendMap = this.noLegend;
+          this.legendMap = this.legends.noLegend;
           this.indicator = false;
           this.mapTitle = '';
           this.resetComparer();
@@ -880,38 +752,35 @@ export class AppComponent {
     const category = this.model.category;
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
-    this.percent = false;
     if (this.indicator) {
         this.legendTitle = '';
-        this.legendMap = this.noLegend;
+        this.legendMap = this.legends.noLegend;
         return;
     }
     this.legendTitle = 'Indicator ' + category.id;
     if (subcategory != null) {
       if (subcategory.type === 'text') {
         if (category.id === '4') {
-          this.legendMap = this.legendIndicator4;
+          this.legendMap = this.legends.indicator4;
         } else {
-          this.legendMap = this.legendYesNo;
+          this.legendMap = this.legends.yesNo;
         }
       } else if (subcategory.type === 'percent') {
-        this.legendMap = this.legendPercent;
-        this.percent = true;
+        this.legendMap = this.legends.percent;
       } else if (subcategory.type === 'number' && subcategory.precision === '2') {
-        this.legendMap = this.legendNumber2;
+        this.legendMap = this.legends.number2;
       } else if (subcategory.type === 'number' && subcategory.precision === '0') {
-        this.legendMap = this.legendNumber;
+        this.legendMap = this.legends.number;
       }
     } else {
       if (category['type'] === 'text') {
-        this.legendMap = this.legendYesNo;
+        this.legendMap = this.legends.yesNo;
       } else if (category['type'] === 'percent') {
-        this.percent = true;
-        this.legendMap = this.legendPercent;
+        this.legendMap = this.legends.percent;
       } else if (category['type'] === 'number' && category['precision'] === '2') {
-        this.legendMap = this.legendNumber2;
+        this.legendMap = this.legends.number2;
       } else if (category['type'] === 'numer' && category['precision'] === '0') {
-        this.legendMap = this.legendNumber;
+        this.legendMap = this.legends.number;
       }
     }
     return this.mapService.paintForIndicator(category, subcategory, year);
