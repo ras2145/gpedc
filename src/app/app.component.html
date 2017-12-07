@@ -485,27 +485,38 @@
                                     <div class="col-md-12 background-table">
                                         <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
                                             <tr class="border-bottom-1">
-                                                <td class="table-title-left background-1" width="25%">
-                                                    <p>
-                                                        Indicator {{indicator.label}}
-                                                        <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
-                                                    </p>
+                                                <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
+                                                <ng-template #thenBlock>
+                                                    <td colspan="4" class="table-title-left background-1" width="25%">
+                                                        <p>
+                                                            Indicator {{indicator.label}}
+                                                            <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
+                                                        </p>
 
-                                                </td>
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
-                                                <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')"></td>
-                                                <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')"></td>
+                                                    </td>
+                                                </ng-template>
+                                                <ng-template #elseBlock>
+                                                    <td class="table-title-left background-1" width="25%">
+                                                        <p>
+                                                            Indicator {{indicator.label}}
+                                                            <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
+                                                        </p>
+                                                    </td>
+                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
+                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')"></td>
+                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')"></td>
+                                                </ng-template>
                                             </tr>
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                                                <td class="table-subtible background-1">
+                                                <td width="25%" class="table-subtible background-1">
                                                     <p>
                                                         {{subcategory.label}}
                                                         <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
                                                     </p>
                                                 </td>
-                                                <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
-                                                <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
-                                                <td class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')"></td>
+                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
+                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
+                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')"></td>
                                             </tr>
                                         </table>
                                     </div>
