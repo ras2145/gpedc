@@ -36,8 +36,8 @@ export class MapService {
   }
   private mapDefault = {
     tab1: {
-      center: [30, 25],
-      zoom: 1.4
+      center: [19, 37],
+      zoom: 1.2
     },
     tab2: {
       center: [48, 37],
