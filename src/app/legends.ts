@@ -66,7 +66,7 @@ export let legends = {
       'noLegend' : [
         {
           color: '#F07848',
-          textFirst: 'Data available for these countries'
+          textFirst: 'Data available for'
         }
       ],
       'number' : [

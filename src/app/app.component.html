@@ -629,7 +629,7 @@
                                     <i class="mdi mdi-checkbox-blank" [ngStyle]="{'color': x.color}"></i>
                                 </td>
                                 <td class="aling-left">
-                                    <span class="map-legend-text-first">{{x.textFirst}}</span>
+                                    <span class="map-legend-text-first">{{x.textFirst}} {{(mapTitle === '') ? model.year.year: ''}}</span>
                                 </td>
                                 <td class="aling-center line">
                                     <span class="map-legend-text-middle">{{x.textMiddle}}</span>

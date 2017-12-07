@@ -220,6 +220,7 @@ export class AppComponent {
   mapConfig() {
     const self = this;
     this.mapService.onLoad(() => {
+      this.mapTitle = '';
       this.setColor();
       this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
         self.mapService.build(geojson);
