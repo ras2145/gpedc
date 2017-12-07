@@ -361,7 +361,7 @@
                                             <thead>
                                                 <tr>
                                                     <th width="44%"></th>
-                                                    <th width="56%" class="title-table">{{model.category.title}}</th>
+                                                    <th width="56%" class="title-table">{{mapTitle}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -731,7 +731,7 @@
                     <div id="map"></div>
                     <!-- TAB MAP END -->
 
-                    <div class="map-legend" *ngIf="selectedTab==='tab1' && legendMap.length">
+                    <div class="map-legend" *ngIf="(selectedTab==='tab1' || selectedTab==='tab2') && legendMap.length">
                         <div class="title">{{legendTitle}}</div>
                         <table>
                             <tr *ngFor='let x of legendMap'>

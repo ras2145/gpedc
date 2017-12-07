@@ -96,7 +96,7 @@ export class AppComponent {
   noLegend = [
     {
       color: "#F07848",
-      textFirst: 'Data available for this countries'
+      textFirst: 'Data available for these countries'
     }
   ];
   legendNumber = [
@@ -442,6 +442,8 @@ export class AppComponent {
           this.setColor();
         }
         if (this.selectedTab === 'tab2') {
+          this.legendTitle = '';
+          this.legendMap = this.noLegend;
           this.indicator = false;
           this.mapTitle = '';
           this.resetComparer();
@@ -804,15 +806,12 @@ export class AppComponent {
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
     this.percent = false;
-   if(this.indicator){
-      this.legendTitle = '';
-      this.legendMap = this.noLegend;
-      return;
-   }
-    if (category.id === '1a') {
-    } else {
-      this.legendTitle = 'Indicator ' + category.id;
+    if (this.indicator) {
+        this.legendTitle = '';
+        this.legendMap = this.noLegend;
+        return;
     }
+    this.legendTitle = 'Indicator ' + category.id;
     if (subcategory != null) {
       if (subcategory.type === 'text') {
         this.legendMap = this.legendYesNo;
