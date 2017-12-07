@@ -15,7 +15,7 @@ export class MapService {
   public _map: Map;
   public style: string = 'mapbox://styles/undp-dashboard/cja98kikh1amc2spohea7voeh';
   private twoCountriesFilter = ['in', 'country'];
-  private _firstCountry =  '';
+  private _firstCountry = '';
   private _secondCountry = '';
   public get firstCountry() {
     return this._firstCountry;
@@ -87,14 +87,6 @@ export class MapService {
     });
 
     this.map.addLayer({
-      "id": "country-borders",
-      "type": "line",
-      "source": "countries",
-      "layout": {
-        "visibility": 'none',
-      },
-    });
-    this.map.addLayer({
       "id": "country-fills",
       "type": "fill",
       "source": "countries",
@@ -111,10 +103,20 @@ export class MapService {
       "layout": {},
       "paint": {
         "fill-color": "#b22c29",
-        "fill-opacity": 1
+        "fill-opacity": 0.25
       },
       filter: ['in', 'country']
     });
+    this.map.addLayer({
+      "id": "country-borders",
+      "type": "line",
+      "source": "countries",
+      "paint": {
+        "line-opacity": 0.25,
+        "line-color": "#000000"
+      }
+    });
+
   }
   update(geojson: any) {
     let source: GeoJSONSource;
@@ -151,7 +153,7 @@ export class MapService {
         }
       }
       this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
-      this.map.setFilter('country-fills-click', this.twoCountriesFilter);  
+      this.map.setFilter('country-fills-click', this.twoCountriesFilter);
       return [this.firstCountry, this.secondCountry];
     }
     if (this.twoCountriesFilter.includes(country)) {
@@ -162,13 +164,13 @@ export class MapService {
       }
       this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
     } else {
-        if (firstOrSecond === 'first') {
-          this.firstCountry = country;
-        }
-        else {
-          this.secondCountry = country;
-        }
-        this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
+      if (firstOrSecond === 'first') {
+        this.firstCountry = country;
+      }
+      else {
+        this.secondCountry = country;
+      }
+      this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
     }
     this.map.setFilter('country-fills-click', this.twoCountriesFilter);
     return [this.firstCountry, this.secondCountry];
@@ -210,13 +212,13 @@ export class MapService {
   }
   allDataCountryQuery() {
     const query = SERVER.GET_QUERY(`select ${SERVER.COLUMS_OF_COUNTRIES} from "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}"`);
-    return this.webService.get(query).map( ans => {
+    return this.webService.get(query).map(ans => {
       return ans.json().rows;
     });
   }
-  getPartners(): Observable <any> {
+  getPartners(): Observable<any> {
     const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".${SERVER.PARTNER_TABLE} order by partner`, false);
-    return this.webService.get(query).map( res => res.json().rows);
+    return this.webService.get(query).map(res => res.json().rows);
   }
   getCountriesYearGeoJSON(year: string): Observable<any> {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
@@ -237,7 +239,7 @@ export class MapService {
       }
       where = where + ' ' + indicator + ' IS NOT NULL ';
     }
-    if (region  != null && region != '') {
+    if (region != null && region != '') {
       if (where != '') {
         where = where + ' AND ';
       }
@@ -264,7 +266,7 @@ export class MapService {
     });
   }
 
-  resetLayer(){
+  resetLayer() {
     this.map.removeLayer('country-fills');
     this.map.addLayer({
       "id": "country-fills",
