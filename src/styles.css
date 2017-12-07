@@ -538,7 +538,7 @@ div#map {
     font-weight: 600;
 }
 .table-title-left p{
-    padding: 10px 10px 0px 0px;
+    padding: 8px 0px;
     margin: 0px;
 }
 .table-subtible p{
@@ -1005,14 +1005,14 @@ select-dropdown li.selected.highlighted {
   margin-top: -1px;
 }
 .map-drop .popover-body{
-  width: 160px;
+  width: 260px;
 }
 .acordion .card-header:first-child {
   background: #fff;
   cursor: pointer;
   background: #fff;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 10px 10px;
   font-weight: 500;
 }
 .acordion .card{
