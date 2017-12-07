@@ -660,7 +660,7 @@
                 <div
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
-                    <div class="map-header" *ngIf="selectedTab!=='tab3'">
+                    <div class="map-header" *ngIf="selectedTab==='tab1'">
                       <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
                     </div>
                     <div class="map-option">
@@ -668,9 +668,9 @@
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>
                       </div>
-                      <div class="btn-group map-drop" dropdown>
+                      <div class="btn-group map-drop" dropdown container="body">
                         <button dropdownToggle type="button" class="btn dropdown-toggle drop-map">
-                          View SIDS countries
+                          {{selectedSidCountry ? selectedSidCountry.country : 'View SID countries'}}
                           <i class="mdi mdi-information"
                               popover="Small Island Developing countries (SIDs)"
                               placement="right"
@@ -678,15 +678,8 @@
                           </i>
                           <span class="caret"></span>
                         </button>
-                        <ul *dropdownMenu class="dropdown-menu" role="menu">
-                          <li role="menuitem"><a class="dropdown-item" href="#">Cabo Verde</a></li>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Comorros</a></li>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Dominican Republic</a></li>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Fiji</a>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Guinnea-Bissau</a>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Jamaica</a>
-                          <li role="menuitem"><a class="dropdown-item" href="#">Kiribati</a>
-                          </li>
+                        <ul *dropdownMenu class="dropdown-menu map-dropdown" role="menu">
+                          <li role="menuitem" *ngFor="let sidCountry of sidsCountries" (click)="selectSid(sidCountry)"><a class="dropdown-item" href="#">{{sidCountry.country}}</a></li>
                         </ul>
                       </div>
                     </div>

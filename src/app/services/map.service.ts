@@ -63,7 +63,7 @@ export class MapService {
       center: this.mapDefault.tab1.center,
       zoom: this.mapDefault.tab1.zoom,
       maxBounds: [[-220, -90], [220, 90]],
-      maxZoom: 5,
+      maxZoom: 8,
       minZoom: 0.9,
       pitch: 0
     });
@@ -74,6 +74,12 @@ export class MapService {
     console.log(this.mapDefault[index]);
     this.map.setCenter(this.mapDefault[index].center);
     this.map.setZoom(this.mapDefault[index].zoom);
+  }
+  mapSetCenter(center) {
+    this.map.setCenter(center);
+  }
+  mapFitBounds(bounds) {
+    this.map.fitBounds(bounds);
   }
 
   onLoad(cb: Function) {
@@ -263,6 +269,19 @@ export class MapService {
     let query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
+    });
+  }
+  sidsCountriesQuery() {
+    const centerx = 'ST_X(ST_Centroid(the_geom)) as centerx';
+    const centery = 'ST_Y(ST_Centroid(the_geom)) as centery';
+    const bboxx1 = 'ST_X(ST_StartPoint(ST_BoundingDiagonal(the_geom))) as bboxx1';
+    const bboxy1 = 'ST_Y(ST_StartPoint(ST_BoundingDiagonal(the_geom))) as bboxy1';
+    const bboxx2 = 'ST_X(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxx2';
+    const bboxy2 = 'ST_Y(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxy2';
+    const area = 'ST_Area(the_geom) as area';
+    const query = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}") as t1 WHERE UPPER(sids) = 'YES' ORDER BY country`);
+    return this.webService.get(query).map(ans => {
+      return ans.json().rows;
     });
   }
 

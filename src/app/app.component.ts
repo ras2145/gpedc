@@ -175,6 +175,8 @@ export class AppComponent {
   };
   openedIndicator: string;
   indicatorTitle: any;
+  selectedSidCountry = null;
+  sidsCountries = [];
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
@@ -183,6 +185,22 @@ export class AppComponent {
   ngOnInit() {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
+    });
+    this.mapService.sidsCountriesQuery().subscribe(val => {
+      const countriesObj = {};
+      for (let country of val) {
+        if (countriesObj[country.country]) {
+          if (countriesObj[country.country].area < country.area) {
+            countriesObj[country.country] = country;
+          }
+        } else {
+          countriesObj[country.country] = country;
+        }
+      }
+      this.sidsCountries = [];
+      for (let countryName in countriesObj) {
+        this.sidsCountries.push(countriesObj[countryName]);
+      }
     });
     this.getPartners();
     this.countryComparisonOptions = countryComparison;
@@ -324,13 +342,22 @@ export class AppComponent {
       });
       this.mapService.clickCountry(event => {
         if (this.selectedTab === 'tab1') {
-          self.mapUrlProfile = event.features[0].properties.profile;
+          let feature = event.features[0];
+          if (event.features.length > 1) {
+            for (let feature1 of event.features) {
+              if (feature1.properties.country == self.selectedSidCountry) {
+                feature = feature1;
+              }
+            }
+          }
+          self.mapUrlProfile = feature.properties.profile;
           if (self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
             self.mapUrlProfile = '#';
           } else if (!self.mapUrlProfile.includes('http://')) {
             self.mapUrlProfile = 'http://' + self.mapUrlProfile;
           }
-          const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
+          const point = event.point ? event.point : [self.mapService.map.getCanvas().width / 2, self.mapService.map.getCanvas().height / 2];
+          const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
           });
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
@@ -853,5 +880,13 @@ export class AppComponent {
   }
   tabsToShow(category) {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
+  }
+  selectSid(sidCountry) {
+    this.selectedSidCountry = sidCountry;
+    this.mapService.mapSetCenter([sidCountry.centerx, sidCountry.centery]);
+    this.mapService.mapFitBounds([[sidCountry.bboxx1, sidCountry.bboxy1], [sidCountry.bboxx2, sidCountry.bboxy2]]);
+    setTimeout(() => {
+      this.mapService.map.fire('click', [sidCountry.firstx, sidCountry.firsty]);
+    }, 1000);
   }
 }
