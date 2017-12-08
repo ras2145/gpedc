@@ -16,6 +16,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  viewerTab: any;
   mapTitle: any;
   validIndicator: any;
   percent: any;
@@ -123,6 +124,7 @@ export class AppComponent {
     this.mapConfig();
     this.indicator = true;
     this.validIndicator = false;
+    this.viewerTab = '1';
   }
   chargeOrganizationComparison() {
     this.organizationSelectors.push({
@@ -349,6 +351,13 @@ export class AppComponent {
     }
     return 'No data';
   }
+
+  findViewerCategory(category, subcategory, indicator, subIndicator){
+    this.model.category = category;
+    this.model.subcategory = subcategory;
+    this.indicator = indicator;
+    this.subIndicator = subIndicator;
+  }
   selectTab(event) {
     this.mapService.resetLayer();
     this.legendMap = [];
@@ -362,11 +371,12 @@ export class AppComponent {
           if (title.year === '2016') {
             this.model.year = title;
             this.model.category = title.categories[0];
-            this.model.subcategory = null;
+            this.model.subcategory = title.categories[0].subcategories[0];
           }
         });
         this.indicator = true;
         if (this.selectedTab === 'tab1') {
+          this.viewerTab ='1';
           this.mapTitle = '';
           this.model.region = this.regions[0];
           this.model.countryContext = this.countryContexts[0];
@@ -377,6 +387,7 @@ export class AppComponent {
           this.setColor();
         }
         if (this.selectedTab === 'tab2') {
+          this.viewerTab = '2';
           this.legendTitle = '';
           this.legendMap = this.legends.noLegend;
           this.indicator = false;
@@ -411,7 +422,6 @@ export class AppComponent {
     this.validIndicator = true;
     this.updateMapTitle();
     console.log(this.model);
-
     console.log(this.indicator);
     console.log(this.subIndicator);
   }
@@ -704,6 +714,7 @@ export class AppComponent {
       if (title.year === '2016') {
         this.model.year = title;
         this.model.category = title.categories[0];
+        this.model.subcategory = null;
       }
     });
     this.model.region = this.regions[0];

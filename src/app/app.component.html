@@ -126,7 +126,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <button type="button" name="button" class="btn btn-learn" (click)="openModal(template)">What does this indicator measure?</button>
+                                            <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="openModal(template)">What does this indicator measure?</button>
                                         </div>
                                     </div>
                                 </div>
@@ -380,16 +380,16 @@
                                                     <td colspan="4" class="table-title-left background-1" width="25%">
                                                         <p>
                                                             Indicator {{indicator.label}}
-                                                            <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
+                                                            <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                                                         </p>
 
                                                     </td>
                                                 </ng-template>
                                                 <ng-template #elseBlock>
                                                     <td class="table-title-left background-1" width="25%">
-                                                        <p>
+                                                        <p>]
                                                             Indicator {{indicator.label}}
-                                                            <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
+                                                            <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                                                         </p>
                                                     </td>
                                                     <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')"></td>
@@ -401,7 +401,7 @@
                                                 <td width="25%" class="table-subtible background-1">
                                                     <p>
                                                         {{subcategory.label}}
-                                                        <i class="mdi mdi-information mdi-cursor" (click)="openModal(template)"></i>
+                                                        <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                                                     </p>
                                                 </td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
@@ -683,7 +683,7 @@
                   <div class="col-md-12">
                     <div class="tab-modal">
                       <tabset *ngIf="tabsToShow(model.category.id)">
-                        <tab heading="Indicator {{model.category.id}}" id="tab1">
+                        <tab *ngIf="viewerTab === '1' || (!indicator && subIndicator)" heading="Indicator {{model.category.id}}" id="tab1">
                             <div *ngIf="model.category.id==='1a'">
                                 <p class="result-modal">
                                     Indicator 1a measures alignment of development partners’ new interventions
@@ -761,7 +761,7 @@
                             </div>
                             
                         </tab>
-                        <tab heading="Sub-Indicator" id="tab2">
+                        <tab  *ngIf="(viewerTab === '1' && model.subcategory != null) || (indicator && !subIndicator)"heading="Sub-Indicator" id="tab2">
                             <div *ngIf="model.subcategory.column === '_2016_1_1'" >
                                 <p class="result-modal">
                                     This dimension of Indicator 1a measures whether objectives of new interventions are drawn from
