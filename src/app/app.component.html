@@ -626,8 +626,8 @@
                                     <div class="right-number">
                                         <p class="text-line">{{getIndicatorValue(countryName, '2016')}}</p>
                                         <div *ngIf="model.year.year === '2016'; then thenBlock2 else elseBlock2"></div>
-                                        <ng-template #thenBlock2><p><u>2016</u></p></ng-template>
-                                        <ng-template #elseBlock2><p>2016</p></ng-template>
+                                        <ng-template #thenBlock2><p class="line-2016"><u>2016</u></p></ng-template>
+                                        <ng-template #elseBlock2><p class="line-2016">2016</p></ng-template>
                                     </div>
                                 </div>
 

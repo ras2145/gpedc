@@ -652,7 +652,7 @@ div#map {
 .modal-content{
     background-color: #fafafa;
     /*left: 180px;*/
-    top: 190px;
+    top: 70px;
 }
 .modal-title,
 .modal-title span{
@@ -1044,6 +1044,9 @@ select-dropdown li.selected.highlighted {
   cursor: pointer;
   margin-top: 20px;
 }
+.btn-learn:hover{
+  background: #f78667 !important;
+}
 .mdi-cursor{
   cursor: pointer;
 }
@@ -1060,9 +1063,11 @@ select-dropdown li.selected.highlighted {
 .result-table-letter, .result-table-number{
   color: #f07848;
 }
-.tab-modal .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-  color: #fff !important;
-  background-color: #f07848 !important;
+.tab-modal .nav-tabs .nav-item.show .nav-link, .tab-modal .nav-tabs .nav-link.active {
+  color: #f07848 !important;
+  background-color: #fafafa !important;
+  /* text-decoration: underline; */
+  border-bottom: 3px solid #f07848 !important;
 }
 .tab-modal .nav-tabs .nav-item {
   width: 50%;
@@ -1072,8 +1077,17 @@ select-dropdown li.selected.highlighted {
   border: 1px solid transparent;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background: #f5f5f5;
+  background: #fafafa;
   color: #5d5d5d;
+}
+.tab-modal .nav-tabs .nav-link:hover {
+  color: #f07848 !important;
+  background-color: #fafafa !important;
+  /* text-decoration: underline; */
+  border-bottom: 3px solid #f07848 !important;
+}
+.tab-modal .tab-content>.active {
+    padding-top: 10px;
 }
 .col-line{
   border-top: 1px solid #e2e2e2;
@@ -1085,4 +1099,7 @@ select-dropdown li.selected.highlighted {
 .text-line{
   line-height: 11px;
   margin-top: 4px !important;
+}
+.line-2016{
+  line-height: 2;
 }
