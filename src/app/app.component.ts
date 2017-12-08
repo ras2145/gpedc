@@ -660,7 +660,8 @@ export class AppComponent {
       for (const partnerName in categorizedPartners) {
         this.categorizedPartners.push({
           name: partnerName,
-          partners: categorizedPartners[partnerName]
+          partners: categorizedPartners[partnerName],
+          open: false
         });
       }
       this.categorizedPartners.sort((a, b) => {
@@ -829,5 +830,8 @@ export class AppComponent {
     setTimeout(() => {
       this.mapService.map.fire('click', [sidCountry.firstx, sidCountry.firsty]);
     }, 1000);
+  }
+  switchPartnerGroupOpen(event, partnerGroup) {
+    partnerGroup.open = !partnerGroup.open;
   }
 }
