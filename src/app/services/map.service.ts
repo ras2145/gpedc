@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { WebService } from './web.service';
 import { SERVER } from '../server.config';
+import { layers } from '../layers';
 
 @Injectable()
 export class MapService {
@@ -17,6 +18,7 @@ export class MapService {
   private twoCountriesFilter = ['in', 'country'];
   private _firstCountry = '';
   private _secondCountry = '';
+  private layers = layers;
   public get firstCountry() {
     return this._firstCountry;
   }
@@ -307,186 +309,67 @@ export class MapService {
   paintForIndicator(category: any, subcategory: any, year: any) {
     this.map.removeLayer('country-fills');
     let indicator: any;
+    let layer: any;
     if (subcategory != null) {
       indicator = subcategory.column;
+      if (indicator === '_2016_2_1') {
+        layer = this.layers.indicator2_1;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
+      }
+      if (indicator === '_2016_2_2') {
+        layer = this.layers.indicator2_2;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
+      }
+      if (indicator === '_2016_2_3' || indicator === '_2016_2_4') {
+        layer = this.layers.indicator2_34;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
+      }
+      if (category.id === '3') {
+        layer = this.layers.indicator3;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
+      }
       if (subcategory.type === 'text') {
-        console.log(category);
         if (category.id === '4') {
-          this.map.addLayer({
-            'id': 'country-fills',
-            'source': 'countries',
-            'type': 'fill',
-            'paint': {
-              'fill-color': {
-                property: indicator,
-                type: 'categorical',
-                stops: [
-                  ['Needs Improvement', '#F16950'],
-                  ['Fair', '#F69229'],
-                  ['Good', '#B1D781'],
-                  ['Excellent', '#1FAB9E']
-                ]
-              },
-              'fill-opacity': 0.75
-            }
-          }, 'waterway-label');
+          layer = this.layers.indicator4;
+          layer['paint']['fill-color'].property = indicator;
+          this.map.addLayer(layer, 'waterway-label');
         } else {
-          this.map.addLayer({
-            'id': 'country-fills',
-            'source': 'countries',
-            'type': 'fill',
-            'paint': {
-              'fill-color': {
-                property: indicator,
-                type: 'categorical',
-                stops: [
-                  ['Yes', '#1FAB9E'],
-                  ['No', '#F16950']
-                ]
-              },
-              'fill-opacity': 0.75
-            }
-          }, 'waterway-label');
+          layer = this.layers.yesNo;
+          layer['paint']['fill-color'].property = indicator;
+          this.map.addLayer(layer, 'waterway-label');
         }
-      } else if (subcategory.type === 'percent') {
-        this.map.addLayer({
-          'id': 'country-fills',
-          'source': 'countries',
-          'type': 'fill',
-          'paint': {
-            'fill-color': {
-              property: indicator,
-              stops: [
-                [0.20, '#F16950'],
-                [0.40, '#F69229'],
-                [0.60, '#FAD02F'],
-                [0.80, '#B1D781'],
-                [1, '#1FAB9E']
-              ]
-            },
-            'fill-opacity': 0.75
-
-          }
-        }, 'waterway-label');
-      } else if (subcategory.type === 'number' && subcategory.precision === '0') {
-        this.map.addLayer({
-          'id': 'country-fills',
-          'source': 'countries',
-          'type': 'fill',
-          'paint': {
-            'fill-color': {
-              property: indicator,
-              stops: [
-                [0, '#1FAB9E'],
-                [3, '#B1D781'],
-                [5, '#FAD02F'],
-                [7, '#F69229'],
-                [9, '#F16950'],
-              ]
-            },
-            'fill-opacity': 0.75
-          }
-        }, 'waterway-label');
-      } else if (subcategory.type === 'number' && subcategory.precision === '2') {
-        this.map.addLayer({
-          'id': 'country-fills',
-          'source': 'countries',
-          'type': 'fill',
-          'paint': {
-            'fill-color': {
-              property: indicator,
-              stops: [
-                [1, '#1FAB9E'],
-                [2, '#B1D781'],
-                [3, '#FAD02F'],
-                [4, '#F69229'],
-                [5, '#F16950'],
-                [6, '#C556F1'],
-              ]
-            },
-            'fill-opacity': 0.75
-          }
-        }, 'waterway-label');
+      }
+      if (subcategory.type === 'percent') {
+        layer = this.layers.percent;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
       }
     } else {
-      if (category.id !== '1a') {
-        indicator = category.column;
-        if (category.type === 'text') {
-          this.map.addLayer({
-            'id': 'country-fills',
-            'source': 'countries',
-            'type': 'fill',
-            'paint': {
-              'fill-color': {
-                property: indicator,
-                type: 'categorical',
-                stops: [
-                  ['Yes', '#1FAB9E'],
-                  ['No', '#F16950']
-                ]
-              },
-              'fill-opacity': 0.75
-            }
-          }, 'waterway-label');
-        } else if (category.type === 'percent') {
-          this.map.addLayer({
-            'id': 'country-fills',
-            'source': 'countries',
-            'type': 'fill',
-            'paint': {
-              'fill-color': {
-                property: indicator,
-                stops: [
-                  [0.20, '#F16950'],
-                  [0.40, '#F69229'],
-                  [0.60, '#FAD02F'],
-                  [0.80, '#B1D781'],
-                  [1, '#1FAB9E']
-                ]
-              },
-              'fill-opacity': 0.75
-            }
-          }, 'waterway-label');
-        } else if (category.type === 'number' && category.precision === '0') {
-          this.map.addLayer({
-            'id': 'country-fills',
-            'source': 'countries',
-            'type': 'fill',
-            'paint': {
-              'fill-color': {
-                property: indicator,
-                stops: [
-                  [0, '#1FAB9E'],
-                  [3, '#B1D781'],
-                  [5, '#FAD02F'],
-                  [7, '#F69229'],
-                  [9, '#F16950'],
-                ]
-              },
-              'fill-opacity': 0.75
-            }
-          }, 'waterway-label');
-        } else if (category.type === 'number' && category.precision === '2') {
-          this.map.addLayer({
-            'id': 'country-fills',
-            'source': 'countries',
-            'type': 'fill',
-            'paint': {
-              'fill-color': {
-                property: indicator,
-                stops: [
-                  [1, '#1FAB9E'],
-                  [2, '#B1D781'],
-                  [3, '#FAD02F'],
-                  [4, '#F69229'],
-                  [5, '#F16950'],
-                  [6, '#C556F1'],
-                ]
-              },
-              'fill-opacity': 0.75
-            }
-          }, 'waterway-label');
+      indicator = category.column;
+      if (category.id === '9a') {
+        layer = this.layers.indicator9a;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
+      }
+      if (category.type === 'text') {
+        if (category.id === '4') {
+          layer = this.layers.indicator4;
+          layer['paint']['fill-color'].property = indicator;
+          this.map.addLayer(layer, 'waterway-label');
+        } else {
+          layer = this.layers.yesNo;
+          layer['paint']['fill-color'].property = indicator;
+          this.map.addLayer(layer, 'waterway-label');
         }
+      }
+      if (category.type === 'percent') {
+        layer = this.layers.percent;
+        layer['paint']['fill-color'].property = indicator;
+        this.map.addLayer(layer, 'waterway-label');
       }
     }
   }
