@@ -612,11 +612,23 @@ export class AppComponent {
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null) {
         if (country[this.model.category.column] != null) {
-          this.popupText = this.model.category.legendText;
+          if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'YES') {
+            this.popupText = this.model.category['prefix'] + ' ' + this.model.category['yesText'];
+          } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
+            this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
+          } else {
+            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValuePopUp(this.model.category, country[this.model.category.column]) + '</b> ' + this.model.category['suffix'];
+          }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
         if (country[this.model.subcategory.column] != null) {
-          this.popupText = this.model.subcategory.legendText;
+          if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'YES') {
+            this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.yesText;
+          } else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
+            this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.noText;
+          } else {
+            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValuePopUp(this.model.subcategory, country[this.model.subcategory.column]) + ' </b>' + this.model.subcategory.suffix;
+          }
         }
       }
     }
@@ -782,8 +794,10 @@ export class AppComponent {
         this.legendMap = this.legends.noLegend;
         return;
     }
-    this.legendTitle = 'Indicator ' + category.id;
+    console.log(category, subcategory);
+    this.legendTitle = category.legendText;
     if (subcategory != null) {
+      this.legendTitle = subcategory.legendText;
       if (subcategory.type === 'text') {
         if (category.id === '4') {
           this.legendMap = this.legends.indicator4;

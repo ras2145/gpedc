@@ -907,6 +907,7 @@ select-dropdown li.selected.highlighted {
   padding: 10px;
   box-shadow: 1px 1px 10px #ccc;
   font-size: 14px;
+  max-width: 200px;
 }
 .map-legend table{
     width: 100%;
