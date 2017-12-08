@@ -590,13 +590,13 @@
                                 <div *ngIf="!indicator" class="number-card">
                                     <div class="left-number">
                                         <p>{{getIndicatorValue(countryName, '2014')}}</p>
-                                        <div *ngIf="model.year.year === '2014'; then thenBlock1 else elseBlock1"></div>                                        
+                                        <div *ngIf="model.year.year === '2014'; then thenBlock1 else elseBlock1"></div>
                                         <ng-template #thenBlock1><p><u>2014</u></p></ng-template>
                                         <ng-template #elseBlock1><p>2014</p></ng-template>
                                     </div>
                                     <div class="right-number">
                                         <p>{{getIndicatorValue(countryName, '2016')}}</p>
-                                        <div *ngIf="model.year.year === '2016'; then thenBlock2 else elseBlock2"></div>                                        
+                                        <div *ngIf="model.year.year === '2016'; then thenBlock2 else elseBlock2"></div>
                                         <ng-template #thenBlock2><p><u>2016</u></p></ng-template>
                                         <ng-template #elseBlock2><p>2016</p></ng-template>
                                     </div>
@@ -677,6 +677,12 @@
               </div>
               <div class="row background-modal">
                   <div class="col-md-12">
+                    <div class="tab-modal">
+                      <tabset>
+                        <tab heading="Static title" id="tab1">Indicator</tab>
+                        <tab heading="Static Title 1">Sub- Indicator</tab>
+                      </tabset>
+                    </div>
                       <p *ngIf="subIndicator && indicator" class="result-modal">
                           This indicator measures the alignment of development partners' new
                           interventions with the objectives and results defined by countries
@@ -689,33 +695,33 @@
 
                       </p>
                        <p *ngIf="!indicator && subIndicator && model.category.column === '_2016_1'" class="result-modal">
-                        Indicator 1a measures alignment of development partners’ new interventions 
-                        with country-defined objectives and results; and development partners reliance 
+                        Indicator 1a measures alignment of development partners’ new interventions
+                        with country-defined objectives and results; and development partners reliance
                         on countries’ own statistics and monitoring and evaluation processes to track the
                         progress of development interventions.<br><br>
                         For each development intervention of significant size (US$ 1 million and above)
-                         approved during the year of reference, the indicator calculates the degree to which 
+                         approved during the year of reference, the indicator calculates the degree to which
                          development partners rely on objectives, results indicators and monitoring frameworks
                          drawn from government sourc es, including national, sector and subnational planning
                         tools.<br><br>
                         The results for the 2016 monitoring round constitute the baseline for this indicator.<br><br>
-                        For complete qualitative information under indicator 1b (contextual information on the 
+                        For complete qualitative information under indicator 1b (contextual information on the
                         country’s existing institutional arrangements for setting priorities and targeting results),
                          please read the individual country’s monitoring profile.<br><br>
-                         Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.   
+                         Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </p>
                     <p *ngIf="!indicator && !subIndicator && model.subcategory.column === '_2016_1_1'"class="result-modal">
-                        This dimension of Indicator 1a measures whether objectives of new interventions are drawn from 
+                        This dimension of Indicator 1a measures whether objectives of new interventions are drawn from
                         country-led results frameworks, plans and strategies (such as long-term vision documents, national
                          development plans or sector plans).<br><br>
-                        For each country, development partners were asked to report on the largest interventions approved 
+                        For each country, development partners were asked to report on the largest interventions approved
                         in 2015 (up to a maximum of 10 per country), preferably above USD $1 million.<br><br>
                         Further information on the methodology for all indicators can be found in the 2015
                          Monitoring Guide.
                     </p>
                     <p *ngIf="!indicator && !subIndicator && model.subcategory.column === '_2016_1_2'"class="result-modal">
-                    This dimension of Indicator 1a measures the share of results indicators that are drawn 
-                    from existing country-led frameworks, plans and strategies, minimising the use of other, 
+                    This dimension of Indicator 1a measures the share of results indicators that are drawn
+                    from existing country-led frameworks, plans and strategies, minimising the use of other,
                     potentially duplicative processes.<br><br>
                     For each country, development partners were asked to report on the largest interventions
                      approved in 2015 (up to a maximum of 10 per country), preferably above USD $1 million.<br><br>
