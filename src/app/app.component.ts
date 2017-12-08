@@ -72,6 +72,18 @@ export class AppComponent {
   indicatorTitle: any;
   selectedSidCountry = null;
   sidsCountries = [];
+  sidsIgnoreGroups = [
+    'Aggregate',
+    'Bilateral partners (DAC members)',
+    'Other bilateral partners (non-DAC members)'
+  ];
+  sidsOrder = {
+    'Multilateral development banks': 0,
+    'UN agencies': 1,
+    'Global funds and vertical initiatives': 2,
+    'Other international and regional organizations': 3,
+    'Foundation': 4
+  };
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
@@ -658,16 +670,18 @@ export class AppComponent {
       }
       this.categorizedPartners = [];
       for (const partnerName in categorizedPartners) {
-        this.categorizedPartners.push({
-          name: partnerName,
-          partners: categorizedPartners[partnerName],
-          open: false
-        });
+        if (!this.sidsIgnoreGroups.includes(partnerName)){
+          this.categorizedPartners.push({
+            name: partnerName,
+            partners: categorizedPartners[partnerName],
+            open: false
+          });
+        }
       }
       this.categorizedPartners.sort((a, b) => {
-        if (a.name < b.name) {
+        if (this.sidsOrder[a.name] < this.sidsOrder[b.name]) {
           return -1;
-        } else if (a.name > b.name) {
+        } else if (this.sidsOrder[a.name] > this.sidsOrder[b.name]) {
           return 1;
         }
         return 0;
