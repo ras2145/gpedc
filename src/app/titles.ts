@@ -12,6 +12,7 @@ export let titles = [
         "suffix": "of development co-operation funding was disbursed within the fiscal year within which it was scheduled.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of funding disbursed within scheduled fiscal year",
         "type": "percent",
         "precision": "2"
       },
@@ -25,6 +26,7 @@ export let titles = [
         "suffix": "of development co-operation funding is covered by indicative forward spending plans provided at country level.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of funding covered by forward expenditure plan by development partner",
         "type": "percent",
         "precision": "2"
       },
@@ -38,6 +40,7 @@ export let titles = [
         "suffix": "of development co-operation funding scheduled for disbursement is included in national budgets subject to parliamentary oversight.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of funding on-budget ",
         "type": "percent",
         "precision": "2"
       },
@@ -54,6 +57,7 @@ export let titles = [
             "suffix": "",
             "yesText": "At least 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
             "noText": "Less than 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
+            "legendText": "Is a process for inclusive reviews among partners in place?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews"
@@ -65,6 +69,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 1: Aid or partnership policy is in place.",
             "noText": "Criterion 1: Aid or partnership policy is not in place.",
+            "legendText": "Is an aid or partnership policy in place?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of an aid or partnership policy"
@@ -76,6 +81,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 2: Local targets for development co-operation have been established.",
             "noText": "Criterion 2: Local targets for development co-operation have not been established.",
+            "legendText": "Are country-level partnership targets in place?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of country-level targets for development co-operation"
@@ -87,6 +93,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 3: Government and development partners conduct joint regular assessment towards targets.",
             "noText": "Criterion 3: Government and development partners do not conduct joint regular assessment towards targets.",
+            "legendText": "Are there regular joint assessments among partners?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of regular joint assessments between government and development partners"
@@ -98,6 +105,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 4: Non-executive stakeholders are involved in joint assessments.",
             "noText": "Criterion 4: Non-executive stakeholders are not involved in joint assessments.",
+            "legendText": "Are non-executive actors involved in joint assessments?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Involvement of non-executive stakeholders in joint assessments"
@@ -109,6 +117,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 5: Results are made public.",
             "noText": "Criterion 5: Results are not made public.",
+            "legendText": "Are joint assessments made public?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of publicly-available information on joint assessments"
@@ -119,6 +128,7 @@ export let titles = [
         "suffix": "",
         "yesText": "At least 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
         "noText": "Less than 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
+        "legendText": "Is a process for inclusive reviews among partners in place?",
         "type": "text",
         "precision": "0"
       },
@@ -135,6 +145,7 @@ export let titles = [
             "suffix": "",
             "yesText": "There is a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
             "noText": "There is not a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
+            "legendText": "Do countries meet Global Partnership criteria?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
@@ -146,6 +157,7 @@ export let titles = [
             "suffix": "",
             "yesText": "There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
             "noText": "There is not an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
+            "legendText": "Is there a government statement on a tracking system for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Existence of a government statement establishing a tracking system for gender equality and women's empowerment"
@@ -157,6 +169,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Gender allocations are systematically tracked.",
             "noText": "Gender allocations are not systematically tracked.",
+            "legendText": "Is there a government system for tracking allocations for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Governments systematically track public allocations for gender equality and women’s empowerment"
@@ -168,6 +181,7 @@ export let titles = [
             "suffix": "",
             "yesText": "There is system oversight by central government unit.",
             "noText": "There is not system oversight by central government unit.",
+            "legendText": "Is there a central government unit providing oversight for gender allocations?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: A central government unit provides leadership and oversight of a tracking system for gender equality allocations"
@@ -179,6 +193,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Gender-related budget information is publicly available.",
             "noText": "Gender-related budget information is not publicly available.",
+            "legendText": "Are budget allocations for gender equality publicly available?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Existence of pubicly-available information on budget allocations for gender equality"
@@ -189,6 +204,7 @@ export let titles = [
         "suffix": "",
         "yesText": "There is a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
         "noText": "There is not a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
+        "legendText": "Do countries meet Global Partnership criteria?",
         "type": "text",
         "precision": "0"
       },
@@ -202,6 +218,7 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "How reliable is the budget and financial management system (6 is ideal)?",
         "type": "number",
         "precision": "2"
       },
@@ -215,6 +232,7 @@ export let titles = [
         "suffix": "of development co-operation funding disbursed for the government sector used public financial management and procurement systems.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of fundng disbursed using the countries' own systems",
         "type": "percent",
         "precision": "2"
       },
@@ -228,6 +246,7 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of aid that is fully untied",
         "type": "percent",
         "precision": "2"
       }
@@ -239,7 +258,7 @@ export let titles = [
       {
         "id": "1a",
         "label": " 1a: Development partners use country-led results frameworks",
-        "title": "",
+        "title": "1a: Do development partners use countries' own results frameworks and evaluation processes? ",
         "subcategories": [
           {
             "label": "% of new development interventions that draw objectives from country-led results frameworks",
@@ -248,6 +267,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "",
             "type": "percent",
             "precision": "2",
             "title": "Indicator 1a: % of new development interventions that draw objectives from country-led results frameworks"
@@ -259,6 +279,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "",
             "type": "percent",
             "precision": "2",
             "title": "Indicator 1a: % of results indicators drawn from country-led results frameworks"
@@ -270,6 +291,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "",
             "type": "percent",
             "precision": "2",
             "title": "Indicator 1a: % of results indicators monitored using the government's own sources"
@@ -281,6 +303,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "",
             "type": "percent",
             "precision": "2",
             "title": "Indicator 1a: % of new interventions that plan a final evaluation with government involvement"
@@ -291,13 +314,14 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "",
         "type": "text",
         "precision": "0"
       },
       {
         "id": "2",
         "label": " 2: CSO enabling environment",
-        "title": "",
+        "title": "2: Are CSOs engaged in the development effectiveness process?",
         "subcategories": [
           {
             "label": "Availability of space for multi-stakeholder dialogue on national development policies",
@@ -306,6 +330,7 @@ export let titles = [
             "suffix": "out of 3 criteria have been met for availability of spaces for multi-stakeholder dialogue on national development policies. ",
             "yesText": "",
             "noText": "",
+            "legendText": "How many criteria are met for Module 1 (3 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 2. Availabilty of space for multi-stakeholder dialogue on national development policies "
@@ -317,6 +342,7 @@ export let titles = [
             "suffix": "out of 5 criteria have been met for CSO adherence to development effectiveness principles of co-ordination, accountability and transparency. ",
             "yesText": "",
             "noText": "",
+            "legendText": "How many criteria are met for Module 2 (4 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 2: CSOs apply the principles of accountability and transparency"
@@ -328,6 +354,7 @@ export let titles = [
             "suffix": "out of 4 criteria have been met for official development co-operation with CSOs.",
             "yesText": "",
             "noText": "",
+            "legendText": "How many criteria are met for Module 3 (4 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 2: Official development co-operation with CSOs"
@@ -339,6 +366,7 @@ export let titles = [
             "suffix": "out of 4 criteria have been met for having enabling legal and regulatory environment for CSO contribution to development.",
             "yesText": "",
             "noText": "",
+            "legendText": "How many criteria are met for Module 4 (4 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 2: Legal and regulatory environment in place to maximise CSO engagement"
@@ -349,13 +377,14 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "",
         "type": "text",
         "precision": "0"
       },
       {
         "id": "3",
         "label": " 3: Public-private dialogue and private sector engagement",
-        "title": "",
+        "title": "3: What is the quality of public-private dialogue?",
         "subcategories": [
           {
             "label": "Private sector willingness to engage",
@@ -364,6 +393,7 @@ export let titles = [
             "suffix": "on a scale of 0-10 with 10 indicating strongest performance and 0 indicating the weakest. ",
             "yesText": "",
             "noText": "",
+            "legendText": "How willing is the private sector to engage in public-private dialogue (10 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 3: Private sector willingness to engage in public-private dialogue"
@@ -375,6 +405,7 @@ export let titles = [
             "suffix": "on a scale of 0-10 with 10 indicating strongest performance and 0 indicating the weakest.",
             "yesText": "",
             "noText": "",
+            "legendText": "How willing is the government to engage in public-private dialogue (10 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 3: Government willingness to engage in public-private dialogue"
@@ -386,6 +417,7 @@ export let titles = [
             "suffix": "on a scale of 0-10 with 10 indicating strongest performance and 0 indicating the weakest.",
             "yesText": "",
             "noText": "",
+            "legendText": "Are there potential champions to facilitate public-private dialogue (10 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 3: Existence of potential champions to facilitate public-private dialogue"
@@ -397,6 +429,7 @@ export let titles = [
             "suffix": "on a scale of 0-10 with 10 indicating strongest performance and 0 indicating the weakest.",
             "yesText": "",
             "noText": "",
+            "legendText": "Are instruments available to facilitate public-private dialogue (10 is ideal)?",
             "type": "number",
             "precision": "0",
             "title": "Indicator 3: Existence of instruments to support public-private dialogue"
@@ -407,13 +440,14 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "",
         "type": "text",
         "precision": "0"
       },
       {
         "id": "4",
         "label": " 4: Transparent information on development co-operation is publicly available",
-        "title": "",
+        "title": "4: Are development partners making high-quality information on development co-operation publicly accessible?",
         "subcategories": [
           {
             "label": "Assessment by OECD Creditor Reporting System",
@@ -422,6 +456,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "How robust are donors' activity-level records of funding?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 4: Transparency assessment by the OECD Creditor Reporting System (CRS)"
@@ -433,6 +468,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "How strong are donors' forward spending plans?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 4: Transparency assessment by the OECD Forward Spending Survey (FSS)"
@@ -444,6 +480,7 @@ export let titles = [
             "suffix": "",
             "yesText": "",
             "noText": "",
+            "legendText": "Are donors' reporting information in a timely, comprehensive and forward looking manner?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 4: Transparency assessment by the International Aid Transparency Initiative (IATI)"
@@ -454,6 +491,7 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "",
         "type": "text",
         "precision": "0"
       },
@@ -467,6 +505,7 @@ export let titles = [
         "suffix": "of development co-operation funding was disbursed within the fiscal year within which it was scheduled.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of funding disbursed within scheduled fiscal year",
         "type": "percent",
         "precision": "2"
       },
@@ -480,6 +519,7 @@ export let titles = [
         "suffix": "of development co-operation funding is covered by indicative forward spending plans provided at country level.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of funding covered by forward expenditure plan by development partner",
         "type": "percent",
         "precision": "2"
       },
@@ -493,6 +533,7 @@ export let titles = [
         "suffix": "of development co-operation funding scheduled for disbursement is included in national budgets subject to parliamentary oversight.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of funding on-budget",
         "type": "percent",
         "precision": "2"
       },
@@ -509,6 +550,7 @@ export let titles = [
             "suffix": "",
             "yesText": "At least 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
             "noText": "Less than 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
+            "legendText": "Is a process for inclusive reviews among partners in place?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews"
@@ -520,6 +562,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 1: Aid or partnership policy is in place.",
             "noText": "Criterion 1: Aid or partnership policy is not in place.",
+            "legendText": "Is an aid or partnership policy in place?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of an aid or partnership policy "
@@ -531,6 +574,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 2: Local targets for development co-operation have been established.",
             "noText": "Criterion 2: Local targets for development co-operation have not been established.",
+            "legendText": "Are country-level partnership targets in place?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of country-level targets for development co-operation "
@@ -542,6 +586,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 3: Government and development partners conduct joint regular assessment towards targets.",
             "noText": "Criterion 3: Government and development partners do not conduct joint regular assessment towards targets.",
+            "legendText": "Are there regular joint assessments among partners?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of regular joint assessments between government and development partners "
@@ -553,6 +598,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 4: Non-executive stakeholders are involved in joint assessments.",
             "noText": "Criterion 4: Non-executive stakeholders are not involved in joint assessments.",
+            "legendText": "Are non-executive actors involved in joint assessments?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Involvement of non-executive stakeholders in joint assessments"
@@ -564,6 +610,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Criterion 5: Results are made public.",
             "noText": "Criterion 5: Results are not made public.",
+            "legendText": "Are joint assessments made public?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 7: Existence of publicly-available information on joint assessments"
@@ -574,6 +621,7 @@ export let titles = [
         "suffix": "",
         "yesText": "At least 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
         "noText": "Less than 4 out of 5 criteria have been met for having inclusive, transparent mutual accountability reviews in place.",
+        "legendText": "Is a process for inclusive reviews among partners in place?",
         "type": "text",
         "precision": "0"
       },
@@ -590,6 +638,7 @@ export let titles = [
             "suffix": "",
             "yesText": "There is a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
             "noText": "There is not a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
+            "legendText": "Do countries meet Global Partnership criteria?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
@@ -601,6 +650,7 @@ export let titles = [
             "suffix": "",
             "yesText": "There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
             "noText": "There is not an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
+            "legendText": "Is there a government statement on a tracking system for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Existence of a government statement establishing a tracking system for gender equality and women's empowerment"
@@ -612,6 +662,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Gender allocations are systematically tracked.",
             "noText": "Gender allocations are not systematically tracked.",
+            "legendText": "Is there a government system for tracking allocations for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Governments systematically track public allocations for gender equality and women’s empowerment"
@@ -623,6 +674,7 @@ export let titles = [
             "suffix": "",
             "yesText": "There is system oversight by central government unit.",
             "noText": "There is not system oversight by central government unit.",
+            "legendText": "Is there a central government unit providing oversight for gender allocations?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: A central government unit provides leadership and oversight of a tracking system for gender equality allocations"
@@ -634,6 +686,7 @@ export let titles = [
             "suffix": "",
             "yesText": "Gender-related budget information is publicly available.",
             "noText": "Gender-related budget information is not publicly available.",
+            "legendText": "Are budget allocations for gender equality publicly available?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: Existence of pubicly-available information on budget allocations for gender equality "
@@ -644,6 +697,7 @@ export let titles = [
         "suffix": "",
         "yesText": "There is a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
         "noText": "There is not a system in place for meeting at least 1 out of the 3 criteria for tracking public allocations for gender equality and women's empowerment and the criterion for making gender-related budget information publicly available.",
+        "legendText": "Do countries meet Global Partnership criteria?",
         "type": "text",
         "precision": "0"
       },
@@ -657,6 +711,7 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "How reliable is the budget and financial management system (6 is ideal)?",
         "type": "number",
         "precision": "2"
       },
@@ -670,6 +725,7 @@ export let titles = [
         "suffix": "of development co-operation funding disbursed for the government sector used public financial management and procurement systems.",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of fundng disbursed using the countries' own systems",
         "type": "percent",
         "precision": "2"
       },
@@ -683,6 +739,7 @@ export let titles = [
         "suffix": "",
         "yesText": "",
         "noText": "",
+        "legendText": "Share of aid that is fully untied",
         "type": "percent",
         "precision": "2"
       }
