@@ -73,16 +73,16 @@ export class AppComponent {
   selectedSidCountry = null;
   sidsCountries = [];
   sidsIgnoreGroups = [
-    'Aggregate',
-    'Bilateral partners (DAC members)',
-    'Other bilateral partners (non-DAC members)'
+    'Aggregate'
   ];
   sidsOrder = {
-    'Multilateral development banks': 0,
-    'UN agencies': 1,
-    'Global funds and vertical initiatives': 2,
-    'Other international and regional organizations': 3,
-    'Foundation': 4
+    'Bilateral partners (DAC members)': 0,
+    'Other bilateral partners (non-DAC members)': 1,
+    'Foundation': 2,
+    'Global funds and vertical initiatives': 3,
+    'Multilateral development banks': 4,
+    'Other international and regional organizations': 5,
+    'UN agencies': 6
   };
   constructor(
     private mapService: MapService,
