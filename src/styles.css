@@ -304,9 +304,9 @@ select.form-control:not([size]):not([multiple]){
     }
     .number-card{
         background-color: #F7F7F7;
-        padding-left: 40px;
-        padding-right: 40px;
-        height: 50px;
+        padding-left: 30px;
+        padding-right: 30px;
+        min-height: 50px;
     }
         .number-card p{
             padding: 0px;
@@ -315,9 +315,11 @@ select.form-control:not([size]):not([multiple]){
         }
         .number-card .left-number{
             float: left;
+            min-height: 50px;
         }
         .number-card .right-number{
             float: right;
+            min-height: 50px;
         }
         .number-card .left-number p:nth-child(1),
         .number-card .right-number p:nth-child(1){
@@ -325,6 +327,7 @@ select.form-control:not([size]):not([multiple]){
             padding-top: 7px;
             font-weight: bold;
             text-align: center;
+            inline-size: 70px;
         }
         .number-card .left-number p:nth-child(2),
         .number-card .right-number p:nth-child(2){
@@ -1077,4 +1080,8 @@ select-dropdown li.selected.highlighted {
 .disclaimer {
   font-size: 10px;
   font-style: italic;
+}
+.text-line{
+  line-height: 11px;
+  margin-top: 4px !important;
 }
