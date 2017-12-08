@@ -337,13 +337,13 @@ select.form-control:not([size]):not([multiple]){
         .content-card{
             padding-left: 20px;
             padding-right: 20px;
-            padding-bottom: 20px;
+            padding-bottom: 17px;
         }
         .content-card p{
             padding-top: 15px;
             text-align: left;
             font-size: 13px;
-            max-height: 125px;
+            /*max-height: 125px;*/
             margin-bottom: 0px;
         }
         .button-card{
@@ -1045,12 +1045,12 @@ select-dropdown li.selected.highlighted {
   height: 75vh;
   overflow: auto;
 }
-.acordion i:before {
+/*.acordion i:before {
   transform: translate(-2px, 0) rotate(45deg);
 }
 .acordion i:after {
   transform: translate(2px, 0) rotate(-45deg);
-}
+}*/
 .result-table-letter, .result-table-number{
   color: #f07848;
 }
