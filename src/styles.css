@@ -431,6 +431,13 @@ select.form-control:not([size]):not([multiple]){
 .width-popUp .popover-content.popover-body{
     width: 250px
 }
+.width-popup-partner .popover-body{
+    width: 174px;
+    padding-right: 20px;
+}
+.width-popup-partner .popover-content.popover-body{
+    width: 150px
+}
 .popover{
     font-size: 12px;
 }
