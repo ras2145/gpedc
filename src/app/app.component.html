@@ -573,7 +573,7 @@
                           <span class="caret"></span>
                         </button>
                         <ul *dropdownMenu class="dropdown-menu map-dropdown" role="menu">
-                          <li role="menuitem" *ngFor="let sidCountry of sidsCountries" (click)="selectSid(sidCountry)"><a class="dropdown-item" href="#">{{sidCountry.country}}</a></li>
+                          <li role="menuitem" *ngFor="let sidCountry of sidsCountries" (click)="selectSid(sidCountry)"><button class="dropdown-item">{{sidCountry.country}}</button></li>
                         </ul>
                       </div>
                     </div>
