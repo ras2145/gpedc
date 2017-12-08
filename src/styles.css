@@ -1074,3 +1074,7 @@ select-dropdown li.selected.highlighted {
 .col-line{
   border-top: 1px solid #e2e2e2;
 }
+.disclaimer {
+  font-size: 10px;
+  font-style: italic;
+}
