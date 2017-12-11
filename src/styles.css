@@ -469,7 +469,7 @@ div#map {
     background-color: inherit;
 }
 .nav-pills i{
-    font-size: 20px;
+    font-size: 24px;
     padding-left: 5px;
 }
 .nav-pills span.ocultar{
@@ -484,7 +484,7 @@ div#map {
 .nav-pills .nav-link:hover,
 .nav-pills .nav-link.active:hover{
     width: 173px;
-    height: 30px;
+    height: 36px;
     padding-left: 3px;
     padding-right: 0px;
     margin-right: -145px;
@@ -493,7 +493,7 @@ div#map {
 .nav-pills li:nth-child(1) .nav-link:hover,
 .nav-pills li:nth-child(1) .nav-link.active:hover{
     width: 117px;
-    height: 30px;
+    height: 36px;
     padding-left: 3px;
     padding-right: 0px;
     margin-right: -145px;
@@ -511,7 +511,7 @@ div#map {
     border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;
     width: 35px;
-    height: 30px;
+    height: 36px;
     padding-right: 27px;
 }
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
@@ -861,7 +861,7 @@ div#map {
     width: 20px;
 }
 .value{
-    font-size: 14px;
+  font-size: 12px;
 }
 
 
