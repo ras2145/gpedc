@@ -386,6 +386,7 @@ export class AppComponent {
             this.mapService.update(geojson);
           });
           this.setColor();
+          this.selectedSidCountry = null;
         }
         if (this.selectedTab === 'tab2') {
           this.viewerTab = '2';
@@ -401,6 +402,7 @@ export class AppComponent {
             id: '',
             legendText: ''
           };
+          this.selectedSidCountry = null;
         }
         if (this.selectedTab === 'tab1') {
           setTimeout(() => {
