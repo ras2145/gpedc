@@ -140,25 +140,35 @@ export class AppComponent {
       key: 'Aggregate',
       value: new Array<IOption>()
     });
-    for (const partner of this.partners) {
-      if (partner['_2016'].toUpperCase() === 'YES') {
-        this.organizationSelectors[1]['value'].push({
-          value: partner['partner'],
-          label: partner['partner']
+    for (const partnerGroup of this.categorizedPartners) {
+      const titleObject = {
+        value: partnerGroup.name,
+        label: partnerGroup.name,
+        disabled: true
+      };
+      this.organizationSelectors[0]['value'].push(titleObject);
+      this.organizationSelectors[1]['value'].push(titleObject);
+      this.organizationSelectors[2]['value'].push(titleObject);
+      for (const partner of partnerGroup.partners) {
+        if (partner['_2016'].toUpperCase() === 'YES') {
+          this.organizationSelectors[1]['value'].push({
+            value: partner['partner'],
+            label: partner['partner']
+          });
+        }
+        if (partner['_2014'].toUpperCase() === 'YES') {
+          this.organizationSelectors[0]['value'].push({
+            value: partner['partner'],
+            label: partner['partner']
+          });
+        }
+      }
+      for (const aggregate of partnerAggregate) {
+        this.organizationSelectors[2]['value'].push({
+          value: aggregate.value,
+          label: aggregate.label
         });
       }
-      if (partner['_2014'].toUpperCase() === 'YES') {
-        this.organizationSelectors[0]['value'].push({
-          value: partner['partner'],
-          label: partner['partner']
-        });
-      }
-    }
-    for (const aggregate of partnerAggregate) {
-      this.organizationSelectors[2]['value'].push({
-        value: aggregate.value,
-        label: aggregate.label
-      });
     }
   }
   chargeCountryComparison() {
