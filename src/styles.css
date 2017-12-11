@@ -1168,3 +1168,12 @@ select-dropdown li.selected.highlighted {
   width: 100%;
   margin-top: 30px;
 }
+
+/*FILTROS PARTNER*/
+.btn-filtros{
+  border-radius: 50px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 12px;
+  background: #b6b6b6;
+}
