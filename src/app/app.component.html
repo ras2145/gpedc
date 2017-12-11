@@ -607,7 +607,8 @@
                     </div>
 
                     <!-- CARD map -->
-                    <div class="card-map" *ngIf="selectedTab==='tab1' && countryName !== 'Country'" >
+<!-- *ngIf="selectedTab==='tab1' && countryName !== 'Country'" -->
+                    <div class="card-map" >
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="head-card">
@@ -728,9 +729,9 @@
                                     please read the individual country’s monitoring profile.
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
-
+                                  </p>
                             </div>
-                            <div *ngIf="model.category.id==='2'">
+                            <div *ngIf="model.category.id==='2'" class="modal-contet">
                                 <p class="result-modal" >
                                     Indicator 2 seeks to assess the extent to which governments and development partners contribute
                                     to an enabling environment for civil society organisations (CSOs), in addition to how CSOs are
@@ -747,7 +748,7 @@
                                     development partner, and other relevant stakeholders.<br><br>
 
                                     The questionnaire contains four modules with questions on:
-                                    Government support for multi-stakeholder dialogue around national development policies (Module 1); <br><br>
+                                    Government support for multi-stakeholder dialogue around national development policies (Module 1);
                                     <ul>
                                         <li>CSO accountability and transparency (Module 2); </li>
                                         <li>Official development co-operation with CSOs (Module 3); and </li>
@@ -756,7 +757,7 @@
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
 
                             </div>
-                            <div *ngIf="model.category.id==='3'">
+                            <div *ngIf="model.category.id==='3'" class="modal-contet">
                                 <p class="result-modal">
                                     Indicator 3 assesses the engagement of the private sector and the quality of public-private dialogue (PPD) in a given country. In doing so, it recognises the importance of inclusive dialogue with the private sector for building a policy environment conducive to growth and sustainable development.
                                     <br><br>
@@ -773,7 +774,7 @@
                                     For further results from Module 2, please read the country’s monitoring profile. Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
 
                             </div>
-                            <div *ngIf="model.category.id==='4'">
+                            <div *ngIf="model.category.id==='4'" class="modal-contet">
                                 <p class="result-modal" >
                                     Indicator 4 seeks to capture the timeliness, comprehensiveness and forward-looking nature of individual development partners’ electronic publication of information on co-operation resources. It measures transparency by considering three complementary measurements in parallel: the OECD-DAC’s Creditor Reporting System (CRS) and Forward-Spending Survey (FSS); and the International Aid Transparency Initiative (IATI).
                                     <br><br>
@@ -786,7 +787,7 @@
 
                         </tab>
                         <tab  *ngIf="(viewerTab === '1' && model.subcategory != null) || (indicator && !subIndicator)"heading="Sub-Indicator" id="tab2">
-                            <div *ngIf="model.subcategory.column === '_2016_1_1'" >
+                            <div *ngIf="model.subcategory.column === '_2016_1_1'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 1a measures whether objectives of new interventions are drawn from
                                     country-led results frameworks, plans and strategies (such as long-term vision documents, national
@@ -798,7 +799,7 @@
                                     Further information on the methodology for all indicators can be found in the 2015
                                     Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_1_2'" >
+                            <div *ngIf="model.subcategory.column === '_2016_1_2'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 1a measures the share of results indicators that are drawn
                                     from existing country-led frameworks, plans and strategies, minimising the use of other,
@@ -808,7 +809,7 @@
                                     approved in 2015 (up to a maximum of 10 per country), preferably above USD $1 million.<br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_1_3'" >
+                            <div *ngIf="model.subcategory.column === '_2016_1_3'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 1a measures the share of outcome results indicators that rely on country
                                     sources to track progress –i.e. sources coming from countries’ own monitoring systems or own statistics
@@ -819,7 +820,7 @@
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_1_4'" >
+                            <div *ngIf="model.subcategory.column === '_2016_1_4'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 1a measures the share of new interventions with a final evaluation that
                                     engages the partner country government in evaluating the results (e.g. defining the scope of the
@@ -829,7 +830,7 @@
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_2_1'" >
+                            <div *ngIf="model.subcategory.column === '_2016_2_1'" class="modal-contet">
                                 <p class="result-modal">
                                     Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
                                     <br><br>
@@ -844,7 +845,7 @@
                                     <br><br>
                                     Click here to access complete data for all 17 criteria listed under the four modules. Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_2_2'" >
+                            <div *ngIf="model.subcategory.column === '_2016_2_2'" class="modal-contet">
                                 <p class="result-modal">
                                     Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
                                     <br><br>
@@ -861,7 +862,7 @@
                                     <br><br>
                                     Click here to access complete data for all 17 criteria listed under the four modules. Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_2_3'" >
+                            <div *ngIf="model.subcategory.column === '_2016_2_3'" class="modal-contet">
                                 <p class="result-modal">
                                     Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
                                     <br><br>
@@ -877,7 +878,7 @@
                                     <br><br>
                                     Click here to access complete data for all 17 criteria listed under the four modules. Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_2_4'" >
+                            <div *ngIf="model.subcategory.column === '_2016_2_4'" class="modal-contet">
                                 <p class="result-modal">
                                     Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
                                     <br><br>
@@ -892,7 +893,7 @@
                                     <br><br>
                                     Click here to access complete data for all 17 criteria listed under the four modules. Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_3_1'" >
+                            <div *ngIf="model.subcategory.column === '_2016_3_1'"class="modal-contet" >
                                 <p class="result-modal">
                                     This dimension of Indicator 3 assesses the private sector’s willingness to engage in public-private dialogue in a given country. The result displayed for this indicator are on a scale from 0 (weak) to 10 (strong) and were agreed through a country-level multi-stakeholder dialogue process led by the government in consultation with focal points from the private sector, development partners, trade unions and civil society organisations.
                                     <br><br>
@@ -900,7 +901,7 @@
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_3_2'" >
+                            <div *ngIf="model.subcategory.column === '_2016_3_2'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 3 assesses the government’s willingness to engage in public-private dialogue in a given country. The result displayed for this indicator is on a scale from 0 (weak) to 10 (strong) and is agreed through a country-level multi-stakeholder dialogue process led by the government in consultation with focal points from the private sector, development partners, trade unions and Civil Society Organisations.
                                     <br><br>
@@ -908,7 +909,7 @@
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_3_3'" >
+                            <div *ngIf="model.subcategory.column === '_2016_3_3'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 3 assesses whether there is a potential champion who can facilitate the public-private dialogue process, activate political will and reduce the trust gap between public and private sector stakeholders in a given country.
                                     <br><br>
@@ -918,7 +919,7 @@
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_3_4'" >
+                            <div *ngIf="model.subcategory.column === '_2016_3_4'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 3 assesses whether logistical, financial and capacity-building instruments are available to support public-private dialogue in a given country.
                                     <br><br>
@@ -928,7 +929,7 @@
                                     <br><br>
                                     Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_4_1'" >
+                            <div *ngIf="model.subcategory.column === '_2016_4_1'" class="modal-contet">
                                 <p class="result-modal">
                                     The Global Partnership measures transparency by simultaneously considering the complementary measurements of the OECD-DAC’s Creditor Reporting System (CRS) and Forward-Spending Survey (FSS); and the International Aid Transparency Initiative (IATI).
                                     <br><br>
@@ -938,7 +939,7 @@
                                     <br><br>
                                     Further information on the methodology for Indicator 4 can be found in the Transparency Indicator Methodological Note.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_4_2'" >
+                            <div *ngIf="model.subcategory.column === '_2016_4_2'" class="modal-contet">
                                 <p class="result-modal">
                                     The Global Partnership measures transparency by simultaneously considering the complementary measurements of the OECD-DAC’s Creditor Reporting System (CRS) and Forward-Spending Survey (FSS); and the International Aid Transparency Initiative (IATI).
                                     <br><br>
@@ -948,7 +949,7 @@
                                     <br><br>
                                     Further information on the methodology for Indicator 4 can be found in the Transparency Indicator Methodological Note.
                             </div>
-                            <div *ngIf="model.subcategory.column === '_2016_4_3'" >
+                            <div *ngIf="model.subcategory.column === '_2016_4_3'" class="modal-contet">
                                 <p class="result-modal">
                                     The Global Partnership measures transparency by simultaneously considering the complementary measurements of the OECD-DAC’s Creditor Reporting System (CRS) and Forward-Spending Survey (FSS); and the International Aid Transparency Initiative (IATI).
                                     <br><br>
@@ -961,7 +962,7 @@
                         </tab>
                       </tabset>
                     </div>
-                    <div *ngIf="model.category.id==='5a'">
+                    <div *ngIf="model.category.id==='5a'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 5a measures whether development co-operation flows are becoming more predictable over time, focusing on annual predictability of development co-operation. In doing so, it recognises that shortfalls in the total amount of funding for the government sector and delays in the in-year disbursements of scheduled funds can have serious implications for a government’s ability to implement development policies and strategies as planned.
                             <br><br>
@@ -969,7 +970,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.category.id==='5b'">
+                    <div *ngIf="model.category.id==='5b'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 5b focuses on medium-term predictability of development co-operation. In doing so, it recognises that a lack of comprehensive and credible forward-looking information on development co-operation funding can have serious implications for a government’s ability to plan and implement policies and strategies, deliver public services and design and conduct sound macro-economic policy.
                             <br><br>
@@ -989,7 +990,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.category.id==='6'">
+                    <div *ngIf="model.category.id==='6'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 6 measures the percentage of development co-operation funding scheduled for disbursement by development partners that is recorded in the annual budgets approved by the legislature of a given country.
                             <br><br>
@@ -998,7 +999,7 @@
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
                     <div *ngIf="model.subcategory!== null">
-                    <div *ngIf="model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7'">
+                    <div *ngIf="model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 7 seeks to measure progress made by developing countries in undertaking mutual assessment reviews with their development partners. The principle of mutual accountability recognises that development impacts improve when all parties take responsibility for their contributions.
                             <br><br>
@@ -1012,7 +1013,7 @@
                             </ul>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1'">
+                    <div *ngIf="model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 7 assesses whether there is an aid or partnership policy in place to define a country’s development co-operation priorities, or if elements of such a policy are agreed through other instruments (yes / no).
                             <br><br>
@@ -1021,7 +1022,7 @@
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
 
-                    <div *ngIf="model.subcategory.column==='_2014_7_2' || model.subcategory.column==='_2016_7_2'">
+                    <div *ngIf="model.subcategory.column==='_2014_7_2' || model.subcategory.column==='_2016_7_2'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 7 assesses whether there are specific country-level targets for effective development co-operation for both the partner country government and its development partners (yes / no).
                             <br><br>
@@ -1030,13 +1031,13 @@
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
 
-                    <div *ngIf="model.subcategory.column==='_2014_7_3' || model.subcategory.column==='_2016_7_3'">
+                    <div *ngIf="model.subcategory.column==='_2014_7_3' || model.subcategory.column==='_2016_7_3'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 7 assesses whether an assessment towards agreed country-level targets has been undertaken jointly by the country government and its development partners at the senior level in the past two years (yes / no).
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_7_4' || model.subcategory.column==='_2016_7_4'">
+                    <div *ngIf="model.subcategory.column==='_2014_7_4' || model.subcategory.column==='_2016_7_4'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 7 assesses whether local governments and non-executive stakeholders (i.e. civil society organisations, the private sector and parliamentarians) have been actively involved in joint assessments at a senior level within the past two years (yes / no).
                             <br><br>
@@ -1044,14 +1045,14 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_7_5' || model.subcategory.column==='_2016_7_5'">
+                    <div *ngIf="model.subcategory.column==='_2014_7_5' || model.subcategory.column==='_2016_7_5'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 7 assesses whether the comprehensive results of joint assessments toward mutually-agreed targets have been made public in a timely manner to ensure transparency (yes / no).
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
 
-                    <div *ngIf="model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8'">
+                    <div *ngIf="model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8'" class="modal-contet">
                         <p class="result-modal">
                             This indicator seeks to measure government efforts to track and make public resource allocations for gender equality and women’s empowerment. It does so by encouraging national governments to develop appropriate budget tracking and monitoring systems and commit to making information about allocations for gender equality readily accessible to the public.
                             <br><br>
@@ -1068,7 +1069,7 @@
                             </ul>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_1' || model.subcategory.column==='_2016_8_1'">
+                    <div *ngIf="model.subcategory.column==='_2014_8_1' || model.subcategory.column==='_2016_8_1'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 8 assesses whether there exists an official government statement on a system for tracking allocations for gender equality and women’s empowerment (yes / no).
                             <br><br>
@@ -1078,7 +1079,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_2' || model.subcategory.column==='_2016_8_2'">
+                    <div *ngIf="model.subcategory.column==='_2014_8_2' || model.subcategory.column==='_2016_8_2'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 8 assesses whether allocations for gender equality and women’s empowerment are systematically tracked (yes / no).
                             <br><br>
@@ -1094,7 +1095,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_3' || model.subcategory.column==='_2016_8_3'">
+                    <div *ngIf="model.subcategory.column==='_2014_8_3' || model.subcategory.column==='_2016_8_3'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 8 assesses whether leadership and oversight of the tracking system is under the purview of the central government unit in charge of public expenditures (yes / no).
                             <br><br>
@@ -1102,7 +1103,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_4' || model.subcategory.column==='_2016_8_4'">
+                    <div *ngIf="model.subcategory.column==='_2014_8_4' || model.subcategory.column==='_2016_8_4'" class="modal-contet">
                         <p class="result-modal">
                             This dimension of Indicator 8 assesses whether gender equality-focused budget information is publicly available (e.g. through Parliamentary oversight and civil society scrutiny, publications, websites or other means) (yes / no).
                             <br><br>
@@ -1111,7 +1112,7 @@
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
                     </div>
-                    <div *ngIf="model.category.id==='9a'">
+                    <div *ngIf="model.category.id==='9a'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 9a seeks to assess progressive strengthening of a country’s own systems. Well-performing country systems are essential to ensure that public expenditure for ambitious national plans translates into development results in the most effective and sustainable manner.
                             <br><br>
@@ -1130,7 +1131,7 @@
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
 
                     </div>
-                    <div *ngIf="model.category.id==='9b'">
+                    <div *ngIf="model.category.id==='9b'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 9b measures the proportion of development co-operation disbursed to the government using the country’s own financial management and procurement systems. This includes using the country’s own rules and procedures – versus those of the development partner – for budget execution, financial reporting, auditing and procurement of goods and services.
                             <br><br>
@@ -1138,7 +1139,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
                     </div>
-                    <div *ngIf="model.category.id==='10'">
+                    <div *ngIf="model.category.id==='10'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 10 measures the share of development assistance that is fully untied within a given country or by a development partner. Tied aid implies funding for which partners establish geographical restrictions as to where funds can be spent.
                             <br><br>

@@ -650,9 +650,10 @@ div#map {
     padding-top: 20px;
 }
 .modal-content{
-    background-color: #fafafa;
-    /*left: 180px;*/
-    top: 70px;
+  background-color: #fafafa;
+  left: -50px;
+  top: 70px;
+  width: 600px
 }
 .modal-title,
 .modal-title span{
@@ -670,8 +671,8 @@ div#map {
 }
 .result-modal{
     /*padding-top: 15px;*/
-    padding-bottom: 15px;
-    font-size: 14px;
+    /*padding-bottom: 15px;*/
+    font-size: 13px;
 }
 .modal-body{
     padding: 2px 0px;
@@ -1102,4 +1103,8 @@ select-dropdown li.selected.highlighted {
 }
 .line-2016{
   line-height: 2;
+}
+.modal-contet{
+  font-size: 13px;
+  padding-bottom: 10px;
 }
