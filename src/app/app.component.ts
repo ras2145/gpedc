@@ -657,9 +657,13 @@ export class AppComponent {
           const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
           if (!notPrint.includes(i.id)) {
             if (value === 'Yes') {
-              this.footerText = this.footerText + i.label + ': ' + i.yesText + '<br>';
+              this.footerText = this.footerText + i.label + ': <br /><b>' + i.yesText + '</b><br>';
             } else if (value === 'No') {
-              this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
+              this.footerText = this.footerText + i.label + ': <br /><b>' + i.noText + '</b><br>';
+            } else if (i.id == '1a' || i.id == '4' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
+              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '<br>';
+            } else if (i.id == '2' || i.id == '3') {
+              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <h2 class="col-md-2">' + value + ' </h2>' + i.suffix) + '<br>';
             } else if (i.label != '1a') {
               this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <p>' + value + ' </p>' + i.suffix) + '<br>';
             }
@@ -670,9 +674,13 @@ export class AppComponent {
             jumps = 1;
             const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             if (subvalue === 'Yes') {
-              this.footerText = this.footerText + j.yesText + '<br><br>';
+              this.footerText = this.footerText + '<b>' + j.yesText + '</b><br><br>';
             } else if (subvalue === 'No') {
-              this.footerText = this.footerText + j.noText + '<br><br>';
+              this.footerText = this.footerText + '<b>' + j.noText + '</b><br><br>';
+            } else if (i.id == '1a' || i.id == '4' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
+              this.footerText = this.footerText + j.prefix + ' <h2>' + subvalue + ' </h2>' + j.suffix + '<br>';
+            } else if (i.id == '2' || i.id == '3') {
+              this.footerText = this.footerText + j.prefix + ' <div class="row"><div class="col-md-1"><h2>' + subvalue + ' </h2></div><div class="col-md-11">' + j.suffix + '</div></div><br>';
             } else {
               this.footerText = this.footerText + (j.prefix + ' <p>' + subvalue + '</p> ' + j.suffix) + '<br><br>';
             }

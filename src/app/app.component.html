@@ -662,7 +662,7 @@
                         <!-- END MODAL TUTORIAL -->
 
                     </div>
-                    <div class="map-option">
+                    <div class="map-option" *ngIf="selectedTab !== 'tab3'">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>
@@ -684,8 +684,7 @@
                     </div>
 
                     <!-- CARD map -->
-<!-- *ngIf="selectedTab==='tab1' && countryName !== 'Country'" -->
-                    <div class="card-map" >
+                    <div class="card-map" *ngIf="selectedTab==='tab1' && countryName !== 'Country'">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="head-card">
