@@ -561,7 +561,7 @@ export class AppComponent {
       //  text = text + ' ' + indicator['noText'];
       //} else {
       // text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
-      text = text + '<b>' + value + '</b>';
+      text = text + '<p>' + value + '</p>';
       //}
     } else {
       /*if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
@@ -569,7 +569,7 @@ export class AppComponent {
       } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator.noText;
       } else {*/
-      text = text + '<b>' + value + '</b>';
+      text = text + '<p>' + value + '</p>';
       // }
     }
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
@@ -651,7 +651,7 @@ export class AppComponent {
             } else if (value === 'No') {
               this.footerText = this.footerText + i.label + ': ' + i.noText + '<br>';
             } else if (i.label != '1a') {
-              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <b>' + value + ' </b>' + i.suffix) + '<br>';
+              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <p>' + value + ' </p>' + i.suffix) + '<br>';
             }
             this.footerText = this.footerText + '<br>';
           }
@@ -664,7 +664,7 @@ export class AppComponent {
             } else if (subvalue === 'No') {
               this.footerText = this.footerText + j.noText + '<br><br>';
             } else {
-              this.footerText = this.footerText + (j.prefix + ' <b>' + subvalue + '</b> ' + j.suffix) + '<br><br>';
+              this.footerText = this.footerText + (j.prefix + ' <p>' + subvalue + '</p> ' + j.suffix) + '<br><br>';
             }
           }
 
