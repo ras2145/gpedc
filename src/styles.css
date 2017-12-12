@@ -1224,6 +1224,9 @@ select-dropdown li.selected.highlighted {
 .btn-filters:hover{
   background: #a5a1a0;
 }
+.btn-filters-selected{
+  background: #a5a1a0;
+}
 
 /*ENLACE MAP*/
 .a-map{

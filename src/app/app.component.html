@@ -492,7 +492,7 @@
                                         </p>
                                         <!-- FILTROS -->
                                         <span *ngFor="let partnerGroup of categorizedPartners">
-                                          <button type="button" class="btn btn-filters">{{partnerGroup.name}}</button>
+                                          <button type="button" class="btn btn-filters" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (click)="selectPartnerGroup(partnerGroup)">{{partnerGroup.name}}</button>
                                         </span>
                                         <!-- END FILTROS -->
                                     </div>

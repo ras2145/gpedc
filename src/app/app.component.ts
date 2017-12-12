@@ -128,6 +128,7 @@ export class AppComponent {
     this.viewerTab = '1';
   }
   chargeOrganizationComparison() {
+    this.organizationSelectors = [];
     this.organizationSelectors.push({
       key: '2014',
       value: new Array<IOption>()
@@ -141,33 +142,35 @@ export class AppComponent {
       value: new Array<IOption>()
     });
     for (const partnerGroup of this.categorizedPartners) {
-      const titleObject = {
-        value: partnerGroup.name,
-        label: partnerGroup.name,
-        disabled: true
-      };
-      this.organizationSelectors[0]['value'].push(titleObject);
-      this.organizationSelectors[1]['value'].push(titleObject);
-      this.organizationSelectors[2]['value'].push(titleObject);
-      for (const partner of partnerGroup.partners) {
-        if (partner['_2016'].toUpperCase() === 'YES') {
-          this.organizationSelectors[1]['value'].push({
-            value: partner['partner'],
-            label: partner['partner']
+      if (partnerGroup.selected) {
+        const titleObject = {
+          value: partnerGroup.name,
+          label: partnerGroup.name,
+          disabled: true
+        };
+        this.organizationSelectors[0]['value'].push(titleObject);
+        this.organizationSelectors[1]['value'].push(titleObject);
+        this.organizationSelectors[2]['value'].push(titleObject);
+        for (const partner of partnerGroup.partners) {
+          if (partner['_2016'].toUpperCase() === 'YES') {
+            this.organizationSelectors[1]['value'].push({
+              value: partner['partner'],
+              label: partner['partner']
+            });
+          }
+          if (partner['_2014'].toUpperCase() === 'YES') {
+            this.organizationSelectors[0]['value'].push({
+              value: partner['partner'],
+              label: partner['partner']
+            });
+          }
+        }
+        for (const aggregate of partnerAggregate) {
+          this.organizationSelectors[2]['value'].push({
+            value: aggregate.value,
+            label: aggregate.label
           });
         }
-        if (partner['_2014'].toUpperCase() === 'YES') {
-          this.organizationSelectors[0]['value'].push({
-            value: partner['partner'],
-            label: partner['partner']
-          });
-        }
-      }
-      for (const aggregate of partnerAggregate) {
-        this.organizationSelectors[2]['value'].push({
-          value: aggregate.value,
-          label: aggregate.label
-        });
       }
     }
   }
@@ -708,7 +711,8 @@ export class AppComponent {
           this.categorizedPartners.push({
             name: partnerName,
             partners: categorizedPartners[partnerName],
-            open: false
+            open: false,
+            selected: true
           });
         }
       }
@@ -884,5 +888,10 @@ export class AppComponent {
   }
   switchPartnerGroupOpen(event, partnerGroup) {
     partnerGroup.open = !partnerGroup.open;
+  }
+  selectPartnerGroup(partnerGroup) {
+    partnerGroup.selected = !partnerGroup.selected;
+    console.log(partnerGroup);
+    this.chargeOrganizationComparison();
   }
 }
