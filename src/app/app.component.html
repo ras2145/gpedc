@@ -733,7 +733,7 @@
 
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
                     <div class="tab-map" *ngIf="selectedCountry">
-                      <div>
+                      <div [hidden]="mapUrlProfile == '#'">
                         <a class="a-map" href="{{mapUrlProfile}}" target="_blank">
                           {{selectedCountry}}: View Country Profile
                         </a>
