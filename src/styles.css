@@ -1239,4 +1239,13 @@ select-dropdown li.selected.highlighted {
 .a-map:hover, .a-map:focus{
   color: #fff;
   text-decoration: none;
+  background: #818686;
+}
+#line-td{
+  width: 175px;
+  position: absolute;
+  -webkit-transform: rotate(28deg);
+  transform: rotate(28deg);
+  background: #9b9b9b;
+  height: 1px;
 }
