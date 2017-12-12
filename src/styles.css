@@ -183,6 +183,25 @@ a.btn-export:hover{
     color: #fff;
     text-decoration: none;
 }
+.btn-export-01{
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 50px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 33%;
+    background-color: #f17846;
+    z-index: 1000;
+    box-shadow: 2px 1px 30px -2px rgba(116,116,120,1);
+    cursor: pointer;
+}
+a.btn-export-01:hover{
+    color: #fff;
+    text-decoration: none;
+}
 .margin-top-btn{
     margin-top: 33px;
 }
@@ -628,7 +647,7 @@ div#map {
   padding: 15px;
   font-size: 13px;
   width: 587px;
-  height: 160px;
+  height: 240px;
   /*overflow-x: hidden;*/
   padding-right: 0px;
   padding-bottom: 25px;
@@ -639,7 +658,7 @@ div#map {
   background-color: #f78667;
 }
 .tab-map .tab-content p{
-  height: 120px;
+  height: 205px;
   overflow-x: hidden;
 }
 .tab-map .nav-tabs {
@@ -914,14 +933,14 @@ select-dropdown li.selected.highlighted {
   border-radius: 5px;
   padding: 5px;
   box-shadow: 1px 1px 10px #ccc;
-  font-size: 14px;
+  font-size: 12px;
   max-width: 200px;
 }
 .map-legend table{
     width: 100%;
 }
 .map-legend .title{
-    font-size: 15px;
+  font-size: 12px;
 }
 .map-legend-text {
   padding: 0 6px;
@@ -1124,6 +1143,9 @@ select-dropdown li.selected.highlighted {
   color: #fff;
   cursor: pointer;
 }
+.btn-tutorial:hover, .btn-tutorial:focus{
+  color:#e27e53;
+}
 .modal-tutorial{
   background: #fff;
 }
@@ -1180,16 +1202,29 @@ select-dropdown li.selected.highlighted {
   margin-bottom: 15px;
   margin-top: 10px;
 }
+.logo-modal{
+  width: 330px;
+}
+.modal-logo{
+  padding: 15px;
+  padding-left: 32px;
+  margin-top: 6px;
+  padding-bottom: 10px;
+}
 /*FILTROS PARTNER*/
-.btn-filtros{
+.btn-filters{
   border-radius: 50px;
   color: #fff;
   text-transform: uppercase;
-  font-size: 10px;
-  background: #8e8a88;
+  font-size: 8px;
+  background: #bfbdbc;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
+.btn-filters:hover{
+  background: #a5a1a0;
+}
+
 /*ENLACE MAP*/
 .a-map{
   background: #444847;
@@ -1198,6 +1233,8 @@ select-dropdown li.selected.highlighted {
   padding: 5px 10px;
   margin-top: -43px;
   position: absolute;
+  border-radius: 5px;
+  font-size: 14px;
 }
 .a-map:hover, .a-map:focus{
   color: #fff;
