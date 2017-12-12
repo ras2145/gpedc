@@ -1169,7 +1169,10 @@ select-dropdown li.selected.highlighted {
   width: 100%;
   margin-top: 30px;
 }
-
+.modal-img{
+  width: 350px;
+  margin-bottom: 15px;
+}
 /*FILTROS PARTNER*/
 .btn-filtros{
   border-radius: 50px;
