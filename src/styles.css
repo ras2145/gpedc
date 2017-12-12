@@ -394,7 +394,13 @@ select.form-control:not([size]):not([multiple]){
     padding-left: 20px;
 }
 .map-header i{
-    cursor: pointer;
+  font-size: 23px;
+  position: absolute;
+  right: 72px;
+  top: 8px;
+  background: #444847;
+  border-left: 1px solid #fff;
+  padding-left: 10px
 }
 
 /* - - - - - - - - - - - - - - -- - ESTLIOS para el mapa y header; - - - - - - --  - --  - - - - - -  - - - - */
@@ -906,7 +912,7 @@ select-dropdown li.selected.highlighted {
   background-color: #fff;
   right: 23px;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px;
   box-shadow: 1px 1px 10px #ccc;
   font-size: 14px;
   max-width: 200px;
@@ -915,7 +921,7 @@ select-dropdown li.selected.highlighted {
     width: 100%;
 }
 .map-legend .title{
-    font-size: 16px;
+    font-size: 15px;
 }
 .map-legend-text {
   padding: 0 6px;
@@ -926,9 +932,9 @@ select-dropdown li.selected.highlighted {
 .aling-center{
     text-align: center;
 }
-.aling-center.line{
+/*.aling-center.line{
     width: 15px
-}
+}*/
 .map-legend-text-first {
   /*width: 28px;*/
   text-align: center;
@@ -1172,6 +1178,7 @@ select-dropdown li.selected.highlighted {
 .modal-img{
   width: 350px;
   margin-bottom: 15px;
+  margin-top: 10px;
 }
 /*FILTROS PARTNER*/
 .btn-filtros{
@@ -1182,4 +1189,17 @@ select-dropdown li.selected.highlighted {
   background: #8e8a88;
   cursor: pointer;
   margin-bottom: 10px;
+}
+/*ENLACE MAP*/
+.a-map{
+  background: #444847;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-top: -43px;
+  position: absolute;
+}
+.a-map:hover, .a-map:focus{
+  color: #fff;
+  text-decoration: none;
 }

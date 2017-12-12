@@ -611,7 +611,7 @@
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab==='tab2', 'col-md-3': selectedTab==='tab3', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab==='tab1'">
                       <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
-                      <button type="button" class="btn btn-tutorial" (click)="openModal(template)">Tutorial</button>
+                      <button type="button" class="btn btn-tutorial" (click)="openModal(template)"> <i class="mdi mdi-compass-outline"></i> Tutorial</button>
 
                       <!-- MODAL TUTORIAL -->
                         <template #template class="">
@@ -734,7 +734,7 @@
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
                     <div class="tab-map" *ngIf="selectedCountry">
                       <div>
-                        <a href="{{mapUrlProfile}}" target="_blank">
+                        <a class="a-map" href="{{mapUrlProfile}}" target="_blank">
                           {{selectedCountry}}: View Country Profile
                         </a>
                       </div>
