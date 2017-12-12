@@ -14,7 +14,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of funding disbursed within scheduled fiscal year",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "5b",
@@ -28,7 +28,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of funding covered by forward expenditure plan by development partner",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "6",
@@ -42,7 +42,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of funding on-budget ",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "7",
@@ -220,7 +220,7 @@ export let titles = [
         "noText": "",
         "legendText": "How reliable is the budget and financial management system (6 is ideal)?",
         "type": "number",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "9b",
@@ -234,7 +234,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of fundng disbursed using the countries' own systems",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "10",
@@ -248,7 +248,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of aid that is fully untied",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       }
     ]
   },
@@ -269,7 +269,7 @@ export let titles = [
             "noText": "",
             "legendText": "",
             "type": "percent",
-            "precision": "2",
+            "precision": "1",
             "title": "Indicator 1a: % of new development interventions that draw objectives from country-led results frameworks"
           },
           {
@@ -281,7 +281,7 @@ export let titles = [
             "noText": "",
             "legendText": "",
             "type": "percent",
-            "precision": "2",
+            "precision": "1",
             "title": "Indicator 1a: % of results indicators drawn from country-led results frameworks"
           },
           {
@@ -293,7 +293,7 @@ export let titles = [
             "noText": "",
             "legendText": "",
             "type": "percent",
-            "precision": "2",
+            "precision": "1",
             "title": "Indicator 1a: % of results indicators monitored using the government's own sources"
           },
           {
@@ -305,7 +305,7 @@ export let titles = [
             "noText": "",
             "legendText": "",
             "type": "percent",
-            "precision": "2",
+            "precision": "1",
             "title": "Indicator 1a: % of new interventions that plan a final evaluation with government involvement"
           }
         ],
@@ -507,7 +507,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of funding disbursed within scheduled fiscal year",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "5b",
@@ -521,7 +521,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of funding covered by forward expenditure plan by development partner",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "6",
@@ -535,7 +535,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of funding on-budget",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "7",
@@ -713,7 +713,7 @@ export let titles = [
         "noText": "",
         "legendText": "How reliable is the budget and financial management system (6 is ideal)?",
         "type": "number",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "9b",
@@ -727,7 +727,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of fundng disbursed using the countries' own systems",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       },
       {
         "id": "10",
@@ -741,7 +741,7 @@ export let titles = [
         "noText": "",
         "legendText": "Share of aid that is fully untied",
         "type": "percent",
-        "precision": "2"
+        "precision": "1"
       }
     ]
   }
