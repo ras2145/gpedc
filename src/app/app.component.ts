@@ -414,16 +414,10 @@ export class AppComponent {
           };
           this.selectedSidCountry = null;
         }
-        if (this.selectedTab === 'tab1') {
-          setTimeout(() => {
-            this.mapService.resize();
-            this.mapService.switchMapCenter(event.target.id);
-          }, 100);
-        } else {
-          setTimeout(() => {
-            this.mapService.switchMapCenter(event.target.id);
-          }, 100);
-        }
+        setTimeout(() => {
+          this.mapService.resize();
+          this.mapService.switchMapCenter(event.target.id);
+        }, 100);
       }
     }
   }

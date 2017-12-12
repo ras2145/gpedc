@@ -42,11 +42,11 @@ export class MapService {
       zoom: 1.2
     },
     tab2: {
-      center: [48, 37],
+      center: [-33, 37],
       zoom: 1.2
     },
     tab3: {
-      center: [48, 37],
+      center: [-68, 37],
       zoom: 1.2
     }
   };
