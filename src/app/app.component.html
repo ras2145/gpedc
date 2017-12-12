@@ -5,7 +5,7 @@
             <!-- INICIO Sidebar -->
                 <div
                 class="col-md-4 padding-left-none with-scroll"
-                [ngClass]="{'col-md-4': selectedTab==='tab1', 'col-md-7': selectedTab!=='tab1', 'padding-left-none with-scroll': true}"
+                [ngClass]="{'col-md-4': selectedTab==='tab1', 'col-md-7': selectedTab==='tab2', 'col-md-9': selectedTab==='tab3', 'padding-left-none with-scroll': true}"
                 id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
                   <div class="filtros-tab">
                     <!-- Contenedor tab -->
@@ -473,7 +473,7 @@
                                 <div class="row"><div class="col-md-1"></div><div class="col-md-10 select year"></div></div>
 
                                 <div class="row">
-                                    <div class="col-md-4 space-line-1">
+                                    <div class="col-md-3 space-line-1">
                                         <p class="result-subtitle width-popup">1. Select year
                                             <i class="mdi mdi-information"
                                                 popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
@@ -482,7 +482,7 @@
                                             </i>
                                         </p>
                                     </div>
-                                    <div class="col-md-8 space-line-1">
+                                    <div class="col-md-9 space-line-1">
                                         <p class="result-subtitle space-left width-popup-partner">2. Select two development partners or type their names:
                                                 <i class="mdi mdi-information"
                                               popover="Below you may view results for development partners characterised as international organisations."
@@ -491,12 +491,12 @@
                                           </i>
                                         </p>
                                         <!-- FILTROS -->
-                                        <!-- <button type="button" class="btn btn-filtros">Bilateral partners (DAC member)</button>
+                                        <button type="button" class="btn btn-filtros">Bilateral partners (DAC member)</button>
                                         <button type="button" class="btn btn-filtros">Other bilateral partners (non-DAC member)</button>
                                         <button type="button" class="btn btn-filtros">Multilateral development banks</button>
                                         <button type="button" class="btn btn-filtros">UN agencies Global funds and vertical initiatives</button>
                                         <button type="button" class="btn btn-filtros">Other international and regional organisations</button>
-                                        <button type="button" class="btn btn-filtros">Foundations</button> -->
+                                        <button type="button" class="btn btn-filtros">Foundations</button>
                                         <!-- END FILTROS -->
                                     </div>
                                 </div>
@@ -608,7 +608,7 @@
             <!-- INICIO Map -->
                 <div
                 class="col-md-8 border-div-none"
-                [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab!=='tab1', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
+                [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab==='tab2', 'col-md-3': selectedTab==='tab3', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab==='tab1'">
                       <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
                       <button type="button" class="btn btn-tutorial" (click)="openModal(template)">Tutorial</button>

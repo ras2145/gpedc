@@ -72,7 +72,8 @@ img.logo.panel-1{
 }
 
 .space-left{
-    margin-left: -13%;
+    /*margin-left: -13%;*/
+    margin-bottom: 10px;
 }
 p.p-none-space{
     margin: 0px;
@@ -1174,6 +1175,8 @@ select-dropdown li.selected.highlighted {
   border-radius: 50px;
   color: #fff;
   text-transform: uppercase;
-  font-size: 12px;
-  background: #b6b6b6;
+  font-size: 10px;
+  background: #8e8a88;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
