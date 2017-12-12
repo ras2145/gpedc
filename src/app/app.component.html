@@ -733,6 +733,11 @@
 
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
                     <div class="tab-map" *ngIf="selectedCountry">
+                      <div>
+                        <a href="{{mapUrlProfile}}" target="_blank">
+                          {{selectedCountry}}: View Country Profile
+                        </a>
+                      </div>
                       <tabset #staticTabs>
                         <tab *ngFor="let category of categoriesNotNull" [heading]="footerTab===category.id?'Indicator '+category.id:category.id" (select)=getIndicator(category.id)>
                             <p [innerHTML]="footerText">
