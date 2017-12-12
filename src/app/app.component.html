@@ -491,12 +491,9 @@
                                           </i>
                                         </p>
                                         <!-- FILTROS -->
-                                        <button type="button" class="btn btn-filters">Bilateral partners (DAC member)</button>
-                                        <button type="button" class="btn btn-filters">Other bilateral partners (non-DAC member)</button>
-                                        <button type="button" class="btn btn-filters">Multilateral development banks</button>
-                                        <button type="button" class="btn btn-filters">UN agencies Global funds and vertical initiatives</button>
-                                        <button type="button" class="btn btn-filters">Other international and regional organisations</button>
-                                        <button type="button" class="btn btn-filters">Foundations</button>
+                                        <span *ngFor="let partnerGroup of categorizedPartners">
+                                          <button type="button" class="btn btn-filters">{{partnerGroup.name}}</button>
+                                        </span>
                                         <!-- END FILTROS -->
                                     </div>
                                 </div>
