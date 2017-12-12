@@ -786,7 +786,7 @@ export class AppComponent {
         lines.push(line);
       });
     });
-    let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
+    let linesString = lines.map(line => line.map(element => '"' + element.replace('<p>', '').replace('</p>', '') + '"').join(','));
     let result = linesString.join('\n');
     result = result.replace(/ ?<\/?b> ?/g, ' ');
     result = result.replace(/," /g, ',"');
