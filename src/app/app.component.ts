@@ -777,6 +777,18 @@ export class AppComponent {
       this.chargeOrganizationComparison();
     });
   }
+  isDac(country) {
+    for (const partnerGroup of this.categorizedPartners) {
+      if (partnerGroup.name.includes('DAC')) {
+        for (const partner of partnerGroup.partners) {
+          if (partner.partner == country) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
   resetModels() {
     this.countryComparer = {
       firstCountry: '',
