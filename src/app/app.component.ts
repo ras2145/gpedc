@@ -131,11 +131,13 @@ export class AppComponent {
     this.organizationSelectors = [];
     this.organizationSelectors.push({
       key: '2014',
-      value: new Array<IOption>()
+      value1: new Array<IOption>(),
+      value2: new Array<IOption>()
     });
     this.organizationSelectors.push({
       key: '2016',
-      value: new Array<IOption>()
+      value1: new Array<IOption>(),
+      value2: new Array<IOption>()
     });
     this.organizationSelectors.push({
       key: 'Aggregate',
@@ -148,21 +150,27 @@ export class AppComponent {
           label: partnerGroup.name,
           disabled: true
         };
-        this.organizationSelectors[0]['value'].push(titleObject);
-        this.organizationSelectors[1]['value'].push(titleObject);
+        this.organizationSelectors[0]['value1'].push(titleObject);
+        this.organizationSelectors[0]['value2'].push(titleObject);
+        this.organizationSelectors[1]['value1'].push(titleObject);
+        this.organizationSelectors[1]['value2'].push(titleObject);
         this.organizationSelectors[2]['value'].push(titleObject);
         for (const partner of partnerGroup.partners) {
           if (partner['_2016'].toUpperCase() === 'YES') {
-            this.organizationSelectors[1]['value'].push({
+            const organizationSelector = {
               value: partner['partner'],
               label: partner['partner']
-            });
+            };
+            this.organizationSelectors[1]['value1'].push(organizationSelector);
+            this.organizationSelectors[1]['value2'].push(organizationSelector);
           }
           if (partner['_2014'].toUpperCase() === 'YES') {
-            this.organizationSelectors[0]['value'].push({
+            const organizationSelector = {
               value: partner['partner'],
               label: partner['partner']
-            });
+            };
+            this.organizationSelectors[0]['value1'].push(organizationSelector);
+            this.organizationSelectors[0]['value2'].push(organizationSelector);
           }
         }
         for (const aggregate of partnerAggregate) {
@@ -171,8 +179,34 @@ export class AppComponent {
             label: aggregate.label
           });
         }
+        this.mergeWithSelected(this.organizationSelectors[0]['value1'], this.organizationComparer.firstOrganization);
+        this.mergeWithSelected(this.organizationSelectors[0]['value2'], this.organizationComparer.secondOrganization);
+        this.mergeWithSelected(this.organizationSelectors[1]['value1'], this.organizationComparer.firstOrganization);
+        this.mergeWithSelected(this.organizationSelectors[1]['value2'], this.organizationComparer.secondOrganization);
+        this.mergeWithSelected(this.organizationSelectors[2]['value'], this.organizationComparer.aggregate);
+        console.log(this.organizationSelectors);
+        console.log(this.organizationComparer);
       }
     }
+  }
+  mergeWithSelected(options, selectedOption) {
+    if (selectedOption) {
+      const selectedOptionObject = {
+        value: selectedOption,
+        label: selectedOption
+      };
+      if (!this.containsOrganization(options, selectedOptionObject)) {
+        options.unshift(selectedOptionObject);
+      }
+    }
+  }
+  containsOrganization(options, value) {
+    for (let option of options) {
+      if (option.value == value.value) {
+        return true;
+      }
+    }
+    return false;
   }
   chargeCountryComparison() {
     for (const key in countryComparison) {
