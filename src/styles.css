@@ -1248,7 +1248,7 @@ select-dropdown li.selected.highlighted {
   /* position: absolute;
   width: 400px;
   left: 400px; */
-  height: 75px;
+  height: 100px;
   background-image: linear-gradient(-45deg, transparent 45%, #919195 50%, transparent 55%, transparent 100%);
   background-size: 8px 8px;
   background-position: 4px 4px;
@@ -1352,4 +1352,7 @@ select-dropdown li.selected.highlighted {
   height: 100%;
   width: 100%;
   background: rgba(0,0,0,0.4);
+}
+.no-padding {
+  padding: 0px !important;
 }
