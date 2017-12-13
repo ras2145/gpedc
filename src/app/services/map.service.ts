@@ -38,16 +38,16 @@ export class MapService {
   }
   private mapDefault = {
     tab1: {
-      center: [63, 37],
-      zoom: 0.9
+      center: [19, 37],
+      zoom: 1.3
     },
     tab2: {
-      center: [11, 37],
-      zoom: 0.9
+      center: [-33, 37],
+      zoom: 1.3
     },
     tab3: {
-      center: [-24, 37],
-      zoom: 0.9
+      center: [-65, 37],
+      zoom: 1.3
     }
   };
   private filterOneCountry = ['in', 'country'];
