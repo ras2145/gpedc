@@ -829,7 +829,7 @@ export class AppComponent {
     const year = this.model.year.year;
     if (this.indicator) {
         this.legendTitle = '';
-        this.legendMap = this.legends.noLegend;
+        this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
     }
     console.log(category, subcategory);

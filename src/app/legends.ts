@@ -63,10 +63,16 @@ export let legends = {
           textLast: ''
         }
       ],
-      'noLegend' : [
+      'noLegend2016' : [
         {
           color: '#F07848',
-          textFirst: 'Data available for'
+          textFirst: 'Data available for 2016'
+        }
+      ],
+      'noLegend2014' : [
+        {
+          color: '#F07848',
+          textFirst: 'Data available for 2014'
         }
       ],
       //indicator 3
