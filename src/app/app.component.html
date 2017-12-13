@@ -348,7 +348,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <div class="row with-placeholder-conutry">
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 padding-dd-03">
                                               <ng-select
                                               (deselected)="onDeselected($event,'first')"
                                               (selected)="onSelectedCountry($event, 'first')"
@@ -358,7 +358,7 @@
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 padding-dd-04">
                                               <ng-select
                                               (deselected)="onDeselected($event,'second')"
                                               (selected)="onSelectedCountry($event, 'second')"
@@ -368,7 +368,7 @@
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 padding-dd-05">
                                               <ng-select
                                               [allowClear]="true"
                                               placeholder="Select Aggregate"
@@ -509,7 +509,7 @@
                                     </div>
                                     <div class="col-md-9">
                                       <div class="row with-placeholder" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 padding-dd">
                                           <ng-select
                                           (selected)="onSelectedOrganization($event, 'first')"
                                           [(ngModel)]="organizationComparer.firstOrganization"
@@ -518,7 +518,7 @@
                                           [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 padding-dd-01">
                                           <ng-select
                                           (selected)="onSelectedOrganization($event, 'second')"
                                           [(ngModel)]="organizationComparer.secondOrganization"
@@ -527,7 +527,7 @@
                                           [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 padding-dd-02">
                                           <ng-select
                                           [allowClear]="true"
                                           placeholder="Select Aggregate"

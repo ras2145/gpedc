@@ -1256,10 +1256,24 @@ select-dropdown li.selected.highlighted {
 .padding-btn{
   margin-bottom: 8px;
 }
-
-
-
-
+.padding-dd{
+  padding: 0px 6px 0px 12px;
+}
+.padding-dd-01{
+  padding: 0px 12px 0px 4px;
+}
+.padding-dd-02{
+  padding: 0px 22px 0px 0px;
+}
+.padding-dd-03{
+  padding: 0px 0px 0px 12px;
+}
+.padding-dd-04{
+  padding: 0px 10px 0px 7px;
+}
+.padding-dd-05{
+  padding: 0px 19px 0px 0px;
+}
 /* SPINNER LOADER */
 @-moz-keyframes circles-loader {
   0% {
