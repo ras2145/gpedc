@@ -2,6 +2,7 @@ import { IOption } from './lib/ng-select/option.interface.d';
 import { countryComparison } from './countryComparison';
 import { WebService } from './services/web.service';
 import { MapService } from './services/map.service';
+import { LoaderService } from './services/loader.service';
 import { Component, Inject, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
@@ -89,6 +90,7 @@ export class AppComponent {
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
+    private loaderService: LoaderService,
   ) { }
 
   ngOnInit() {
@@ -280,6 +282,7 @@ export class AppComponent {
     this.mapService.paintTwoCountry(event.value, 'ok');
   }
   mapConfig() {
+    this.loaderService.loadStart();
     const self = this;
     this.mapService.onLoad(() => {
       this.mapTitle = '';
@@ -346,6 +349,7 @@ export class AppComponent {
           this.countryComparer.secondCountry = aux[1];
         }
       });
+      this.loaderService.loadEnd();
     });
   }
   resetComparer() {
@@ -939,5 +943,8 @@ export class AppComponent {
     partnerGroup.selected = !partnerGroup.selected;
     console.log(partnerGroup);
     this.chargeOrganizationComparison();
+  }
+  isLoading() {
+    return this.loaderService.isLoading();
   }
 }

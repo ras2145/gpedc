@@ -1,5 +1,6 @@
 import { WebService } from './services/web.service';
 import { MapService } from './services/map.service';
+import { LoaderService } from './services/loader.service';
 
 import {HttpModule, RequestOptions, XHRBackend} from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
   providers: [
     MapService,
     WebService,
+    LoaderService,
     {
       provide: WebService,
       useFactory: httpServiceFactory,

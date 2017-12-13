@@ -1355,6 +1355,10 @@ select-dropdown li.selected.highlighted {
   height: 100%;
   width: 100%;
   background: rgba(0,0,0,0.4);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
 }
 .no-padding {
   padding: 0px !important;
