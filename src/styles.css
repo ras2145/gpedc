@@ -1230,7 +1230,7 @@ select-dropdown li.selected.highlighted {
 
 /*ENLACE MAP*/
 .a-map{
-  background: #444847;
+  background: #828686;
   color: #fff;
   cursor: pointer;
   padding: 5px 10px;
@@ -1242,7 +1242,7 @@ select-dropdown li.selected.highlighted {
 .a-map:hover, .a-map:focus{
   color: #fff;
   text-decoration: none;
-  background: #818686;
+  background: #454847;
 }
 #line-td{
   width: 175px;
