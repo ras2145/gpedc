@@ -692,25 +692,25 @@ export class AppComponent {
           const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
           if (!notPrint.includes(i.id)) {
             if (value === 'Yes') {
-              this.footerText = this.footerText + i.label + ': <br /><b>' + i.yesText + '</b><br>';
+              this.footerText = this.footerText + '<b>' + i.label + ':</b> <br />' + i.yesText + '<br>';
             } else if (value === 'No') {
-              this.footerText = this.footerText + i.label + ': <br /><b>' + i.noText + '</b><br>';
+              this.footerText = this.footerText + '<b>' + i.label + ':</b> <br />' + i.noText + '<br>';
             } else if (i.id === '8') {
-              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '';
+              this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '';
             } else if (i.id == '1a' || i.id == '4' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
               if (value == 'No data available') {
-                this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br><br>';
+                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br><br>';
               } else {
-                this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '<br>';
+                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '<br>';
               }
             } else if (i.id == '2' || i.id == '3') {
               if (value == 'No data available') {
-                this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br><br>';
+                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br><br>';
               } else {
-                this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <div class="row"><div class="col-md-1"><h2>' + value + ' </h2></div><div class="col-md-11">' + i.suffix) + '</div></div><br>';
+                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <div class="row"><div class="col-md-1"><h2>' + value + ' </h2></div><div class="col-md-11">' + i.suffix) + '</div></div><br>';
               }
             } else if (i.label != '1a') {
-              this.footerText = this.footerText + i.label + ': ' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '<br>';
+              this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '<br>';
             }
             this.footerText = this.footerText + '<br>';
           }
@@ -719,9 +719,9 @@ export class AppComponent {
             jumps = 1;
             const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             if (subvalue === 'Yes') {
-              this.footerText = this.footerText + '<b>' + j.yesText + '</b><br><br>';
+              this.footerText = this.footerText + '' + j.yesText + '<br><br>';
             } else if (subvalue === 'No') {
-              this.footerText = this.footerText + '<b>' + j.noText + '</b><br><br>';
+              this.footerText = this.footerText + '' + j.noText + '<br><br>';
             } else if (i.id == '8') {
               this.footerText = this.footerText + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '<br>';
             } else if (i.id == '1a' || i.id == '4' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
