@@ -353,6 +353,7 @@ export class AppComponent {
     });
   }
   resetComparer() {
+    this.legendMap = this.legends['noLegend' + this.model.year.year];
     this.mapService.paintTwoCountryClear();
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
@@ -442,7 +443,6 @@ export class AppComponent {
         if (this.selectedTab === 'tab2') {
           this.viewerTab = '2';
           this.legendTitle = '';
-          this.legendMap = this.legends.noLegend;
           this.indicator = false;
           this.mapTitle = '';
           this.resetComparer();

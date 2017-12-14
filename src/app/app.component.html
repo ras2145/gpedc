@@ -744,7 +744,7 @@
                     <div id="map"></div>
                     <!-- TAB MAP END -->
 
-                    <div class="map-legend" *ngIf="selectedTab==='tab1' && legendMap.length">
+                    <div class="map-legend" *ngIf="selectedTab!=='tab3' && legendMap.length">
                         <div class="title" *ngIf="legendTitle">{{legendTitle}}</div>
                         <table>
                             <tr *ngFor='let x of legendMap'>
