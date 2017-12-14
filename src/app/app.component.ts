@@ -876,6 +876,43 @@ export class AppComponent {
     const fileName = isOrganization ? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
   }
+  exportCsvViewer() {
+    const lines = [];
+    const headers = ['Country', this.mapTitle];
+    lines.push(headers);
+    let column = this.model.category.column;
+    let indicator = this.model.category;
+    if (this.model.subcategory != null) {
+      column = this.model.subcategory.column;
+      indicator = this.model.subcategory;
+    }
+    console.log(column);
+    for (const feature of this.geoJson.features) {
+      const line = [];
+      line.push(feature.properties.country);
+      line.push(this.formatValue(indicator, feature.properties[column]));
+      lines.push(line);
+    }
+    lines.push(['', '']);
+    lines.push(['Organisations', '']);
+    for (const partnerGroup of this.categorizedPartners) {
+      lines.push([partnerGroup.name, '']);
+      for (const partner of partnerGroup.partners) {
+        const line = [];
+        line.push(partner.partner);
+        line.push(this.formatValue(indicator, partner[column]));
+        lines.push(line);
+      }
+    }
+    let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
+    let result = linesString.join('\n');
+    result = result.replace(/ ?<\/?b> ?/g, ' ');
+    result = result.replace(/," /g, ',"');
+    result = result.replace(/ ",/g, '",');
+    let blob = new Blob([result], { type: 'text/csv' });
+    const fileName = 'viewer';
+    saveAs(blob, fileName + '.csv');
+  }
   noIsInvalidSelection(category) {
     return !(category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
   }
