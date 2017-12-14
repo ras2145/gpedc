@@ -565,6 +565,7 @@ export class AppComponent {
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
     if (this.selectedCountry) {
+      const isCountryDac = this.isDac(this.selectedCountry);
       for (const i of this.model.year.categories) {
         let sw = false;
         if (this.indicatorsSelectedCountry[i.column] !== null) {
@@ -573,6 +574,11 @@ export class AppComponent {
         for (const j of i.subcategories) {
           if (this.indicatorsSelectedCountry[j.column] !== null) {
             sw = true;
+          }
+        }
+        if (isCountryDac) {
+          if (i.id == '2' || i.id == '3' || i.id == '8') {
+            sw = false;
           }
         }
         if (sw) {
