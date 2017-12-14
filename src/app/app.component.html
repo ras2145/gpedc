@@ -479,6 +479,14 @@
                                                 triggers="mouseenter:mouseleave">
                                             </i>
                                         </p>
+
+                                            <div class="radio btn-year">
+                                                <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                                    <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"  (change)="getIndicator(model.year.categories[0].id)"/>
+                                                    {{title.year}}
+                                                </label>
+                                            </div>
+
                                     </div>
                                     <div class="col-md-9 space-line-1 padding-btn">
                                         <p class="result-subtitle space-left width-popup-partner">2. Select two development partners or type their names:
@@ -497,15 +505,7 @@
                                 </div>
 
                                 <div class="row row-margin">
-                                    <div class="col-md-3 btn-year">
-                                        <div class="radio">
-                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
-                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"  (change)="getIndicator(model.year.categories[0].id)"/>
-                                                {{title.year}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 offset-md-3">
                                       <div class="row with-placeholder" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
                                         <div class="col-md-4 padding-dd">
                                           <ng-select
