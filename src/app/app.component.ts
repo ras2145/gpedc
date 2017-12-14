@@ -886,7 +886,6 @@ export class AppComponent {
       column = this.model.subcategory.column;
       indicator = this.model.subcategory;
     }
-    console.log(column);
     for (const feature of this.geoJson.features) {
       const line = [];
       line.push(feature.properties.country);
