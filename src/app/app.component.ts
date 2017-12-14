@@ -692,58 +692,58 @@ export class AppComponent {
     this.footerText = '';
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
-      let notPrint = ['1a', '2', '3', '4']
+      let notPrint = [];
       for (const i of categories) {
         if (i.id === indicator) {
           const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
           if (!notPrint.includes(i.id)) {
             if (value === 'Yes') {
-              this.footerText = this.footerText + '<b>' + i.label + ':</b> <br />' + i.yesText + '<br>';
+              this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + i.yesText + '</div>';
             } else if (value === 'No') {
-              this.footerText = this.footerText + '<b>' + i.label + ':</b> <br />' + i.noText + '<br>';
+              this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + i.noText + '</div>';
             } else if (i.id === '8') {
-              this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '';
-            } else if (i.id == '1a' || i.id == '4' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
+              this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
+            } else if (i.id == '4') {
               if (value == 'No data available') {
-                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br><br>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
               } else {
-                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '<br>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '</div>';
               }
-            } else if (i.id == '2' || i.id == '3') {
+            } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
               if (value == 'No data available') {
-                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' ' + value + ' ' + i.suffix) + '<br><br>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
               } else {
-                this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <div class="row"><div class="col-md-1"><h2>' + value + ' </h2></div><div class="col-md-11">' + i.suffix) + '</div></div><br>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <div class="row"><div class="col-md-2"><h2>' + value + ' </h2></div><div class="col-md-10">' + i.suffix) + '</div></div></div>';
               }
             } else if (i.label != '1a') {
-              this.footerText = this.footerText + '<b>' + i.label + ':</b> ' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '<br>';
+              this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
             }
-            this.footerText = this.footerText + '<br>';
           }
           let jumps = 0;
           for (const j of i.subcategories) {
             jumps = 1;
             const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
+            if (j.label.indexOf('Summary') >= 0) {
+              continue;
+            }
             if (subvalue === 'Yes') {
-              this.footerText = this.footerText + '' + j.yesText + '<br><br>';
+              this.footerText = this.footerText + '<div class="tabs-result">' + j.yesText + '</div>';
             } else if (subvalue === 'No') {
-              this.footerText = this.footerText + '' + j.noText + '<br><br>';
-            } else if (i.id == '8') {
-              this.footerText = this.footerText + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '<br>';
-            } else if (i.id == '1a' || i.id == '4' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
+              this.footerText = this.footerText + '<div class="tabs-result">' + j.noText + '</div>';
+            } else if (i.id == '4' || i.id == '7' || i.id == '8') {
               if (subvalue == 'No data available') {
-                this.footerText = this.footerText + j.prefix + ' ' + subvalue + ' ' + j.suffix + '<br><br>';
+                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
               } else {
-                this.footerText = this.footerText + j.prefix + ' <h2>' + subvalue + ' </h2>' + j.suffix + '<br>';
+                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <h2>' + subvalue + ' </h2>' + j.suffix + '</div>';
               }
-            } else if (i.id == '2' || i.id == '3') {
+            } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
               if (subvalue == 'No data available') {
-                this.footerText = this.footerText + j.prefix + ' <br />' + subvalue + ' ' + j.suffix + '<br><br>';
+                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
               } else {
-                this.footerText = this.footerText + j.prefix + ' <div class="row"><div class="col-md-1"><h2>' + subvalue + ' </h2></div><div class="col-md-11">' + j.suffix + '</div></div><br>';
+                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <div class="row"><div class="col-md-2"><h2>' + subvalue + ' </h2></div><div class="col-md-10">' + j.suffix + '</div></div></div>';
               }
             } else {
-              this.footerText = this.footerText + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '<br><br>';
+              this.footerText = this.footerText + '<div class="tabs-result">' + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '</div>';
             }
           }
 

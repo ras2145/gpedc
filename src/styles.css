@@ -1364,3 +1364,7 @@ select-dropdown li.selected.highlighted {
 .no-padding {
   padding: 0px !important;
 }
+.tabs-result {
+  display: block;
+  padding-bottom: 10px;
+}
