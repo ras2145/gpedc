@@ -202,6 +202,25 @@ a.btn-export-01:hover{
     color: #fff;
     text-decoration: none;
 }
+.btn-export-02{
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 50px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 11%;
+    background-color: #f17846;
+    z-index: 1000;
+    box-shadow: 2px 1px 30px -2px rgba(116,116,120,1);
+    cursor: pointer;
+}
+a.btn-export-02:hover{
+    color: #fff;
+    text-decoration: none;
+}
 .margin-top-btn{
     margin-top: 33px;
 }
