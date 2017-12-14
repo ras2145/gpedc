@@ -696,6 +696,10 @@ export class AppComponent {
       for (const i of categories) {
         if (i.id === indicator) {
           const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
+          let cols = [1, 11];
+          if (i.id == '1a' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
+            cols = [3, 9];
+          }
           if (!notPrint.includes(i.id)) {
             if (value === 'Yes') {
               this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + i.yesText + '</div>';
@@ -713,7 +717,7 @@ export class AppComponent {
               if (value == 'No data available') {
                 this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
               } else {
-                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <div class="row"><div class="col-md-2"><h2>' + value + ' </h2></div><div class="col-md-10">' + i.suffix) + '</div></div></div>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <div class="row"><div class="col-md-' + cols[0] + '"><h2>' + value + ' </h2></div><div class="col-md-' + cols[1] + '">' + i.suffix) + '</div></div></div>';
               }
             } else if (i.label != '1a') {
               this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + ':</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
@@ -740,7 +744,7 @@ export class AppComponent {
               if (subvalue == 'No data available') {
                 this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
               } else {
-                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <div class="row"><div class="col-md-2"><h2>' + subvalue + ' </h2></div><div class="col-md-10">' + j.suffix + '</div></div></div>';
+                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <div class="row"><div class="col-md-' + cols[0] +'"><h2>' + subvalue + ' </h2></div><div class="col-md-' + cols[1] + '">' + j.suffix + '</div></div></div>';
               }
             } else {
               this.footerText = this.footerText + '<div class="tabs-result">' + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '</div>';
