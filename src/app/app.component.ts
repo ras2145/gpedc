@@ -291,6 +291,8 @@ export class AppComponent {
         self.mapService.build(geojson);
         self.geoJson = geojson;
         this.loaderService.end();
+      }, error => {
+        this.loaderService.end();
       });
       this.mapService.mouseCountryHover(event => {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
@@ -360,8 +362,10 @@ export class AppComponent {
     this.countryComparer.secondCountry = '';
     this.loaderService.start();
     this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
-      this.loaderService.end();
       this.mapService.update(geojson);
+      this.loaderService.end();
+    }, error => {
+      this.loaderService.end();
     });
   }
   openModal(template: TemplateRef<any>) {
@@ -440,6 +444,8 @@ export class AppComponent {
           this.loaderService.start();
           this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
             this.mapService.update(geojson);
+            this.loaderService.end();
+          }, error => {
             this.loaderService.end();
           });
           this.setColor();
@@ -529,6 +535,8 @@ export class AppComponent {
       this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
         this.loaderService.end();
         this.mapService.update(geojson);
+      }, error => {
+        this.loaderService.end();
       });
     }
     this.setColor();
@@ -568,6 +576,8 @@ export class AppComponent {
       self.geoJson = geojson;
       this.mapService.update(geojson);
       this.setColor();
+      this.loaderService.end();
+    }, error => {
       this.loaderService.end();
     });
   }
