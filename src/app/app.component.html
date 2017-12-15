@@ -139,7 +139,7 @@
                                         <div class="form-group">
                                             <label for="inputState" class="result-subtitle space-line">Filter countries by:
                                                 <i class="mdi mdi-information"
-                                                    popover="Below you may filter countries by region, income group or country context. Selecting a filter will disable data for organisations. Selecting two or more filters will display data for all selected criteria."
+                                                    popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
@@ -229,9 +229,9 @@
 
                                 <div class="row padding-top-line col-line">
                                     <div class="col-md-12">
-                                        <p class="result-subtitle-one">DISPLAY RESULTS FOR ORGANISATIONS
+                                        <p class="result-subtitle-one">DISPLAY RESULTS BY DEVELOPMENT PARTNER
                                             <i class="mdi mdi-information"
-                                                popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Selecting filter criteria will disable this feature."
+                                                popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
                                                 placement="top"
                                                 triggers="mouseenter:mouseleave">
                                             </i>
@@ -317,7 +317,7 @@
                                     </div>
                                 </div> -->
 
-                                <div class="row"><div class="col-md-1"></div><div class="col-md-10 border-bottom"></div></div>
+                                <!-- <div class="row"><div class="col-md-1"></div><div class="col-md-10 border-bottom"></div></div> -->
 
                                 <div class="row">
                                     <div class="col-md-3 space-line-1">
@@ -465,8 +465,9 @@
                                 <div class="row logo">
                                     <div class="col-md-12">
                                         <p class="result-text">
-                                            On this tab, Global Partnership monitoring results can be compared across two development partners (countries or organisations) and against an average by type of development partner (bilateral donor, international organisation, etc).
-                                            Results will only be shown for those indicators with available data.
+                                            On this tab, Global Partnership monitoring results can be compared across
+                                            two development partners (countries or organisations) and against an average by type of development partner
+                                            (bilateral partners, multilateral development banks, etc). Results will only be shown for those indicators with available data.
                                         </p>
                                     </div>
                                 </div>
@@ -483,39 +484,40 @@
                                             </i>
                                         </p>
 
-                                            <div class="radio btn-year">
-                                                <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
-                                                    <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"  (change)="getIndicator(model.year.categories[0].id)"/>
-                                                    {{title.year}}
-                                                </label>
-                                            </div>
-
                                     </div>
                                     <div class="col-md-9 space-line-1 padding-btn">
                                         <p class="result-subtitle space-left width-popup-partner">2. Select two development partners or type their names:
-                                                <i class="mdi mdi-information"
+                                                <!-- <i class="mdi mdi-information"
                                               popover="Below you may view results for development partners characterised as international organisations."
                                               placement="right"
                                               triggers="mouseenter:mouseleave">
-                                          </i>
+                                          </i> -->
                                         </p>
                                         <!-- FILTROS -->
-                                        <span *ngFor="let partnerGroup of categorizedPartners">
+                                        <!-- <span *ngFor="let partnerGroup of categorizedPartners">
                                           <button type="button" class="btn btn-filters" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (click)="selectPartnerGroup(partnerGroup)">{{partnerGroup.name}}</button>
-                                        </span>
+                                        </span> -->
                                         <!-- END FILTROS -->
                                     </div>
                                 </div>
 
                                 <div class="row row-margin">
-                                    <div class="col-md-9 offset-md-3">
+                                  <div class="col-md-3  btn-year">
+                                    <div class="radio">
+                                        <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                            <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"  (change)="getIndicator(model.year.categories[0].id)"/>
+                                            {{title.year}}
+                                        </label>
+                                    </div>
+                                  </div>
+                                    <div class="col-md-9">
                                       <div class="row with-placeholder" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
                                         <div class="col-md-4 padding-dd">
                                           <ng-select
                                           (selected)="onSelectedOrganization($event, 'first')"
                                           [(ngModel)]="organizationComparer.firstOrganization"
                                           [allowClear]="true"
-                                          placeholder="Select Organisation"
+                                          placeholder="Select Development Partner"
                                           [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value1']"></ng-select>
                                         </div>
 
@@ -524,7 +526,7 @@
                                           (selected)="onSelectedOrganization($event, 'second')"
                                           [(ngModel)]="organizationComparer.secondOrganization"
                                           [allowClear]="true"
-                                          placeholder="Select Organisation"
+                                          placeholder="Select Development Partner"
                                           [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value2']"></ng-select>
                                         </div>
 
@@ -731,7 +733,7 @@
                     <div class="tab-map" *ngIf="selectedCountry">
                       <div [hidden]="mapUrlProfile == '#'">
                         <a class="a-map" href="{{mapUrlProfile}}" target="_blank">
-                          {{selectedCountry}}: View Country Profile
+                          {{selectedCountry}}: View Country/Territory Profile
                         </a>
                       </div>
                       <tabset #staticTabs>
