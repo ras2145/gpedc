@@ -10,15 +10,13 @@ export class LoaderService {
     this.loaded = 0;
   }
 
-  loadStart() {
+  start() {
     this.loading++;
   }
-  loadEnd() {
+  end() {
     this.loaded++;
   }
   isLoading() {
-    // TODO enable
-    // return this.loading != this.loaded;
-    return false;
+    return this.loading != this.loaded;
   }
 }

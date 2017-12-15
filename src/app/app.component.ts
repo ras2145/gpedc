@@ -42,7 +42,6 @@ export class AppComponent {
   countryName = 'Country';
   title = 'app';
   modalRef: BsModalRef;
-  geojson: any = {};
   name: any;
   titles: any;
   legends: any;
@@ -282,14 +281,16 @@ export class AppComponent {
     this.mapService.paintTwoCountry(event.value, 'ok');
   }
   mapConfig() {
-    this.loaderService.loadStart();
+    this.loaderService.start();
     const self = this;
     this.mapService.onLoad(() => {
       this.mapTitle = '';
       this.setColor();
+      this.loaderService.start();
       this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
         self.mapService.build(geojson);
         self.geoJson = geojson;
+        this.loaderService.end();
       });
       this.mapService.mouseCountryHover(event => {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
@@ -349,7 +350,7 @@ export class AppComponent {
           this.countryComparer.secondCountry = aux[1];
         }
       });
-      this.loaderService.loadEnd();
+      this.loaderService.end();
     });
   }
   resetComparer() {
@@ -357,7 +358,9 @@ export class AppComponent {
     this.mapService.paintTwoCountryClear();
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
+    this.loaderService.start();
     this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+      this.loaderService.end();
       this.mapService.update(geojson);
     });
   }
@@ -434,8 +437,10 @@ export class AppComponent {
           this.model.region = this.regions[0];
           this.model.countryContext = this.countryContexts[0];
           this.model.incomeGroup = this.incomeGroups[0];
+          this.loaderService.start();
           this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
             this.mapService.update(geojson);
+            this.loaderService.end();
           });
           this.setColor();
           this.selectedSidCountry = null;
@@ -520,7 +525,9 @@ export class AppComponent {
       this.selectSubcategory(currentCategory, currentSubCategory);
     } else {
       this.validIndicator = false;
+      this.loaderService.start();
       this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+        this.loaderService.end();
         this.mapService.update(geojson);
       });
     }
@@ -556,10 +563,12 @@ export class AppComponent {
     const incomeGroup = this.model.incomeGroup.value;
     const countryContext = this.model.countryContext.value;
     const year = this.model.year.year;
+    this.loaderService.start();
     this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext, year).subscribe(geojson => {
       self.geoJson = geojson;
       this.mapService.update(geojson);
       this.setColor();
+      this.loaderService.end();
     });
   }
   getCategoriesNotNull() {
