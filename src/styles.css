@@ -433,6 +433,7 @@ select.form-control:not([size]):not([multiple]){
     padding-top: 12px;
     /*font-weight: bold;*/
     padding-left: 20px;
+    width: 86%;
 }
 .map-header i{
   font-size: 23px;
@@ -1164,10 +1165,12 @@ select-dropdown li.selected.highlighted {
 /*MODAL TUTORIAL*/
 .btn-tutorial{
   background: #444847;
-  float: right;
-  margin-top: -44px;
   color: #fff;
   cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  padding-top: 13px;
 }
 .btn-tutorial:hover, .btn-tutorial:focus{
   color:#e27e53;
@@ -1390,4 +1393,16 @@ select-dropdown li.selected.highlighted {
   display: block;
   padding-bottom: 10px;
 }
-.btn:disabled
+
+/* TOP MAP */
+/* .map-top{
+  z-index: 500 !important;
+  position: absolute !important;
+  top: 78px !important;
+}
+.map-top-01 .nav-pills {
+  position: absolute !important;
+  right: -34px !important;
+  z-index: 500 !important;
+  top: 118px !important;
+} */
