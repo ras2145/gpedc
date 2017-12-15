@@ -975,14 +975,14 @@ export class AppComponent {
         this.legendMap = this.legends.yesNo;
       } else if (category['type'] === 'percent') {
         this.legendMap = this.legends.percent;
-      } else if (category['type'] === 'number' && category['precision'] === '2') {
+      } else if (category['type'] === 'number') {
         if (category.id === '9a') {
           this.legendMap = this.legends.indicator9a;
+        } else if (category['precision'] == '0') {
+          this.legendMap = this.legends.number;
         } else {
           this.legendMap = this.legends.number2;
         }
-      } else if (category['type'] === 'numer' && category['precision'] === '0') {
-        this.legendMap = this.legends.number;
       }
     }
     return this.mapService.paintForIndicator(category, subcategory, year);
