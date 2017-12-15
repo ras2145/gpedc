@@ -7,7 +7,7 @@
                 class="col-md-4 padding-left-none with-scroll"
                 [ngClass]="{'col-md-4': selectedTab==='tab1', 'col-md-7': selectedTab==='tab2', 'col-md-9': selectedTab==='tab3', 'padding-left-none with-scroll': true}"
                 id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
-                  <div class="filtros-tab map-top-01">
+                  <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
                     <!-- Contenedor tab -->
                     <tabset [vertical]="true" type="pills">
 
@@ -674,7 +674,7 @@
                         <!-- END MODAL TUTORIAL -->
 
                     </div>
-                    <div class="map-option map-top" *ngIf="selectedTab !== 'tab3'">
+                    <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>

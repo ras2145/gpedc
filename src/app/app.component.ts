@@ -1058,4 +1058,13 @@ export class AppComponent {
   isLoading() {
     return this.loaderService.isLoading();
   }
+  isCategoryTop() {
+    if (this.model.category == null) {
+      return false;
+    }
+    if (this.model.category.id == '8' || this.model.category.id == '9b') {
+      return true;
+    }
+    return false;
+  }
 }

@@ -1395,7 +1395,7 @@ select-dropdown li.selected.highlighted {
 }
 
 /* TOP MAP */
-/* .map-top{
+.map-top{
   z-index: 500 !important;
   position: absolute !important;
   top: 78px !important;
@@ -1405,4 +1405,4 @@ select-dropdown li.selected.highlighted {
   right: -34px !important;
   z-index: 500 !important;
   top: 118px !important;
-} */
+}
