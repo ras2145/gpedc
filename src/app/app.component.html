@@ -619,40 +619,40 @@
                             </div>
                             <div class="modal-body">
                               <tabset [vertical]="true" type="pills">
-                                <tab heading="Welcome!">
+                                <tab heading="Welcome!" [active]="tutorial[0]" (select)="selectTutorial(0)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   First time exploring Global Partnership monitoring data?
                                   Our 30-second tutorial will teach you how to use this interactive data visualization tool.
                                 </tab>
-                                <tab heading="Map Overview">
+                                <tab heading="Map Overview" [active]="tutorial[1]" (select)="selectTutorial(1)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   Click and drag the mouse or use the +/- zoom buttons to change the map’s focus. You can also choose a Small Island Developing State from the SIDS dropdown to zoom directly to its location.
                                 </tab>
-                                <tab heading="Comparison Screens ">
+                                <tab heading="Comparison Screens" [active]="tutorial[2]" (select)="selectTutorial(2)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   Toggle between the Map Viewer, Country Comparison and Partners Comparison tabs via the buttons on the upper left-hand side of the map
                                 </tab>
-                                <tab heading="Map Viewer Tab">
+                                <tab heading="Map Viewer Tab" [active]="tutorial[3]" (select)="selectTutorial(3)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   Change the map’s display according to year and indicator on the left-hand panel, where you can also filter by various criteria. Clicking on a country will activate a pop-up displaying all available data for the selected year.
                                 </tab>
-                                <tab heading="Legend">
+                                <tab heading="Legend" [active]="tutorial[4]" (select)="selectTutorial(4)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   On the Map Viewer tab, a legend shows the map's color key and corresponding range for each indicator. More information on what is measured by each indicator can be accessed by hovering over the legend’s information icon.
                                 </tab>
-                                <tab heading="What does this indicator measure?” Button ">
+                                <tab heading="What does this indicator measure?” Button" [active]="tutorial[5]" (select)="selectTutorial(5)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   To learn more about the purpose and methodology for a selected indicator, click on the “What does this indicator measure?” button.
                                 </tab>
-                                <tab heading="More Information and Country Profiles ">
+                                <tab heading="More Information and Country Profiles" [active]="tutorial[6]" (select)="selectTutorial(6)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   Clicking on a country will access a pop-up which gives a full picture of monitoring results for the selected year, including a PDF Country Profile for all partner countries (2016 only).
                                 </tab>
-                                <tab heading="Country Comparison Tab">
+                                <tab heading="Country Comparison Tab" [active]="tutorial[7]" (select)="selectTutorial(7)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   On the Country Comparison tab, you can compare monitoring data across two participating countries, or against aggregates by region or country context.
                                 </tab>
-                                <tab heading="Partners Comparison Tab">
+                                <tab heading="Partners Comparison Tab" [active]="tutorial[8]" (select)="selectTutorial(8)">
                                   <img src="assets/example.png" alt="" class="modal-img">
                                   On the Partners Comparison tab, you can compare monitoring data across participating development partners, including bilateral donors, UN agencies and international organisations, or against aggregates by type of partner.
                                 </tab>
@@ -661,7 +661,7 @@
 
                               <div class="row">
                                 <div class="col-md-4">
-                                  <button type="button" class="btn btn-modal"name="button">Continue</button>
+                                  <button type="button" class="btn btn-modal" name="button" (click)="continueTutorial()">Continue</button>
                                 </div>
                                 <div class="col-md-8 modal-logo">
                                   <img _ngcontent-c0="" alt="" class="logo-modal panel-1" src="assets/logo-h.png">

@@ -86,6 +86,17 @@ export class AppComponent {
     'Other international and regional organizations': 5,
     'UN agencies': 6
   };
+  tutorial = [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ];
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
@@ -1020,6 +1031,29 @@ export class AppComponent {
     partnerGroup.selected = !partnerGroup.selected;
     console.log(partnerGroup);
     this.chargeOrganizationComparison();
+  }
+  continueTutorial() {
+    let index = -1;
+    for (let i = 0; i < this.tutorial.length; i++) {
+      if (this.tutorial[i]) {
+        index = i;
+      }
+    }
+    if (index == -1) {
+      this.tutorial[0] = true;
+    } else {
+      this.tutorial[index] = false;
+      this.tutorial[(index + 1) % this.tutorial.length] = true;
+    }
+  }
+  selectTutorial(index) {
+    this.deselectTutorial();
+    this.tutorial[index] = true;
+  }
+  deselectTutorial() {
+    for (let i = 0; i < this.tutorial.length; i++) {
+      this.tutorial[i] = false;
+    }
   }
   isLoading() {
     return this.loaderService.isLoading();
