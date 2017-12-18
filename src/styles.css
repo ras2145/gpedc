@@ -681,13 +681,14 @@ div#map {
   padding-right: 0px;
   padding-bottom: 25px;
   border-radius: 0px 5px 0px 0px;
+  padding-top: 22px;
 }
 .tab.map .nav-tabs .nav-link:focus, .tab-map .nav-tabs .nav-link:hover {
   color: #fff;
   background-color: #f78667;
 }
 .tab-map .tab-content p{
-  height: 205px;
+  height: 198px;
   overflow-x: hidden;
   padding-right: 15px;
 }
@@ -1411,4 +1412,11 @@ select-dropdown li.selected.highlighted {
   right: -34px !important;
   z-index: 500 !important;
   top: 118px !important;
+}
+.pop-up-close{
+  position: absolute;
+  right: 11px;
+  top: 37px;
+  font-size: 16px;
+  cursor: pointer;
 }
