@@ -166,7 +166,6 @@ export class AppComponent {
         this.organizationSelectors[0]['value2'].push(titleObject);
         this.organizationSelectors[1]['value1'].push(titleObject);
         this.organizationSelectors[1]['value2'].push(titleObject);
-        this.organizationSelectors[2]['value'].push(titleObject);
         for (const partner of partnerGroup.partners) {
           if (partner['_2016'].toUpperCase() === 'YES' || partner['_2016'].toUpperCase() === 'TRUE') {
             const organizationSelector = {
@@ -185,12 +184,6 @@ export class AppComponent {
             this.organizationSelectors[0]['value2'].push(organizationSelector);
           }
         }
-        for (const aggregate of partnerAggregate) {
-          this.organizationSelectors[2]['value'].push({
-            value: aggregate.value,
-            label: aggregate.label
-          });
-        }
         this.mergeWithSelected(this.organizationSelectors[0]['value1'], this.organizationComparer.firstOrganization);
         this.mergeWithSelected(this.organizationSelectors[0]['value2'], this.organizationComparer.secondOrganization);
         this.mergeWithSelected(this.organizationSelectors[1]['value1'], this.organizationComparer.firstOrganization);
@@ -200,7 +193,13 @@ export class AppComponent {
         console.log(this.organizationComparer);
       }
     }
-  }
+    for (const aggregate of partnerAggregate) {
+      this.organizationSelectors[2]['value'].push({
+        value: aggregate.value,
+        label: aggregate.label
+      });
+    }
+}
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
       const selectedOptionObject = {
