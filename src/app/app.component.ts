@@ -496,7 +496,7 @@ export class AppComponent {
     console.log(this.subIndicator);
   }
   selectSubcategory(category, subcategory) {
-    
+
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
