@@ -611,6 +611,9 @@ export class AppComponent {
             sw = false;
           }
         }
+        if (i.id == '4' && !isCountryDac) {
+          sw = false;
+        }
         if (sw) {
           this.categoriesNotNull.push(i);
         }
