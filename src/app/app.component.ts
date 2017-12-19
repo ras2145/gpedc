@@ -496,7 +496,6 @@ export class AppComponent {
     console.log(this.subIndicator);
   }
   selectSubcategory(category, subcategory) {
-
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
@@ -507,6 +506,13 @@ export class AppComponent {
     console.log(this.model);
     console.log(this.indicator);
     console.log(this.subIndicator);
+  }
+  unselectCategory() {
+    this.subIndicator = false;
+    this.indicator = false;
+    this.getCategoriesNotNull();
+    this.getIndicator(this.model.year.categories[0].id);
+    this.changeYearLabel(this.model.year.year);
   }
   changeYearLabel(y) {
     this.mapService.resetLayer();
@@ -782,7 +788,6 @@ export class AppComponent {
               this.footerText = this.footerText + '<div class="tabs-result">' + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '</div>';
             }
           }
-
         }
       }
     }
