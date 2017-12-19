@@ -168,7 +168,7 @@ export class AppComponent {
         this.organizationSelectors[1]['value2'].push(titleObject);
         this.organizationSelectors[2]['value'].push(titleObject);
         for (const partner of partnerGroup.partners) {
-          if (partner['_2016'].toUpperCase() === 'YES') {
+          if (partner['_2016'].toUpperCase() === 'YES' || partner['_2016'].toUpperCase() === 'TRUE') {
             const organizationSelector = {
               value: partner['partner'],
               label: partner['partner']
@@ -176,7 +176,7 @@ export class AppComponent {
             this.organizationSelectors[1]['value1'].push(organizationSelector);
             this.organizationSelectors[1]['value2'].push(organizationSelector);
           }
-          if (partner['_2014'].toUpperCase() === 'YES') {
+          if (partner['_2014'].toUpperCase() === 'YES' || partner['_2014'].toUpperCase() === 'TRUE') {
             const organizationSelector = {
               value: partner['partner'],
               label: partner['partner']
