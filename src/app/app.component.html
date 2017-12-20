@@ -743,7 +743,7 @@
                       </div>
                       <tabset #staticTabs>
                         <tab *ngFor="let category of categoriesNotNull" [heading]="footerTab===category.id?'Indicator '+category.id:category.id" (select)=getIndicator(category.id)>
-                          <i class="mdi mdi-close pop-up-close"></i>
+                          <i class="mdi mdi-close pop-up-close" (click)="closeFooter()">  </i>
                           <p [innerHTML]="footerText">
                           </p>
                         </tab>

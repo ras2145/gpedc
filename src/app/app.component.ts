@@ -428,6 +428,13 @@ export class AppComponent {
     this.indicator = indicator;
     this.subIndicator = subIndicator;
   }
+  
+  // function that un-paint a country and unselect it
+  closeFooter() {
+    this.mapService.paintOneCountry(this.selectedCountry);
+    this.selectedCountry = null;
+  }
+
   selectTab(event) {
     this.mapService.resetLayer();
     this.legendMap = [];
