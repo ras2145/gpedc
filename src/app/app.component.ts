@@ -17,6 +17,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  viewModal = true;
   viewerTab: any;
   mapTitle: any;
   validIndicator: any;
@@ -117,6 +118,7 @@ export class AppComponent {
         } else {
           countriesObj[country.country] = country;
         }
+
       }
       this.sidsCountries = [];
       for (let countryName in countriesObj) {
@@ -378,9 +380,13 @@ export class AppComponent {
       this.loaderService.end();
     });
   }
+  
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+     this.viewModal = false;
+     console.log(this.viewModal);
+     this.modalRef = this.modalService.show(template);
   }
+
   getIndicatorValue(country, year) {
     if (!country) {
       return 'No data';
@@ -428,7 +434,6 @@ export class AppComponent {
     this.indicator = indicator;
     this.subIndicator = subIndicator;
   }
-  
   // function that un-paint a country and unselect it
   closeFooter() {
     this.mapService.paintOneCountry(this.selectedCountry);

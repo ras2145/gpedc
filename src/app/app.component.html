@@ -607,19 +607,21 @@
 
                 </div>
             <!-- FIN Sidebar -->
+                
+
 
             <!-- INICIO Map -->
                 <div
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab==='tab2', 'col-md-3': selectedTab==='tab3', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab==='tab1'">
-                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
-                      <button type="button" class="btn btn-tutorial" (click)="openModal(template)"> <i class="mdi mdi-compass-outline"></i> Tutorial</button>
-
+                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>                      
+                      <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-compass-outline" ></i> Tutorial </button>
+                        <div *ngIf="viewModal">{{openModal(tuto)}}</div>
                       <!-- MODAL TUTORIAL -->
-                        <template #template class="">
+                        <template #tuto class=""  >
                           <div class="modal-tutorial">
-                            <div class="modal-header">
+                            <div class="modal-header">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
                               <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -680,7 +682,11 @@
                         </template>
                         <!-- END MODAL TUTORIAL -->
 
+                       
+
                     </div>
+                        
+
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
