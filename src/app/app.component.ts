@@ -821,7 +821,7 @@ export class AppComponent {
             name: partnerName,
             partners: categorizedPartners[partnerName],
             open: false,
-            selected: true
+            selected: false
           });
         }
       }
