@@ -110,7 +110,7 @@ export class AppComponent {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
-    this.mapService.sidsCountriesQuery().subscribe(val => {
+    this.mapService.sidsCountriesQuery(undefined).subscribe(val => {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
@@ -523,7 +523,7 @@ export class AppComponent {
     this.subIndicator = true;
     this.updateIndicatorGeojson();
     this.validIndicator = true;
-    this.updateMapTitle();
+    this.updateMapTitle();    
     console.log(this.model);
     console.log(this.indicator);
     console.log(this.subIndicator);
@@ -998,7 +998,28 @@ export class AppComponent {
         this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
     }
-    console.log("CATEGORY ",category, subcategory);
+    console.log("CATEGORY ", category, subcategory);
+    let indicator = null;
+    if (!this.indicator) {
+      indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
+    }
+    this.mapService.sidsCountriesQuery(indicator).subscribe(val => {
+      const countriesObj = {};
+      for (let country of val) {
+        if (countriesObj[country.country]) {
+          if (countriesObj[country.country].area < country.area) {
+            countriesObj[country.country] = country;
+          }
+        } else {
+          countriesObj[country.country] = country;
+        }
+
+      }
+      this.sidsCountries = [];
+      for (let countryName in countriesObj) {
+        this.sidsCountries.push(countriesObj[countryName]);
+      }
+    });
     this.legendTitle = category.legendText;
     if (subcategory != null) {
       this.legendTitle = subcategory.legendText;

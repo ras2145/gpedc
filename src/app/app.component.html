@@ -258,7 +258,7 @@
                                                 <tbody>
                                                   <tr *ngFor="let partner of partnerGroup.partners">
                                                     <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
-                                                    <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" id="{{getText(partner[model.category.column], model.category)}}" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
+                                                    <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
                                                     <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
                                                   </tr>
                                                 </tbody>
