@@ -134,7 +134,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="openModal(template)">What does this indicator measure?</button>
+                                            <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="setTrueTab();openModal(template)">What does this indicator measure?</button>
                                         </div>
                                     </div>
                                 </div>
@@ -419,6 +419,7 @@
                                                         <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                                                     </p>
                                                 </td>
+                                                <!-- partner comparison -->
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')"></td>
@@ -578,6 +579,7 @@
                                                         {{subcategory.title}}
                                                         <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                                                     </p>
+                                                    <!-- AQUI-->
                                                 </td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstOrganization', true)"></td>
                                                 <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondOrganization', true)"></td>
@@ -741,17 +743,22 @@
                     </div>
 
                     <!-- TAB MAP solo muestra cunado esta seleciona un pais-->
-                    <div class="tab-map" *ngIf="selectedCountry">
+                    <div class="tab-map" *ngIf="selectedCountry" >
                       <div [hidden]="mapUrlProfile == '#'">
                         <a class="a-map" href="{{mapUrlProfile}}" target="_blank">
                           {{selectedCountry}}: View Country/Territory Profile
                         </a>
                       </div>
-                      <tabset #staticTabs>
-                        <tab *ngFor="let category of categoriesNotNull" [heading]="footerTab===category.id?'Indicator '+category.id:category.id" (select)=getIndicator(category.id)>
-                          <i class="mdi mdi-close pop-up-close" (click)="closeFooter()">  </i>
-                          <p [innerHTML]="footerText">
-                          </p>
+                      <!-- [heading]="footerTab===category.id?'Indicator '+category.id:category.id  " -->
+                      
+                      <tabset #staticTabs >
+                        <tab *ngFor="let category of categoriesNotNull"  (select)="getIndicator(category.id)">  
+                                <template tabHeading>
+                                    {{footerTab===category.id?'Indicator '+category.id:category.id  }}
+                                    <i class="mdi mdi-information mdi-cursor" *ngIf="footerTab===category.id" (click)="findTabCategory(category.id);openModal(template)" ></i>
+                                </template>
+                            <i class="mdi mdi-close pop-up-close" (click)="closeFooter()">  </i>
+                          <p [innerHTML]="footerText"></p>
                         </tab>
                       </tabset>
                     </div>
@@ -796,10 +803,10 @@
 <!-- Estilos de los modal -->
     <ng-template #template>
       <div class="modal-body">
-          <div class="container">
-              <div class="row">
+          <div class="container" >
+              <div class="row" >
                   <div class="col-md-10">
-                      <p class="modal-title pull-left">What does this indicator measure?<br><span>indicator {{model.category.id}}</span></p>
+                      <p class="modal-title pull-left">What does this indicator measure?<br><span>indicator {{notFromTab?model.category.id:footerTab}}</span></p>
                   </div>
                   <div class="col-2">
                       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -810,9 +817,9 @@
               <div class="row background-modal">
                   <div class="col-md-12">
                     <div class="tab-modal">
-                      <tabset *ngIf="tabsToShow(model.category.id)">
-                        <tab *ngIf="viewerTab === '1' || (!indicator && subIndicator)" heading="Indicator {{model.category.id}}" id="tab1">
-                            <div *ngIf="model.category.id==='1a'">
+                      <tabset *ngIf="tabsToShow(notFromTab?model.category.id:footerTab)">
+                        <tab *ngIf="viewerTab === '1' || (!indicator && subIndicator)" heading="Indicator {{notFromTab?model.category.id:footerTab}}" id="tab1">
+                            <div *ngIf="(notFromTab?model.category.id:footerTab )==='1a' ">
                                 <p class="result-modal">
                                     Indicator 1a measures alignment of development partners’ new interventions
                                     with country-defined objectives and results; and development partners reliance
@@ -834,7 +841,7 @@
                                     Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                                   </p>
                             </div>
-                            <div *ngIf="model.category.id==='2'" class="modal-contet">
+                            <div *ngIf="(notFromTab?model.category.id:footerTab) ==='2'" class="modal-contet">
                                 <p class="result-modal" >
                                     Indicator 2 seeks to assess the extent to which governments and development partners contribute
                                     to an enabling environment for civil society organisations (CSOs), in addition to how CSOs are
@@ -860,7 +867,7 @@
                                     Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
 
                             </div>
-                            <div *ngIf="model.category.id==='3'" class="modal-contet">
+                            <div *ngIf="(notFromTab?model.category.id:footerTab) ==='3' " class="modal-contet">
                                 <p class="result-modal">
                                     Indicator 3 assesses the engagement of the private sector and the quality of public-private dialogue (PPD) in a given country. In doing so, it recognises the importance of inclusive dialogue with the private sector for building a policy environment conducive to growth and sustainable development.
                                     <br><br>
@@ -877,7 +884,7 @@
                                     For further results from Module 2, please read the country’s monitoring profile. Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
 
                             </div>
-                            <div *ngIf="model.category.id==='4'" class="modal-contet">
+                            <div *ngIf="(notFromTab?model.category.id:footerTab) ==='4'" class="modal-contet">
                                 <p class="result-modal" >
                                     Indicator 4 seeks to capture the timeliness, comprehensiveness and forward-looking nature of individual development partners’ electronic publication of information on co-operation resources. It measures transparency by considering three complementary measurements in parallel: the OECD-DAC’s <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Creditor Reporting System</a> (CRS) and <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Forward-Spending Survey</a> (FSS); and the <a target="_blank" href="http://dashboard.iatistandard.org/index.html">International Aid Transparency Initiative (IATI)</a>.
                                     <br><br>
@@ -892,7 +899,7 @@
                             </div>
 
                         </tab>
-                        <tab  *ngIf="(viewerTab === '1' && model.subcategory != null) || (indicator && !subIndicator)"heading="Sub-Indicator" id="tab2">
+                        <tab  *ngIf="((viewerTab === '1' && model.subcategory != null) || (indicator && !subIndicator))&& notFromTab"heading="Sub-Indicator" id="tab2">
                             <div *ngIf="model.subcategory.column === '_2016_1_1'" class="modal-contet">
                                 <p class="result-modal">
                                     This dimension of Indicator 1a measures whether objectives of new interventions are drawn from
@@ -1074,7 +1081,7 @@
                         </tab>
                       </tabset>
                     </div>
-                    <div *ngIf="model.category.id==='5a'" class="modal-contet">
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='5a'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 5a measures whether development co-operation flows are becoming more predictable over time, focusing on annual predictability of development co-operation. In doing so, it recognises that shortfalls in the total amount of funding for the government sector and delays in the in-year disbursements of scheduled funds can have serious implications for a government’s ability to implement development policies and strategies as planned.
                             <br><br>
@@ -1082,7 +1089,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                     </div>
-                    <div *ngIf="model.category.id==='5b'" class="modal-contet">
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='5b'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 5b focuses on medium-term predictability of development co-operation. In doing so, it recognises that a lack of comprehensive and credible forward-looking information on development co-operation funding can have serious implications for a government’s ability to plan and implement policies and strategies, deliver public services and design and conduct sound macro-economic policy.
                             <br><br>
@@ -1102,7 +1109,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                     </div>
-                    <div *ngIf="model.category.id==='6'" class="modal-contet">
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='6'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 6 measures the percentage of development co-operation funding scheduled for disbursement by development partners that is recorded in the annual budgets approved by the legislature of a given country.
                             <br><br>
@@ -1110,121 +1117,121 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                     </div>
-                    <div *ngIf="model.subcategory!== null">
-                    <div *ngIf="model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7'" class="modal-contet">
-                        <p class="result-modal">
-                            Indicator 7 seeks to measure progress made by developing countries in undertaking mutual assessment reviews with their development partners. The principle of mutual accountability recognises that development impacts improve when all parties take responsibility for their contributions.
-                            <br><br>
-                            A country is considered to have a mutual assessment in place when at least four of the following five criteria have been met:
-                            <ul>
-                                <li>An aid or partnership policy is in place that defines the country’s development co-operation priorities;</li>
-                                <li>Country-level targets (for both the country and its development partners) have been established;</li>
-                                <li>Government and development partners conduct regular joint assessment towards these targets at least every two years;</li>
-                                <li>Non-executive stakeholders and local governments are involved in these joint assessments; and</li>
-                                <li>Results of joint assessments are made public.</li>
-                            </ul>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
-                    <div *ngIf="model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 7 assesses whether there is an aid or partnership policy in place to define a country’s development co-operation priorities, or if elements of such a policy are agreed through other instruments (yes / no).
-                            <br><br>
-                            An aid or partnership policy is defined here as a document which sets out agreed approaches to the delivery of development co-operation in the partner country, containing agreed principles, processes and / or targets designed to improve its effectiveness. This may take the form of a stand-alone policy or strategy document, or may be addressed within another document (for example, as part of a national development strategy or similar). The document should be the product of an inclusive consultation between the country government, development partners and other interested development stakeholders.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
+                    <div *ngIf="(model.subcategory!== null)">
+                        <div *ngIf="(model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                Indicator 7 seeks to measure progress made by developing countries in undertaking mutual assessment reviews with their development partners. The principle of mutual accountability recognises that development impacts improve when all parties take responsibility for their contributions.
+                                <br><br>
+                                A country is considered to have a mutual assessment in place when at least four of the following five criteria have been met:
+                                <ul>
+                                    <li>An aid or partnership policy is in place that defines the country’s development co-operation priorities;</li>
+                                    <li>Country-level targets (for both the country and its development partners) have been established;</li>
+                                    <li>Government and development partners conduct regular joint assessment towards these targets at least every two years;</li>
+                                    <li>Non-executive stakeholders and local governments are involved in these joint assessments; and</li>
+                                    <li>Results of joint assessments are made public.</li>
+                                </ul>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether there is an aid or partnership policy in place to define a country’s development co-operation priorities, or if elements of such a policy are agreed through other instruments (yes / no).
+                                <br><br>
+                                An aid or partnership policy is defined here as a document which sets out agreed approaches to the delivery of development co-operation in the partner country, containing agreed principles, processes and / or targets designed to improve its effectiveness. This may take the form of a stand-alone policy or strategy document, or may be addressed within another document (for example, as part of a national development strategy or similar). The document should be the product of an inclusive consultation between the country government, development partners and other interested development stakeholders.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
 
-                    <div *ngIf="model.subcategory.column==='_2014_7_2' || model.subcategory.column==='_2016_7_2'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 7 assesses whether there are specific country-level targets for effective development co-operation for both the partner country government and its development partners (yes / no).
-                            <br><br>
-                            Targets, as defined here, should exist for both the partner country government and development partners, providing the basis for assessing: the partner country’s performance in implementing its development strategy; and the performance of development partners against agreed commitments to deliver on the quantity, quality and effectiveness of their support.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_2' || model.subcategory.column==='_2016_7_2') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether there are specific country-level targets for effective development co-operation for both the partner country government and its development partners (yes / no).
+                                <br><br>
+                                Targets, as defined here, should exist for both the partner country government and development partners, providing the basis for assessing: the partner country’s performance in implementing its development strategy; and the performance of development partners against agreed commitments to deliver on the quantity, quality and effectiveness of their support.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
 
-                    <div *ngIf="model.subcategory.column==='_2014_7_3' || model.subcategory.column==='_2016_7_3'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 7 assesses whether an assessment towards agreed country-level targets has been undertaken jointly by the country government and its development partners at the senior level in the past two years (yes / no).
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
-                    <div *ngIf="model.subcategory.column==='_2014_7_4' || model.subcategory.column==='_2016_7_4'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 7 assesses whether local governments and non-executive stakeholders (i.e. civil society organisations, the private sector and parliamentarians) have been actively involved in joint assessments at a senior level within the past two years (yes / no).
-                            <br><br>
-                            Mutual assessment reviews are national-level exercises that engage both partner country authorities and  development partners at a senior level in a review of mutual performance. These reviews should be conducted through inclusive dialogue involving a broad range of government ministries (including line ministries and relevant departments, at central and local level), development partners (bilateral, multilateral and global initiatives) as well as non-executive stakeholders, including parliamentarians, the private sector and civil society organisations.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
-                    <div *ngIf="model.subcategory.column==='_2014_7_5' || model.subcategory.column==='_2016_7_5'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 7 assesses whether the comprehensive results of joint assessments toward mutually-agreed targets have been made public in a timely manner to ensure transparency (yes / no).
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_3' || model.subcategory.column==='_2016_7_3') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether an assessment towards agreed country-level targets has been undertaken jointly by the country government and its development partners at the senior level in the past two years (yes / no).
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_4' || model.subcategory.column==='_2016_7_4') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether local governments and non-executive stakeholders (i.e. civil society organisations, the private sector and parliamentarians) have been actively involved in joint assessments at a senior level within the past two years (yes / no).
+                                <br><br>
+                                Mutual assessment reviews are national-level exercises that engage both partner country authorities and  development partners at a senior level in a review of mutual performance. These reviews should be conducted through inclusive dialogue involving a broad range of government ministries (including line ministries and relevant departments, at central and local level), development partners (bilateral, multilateral and global initiatives) as well as non-executive stakeholders, including parliamentarians, the private sector and civil society organisations.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_5' || model.subcategory.column==='_2016_7_5') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether the comprehensive results of joint assessments toward mutually-agreed targets have been made public in a timely manner to ensure transparency (yes / no).
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
 
-                    <div *ngIf="model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8'" class="modal-contet">
-                        <p class="result-modal">
-                            This indicator seeks to measure government efforts to track and make public resource allocations for gender equality and women’s empowerment. It does so by encouraging national governments to develop appropriate budget tracking and monitoring systems and commit to making information about allocations for gender equality readily accessible to the public.
-                            <br><br>
-                            Tracking budget allocations with a gender perspective makes it possible to apply a gender lens to development co-operation funds recorded in national budgets, and builds accountability to incentivise gender equality.
-                            <br><br>
-                            <a target="_blank" href="http://www.unwomen.org/en">UN Women</a>, in collaboration with the <a target="_blank" href="http://www.oecd.org/dac/gender-development/">OECD-DAC Network on Gender Equality (GENDERNET)</a>, developed the methodology and set of criteria to roll out this global indicator at country level and to monitor performance against this indicator over time.
-                            <br><br>
-                            For the purpose of measuring this indicator, a country is considered to have a system in place to track gender allocations when one out of the following first three criteria and the fourth criteria are met:
-                            <ul>
-                                <li>The country has an official government statement for tracking budget allocations for gender equality and women’s empowerment;</li>
-                                <li>Allocations for gender equality and women’s empowerment are systematically tracked through an officially planned, regular process;</li>
-                                <li>Leadership and oversight of the tracking system is carried out by the central government unit in charge of public expenditure; and</li>
-                                <li>Budget information that focuses on gender equality is made publicly available.</li>
-                            </ul>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        <div *ngIf="(model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This indicator seeks to measure government efforts to track and make public resource allocations for gender equality and women’s empowerment. It does so by encouraging national governments to develop appropriate budget tracking and monitoring systems and commit to making information about allocations for gender equality readily accessible to the public.
+                                <br><br>
+                                Tracking budget allocations with a gender perspective makes it possible to apply a gender lens to development co-operation funds recorded in national budgets, and builds accountability to incentivise gender equality.
+                                <br><br>
+                                <a target="_blank" href="http://www.unwomen.org/en">UN Women</a>, in collaboration with the <a target="_blank" href="http://www.oecd.org/dac/gender-development/">OECD-DAC Network on Gender Equality (GENDERNET)</a>, developed the methodology and set of criteria to roll out this global indicator at country level and to monitor performance against this indicator over time.
+                                <br><br>
+                                For the purpose of measuring this indicator, a country is considered to have a system in place to track gender allocations when one out of the following first three criteria and the fourth criteria are met:
+                                <ul>
+                                    <li>The country has an official government statement for tracking budget allocations for gender equality and women’s empowerment;</li>
+                                    <li>Allocations for gender equality and women’s empowerment are systematically tracked through an officially planned, regular process;</li>
+                                    <li>Leadership and oversight of the tracking system is carried out by the central government unit in charge of public expenditure; and</li>
+                                    <li>Budget information that focuses on gender equality is made publicly available.</li>
+                                </ul>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_1' || model.subcategory.column==='_2016_8_1') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether there exists an official government statement on a system for tracking allocations for gender equality and women’s empowerment (yes / no).
+                                <br><br>
+                                It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
+                                <br><br>
+                                For this purpose, the official government statement is defined as a process or procedure in place to plan, approve, allocate and monitor public expenditures at the national and sectoral level in a way that ensures that expenditures are targeted appropriately to benefit both women and men. Such systems can include gender budget statements, classifiers, gender markers and even preliminary guidelines. The system in place is overseen by a governmental body, in most cases the Ministry of Finance, that considers gender impact in budget decisions and incorporates measures to mitigate any adverse impact on gender equality and women’s empowerment.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_2' || model.subcategory.column==='_2016_8_2') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether allocations for gender equality and women’s empowerment are systematically tracked (yes / no).
+                                <br><br>
+                                It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
+                                <br><br>
+                                Allocations for gender equality and women’s empowerment can be defined as:
+                                <ul>
+                                    <li>Resources allocated at sector and local level for programmes that specifically target only women or girls; </li>
+                                    <li>Resources allocated at sector and local level to actions that target both women and men equally, but in which gender equality is a specific objective; and</li>
+                                    <li>Resources allocated at sector and local level to actions where gender is mainstreamed. For example, an infrastructure project that doesn’t include gender equality as an explicit objective but includes women as beneficiaries.</li>
+                                </ul>
+                                ‘Systematically tracked’ means that a tracking process is planned and regularly conducted. For instance, if the tracking of budgets allocations towards gender equality is officially planned and conducted annually by an identifiable or designated body, it can be said that allocations for gender equality are systematically tracked.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_3' || model.subcategory.column==='_2016_8_3') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether leadership and oversight of the tracking system is under the purview of the central government unit in charge of public expenditures (yes / no).
+                                <br><br>
+                                It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_4' || model.subcategory.column==='_2016_8_4') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether gender equality-focused budget information is publicly available (e.g. through Parliamentary oversight and civil society scrutiny, publications, websites or other means) (yes / no).
+                                <br><br>
+                                For the purposes of Global Partnership monitoring, this condition must be met in order for the country to be considered as having a system in place to track gender allocations.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
                     </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_1' || model.subcategory.column==='_2016_8_1'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 8 assesses whether there exists an official government statement on a system for tracking allocations for gender equality and women’s empowerment (yes / no).
-                            <br><br>
-                            It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
-                            <br><br>
-                            For this purpose, the official government statement is defined as a process or procedure in place to plan, approve, allocate and monitor public expenditures at the national and sectoral level in a way that ensures that expenditures are targeted appropriately to benefit both women and men. Such systems can include gender budget statements, classifiers, gender markers and even preliminary guidelines. The system in place is overseen by a governmental body, in most cases the Ministry of Finance, that considers gender impact in budget decisions and incorporates measures to mitigate any adverse impact on gender equality and women’s empowerment.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_2' || model.subcategory.column==='_2016_8_2'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 8 assesses whether allocations for gender equality and women’s empowerment are systematically tracked (yes / no).
-                            <br><br>
-                            It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
-                            <br><br>
-                            Allocations for gender equality and women’s empowerment can be defined as:
-                            <ul>
-                                <li>Resources allocated at sector and local level for programmes that specifically target only women or girls; </li>
-                                <li>Resources allocated at sector and local level to actions that target both women and men equally, but in which gender equality is a specific objective; and</li>
-                                <li>Resources allocated at sector and local level to actions where gender is mainstreamed. For example, an infrastructure project that doesn’t include gender equality as an explicit objective but includes women as beneficiaries.</li>
-                            </ul>
-                            ‘Systematically tracked’ means that a tracking process is planned and regularly conducted. For instance, if the tracking of budgets allocations towards gender equality is officially planned and conducted annually by an identifiable or designated body, it can be said that allocations for gender equality are systematically tracked.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_3' || model.subcategory.column==='_2016_8_3'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 8 assesses whether leadership and oversight of the tracking system is under the purview of the central government unit in charge of public expenditures (yes / no).
-                            <br><br>
-                            It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
-                    </div>
-                    <div *ngIf="model.subcategory.column==='_2014_8_4' || model.subcategory.column==='_2016_8_4'" class="modal-contet">
-                        <p class="result-modal">
-                            This dimension of Indicator 8 assesses whether gender equality-focused budget information is publicly available (e.g. through Parliamentary oversight and civil society scrutiny, publications, websites or other means) (yes / no).
-                            <br><br>
-                            For the purposes of Global Partnership monitoring, this condition must be met in order for the country to be considered as having a system in place to track gender allocations.
-                            <br><br>
-                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    </div>
-                    </div>
-                    <div *ngIf="model.category.id==='9a'" class="modal-contet">
+                    <div *ngIf="(notFromTab?model.category.id:footerTab )==='9a'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 9a seeks to assess progressive strengthening of a country’s own systems. Well-performing country systems are essential to ensure that public expenditure for ambitious national plans translates into development results in the most effective and sustainable manner.
                             <br><br>
@@ -1243,7 +1250,7 @@
                             Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
 
                     </div>
-                    <div *ngIf="model.category.id==='9b'" class="modal-contet">
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='9b'" class="modal-contet">
                         <p class="result-modal">
                             Indicator 9b measures the proportion of development co-operation disbursed to the government using the country’s own financial management and procurement systems. This includes using the country’s own rules and procedures – versus those of the development partner – for budget execution, financial reporting, auditing and procurement of goods and services.
                             <br><br>
@@ -1251,7 +1258,7 @@
                             <br><br>
                             Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                     </div>
-                    <div *ngIf="model.category.id==='10'" class="modal-contet">
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) === '10' " class="modal-contet">
                         <p class="result-modal">
                             Indicator 10 measures the share of development assistance that is fully untied within a given country or by a development partner. Tied aid implies funding for which partners establish geographical restrictions as to where funds can be spent.
                             <br><br>
@@ -1271,3 +1278,10 @@
     <div class="loader-bg" [hidden]="!isLoading()">
         <div class="circles-loader"> </div>
     </div>
+
+
+
+
+
+
+

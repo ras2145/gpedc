@@ -10,7 +10,7 @@ import { legends } from './legends';
 import { regions, incomeGroups, countryContexts, partnerAggregate } from './filterCountries';
 import { saveAs } from 'file-saver';
 import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,6 +18,8 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 })
 export class AppComponent {
   viewModal = true;
+  notFromTab = true;
+  viewTab = true;
   viewerTab: any;
   mapTitle: any;
   validIndicator: any;
@@ -387,6 +389,14 @@ export class AppComponent {
      this.modalRef = this.modalService.show(template);
   }
 
+  selTab (cid, mcid) {
+      if (cid == mcid && this.viewTab) {
+        this.viewTab = false;
+        return true;
+      }else {
+        return false;
+      }
+  }
   getIndicatorValue(country, year) {
     if (!country) {
       return 'No data';
@@ -428,13 +438,24 @@ export class AppComponent {
     return 'No data';
   }
 
-  findViewerCategory(category, subcategory, indicator, subIndicator){
+  findViewerCategory(category, subcategory, indicator, subIndicator) {
+    this.notFromTab = true;
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.indicator = indicator;
     this.subIndicator = subIndicator;
   }
-  // function that un-paint a country and unselect it
+  // function to set variables that set if request of template 
+  // is from the modal or not
+  findTabCategory(tabId) {
+    this.footerTab = tabId;
+    this.notFromTab = false;
+    console.log(this.footerTab);
+  }
+  setTrueTab(){
+    this.notFromTab = true;
+  }
+    // function that un-paint a country and unselect it
   closeFooter() {
     this.mapService.paintOneCountry(this.selectedCountry);
     this.selectedCountry = null;
@@ -977,7 +998,7 @@ export class AppComponent {
         this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
     }
-    console.log(category, subcategory);
+    console.log("CATEGORY ",category, subcategory);
     this.legendTitle = category.legendText;
     if (subcategory != null) {
       this.legendTitle = subcategory.legendText;
