@@ -780,13 +780,15 @@ export class AppComponent {
               this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
             } else if (i.id == '4') {
               if (value == 'No data available') {
-                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div><div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div>';
+                // <div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
               } else {
                 this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div><div class="tabs-result">' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '</div>';
               }
             } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
               if (value == 'No data available') {
-                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div><div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
+                this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div>';
+                // <div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
               } else {
                 this.footerText = this.footerText + '<div class="tabs-result"><b>Indicator ' + i.label + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div class="row"><div class="col-md-' + cols[0] + '"><h2>' + value + ' </h2></div><div class="col-md-' + cols[1] + '">' + i.suffix) + '</div></div></div>';
               }
