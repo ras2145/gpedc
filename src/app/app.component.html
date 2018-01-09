@@ -507,7 +507,7 @@
                                         <!-- FILTROS -->
                                         <span *ngFor="let partnerGroup of categorizedPartners">
                                           <button type="button" class="btn btn-filters" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (click)="selectPartnerGroup(partnerGroup)">{{partnerGroup.name}}</button>
-                                        </span> 
+                                        </span>
                                         <!-- END FILTROS -->
                                     </div>
                                 </div>
@@ -559,7 +559,7 @@
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                                                         </p>
                                                     </td>
-                                                    <td width="75%" colspan="3" class="table-result center-td background-2 no-padding"> <div id="line-td"></div> </td>
+                                                    <td width="75%" colspan="3" class="table-result center-td background-2 no-padding"> <div id="line-td" class="responsive-line"></div> </td>
                                                 </ng-template>
                                                 <ng-template #elseBlock>
                                                     <td class="table-title-left background-1" width="25%">
@@ -609,7 +609,7 @@
 
                 </div>
             <!-- FIN Sidebar -->
-                
+
 
 
             <!-- INICIO Map -->
@@ -617,12 +617,12 @@
                 class="col-md-8 border-div-none"
                 [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab==='tab2', 'col-md-3': selectedTab==='tab3', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
                     <div class="map-header" *ngIf="selectedTab==='tab1'">
-                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>                      
+                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
                       <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-compass-outline" ></i> Tutorial </button>
                       <!-- MODAL TUTORIAL -->
                         <template #tuto class=""  >
                           <div class="modal-tutorial">
-                            <div class="modal-header">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                            <div class="modal-header">
                             <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -683,10 +683,10 @@
                         </template>
                         <!-- END MODAL TUTORIAL -->
 
-                       
+
 
                     </div>
-                        
+
 
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
@@ -749,7 +749,7 @@
                         </a>
                       </div>
                       <!-- [heading]="footerTab===category.id?'Indicator '+category.id:category.id  " -->
-                      
+
                       <tabset #staticTabs >
                         <tab *ngFor="let category of categoriesNotNull"  (select)="getIndicator(category.id)" [active]="footerTab===category.id">
                                 <template tabHeading>
@@ -1277,10 +1277,3 @@
     <div class="loader-bg" [hidden]="!isLoading()">
         <div class="circles-loader"> </div>
     </div>
-
-
-
-
-
-
-

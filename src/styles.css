@@ -594,6 +594,9 @@ div#map {
 .table{
     margin-bottom: 0px;
 }
+td.table-title-left{
+  vertical-align: middle;
+}
 .table-title-left,
 .table-subtible,
 .table-result{
@@ -765,6 +768,11 @@ div#map {
         margin-left: 10%;
     }
 }*/
+@media (min-width: 2000px) {
+  #line-td.responsive-line{
+    height: 57px;
+  }
+}
 
 
 
@@ -1286,7 +1294,7 @@ select-dropdown li.selected.highlighted {
   /* position: absolute;
   width: 400px;
   left: 400px; */
-  height: 80px;
+  height: 67px;
   background-image: linear-gradient(-45deg, transparent 45%, #919195 50%, transparent 55%, transparent 100%);
   background-size: 8px 8px;
   background-position: 4px 4px;
