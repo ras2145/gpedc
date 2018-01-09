@@ -751,8 +751,8 @@
                       </div>
                       <!-- [heading]="footerTab===category.id?'Indicator '+category.id:category.id  " -->
                       
-                      <tabset #staticTabs >
-                        <tab *ngFor="let category of categoriesNotNull"  (select)="getIndicator(category.id)">  
+                      <tabset #staticTabs>
+                        <tab *ngFor="let category of categoriesNotNull"  (select)="getIndicator(category.id)" [active]="footerTab===category.id" >  
                                 <template tabHeading>
                                     {{footerTab===category.id?'Indicator '+category.id:category.id  }}
                                     <i class="mdi mdi-information mdi-cursor" *ngIf="footerTab===category.id" (click)="findTabCategory(category.id);openModal(template)" ></i>
@@ -761,6 +761,7 @@
                           <p [innerHTML]="footerText"></p>
                         </tab>
                       </tabset>
+                      
                     </div>
 
                     <!-- <img src="assets/map-new-screen-1.png" alt="" width="100%"> -->

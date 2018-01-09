@@ -347,7 +347,14 @@ export class AppComponent {
             this.categoriesNotNull = [];
             setTimeout(() => {
               this.getCategoriesNotNull();
-              this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
+              for (let ind of this.categoriesNotNull){
+                if (ind.id == this.model.category.id){
+                  this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
+                  break;
+                }else {
+                  this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
+                }
+              }
               this.getIndicator(this.indicatorSelectedFooter);
             }, 100);
           } else {
@@ -447,15 +454,18 @@ export class AppComponent {
     this.indicator = indicator;
     this.subIndicator = subIndicator;
   }
-  // function to set variables that set if request of template 
+  // function to set variables that determines if request of template 
   // is from the modal or not
   findTabCategory(tabId) {
     this.footerTab = tabId;
     this.notFromTab = false;
     console.log(this.footerTab);
   }
-  setTrueTab(){
+  setTrueTab() {
     this.notFromTab = true;
+  }
+  test(val) {
+    console.log('val', val);
   }
     // function that un-paint a country and unselect it
   closeFooter() {
@@ -765,6 +775,7 @@ export class AppComponent {
     this.footerText = '';
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
+      console.log("cat", categories);
       let notPrint = [];
       for (const i of categories) {
         if (i.id === indicator) {
@@ -829,6 +840,7 @@ export class AppComponent {
       }
     }
   }
+  
   getPartners() {
     this.mapService.getPartners().subscribe(res => {
       this.partners = res;
