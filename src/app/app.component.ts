@@ -89,6 +89,7 @@ export class AppComponent {
     'Other international and regional organizations': 5,
     'UN agencies': 6
   };
+  heightDropDown: any;
   tutorial = [
     true,
     false,
@@ -142,6 +143,7 @@ export class AppComponent {
     this.indicator = true;
     this.validIndicator = false;
     this.viewerTab = '1';
+    this.heightDropDown = '75vh';
   }
   chargeOrganizationComparison() {
     this.organizationSelectors = [];
@@ -1015,12 +1017,12 @@ export class AppComponent {
         } else {
           countriesObj[country.country] = country;
         }
-
       }
       this.sidsCountries = [];
       for (let countryName in countriesObj) {
         this.sidsCountries.push(countriesObj[countryName]);
       }
+      this.heightDropDown = this.sidsCountries.length < 13 ? '45vh' : '75vh';
     });
     this.legendTitle = category.legendText;
     if (subcategory != null) {

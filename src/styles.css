@@ -1111,8 +1111,7 @@ select-dropdown li.selected.highlighted {
 .mdi-cursor{
   cursor: pointer;
 }
-.map-dropdown {
-  height: 75vh;
+.map-dropdown {  
   overflow: auto;
 }
 /*.acordion i:before {
