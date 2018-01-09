@@ -365,7 +365,6 @@
                                               placeholder="Select country"
                                               [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
                                             </div>
-
                                             <div class="col-md-4 padding-dd-04">
                                               <ng-select
                                               (deselected)="onDeselected($event,'second')"
@@ -389,10 +388,10 @@
                                 <div class="row">
                                     <div class="col-md-12 background-table">
                                         <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
-                                            <tr class="border-bottom-1">
+                                            <tr class="border-bottom-1" *ngIf="countryComparer.firstCountry != '' && countryComparer.secondCountry != ''">
                                                 <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
                                                 <ng-template #thenBlock>
-                                                    <td class="table-title-left background-1" width="25%">
+                                                    <td class="table-title-left background-1" width="25%" >
                                                         <p>
                                                             Indicator {{indicator.title}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
@@ -412,17 +411,17 @@
                                                     <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')"></td>
                                                 </ng-template>
                                             </tr>
-                                            <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                                                <td width="25%" class="table-subtible background-1">
-                                                    <p>
-                                                        {{subcategory.title}}
-                                                        <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
-                                                    </p>
-                                                </td>
-                                                <!-- partner comparison -->
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></td>
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></td>
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')"></td>
+                                            <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories" >
+                                                    <td width="25%" class="table-subtible background-1" *ngIf="countryComparer.firstCountry != '' && countryComparer.secondCountry != ''" >
+                                                        <p>
+                                                            {{subcategory.title}}
+                                                            <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
+                                                        </p>
+                                                    </td>
+                                                    <!-- partner comparison -->
+                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')" *ngIf="countryComparer.firstCountry != '' && countryComparer.secondCountry != ''"></td>
+                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="countryComparer.firstCountry != '' && countryComparer.secondCountry != ''"></td>
+                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="countryComparer.firstCountry != '' && countryComparer.secondCountry != ''"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -751,8 +750,8 @@
                       </div>
                       <!-- [heading]="footerTab===category.id?'Indicator '+category.id:category.id  " -->
                       
-                      <tabset #staticTabs>
-                        <tab *ngFor="let category of categoriesNotNull"  (select)="getIndicator(category.id)" [active]="footerTab===category.id" >  
+                      <tabset #staticTabs >
+                        <tab *ngFor="let category of categoriesNotNull"  (select)="getIndicator(category.id)">  
                                 <template tabHeading>
                                     {{footerTab===category.id?'Indicator '+category.id:category.id  }}
                                     <i class="mdi mdi-information mdi-cursor" *ngIf="footerTab===category.id" (click)="findTabCategory(category.id);openModal(template)" ></i>
@@ -761,7 +760,6 @@
                           <p [innerHTML]="footerText"></p>
                         </tab>
                       </tabset>
-                      
                     </div>
 
                     <!-- <img src="assets/map-new-screen-1.png" alt="" width="100%"> -->
