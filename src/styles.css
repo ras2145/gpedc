@@ -1390,7 +1390,7 @@ select-dropdown li.selected.highlighted {
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: 1000;
+  z-index: 2000;
 }
 .no-padding {
   padding: 0px !important;

@@ -619,7 +619,6 @@
                     <div class="map-header" *ngIf="selectedTab==='tab1'">
                       <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>                      
                       <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-compass-outline" ></i> Tutorial </button>
-                        <div *ngIf="viewModal">{{openModal(tuto)}}</div>
                       <!-- MODAL TUTORIAL -->
                         <template #tuto class=""  >
                           <div class="modal-tutorial">

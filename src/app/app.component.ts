@@ -3,7 +3,7 @@ import { countryComparison } from './countryComparison';
 import { WebService } from './services/web.service';
 import { MapService } from './services/map.service';
 import { LoaderService } from './services/loader.service';
-import { Component, Inject, TemplateRef } from '@angular/core';
+import { Component, Inject, TemplateRef, ViewChild } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from './titles';
 import { legends } from './legends';
@@ -101,6 +101,7 @@ export class AppComponent {
     false,
     false
   ];
+  @ViewChild('tuto') tuto: TemplateRef<any>;
   constructor(
     private mapService: MapService,
     private modalService: BsModalService,
@@ -144,6 +145,9 @@ export class AppComponent {
     this.validIndicator = false;
     this.viewerTab = '1';
     this.heightDropDown = '75vh';
+  }
+  ngAfterViewInit() {
+    this.openModal(this.tuto);
   }
   chargeOrganizationComparison() {
     this.organizationSelectors = [];
