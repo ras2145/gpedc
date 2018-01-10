@@ -1152,13 +1152,15 @@ export class AppComponent {
     return false;
   }
   selectCountryComparer(firstCountry, secondCountry) {
-    this.selectFirstCountry = firstCountry;
-    this.selectSecondCountry = secondCountry;
-    this.viewCountryComparer = firstCountry !== '' || secondCountry !== '' ? true : false;
+    this.selectFirstCountry = firstCountry || '';
+    this.selectSecondCountry = secondCountry || '';
+    this.viewCountryComparer = this.selectFirstCountry !== '' || this.selectSecondCountry !== '' ? true : false;
     return this.viewCountryComparer;
   };
   viewTableIndicatorComparison(firstCountry, secondCountry) {
     let output: boolean;
+    firstCountry = firstCountry === '-' ? '<p>No data available</p>' : firstCountry;
+    secondCountry = secondCountry === '-' ? '<p>No data available</p>' : secondCountry;
     if(this.selectFirstCountry !== '' && this.selectSecondCountry !== '') {
       output = firstCountry === '<p>No data available</p>' && secondCountry === '<p>No data available</p>' ? false : true;
     } else if(this.selectFirstCountry !== '') {
@@ -1168,11 +1170,19 @@ export class AppComponent {
     } 
     return output;
   };
-  viewTableIndicator(indicator) {
+  viewTableIndicator(indicator, valueIndicator) {
     let output: number = 0;
-    for(let subcategory of indicator.subcategories) {
-      if(this.viewTableIndicatorComparison(this.getLabelCountry(subcategory, 'firstCountry'), this.getLabelCountry(subcategory, 'secondCountry'))) {
-        output++;
+    if(valueIndicator) {
+      for(let subcategory of indicator.subcategories) {
+        if(this.viewTableIndicatorComparison(this.getLabelCountry(subcategory, 'firstOrganization', true), this.getLabelCountry(subcategory, 'secondOrganization', true))) {
+          output++;
+        }
+      }      
+    } else {
+      for(let subcategory of indicator.subcategories) {
+        if(this.viewTableIndicatorComparison(this.getLabelCountry(subcategory, 'firstCountry'), this.getLabelCountry(subcategory, 'secondCountry'))) {
+          output++;
+        }
       }
     }
     return indicator.subcategories.length === output ? true : false;
