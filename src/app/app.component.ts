@@ -90,6 +90,9 @@ export class AppComponent {
     'UN agencies': 6
   };
   heightDropDown: any;
+  viewCountryComparer: boolean = true;
+  selectFirstCountry: string;
+  selectSecondCountry: string;
   tutorial = [
     true,
     false,
@@ -1148,4 +1151,30 @@ export class AppComponent {
     }
     return false;
   }
+  selectCountryComparer(firstCountry, secondCountry) {
+    this.selectFirstCountry = firstCountry;
+    this.selectSecondCountry = secondCountry;
+    this.viewCountryComparer = firstCountry !== '' || secondCountry !== '' ? true : false;
+    return this.viewCountryComparer;
+  };
+  viewTableIndicatorComparison(firstCountry, secondCountry) {
+    let output: boolean;
+    if(this.selectFirstCountry !== '' && this.selectSecondCountry !== '') {
+      output = firstCountry === '<p>No data available</p>' && secondCountry === '<p>No data available</p>' ? false : true;
+    } else if(this.selectFirstCountry !== '') {
+      output = firstCountry === '<p>No data available</p>' ? false : true;
+    } else {
+      output = secondCountry === '<p>No data available</p>' ? false : true;
+    } 
+    return output;
+  };
+  viewTableIndicator(indicator) {
+    let output: number = 0;
+    for(let subcategory of indicator.subcategories) {
+      if(this.viewTableIndicatorComparison(this.getLabelCountry(subcategory, 'firstCountry'), this.getLabelCountry(subcategory, 'secondCountry'))) {
+        output++;
+      }
+    }
+    return indicator.subcategories.length === output ? true : false;
+  };
 }
