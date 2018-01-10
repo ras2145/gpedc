@@ -1154,7 +1154,7 @@ export class AppComponent {
   selectCountryComparer(firstCountry, secondCountry) {
     this.selectFirstCountry = firstCountry || '';
     this.selectSecondCountry = secondCountry || '';
-    this.viewCountryComparer = this.selectFirstCountry !== '' || this.selectSecondCountry !== '' ? true : false;
+    this.viewCountryComparer = this.selectFirstCountry !== '' && this.selectSecondCountry !== '' ? true : false;
     return this.viewCountryComparer;
   };
   viewTableIndicatorComparison(firstCountry, secondCountry) {
@@ -1185,6 +1185,6 @@ export class AppComponent {
         }
       }
     }
-    return indicator.subcategories.length === output ? true : false;
+    return output > 0 ? true : false;
   };
 }
