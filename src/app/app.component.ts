@@ -992,14 +992,19 @@ export class AppComponent {
       column = this.model.subcategory.column;
       indicator = this.model.subcategory;
     }
+    let countriesList = [];
     for (const feature of this.geoJson.features) {
       const line = [];
       line.push(feature.properties.country);
       line.push(this.formatValue(indicator, feature.properties[column]));
+      countriesList.push(line);
+    }
+    countriesList.sort((a, b) => (a[0] < b[0] ? -1 : (a[0] > b[0] ? 1 : 0)));
+    for (const line of countriesList) {
       lines.push(line);
     }
     lines.push(['', '']);
-    lines.push(['Organisations', '']);
+    lines.push(['Development Partners', '']);
     for (const partnerGroup of this.categorizedPartners) {
       lines.push([partnerGroup.name, '']);
       for (const partner of partnerGroup.partners) {
