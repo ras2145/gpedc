@@ -1011,7 +1011,7 @@ export class AppComponent {
         const line = [];
         line.push(partner.partner);
         line.push(this.formatValue(indicator, partner[column]));
-        if (line[1] != 'No data available' && line[1] != '-') {
+        if (line[1] != 'No data available' && line[1] != '-' && line[1] != '' && line[1] != null) {
           lines.push(line);
         }
       }
