@@ -1006,7 +1006,9 @@ export class AppComponent {
         const line = [];
         line.push(partner.partner);
         line.push(this.formatValue(indicator, partner[column]));
-        lines.push(line);
+        if (line[1] != 'No data available' && line[1] != '-') {
+          lines.push(line);
+        }
       }
     }
     let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
