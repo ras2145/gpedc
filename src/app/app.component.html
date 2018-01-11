@@ -393,7 +393,7 @@
                                                 <ng-template #thenBlock>
                                                     <td class="table-title-left background-1" width="25%" >
                                                         <p>
-                                                            {{indicator.comparison}}
+                                                            Indicator {{indicator.title}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                                                         </p>
                                                     </td>
@@ -402,7 +402,7 @@
                                                 <ng-template #elseBlock>
                                                     <td class="table-title-left background-1" width="25%" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry')) || !viewCountryComparer" >
                                                         <p>
-                                                            {{indicator.comparison}}
+                                                            Indicator {{indicator.title}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                                                         </p>
                                                     </td>
@@ -414,7 +414,7 @@
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                     <td width="25%" class="table-subtible background-1" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstCountry'), getLabelCountry(subcategory, 'secondCountry')) || !viewCountryComparer" >
                                                         <p id="{{getLabelCountry(subcategory, 'firstCountry')}}">
-                                                            {{subcategory.comparison}}
+                                                            {{subcategory.title}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                                                         </p>
                                                     </td>
@@ -555,7 +555,7 @@
                                                 <ng-template #thenBlock>
                                                     <td class="table-title-left background-1" width="25%">
                                                         <p>
-                                                            {{indicator.comparison}}
+                                                            Indicator {{indicator.title}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                                                         </p>
                                                     </td>
@@ -564,7 +564,7 @@
                                                 <ng-template #elseBlock>
                                                     <td class="table-title-left background-1" width="25%" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry')) || !viewCountryComparer" id="{{viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry'))}}">
                                                         <p>
-                                                            {{indicator.comparison}}
+                                                            Indicator {{indicator.title}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                                                         </p>
                                                     </td>
@@ -576,7 +576,7 @@
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                 <td class="table-subtible background-1" width="25%" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstOrganization', true), getLabelCountry(subcategory, 'secondOrganization', true)) || !viewCountryComparer">
                                                     <p>
-                                                        {{subcategory.comparison}}
+                                                        {{subcategory.title}}
                                                         <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                                                     </p>
                                                 </td>
@@ -709,12 +709,6 @@
                       <div class="btn-group map-btn" *ngIf="isSmallStateSelected">
                         <button type="button" class="btn btn-year drop-map" (click)="resetSmallState()">
                             Reset
-                            <i class="mdi mdi-information"
-                                popover="Reset the map."
-                                placement="right"
-                                triggers="mouseenter:mouseleave">
-                            </i>
-                            <span class="caret"></span>
                         </button>
                       </div>
                     </div>
