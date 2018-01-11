@@ -1167,6 +1167,7 @@ select-dropdown li.selected.highlighted {
 .disclaimer {
   font-size: 10px;
   font-style: italic;
+  margin-bottom: 75px;
 }
 .text-line{
   line-height: 11px;
