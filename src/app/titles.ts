@@ -53,19 +53,6 @@ export let titles = [
         "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?",
         "subcategories": [
           {
-            "id": "7",
-            "label": "Indicator 7 Summary",
-            "column": "_2014_7",
-            "prefix": "",
-            "suffix": "",
-            "yesText": "According to Global Partnership criteria, there <b>is</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
-            "noText": "According to Global Partnership criteria, there <b>is not</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
-            "legendText": "Is a process for inclusive reviews in place?",
-            "type": "text",
-            "precision": "0",
-            "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?"
-          },
-          {
             "label": "Is there an aid or partnership policy in place?",
             "column": "_2014_7_1",
             "prefix": "",
@@ -143,19 +130,6 @@ export let titles = [
         "subcategories": [
           {
             "label": "Do partner countries meet the Global Partnership's criteria for tracking public allocations for gender equality and women's empowerment?",
-            "column": "_2014_8",
-            "prefix": "",
-            "suffix": "",
-            "yesText": "According to Global Partnership criteria, there <b>is</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
-            "noText": "According to Global Partnership criteria, there <b>is not</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 <b>and</b> Criteria 4).",
-            "legendText": "Do partner countries track public allocations for gender equality?",
-            "type": "text",
-            "precision": "0",
-            "title": "Indicator 8: According to Global Partnership criteria, do partner countries track public allocations for gender equality?"
-          },
-          {
-            "id": "8",
-            "label": "Indicator 8 Summary",
             "column": "_2014_8",
             "prefix": "",
             "suffix": "",
@@ -570,19 +544,6 @@ export let titles = [
         "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?",
         "subcategories": [
           {
-            "id": "7",
-            "label": "Indicator 7 Summary",
-            "column": "_2016_7",
-            "prefix": "",
-            "suffix": "",
-            "yesText": "According to Global Partnership criteria, there <b>is</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria).",
-            "noText": "According to Global Partnership criteria, there <b>is not</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
-            "legendText": "Is a process for inclusive reviews in place?",
-            "type": "text",
-            "precision": "0",
-            "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?"
-          },
-          {
             "label": "Is there an aid or partnership policy in place?",
             "column": "_2016_7_1",
             "prefix": "",
@@ -660,19 +621,6 @@ export let titles = [
         "subcategories": [
           {
             "label": "Do partner countries meet the Global Partnership's criteria for tracking public allocations for gender equality and women's empowerment?",
-            "column": "_2016_8",
-            "prefix": "",
-            "suffix": "",
-            "yesText": "According to Global Partnership criteria, there <b>is</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
-            "noText": "According to Global Partnership criteria, there <b>is not</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 <b>and</b> Criteria 4).",
-            "legendText": "Do partner countries track public allocations for gender equality?",
-            "type": "text",
-            "precision": "0",
-            "title": "Indicator 8: According to Global Partnership criteria, do partner countries track public allocations for gender equality?"
-          },
-          {
-            "id": "8",
-            "label": "Indicator 8 Summary",
             "column": "_2016_8",
             "prefix": "",
             "suffix": "",
