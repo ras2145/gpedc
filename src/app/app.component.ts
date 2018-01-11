@@ -923,6 +923,7 @@ export class AppComponent {
   resetSmallState() {
     this.mapService.switchMapCenter('tab1');
     this.isSmallStateSelected = false;
+    this.selectedSidCountry = false;
     this.mapService.paintOneCountry(this.selectedCountry);
     this.selectedCountry = false;
 
