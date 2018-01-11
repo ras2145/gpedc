@@ -1433,3 +1433,9 @@ select-dropdown li.selected.highlighted {
   cursor: pointer;
   color: rgba(255,0,0,0.7);
 }
+.carto-attribution {
+  bottom: 5px !important;
+}
+.carto-attribution-img {
+  max-height: 26px;
+}
