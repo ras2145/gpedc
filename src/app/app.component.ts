@@ -76,6 +76,7 @@ export class AppComponent {
   openedIndicator: string;
   indicatorTitle: any;
   selectedSidCountry = null;
+  isSmallStateSelected = false;
   sidsCountries = [];
   sidsIgnoreGroups = [
     'Aggregate'
@@ -919,6 +920,13 @@ export class AppComponent {
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
   }
+  resetSmallState() {
+    this.mapService.switchMapCenter('tab1');
+    this.isSmallStateSelected = false;
+    this.mapService.paintOneCountry(this.selectedCountry);
+    this.selectedCountry = false;
+
+  }
   exportCsv(isOrganization?: boolean) {
     const comparer = isOrganization ? this.organizationComparer : this.countryComparer;
     const first = isOrganization ? 'firstOrganization' : 'firstCountry';
@@ -1101,6 +1109,7 @@ export class AppComponent {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   selectSid(sidCountry) {
+    this.isSmallStateSelected = true;
     this.selectedSidCountry = sidCountry;
     this.mapService.mapSetCenter([sidCountry.centerx, sidCountry.centery]);
     this.mapService.mapFitBounds([[sidCountry.bboxx1, sidCountry.bboxy1], [sidCountry.bboxx2, sidCountry.bboxy2]]);

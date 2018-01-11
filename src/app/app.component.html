@@ -706,6 +706,17 @@
                           <li role="menuitem" *ngFor="let sidCountry of sidsCountries" (click)="selectSid(sidCountry)"><button class="dropdown-item">{{sidCountry.country}}</button></li>
                         </ul>
                       </div>
+                      <div class="btn-group map-btn" *ngIf="isSmallStateSelected">
+                        <button type="button" class="btn btn-year drop-map" (click)="resetSmallState()">
+                            Reset
+                            <i class="mdi mdi-information"
+                                popover="Reset the map."
+                                placement="right"
+                                triggers="mouseenter:mouseleave">
+                            </i>
+                            <span class="caret"></span>
+                        </button>
+                      </div>
                     </div>
 
                     <!-- CARD map -->
