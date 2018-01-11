@@ -1433,6 +1433,9 @@ select-dropdown li.selected.highlighted {
   cursor: pointer;
   color: rgba(255,0,0,0.7);
 }
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+  background-color: transparent;
+}
 .carto-attribution {
   bottom: 5px !important;
 }
