@@ -1104,9 +1104,11 @@ export class AppComponent {
     this.selectedSidCountry = sidCountry;
     this.mapService.mapSetCenter([sidCountry.centerx, sidCountry.centery]);
     this.mapService.mapFitBounds([[sidCountry.bboxx1, sidCountry.bboxy1], [sidCountry.bboxx2, sidCountry.bboxy2]]);
+    this.loaderService.start();
     setTimeout(() => {
       this.mapService.map.fire('click', [sidCountry.firstx, sidCountry.firsty]);
-    }, 1000);
+      this.loaderService.end();
+    }, 5000);
   }
   switchPartnerGroupOpen(event, partnerGroup) {
     partnerGroup.open = !partnerGroup.open;
