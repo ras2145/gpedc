@@ -339,7 +339,7 @@ export class AppComponent {
               }
             }
           }
-          console.log("FEAT",feature);
+          console.log("FEAT",feature.properties);
           self.mapUrlProfile = feature.properties.profile;
           if (self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
             self.mapUrlProfile = '#';
@@ -787,7 +787,6 @@ export class AppComponent {
     this.footerText = '';
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
-      console.log("cat", categories);
       let notPrint = [];
       for (const i of categories) {
         if (i.id === indicator) {
@@ -1121,6 +1120,7 @@ export class AppComponent {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   selectSid(sidCountry) {
+    this.closeFooter();
     this.isSmallStateSelected = true;
     this.selectedSidCountry = sidCountry;
     this.mapService.mapSetCenter([sidCountry.centerx, sidCountry.centery]);
