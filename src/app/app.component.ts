@@ -339,6 +339,7 @@ export class AppComponent {
               }
             }
           }
+          console.log("FEAT",feature);
           self.mapUrlProfile = feature.properties.profile;
           if (self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
             self.mapUrlProfile = '#';
@@ -349,6 +350,9 @@ export class AppComponent {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
           });
+          if (selectedCountry.length < 1 ) {
+              selectedCountry[0] = feature;
+          }
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           if (this.selectedCountry) {
             this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
