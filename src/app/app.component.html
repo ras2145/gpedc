@@ -692,7 +692,7 @@
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>
                       </div>
-                      <div class="btn-group map-drop" dropdown container="body">
+                      <div class="btn-group" dropdown>
                         <button dropdownToggle type="button" class="btn dropdown-toggle drop-map map-btn">
                           {{selectedSidCountry ? selectedSidCountry.country : 'View Small States'}}
                           <i class="mdi mdi-information"
@@ -762,6 +762,8 @@
                                 </template>
                             <i class="mdi mdi-close pop-up-close" (click)="closeFooter()">  </i>
                           <p [innerHTML]="footerText"></p>
+
+                          <button type="button" class="btn btn-down" name="button"><i class="mdi mdi-chevron-down"></i></button>
                         </tab>
                       </tabset>
                     </div>
