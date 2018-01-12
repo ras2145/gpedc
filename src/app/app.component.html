@@ -706,8 +706,8 @@
                           <li role="menuitem" *ngFor="let sidCountry of sidsCountries" (click)="selectSid(sidCountry)"><button class="dropdown-item">{{sidCountry.country}}</button></li>
                         </ul>
                       </div>
-                      <div class="btn-group map-btn" *ngIf="isSmallStateSelected">
-                        <button type="button" class="btn btn-year drop-map" (click)="resetSmallState()">
+                      <div class="btn-group" *ngIf="isSmallStateSelected">
+                        <button type="button" class="btn drop-map" (click)="resetSmallState()">
                             Reset
                         </button>
                       </div>
