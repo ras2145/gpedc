@@ -1193,7 +1193,7 @@ export class AppComponent {
     if (this.model.category == null) {
       return false;
     }
-    if (this.model.category.id == '8' || this.model.category.id == '9b') {
+    if (this.model.category.id == '7' || this.model.category.id == '8' || this.model.category.id == '9b') {
       return true;
     }
     return false;
