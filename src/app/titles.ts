@@ -56,6 +56,19 @@ export let titles = [
         "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?",
         "subcategories": [
           {
+            "label": "Are partner countries conducting inclusive mutual reviews with development partners?",
+            "column": "_2014_7",
+            "prefix": "",
+            "suffix": "",
+            "yesText": "According to Global Partnership criteria, there <b>is</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
+            "noText": "According to Global Partnership criteria, there <b>is not</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
+            "legendText": "Is a process for inclusive reviews in place?",
+            "type": "text",
+            "precision": "0",
+            "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?",
+            "comparison": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews"
+          },
+          {
             "label": "Is there an aid or partnership policy in place?",
             "column": "_2014_7_1",
             "prefix": "",
@@ -583,6 +596,19 @@ export let titles = [
         "label": "7: Are partner countries conducting inclusive mutual reviews with development partners?",
         "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?",
         "subcategories": [
+          {
+            "label": "Are partner countries conducting inclusive mutual reviews with development partners?",
+            "column": "_2016_7",
+            "prefix": "",
+            "suffix": "",
+            "yesText": "According to Global Partnership criteria, there <b>is</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria).",
+            "noText": "According to Global Partnership criteria, there <b>is not</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
+            "legendText": "Is a process for inclusive reviews in place?",
+            "type": "text",
+            "precision": "0",
+            "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners?",
+            "comparison": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews"
+          },
           {
             "label": "Is there an aid or partnership policy in place?",
             "column": "_2016_7_1",
