@@ -959,7 +959,19 @@ export class AppComponent {
       if (comparer.aggregate != '') {
         line.push(this.getLabelCountry(category, 'aggregate', isOrganization).trim());
       }
-      lines.push(line);
+      let add = true;
+      if (line.length == 2) {
+        if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+          add = false;
+        }
+      } else if (line.length == 3 || line.length == 4) {
+        if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+          add = false;
+        }
+      }
+      if (add) {
+        lines.push(line);
+      }
       category.subcategories.forEach(subcategory => {
         line = [];
         line.push(subcategory.label);
@@ -972,7 +984,19 @@ export class AppComponent {
         if (comparer.aggregate != '') {
           line.push(this.getLabelCountry(subcategory, 'aggregate', isOrganization).trim());
         }
-        lines.push(line);
+        let add = true;
+        if (line.length == 2) {
+          if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+            add = false;
+          }
+        } else if (line.length == 3 || line.length == 4) {
+          if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+            add = false;
+          }
+        }
+        if (add) {
+          lines.push(line);
+        }
       });
     });
     let linesString = lines.map(line => line.map(element => '"' + element.replace('<p>', '').replace('</p>', '') + '"').join(','));
