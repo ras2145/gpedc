@@ -133,17 +133,25 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown>
+                                            <label *ngIf="subDropdown" for="inputState" class="result-subtitle space-indicator">Sub Indicator
+                                                <i class="mdi mdi-information"
+                                                    popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                                                    placement="right"
+                                                    triggers="mouseenter:mouseleave">
+                                                </i>
+                                            </label>
+                                            <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown container="body">
                                               <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
                                                 <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : 'Select a subindicator'}}</span>
-                                                <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>    
+                                                <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+                                                <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                               </button>
-                                              <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
                                                   <li role="menuitem">
                                                     <a class="dropdown-item contenido-dropdown" (click)="unselectSubCategory()">
                                                         Select a Sub-Indicator
                                                     </a>
-                                                  </li> 
+                                                  </li>
                                                   <li role="menuitem" *ngFor="let subcategory of subDropdown.subcategories">
                                                     <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(subDropdown, subcategory)"> {{subcategory.label}}</a>
                                                   </li>
