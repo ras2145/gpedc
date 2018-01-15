@@ -17,6 +17,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  subDropdown = false;
   viewModal = true;
   notFromTab = true;
   viewTab = true;
@@ -363,7 +364,7 @@ export class AppComponent {
                 if (ind.id == this.model.category.id){
                   this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
                   break;
-                }else {
+                } else {
                   this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
                 }
               }
@@ -543,7 +544,9 @@ export class AppComponent {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
-    this.updateIndicatorGeojson();
+    if (!this.subDropdown) {
+      this.updateIndicatorGeojson();
+    }
     this.validIndicator = true;
     this.updateMapTitle();    
     console.log(this.model);
@@ -568,6 +571,14 @@ export class AppComponent {
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year.year);
+  }
+  unselectSubCategory() {
+    this.subIndicator = false;
+    const category = this.model.category;
+    this.getCategoriesNotNull();
+    this.getIndicator(this.model.year.categories[0].id);
+    this.changeYearLabel(this.model.year.year);
+    this.selectCategory(category);
   }
   changeYearLabel(y) {
     this.mapService.resetLayer();
@@ -957,7 +968,19 @@ export class AppComponent {
       if (comparer.aggregate != '') {
         line.push(this.getLabelCountry(category, 'aggregate', isOrganization).trim());
       }
-      lines.push(line);
+      let add = true;
+      if (line.length == 2) {
+        if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+          add = false;
+        }
+      } else if (line.length == 3 || line.length == 4) {
+        if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+          add = false;
+        }
+      }
+      if (add) {
+        lines.push(line);
+      }
       category.subcategories.forEach(subcategory => {
         line = [];
         line.push(subcategory.label);
@@ -970,7 +993,19 @@ export class AppComponent {
         if (comparer.aggregate != '') {
           line.push(this.getLabelCountry(subcategory, 'aggregate', isOrganization).trim());
         }
-        lines.push(line);
+        let add = true;
+        if (line.length == 2) {
+          if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+            add = false;
+          }
+        } else if (line.length == 3 || line.length == 4) {
+          if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+            add = false;
+          }
+        }
+        if (add) {
+          lines.push(line);
+        }
       });
     });
     let linesString = lines.map(line => line.map(element => '"' + element.replace('<p>', '').replace('</p>', '') + '"').join(','));
@@ -1027,7 +1062,13 @@ export class AppComponent {
     saveAs(blob, fileName + '.csv');
   }
   noIsInvalidSelection(category) {
-    return !(category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
+    const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
+    if (!validSelection) {
+      this.subDropdown = false;
+    } else {
+      this.subDropdown = category;
+    }
+    return true;
   }
   setColor() {
     const category = this.model.category;
@@ -1167,7 +1208,7 @@ export class AppComponent {
     if (this.model.category == null) {
       return false;
     }
-    if (this.model.category.id == '8' || this.model.category.id == '9b') {
+    if (this.model.category.id == '7' || this.model.category.id == '8') {
       return true;
     }
     return false;

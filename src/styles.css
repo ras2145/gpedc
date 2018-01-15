@@ -1138,7 +1138,11 @@ select-dropdown li.selected.highlighted {
   cursor: pointer;
 }
 .map-dropdown {
-  overflow: auto;
+  overflow-y: scroll;
+  height: 300px;
+}
+.map-body-i .popover-body {
+  width: 280px;
 }
 /*.acordion i:before {
   transform: translate(-2px, 0) rotate(45deg);

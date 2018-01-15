@@ -111,7 +111,7 @@
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
+                                                    <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.category.label}}</span>
                                                     <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select an indicator</span>
                                                     <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
@@ -124,15 +124,38 @@
                                                     <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
                                                         <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsInvalidSelection(category) && selectCategory(category)">
                                                             {{category.label}}
-                                                            <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>
-                                                        <ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
+                                                        <!--ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
                                                             <li role="menuitem" *ngFor="let subcategory of category.subcategories">
                                                                 <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)"> {{subcategory.label}}</a>
                                                             </li>
-                                                        </ul>
+                                                        </ul-->
                                                     </li>
                                                 </ul>
+                                            </div>
+                                            <label *ngIf="subDropdown" for="inputState" class="result-subtitle space-indicator">Sub Indicator
+                                                <i class="mdi mdi-information"
+                                                    popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                                                    placement="right"
+                                                    triggers="mouseenter:mouseleave">
+                                                </i>
+                                            </label>
+                                            <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown container="body">
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : 'Select a subindicator'}}</span>
+                                                <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+                                                <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                  <li role="menuitem">
+                                                    <a class="dropdown-item contenido-dropdown" (click)="unselectSubCategory()">
+                                                        Select a Sub-Indicator
+                                                    </a>
+                                                  </li>
+                                                  <li role="menuitem" *ngFor="let subcategory of subDropdown.subcategories">
+                                                    <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(subDropdown, subcategory)"> {{subcategory.label}}</a>
+                                                  </li>
+                                              </ul>
                                             </div>
                                             <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="setTrueTab();openModal(template)">What does this indicator measure?</button>
                                         </div>
@@ -629,40 +652,40 @@
                             <div class="modal-body">
                               <tabset [vertical]="true" type="pills">
                                 <tab heading="Welcome!" [active]="tutorial[0]" (select)="selectTutorial(0)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/01.png" alt="" class="modal-img">
                                   First time exploring Global Partnership monitoring data?
                                   Our 30-second tutorial will teach you how to use this interactive data visualization tool.
                                 </tab>
                                 <tab heading="Map Overview" [active]="tutorial[1]" (select)="selectTutorial(1)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/02.png" alt="" class="modal-img">
                                   Click and drag the mouse or use the +/- zoom buttons to change the map’s focus. You can also choose a Small State from the dropdown to zoom directly to its location.
                                 </tab>
                                 <tab heading="Comparison Screens" [active]="tutorial[2]" (select)="selectTutorial(2)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/03.png" alt="" class="modal-img">
                                   Toggle between the Map Viewer, Country Comparison and Partners Comparison tabs via the buttons on the upper left-hand side of the map
                                 </tab>
                                 <tab heading="Map Viewer Tab" [active]="tutorial[3]" (select)="selectTutorial(3)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/04.png" alt="" class="modal-img">
                                   Change the map’s display according to year and indicator on the left-hand panel, where you can also filter by various criteria. Clicking on a country will activate a pop-up displaying all available data for the selected year.
                                 </tab>
                                 <tab heading="Legend" [active]="tutorial[4]" (select)="selectTutorial(4)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/05.png" alt="" class="modal-img">
                                   On the Map Viewer tab, a legend shows the map's color key and corresponding range for each indicator. More information on what is measured by each indicator can be accessed by hovering over the legend’s information icon.
                                 </tab>
                                 <tab heading="“What does this indicator measure?” Button" [active]="tutorial[5]" (select)="selectTutorial(5)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/06.png" alt="" class="modal-img">
                                   To learn more about the purpose and methodology for a selected indicator, click on the “What does this indicator measure?” button.
                                 </tab>
                                 <tab heading="More Information and Country Profiles" [active]="tutorial[6]" (select)="selectTutorial(6)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/07.png" alt="" class="modal-img">
                                   Clicking on a country will access a pop-up which gives a full picture of monitoring results for the selected year, including a PDF Country Profile for all partner countries (2016 only).
                                 </tab>
                                 <tab heading="Country Comparison Tab" [active]="tutorial[7]" (select)="selectTutorial(7)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/08.png" alt="" class="modal-img">
                                   On the Country Comparison tab, you can compare monitoring data across two participating countries, or against aggregates by region or country context.
                                 </tab>
                                 <tab heading="Partners Comparison Tab" [active]="tutorial[8]" (select)="selectTutorial(8)">
-                                  <img src="assets/example.png" alt="" class="modal-img">
+                                  <img src="assets/09.png" alt="" class="modal-img">
                                   On the Partners Comparison tab, you can compare monitoring data across participating development partners, including bilateral donors, UN agencies and international organisations, or against aggregates by type of partner.
                                 </tab>
                               </tabset>
@@ -693,7 +716,7 @@
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>
                       </div>
                       <div class="btn-group" dropdown>
-                        <button dropdownToggle type="button" class="btn dropdown-toggle drop-map map-btn">
+                        <button dropdownToggle type="button" class="btn dropdown-toggle drop-map map-btn map-body-i">
                           {{selectedSidCountry ? selectedSidCountry.country : 'View Small States'}}
                           <i class="mdi mdi-information"
                               popover="The ‘small state’ designation is based on the World Bank classification of ‘small states’ and ‘other small states’ as of December 2017. Only small states that reported to the selected criteria will appear in this menu."
@@ -773,7 +796,7 @@
                     <div id="map">
                         <div id="attribution" class="mapboxgl-ctrl mapboxgl-ctrl-attrib mapboxgl-ctrl-bottom-left carto-attribution" style="left: 100px;">
                             <a href="http://www.cartodb.com" class="map-logo cartodb-logo" target="_blank">
-                                <img src="/assets/CARTO-logo-positive.png" alt="CartoDB" title="CartoDB" class="carto-attribution-img">
+                                <img src="assets/carto.svg" alt="CartoDB" title="CartoDB" class="carto-attribution-img">
                             </a>
                         </div>
                     </div>
