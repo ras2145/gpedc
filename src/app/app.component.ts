@@ -331,15 +331,14 @@ export class AppComponent {
       });
       this.mapService.clickCountry(event => {
         if (this.selectedTab === 'tab1') {
-          let feature = event.features[0];
+          let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
             for (let feature1 of event.features) {
-              if (feature1.properties.country == self.selectedSidCountry) {
+              if (feature1.properties.country == self.selectedSidCountry.country) {
                 feature = feature1;
               }
             }
           }
-          console.log("FEAT",feature.properties);
           self.mapUrlProfile = feature.properties.profile;
           if (self.mapUrlProfile === 'null' || self.mapUrlProfile == null) {
             self.mapUrlProfile = '#';
@@ -350,10 +349,11 @@ export class AppComponent {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
           });
-          if (selectedCountry.length < 1 ) {
+          if (selectedCountry.length === 0 ) {
               selectedCountry[0] = feature;
           }
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+          console.log(this.selectedCountry);
           if (this.selectedCountry) {
             this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
             this.categoriesNotNull = [];
@@ -403,10 +403,8 @@ export class AppComponent {
       this.loaderService.end();
     });
   }
-  
   openModal(template: TemplateRef<any>) {
      this.viewModal = false;
-     console.log(this.viewModal);
      this.modalRef = this.modalService.show(template);
   }
 
@@ -584,7 +582,7 @@ export class AppComponent {
         this.model.subcategory = null;
         title.categories.forEach(category => {
           if (category.label === currentCategory.label) {
-            keepLayer = 1
+            keepLayer = 1;
             currentCategory = category;
             currentSubCategory = category.subcategories[currentSubCategory];
           }
