@@ -111,7 +111,7 @@
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : model.category.label}}</span>
+                                                    <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.category.label}}</span>
                                                     <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select an indicator</span>
                                                     <span class="dropdown-caret mdi mdi-chevron-down"></span>
                                                 </button>
@@ -124,15 +124,30 @@
                                                     <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
                                                         <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsInvalidSelection(category) && selectCategory(category)">
                                                             {{category.label}}
-                                                            <span class="dropdown-caret mdi mdi-menu-right" [hidden]="category.subcategories.length == 0"></span>
                                                         </a>
-                                                        <ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
+                                                        <!--ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
                                                             <li role="menuitem" *ngFor="let subcategory of category.subcategories">
                                                                 <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)"> {{subcategory.label}}</a>
                                                             </li>
-                                                        </ul>
+                                                        </ul-->
                                                     </li>
                                                 </ul>
+                                            </div>
+                                            <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown>
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : 'Select a subindicator'}}</span>
+                                                <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>    
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                                  <li role="menuitem">
+                                                    <a class="dropdown-item contenido-dropdown" (click)="unselectSubCategory()">
+                                                        Select a Sub-Indicator
+                                                    </a>
+                                                  </li> 
+                                                  <li role="menuitem" *ngFor="let subcategory of subDropdown.subcategories">
+                                                    <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(subDropdown, subcategory)"> {{subcategory.label}}</a>
+                                                  </li>
+                                              </ul>
                                             </div>
                                             <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="setTrueTab();openModal(template)">What does this indicator measure?</button>
                                         </div>

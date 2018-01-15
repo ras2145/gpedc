@@ -17,6 +17,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  subDropdown = false;
   viewModal = true;
   notFromTab = true;
   viewTab = true;
@@ -363,7 +364,7 @@ export class AppComponent {
                 if (ind.id == this.model.category.id){
                   this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
                   break;
-                }else {
+                } else {
                   this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
                 }
               }
@@ -545,7 +546,9 @@ export class AppComponent {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
-    this.updateIndicatorGeojson();
+    if (!this.subDropdown) {
+      this.updateIndicatorGeojson();
+    }
     this.validIndicator = true;
     this.updateMapTitle();    
     console.log(this.model);
@@ -570,6 +573,14 @@ export class AppComponent {
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year.year);
+  }
+  unselectSubCategory() {
+    this.subIndicator = false;
+    const category = this.model.category;
+    this.getCategoriesNotNull();
+    this.getIndicator(this.model.year.categories[0].id);
+    this.changeYearLabel(this.model.year.year);
+    this.selectCategory(category);
   }
   changeYearLabel(y) {
     this.mapService.resetLayer();
@@ -1053,7 +1064,13 @@ export class AppComponent {
     saveAs(blob, fileName + '.csv');
   }
   noIsInvalidSelection(category) {
-    return !(category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
+    const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
+    if (!validSelection) {
+      this.subDropdown = false;
+    } else {
+      this.subDropdown = category;
+    }
+    return true;
   }
   setColor() {
     const category = this.model.category;
