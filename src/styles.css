@@ -1098,13 +1098,23 @@ select-dropdown li.selected.highlighted {
   font-size: 14px;
   padding: 0px 10px !important;
   cursor: pointer;
+  border: none;
 }
 .map-drop .dropdown-menu{
   min-width: 100% !important;
-  margin-top: -1px;
+  /* margin-top: -1px; */
 }
 .map-drop .popover-body{
   width: 260px;
+}
+.reset-map{
+  background: #f07848 !important;
+  color: #fff;
+  height: 31.8px;
+  font-size: 14px;
+  padding: 0px 10px !important;
+  cursor: pointer;
+  border: none;
 }
 .acordion .card-header:first-child {
   background: #fff;
