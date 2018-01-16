@@ -6,6 +6,7 @@ html,
 body{
     height: 100%;
     background-color: #fff;/*ccc*/
+    overflow: hidden;
 }
 .result-modal a {
   color: #f07848 !important;
@@ -1265,7 +1266,7 @@ select-dropdown li.selected.highlighted {
 }
 .modal-tutorial .tab-content>.active {
     display: block;
-    height: 400px;
+    height: 405px;
 }
 .btn-modal{
   background: #f07848 !important;
