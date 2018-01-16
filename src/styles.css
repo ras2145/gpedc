@@ -677,12 +677,13 @@ td.table-title-left{
 }
 .tab-map .tab-content>.active {
   display: block;
+  overflow-y: hidden;
   background: #fff;
   padding: 15px;
   font-size: 13px;
   width: 587px;
   height: 240px;
-  /*overflow-x: hidden;*/
+  /*overflow-x: auto;*/
   padding-right: 0px;
   padding-bottom: 25px;
   border-radius: 0px 5px 0px 0px;
@@ -696,7 +697,7 @@ td.table-title-left{
   height: 198px;
   overflow-x: hidden;
   padding-right: 15px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 .tab-map .nav-tabs {
   border-bottom: none;
