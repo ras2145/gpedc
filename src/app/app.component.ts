@@ -586,6 +586,7 @@ export class AppComponent {
     let currentCategory = this.model.category;
     let currentSubCategory = this.model.subcategory;
     let keepLayer = 0;
+    this.selectedSidCountry = false;
     titles.forEach(title => {
       if (y.year === title.year) {
         this.model.year = title;
