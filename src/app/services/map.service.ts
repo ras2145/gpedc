@@ -273,7 +273,7 @@ export class MapService {
       return ans.json();
     });
   }
-  sidsCountriesQuery(column) {
+  sidsCountriesQuery(column, year) {
     const centerx = 'ST_X(ST_Centroid(the_geom)) as centerx';
     const centery = 'ST_Y(ST_Centroid(the_geom)) as centery';
     const bboxx1 = 'ST_X(ST_StartPoint(ST_BoundingDiagonal(the_geom))) as bboxx1';
@@ -281,13 +281,13 @@ export class MapService {
     const bboxx2 = 'ST_X(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxx2';
     const bboxy2 = 'ST_Y(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxy2';
     const area = 'ST_Area(the_geom) as area';
-    const query = column ? SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE ${column} is not null) as t1 WHERE UPPER(sids) = 'YES' ORDER BY country`) : SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}") as t1 WHERE UPPER(sids) = 'YES' ORDER BY country`);
-
+    const query = column ? SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE ${column} is not null and UPPER(_${year}) = 'YES' ) as t1 WHERE UPPER(sids) = 'YES' ORDER BY country`) : SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE  UPPER(_${year}) = 'YES') as t1 WHERE UPPER(sids) = 'YES' ORDER BY country`);      
+    
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
     });
   }
-
+  
   resetLayer() {
     this.map.removeLayer('country-fills');
     this.map.addLayer({

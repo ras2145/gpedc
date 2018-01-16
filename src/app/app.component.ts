@@ -117,7 +117,7 @@ export class AppComponent {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
-    this.mapService.sidsCountriesQuery(undefined).subscribe(val => {
+    this.mapService.sidsCountriesQuery(undefined, '2016').subscribe(val => {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
@@ -1074,17 +1074,14 @@ export class AppComponent {
     const category = this.model.category;
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
-    if (this.indicator) {
-        this.legendTitle = '';
-        this.legendMap = this.legends['noLegend' + this.model.year.year];
-        return;
-    }
-    console.log("CATEGORY ", category, subcategory);
+   
+
     let indicator = null;
     if (!this.indicator) {
       indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     }
-    this.mapService.sidsCountriesQuery(indicator).subscribe(val => {
+   
+    this.mapService.sidsCountriesQuery(indicator, this.model.year.year).subscribe(val => {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
@@ -1101,6 +1098,12 @@ export class AppComponent {
       }
       this.heightDropDown = this.sidsCountries.length < 13 ? '45vh' : '75vh';
     });
+    if (this.indicator) {
+      
+        this.legendTitle = '';
+        this.legendMap = this.legends['noLegend' + this.model.year.year];
+        return;
+    }
     this.legendTitle = category.legendText;
     if (subcategory != null) {
       this.legendTitle = subcategory.legendText;
