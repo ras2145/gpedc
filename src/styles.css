@@ -6,7 +6,6 @@ html,
 body{
     height: 100%;
     background-color: #fff;/*ccc*/
-    overflow: hidden;
 }
 .result-modal a {
   color: #f07848 !important;
