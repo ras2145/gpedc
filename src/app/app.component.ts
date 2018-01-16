@@ -544,11 +544,11 @@ export class AppComponent {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
-    if (!this.subDropdown) {
+    //if (!this.subDropdown) {
       this.updateIndicatorGeojson();
-    }
+    //}
     this.validIndicator = true;
-    this.updateMapTitle();    
+    this.updateMapTitle();
     console.log(this.model);
     console.log(this.indicator);
     console.log(this.subIndicator);
