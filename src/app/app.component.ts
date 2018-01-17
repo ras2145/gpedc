@@ -204,8 +204,8 @@ export class AppComponent {
         this.mergeWithSelected(this.organizationSelectors[1]['value1'], this.organizationComparer.firstOrganization);
         this.mergeWithSelected(this.organizationSelectors[1]['value2'], this.organizationComparer.secondOrganization);
         this.mergeWithSelected(this.organizationSelectors[2]['value'], this.organizationComparer.aggregate);
-        console.log(this.organizationSelectors);
-        console.log(this.organizationComparer);
+        // console.log(this.organizationSelectors);
+        // console.log(this.organizationComparer);
       }
     }
     for (const aggregate of partnerAggregate) {
@@ -354,7 +354,7 @@ export class AppComponent {
               selectedCountry[0] = feature;
           }
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-          console.log(this.selectedCountry);
+          // console.log(this.selectedCountry);
           if (this.selectedCountry) {
             this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
             this.categoriesNotNull = [];
@@ -470,13 +470,13 @@ export class AppComponent {
   findTabCategory(tabId) {
     this.footerTab = tabId;
     this.notFromTab = false;
-    console.log(this.footerTab);
+    // console.log(this.footerTab);
   }
   setTrueTab() {
     this.notFromTab = true;
   }
   test(val) {
-    console.log('val', val);
+    // console.log('val', val);
   }
     // function that un-paint a country and unselect it
   closeFooter() {
@@ -485,7 +485,6 @@ export class AppComponent {
   }
 
   selectTab(event) {
-    console.log("HEY",event);
     this.mapService.resetLayer();
     this.resetModels();
     this.legendMap = [];
@@ -551,9 +550,9 @@ export class AppComponent {
     // }
     this.validIndicator = true;
     this.updateMapTitle();
-    console.log(this.model);
-    console.log(this.indicator);
-    console.log(this.subIndicator);
+   // console.log(this.model);
+   // console.log(this.indicator);
+   // console.log(this.subIndicator);
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
@@ -563,9 +562,9 @@ export class AppComponent {
     this.updateIndicatorGeojson();
     this.validIndicator = true;
     this.updateMapTitle();
-    console.log(this.model);
-    console.log(this.indicator);
-    console.log(this.subIndicator);
+  //  console.log(this.model);
+  //  console.log(this.indicator);
+  //  console.log(this.subIndicator);
   }
   unselectCategory() {
     this.subIndicator = false;
@@ -1016,7 +1015,7 @@ export class AppComponent {
     result = result.replace(/ ?<\/?b> ?/g, ' ');
     result = result.replace(/," /g, ',"');
     result = result.replace(/ ",/g, '",');
-    console.log(result);
+    // console.log(result);
     let blob = new Blob([result], { type: 'text/csv' });
     const fileName = isOrganization ? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
@@ -1181,7 +1180,7 @@ export class AppComponent {
   }
   selectPartnerGroup(partnerGroup) {
     partnerGroup.selected = !partnerGroup.selected;
-    console.log(partnerGroup);
+    // console.log(partnerGroup);
     this.chargeOrganizationComparison();
   }
   continueTutorial() {
