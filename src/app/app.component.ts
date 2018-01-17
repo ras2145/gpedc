@@ -485,7 +485,9 @@ export class AppComponent {
   }
 
   selectTab(event) {
+    console.log("HEY",event);
     this.mapService.resetLayer();
+    this.resetModels();
     this.legendMap = [];
     if (event.target.id) {
       if (event.target.id != this.selectedTab) {
@@ -544,9 +546,9 @@ export class AppComponent {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
-    //if (!this.subDropdown) {
+    // if (!this.subDropdown) {
       this.updateIndicatorGeojson();
-    //}
+    // }
     this.validIndicator = true;
     this.updateMapTitle();
     console.log(this.model);
