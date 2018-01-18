@@ -236,6 +236,7 @@ a.btn-export-01:hover{
 .padding-left-none{
   padding-left: 0px;
   padding-right: 0px;
+  height: 100%;
 }
 .filtros-tab{
   height: 100%;
