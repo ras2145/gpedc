@@ -809,8 +809,8 @@ export class AppComponent {
           if (!notPrint.includes(i.id)) {
             if (value === 'Yes') {
               this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.yesText + '</div>';
-            } else if (value === 'No') {
-              this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.noText + '</div>';
+            } else if (value === 'No' ) {
+              this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result"> ' + ((i.id!='7' && i.id!='8')?i.noText:'') + '</div>';
             } else if (i.id === '8') {
               this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
             } else if (i.id == '4') {
@@ -839,9 +839,11 @@ export class AppComponent {
               continue;
             }
             if (subvalue === 'Yes') {
+              console.log("yes",subvalue);
               this.footerText = this.footerText + '<div class="tabs-result">' + j.yesText + '</div>';
             } else if (subvalue === 'No') {
-              this.footerText = this.footerText + '<div class="tabs-result">' + j.noText + '</div>';
+              console.log("no",subvalue);
+              this.footerText = this.footerText + '<div class="tabs-result"> ' + j.noText + '</div>';
             } else if (i.id == '4' || i.id == '7' || i.id == '8') {
               if (subvalue == 'No data available') {
                 this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
