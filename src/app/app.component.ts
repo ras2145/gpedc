@@ -182,6 +182,7 @@ export class AppComponent {
         this.organizationSelectors[1]['value1'].push(titleObject);
         this.organizationSelectors[1]['value2'].push(titleObject);
         for (const partner of partnerGroup.partners) {
+          //console.log("partner",partner);
           if (partner['_2016'].toUpperCase() === 'YES' || partner['_2016'].toUpperCase() === 'TRUE') {
             const organizationSelector = {
               value: partner['partner'],
@@ -216,7 +217,7 @@ export class AppComponent {
     }
 }
   mergeWithSelected(options, selectedOption) {
-    if (selectedOption) {
+    if (selectedOption) {  
       const selectedOptionObject = {
         value: selectedOption,
         label: selectedOption
@@ -392,6 +393,7 @@ export class AppComponent {
     });
   }
   resetComparer() {
+    console.log(this.model);
     this.legendMap = this.legends['noLegend' + this.model.year.year];
     this.mapService.paintTwoCountryClear();
     this.countryComparer.firstCountry = '';
@@ -589,7 +591,7 @@ export class AppComponent {
     let keepLayer = 0;
     this.selectedSidCountry = false;
     titles.forEach(title => {
-      if (y.year === title.year) {
+      if (y.year === title.year) {        
         this.model.year = title;
         this.model.category = title.categories[0];
         this.model.subcategory = null;
@@ -694,7 +696,13 @@ export class AppComponent {
     }
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
-    const countryName = isOrganization ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
+    let aux = indicator.column;
+    
+    
+    //const countryName = isOrganization ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
+    const countryName = this.organizationComparer[typeOfCountry] ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
+    //if (indicator.column == '_2014_5a') console.log('AC',this.organizationComparer[typeOfCountry],this.countryComparer[typeOfCountry]);
+    
     if (!countryName || !indicator) {
       return '-';
     }
@@ -710,6 +718,8 @@ export class AppComponent {
     if (!country) {
       return '-';
     }
+     
+  
     const value = this.formatValue(indicator, country[indicator.column]);
     if (indicator['subcategories']) {
       // if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
@@ -732,6 +742,7 @@ export class AppComponent {
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
       return '-';
     }
+
     return text;
   }
   formatValue(indicator, oldValue) {
@@ -877,7 +888,7 @@ export class AppComponent {
       }
       this.categorizedPartners = [];
       for (const partnerName in categorizedPartners) {
-        if (!this.sidsIgnoreGroups.includes(partnerName)){
+        if (!this.sidsIgnoreGroups.includes(partnerName)) {
           this.categorizedPartners.push({
             name: partnerName,
             partners: categorizedPartners[partnerName],
@@ -894,6 +905,8 @@ export class AppComponent {
         }
         return 0;
       });
+      // console.log("CAT",this.categorizedPartners);
+      console.log("Partnets",this.categorizedPartners);
       this.chargeOrganizationComparison();
     });
   }
@@ -1225,20 +1238,20 @@ export class AppComponent {
     this.selectSecondCountry = secondCountry || '';
     this.viewCountryComparer = this.selectFirstCountry !== '' && this.selectSecondCountry !== '' ? true : false;
     return this.viewCountryComparer;
-  };
+  }
   viewTableIndicatorComparison(firstCountry, secondCountry) {
     let output: boolean;
-    firstCountry = firstCountry === '-' ? '<p>No data available</p>' : firstCountry;
-    secondCountry = secondCountry === '-' ? '<p>No data available</p>' : secondCountry;
+    firstCountry = firstCountry == '-' ? '<p>No data available</p>' : firstCountry;
+    secondCountry = secondCountry == '-' ? '<p>No data available</p>' : secondCountry;
     if(this.selectFirstCountry !== '' && this.selectSecondCountry !== '') {
-      output = firstCountry === '<p>No data available</p>' && secondCountry === '<p>No data available</p>' ? false : true;
+      output = firstCountry == '<p>No data available</p>' && secondCountry == '<p>No data available</p>' ? false : true;
     } else if(this.selectFirstCountry !== '') {
-      output = firstCountry === '<p>No data available</p>' ? false : true;
+      output = firstCountry == '<p>No data available</p>' ? false : true;
     } else {
-      output = secondCountry === '<p>No data available</p>' ? false : true;
-    } 
+      output = secondCountry == '<p>No data available</p>' ? false : true;
+    }
     return output;
-  };
+  }
   viewTableIndicator(indicator, valueIndicator) {
     let output: number = 0;
     if(valueIndicator) {
@@ -1254,6 +1267,10 @@ export class AppComponent {
         }
       }
     }
-    return output > 0 ? true : false;
+    //return true;
+    if(this.model.year.year == '2014')
+      return true;
+    else
+      return output > 0 ? true : false;
   };
 }
