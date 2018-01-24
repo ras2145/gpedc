@@ -548,7 +548,7 @@ export class AppComponent {
     this.indicator = false;
     this.subIndicator = true;
     // if (!this.subDropdown) {
-      this.updateIndicatorGeojson();
+      this.updateIndicatorVector();
     // }
     this.validIndicator = true;
     this.updateMapTitle();
@@ -561,7 +561,7 @@ export class AppComponent {
     this.model.subcategory = subcategory;
     this.subIndicator = false;
     this.indicator = false;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
     this.validIndicator = true;
     this.updateMapTitle();
   //  console.log(this.model);
@@ -618,9 +618,9 @@ export class AppComponent {
     } else {
       this.validIndicator = false;
       this.loaderService.start();
-      this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+      this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
         this.loaderService.end();
-        this.mapService.update(geojson);
+        this.mapService.updateVectorSource(tiles);
       }, error => {
         this.loaderService.end();
       });
@@ -635,17 +635,17 @@ export class AppComponent {
   }
   selectRegion(region) {
     this.model.region = region;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
   }
   selectIncomeGroup(incomeGroup) {
     this.model.incomeGroup = incomeGroup;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
   }
   selectCountryContext(countryContext) {
     this.model.countryContext = countryContext;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
   }
-  updateIndicatorGeojson() {
+  updateIndicatorVector() {
     const self = this;
     this.selectedCountry = '';
     this.mapService.resetClickLayer();
