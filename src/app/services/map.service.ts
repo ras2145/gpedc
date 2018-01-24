@@ -4,10 +4,13 @@ import * as mapboxgl from 'mapbox-gl';
 import VectorSource = mapboxgl.VectorSource;
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/bindCallback';
 
 import { WebService } from './web.service';
 import { SERVER } from '../server.config';
 import { layers } from '../layers';
+
+declare var cartodb: any;
 
 @Injectable()
 export class MapService {
@@ -93,11 +96,30 @@ export class MapService {
       "type": "geojson",
       "data": geojson
     });
+    this.buildLayers();
+  }
+  update(geojson: any) {
+    let source: GeoJSONSource;
+    source = this.map.getSource('countries') as GeoJSONSource;
+    if (source) {
+      source.setData(geojson);
+    }
+  }
 
+  buildVectorSource(tiles: any) {
+    this.map.addSource('countries', {
+      "type": "vector",
+      "tiles": tiles
+    });
+    this.buildLayers();
+  }
+
+  buildLayers() {
     this.map.addLayer({
       "id": "country-fills",
       "type": "fill",
       "source": "countries",
+      "source-layer": "layer0",
       "layout": {},
       "paint": {
         "fill-color": "#F07848",
@@ -108,6 +130,7 @@ export class MapService {
       "id": "country-fills-click",
       "type": "fill",
       "source": "countries",
+      "source-layer": "layer0",
       "layout": {},
       "paint": {
         "fill-color": "#b22c29",
@@ -119,18 +142,19 @@ export class MapService {
       "id": "country-borders",
       "type": "line",
       "source": "countries",
+      "source-layer": "layer0",
       "paint": {
         "line-opacity": 0.25,
         "line-color": "#000000"
       }
     });
-
   }
-  update(geojson: any) {
-    let source: GeoJSONSource;
-    source = this.map.getSource('countries') as GeoJSONSource;
+
+  updateVectorSource(tiles: any) {
+    let source: VectorSource;
+    source = this.map.getSource('countries') as VectorSource;
     if (source) {
-      source.setData(geojson);
+      source.tiles = tiles;
     }
   }
   resize() {
@@ -228,14 +252,46 @@ export class MapService {
     const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}".${SERVER.PARTNER_TABLE} order by partner`, false);
     return this.webService.get(query).map(res => res.json().rows);
   }
+  getVectorTilesOptions(sql: string) {
+    const tilesOptions = {
+      user_name: SERVER.USERNAME,
+      sublayers: [{
+        sql: sql,
+        cartocss: '#layer { polygon-fill: #000000; }'
+      }]
+    };
+    return tilesOptions;
+  }
+  getCountriesYearQuery(year: string): string {
+    const sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
+    return sql;
+  }
   getCountriesYearGeoJSON(year: string): Observable<any> {
-    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
-    let query = SERVER.GET_QUERY(sql, true);
+    const sql = this.getCountriesYearQuery(year);
+    const query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
   }
-  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
+  mapTiles(tilesUrl, error) {
+    if (tilesUrl == null) {
+      console.log("error: ", error.errors.join('\n'));
+      throw error;
+    }
+    const tilesUrls = [];
+    for (const tile of tilesUrl.tiles) {
+      tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?'));
+    }
+    console.log("url template is ", tilesUrls);
+    return tilesUrls;
+  }
+  getCountriesYearVectorUrl(year: string): Observable<any> {
+    const sql = this.getCountriesYearQuery(year);
+    const tilesOptions = this.getVectorTilesOptions(sql);
+    const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
+    return observable(tilesOptions);
+  }
+  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`;
     let where = '';
     if (year != null && year != '') {
@@ -268,10 +324,20 @@ export class MapService {
     if (where != '') {
       sql = sql + ' WHERE ' + where;
     }
-    let query = SERVER.GET_QUERY(sql, true);
+    return sql;
+  }
+  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
+    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year);
+    const query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
+  }
+  getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
+    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year);
+    const tilesOptions = this.getVectorTilesOptions(sql);
+    const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
+    return observable(tilesOptions);
   }
   sidsCountriesQuery(column, year) {
     const centerx = 'ST_X(ST_Centroid(the_geom)) as centerx';
@@ -316,37 +382,44 @@ export class MapService {
       if (indicator === '_2016_2_1') {
         layer = this.layers.indicator2_1;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (indicator === '_2016_2_2') {
         layer = this.layers.indicator2_2;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (indicator === '_2016_2_3' || indicator === '_2016_2_4') {
         layer = this.layers.indicator2_34;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (category.id === '3') {
         layer = this.layers.indicator3;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (subcategory.type === 'text') {
         if (category.id === '4') {
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
+          layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
         } else {
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
+          layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
         }
       }
       if (subcategory.type === 'percent') {
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
     } else {
@@ -354,22 +427,26 @@ export class MapService {
       if (category.id === '9a') {
         layer = this.layers.indicator9a;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (category.type === 'text') {
         if (category.id === '4') {
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
+          layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
         } else {
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
+          layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
         }
       }
       if (category.type === 'percent') {
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
+        layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
     }

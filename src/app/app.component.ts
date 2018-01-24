@@ -313,9 +313,9 @@ export class AppComponent {
       this.mapTitle = '';
       this.setColor();
       this.loaderService.start();
-      this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
-        self.mapService.build(geojson);
-        self.geoJson = geojson;
+      this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+        self.mapService.buildVectorSource(tiles);
+        self.geoJson = tiles;
         this.loaderService.end();
       }, error => {
         this.loaderService.end();
@@ -658,9 +658,9 @@ export class AppComponent {
     const countryContext = this.model.countryContext.value;
     const year = this.model.year.year;
     this.loaderService.start();
-    this.mapService.getIndicatorFilterGeoJSON(indicator, region, incomeGroup, countryContext, year).subscribe(geojson => {
-      self.geoJson = geojson;
-      this.mapService.update(geojson);
+    this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year).subscribe(tiles => {
+      self.geoJson = tiles;
+      this.mapService.updateVectorSource(tiles);
       this.setColor();
       this.loaderService.end();
     }, error => {
