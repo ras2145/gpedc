@@ -255,6 +255,52 @@ export class AppComponent {
       }
     }
   }
+  availableCountryRow(category) {
+    let d = 0;
+    d += this.countryComparer.firstCountry ? 1 : 0;
+    d += this.countryComparer.secondCountry ? 1 : 0;
+    if (d === 2) {
+      const texa = this.getLabelCountry(category, 'firstCountry');
+      const texb = this.getLabelCountry(category, 'secondCountry');
+      let isValid = false;
+      isValid = (texa !== '-' && !texa.includes('No data'));
+      isValid = isValid || (texb !== '-' && !texb.includes('No data'));
+      return isValid;  
+    }
+    return true;
+  }
+  hasSubCountry(indicator) {
+    let ans = 0;
+    for (let subcategory of indicator.subcategories) {
+      if (this.availableCountryRow(subcategory)) {
+        ans++;
+      }
+    }
+    return ans;
+  }
+  hasSubOrganization(indicator) {
+    let ans = 0;
+    for (let subcategory of indicator.subcategories) {
+      if (this.availableOrganizationRow(subcategory)) {
+        ans++;
+      }
+    }
+    return ans;
+  }
+  availableOrganizationRow(category) {
+    let d = 0;
+    d += this.organizationComparer.firstOrganization ? 1 : 0;
+    d += this.organizationComparer.secondOrganization ? 1 : 0;
+    if (d === 2) {
+      const texa = this.getLabelCountry(category, 'firstOrganization', true);
+      const texb = this.getLabelCountry(category, 'secondOrganization', true);
+      let isValid = false;
+      isValid = (texa !== '-' && !texa.includes('No data'));
+      isValid = isValid || (texb !== '-' && !texb.includes('No data'));
+      return isValid;  
+    }
+    return true;
+  }
   onSelectedCountry(event, type) {
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
@@ -295,8 +341,6 @@ export class AppComponent {
         }, 10);
       }
     }
-    // TODO organization data
-    // LOL
   }
   onDeselected(event, type) {
     if (type === 'first') {
