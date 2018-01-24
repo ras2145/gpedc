@@ -360,6 +360,7 @@ export class MapService {
       "id": "country-fills",
       "type": "fill",
       "source": "countries",
+      "source-layer": "layer0",
       "layout": {},
       "paint": {
         "fill-color": "#F07848",

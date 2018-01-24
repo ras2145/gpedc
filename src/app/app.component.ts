@@ -399,8 +399,8 @@ export class AppComponent {
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
     this.loaderService.start();
-    this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
-      this.mapService.update(geojson);
+    this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+      this.mapService.updateVectorSource(tiles);
       this.loaderService.end();
     }, error => {
       this.loaderService.end();
@@ -511,8 +511,8 @@ export class AppComponent {
           this.model.countryContext = this.countryContexts[0];
           this.model.incomeGroup = this.incomeGroups[0];
           this.loaderService.start();
-          this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
-            this.mapService.update(geojson);
+          this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+            this.mapService.updateVectorSource(tiles);
             this.loaderService.end();
           }, error => {
             this.loaderService.end();
