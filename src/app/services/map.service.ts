@@ -280,7 +280,7 @@ export class MapService {
     }
     const tilesUrls = [];
     for (const tile of tilesUrl.tiles) {
-      tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?').replace('http://', 'https://'));
+      tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?'));
     }
     console.log("url template is ", tilesUrls);
     return tilesUrls;
