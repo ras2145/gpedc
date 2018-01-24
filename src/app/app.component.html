@@ -411,10 +411,11 @@
                                 <div class="row">
                                     <div class="col-md-12 background-table">
                                         <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
-                                            <tr class="border-bottom-1" *ngIf="!(selectCountryComparer(countryComparer.firstCountry, countryComparer.secondCountry)) || viewTableIndicator(indicator, false)">
+                                            <tr class="border-bottom-1">
                                                 <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
                                                 <ng-template #thenBlock>
                                                     <td class="table-title-left background-1" width="25%" >
+                                                        <!-- Show indicator 1 tp 4 without displaing data -->
                                                         <p>
                                                             {{indicator.comparison}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
@@ -423,17 +424,19 @@
                                                     <td width="75%" colspan="3" class="table-result center-td background-2 no-padding"> <div id="line-td"></div> </td>
                                                 </ng-template>
                                                 <ng-template #elseBlock>
-                                                    <td class="table-title-left background-1" width="25%" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry')) || !viewCountryComparer" >
-                                                        <p>
-                                                            {{indicator.comparison}}
-                                                            <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
-                                                        </p>
-                                                    </td>
-                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry')) || !viewCountryComparer" ></td>
-                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry')) || !viewCountryComparer" ></td>
-                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstCountry'), getLabelCountry(indicator, 'secondCountry')) || !viewCountryComparer" ></td>
+                                                     <!-- Show rows of indicators 5 - 10 and displays data of them  -->
+                                                        <td class="table-title-left background-1" width="25%" >
+                                                            <p>
+                                                                {{indicator.comparison}}
+                                                                <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
+                                                            </p>
+                                                        </td>
+                                                        <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')" ></td>
+                                                        <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')" ></td>
+                                                        <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" ></td>
                                                 </ng-template>
                                             </tr>
+                                             <!-- Show row of subcategories of all indicators-->
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                                                     <td width="25%" class="table-subtible background-1" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstCountry'), getLabelCountry(subcategory, 'secondCountry')) || !viewCountryComparer" >
                                                         <p id="{{getLabelCountry(subcategory, 'firstCountry')}}">
@@ -573,9 +576,10 @@
                                 <div class="row">
                                     <div class="col-md-12 background-table">
                                         <table class="table table-sm table-space table-2" *ngFor="let indicator of model.year.categories">
-                                            <tr class="border-bottom-1" *ngIf="!(selectCountryComparer(organizationComparer.firstOrganization, organizationComparer.secondOrganization)) || viewTableIndicator(indicator, true)">
+                                            <tr class="border-bottom-1" >
                                                 <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
                                                 <ng-template #thenBlock>
+                                                    <!-- Show indicator 1 tp 4 without displaing data -->
                                                     <td class="table-title-left background-1" width="25%">
                                                         <p>
                                                             {{indicator.comparison}}
@@ -585,27 +589,29 @@
                                                     <td width="75%" colspan="3" class="table-result center-td background-2 no-padding"> <div id="line-td" class="responsive-line"></div> </td>
                                                 </ng-template>
                                                 <ng-template #elseBlock>
-                                                    <td class="table-title-left background-1" width="25%" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstOrganization'), getLabelCountry(indicator, 'secondOrganization')) || !viewCountryComparer" id="{{viewTableIndicatorComparison(getLabelCountry(indicator, 'firstOrganization'), getLabelCountry(indicator, 'secondOrganization'))}}">
+                                                    <!-- Show rows of indicators 5 - 10 and displays data of them  -->
+                                                    <td class="table-title-left background-1" width="25%" >
                                                         <p>
                                                             {{indicator.comparison}}
                                                             <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                                                         </p>
                                                     </td>
-                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization',true)" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstOrganization'), getLabelCountry(indicator, 'secondOrganization')) || !viewCountryComparer"></td>
-                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondOrganization',true)" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstOrganization'), getLabelCountry(indicator, 'secondOrganization')) || !viewCountryComparer"></td>
-                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate',true)" *ngIf="viewTableIndicatorComparison(getLabelCountry(indicator, 'firstOrganization'), getLabelCountry(indicator, 'secondOrganization')) || !viewCountryComparer"></td>
+                                                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization',true)" ></td>
+                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondOrganization',true)" ></td>
+                                                    <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate',true)" ></td>
                                                 </ng-template>
                                             </tr>
+                                            <!-- Show row of subcategories of all indicators-->
                                             <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                                                <td class="table-subtible background-1" width="25%" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstOrganization', true), getLabelCountry(subcategory, 'secondOrganization', true)) || !viewCountryComparer">
+                                                <td class="table-subtible background-1" width="25%" >
                                                     <p>
                                                         {{subcategory.comparison}}
                                                         <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                                                     </p>
                                                 </td>
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstOrganization', true)" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstOrganization', true), getLabelCountry(subcategory, 'secondOrganization', true)) || !viewCountryComparer"></td>
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondOrganization', true)" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstOrganization', true), getLabelCountry(subcategory, 'secondOrganization', true)) || !viewCountryComparer"></td>
-                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate', true)" *ngIf="viewTableIndicatorComparison(getLabelCountry(subcategory, 'firstOrganization', true), getLabelCountry(subcategory, 'secondOrganization', true)) || !viewCountryComparer"></td>
+                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstOrganization', true)" ></td>
+                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondOrganization', true)" ></td>
+                                                <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate', true)" ></td>
                                             </tr>
                                         </table>
                                     </div>
