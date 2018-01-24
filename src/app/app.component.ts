@@ -548,7 +548,7 @@ export class AppComponent {
     this.indicator = false;
     this.subIndicator = true;
     // if (!this.subDropdown) {
-      this.updateIndicatorGeojson();
+      this.updateIndicatorVector();
     // }
     this.validIndicator = true;
     this.updateMapTitle();
@@ -561,7 +561,7 @@ export class AppComponent {
     this.model.subcategory = subcategory;
     this.subIndicator = false;
     this.indicator = false;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
     this.validIndicator = true;
     this.updateMapTitle();
   //  console.log(this.model);
@@ -618,9 +618,9 @@ export class AppComponent {
     } else {
       this.validIndicator = false;
       this.loaderService.start();
-      this.mapService.getCountriesYearGeoJSON(this.model.year.year).subscribe(geojson => {
+      this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
         this.loaderService.end();
-        this.mapService.update(geojson);
+        this.mapService.updateVectorSource(tiles);
       }, error => {
         this.loaderService.end();
       });
@@ -635,17 +635,17 @@ export class AppComponent {
   }
   selectRegion(region) {
     this.model.region = region;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
   }
   selectIncomeGroup(incomeGroup) {
     this.model.incomeGroup = incomeGroup;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
   }
   selectCountryContext(countryContext) {
     this.model.countryContext = countryContext;
-    this.updateIndicatorGeojson();
+    this.updateIndicatorVector();
   }
-  updateIndicatorGeojson() {
+  updateIndicatorVector() {
     const self = this;
     this.selectedCountry = '';
     this.mapService.resetClickLayer();
@@ -1036,6 +1036,7 @@ export class AppComponent {
     saveAs(blob, fileName + '.csv');
   }
   exportCsvViewer() {
+    this.loaderService.start();
     const lines = [];
     const headers = ['Country', this.mapTitle];
     lines.push(headers);
@@ -1046,37 +1047,44 @@ export class AppComponent {
       indicator = this.model.subcategory;
     }
     let countriesList = [];
-    for (const feature of this.geoJson.features) {
-      const line = [];
-      line.push(feature.properties.country);
-      line.push(this.formatValue(indicator, feature.properties[column]));
-      countriesList.push(line);
-    }
-    countriesList.sort((a, b) => (a[0] < b[0] ? -1 : (a[0] > b[0] ? 1 : 0)));
-    for (const line of countriesList) {
-      lines.push(line);
-    }
-    lines.push(['', '']);
-    lines.push(['Development Partners', '']);
-    for (const partnerGroup of this.categorizedPartners) {
-      lines.push([partnerGroup.name, '']);
-      for (const partner of partnerGroup.partners) {
+    const self = this;
+    this.mapService.getIndicatorFilterGeoJSON(indicator.column, this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year).subscribe(geojson => {
+      self.geoJson = geojson;
+      for (const feature of self.geoJson.features) {
         const line = [];
-        line.push(partner.partner);
-        line.push(this.formatValue(indicator, partner[column]));
-        if (line[1] != 'No data available' && line[1] != '-' && line[1] != '' && line[1] != null) {
-          lines.push(line);
+        line.push(feature.properties.country);
+        line.push(self.formatValue(indicator, feature.properties[column]));
+        countriesList.push(line);
+      }
+      countriesList.sort((a, b) => (a[0] < b[0] ? -1 : (a[0] > b[0] ? 1 : 0)));
+      for (const line of countriesList) {
+        lines.push(line);
+      }
+      lines.push(['', '']);
+      lines.push(['Development Partners', '']);
+      for (const partnerGroup of self.categorizedPartners) {
+        lines.push([partnerGroup.name, '']);
+        for (const partner of partnerGroup.partners) {
+          const line = [];
+          line.push(partner.partner);
+          line.push(self.formatValue(indicator, partner[column]));
+          if (line[1] != 'No data available' && line[1] != '-' && line[1] != '' && line[1] != null) {
+            lines.push(line);
+          }
         }
       }
-    }
-    let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
-    let result = linesString.join('\n');
-    result = result.replace(/ ?<\/?b> ?/g, ' ');
-    result = result.replace(/," /g, ',"');
-    result = result.replace(/ ",/g, '",');
-    let blob = new Blob([result], { type: 'text/csv' });
-    const fileName = 'viewer';
-    saveAs(blob, fileName + '.csv');
+      let linesString = lines.map(line => line.map(element => '"' + element + '"').join(','));
+      let result = linesString.join('\n');
+      result = result.replace(/ ?<\/?b> ?/g, ' ');
+      result = result.replace(/," /g, ',"');
+      result = result.replace(/ ",/g, '",');
+      let blob = new Blob([result], { type: 'text/csv' });
+      const fileName = 'viewer';
+      saveAs(blob, fileName + '.csv');
+      self.loaderService.end();
+    }, error => {
+      self.loaderService.end();
+    });
   }
   noIsInvalidSelection(category) {
     const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
