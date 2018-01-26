@@ -152,7 +152,10 @@ export class AppComponent {
     this.heightDropDown = '75vh';
   }
   ngAfterViewInit() {
-    this.openModal(this.tuto);
+    if (!window.localStorage.getItem('tutorial')) {
+      this.openModal(this.tuto);
+    }
+    window.localStorage.setItem('tutorial', 'ok');
   }
   chargeOrganizationComparison() {
     this.organizationSelectors = [];
