@@ -939,8 +939,8 @@ export class AppComponent {
           this.categorizedPartners.push({
             name: partnerName,
             partners: categorizedPartners[partnerName],
-            open: false,
-            selected: false
+            open: true,
+            selected: true
           });
         }
       }
@@ -1252,6 +1252,7 @@ export class AppComponent {
     partnerGroup.selected = !partnerGroup.selected;
     // console.log(partnerGroup);
     this.chargeOrganizationComparison();
+    return partnerGroup.selected;
   }
   continueTutorial() {
     let index = -1;
