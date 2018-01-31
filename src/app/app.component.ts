@@ -122,20 +122,15 @@ export class AppComponent {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
-          console.log(countriesObj[country.country], '***********************');
           if (countriesObj[country.country].area < country.area) {
             countriesObj[country.country] = country;
           }
         } else {
           countriesObj[country.country] = country;
-          // console.log(country.country, '<<<1.1');
-          // console.log(countriesObj[country.country], '<--------1');
         }
-
       }
       this.sidsCountries = [];
       for (let countryName in countriesObj) {
-        // console.log(countryName, '---------- paises 2');
         this.sidsCountries.push(countriesObj[countryName]);
       }
     });

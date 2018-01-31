@@ -85,7 +85,7 @@ export class MapService {
   }
   mapFitBounds(bounds) {
     this.map.fitBounds(bounds, {
-      padding: {top: 110, bottom: 110, left: 60, right: 60}
+      padding: {top: 55, bottom: 50, left: 85, right: 30}
     });
     // this.map.fitBounds(bounds);
   }
@@ -350,7 +350,6 @@ export class MapService {
     const bboxx2 = 'ST_X(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxx2';
     const bboxy2 = 'ST_Y(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxy2';
     const area = 'ST_Area(the_geom) as area';
-    console.log(year, 'anio');
     // tslint:disable-next-line:max-line-length
     const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE ${column} is not null and UPPER(_${year}) = 'YES' ) as st_dump ORDER BY country`);
     const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE  UPPER(_${year}) = 'YES') as st_dump ORDER BY country`);
@@ -384,6 +383,8 @@ export class MapService {
     this.map.removeLayer('country-fills');
     let indicator: any;
     let layer: any;
+    // tslint:disable-next-line:prefer-const
+    let layerone: any;
     if (subcategory != null) {
       indicator = subcategory.column;
       if (indicator === '_2016_2_1') {
@@ -416,6 +417,7 @@ export class MapService {
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
+          // lasyer gris
         } else {
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
