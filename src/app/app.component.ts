@@ -106,6 +106,7 @@ export class AppComponent {
     false,
     false
   ];
+  changeyear;
   @ViewChild('tuto') tuto: TemplateRef<any>;
   constructor(
     private mapService: MapService,
@@ -121,16 +122,20 @@ export class AppComponent {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
+          console.log(countriesObj[country.country], '***********************');
           if (countriesObj[country.country].area < country.area) {
             countriesObj[country.country] = country;
           }
         } else {
           countriesObj[country.country] = country;
+          // console.log(country.country, '<<<1.1');
+          // console.log(countriesObj[country.country], '<--------1');
         }
 
       }
       this.sidsCountries = [];
       for (let countryName in countriesObj) {
+        // console.log(countryName, '---------- paises 2');
         this.sidsCountries.push(countriesObj[countryName]);
       }
     });
@@ -220,7 +225,7 @@ export class AppComponent {
     }
 }
   mergeWithSelected(options, selectedOption) {
-    if (selectedOption) {  
+    if (selectedOption) {
       const selectedOptionObject = {
         value: selectedOption,
         label: selectedOption
@@ -268,7 +273,7 @@ export class AppComponent {
       let isValid = false;
       isValid = (texa !== '-' && !texa.includes('No data'));
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
-      return isValid;  
+      return isValid;
     }
     return true;
   }
@@ -300,7 +305,7 @@ export class AppComponent {
       let isValid = false;
       isValid = (texa !== '-' && !texa.includes('No data'));
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
-      return isValid;  
+      return isValid;
     }
     return true;
   }
@@ -473,6 +478,7 @@ export class AppComponent {
     let category;
     let ind = '', index = -1;
     for (const indicator of this.model.year.categories) {
+      // console.log(this.model.category.label, '------');
       if (this.model.category && this.model.category.label === indicator.label) {
         ind = indicator.id;
         category = indicator;
@@ -514,7 +520,7 @@ export class AppComponent {
     this.indicator = indicator;
     this.subIndicator = subIndicator;
   }
-  // function to set variables that determines if request of template 
+  // function to set variables that determines if request of template
   // is from the modal or not
   findTabCategory(tabId) {
     this.footerTab = tabId;
@@ -631,6 +637,8 @@ export class AppComponent {
     this.selectCategory(category);
   }
   changeYearLabel(y) {
+    this.changeyear = y.year;
+    console.log(this.changeyear, 'change ');
     this.mapService.resetLayer();
     this.legendMap = [];
     let currentCategory = this.model.category;
@@ -638,7 +646,7 @@ export class AppComponent {
     let keepLayer = 0;
     this.selectedSidCountry = false;
     titles.forEach(title => {
-      if (y.year === title.year) {        
+      if (y.year === title.year) {
         this.model.year = title;
         this.model.category = title.categories[0];
         this.model.subcategory = null;
@@ -673,6 +681,7 @@ export class AppComponent {
       });
     }
     this.setColor();
+    return y.year;
   }
   getText(value, indicator) {
     return this.formatValue(indicator, value);
@@ -744,12 +753,12 @@ export class AppComponent {
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
     let aux = indicator.column;
-    
-    
+
+
     //const countryName = isOrganization ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
     const countryName = this.organizationComparer[typeOfCountry] ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
     //if (indicator.column == '_2014_5a') console.log('AC',this.organizationComparer[typeOfCountry],this.countryComparer[typeOfCountry]);
-    
+
     if (!countryName || !indicator) {
       return '-';
     }
@@ -765,8 +774,8 @@ export class AppComponent {
     if (!country) {
       return '-';
     }
-     
-  
+
+
     const value = this.formatValue(indicator, country[indicator.column]);
     if (indicator['subcategories']) {
       // if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
@@ -922,7 +931,7 @@ export class AppComponent {
       }
     }
   }
-  
+
   getPartners() {
     this.mapService.getPartners().subscribe(res => {
       this.partners = res;
@@ -1146,13 +1155,13 @@ export class AppComponent {
     const category = this.model.category;
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
-   
+
 
     let indicator = null;
     if (!this.indicator) {
       indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     }
-   
+
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year).subscribe(val => {
       const countriesObj = {};
       for (let country of val) {
@@ -1171,7 +1180,7 @@ export class AppComponent {
       this.heightDropDown = this.sidsCountries.length < 13 ? '45vh' : '75vh';
     });
     if (this.indicator) {
-      
+
         this.legendTitle = '';
         this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
@@ -1315,7 +1324,7 @@ export class AppComponent {
         if(this.viewTableIndicatorComparison(this.getLabelCountry(subcategory, 'firstOrganization', true), this.getLabelCountry(subcategory, 'secondOrganization', true))) {
           output++;
         }
-      }      
+      }
     } else {
       for(let subcategory of indicator.subcategories) {
         if(this.viewTableIndicatorComparison(this.getLabelCountry(subcategory, 'firstCountry'), this.getLabelCountry(subcategory, 'secondCountry'))) {
