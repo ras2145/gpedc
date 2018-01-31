@@ -275,6 +275,11 @@ export class AppComponent {
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
       return isValid;
     }
+    if(category.id==null)
+    {
+      if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') 
+      return false;
+    }
     return true;
   }
   hasSubCountry(indicator) {
@@ -306,6 +311,11 @@ export class AppComponent {
       isValid = (texa !== '-' && !texa.includes('No data'));
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
       return isValid;
+    }
+    if(category.id==null)
+    {
+      if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') 
+      return false;
     }
     return true;
   }
@@ -596,6 +606,7 @@ export class AppComponent {
     }
   }
   selectCategory(category) {
+    console.log("cat",category);
     this.model.category = category;
     this.model.subcategory = null;
     this.indicator = false;
@@ -1086,7 +1097,7 @@ export class AppComponent {
     result = result.replace(/ ?<\/?b> ?/g, ' ');
     result = result.replace(/," /g, ',"');
     result = result.replace(/ ",/g, '",');
-    // console.log(result);
+    console.log("result",result);
     let blob = new Blob([result], { type: 'text/csv' });
     const fileName = isOrganization ? 'organizations' : 'countries';
     saveAs(blob, fileName + '.csv');
@@ -1259,7 +1270,7 @@ export class AppComponent {
   }
   selectPartnerGroup(partnerGroup) {
     partnerGroup.selected = !partnerGroup.selected;
-    // console.log(partnerGroup);
+    console.log(partnerGroup);
     this.chargeOrganizationComparison();
     return partnerGroup.selected;
   }
@@ -1338,4 +1349,9 @@ export class AppComponent {
     else
       return output > 0 ? true : false;
   };
+  // trueORfalse(category){
+  //   if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') {
+  //     return false;
+  //   }else{return true;}
+  // };  
 }

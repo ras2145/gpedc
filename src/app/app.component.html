@@ -532,8 +532,8 @@
                                         </p>
                                         <!-- FILTROS -->
                                         <span *ngFor="let partnerGroup of categorizedPartners">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" [checked]="true" (change)="selectPartnerGroup(partnerGroup)" >
+                                            <div class="input-group-text"  >
+                                                <input  type="checkbox"  [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true"  >
                                                 <label for="">{{partnerGroup.name}}</label>
                                             </div>
                                         </span>

@@ -167,6 +167,7 @@ p.p-none-space{
 label.right-btn{
     border-radius: 0px 5px 5px 0px;/*0px 50px 50px 0px*/
 }
+
 /*FIN estilos para botones naranja y plomo*/
 
 /*Estilo para los botones de export*/
@@ -1472,3 +1473,21 @@ select-dropdown li.selected.highlighted {
 .carto-attribution-img {
   max-height: 26px;
 }
+/* start style 2 select which types or part */
+ .input-group-text input[type="checkbox"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #E0E0E0;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+} 
+.input-group-text input[type="checkbox"].btn-filters-selected:checked{
+ background: #f07848;
+border: width border-style color;
+}
+.input-group-text input[type="checkbox"].btn-filters-selected:focus{
+ outline: none;
+}
+
