@@ -1230,7 +1230,7 @@ export class AppComponent {
     }
     if(this.legendMap[0].textFirst!='Not Available')
     {
-      this.legendMap.unshift({ color: '#EEEEEE', textFirst: 'Not Available', textMiddle: '', textLast: ''});
+      this.legendMap.unshift({ color: '#CCCCCC', textFirst: 'Not Available', textMiddle: '', textLast: ''});
     }
     return this.mapService.paintForIndicator(category, subcategory, year);
   }

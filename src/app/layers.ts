@@ -2,6 +2,7 @@ export let layers = {
     'percent' : {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -11,7 +12,8 @@ export let layers = {
               [0.40, '#F69229'],
               [0.60, '#FAD02F'],
               [0.80, '#B1D781'],
-              [1, '#1FAB9E']
+              [1, '#1FAB9E'],
+              [9999, '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -21,6 +23,7 @@ export let layers = {
     'indicator4' : {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -30,7 +33,8 @@ export let layers = {
               ['Needs Improvement', '#F16950'],
               ['Fair', '#F69229'],
               ['Good', '#B1D781'],
-              ['Excellent', '#1FAB9E']
+              ['Excellent', '#1FAB9E'],
+              ['9999', '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -39,6 +43,7 @@ export let layers = {
     'yesNo' : {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -46,7 +51,8 @@ export let layers = {
             type: 'categorical',
             stops: [
               ['Yes', '#1FAB9E'],
-              ['No', '#F16950']
+              ['No', '#F16950'],
+              ['9999', '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -55,6 +61,7 @@ export let layers = {
     'indicator9a': {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -70,7 +77,8 @@ export let layers = {
               [4.5, '#86D584'],
               [5, '#50a89e'],
               [5.5, '#599BA8'],
-              [6, '#5878A8']
+              [6, '#5878A8'],
+              [9999, '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -79,6 +87,7 @@ export let layers = {
     'indicator3': {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -89,6 +98,7 @@ export let layers = {
               [5, '#FAD02F'],
               [7, '#B1D781'],
               [9, '#1FAB9E'],
+              [9999, '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -97,6 +107,7 @@ export let layers = {
     'indicator2_1' : {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -104,7 +115,8 @@ export let layers = {
             stops: [
               [1, '#F16950'],
               [2, '#FAD02F'],
-              [3, '#1FAB9E']
+              [3, '#1FAB9E'],
+              [9999, '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -113,6 +125,7 @@ export let layers = {
     'indicator2_2' : {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -122,7 +135,8 @@ export let layers = {
               [2, '#F69229'],
               [3, '#FAD02F'],
               [4, '#B1D781'],
-              [5, '#1FAB9E']
+              [5, '#1FAB9E'],
+              [9999, '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75
@@ -131,6 +145,7 @@ export let layers = {
     'indicator2_34' : {
         'id': 'country-fills',
         'source': 'countries',
+        "source-layer": "layer0",
         'type': 'fill',
         'paint': {
           'fill-color': {
@@ -139,7 +154,8 @@ export let layers = {
               [1, '#F16950'],
               [2, '#F69229'],
               [3, '#B1D781'],
-              [4, '#1FAB9E']
+              [4, '#1FAB9E'],
+              [9999, '#CCCCCC']
             ]
           },
           'fill-opacity': 0.75

@@ -94,13 +94,13 @@ export class MapService {
     this.map.on('load', cb);
   }
 
-  build(geojson: any) {
-    this.map.addSource('countries', {
-      "type": "geojson",
-      "data": geojson
-    });
-    this.buildLayers();
-  }
+  // build(geojson: any) {
+  //   this.map.addSource('countries', {
+  //     "type": "geojson",
+  //     "data": geojson
+  //   });
+  //   this.buildLayers();
+  // }
   update(geojson: any) {
     let source: GeoJSONSource;
     source = this.map.getSource('countries') as GeoJSONSource;
@@ -412,13 +412,15 @@ export class MapService {
         this.map.addLayer(layer, 'waterway-label');
       }
       if (subcategory.type === 'text') {
+        console.log(category.id,"CATEr");
         if (category.id === '4') {
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
-          // lasyer gris
+          // layer gris
         } else {
+          console.log("ELSE",this.layers);
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
@@ -426,6 +428,7 @@ export class MapService {
         }
       }
       if (subcategory.type === 'percent') {
+        console.log(category.id,"CSECCONDCAT");
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
