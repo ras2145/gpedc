@@ -171,6 +171,7 @@ export class MapService {
     }
     this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
     this.map.setFilter('country-fills-click', this.twoCountriesFilter);
+    console.log('click');
   }
   paintTwoCountryClear() {
     this.firstCountry = '';

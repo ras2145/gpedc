@@ -389,6 +389,7 @@ export class AppComponent {
         this.popupText = '';
       });
       this.mapService.clickCountry(event => {
+        console.log('click');
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
@@ -720,6 +721,8 @@ export class AppComponent {
     const countryContext = this.model.countryContext.value;
     const year = this.model.year.year;
     this.loaderService.start();
+
+    this.mapService.resetLayer();
     this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year).subscribe(tiles => {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
@@ -790,7 +793,8 @@ export class AppComponent {
       //  text = text + ' ' + indicator['noText'];
       //} else {
       // text = text + ' ' + indicator['prefix'] + ' <b>' + value + '</b> ' + indicator['suffix'];
-      text = text + '<p>' + value + '</p>';
+      const val = (value.toString() !== '9999') ? value : 'Not Applicable';
+      text = text + '<p>' + val   + '</p>';
       //}
     } else {
       /*if (this.checkIfString(value) && value.toUpperCase() === 'YES') {
@@ -798,7 +802,8 @@ export class AppComponent {
       } else if (this.checkIfString(value) && value.toUpperCase() === 'NO') {
         text = text + ' ' + indicator.noText;
       } else {*/
-      text = text + '<p>' + value + '</p>';
+      const val = value.toString() !== '9999'? value : 'Not Applicable';
+      text = text + '<p>' + val + '</p>';
       // }
     }
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
@@ -812,7 +817,12 @@ export class AppComponent {
     if (indicator.type === 'percent') {
       const previousValue = oldValue;
       oldValue = oldValue * 100;
-      value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data available';
+      if (previousValue != '9999')  {
+        value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data available';
+      } else {
+        value = 'Not Applicable';
+      }
+        
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
@@ -1205,6 +1215,7 @@ export class AppComponent {
       } else if (subcategory.type === 'number') {
         if (subcategory.column.includes('2_1')) {
           this.legendMap = this.legends.indicator2_1;
+          console.log('subindicador');
         } else if (subcategory.column.includes('2_2')) {
           this.legendMap = this.legends.indicator2_2;
         } else if (subcategory.column.includes('2_3') || subcategory.column.includes('2_4')) {
