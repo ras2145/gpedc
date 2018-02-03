@@ -381,6 +381,14 @@ export class AppComponent {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
           layers: ['country-fills']
         });
+    //     const column=Object.keys(countries[0].properties);
+    // for(var i=0;i<column.length;i++) {
+    //   const val=(countries[0].properties[column[i]]).toString();
+    //   if (val=="9999") {
+    //     countries[0].properties[column[i]]="Not Applicable";
+    //   }
+    // }
+        // console.log("countries",countries[0].properties);
         this.countryName = countries[0].properties.country;
         this.getTextPopUp(this.countryName);
       });
@@ -413,7 +421,6 @@ export class AppComponent {
               selectedCountry[0] = feature;
           }
           this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-          // console.log(this.selectedCountry);
           if (this.selectedCountry) {
             this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
             this.categoriesNotNull = [];
@@ -445,6 +452,7 @@ export class AppComponent {
           const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
           this.countryComparer.firstCountry = aux[0];
           this.countryComparer.secondCountry = aux[1];
+          console.log("selectedCountry",selectedCountry,"::",aux);
         }
       });
       this.loaderService.end();
@@ -602,7 +610,7 @@ export class AppComponent {
     }
   }
   selectCategory(category) {
-    console.log("cat",category);
+    // console.log("cat",category);
     this.model.category = category;
     this.model.subcategory = null;
     this.indicator = false;
@@ -832,7 +840,7 @@ export class AppComponent {
   }
   formatValuePopUp(indicator, oldValue) {
     let value = '';
-    if (indicator.type === 'percent') {
+    if (indicator.type === 'percent' && oldValue!=9999) {
       const previousValue = oldValue;
       oldValue = oldValue * 100;
       value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data';
@@ -841,7 +849,8 @@ export class AppComponent {
     } else if (indicator.type === 'text') {
       value = oldValue ? oldValue : 'No data';
     }
-    return value;
+    const val=(value.toString()=='9999'|| value.toString()=='')?"Not Applicable":value;
+    return val;
   }
   checkIfString(val) {
     return typeof val === 'string';
@@ -884,7 +893,8 @@ export class AppComponent {
       let notPrint = [];
       for (const i of categories) {
         if (i.id === indicator) {
-          const value = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
+          const value2 = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
+          const value=(value2=='9999')?"Not Applicable":value2;
           let cols = [1, 11];
           if (i.id == '1a' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
             cols = [3, 9];
@@ -917,7 +927,8 @@ export class AppComponent {
           let jumps = 0;
           for (const j of i.subcategories) {
             jumps = 1;
-            const subvalue = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
+            const subvalue2 = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
+            const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
             if (j.label.indexOf('Summary') >= 0) {
               continue;
             }
