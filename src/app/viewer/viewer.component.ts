@@ -736,6 +736,10 @@ export class ViewerComponent implements OnInit {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
       this.setColor();
+      if (this.model.category != null) {
+        const column = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
+        this.mapService.filterNotNull(column);
+      }
       this.loaderService.end();
     }, error => {
       this.loaderService.end();
