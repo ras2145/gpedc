@@ -212,45 +212,48 @@
                                                 </ul>
                                             </div>
                                         </div>
-
-
-                                <div class="row padding-top-line col-line">
+                                        <br>
+                                <div class="row padding-top-line">
                                     <div class="col-md-12">
-                                        <p class="result-subtitle-one">DISPLAY RESULTS BY DEVELOPMENT PARTNER
+                                        <p class="result-subtitle-one">DEVELOPMENT PARTNER
                                             <i class="mdi mdi-information"
                                                 popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
                                                 placement="top"
                                                 triggers="mouseenter:mouseleave">
                                             </i>
-                                            <br><span>In alphabetical order</span></p>
-                                        <p class="result-subtitle p-none-space"></p>
-
-                                        <!-- ACORDION -->
-                                        <div class="acordion">
-                                          <accordion>
-                                            <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
-                                              <div accordion-heading class="clearfix">
-                                                {{partnerGroup.name}}
-                                                <span class="float-right pull-right">
-                                                  <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
-                                                  <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
-                                                </span>
-                                              </div>
-                                              <table class="table table-sm">
-                                                <tbody>
-                                                  <tr *ngFor="let partner of partnerGroup.partners">
-                                                    <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
-                                                    <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
-                                                    <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
-                                                  </tr>
-                                                </tbody>
-                                              </table>
-                                            </accordion-group>
-                                          </accordion>
-                                            <br>
-                                        </div>
-                                        <!-- ACORDION -->
+                                          </p>
+                                          <span class="span-md">In alphabetical order</span>
                                     </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-12 acordion-md">
+                                    <!-- ACORDION -->
+                                    <div class="acordion">
+                                      <accordion>
+                                        <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
+                                          <div accordion-heading class="clearfix">
+                                            {{partnerGroup.name}}
+                                            <span class="float-right pull-right">
+                                              <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
+                                              <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
+                                            </span>
+                                          </div>
+                                          <table class="table table-sm">
+                                            <tbody>
+                                              <tr *ngFor="let partner of partnerGroup.partners">
+                                                <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
+                                                <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
+                                                <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </accordion-group>
+                                      </accordion>
+                                        <br>
+                                    </div>
+                                    <!-- ACORDION -->
+                                  </div>
                                 </div>
 
                                 <div class="row">

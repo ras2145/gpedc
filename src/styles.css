@@ -108,11 +108,22 @@ img.logo.panel-1{
     padding-left: 7px;
     cursor: pointer;
     float: right;
-
+    font-size: 14px;
 }
 .result-subtitle-one{
-    color: #f07848;
-    padding-top: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgba(40, 40, 40, 0.56);
+  border: none;
+  margin-bottom: -5px;
+}
+.padding-top-line .span-md{
+  opacity: 0.5;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #282828;
 }
 .result-subtitle-one span{
     color: #000;
@@ -1163,13 +1174,14 @@ select-dropdown li.selected.highlighted {
   border: none;
 }
 .acordion .card-header:first-child {
-  background: #fff;
+  background-color: rgba(150, 163, 171, 0.15);
   cursor: pointer;
-  background: #fff;
-  cursor: pointer;
-  padding: 10px 10px;
+  padding: 5px 10px;
   font-weight: 500;
   color: #646260;
+  font-size: 12px;
+  height: 29px;
+  border: none;
 }
 .acordion .card{
   border: none;
@@ -1178,7 +1190,11 @@ select-dropdown li.selected.highlighted {
   color: #f07848;
   font-size: 12px;
   padding: 5px 10px;
-  border-top: 2px solid #f07848;
+  /* border-top: 2px solid #f07848; */
+}
+.acordion-md{
+  padding: 0px;
+  margin-top: 15px;
 }
 .btn-learn{
   background: #e3e5e2 !important;
@@ -1239,13 +1255,10 @@ select-dropdown li.selected.highlighted {
 .tab-modal .tab-content>.active {
     padding-top: 10px;
 }
-.col-line{
-  border-top: 1px solid #e2e2e2;
-}
 .disclaimer {
   font-size: 10px;
   font-style: italic;
-  margin-bottom: 75px;
+  /* margin-bottom: 75px; */
 }
 .text-line{
   line-height: 11px;
