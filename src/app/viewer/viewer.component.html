@@ -2,7 +2,6 @@
 <!-- Contenedor general -->
 <nav class="navbar navbar-light bg-light justify-content-between">
   <div class="row nav-row">
-
     <div class="col-md-3 bg-color-nav">
       <a class="navbar-brand"> <img src="assets/logo-01.png" alt="" height="35px"> </a>
       <i class="mdi mdi-information"
@@ -12,18 +11,16 @@
           triggers="mouseenter:mouseleave">
       </i>
     </div>
-
     <div class="col-m-8 col-wd">
       <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
     </div>
-
     <div class="col-md-1 bg-color-nav">
       <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-play" ></i> Tutorial </button>
     </div>
   </div>
 </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid body-height">
         <div class="row">
             <!-- INICIO Sidebar -->
                 <div class="col-md-3 padding-left-none with-scroll" id="div1">
@@ -42,15 +39,9 @@
                             <!-- BOTON TAB VIEW -->
 
                             <div class="result-container">
-                                <div class="row logo">
-                                    <div class="col-md-4 text-right margin-top-btn">
-                                        <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle">EXPORT</button>
-                                    </div>
-                                </div>
-
                                 <div class="row padding-top-background">
                                     <div class="col-md-12"><!-- col-md-4 -->
-                                        <p class="result-subtitle space-view-data">Select year
+                                        <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
                                             <i class="mdi mdi-information"
                                                 popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
                                                 placement="right"
@@ -59,26 +50,35 @@
                                         </p>
                                     </div>
 
-                                    <div class="col-md-12 btn-year"><!-- col-md-8 -->
-                                        <div class="radio">
-                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
-                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
-                                                {{title.year}}
-                                            </label>
+                                    <div class="col-md-12 btn-year">
+                                      <div class="row no-gutters">
+                                        <div class="col-md-9">
+                                          <div class="radio">
+                                              <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                                  <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
+                                                  {{title.year}}
+                                              </label>
+                                              <label class="label-md">2016</label>
+                                          </div>
                                         </div>
+                                        <div class="col-md-3 text-right margin-top-btn">
+                                            <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
+                                        </div>
+                                      </div>
+
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-12 border-bottom">
                                         <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle space-indicator">Indicator
+                                            <p for="inputState" class="result-subtitle space-indicator"><span class="mdi mdi-crosshairs-gps"></span> Indicator
                                                 <i class="mdi mdi-information"
                                                     popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
                                                 </i>
-                                            </label>
+                                            </p>
                                             <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
                                                     <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.category.label}}</span>
@@ -132,54 +132,47 @@
                                     </div>
                                 </div>
 
-                                <div class="row padding-top-line">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="inputState" class="result-subtitle space-line">Filter countries by:
-                                                <i class="mdi mdi-information"
-                                                    popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
-                                                </i>
-                                            </label>
-                                        </div>
-                                    </div>
+                              <div class="form-group">
+                                  <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:
+                                      <i class="mdi mdi-information"
+                                          popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
+                                          placement="right"
+                                          triggers="mouseenter:mouseleave">
+                                      </i>
+                                  </p>
+                              </div>
+
+                              <div class="form-group style-select">
+                                  <label for="inputState" class="result-subtitle width-popUp">Region
+                                      <!-- <i class="mdi mdi-information"
+                                          popover="The following regional groupings are based on the OECD classification."
+                                          placement="right"
+                                          triggers="mouseenter:mouseleave">
+                                        </i> -->
+                                  </label>
+                                  <div class="btn-group btn-dropdown" dropdown>
+                                    <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                      <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
+                                      <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                    </button>
+                                    <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                      <li role="menuitem" *ngFor="let region of regions">
+                                          <a class="dropdown-item style-a-default" (click)="selectRegion(region)">
+                                              {{region.label}}
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-7"><!-- col-md-6 -->
-                                        <div class="form-group style-select">
-                                            <label for="inputState" class="result-subtitle width-popUp">Region
-                                                <i class="mdi mdi-information"
-                                                    popover="The following regional groupings are based on the OECD classification."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
-                                                </i>
-                                            </label>
-                                            <div class="btn-group btn-dropdown" dropdown>
-                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
-                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
-                                                </button>
-                                                <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
-                                                    <li role="menuitem" *ngFor="let region of regions">
-                                                        <a class="dropdown-item style-a-default" (click)="selectRegion(region)">
-                                                            {{region.label}}
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-md-6"><!-- col-md-4 -->
+
+
                                         <div class="form-group style-select width-popUp">
                                             <label for="inputState" class="result-subtitle">Income Group
-                                                <i class="mdi mdi-information"
+                                                <!-- <i class="mdi mdi-information"
                                                     popover="The following income groupings are based on the 2017 World Bank income classification."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
-                                                </i>
+                                                </i> -->
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown>
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -195,18 +188,15 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-8 border-bottom">
+
                                         <div class="form-group style-select context-pop">
-                                            <label for="inputState" class="result-subtitle space-indicator">Country context
-                                                <i class="mdi mdi-information"
+                                            <label for="inputState" class="result-subtitle">Country context
+                                                <!-- <i class="mdi mdi-information"
                                                     popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
                                                     placement="right"
                                                     triggers="mouseenter:mouseleave">
-                                                </i>
+                                                </i> -->
                                             </label>
                                             <div class="btn-group btn-dropdown" dropdown>
                                                 <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -222,8 +212,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+
 
                                 <div class="row padding-top-line col-line">
                                     <div class="col-md-12">
