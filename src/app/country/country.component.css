@@ -1,0 +1,146 @@
+.subtitle {
+    font-size: 11px;
+    color: #4d4d4d
+}
+
+.indicator {
+    font-size: 11px;
+    color: rgba(40, 40, 40, 0.56);
+}
+
+.table-compare {
+    padding-top: 26px;
+    padding-left: 75px;
+}
+
+.btn-year-style {
+    padding: 4px 27px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 2px;
+    border: solid 1px rgba(117, 117, 117, 0.59);
+    color: #4d4d4d;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.btn-year-style.active {
+    padding: 4px 27px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: #343c53;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.btn-year-icon {
+    font-size: 11px;
+    color: #fff;
+    padding: 7px;
+    background-color: #ea6239;
+    border-radius: 2px;
+}
+
+.float-r {
+    float: right;
+}
+
+.float-l {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.links {
+    width: 100%;
+}
+
+.no-padding-default {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.top-10 {
+    margin-top: 10px;
+}
+
+
+/* Estilos por defevto links */
+
+.link-a {
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #4d4d4d;
+}
+
+
+/* Ocultamos el contenido para solo mostrar el icono */
+
+.link-a span {
+    display: none;
+}
+
+
+/*Links activo ademas mostramos el texto*/
+
+.link-a.active {
+    display: inline-block;
+    padding: 11px 7px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    background-color: #343c53;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-a.active span {
+    display: inline-block;
+}
+
+.height-default {
+    /* background-color: #f00; */
+    height: 210px;
+}
+
+.table-title {
+    font-size: 11px;
+    height: 80px;
+    width: 303px;
+    vertical-align: middle;
+    padding: 16px 19px;
+}
+
+.table-title span {
+    font-weight: 700;
+}
+
+.table-subtitle {
+    font-size: 11px;
+    height: 80px;
+    vertical-align: middle;
+    padding: 16px 19px;
+}
+
+.table-number td {
+    vertical-align: middle;
+    background-color: rgba(235, 235, 235, 0.26);
+}
+
+.separator {
+    width: 100px;
+}
+
+.color-row {
+    background-color: #ebebeb;
+}
+
+.container-fluid>.row {
+    height: initial;
+}

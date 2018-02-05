@@ -1,3 +1,182 @@
-<p>
-  country works!
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="height-default">
+                <p class="subtitle">
+                    On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator. Available data may also be filtered by region, income group or country context.
+                </p>
+                <div class="indicator">
+                    <p class="float-l"><i class="mdi mdi-calendar"></i> 1. SELECT YEAR</p>
+                    <p class="float-r"><i class="mdi mdi-information"></i></p>
+                </div>
+                <hr class="clear">
+                <div class="btn-indicator">
+                    <div class="float-l">
+                        <a href="#" class="btn-year-style active">2010</a>
+                        <a href="#" class="btn-year-style">2014</a>
+                        <div class="top-10">
+                            <a href="#" class="btn-year-style">2016</a>
+                        </div>
+                    </div>
+                    <a href="#" class="float-r btn-year-icon"><i class="mdi mdi-arrow-down-bold-box-outline"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="height-default">
+                <div class="links">
+                    <a href="" class="link-a"><i class="mdi mdi-battery-charging-40"></i> <span>asdasd</span></a>
+                    <a href="" class="link-a active"><i class="mdi mdi-airplay"></i> <span>Country Comparision</span></a>
+                    <a href="" class="link-a"><i class="mdi mdi-bow-tie"></i></a>
+                    <a href="" class="link-a"><i class="mdi mdi-clipboard-alert"></i> <span></span></a>
+                    <a href="" class="link-a"><i class="mdi mdi-facebook-messenger"></i> <span></span></a>
+                </div>
+
+                <div class="table-compare">
+                    <p class="indicator">2. SELECT TWO COUNTRIES TO COMPARE RESULTS: <i class="mdi mdi-information"></i></p>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row with-placeholder-conutry">
+                                <div class="col-md-4 padding-dd-03">
+                                    <ng-select (deselected)="onDeselected($event,'first')" (selected)="onSelectedCountry($event, 'first')" [(ngModel)]="countryComparer.firstCountry" [allowClear]="true" placeholder="Select country" [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
+                                </div>
+                                <div class="col-md-4 padding-dd-04">
+                                    <ng-select (deselected)="onDeselected($event,'second')" (selected)="onSelectedCountry($event, 'second')" [allowClear]="true" placeholder="Select country" [(ngModel)]="countryComparer.secondCountry" [options]="countrySelectors[(model.year['year'] === '2014' ? 0 : 1)]['value']"></ng-select>
+                                </div>
+
+                                <div class="col-md-4 padding-dd-05">
+                                    <ng-select [allowClear]="true" placeholder="Select Aggregate" [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[2]['value']"></ng-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 no-padding-default">
+            <table class="table table-sm table-space">
+                <tr class="color-row">
+                    <td class="table-title"><span>Indicator 1a:</span> Do development partners use countries' own results frameworks and evaluation processes? </td>
+                    <td class="separator"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+
+                <tr class="color-row">
+                    <td class="table-title"><span>Indicator 2a:</span> Do development partners use countries' own results frameworks and evaluation processes? </td>
+                    <td class="separator"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+                <tr class="table-number">
+                    <td class="table-subtitle">% of new development interventions that draw objectives from country-led results frameworks</td>
+                    <td class="separator"></td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                    <td>94.1%</td>
+                </tr>
+
+
+            </table>
+            <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
+                <tr class="border-bottom-1">
+                    <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <td class="table-title-left background-1" width="25%" *ngIf="hasSubCountry(indicator)">
+                            <!-- Show indicator 1 tp 4 without displaing data -->
+                            <p>
+                                {{indicator.comparison}}
+                                <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
+                            </p>
+                        </td>
+                        <td width="75%" colspan="3" class="table-result center-td background-2 no-padding" *ngIf="hasSubCountry(indicator)">
+                            <div id="line-td"></div>
+                        </td>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <!-- Show rows of indicators 5 - 10 and displays data of them  -->
+                        <td class="table-title-left background-1" width="25%" *ngIf="availableCountryRow(indicator)">
+                            <p>
+                                {{indicator.comparison}}
+                                <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
+                            </p>
+                        </td>
+                        <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')" *ngIf="availableCountryRow(indicator)"></td>
+                        <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondCountry')" *ngIf="availableCountryRow(indicator)"></td>
+                        <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableCountryRow(indicator)"></td>
+                    </ng-template>
+                </tr>
+                <!-- Show row of subcategories of all indicators-->
+                <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
+                    <td width="25%" class="table-subtible background-1" *ngIf="availableCountryRow(subcategory)">
+                        <p id="{{getLabelCountry(subcategory, 'firstCountry')}}">
+                            {{subcategory.comparison}}
+                            <i class="mdi mdi-information mdi-cursor" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
+                        </p>
+                    </td>
+                    <!-- partner comparison -->
+                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+
+
+</div>
