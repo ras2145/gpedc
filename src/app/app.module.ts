@@ -12,8 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CountryComponent } from './country/country.component';
 import { PartnerComponent } from './partner/partner.component';
-import { Routing } from './app.routes';
 import { ViewerComponent } from './viewer/viewer.component';
+import { Routing } from './app.routes';
+
 
 
 export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
