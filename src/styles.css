@@ -37,7 +37,7 @@ body{
     border: 0px;
 }
 /*Estilos para ocupar toda la pantalla*/
-
+/* NAVBAR */
 img.logo{
     width: 350px;
     padding-top: 20px;
@@ -45,6 +45,36 @@ img.logo{
 }
 img.logo.panel-1{
     padding-bottom: 0px;
+}
+.bg-light {
+    background-color: #1a233d!important;
+}
+.navbar{
+  padding: 0px;
+  height: 52px;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 8;
+}
+.nav-row{
+  width: 100%;
+  height: 52px;
+  margin-left: 0px;
+}
+.bg-color-nav{
+  background: #252e47;
+}
+.navbar p{
+  font-size: 14px;
+  padding-top: 16px;
+  padding-left: 20px;
+}
+.col-wd{
+  width: 66.6% !important;
+}
+.btn-tutorial .mdi-play{
+  margin-right: 10px;
 }
 /*.row{
     background-color: #fafafa;
@@ -76,7 +106,6 @@ img.logo.panel-1{
 .result-subtitle-one span{
     color: #000;
 }
-
 .space-left{
     /*margin-left: -13%;*/
     margin-bottom: 10px;
@@ -512,12 +541,12 @@ div#map {
 
 
 /*ESTILOS de los tabs*/
-.filtros-tab .nav-pills{
+/* .filtros-tab .nav-pills{
     position: absolute;
     right: -34px;
     z-index: 500;
     top: 100px;
-}
+} */
 /*.nav-pills:hover{
     right: -156px;
 }*/
@@ -1214,13 +1243,12 @@ select-dropdown li.selected.highlighted {
 
 /*MODAL TUTORIAL*/
 .btn-tutorial{
-  background: #444847;
+  background: #252e47;
   color: #fff;
   cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: 0px;
-  padding-top: 13px;
+  float: right;
+  height: 52px;
+  font-size: 14px
 }
 .btn-tutorial:hover, .btn-tutorial:focus{
   color:#e27e53;
@@ -1482,7 +1510,7 @@ select-dropdown li.selected.highlighted {
     width: 20px;
     height: 20px;
     border-radius: 2px;
-} 
+}
 .input-group-text input[type="checkbox"].btn-filters-selected:checked{
  background: #f07848;
 border: width border-style color;
@@ -1490,4 +1518,3 @@ border: width border-style color;
 .input-group-text input[type="checkbox"].btn-filters-selected:focus{
  outline: none;
 }
-

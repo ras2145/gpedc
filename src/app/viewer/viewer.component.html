@@ -1,15 +1,35 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- Contenedor general -->
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <div class="row nav-row">
+
+    <div class="col-md-3 bg-color-nav">
+      <a class="navbar-brand"> <img src="assets/logo-01.png" alt="" height="35px"> </a>
+      <i class="mdi mdi-information"
+          popover="On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
+            Available data may also be filtered by region, income group or country context."
+          placement="right"
+          triggers="mouseenter:mouseleave">
+      </i>
+    </div>
+
+    <div class="col-m-8 col-wd">
+      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
+    </div>
+
+    <div class="col-md-1 bg-color-nav">
+      <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-play" ></i> Tutorial </button>
+    </div>
+  </div>
+</nav>
+
     <div class="container-fluid">
         <div class="row">
             <!-- INICIO Sidebar -->
-                <div
-                class="col-md-4 padding-left-none with-scroll"
-                [ngClass]="{'col-md-4': selectedTab==='tab1', 'col-md-7': selectedTab==='tab2', 'col-md-9': selectedTab==='tab3', 'padding-left-none with-scroll': true}"
-                id="div1"><!-- Cambiar a col-md-7 cuando sea el segundo tab countrie -->
+                <div class="col-md-3 padding-left-none with-scroll" id="div1">
                   <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
                     <!-- Contenedor tab -->
-                    <tabset [vertical]="true" type="pills">
+                    <tabset type="pills">
 
                         <tab heading="">
                             <!-- BOTON TAB VIEW -->
@@ -23,20 +43,8 @@
 
                             <div class="result-container">
                                 <div class="row logo">
-                                    <div class="col-md-12">
-                                        <img class="logo panel-1" src="assets/logo-h.png" alt="">
-                                    </div>
                                     <div class="col-md-4 text-right margin-top-btn">
                                         <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle">EXPORT</button>
-                                    </div>
-                                </div>
-
-                                <div class="row logo">
-                                    <div class="col-md-12">
-                                        <p class="result-text">
-                                            On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
-                                            Available data may also be filtered by region, income group or country context.
-                                        </p>
                                     </div>
                                 </div>
 
@@ -60,44 +68,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="btn-group" dropdown [autoClose]="false" container="body">
-                                          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-                                            This dropdown has nested submenu <span class="caret"></span>
-                                          </button>
-                                          <ul *dropdownMenu class="dropdown-menu" role="menu">
-                                            <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
-
-                                            <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
-                                              <a dropdownToggle class="dropdown-item dropdown-toggle"
-                                                 (click)="false">Hover me for nested dropdown <span class="caret"></span></a>
-                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
-                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
-                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action1</a></li>
-                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action2</a></li>
-                                              </ul>
-                                            </li>
-
-                                            <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body">
-                                              <a dropdownToggle class="dropdown-item dropdown-toggle"
-                                                 (click)="false">Hover me for nested dropdown <span class="caret"></span></a>
-                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
-                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
-                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action1</a></li>
-                                                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action2</a></li>
-                                              </ul>
-                                            </li>
-
-                                            <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Something else here</a></li>
-                                            <li class="divider dropdown-divider"></li>
-                                            <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Separated link</a></li>
-                                          </ul>
-                                        </div>
-                                    </div>
-                                </div> -->
-
 
                                 <div class="row">
                                     <div class="col-md-12 border-bottom">
@@ -644,81 +614,7 @@
 
 
             <!-- INICIO Map -->
-                <div
-                class="col-md-8 border-div-none"
-                [ngClass]="{'col-md-8': selectedTab==='tab1', 'col-md-5': selectedTab==='tab2', 'col-md-3': selectedTab==='tab3', 'border-div-none': true}" id="div2"><!-- Cambiar a col-md-5 cuando sea el segundo tab countrie -->
-                    <div class="map-header" *ngIf="selectedTab==='tab1'">
-                      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
-                      <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-compass-outline" ></i> Tutorial </button>
-                      <!-- MODAL TUTORIAL -->
-                        <template #tuto class=""  >
-                          <div class="modal-tutorial">
-                            <div class="modal-header">
-                            <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                              <tabset [vertical]="true" type="pills">
-                                <tab heading="Welcome!" [active]="tutorial[0]" (select)="selectTutorial(0)">
-                                  <img src="assets/01.png" alt="" class="modal-img">
-                                  First time exploring Global Partnership monitoring data?
-                                  Our 30-second tutorial will teach you how to use this interactive data visualization tool.
-                                </tab>
-                                <tab heading="Map Overview" [active]="tutorial[1]" (select)="selectTutorial(1)">
-                                  <img src="assets/02.png" alt="" class="modal-img">
-                                  Click and drag the mouse or use the +/- zoom buttons to change the map’s focus. You can also choose a Small State from the dropdown to zoom directly to its location.
-                                </tab>
-                                <tab heading="Comparison Screens" [active]="tutorial[2]" (select)="selectTutorial(2)">
-                                  <img src="assets/03.png" alt="" class="modal-img">
-                                  Toggle between the Map Viewer, Country Comparison and Partners Comparison tabs via the buttons on the upper left-hand side of the map
-                                </tab>
-                                <tab heading="Map Viewer Tab" [active]="tutorial[3]" (select)="selectTutorial(3)">
-                                  <img src="assets/04.png" alt="" class="modal-img">
-                                  Change the map’s display according to year and indicator on the left-hand panel, where you can also filter by various criteria. Clicking on a country will activate a pop-up displaying all available data for the selected year.
-                                </tab>
-                                <tab heading="Legend" [active]="tutorial[4]" (select)="selectTutorial(4)">
-                                  <img src="assets/05.png" alt="" class="modal-img">
-                                  On the Map Viewer tab, a legend shows the map's color key and corresponding range for each indicator. More information on what is measured by each indicator can be accessed by hovering over the legend’s information icon.
-                                </tab>
-                                <tab heading="“What does this indicator measure?” Button" [active]="tutorial[5]" (select)="selectTutorial(5)">
-                                  <img src="assets/06.png" alt="" class="modal-img">
-                                  To learn more about the purpose and methodology for a selected indicator, click on the “What does this indicator measure?” button.
-                                </tab>
-                                <tab heading="More Information and Country Profiles" [active]="tutorial[6]" (select)="selectTutorial(6)">
-                                  <img src="assets/07.png" alt="" class="modal-img">
-                                  Clicking on a country will access a pop-up which gives a full picture of monitoring results for the selected year, including a PDF Country Profile for all partner countries (2016 only).
-                                </tab>
-                                <tab heading="Country Comparison Tab" [active]="tutorial[7]" (select)="selectTutorial(7)">
-                                  <img src="assets/08.png" alt="" class="modal-img">
-                                  On the Country Comparison tab, you can compare monitoring data across two participating countries, or against aggregates by region or country context.
-                                </tab>
-                                <tab heading="Partners Comparison Tab" [active]="tutorial[8]" (select)="selectTutorial(8)">
-                                  <img src="assets/09.png" alt="" class="modal-img">
-                                  On the Partners Comparison tab, you can compare monitoring data across participating development partners, including bilateral donors, UN agencies and international organisations, or against aggregates by type of partner.
-                                </tab>
-                              </tabset>
-
-
-                              <div class="row">
-                                <div class="col-md-4">
-                                  <button type="button" class="btn btn-modal" name="button" (click)="continueTutorial()">Continue</button>
-                                </div>
-                                <div class="col-md-8 modal-logo">
-                                  <img _ngcontent-c0="" alt="" class="logo-modal panel-1" src="assets/logo-h.png">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                        </template>
-                        <!-- END MODAL TUTORIAL -->
-
-
-
-                    </div>
-
-
+                <div class="col-md-9 border-div-none" id="div2">
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
@@ -1322,3 +1218,65 @@
         <div class="circles-loader"> </div>
     </div>
 
+
+    <!-- MODAL TUTORIAL -->
+      <template #tuto class=""  >
+        <div class="modal-tutorial">
+          <div class="modal-header">
+          <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+            <tabset [vertical]="true" type="pills">
+              <tab heading="Welcome!" [active]="tutorial[0]" (select)="selectTutorial(0)">
+                <img src="assets/01.png" alt="" class="modal-img">
+                First time exploring Global Partnership monitoring data?
+                Our 30-second tutorial will teach you how to use this interactive data visualization tool.
+              </tab>
+              <tab heading="Map Overview" [active]="tutorial[1]" (select)="selectTutorial(1)">
+                <img src="assets/02.png" alt="" class="modal-img">
+                Click and drag the mouse or use the +/- zoom buttons to change the map’s focus. You can also choose a Small State from the dropdown to zoom directly to its location.
+              </tab>
+              <tab heading="Comparison Screens" [active]="tutorial[2]" (select)="selectTutorial(2)">
+                <img src="assets/03.png" alt="" class="modal-img">
+                Toggle between the Map Viewer, Country Comparison and Partners Comparison tabs via the buttons on the upper left-hand side of the map
+              </tab>
+              <tab heading="Map Viewer Tab" [active]="tutorial[3]" (select)="selectTutorial(3)">
+                <img src="assets/04.png" alt="" class="modal-img">
+                Change the map’s display according to year and indicator on the left-hand panel, where you can also filter by various criteria. Clicking on a country will activate a pop-up displaying all available data for the selected year.
+              </tab>
+              <tab heading="Legend" [active]="tutorial[4]" (select)="selectTutorial(4)">
+                <img src="assets/05.png" alt="" class="modal-img">
+                On the Map Viewer tab, a legend shows the map's color key and corresponding range for each indicator. More information on what is measured by each indicator can be accessed by hovering over the legend’s information icon.
+              </tab>
+              <tab heading="“What does this indicator measure?” Button" [active]="tutorial[5]" (select)="selectTutorial(5)">
+                <img src="assets/06.png" alt="" class="modal-img">
+                To learn more about the purpose and methodology for a selected indicator, click on the “What does this indicator measure?” button.
+              </tab>
+              <tab heading="More Information and Country Profiles" [active]="tutorial[6]" (select)="selectTutorial(6)">
+                <img src="assets/07.png" alt="" class="modal-img">
+                Clicking on a country will access a pop-up which gives a full picture of monitoring results for the selected year, including a PDF Country Profile for all partner countries (2016 only).
+              </tab>
+              <tab heading="Country Comparison Tab" [active]="tutorial[7]" (select)="selectTutorial(7)">
+                <img src="assets/08.png" alt="" class="modal-img">
+                On the Country Comparison tab, you can compare monitoring data across two participating countries, or against aggregates by region or country context.
+              </tab>
+              <tab heading="Partners Comparison Tab" [active]="tutorial[8]" (select)="selectTutorial(8)">
+                <img src="assets/09.png" alt="" class="modal-img">
+                On the Partners Comparison tab, you can compare monitoring data across participating development partners, including bilateral donors, UN agencies and international organisations, or against aggregates by type of partner.
+              </tab>
+            </tabset>
+            <div class="row">
+              <div class="col-md-4">
+                <button type="button" class="btn btn-modal" name="button" (click)="continueTutorial()">Continue</button>
+              </div>
+              <div class="col-md-8 modal-logo">
+                <img _ngcontent-c0="" alt="" class="logo-modal panel-1" src="assets/logo-h.png">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </template>
+      <!-- END MODAL TUTORIAL -->
