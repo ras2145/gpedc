@@ -284,7 +284,7 @@ export class MapService {
     }
     const tilesUrls = [];
     for (const tile of tilesUrl.tiles) {
-      tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?'));
+      tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?').split('?cache_policy=persist').join(''));
     }
     console.log("url template is ", tilesUrls);
     return tilesUrls;
@@ -463,6 +463,9 @@ export class MapService {
         this.map.addLayer(layer, 'waterway-label');
       }
     }
+  }
+  filterNotNull(column: string) {
+    this._map.setFilter('country-fills', ['has', column]);
   }
 }
 
