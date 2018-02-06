@@ -76,12 +76,12 @@ img.logo.panel-1 {
 }
 
 .navbar {
-  padding: 0px;
-  height: 52px;
-  color: #fff;
-  position: fixed;
-  width: 100%;
-  z-index: 8;
+    padding: 0px;
+    height: 52px;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 8;
 }
 
 .nav-row {
@@ -818,7 +818,7 @@ td.table-title-left {
 
 .table-subtible p {
     color: #000;
-    padding: 0px 7px 0px 20px;
+    padding: 0px 18px 0px 20px;
     margin-bottom: 0px;
     text-align: left;
 }
@@ -2067,9 +2067,11 @@ body::-webkit-scrollbar-thumb {
 .bg-color-nav .popover-body {
     width: 220px;
 }
+
 .result-subtitle .popover-body {
     width: 220px;
 }
+
 .result-subtitle-one .popover-body {
     width: 220px;
 }

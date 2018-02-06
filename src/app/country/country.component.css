@@ -118,6 +118,7 @@
 
 .links {
     width: 100%;
+    padding-left: 56px;
 }
 
 
@@ -128,6 +129,8 @@
     font-weight: 600;
     text-decoration: none;
     color: #4d4d4d;
+    margin-left: 11px;
+    margin-right: 11px;
 }
 
 .link-a span {
@@ -209,6 +212,10 @@
     font-size: 21px;
 }
 
+.space-letter {
+    letter-spacing: 1px;
+}
+
 .boder-table {
     padding-top: 36px;
     padding-left: 56px;
@@ -220,13 +227,56 @@
     border-left: solid 1px rgba(151, 151, 151, 0.07);
     border-right: solid 1px rgba(151, 151, 151, 0.07);
     height: 60px;
+    letter-spacing: 1px;
+}
+
+.row.row-select {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .row-select {
     height: 50px;
     border-left: solid 1px rgba(151, 151, 151, 0.07);
     border-right: solid 1px rgba(151, 151, 151, 0.07);
+    box-shadow: inset -1px 0px 1px 0px rgba(0, 0, 0, 0.08);
     margin-top: -17px;
     padding-left: 44px;
     padding-top: 10px;
+}
+
+.back-title {
+    background-color: #ebebeb;
+    height: 80px;
+}
+
+.background-11 {
+    background-color: #ebebeb;
+}
+
+.bg-white {
+    background-color: rgba(235, 235, 235, 0.26);
+    border-right: solid 1px rgba(151, 151, 151, 0.07);
+    box-shadow: inset -1px 0px 1px 0px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.pos-default {
+    position: absolute;
+    top: 23px;
+    right: 10px;
+}
+
+.pos-default-2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.table-title-left {
+    position: relative;
+}
+
+.table-subtible {
+    height: 56px;
 }
