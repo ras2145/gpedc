@@ -749,6 +749,7 @@ export class ViewerComponent implements OnInit {
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
     if (this.selectedCountry) {
+      console.log('bapesofjoipsadpof');
       const isCountryDac = this.isDac(this.selectedCountry);
       for (const i of this.model.year.categories) {
         let sw = false;
