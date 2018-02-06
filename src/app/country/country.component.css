@@ -1,39 +1,108 @@
+/* Estilos para reinicio */
+
+.float-r {
+    float: right;
+}
+
+.float-l {
+    float: left;
+}
+
+.top-10 {
+    margin-top: 10px;
+}
+
+.top-42 {
+    margin-top: 42px;
+}
+
+
+/* Estilos para Contry Page */
+
+.content-main {
+    width: 100%;
+}
+
+.side-l-main,
+.side-r-main {
+    height: 220px;
+}
+
+.side-l-main {
+    width: 25%;
+    float: left;
+    padding: 16px 19px;
+}
+
+.side-r-main {
+    width: 75%;
+    float: right;
+    padding: 16px 0px;
+}
+
 .subtitle {
     font-size: 11px;
     color: #4d4d4d
 }
 
-.indicator {
+.year-indicator,
+.select-indicator {
     font-size: 11px;
     color: rgba(40, 40, 40, 0.56);
+    display: block;
+    height: 15px;
 }
 
-.table-compare {
-    padding-top: 26px;
-    padding-left: 75px;
-}
-
-.btn-year-style {
-    padding: 4px 27px;
-    border-radius: 2px;
-    box-sizing: border-box;
-    background-color: transparent;
-    border-radius: 2px;
-    border: solid 1px rgba(117, 117, 117, 0.59);
+.title-select {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 500;
     color: #4d4d4d;
-    text-decoration: none;
-    font-size: 11px;
 }
 
+.title-select span {
+    display: block;
+    border-bottom: 2px solid #ea6239;
+    text-align: center;
+    line-height: 2.19;
+}
+
+.btn-year-style,
 .btn-year-style.active {
     padding: 4px 27px;
     border-radius: 2px;
     box-sizing: border-box;
-    background-color: #343c53;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
-    color: #fff;
     text-decoration: none;
     font-size: 11px;
+}
+
+
+/* Boton año normal */
+
+.radio-btn input[type="radio"] {
+    display: none;
+}
+
+.radio-btn label {
+    text-align: center;
+    width: 83px;
+    height: 25px;
+    padding-top: 4px;
+    color: #282828;
+    background-color: #fafafa;
+    border-radius: 2px;
+    border: solid 1px rgba(117, 117, 117, 0.59);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+
+/* Boton año activo */
+
+.radio-btn input[type="radio"]:checked+label {
+    background-color: #343c53 !important;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
+    color: #fff !important;
 }
 
 .btn-year-icon {
@@ -44,33 +113,15 @@
     border-radius: 2px;
 }
 
-.float-r {
-    float: right;
-}
 
-.float-l {
-    float: left;
-}
-
-.clear {
-    clear: both;
-}
+/* Estilos link cabecera lado derecho */
 
 .links {
     width: 100%;
 }
 
-.no-padding-default {
-    padding-left: 0px;
-    padding-right: 0px;
-}
 
-.top-10 {
-    margin-top: 10px;
-}
-
-
-/* Estilos por defevto links */
+/* link default */
 
 .link-a {
     font-size: 11px;
@@ -79,15 +130,12 @@
     color: #4d4d4d;
 }
 
-
-/* Ocultamos el contenido para solo mostrar el icono */
-
 .link-a span {
     display: none;
 }
 
 
-/*Links activo ademas mostramos el texto*/
+/*Links activo con texto*/
 
 .link-a.active {
     display: inline-block;
@@ -104,43 +152,53 @@
     display: inline-block;
 }
 
-.height-default {
-    /* background-color: #f00; */
-    height: 210px;
+
+/* Estilos fila tabla */
+
+.row-table-title,
+.row-table {
+    display: table;
+    width: 100%;
 }
 
-.table-title {
-    font-size: 11px;
-    height: 80px;
-    width: 303px;
-    vertical-align: middle;
-    padding: 16px 19px;
-}
-
-.table-title span {
-    font-weight: 700;
-}
-
-.table-subtitle {
-    font-size: 11px;
-    height: 80px;
-    vertical-align: middle;
-    padding: 16px 19px;
-}
-
-.table-number td {
-    vertical-align: middle;
-    background-color: rgba(235, 235, 235, 0.26);
-}
-
-.separator {
-    width: 100px;
-}
-
-.color-row {
+.row-table-title {
     background-color: #ebebeb;
 }
 
-.container-fluid>.row {
-    height: initial;
+.row-table {
+    background-color: rgba(235, 235, 235, 0.26);
+}
+
+
+/* Estilos columna tabla */
+
+.col-table {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    height: 80px;
+    padding: 16px 19px;
+    font-size: 11px;
+}
+
+.r-boder {
+    border-right: 1px solid rgba(151, 151, 151, 0.07);
+    box-shadow: inset -1px 0px 1px 0px rgba(0, 0, 0, 0.08);
+}
+
+.col-table span {
+    font-weight: 700;
+}
+
+.col-table:first-child {
+    width: 25%;
+}
+
+.icon-table {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color: rgba(40, 40, 40, 0.56);
 }
