@@ -371,43 +371,44 @@ select.form-control:not([size]):not([multiple]){
 }
 /* - - - - - - - - - - - - - - -- - ESTLIOS para card del mapa - - - - - - --  - --  - - - - - -  - - - - */
 .card-map{
-    position: absolute;
-    top: 60px;
-    right: 25px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px #ccc;
-    width: 200px;
-    /*height: 320px;*/
-    z-index: 500;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  background-color: #fff;
+  border-radius: 2px;
+  width: 242px;
+  z-index: 500;
 }
     .head-card p{
         padding: 0px;
         margin: 0px;
-        color: #F27844;
+        color: #4a4a4a;
         font-weight: 600;
         /*padding-left: 20px;*/
         padding: 0px 20px;
+        font-size: 21px;
     }
     .head-card p:nth-child(1){
         padding-top: 10px;
         font-size: 18px;
-        color: #F27844;
+        color: #4a4a4a;
         line-height: 20px;
         padding-bottom: 10px;
+        font-size: 21px;
     }
     .head-card p:nth-child(2){
-        font-size: 10px;
+        font-size: 11px;
         padding-top: 3px;
-        color: #FDC333;
+        color: #4a4a4a;
         padding-bottom: 7px;
         margin-top: -5px;
     }
     .number-card{
-        background-color: #F7F7F7;
-        padding-left: 30px;
-        padding-right: 30px;
-        min-height: 50px;
+      background-color: #Fafafa;
+      padding-left: 11px;
+      padding-right: 11px;
+      min-height: 50px;
+      display: inline-flex;
     }
         .number-card p{
             padding: 0px;
@@ -415,26 +416,34 @@ select.form-control:not([size]):not([multiple]){
             margin-bottom: -5px;
         }
         .number-card .left-number{
-            float: left;
+            /* float: left; */
             min-height: 50px;
+            width: 107px;
+            background: #fff;
+            margin-right: 6px;
+            padding: 5px;
+            margin-top: 5px;
         }
         .number-card .right-number{
-            float: right;
+            /* float: right; */
             min-height: 50px;
+            width: 107px;
+            background: #fff;
+            padding: 5px;
+            margin-top: 5px;
         }
         .number-card .left-number p:nth-child(1),
         .number-card .right-number p:nth-child(1){
-            font-size: 13px;
-            padding-top: 7px;
-            font-weight: bold;
+            font-size: 11px;
+            font-weight: 600;
             text-align: center;
-            inline-size: 70px;
+            color: #757575;
         }
         .number-card .left-number p:nth-child(2),
         .number-card .right-number p:nth-child(2){
-            font-size: 11px;
+            font-size: 36px;
             color: #F27844;
-            font-weight: bold;
+            font-weight: 300;
             padding-top: 5px;
             text-align: center;
         }
@@ -442,11 +451,12 @@ select.form-control:not([size]):not([multiple]){
             padding-left: 20px;
             padding-right: 20px;
             padding-bottom: 17px;
+            background: #fafafa;
         }
         .content-card p{
             padding-top: 15px;
             text-align: left;
-            font-size: 13px;
+            font-size: 12px;
             /*max-height: 125px;*/
             margin-bottom: 0px;
         }
@@ -704,9 +714,9 @@ td.table-title-left{
 .tab-map{
   position: absolute;
   z-index: 8;
-  bottom: 0px;
+  bottom: 40px;
   padding: 0px 7px;
-  /*width: 630px;*/
+  left: 50px;
 }
 .tab-map .nav-tabs .nav-link {
   border: 1px solid transparent;
@@ -716,17 +726,21 @@ td.table-title-left{
   color: #5d5d5d;
   margin-right: 4px;
   padding: 6px 0px;
-  width: 40px;
+  width: 50px;
   text-align: center;
+  margin-bottom: -2px;
+  border-radius: 2px 2px 0px 0px;
 }
 
 .tab.map .nav-tabs .nav-item.show .nav-link, .tab-map .nav-tabs .nav-link.active {
-  color: #fff;
-  background-color: #f07848;
-  /*border-color: #ddd #ddd #fff;*/
+  color: #282828;
+  background-color: #fff;
+  /* border-color: #ddd #ddd #fff; */
   width: 100%;
   padding-left: 5px;
   padding-right: 5px;
+  border-radius: 2px 2px 0px 0px;
+  border-top: 3px solid #f17846;
 }
 .tab-map .tab-content>.active {
   display: block;
@@ -736,11 +750,10 @@ td.table-title-left{
   font-size: 13px;
   width: 587px;
   height: 240px;
-  /*overflow-x: auto;*/
   padding-right: 0px;
   padding-bottom: 25px;
-  border-radius: 0px 5px 0px 0px;
   padding-top: 22px;
+  border-radius: 2px;
 }
 .tab.map .nav-tabs .nav-link:focus, .tab-map .nav-tabs .nav-link:hover {
   color: #fff;
@@ -1051,11 +1064,10 @@ select-dropdown li.selected.highlighted {
   z-index: 1;
   background-color: #fff;
   right: 23px;
-  border-radius: 5px;
-  padding: 4px 5px 4px 5px;
-  box-shadow: 1px 1px 10px #ccc;
+  border-radius: 2px;
+  padding: 5px 5px 5px 5px;
   font-size: 14px;
-  max-width: 180px;
+  width: 242px;
 }
 .map-legend table{
     width: 100%;
@@ -1272,13 +1284,6 @@ select-dropdown li.selected.highlighted {
   font-size: 10px;
   font-style: italic;
   /* margin-bottom: 75px; */
-}
-.text-line{
-  line-height: 11px;
-  margin-top: 4px !important;
-}
-.line-2016{
-  line-height: 2;
 }
 .modal-contet{
   font-size: 13px;
@@ -1575,6 +1580,7 @@ border: width border-style color;
   color: #fff;
   font-size: 12px;
   margin-right: 5px;
+  cursor: pointer;
 }
 .btn-md{
   background: #fff;
@@ -1582,5 +1588,34 @@ border: width border-style color;
   height: 36px;
   padding: 0px;
   margin-right: 5px;
+  cursor: pointer;
+}
 
+/*Scroll perzonalizado*/
+body::-webkit-scrollbar{
+    width: 7px;
+    /* background: #000; */
+}
+body::-webkit-scrollbar-thumb{
+    background: rgba(241,120,70,0.5);
+    border-radius: 5px;
+}
+.filtros-tab::-webkit-scrollbar{
+    width: 7px;
+    /* background: #000; */
+}
+.filtros-tab::-webkit-scrollbar-thumb{
+    background: rgba(241,120,70,0.5);
+    border-radius: 5px;
+}
+.tab-content p::-webkit-scrollbar{
+    width: 7px;
+    /* background: #000; */
+}
+.tab-content p::-webkit-scrollbar-thumb{
+    background: rgba(241,120,70,0.5);
+    border-radius: 5px;
+}
+.img-md{
+  margin-right: 10px;
 }

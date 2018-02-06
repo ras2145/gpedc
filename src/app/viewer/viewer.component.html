@@ -608,7 +608,7 @@
             <!-- INICIO Map -->
                 <div class="col-md-9 border-div-none" id="div2">
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
-                      <button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png"> Map Viewer</button>
+                      <button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md"> Map Viewer</button>
                       <button type="button" name="button" class="btn btn-md"><img src="assets/001.png"></button>
                       <button type="button" name="button" class="btn btn-md"><img src="assets/002.png"></button>
                       <button type="button" name="button" class="btn btn-md"><img src="assets/003.png"></button>
@@ -640,7 +640,8 @@
                     </div>
 
                     <!-- CARD map -->
-                    <div class="card-map" *ngIf="selectedTab==='tab1' && countryName !== 'Country'">
+                    <!-- *ngIf="selectedTab==='tab1' && countryName !== 'Country'" -->
+                    <div class="card-map">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="head-card">
@@ -656,10 +657,10 @@
                                         <ng-template #elseBlock1><p>2014</p></ng-template>
                                     </div>
                                     <div class="right-number">
-                                        <p class="text-line">{{getIndicatorValue(countryName, '2016')}}</p>
+                                        <p>{{getIndicatorValue(countryName, '2016')}}</p>
                                         <div *ngIf="model.year.year === '2016'; then thenBlock2 else elseBlock2"></div>
-                                        <ng-template #thenBlock2><p class="line-2016"><u>2016</u></p></ng-template>
-                                        <ng-template #elseBlock2><p class="line-2016">2016</p></ng-template>
+                                        <ng-template #thenBlock2><p><u>2016</u></p></ng-template>
+                                        <ng-template #elseBlock2><p>2016</p></ng-template>
                                     </div>
                                 </div>
 
