@@ -960,6 +960,13 @@ td.table-title-left{
   right: 5px;
   top: 0px;
 }
+.dropdown-caret-01 {
+  float: right;
+  position: absolute;
+  right: 5px;
+  font-size: 20px;
+  top: 4px;
+}
 .dropdown-toggle::after{
     color: transparent;
 }
@@ -1121,17 +1128,16 @@ select-dropdown li.selected.highlighted {
 
 
 /*MAP BUTTONS*/
-.map-btn{
-  margin-left: 5px;
-}
 .map-button{
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
   background: #fff;
-  border: 1px solid #e7e7e7;
   color: #7d7d7d;
-  padding: 4px;
+  padding: 0px;
   cursor: pointer;
+  border-radius: 2px;
+  font-size: 22px;
+  margin-right: 10px;
 }
 .map-button:hover, .map-button:focus, .map-button:active {
     color: #f07848;
@@ -1143,19 +1149,25 @@ select-dropdown li.selected.highlighted {
 .map-option{
   z-index: 500;
   position: absolute;
-  top: 58px;
+  top: 15px;
+  left: 75px;
 }
 .map-option .dropdown-toggle::after{
   color: #fff !important;
 }
 .drop-map{
-  background: #f07848 !important;
+  background: #fff !important;
   color: #fff;
   height: 32px;
-  font-size: 14px;
+  font-size: 12px;
   padding: 0px 10px !important;
   cursor: pointer;
   border: none;
+  width: 240px;
+  height: 36px;
+  border-radius: 2px;
+  font-size: 12px;
+  color: #757575;
 }
 .map-drop .dropdown-menu{
   min-width: 100% !important;
@@ -1165,13 +1177,14 @@ select-dropdown li.selected.highlighted {
   width: 260px;
 }
 .reset-map{
-  background: #f07848 !important;
-  color: #fff;
-  height: 31.8px;
-  font-size: 14px;
+  background: #fff !important;
+  color: #757575;
+  height: 36px;
+  font-size: 12px;
   padding: 0px 10px !important;
   cursor: pointer;
   border: none;
+  border-radius: 2px;
 }
 .acordion .card-header:first-child {
   background-color: rgba(150, 163, 171, 0.15);
@@ -1548,4 +1561,26 @@ border: width border-style color;
 }
 .input-group-text input[type="checkbox"].btn-filters-selected:focus{
  outline: none;
+}
+
+
+
+/* NEW STYLES */
+.btn-viewer{
+  width: 153px;
+  height: 36px;
+  border-radius: 2px;
+  background-color: rgba(26, 35, 61, 1);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.21);
+  color: #fff;
+  font-size: 12px;
+  margin-right: 5px;
+}
+.btn-md{
+  background: #fff;
+  width: 36px;
+  height: 36px;
+  padding: 0px;
+  margin-right: 5px;
+
 }
