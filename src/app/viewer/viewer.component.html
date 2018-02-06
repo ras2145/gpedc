@@ -831,11 +831,11 @@
             <!-- INICIO Map -->
                 <div class="col-md-9 border-div-none" id="div2">
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
-                      <button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md"> Map Viewer</button>
-                      <button type="button" name="button" class="btn btn-md"><img src="assets/001.png"></button>
-                      <button type="button" name="button" class="btn btn-md"><img src="assets/002.png"></button>
-                      <button type="button" name="button" class="btn btn-md"><img src="assets/003.png"></button>
-                      <button type="button" name="button" class="btn btn-md"><img src="assets/004.png"></button>
+                      <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md"> Map Viewer</button></a>
+                        <a [routerLink]="['/country']"><button type="button" name="button" class="btn btn-md"><img src="assets/001.png"></button></a>
+                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/002.png"></button></a>
+                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/003.png"></button></a>
+                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/004.png"></button></a>
                       <br><br>
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
@@ -864,7 +864,7 @@
 
                     <!-- CARD map -->
                     <!-- *ngIf="selectedTab==='tab1' && countryName !== 'Country'" -->
-                    <div class="card-map">
+                    <div class="card-map" *ngIf="countryName !== 'Country-not'">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="head-card">
