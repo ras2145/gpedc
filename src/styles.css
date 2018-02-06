@@ -1602,7 +1602,7 @@ select-dropdown li.selected.highlighted {
 .disclaimer {
     font-size: 10px;
     font-style: italic;
-    /* margin-bottom: 75px; */
+    margin-bottom: 10px;
 }
 
 .modal-contet {
