@@ -1,30 +1,502 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- Contenedor general -->
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <div class="row nav-row">
-    <div class="col-md-3 bg-color-nav">
-      <a class="navbar-brand"> <img src="assets/logo-01.png" alt="" height="35px"> </a>
-      <i class="mdi mdi-information"
-          popover="On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
-            Available data may also be filtered by region, income group or country context."
-          placement="right"
-          triggers="mouseenter:mouseleave">
-      </i>
-    </div>
-    <div class="col-m-8 col-wd">
-      <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
-    </div>
-    <div class="col-md-1 bg-color-nav">
-      <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-play" ></i> Tutorial </button>
-    </div>
-  </div>
-</nav>
+
+<!-- NAVBAR -->
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <div class="row nav-row">
+        <div class="col-md-3 bg-color-nav">
+          <a class="navbar-brand"> <img src="assets/favicon.png" alt="" height="35px">
+            <label class="global-p">Global Partnership</label>
+            <br>
+            <label class="for-p">for effective development cooperation</label>
+          </a>
+          <i class="mdi mdi-information i-p"
+              popover="Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
+                Available data may also be filtered by region, income group or country context."
+              placement="right">
+              <!-- triggers="mouseenter:mouseleave" -->
+          </i>
+        </div>
+        <div class="col-m-8 col-wd">
+          <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
+        </div>
+        <div class="col-md-1 bg-color-nav">
+          <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-play" ></i> Tutorial </button>
+        </div>
+      </div>
+    </nav>
+<!-- NAVBAR END -->
 
     <div class="container-fluid body-height">
         <div class="row">
             <!-- INICIO Sidebar -->
                 <div class="col-md-3 padding-left-none with-scroll" id="div1">
                   <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
+                    <div class="tab-viewer">
+                      <tabset>
+                        <tab heading="Development Partner">
+                          <div class="result-container">
+                              <div class="row padding-top-background">
+                                  <div class="col-md-12"><!-- col-md-4 -->
+                                      <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
+                                          <i class="mdi mdi-information"
+                                              popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
+                                              placement="right"
+                                              triggers="mouseenter:mouseleave">
+                                          </i>
+                                      </p>
+                                  </div>
+
+                                  <div class="col-md-12 btn-year">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-9">
+                                        <div class="radio">
+                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
+                                                {{title.year}}
+                                            </label>
+                                            <label class="label-md">2016</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3 text-right margin-top-btn">
+                                          <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                  <div class="col-md-12 border-bottom">
+                                      <div class="form-group style-select">
+                                          <p for="inputState" class="result-subtitle space-indicator"><span class="mdi mdi-crosshairs-gps"></span> Indicator
+                                              <i class="mdi mdi-information"
+                                                  popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                                                  placement="right"
+                                                >
+                                                  <!-- triggers="mouseenter:mouseleave" -->
+                                              </i>
+                                          </p>
+                                          <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                  <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.category.label}}</span>
+                                                  <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select an indicator</span>
+                                                  <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
+                                                  <li role="menuitem">
+                                                      <a class="dropdown-item contenido-dropdown" (click)="unselectCategory()">
+                                                          Select an indicator
+                                                      </a>
+                                                  </li>
+                                                  <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
+                                                      <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsInvalidSelection(category) && selectCategory(category)">
+                                                          {{category.label}}
+                                                      </a>
+                                                      <!--ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
+                                                          <li role="menuitem" *ngFor="let subcategory of category.subcategories">
+                                                              <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)"> {{subcategory.label}}</a>
+                                                          </li>
+                                                      </ul-->
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                          <label *ngIf="subDropdown" for="inputState" class="result-subtitle space-indicator">Sub Indicator
+                                              <!-- <i class="mdi mdi-information"
+                                                  popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i> -->
+                                          </label>
+                                          <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown container="body">
+                                            <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                              <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : 'Select Sub-Indicator'}}</span>
+                                              <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+                                              <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                            </button>
+                                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <li role="menuitem">
+                                                  <a class="dropdown-item contenido-dropdown" (click)="unselectSubCategory()">
+                                                      Select a Sub-Indicator
+                                                  </a>
+                                                </li>
+                                                <li role="menuitem" *ngFor="let subcategory of subDropdown.subcategories">
+                                                  <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(subDropdown, subcategory)"> {{subcategory.label}}</a>
+                                                </li>
+                                            </ul>
+                                          </div>
+                                          <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="setTrueTab();openModal(template)">What does this indicator measure?</button>
+                                      </div>
+                                  </div>
+                              </div>
+
+                            <div class="form-group">
+                                <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:
+                                    <i class="mdi mdi-information"
+                                        popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
+                                        placement="right"
+                                        triggers="mouseenter:mouseleave">
+                                    </i>
+                                </p>
+                            </div>
+
+                            <div class="form-group style-select">
+                                <label for="inputState" class="result-subtitle width-popUp">Region
+                                    <!-- <i class="mdi mdi-information"
+                                        popover="The following regional groupings are based on the OECD classification."
+                                        placement="right"
+                                        triggers="mouseenter:mouseleave">
+                                      </i> -->
+                                </label>
+                                <div class="btn-group btn-dropdown" dropdown>
+                                  <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                    <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
+                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                  </button>
+                                  <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                    <li role="menuitem" *ngFor="let region of regions">
+                                        <a class="dropdown-item style-a-default" (click)="selectRegion(region)">
+                                            {{region.label}}
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                              </div>
+
+
+                                      <div class="form-group style-select width-popUp">
+                                          <label for="inputState" class="result-subtitle">Income Group
+                                              <!-- <i class="mdi mdi-information"
+                                                  popover="The following income groupings are based on the 2017 World Bank income classification."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i> -->
+                                          </label>
+                                          <div class="btn-group btn-dropdown" dropdown>
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                  <span class="font-selet-dropdown content-select-default">{{model.incomeGroup.label}}</span>
+                                                  <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                                  <li role="menuitem" *ngFor="let incomeGroup of incomeGroups">
+                                                      <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectIncomeGroup(incomeGroup)">
+                                                          {{incomeGroup.label}}
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+
+
+                                      <div class="form-group style-select context-pop">
+                                          <label for="inputState" class="result-subtitle">Country context
+                                              <!-- <i class="mdi mdi-information"
+                                                  popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i> -->
+                                          </label>
+                                          <div class="btn-group btn-dropdown" dropdown>
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                  <span class="font-selet-dropdown content-select-default">{{model.countryContext.label}}</span>
+                                                  <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                                  <li role="menuitem" *ngFor="let countryContext of countryContexts">
+                                                      <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectCountryContext(countryContext)">
+                                                          {{countryContext.label}}
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                      <br>
+                              <div class="row padding-top-line">
+                                  <div class="col-md-12">
+                                      <p class="result-subtitle-one">DEVELOPMENT PARTNER
+                                          <i class="mdi mdi-information"
+                                              popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
+                                              placement="top"
+                                              triggers="mouseenter:mouseleave">
+                                          </i>
+                                        </p>
+                                        <span class="span-md">In alphabetical order</span>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-12 acordion-md">
+                                  <!-- ACORDION -->
+                                  <div class="acordion">
+                                    <accordion>
+                                      <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
+                                        <div accordion-heading class="clearfix">
+                                          {{partnerGroup.name}}
+                                          <span class="float-right pull-right">
+                                            <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
+                                            <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
+                                          </span>
+                                        </div>
+                                        <table class="table table-sm">
+                                          <tbody>
+                                            <tr *ngFor="let partner of partnerGroup.partners">
+                                              <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
+                                              <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
+                                              <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </accordion-group>
+                                    </accordion>
+                                      <br>
+                                  </div>
+                                  <!-- ACORDION -->
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-12 disclaimer">
+                                  * The boundaries and names shown and the designations used on this map
+                                  do not imply official endorsement or acceptance by the Global Partnership,
+                                  the United Nations and its affiliated entities or the Organisation for
+                                  Economic Co-operation and Development.
+                                </div>
+                              </div>
+
+                          </div>
+                        </tab>
+                        <tab heading="Partner Country">
+                          <div class="result-container">
+                              <div class="row padding-top-background">
+                                  <div class="col-md-12"><!-- col-md-4 -->
+                                      <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
+                                          <i class="mdi mdi-information"
+                                              popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
+                                              placement="right"
+                                              triggers="mouseenter:mouseleave">
+                                          </i>
+                                      </p>
+                                  </div>
+
+                                  <div class="col-md-12 btn-year">
+                                    <div class="row no-gutters">
+                                      <div class="col-md-9">
+                                        <div class="radio">
+                                            <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
+                                                <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
+                                                {{title.year}}
+                                            </label>
+                                            <label class="label-md">2016</label>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3 text-right margin-top-btn">
+                                          <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                  <div class="col-md-12 border-bottom">
+                                      <div class="form-group style-select">
+                                          <p for="inputState" class="result-subtitle space-indicator"><span class="mdi mdi-crosshairs-gps"></span> Indicator
+                                              <i class="mdi mdi-information"
+                                                  popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i>
+                                          </p>
+                                          <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                  <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.category.label}}</span>
+                                                  <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select an indicator</span>
+                                                  <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
+                                                  <li role="menuitem">
+                                                      <a class="dropdown-item contenido-dropdown" (click)="unselectCategory()">
+                                                          Select an indicator
+                                                      </a>
+                                                  </li>
+                                                  <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
+                                                      <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsInvalidSelection(category) && selectCategory(category)">
+                                                          {{category.label}}
+                                                      </a>
+                                                      <!--ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
+                                                          <li role="menuitem" *ngFor="let subcategory of category.subcategories">
+                                                              <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)"> {{subcategory.label}}</a>
+                                                          </li>
+                                                      </ul-->
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                          <label *ngIf="subDropdown" for="inputState" class="result-subtitle space-indicator">Sub Indicator
+                                              <!-- <i class="mdi mdi-information"
+                                                  popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i> -->
+                                          </label>
+                                          <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown container="body">
+                                            <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                              <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : 'Select Sub-Indicator'}}</span>
+                                              <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+                                              <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                            </button>
+                                            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                                                <li role="menuitem">
+                                                  <a class="dropdown-item contenido-dropdown" (click)="unselectSubCategory()">
+                                                      Select a Sub-Indicator
+                                                  </a>
+                                                </li>
+                                                <li role="menuitem" *ngFor="let subcategory of subDropdown.subcategories">
+                                                  <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(subDropdown, subcategory)"> {{subcategory.label}}</a>
+                                                </li>
+                                            </ul>
+                                          </div>
+                                          <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="setTrueTab();openModal(template)">What does this indicator measure?</button>
+                                      </div>
+                                  </div>
+                              </div>
+
+                            <div class="form-group">
+                                <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:
+                                    <i class="mdi mdi-information"
+                                        popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
+                                        placement="right"
+                                        triggers="mouseenter:mouseleave">
+                                    </i>
+                                </p>
+                            </div>
+
+                            <div class="form-group style-select">
+                                <label for="inputState" class="result-subtitle width-popUp">Region
+                                    <!-- <i class="mdi mdi-information"
+                                        popover="The following regional groupings are based on the OECD classification."
+                                        placement="right"
+                                        triggers="mouseenter:mouseleave">
+                                      </i> -->
+                                </label>
+                                <div class="btn-group btn-dropdown" dropdown>
+                                  <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                    <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
+                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                  </button>
+                                  <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                    <li role="menuitem" *ngFor="let region of regions">
+                                        <a class="dropdown-item style-a-default" (click)="selectRegion(region)">
+                                            {{region.label}}
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                              </div>
+
+
+                                      <div class="form-group style-select width-popUp">
+                                          <label for="inputState" class="result-subtitle">Income Group
+                                              <!-- <i class="mdi mdi-information"
+                                                  popover="The following income groupings are based on the 2017 World Bank income classification."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i> -->
+                                          </label>
+                                          <div class="btn-group btn-dropdown" dropdown>
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                  <span class="font-selet-dropdown content-select-default">{{model.incomeGroup.label}}</span>
+                                                  <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                                  <li role="menuitem" *ngFor="let incomeGroup of incomeGroups">
+                                                      <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectIncomeGroup(incomeGroup)">
+                                                          {{incomeGroup.label}}
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+
+
+                                      <div class="form-group style-select context-pop">
+                                          <label for="inputState" class="result-subtitle">Country context
+                                              <!-- <i class="mdi mdi-information"
+                                                  popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
+                                                  placement="right"
+                                                  triggers="mouseenter:mouseleave">
+                                              </i> -->
+                                          </label>
+                                          <div class="btn-group btn-dropdown" dropdown>
+                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                                                  <span class="font-selet-dropdown content-select-default">{{model.countryContext.label}}</span>
+                                                  <span class="dropdown-caret mdi mdi-chevron-down"></span>
+                                              </button>
+                                              <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+                                                  <li role="menuitem" *ngFor="let countryContext of countryContexts">
+                                                      <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectCountryContext(countryContext)">
+                                                          {{countryContext.label}}
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                      <br>
+                              <div class="row padding-top-line">
+                                  <div class="col-md-12">
+                                      <p class="result-subtitle-one">DEVELOPMENT PARTNER
+                                          <i class="mdi mdi-information"
+                                              popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
+                                              placement="top"
+                                              triggers="mouseenter:mouseleave">
+                                          </i>
+                                        </p>
+                                        <span class="span-md">In alphabetical order</span>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-12 acordion-md">
+                                  <!-- ACORDION -->
+                                  <div class="acordion">
+                                    <accordion>
+                                      <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
+                                        <div accordion-heading class="clearfix">
+                                          {{partnerGroup.name}}
+                                          <span class="float-right pull-right">
+                                            <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
+                                            <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
+                                          </span>
+                                        </div>
+                                        <table class="table table-sm">
+                                          <tbody>
+                                            <tr *ngFor="let partner of partnerGroup.partners">
+                                              <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
+                                              <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
+                                              <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </accordion-group>
+                                    </accordion>
+                                      <br>
+                                  </div>
+                                  <!-- ACORDION -->
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-12 disclaimer">
+                                  * The boundaries and names shown and the designations used on this map
+                                  do not imply official endorsement or acceptance by the Global Partnership,
+                                  the United Nations and its affiliated entities or the Organisation for
+                                  Economic Co-operation and Development.
+                                </div>
+                              </div>
+
+                          </div>
+                        </tab>
+                      </tabset>
+                    </div>
                     <!-- Contenedor tab -->
                     <tabset type="pills">
 
@@ -37,235 +509,6 @@
                                 </nav>
                             </template>
                             <!-- BOTON TAB VIEW -->
-
-                            <div class="result-container">
-                                <div class="row padding-top-background">
-                                    <div class="col-md-12"><!-- col-md-4 -->
-                                        <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
-                                            <i class="mdi mdi-information"
-                                                popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
-                                                placement="right"
-                                                triggers="mouseenter:mouseleave">
-                                            </i>
-                                        </p>
-                                    </div>
-
-                                    <div class="col-md-12 btn-year">
-                                      <div class="row no-gutters">
-                                        <div class="col-md-9">
-                                          <div class="radio">
-                                              <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
-                                                  <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
-                                                  {{title.year}}
-                                              </label>
-                                              <label class="label-md">2016</label>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-3 text-right margin-top-btn">
-                                            <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
-                                        </div>
-                                      </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12 border-bottom">
-                                        <div class="form-group style-select">
-                                            <p for="inputState" class="result-subtitle space-indicator"><span class="mdi mdi-crosshairs-gps"></span> Indicator
-                                                <i class="mdi mdi-information"
-                                                    popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
-                                                </i>
-                                            </p>
-                                            <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
-                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.category.label}}</span>
-                                                    <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select an indicator</span>
-                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
-                                                </button>
-                                                <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
-                                                    <li role="menuitem">
-                                                        <a class="dropdown-item contenido-dropdown" (click)="unselectCategory()">
-                                                            Select an indicator
-                                                        </a>
-                                                    </li>
-                                                    <li role="menuitem" *ngFor="let category of model.year.categories" dropdown placement="right" container="body" (mouseover)="onIndicatorOver(category)" [isOpen]="openedIndicator == category.id">
-                                                        <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsInvalidSelection(category) && selectCategory(category)">
-                                                            {{category.label}}
-                                                        </a>
-                                                        <!--ul id="second-dropdown" *dropdownMenu class="dropdown-menu" role="menu" [hidden]="category.subcategories.length == 0">
-                                                            <li role="menuitem" *ngFor="let subcategory of category.subcategories">
-                                                                <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(category, subcategory)"> {{subcategory.label}}</a>
-                                                            </li>
-                                                        </ul-->
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <label *ngIf="subDropdown" for="inputState" class="result-subtitle space-indicator">Sub Indicator
-                                                <!-- <i class="mdi mdi-information"
-                                                    popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
-                                                </i> -->
-                                            </label>
-                                            <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown container="body">
-                                              <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                <span *ngIf="indicator === false"class="font-selet-dropdown content-select-default">{{model.subcategory ? model.subcategory.label : 'Select Sub-Indicator'}}</span>
-                                                <span *ngIf="indicator === true"class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
-                                                <span class="dropdown-caret mdi mdi-chevron-down"></span>
-                                              </button>
-                                              <ul *dropdownMenu class="dropdown-menu" role="menu">
-                                                  <li role="menuitem">
-                                                    <a class="dropdown-item contenido-dropdown" (click)="unselectSubCategory()">
-                                                        Select a Sub-Indicator
-                                                    </a>
-                                                  </li>
-                                                  <li role="menuitem" *ngFor="let subcategory of subDropdown.subcategories">
-                                                    <a class="dropdown-item contenido-dropdown" (click)="selectSubcategory(subDropdown, subcategory)"> {{subcategory.label}}</a>
-                                                  </li>
-                                              </ul>
-                                            </div>
-                                            <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn" (click)="setTrueTab();openModal(template)">What does this indicator measure?</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                              <div class="form-group">
-                                  <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:
-                                      <i class="mdi mdi-information"
-                                          popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
-                                          placement="right"
-                                          triggers="mouseenter:mouseleave">
-                                      </i>
-                                  </p>
-                              </div>
-
-                              <div class="form-group style-select">
-                                  <label for="inputState" class="result-subtitle width-popUp">Region
-                                      <!-- <i class="mdi mdi-information"
-                                          popover="The following regional groupings are based on the OECD classification."
-                                          placement="right"
-                                          triggers="mouseenter:mouseleave">
-                                        </i> -->
-                                  </label>
-                                  <div class="btn-group btn-dropdown" dropdown>
-                                    <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                      <span class="font-selet-dropdown content-select-default">{{model.region.label}}</span>
-                                      <span class="dropdown-caret mdi mdi-chevron-down"></span>
-                                    </button>
-                                    <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
-                                      <li role="menuitem" *ngFor="let region of regions">
-                                          <a class="dropdown-item style-a-default" (click)="selectRegion(region)">
-                                              {{region.label}}
-                                            </a>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                </div>
-
-
-                                        <div class="form-group style-select width-popUp">
-                                            <label for="inputState" class="result-subtitle">Income Group
-                                                <!-- <i class="mdi mdi-information"
-                                                    popover="The following income groupings are based on the 2017 World Bank income classification."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
-                                                </i> -->
-                                            </label>
-                                            <div class="btn-group btn-dropdown" dropdown>
-                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span class="font-selet-dropdown content-select-default">{{model.incomeGroup.label}}</span>
-                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
-                                                </button>
-                                                <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
-                                                    <li role="menuitem" *ngFor="let incomeGroup of incomeGroups">
-                                                        <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectIncomeGroup(incomeGroup)">
-                                                            {{incomeGroup.label}}
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group style-select context-pop">
-                                            <label for="inputState" class="result-subtitle">Country context
-                                                <!-- <i class="mdi mdi-information"
-                                                    popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
-                                                    placement="right"
-                                                    triggers="mouseenter:mouseleave">
-                                                </i> -->
-                                            </label>
-                                            <div class="btn-group btn-dropdown" dropdown>
-                                                <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-                                                    <span class="font-selet-dropdown content-select-default">{{model.countryContext.label}}</span>
-                                                    <span class="dropdown-caret mdi mdi-chevron-down"></span>
-                                                </button>
-                                                <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
-                                                    <li role="menuitem" *ngFor="let countryContext of countryContexts">
-                                                        <a class="dropdown-item style-a-default contenido-dropdown" (click)="selectCountryContext(countryContext)">
-                                                            {{countryContext.label}}
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <br>
-                                <div class="row padding-top-line">
-                                    <div class="col-md-12">
-                                        <p class="result-subtitle-one">DEVELOPMENT PARTNER
-                                            <i class="mdi mdi-information"
-                                                popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
-                                                placement="top"
-                                                triggers="mouseenter:mouseleave">
-                                            </i>
-                                          </p>
-                                          <span class="span-md">In alphabetical order</span>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-md-12 acordion-md">
-                                    <!-- ACORDION -->
-                                    <div class="acordion">
-                                      <accordion>
-                                        <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
-                                          <div accordion-heading class="clearfix">
-                                            {{partnerGroup.name}}
-                                            <span class="float-right pull-right">
-                                              <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
-                                              <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
-                                            </span>
-                                          </div>
-                                          <table class="table table-sm">
-                                            <tbody>
-                                              <tr *ngFor="let partner of partnerGroup.partners">
-                                                <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
-                                                <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
-                                                <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </accordion-group>
-                                      </accordion>
-                                        <br>
-                                    </div>
-                                    <!-- ACORDION -->
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-md-12 disclaimer">
-                                    * The boundaries and names shown and the designations used on this map
-                                    do not imply official endorsement or acceptance by the Global Partnership,
-                                    the United Nations and its affiliated entities or the Organisation for
-                                    Economic Co-operation and Development.
-                                  </div>
-                                </div>
-
-                            </div>
                         </tab>
 
                         <!-- tab analysis -->
