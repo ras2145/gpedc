@@ -118,6 +118,15 @@ export class MapService {
   }
 
   buildLayers() {
+    if (this.map.getLayer('country-fills')) {
+      this.map.removeLayer('country-fills');
+    }
+    if (this.map.getLayer('country-fills-click')) {
+      this.map.removeLayer('country-fills-click');
+    }
+    if (this.map.getLayer('country-borders')) {
+      this.map.removeLayer('country-borders');
+    }
     this.map.addLayer({
       "id": "country-fills",
       "type": "fill",
@@ -154,11 +163,10 @@ export class MapService {
   }
 
   updateVectorSource(tiles: any) {
-    let source: VectorSource;
-    source = this.map.getSource('countries') as VectorSource;
-    if (source) {
-      source.tiles = tiles;
+    if (this.map.getSource('countries')) {
+      this.map.removeSource('countries');
     }
+    this.buildVectorSource(tiles);
   }
   resize() {
     this.map.resize();
@@ -362,6 +370,9 @@ export class MapService {
 
   resetLayer() {
     this.map.removeLayer('country-fills');
+    if (!this.map.getSource('countries')) {
+      return;
+    }
     this.map.addLayer({
       "id": "country-fills",
       "type": "fill",
