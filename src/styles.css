@@ -76,12 +76,12 @@ img.logo.panel-1 {
 }
 
 .navbar {
-    padding: 0px;
-    height: 52px;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    z-index: 8;
+  padding: 0px;
+  height: 52px;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 8;
 }
 
 .nav-row {
@@ -1285,7 +1285,7 @@ select-dropdown li.selected.highlighted {
 
 .map-legend {
     position: absolute;
-    bottom: 25px;
+    bottom: 40px;
     z-index: 1;
     background-color: #fff;
     right: 23px;
@@ -1453,7 +1453,7 @@ select-dropdown li.selected.highlighted {
 }
 
 .map-option {
-    z-index: 500;
+    z-index: 4;
     position: absolute;
     top: 15px;
     left: 75px;
@@ -2063,6 +2063,12 @@ body::-webkit-scrollbar-thumb {
     opacity: 0.5;
 }
 
-.bg-color-nav .popover {
-    width: 690px;
+.bg-color-nav .popover-body {
+    width: 220px;
+}
+.result-subtitle .popover-body {
+    width: 220px;
+}
+.result-subtitle-one .popover-body {
+    width: 220px;
 }
