@@ -877,10 +877,22 @@ td.table-title-left {
     color: #5d5d5d;
     margin-right: 4px;
     padding: 6px 0px;
-    width: 50px;
+    width: 40px;
     text-align: center;
     margin-bottom: -2px;
     border-radius: 2px 2px 0px 0px;
+}
+
+.tab.map .nav-tabs .nav-item.show .nav-link,
+.tab-map .nav-tabs .nav-link.active {
+    color: #282828;
+    background-color: #fff;
+    /* border-color: #ddd #ddd #fff; */
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px 2px 0px 0px;
+    border-top: 3px solid #f17846;
 }
 
 .tab.map .nav-tabs .nav-item.show .nav-link,
@@ -911,8 +923,9 @@ td.table-title-left {
 
 .tab.map .nav-tabs .nav-link:focus,
 .tab-map .nav-tabs .nav-link:hover {
-    color: #fff;
-    background-color: #f78667;
+    color: #282828;
+    background-color: #fff;
+    border-top: 3px solid #f17846;
 }
 
 .tab-map .tab-content p {
@@ -1391,6 +1404,52 @@ select-dropdown li.selected.highlighted {
 
 .context-pop .popover-content.popover-body {
     width: 242px;
+}
+
+.map-option {
+    z-index: 4;
+    position: absolute;
+    top: 15px;
+    left: 75px;
+}
+
+.map-option .dropdown-toggle::after {
+    color: #fff !important;
+}
+
+.drop-map {
+    background: #fff !important;
+    color: #fff;
+    height: 32px;
+    font-size: 12px;
+    padding: 0px 10px !important;
+    cursor: pointer;
+    border: none;
+    width: 240px;
+    height: 36px;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #757575;
+}
+
+.map-drop .dropdown-menu {
+    min-width: 100% !important;
+    /* margin-top: -1px; */
+}
+
+.map-drop .popover-body {
+    width: 260px;
+}
+
+.reset-map {
+    background: #fff !important;
+    color: #757575;
+    height: 36px;
+    font-size: 12px;
+    padding: 0px 10px !important;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
 }
 
 .map-option {
@@ -1950,8 +2009,60 @@ body::-webkit-scrollbar-thumb {
     margin-right: 10px;
 }
 
-.exito {
-    padding: 50px 40px;
-    width: 600px;
-    background-color: #f00;
+.tab-viewer .nav-tabs .nav-item.show .nav-link,
+.tab-viewer .nav-tabs .nav-link.active {
+    background-color: #fff;
+    border-color: #fff;
+    font-size: 11px;
+    border-bottom: 3px solid #f17846;
+    color: #282828;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.tab-viewer .nav-tabs .nav-link {
+    border: 0px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    font-size: 11px;
+    opacity: 0.5;
+    color: #282828;
+}
+
+.tab-viewer .nav-tabs {
+    border-bottom: 1px solid #fff;
+    padding: 15px;
+}
+
+.global-p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 0px;
+    position: absolute;
+    top: 8px;
+}
+
+.for-p {
+    opacity: 0.57;
+    font-size: 11px;
+    color: #ffffff;
+    top: 26px;
+    position: absolute;
+    left: 57px;
+}
+
+.navbar-brand {
+    margin-right: 0px;
+}
+
+.bg-color-nav .i-p {
+    text-align: right;
+    float: right;
+    margin-top: 14px;
+    opacity: 0.5;
+}
+
+.bg-color-nav .popover {
+    width: 690px;
 }
