@@ -431,9 +431,10 @@ export class ViewerComponent implements OnInit {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
           });
-          if (selectedCountry.length === 0 ) {
-              selectedCountry[0] = feature;
-          }
+           // if (selectedCountry.length > 0) {
+          //     selectedCountry[0] = feature;
+          // }
+          selectedCountry[0] = feature;
             if((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
           {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
