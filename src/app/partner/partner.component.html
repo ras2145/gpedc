@@ -531,13 +531,64 @@
 
         <div class="links">
             <a [routerLink]="['/']" href="" class="link-a"><img src="../../assets/0005-gray.png" alt="" srcset=""> <span>First</span></a>
-            <a [routerLink]="['/country']" href="" class="link-a active"><img src="../../assets/001-white.png" alt="" srcset=""> <span>Country Comparision</span></a>
-            <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/002.png" alt="" srcset="" class="bitmap"> <span>Second</span></a>
+            <a [routerLink]="['/country']" href="" class="link-a"><img src="../../assets/001.png" alt="" srcset="" class="bitmap"> <span>Country Comparision</span></a>
+            <a [routerLink]="['/partner']" href="" class="link-a active"><img src="../../assets/002-white.png" alt="" srcset="" class="bitmap img-md"> <span>Partner Comparison</span></a>
             <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/003.png" alt="" srcset="" class="bitmap"> <span>Third</span></a>
             <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/004.png" alt="" srcset="" class="bitmap"> <span>Four</span></a>
         </div>
 
-        <p class="select-indicator top-10 boder-table">2. SELECT TWO COUNTRIES TO COMPARE RESULTS: <i class="mdi mdi-information"></i></p>
+        <p class="select-indicator top-10 boder-table">2. SELECT WHICH TYPES OR PARTNERS TO CONSIDER FOR COMPARISON (SELECT ONE OR MANY):
+          <i class="mdi mdi-information"
+            popover="Below you may view results for development partners characterised as international organisations."
+            placement="right"
+            triggers="mouseenter:mouseleave">
+          </i>
+        </p>
+        <div class="row">
+          <div class="col-md-9 pp-md">
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">Global funds</label>
+                <label for="styled-checkbox-2" class="pp-l">and vertical initiatives</label>
+              </div>
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">Multilateral </label>
+                <label for="styled-checkbox-2" class="pp-l">development banks</label>
+              </div>
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">Other international</label>
+                <label for="styled-checkbox-2" class="pp-l">and regional organizations</label>
+              </div>
+            </div>
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">Bilateral partners</label>
+                <label for="styled-checkbox-2" class="pp-l">(DAC members)</label>
+              </div>
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">Other bilateral partners </label>
+                <label for="styled-checkbox-2" class="pp-l">(non-DAC members)</label>
+              </div>
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">Foundations</label>
+              </div>
+
+              <div class="col-md-3">
+                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                <label for="styled-checkbox-2">UN agencies</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="select-indicator-01">3. Select two development partners or type their names:</p>
+
         <div class="row-select">
             <div class="col-md-9">
                 <div class="row with-placeholder-conutry">

@@ -2100,3 +2100,90 @@ ng-select > div > div.single{
     float: right;
     font-size: 14px;
 }
+
+.link-a.active{
+    display: inline-block;
+    padding: 9px 10px;
+    border-radius: 2px;
+    background-color: rgba(26, 35, 61, 1);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.11);
+    color: #fff !important;
+    text-decoration: none;
+    height: 36px;
+    width: 158px;
+    font-size: 11px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.pp-md{
+  padding-left:71px;
+}
+.pp-md label{
+  font-size: 12px;
+  margin: 0px;
+}
+.pp-l{
+  position: relative;
+  top: -8px;
+  left: 30px;
+}
+.select-indicator-01{
+  padding-top: 36px;
+  padding-left: 56px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 11px;
+  color: rgba(40, 40, 40, 0.56);
+  text-transform: uppercase;
+}
+/* CHECKBOX */
+.styled-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+.styled-checkbox + label:before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  background: white;
+}
+.styled-checkbox:hover + label:before {
+  background: rgba(26, 35, 61, 1);
+}
+.styled-checkbox:focus + label:before {
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+.styled-checkbox:checked + label:before {
+  background: rgba(26, 35, 61, 1);
+}
+.styled-checkbox:disabled + label {
+  color: #b8b8b8;
+  cursor: auto;
+}
+.styled-checkbox:disabled + label:before {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: #ddd;
+}
+.styled-checkbox:checked + label:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  -webkit-box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+          box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
