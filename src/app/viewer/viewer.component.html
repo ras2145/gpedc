@@ -830,16 +830,36 @@
                 <div class="col-md-9 border-div-none" id="div2">
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
                       <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md bitmap"> Map Viewer</button></a>
-                        <a [routerLink]="['/country']"><button type="button" name="button" class="btn btn-md"><img src="assets/001.png" class="bitmap"></button></a>
-                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/002.png" class="bitmap"></button></a>
-                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/003.png" class="bitmap"></button></a>
-                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/004.png" class="bitmap"></button></a>
+                        <a [routerLink]="['/country']">
+                          <button type="button" name="button" class="btn btn-md">
+                            <img src="assets/001.png" class="bitmap img-hh">
+                            <img src="assets/001-white.png" class="bitmap img-hv">
+                          </button>
+                        </a>
+                        <a [routerLink]="['/partner']">
+                          <button type="button" name="button" class="btn btn-md">
+                            <img src="assets/002.png" class="bitmap img-hh">
+                            <img src="assets/002-white.png" class="bitmap img-hv">
+                          </button>
+                        </a>
+                        <a [routerLink]="['/partner']">
+                          <button type="button" name="button" class="btn btn-md">
+                            <img src="assets/003.png" class="bitmap img-hh">
+                            <img src="assets/003-white.png" class="bitmap img-hv">
+                          </button>
+                        </a>
+                        <a [routerLink]="['/partner']">
+                          <button type="button" name="button" class="btn btn-md">
+                            <img src="assets/004.png" class="bitmap img-hh">
+                            <img src="assets/004-white.png" class="bitmap img-hv">
+                          </button>
+                        </a>
                       <br><br>
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
                         <button type="button" class="btn map-button" (click)="zoomOut()"><i class="mdi mdi-minus"></i></button>
                       </div>
-                      <div class="btn-group" dropdown>
+                      <div class="btn-group btn-scroll" dropdown>
                         <button dropdownToggle *ngIf="selectedTab !== 'tab2'" type="button" class="btn dropdown-toggle drop-map map-body-i">
                           {{selectedSidCountry ? selectedSidCountry.country : 'View All Countries'}}
                           <!-- <i class="mdi mdi-information"
