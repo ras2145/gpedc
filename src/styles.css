@@ -836,6 +836,7 @@ td.table-title-left {
     color: #717171;
     /*font-weight: 400;*/
     background: #fff;
+    border-left: solid 1px rgba(128, 131, 140, 0.2);
 }
 
 .table-result.center-td-1 {
@@ -2083,3 +2084,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* COUNTRY */
+ng-select > div > div.single{
+  height: 25px;
+}
+.year-indicatore i, .year-indicator i {
+    color: #9b9b9b;
+    padding-left: 7px;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+}

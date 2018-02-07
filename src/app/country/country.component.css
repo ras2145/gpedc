@@ -266,5 +266,6 @@
 }
 
 .background-2 {
-    background-color:  #fff;
+  background-color:  #fff;
+  border-left: solid 1px rgba(128, 131, 140, 0.2);
 }
