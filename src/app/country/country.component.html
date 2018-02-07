@@ -21,6 +21,480 @@
     </div>
 </nav>
 <!-- NAVBAR END -->
+<ng-template #template>
+    <div class="modal-body">
+        <div class="container" >
+            <div class="row" >
+                <div class="col-md-10">
+                    <p class="modal-title pull-left">What does this indicator measure?<br><span>indicator {{notFromTab?model.category.id:footerTab}}</span></p>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="row background-modal">
+                <div class="col-md-12">
+                    <div class="tab-modal">
+                    <tabset *ngIf="tabsToShow(notFromTab?model.category.id:footerTab)">
+                        <tab *ngIf="viewerTab === '1' || (!indicator && subIndicator)" heading="Indicator {{notFromTab?model.category.id:footerTab}}" id="tab1">
+                            <div *ngIf="(notFromTab?model.category.id:footerTab )==='1a' ">
+                                <p class="result-modal">
+                                    Indicator 1a measures alignment of development partners’ new interventions
+                                    with country-defined objectives and results; and development partners reliance
+                                    on countries’ own statistics and monitoring and evaluation processes to track the
+                                    progress of development interventions.
+                                    <br><br>
+                                    For each development intervention of significant size (US$ 1 million and above)
+                                    approved during the year of reference, the indicator calculates the degree to which
+                                    development partners rely on objectives, results indicators and monitoring frameworks
+                                    drawn from government sourc es, including national, sector and subnational planning
+                                    tools.
+                                    <br><br>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator.
+                                    <br><br>
+                                    For complete qualitative information under indicator 1b (contextual information on the
+                                    country’s existing institutional arrangements for setting priorities and targeting results),
+                                    please read the individual country’s <a target="_blank" href="http://effectivecooperation.org/monitoring-country-progress/country-and-territory-monitoring-profiles/">monitoring profile</a>.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                                </p>
+                            </div>
+                            <div *ngIf="(notFromTab?model.category.id:footerTab) ==='2'" class="modal-contet">
+                                <p class="result-modal" >
+                                    Indicator 2 seeks to assess the extent to which governments and development partners contribute
+                                    to an enabling environment for civil society organisations (CSOs), in addition to how CSOs are
+                                    implementing development effectiveness principles in their own operations.
+
+                                    This indicator provides a useful tool to spark multi-stakeholder dialogue among governments,
+                                    CSOs and development partners at the country level. It also helps identify progress and room for
+                                    improvement in creating a CSO enabling environment and furthering CSOs’ own development
+                                    effectiveness. <br><br>
+
+                                    This indicator was measured for the first time as part of the 2016 monitoring round.
+                                    Data was sourced through a qualitative questionnaire, answers to which were agreed through
+                                    a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs,
+                                    development partner, and other relevant stakeholders.<br><br>
+
+                                    The questionnaire contains four modules with questions on:
+                                    Government support for multi-stakeholder dialogue around national development policies (Module 1);
+                                    <ul>
+                                        <li>CSO accountability and transparency (Module 2); </li>
+                                        <li>Official development co-operation with CSOs (Module 3); and </li>
+                                        <li>The legal and regulatory environment where CSOs operate (Module 4). </li>
+                                    </ul>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+
+                            </div>
+                            <div *ngIf="(notFromTab?model.category.id:footerTab) ==='3' " class="modal-contet">
+                                <p class="result-modal">
+                                    Indicator 3 assesses the engagement of the private sector and the quality of public-private dialogue (PPD) in a given country. In doing so, it recognises the importance of inclusive dialogue with the private sector for building a policy environment conducive to growth and sustainable development.
+                                    <br><br>
+                                    The indicator builds on tools developed by the World Bank, and its three modules combine globally-sourced quantitative scores and country-sourced qualitative information compiled through a multi-stakeholder dialogue process.
+                                    <br><br>
+                                    The indicator is structured around the three following modules:
+                                    <ul>
+                                        <li>Module 1 assesses the country’s enabling environment for engagement with the private sector and relies on globally-sourced data. The results for this module draw on country scores from a series of international indices, including the ‘Public Engagement’ index from the Open Budget Survey, as well as the ‘Voice and Accountability’, ‘Rule of Law’ and ‘Control of Corruption’ indices from the Worldwide Governance Indicators and the ‘Citizen Engagement in Rulemaking’ index.</li>
+                                        <li>Module 2 assesses the country’s readiness for public-private dialogue. It relies on a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging focal points from the private sector, development partners, trade unions, CSOs and other relevant stakeholders; </li>
+                                        <li>Module 3 is designed as an optional component, and provides an in-depth assessment (case study) of the quality and organisational effectiveness of a given public-private platform in the country.</li>
+                                    </ul>
+                                    The results displayed for this indicator (Module 2 only) are on a scale from 0 (weak) to 10 (strong). This indicator was measured for the first time as part of the 2016 monitoring round.
+                                    <br><br>
+                                    For further results from Module 2, please read the country’s monitoring profile. Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+
+                            </div>
+                            <div *ngIf="(notFromTab?model.category.id:footerTab) ==='4'" class="modal-contet">
+                                <p class="result-modal" >
+                                    Indicator 4 seeks to capture the timeliness, comprehensiveness and forward-looking nature of individual development partners’ electronic publication of information on co-operation resources. It measures transparency by considering three complementary measurements in parallel: the OECD-DAC’s <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Creditor Reporting System</a> (CRS) and <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Forward-Spending Survey</a> (FSS); and the <a target="_blank" href="http://dashboard.iatistandard.org/index.html">International Aid Transparency Initiative (IATI)</a>.
+                                    <br><br>
+                                    The <a href="http://www.oecd.org/development/effectiveness/49650173.pdf">Busan Partnership Agreement</a> mandated a ‘common standard’ for transparency, which was to be built on the three measurements. Following joint technical work between these bodies, however, it was clear that it was not possible to develop a singular common standard to assess transparency because the three measurements are designed to meet the needs of different audiences and are therefore not directly comparable in assessing development partners’ reporting performance.
+                                    <br><br>
+                                    To facilitate interpretation of the overall scores for these three transparency assessments,
+                                    development partners are categorised on the same four-tiered scale: Excellent, Good, Fair and Needs Improvement.
+                                    Nonetheless, each of the assessments has its own distinct <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2014/04/3.-Global-Partnership-Transparency-Indicator-Methodological-Note.pdf">underlying methodology</a>,
+                                    and therefore they are not directly comparable among themselves.
+                                    <br><br>
+                                    Further information on the methodology for this indicator can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/02/Steering-Committee-Document-Indicator-4-final.pdf">Transparency Indicator Methodological Note</a>.
+                            </div>
+
+                        </tab>
+                        <tab  *ngIf="((viewerTab === '1' && model.subcategory != null) || (indicator && !subIndicator))&& notFromTab"heading="Sub-Indicator" id="tab2">
+                            <div *ngIf="model.subcategory.column === '_2016_1_1'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 1a measures whether objectives of new interventions are drawn from
+                                    country-led results frameworks, plans and strategies (such as long-term vision documents, national
+                                    development plans or sector plans).
+                                    <br><br>
+                                    For each country, development partners were asked to report on the largest interventions approved
+                                    in 2015 (up to a maximum of 10 per country), preferably above USD $1 million.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015
+                                    Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_1_2'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 1a measures the share of results indicators that are drawn
+                                    from existing country-led frameworks, plans and strategies, minimising the use of other,
+                                    potentially duplicative processes.
+                                    <br><br>
+                                    For each country, development partners were asked to report on the largest interventions
+                                    approved in 2015 (up to a maximum of 10 per country), preferably above USD $1 million.<br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_1_3'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 1a measures the share of outcome results indicators that rely on country
+                                    sources to track progress –i.e. sources coming from countries’ own monitoring systems or own statistics
+                                    and data, minimising the use of other, potentially duplicative processes.
+                                    <br><br>
+                                    For each country, development partners were asked to report on the largest interventions approved
+                                    in 2015 (up to a maximum of 10 per country), preferably above USD $1 million.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_1_4'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 1a measures the share of new interventions with a final evaluation that
+                                    engages the partner country government in evaluating the results (e.g. defining the scope of the
+                                    evaluation, joint implementation). The percentage result displayed for this indicator corresponds
+                                    to the share of interventions that undergo a final evaluation with developing partner country
+                                    government involvement.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_2_1'" class="modal-contet">
+                                <p class="result-modal">
+                                    Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
+                                    <br><br>
+                                    Module 1: ‘Space for multi-stakeholder dialogue on national development policies’, included the following three questions:
+                                    <br><br>
+                                    <ul>
+                                        <li>Are CSOs consulted by the government in the design, implementation and monitoring of national development policies?; </li>
+                                        <li>Do CSOs have the right to access government information?; and </li>
+                                        <li>Are there resources and / or training opportunities for addressing capacity building of all stakeholders (including government, CSOs and development partners) to engage meaningfully in multi-stakeholder dialogue?</li>
+                                    </ul>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2017/11/GPEDC-2016-Monitoring-Round_Indicator-2-Data.pdf">Click here</a> to access complete data for all 17 criteria listed under the four modules. Further information on the methodology
+                                    for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_2_2'" class="modal-contet">
+                                <p class="result-modal">
+                                    Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
+                                    <br><br>
+                                    Module 2: ‘CSO development effectiveness: accountability and transparency’, included the following five questions:
+                                    <br><br>
+                                    <ul>
+                                        <li>In practice, are there CSO-managed processes in place to address transparency and multiple accountabilities in CSO operations?; </li>
+                                        <li>Do CSO-initiated co-ordination processes exist to facilitate consolidated and inclusive representation in policy dialogue (e.g. umbrella organisation, CSO network, consultation practices)?; </li>
+                                        <li>Do mechanisms exist to facilitate co-ordination on programming among CSOs (collaboration to optimise impact and avoid duplication) and with other development actors?; </li>
+                                        <li>Are there other significant initiatives related to CSO development effectiveness principles (Istanbul Principles and the International Framework for CSO Development Effectiveness) being implemented at the country level?; and</li>
+                                        <li>Do CSOs report annually to government on the basic finances, sectors of support and main geographic areas of involvement in development?</li>
+                                    </ul>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2017/11/GPEDC-2016-Monitoring-Round_Indicator-2-Data.pdf">Click here</a> to access complete data for all 17 criteria listed under the four modules.
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_2_3'" class="modal-contet">
+                                <p class="result-modal">
+                                    Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
+                                    <br><br>
+                                    Module 3: ‘Official development co-operation with CSOs’ included the following four questions:
+                                    <br><br>
+                                    <ul>
+                                        <li>Do development partners consult with CSOs on their development policy / planning in a systematic way?;</li>
+                                        <li>Are development partners promoting a CSO enabling environment in their co-operation with civil society?;</li>
+                                        <li>Is the promotion of a CSO enabling environment an agenda item in development partners’ policy dialogue with partner governments?; and </li>
+                                        <li>Do development partners share information on their CSO support with the government?</li>
+                                    </ul>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2017/11/GPEDC-2016-Monitoring-Round_Indicator-2-Data.pdf">Click here</a> to access complete data for all 17 criteria listed under the four modules.
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_2_4'" class="modal-contet">
+                                <p class="result-modal">
+                                    Data for Indicator 2 was sourced through a qualitative questionnaire, answers to which were agreed through a country-level multi-stakeholder dialogue process led by the government, and engaging CSOs, development partners and other relevant stakeholders.
+                                    <br><br>
+                                    Module 4: ‘Legal and regulatory environment’, included the following four questions:
+                                    <ul>
+                                        <li>Is there a recognition and respect for CSO freedom (association, assembly and expression) in the Constitution, and more broadly, in policy, law and regulation?;</li>
+                                        <li>Is the legal and regulatory environment enabling for CSO formation, registration and operation?;</li>
+                                        <li>Does the legal and regulatory environment facilitate access to resources for CSOs?; and</li>
+                                        <li>Does the legal and regulatory environment marginalise certain groups?</li>
+                                    </ul>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2017/11/GPEDC-2016-Monitoring-Round_Indicator-2-Data.pdf">Click here</a>to access complete data for all 17 criteria listed under the four modules.
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_3_1'"class="modal-contet" >
+                                <p class="result-modal">
+                                    This dimension of Indicator 3 assesses the private sector’s willingness to engage in public-private dialogue in a given country. The result displayed for this indicator are on a scale from 0 (weak) to 10 (strong) and were agreed through a country-level multi-stakeholder dialogue process led by the government in consultation with focal points from the private sector, development partners, trade unions and civil society organisations.
+                                    <br><br>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_3_2'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 3 assesses the government’s willingness to engage in public-private dialogue in a given country. The result displayed for this indicator is on a scale from 0 (weak) to 10 (strong) and is agreed through a country-level multi-stakeholder dialogue process led by the government in consultation with focal points from the private sector, development partners, trade unions and Civil Society Organisations.
+                                    <br><br>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_3_3'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 3 assesses whether there is a potential champion who can facilitate the public-private dialogue process, activate political will and reduce the trust gap between public and private sector stakeholders in a given country.
+                                    <br><br>
+                                    The result displayed for this indicator is on a scale from 0 (weak) to 10 (strong) and was agreed through a country-level multi-stakeholder dialogue process led by the government in consultation with focal points from the private sector, development partners, trade unions and civil society organisations.
+                                    <br><br>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_3_4'" class="modal-contet">
+                                <p class="result-modal">
+                                    This dimension of Indicator 3 assesses whether logistical, financial and capacity-building instruments are available to support public-private dialogue in a given country.
+                                    <br><br>
+                                    The result displayed for this indicator is on a scale from 0 (weak) to 10 (strong) and was agreed through a country-level multi-stakeholder dialogue process led by the government in consultation with focal points from the private sector, development partners, trade unions and civil society organisations.
+                                    <br><br>
+                                    The results for the 2016 monitoring round constitute the baseline for this indicator at the country level.
+                                    <br><br>
+                                    Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_4_1'" class="modal-contet">
+                                <p class="result-modal">
+                                    The Global Partnership measures transparency by simultaneously considering the complementary measurements of the OECD-DAC’s <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Creditor Reporting System</a> (CRS) and <a href="http://www.oecd.org/dac/stats/idsonline.htm">Forward-Spending Survey</a> (FSS); and the <a href="http://dashboard.iatistandard.org/index.html">International Aid Transparency Initiative</a> (IATI).
+                                    <br><br>
+                                    To facilitate interpretation of the overall scores for these three transparency assessments, development partners are categorised on the same four-tiered scale: Excellent,
+                                    Good, Fair and Needs Improvement. Nonetheless, each of the assessments has its own distinct <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2014/04/3.-Global-Partnership-Transparency-Indicator-Methodological-Note.pdf">underlying methodology</a>,
+                                    and therefore they are not directly comparable among themselves.
+                                    <br><br>
+                                    The score displayed here displays results from the <a target="_blank" href="https://stats.oecd.org/Index.aspx?DataSetCode=CRS1">CRS</a>, which records activity-level development co-operation flow, for statistical, accountability and monitoring purposes.
+                                    <br><br>
+                                    Further information on the methodology for Indicator 4 can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/02/Steering-Committee-Document-Indicator-4-final.pdf">Transparency Indicator Methodological Note</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_4_2'" class="modal-contet">
+                                <p class="result-modal">
+                                    The Global Partnership measures transparency by simultaneously considering the complementary measurements of the OECD-DAC’s <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Creditor Reporting System</a> (CRS) and <a href="http://www.oecd.org/dac/stats/idsonline.htm">Forward-Spending Survey</a> (FSS); and the <a href="http://dashboard.iatistandard.org/index.html">International Aid Transparency Initiative</a> (IATI).
+                                    <br><br>
+                                    To facilitate interpretation of the overall scores for these three transparency assessments, development partners are categorised on the same four-tiered scale: Excellent, Good, Fair and Needs Improvement. Nonetheless, each of the assessments has its own distinct <a href="http://effectivecooperation.org/wp-content/uploads/2014/04/3.-Global-Partnership-Transparency-Indicator-Methodological-Note.pdf">underlying methodology</a>, and therefore they are not directly comparable among themselves.
+                                    <br><br>
+                                    The score displayed here displays results from the <a target="_blank" href="https://stats.oecd.org/Index.aspx?DataSetCode=CRS1">FSS</a>, which records partners’ development co-operation plans for greater predictability of global and aggregate prospects.
+                                    <br><br>
+                                    Further information on the methodology for Indicator 4 can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/02/Steering-Committee-Document-Indicator-4-final.pdf">Transparency Indicator Methodological Note</a>.
+                            </div>
+                            <div *ngIf="model.subcategory.column === '_2016_4_3'" class="modal-contet">
+                                <p class="result-modal">
+                                    The Global Partnership measures transparency by simultaneously considering the complementary measurements of the OECD-DAC’s <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Creditor Reporting System</a> (CRS) and <a target="_blank" href="http://www.oecd.org/dac/stats/idsonline.htm">Forward-Spending Survey</a> (FSS); and the <a target="_blank" href="http://dashboard.iatistandard.org/index.html">International Aid Transparency Initiative</a> (IATI).
+                                    <br><br>
+                                    To facilitate interpretation of the overall scores for these three transparency assessments, development partners are categorised on the same four-tiered scale: Excellent, Good, Fair and Needs Improvement. Nonetheless, each of the assessments has its own distinct <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2014/04/3.-Global-Partnership-Transparency-Indicator-Methodological-Note.pdf">underlying methodology</a>, and therefore they are not directly comparable among themselves.
+                                    <br><br>
+                                    The score displayed here displays results from the <a target="_blank" href="http://dashboard.iatistandard.org/index.html">IATI Standard</a>, which is an open-data standard that allows publishers to provide detailed information about their development co-operation activities in a timely and accessible manner.
+                                    <br><br>
+                                    Further information on the methodology for Indicator 4 can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/02/Steering-Committee-Document-Indicator-4-final.pdf">Transparency Indicator Methodological Note</a>.
+                            </div>
+                        </tab>
+                    </tabset>
+                    </div>
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='5a'" class="modal-contet">
+                        <p class="result-modal">
+                            Indicator 5a measures whether development co-operation flows are becoming more predictable over time, focusing on annual predictability of development co-operation. In doing so, it recognises that shortfalls in the total amount of funding for the government sector and delays in the in-year disbursements of scheduled funds can have serious implications for a government’s ability to implement development policies and strategies as planned.
+                            <br><br>
+                            The percentage result displayed for this indicator corresponds to the share of development co-operation funding that is disbursed to the government within the fiscal year for which it was scheduled by the development partner. It captures both the reliability of development partners in delivering the promised resources within the relevant year and their capacity to accurately forecast and disburse this funding (i.e. implement their development co-operation activities) within a 12-month period.
+                            <br><br>
+                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                    </div>
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='5b'" class="modal-contet">
+                        <p class="result-modal">
+                            Indicator 5b focuses on medium-term predictability of development co-operation. In doing so, it recognises that a lack of comprehensive and credible forward-looking information on development co-operation funding can have serious implications for a government’s ability to plan and implement policies and strategies, deliver public services and design and conduct sound macro-economic policy.
+                            <br><br>
+                            This indicator measures the estimated share of development co-operation funding covered by indicative forward expenditure or implementation plans shared with government. Such plans must cover all known components of the development partner’s country programme.
+                            <br><br>
+                            The percentage displayed for this indicator is an average of three measures: the proportion of development co-operation funding covered by indicative forward expenditure or implementation plans at the country level, for one, two and three years ahead.
+                            <br><br>
+                            The forward spending plan must meet all of the following criteria in order to be included in the results:
+                            <ul>
+                                <li>Be made available by the development partner in written or electronic form;</li>
+                                <li>Set out clearly indicative information on future spending and / or implementation activities in the country;</li>
+                                <li>Present funding amounts (at least) by year, while using the partner country’s own fiscal year;</li>
+                                <li>Be comprehensive in its coverage of known sectors, types and modalities of support; and </li>
+                                <li>Clearly state the amount and currency of funding.</li>
+                            </ul>
+                            For results disaggregated by forward spending plans for one, two and three years ahead, please click <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2017/11/GPEDC-2016-Monitoring-Round_Indicator-5b-Data.pdf">here</a>.
+                            <br><br>
+                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                    </div>
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='6'" class="modal-contet">
+                        <p class="result-modal">
+                            Indicator 6 measures the percentage of development co-operation funding scheduled for disbursement by development partners that is recorded in the annual budgets approved by the legislature of a given country.
+                            <br><br>
+                            The formulation of the budget is a central feature of the policy process in all countries. As such, the degree to which financial contributions from development partners to the government sector are fully and accurately reflected in the budget provides a significant indication of the degree to which there is a serious effort to connect development co-operation programmes with country policies and process, and to support domestic oversight and accountability for the use of development co-operation funding for best results.
+                            <br><br>
+                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                    </div>
+                    <div *ngIf="(model.subcategory!== null)">
+                        <div *ngIf="(model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                Indicator 7 seeks to measure progress made by developing countries in undertaking mutual assessment reviews with their development partners. The principle of mutual accountability recognises that development impacts improve when all parties take responsibility for their contributions.
+                                <br><br>
+                                A country is considered to have a mutual assessment in place when at least four of the following five criteria have been met:
+                                <ul>
+                                    <li>An aid or partnership policy is in place that defines the country’s development co-operation priorities;</li>
+                                    <li>Country-level targets (for both the country and its development partners) have been established;</li>
+                                    <li>Government and development partners conduct regular joint assessment towards these targets at least every two years;</li>
+                                    <li>Non-executive stakeholders and local governments are involved in these joint assessments; and</li>
+                                    <li>Results of joint assessments are made public.</li>
+                                </ul>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether there is an aid or partnership policy in place to define a country’s development co-operation priorities, or if elements of such a policy are agreed through other instruments (yes / no).
+                                <br><br>
+                                An aid or partnership policy is defined here as a document which sets out agreed approaches to the delivery of development co-operation in the partner country, containing agreed principles, processes and / or targets designed to improve its effectiveness. This may take the form of a stand-alone policy or strategy document, or may be addressed within another document (for example, as part of a national development strategy or similar). The document should be the product of an inclusive consultation between the country government, development partners and other interested development stakeholders.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+
+                        <div *ngIf="(model.subcategory.column==='_2014_7_2' || model.subcategory.column==='_2016_7_2') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether there are specific country-level targets for effective development co-operation for both the partner country government and its development partners (yes / no).
+                                <br><br>
+                                Targets, as defined here, should exist for both the partner country government and development partners, providing the basis for assessing: the partner country’s performance in implementing its development strategy; and the performance of development partners against agreed commitments to deliver on the quantity, quality and effectiveness of their support.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+
+                        <div *ngIf="(model.subcategory.column==='_2014_7_3' || model.subcategory.column==='_2016_7_3') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether an assessment towards agreed country-level targets has been undertaken jointly by the country government and its development partners at the senior level in the past two years (yes / no).
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_4' || model.subcategory.column==='_2016_7_4') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether local governments and non-executive stakeholders (i.e. civil society organisations, the private sector and parliamentarians) have been actively involved in joint assessments at a senior level within the past two years (yes / no).
+                                <br><br>
+                                Mutual assessment reviews are national-level exercises that engage both partner country authorities and  development partners at a senior level in a review of mutual performance. These reviews should be conducted through inclusive dialogue involving a broad range of government ministries (including line ministries and relevant departments, at central and local level), development partners (bilateral, multilateral and global initiatives) as well as non-executive stakeholders, including parliamentarians, the private sector and civil society organisations.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_7_5' || model.subcategory.column==='_2016_7_5') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 7 assesses whether the comprehensive results of joint assessments toward mutually-agreed targets have been made public in a timely manner to ensure transparency (yes / no).
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+
+                        <div *ngIf="(model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This indicator seeks to measure government efforts to track and make public resource allocations for gender equality and women’s empowerment. It does so by encouraging national governments to develop appropriate budget tracking and monitoring systems and commit to making information about allocations for gender equality readily accessible to the public.
+                                <br><br>
+                                Tracking budget allocations with a gender perspective makes it possible to apply a gender lens to development co-operation funds recorded in national budgets, and builds accountability to incentivise gender equality.
+                                <br><br>
+                                <a target="_blank" href="http://www.unwomen.org/en">UN Women</a>, in collaboration with the <a target="_blank" href="http://www.oecd.org/dac/gender-development/">OECD-DAC Network on Gender Equality (GENDERNET)</a>, developed the methodology and set of criteria to roll out this global indicator at country level and to monitor performance against this indicator over time.
+                                <br><br>
+                                For the purpose of measuring this indicator, a country is considered to have a system in place to track gender allocations when one out of the following first three criteria and the fourth criteria are met:
+                                <ul>
+                                    <li>The country has an official government statement for tracking budget allocations for gender equality and women’s empowerment;</li>
+                                    <li>Allocations for gender equality and women’s empowerment are systematically tracked through an officially planned, regular process;</li>
+                                    <li>Leadership and oversight of the tracking system is carried out by the central government unit in charge of public expenditure; and</li>
+                                    <li>Budget information that focuses on gender equality is made publicly available.</li>
+                                </ul>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_1' || model.subcategory.column==='_2016_8_1') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether there exists an official government statement on a system for tracking allocations for gender equality and women’s empowerment (yes / no).
+                                <br><br>
+                                It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
+                                <br><br>
+                                For this purpose, the official government statement is defined as a process or procedure in place to plan, approve, allocate and monitor public expenditures at the national and sectoral level in a way that ensures that expenditures are targeted appropriately to benefit both women and men. Such systems can include gender budget statements, classifiers, gender markers and even preliminary guidelines. The system in place is overseen by a governmental body, in most cases the Ministry of Finance, that considers gender impact in budget decisions and incorporates measures to mitigate any adverse impact on gender equality and women’s empowerment.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_2' || model.subcategory.column==='_2016_8_2') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether allocations for gender equality and women’s empowerment are systematically tracked (yes / no).
+                                <br><br>
+                                It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
+                                <br><br>
+                                Allocations for gender equality and women’s empowerment can be defined as:
+                                <ul>
+                                    <li>Resources allocated at sector and local level for programmes that specifically target only women or girls; </li>
+                                    <li>Resources allocated at sector and local level to actions that target both women and men equally, but in which gender equality is a specific objective; and</li>
+                                    <li>Resources allocated at sector and local level to actions where gender is mainstreamed. For example, an infrastructure project that doesn’t include gender equality as an explicit objective but includes women as beneficiaries.</li>
+                                </ul>
+                                ‘Systematically tracked’ means that a tracking process is planned and regularly conducted. For instance, if the tracking of budgets allocations towards gender equality is officially planned and conducted annually by an identifiable or designated body, it can be said that allocations for gender equality are systematically tracked.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_3' || model.subcategory.column==='_2016_8_3') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether leadership and oversight of the tracking system is under the purview of the central government unit in charge of public expenditures (yes / no).
+                                <br><br>
+                                It is one of three institutional conditions for gender equality and women’s empowerment, one of which must be met in order for the country to be considered as having a system in place to track gender allocations for the purposes of Global Partnership monitoring.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the 2015 Monitoring Guide.
+                        </div>
+                        <div *ngIf="(model.subcategory.column==='_2014_8_4' || model.subcategory.column==='_2016_8_4') && notFromTab" class="modal-contet">
+                            <p class="result-modal">
+                                This dimension of Indicator 8 assesses whether gender equality-focused budget information is publicly available (e.g. through Parliamentary oversight and civil society scrutiny, publications, websites or other means) (yes / no).
+                                <br><br>
+                                For the purposes of Global Partnership monitoring, this condition must be met in order for the country to be considered as having a system in place to track gender allocations.
+                                <br><br>
+                                Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                        </div>
+                    </div>
+                    <div *ngIf="(notFromTab?model.category.id:footerTab )==='9a'" class="modal-contet">
+                        <p class="result-modal">
+                            Indicator 9a seeks to assess progressive strengthening of a country’s own systems. Well-performing country systems are essential to ensure that public expenditure for ambitious national plans translates into development results in the most effective and sustainable manner.
+                            <br><br>
+                            This indicator measures the proportion of participating countries moving up by at least half a point on the World Bank’s Quality of Budgetary and Financial Management Scale. It is based on the scores for the quality of budgetary and financial management of the World Bank’s <a target="_blank" href="https://data.worldbank.org/data-catalog/CPIA">Country Policy and Institutional Assessment</a> (CPIA).
+                            <br><br>
+                            Scores range from 1-6 in half-point increments; the higher the score, the more reliable the country’s budget and financial management system is considered to be.
+                            <br><br>
+                            The CPIA assesses whether the country meets the following three criteria, which are equally weighted:
+                            <ul>
+                                <li>Existence of a comprehensive and credible budget, linked to policy priorities;</li>
+                                <li>Effective financial management systems to ensure that the budget is implemented as intended in a controlled and predictable way; and</li>
+                                <li>Timely and accurate accounting and financial reporting, including audited public accounts and effective arrangements for follow-up.</li>
+                            </ul>
+                            For the 2016 monitoring round, the Global Partnership monitoring framework drew on the most recent CPIA scores (2015). For the 2014 monitoring round, CPIA scores from 2012 were used.
+                            <br><br>
+                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+
+                    </div>
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) ==='9b'" class="modal-contet">
+                        <p class="result-modal">
+                            Indicator 9b measures the proportion of development co-operation disbursed to the government using the country’s own financial management and procurement systems. This includes using the country’s own rules and procedures – versus those of the development partner – for budget execution, financial reporting, auditing and procurement of goods and services.
+                            <br><br>
+                            The Global Partnership measures the use of public and financial procurement systems as proxies for the broader use of national systems and institutions.
+                            <br><br>
+                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
+                    </div>
+                    <div *ngIf="(notFromTab?model.category.id:footerTab) === '10' " class="modal-contet">
+                        <p class="result-modal">
+                            Indicator 10 measures the share of development assistance that is fully untied within a given country or by a development partner. Tied aid implies funding for which partners establish geographical restrictions as to where funds can be spent.
+                            <br><br>
+                            Tying funding decreases the effective use of the funds and reduces the value-for-money of development co-operation. Tied aid also challenges the country’s ownership over purchasing decisions and deprives the country of potential positive externalities in using development co-operation, such as using local suppliers.
+                            <br><br>
+                            Aid is considered untied when the bilateral partner does not impose geographical restrictions on the use of the development co-operation funds.
+                            <br><br>
+                            Data for this indicator was self-reported by development partners through the OECD-DAC Creditor Reporting System (CRS).
+                            <br><br>
+                            Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>..
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
 
 <div class="content-main body-height">
     <!-- Lado izquierdo cabecera -->
@@ -41,7 +515,7 @@
 										{{title.year}}
 								</label>
             </div>
-            <a href="#" class="float-r btn-year-icon"><i class="mdi mdi-arrow-down-bold-box-outline"></i></a>
+            <a class="float-r btn-year-icon" (click)="exportCsv()"><i class="mdi mdi-arrow-down-bold-box-outline"></i></a>
         </div>
     </div>
     <!-- Lado derecho cabecera -->

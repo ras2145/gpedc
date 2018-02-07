@@ -1,7 +1,8 @@
 import { countryComparison } from '../countryComparison';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { MapService } from '../services/map.service';
 import { IOption } from '../lib/ng-select/option.interface.d';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from '../titles';
 @Component({
   selector: 'app-country',
@@ -14,6 +15,11 @@ export class CountryComponent implements OnInit {
   titles;
   countriesQuery: any;
   categoriesNotNull = [];
+  indicator: any;
+  subIndicator: any;
+  notFromTab: any;
+  viewModal = true;
+  modalRef: BsModalRef;
   model = {
     year: null,
     category: {
@@ -29,21 +35,20 @@ export class CountryComponent implements OnInit {
     countryContext: null
   };
   year;
-  constructor(private mapService: MapService) { }
+  countries: any;
+  constructor(private mapService: MapService,
+    private modalService: BsModalService) { }
 
   ngOnInit() {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
     this.titles = titles;
-    console.log(titles);
     this.resetComparer();
     this.year = '2016';
     this.model.year = titles[2];
     this.chargeCountryComparison();
-    console.log(titles[2]);
-    console.log(this.countryComparer);
-
+    this.countries = {};
   }
   
   resetComparer() {
@@ -77,17 +82,110 @@ export class CountryComponent implements OnInit {
       if (event.value === this.countryComparer.secondCountry) {
         setTimeout(() => {
           this.countryComparer.firstCountry = undefined;
+          this.countries.firstCountry = 'Country';
         }, 10);
         return;
       }
+      this.countries.firstCountry = event.value;
     } else {
       if (event.value === this.countryComparer.firstCountry) {
         setTimeout(() => {
           this.countryComparer.secondCountry = undefined;
+          this.countries.secondCountry = 'Country';
         }, 10);
         return;
       }
+      this.countries.secondCountry = event.value;
     }
+  }
+  openModal(template: TemplateRef<any>) {
+    this.viewModal = false;
+    this.modalRef = this.modalService.show(template);
+  }
+  findViewerCategory(category, subcategory, indicator, subIndicator) {
+    this.notFromTab = true;
+    this.model.category = category;
+    this.model.subcategory = subcategory;
+    this.indicator = indicator;
+    this.subIndicator = subIndicator;
+  }
+  // TODO: Blanca, Ayar other generic function
+  exportCsv() {
+    const comparer = this.countryComparer;
+    const first =  'firstCountry';
+    const second = 'secondCountry';
+    const lines = [];
+    const headers = ['Indicator'];
+    if (comparer[first] != '') {
+      headers.push(comparer[first]);
+    }
+    if (comparer[second] != '') {
+      headers.push(comparer[second]);
+    }
+    if (comparer.aggregate != '') {
+      headers.push(comparer.aggregate);
+    }
+    lines.push(headers);
+    this.model.year.categories.forEach(category => {
+      let line = [];
+      line.push(category.title);
+      if (comparer[first] != '') {
+        line.push(this.getLabelCountry(category, first).trim());
+      }
+      if (comparer[second] != '') {
+        line.push(this.getLabelCountry(category, second).trim());
+      }
+      if (comparer.aggregate != '') {
+        line.push(this.getLabelCountry(category, 'aggregate').trim());
+      }
+      let add = true;
+      if (line.length == 2) {
+        if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+          add = false;
+        }
+      } else if (line.length == 3 || line.length == 4) {
+        if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+          add = false;
+        }
+      }
+      if (add) {
+        lines.push(line);
+      }
+      category.subcategories.forEach(subcategory => {
+        line = [];
+        line.push(subcategory.label);
+        if (comparer[first] != '') {
+          line.push(this.getLabelCountry(subcategory, first).trim());
+        }
+        if (comparer[second] != '') {
+          line.push(this.getLabelCountry(subcategory, second).trim());
+        }
+        if (comparer.aggregate != '') {
+          line.push(this.getLabelCountry(subcategory, 'aggregate').trim());
+        }
+        let add = true;
+        if (line.length == 2) {
+          if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+            add = false;
+          }
+        } else if (line.length == 3 || line.length == 4) {
+          if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+            add = false;
+          }
+        }
+        if (add) {
+          lines.push(line);
+        }
+      });
+    });
+    let linesString = lines.map(line => line.map(element => '"' + element.replace('<p>', '').replace('</p>', '') + '"').join(','));
+    let result = linesString.join('\n');
+    result = result.replace(/ ?<\/?b> ?/g, ' ');
+    result = result.replace(/," /g, ',"');
+    result = result.replace(/ ",/g, '",');
+    let blob = new Blob([result], { type: 'text/csv' });
+    const fileName = 'countries';
+    saveAs(blob, fileName + '.csv');
   }
   onDeselected(event, type) {
     if (type === 'first') {
