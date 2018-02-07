@@ -85,7 +85,8 @@ export class MapService {
   }
   mapFitBounds(bounds) {
     this.map.fitBounds(bounds, {
-      padding: {top: 55, bottom: 50, left: 85, right: 30}
+      padding: {top: 75, bottom: 70, left: 50, right: 50}
+      //85,30
     });
     // this.map.fitBounds(bounds);
   }
