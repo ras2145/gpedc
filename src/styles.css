@@ -10,6 +10,7 @@ body {
     /*ccc*/
     overflow-x: hidden;
 }
+
 a:hover {
     color: #0056b3;
     text-decoration: none;
@@ -818,14 +819,16 @@ td.table-title-left {
 }
 
 .table-title-left p {
-  padding: 0px 18px 0px 20px;
-  margin: 0px;
+    padding: 0px 18px 0px 20px;
+    margin: 0px;
 }
 
 .table-subtible p {
-    color: #000;
-    padding: 0px 18px 0px 20px;
+    color: #4d4d4d;
+    padding: 0px 25px 0px 20px;
     margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 11px;
     text-align: left;
 }
 
@@ -847,6 +850,7 @@ td.table-title-left {
 .table-result.center-td-1 {
     padding-top: 24px;
 }
+
 
 /* .background-table {
     background: rgba(249, 237, 232, 1);
@@ -1005,7 +1009,7 @@ td.table-title-left {
 }*/
 
 
-/*color de fondo del modal*/
+/*color de fondo del mcenter-tdodal*/
 
 .modal-backdrop {
     background-color: transparent;
@@ -1229,8 +1233,14 @@ td.table-title-left {
 }
 
 .below {
-    border-color: #CED4DA;
-    border-radius: 5px;
+    border-color: rgba(40, 40, 40, 0.15);
+    /* border-radius: 5px; */
+    border-radius: 2px;
+}
+
+.below:focus {
+    border-color: rgba(52, 60, 83, 0.8);
+    outline: #343c53 auto 2px;
 }
 
 .options ul li {
@@ -1260,12 +1270,10 @@ select-dropdown .disabled {
     pointer-events: none;
 }
 
-
-/*select-dropdown > div .filter input:focus{
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    outline: none;
-}*/
+select-dropdown>div .filter input:focus {
+    border-color: rgba(52, 60, 83, 0.8);
+    outline: #343c53 auto 2px;
+}
 
 select-dropdown li.highlighted,
 select-dropdown li.selected.highlighted {
@@ -1386,7 +1394,7 @@ select-dropdown li.selected.highlighted {
 
 .row.with-placeholder-conutry div.placeholder {
     text-transform: capitalize;
-    font-size: 12px
+    font-size: 11px
 }
 
 
@@ -1467,10 +1475,12 @@ select-dropdown li.selected.highlighted {
     font-size: 12px;
     color: #757575;
 }
+
 .drop-map:hover {
     background: #1d2840 !important;
     color: #fff;
 }
+
 .map-drop .dropdown-menu {
     min-width: 100% !important;
     /* margin-top: -1px; */
@@ -1964,18 +1974,24 @@ select-dropdown li.selected.highlighted {
     margin-right: 5px;
     cursor: pointer;
 }
+
 .btn-md:hover {
     background: #1d2840;
 }
-.img-hv{
-  display: none;
+
+.img-hv {
+    display: none;
 }
-.btn-md:hover .img-hv{
-  display: inherit;
+
+.btn-md:hover .img-hv {
+    display: inherit;
 }
-.btn-md:hover .img-hh{
-  display: none;
+
+.btn-md:hover .img-hh {
+    display: none;
 }
+
+
 /*Scroll perzonalizado*/
 
 body::-webkit-scrollbar {
@@ -2007,6 +2023,7 @@ body::-webkit-scrollbar-thumb {
     background: rgba(241, 120, 70, 0.5);
     border-radius: 5px;
 }
+
 .btn-scroll ul::-webkit-scrollbar {
     width: 7px;
     /* background: #000; */
@@ -2016,6 +2033,7 @@ body::-webkit-scrollbar-thumb {
     background: rgba(241, 120, 70, 0.5);
     border-radius: 5px;
 }
+
 .img-md {
     margin-right: 10px;
 }
@@ -2085,15 +2103,17 @@ body::-webkit-scrollbar-thumb {
 .result-subtitle-one .popover-body {
     width: 220px;
 }
-.bitmap{
-  width: 16.6px;
-  height: 16.6px;
+
+.bitmap {
+    width: 16.6px;
+    height: 16.6px;
 }
+
+
 /* COUNTRY */
-ng-select > div > div.single{
-  height: 25px;
-}
-.year-indicatore i, .year-indicator i {
+
+.year-indicatore i,
+.year-indicator i {
     color: #9b9b9b;
     padding-left: 7px;
     cursor: pointer;
@@ -2101,7 +2121,7 @@ ng-select > div > div.single{
     font-size: 14px;
 }
 
-.link-a.active{
+.link-a.active {
     display: inline-block;
     padding: 9px 10px;
     border-radius: 2px;
@@ -2115,75 +2135,101 @@ ng-select > div > div.single{
     margin-bottom: 12px;
     text-align: center;
 }
-.pp-md{
-  padding-left:71px;
+
+.pp-md {
+    padding-left: 71px;
 }
-.pp-md label{
-  font-size: 12px;
-  margin: 0px;
+
+.pp-md label {
+    font-size: 12px;
+    margin: 0px;
 }
-.pp-l{
-  position: relative;
-  top: -8px;
-  left: 30px;
+
+.pp-l {
+    position: relative;
+    top: -8px;
+    left: 30px;
 }
-.select-indicator-01{
-  padding-top: 36px;
-  padding-left: 56px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 11px;
-  color: rgba(40, 40, 40, 0.56);
-  text-transform: uppercase;
+
+.select-indicator-01 {
+    padding-top: 36px;
+    padding-left: 56px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(40, 40, 40, 0.56);
+    text-transform: uppercase;
 }
+
+
 /* CHECKBOX */
+
 .styled-checkbox {
-  position: absolute;
-  opacity: 0;
+    position: absolute;
+    opacity: 0;
 }
-.styled-checkbox + label {
-  position: relative;
-  cursor: pointer;
-  padding: 0;
+
+.styled-checkbox+label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
 }
-.styled-checkbox + label:before {
-  content: "";
-  margin-right: 10px;
-  display: inline-block;
-  vertical-align: text-top;
-  width: 20px;
-  height: 20px;
-  background: white;
+
+.styled-checkbox+label:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: white;
 }
-.styled-checkbox:hover + label:before {
-  background: rgba(26, 35, 61, 1);
+
+.styled-checkbox:hover+label:before {
+    background: rgba(26, 35, 61, 1);
 }
-.styled-checkbox:focus + label:before {
-  -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+
+.styled-checkbox:focus+label:before {
+    -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
 }
-.styled-checkbox:checked + label:before {
-  background: rgba(26, 35, 61, 1);
+
+.styled-checkbox:checked+label:before {
+    background: rgba(26, 35, 61, 1);
 }
-.styled-checkbox:disabled + label {
-  color: #b8b8b8;
-  cursor: auto;
+
+.styled-checkbox:disabled+label {
+    color: #b8b8b8;
+    cursor: auto;
 }
-.styled-checkbox:disabled + label:before {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  background: #ddd;
+
+.styled-checkbox:disabled+label:before {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #ddd;
 }
-.styled-checkbox:checked + label:after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 9px;
-  background: white;
-  width: 2px;
-  height: 2px;
-  -webkit-box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
-          box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+
+.styled-checkbox:checked+label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    -webkit-box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
+
+
+/* Estilos para cambiar el icono del select */
+
+
+/* .toggle::before {
+    content: '\F140';
+    font-family: 'Material Design Icons';
+    color: rgba(40, 40, 40, 0.56);
+    font-size: 20px;
+} */
