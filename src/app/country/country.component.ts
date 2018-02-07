@@ -4,6 +4,7 @@ import { MapService } from '../services/map.service';
 import { IOption } from '../lib/ng-select/option.interface.d';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from '../titles';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
