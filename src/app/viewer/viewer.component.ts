@@ -434,7 +434,7 @@ export class ViewerComponent implements OnInit {
           if (selectedCountry.length === 0 ) {
               selectedCountry[0] = feature;
           }
-            if((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]).toString()!="9999")
+            if((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
           {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           }
