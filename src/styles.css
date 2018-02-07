@@ -2137,7 +2137,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .pp-md {
-    padding-left: 71px;
+    padding-left: 56px;
 }
 
 .pp-md label {
@@ -2150,10 +2150,12 @@ body::-webkit-scrollbar-thumb {
     top: -8px;
     left: 30px;
 }
-.border-01{
-  border-left: 1px solid rgba(0,0,0,0.1) !important;
-  border-right: 1px solid rgba(0,0,0,0.1) !important;
+
+.border-01 {
+    border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
+
 .select-indicator-01 {
     padding-top: 36px;
     padding-left: 56px;
