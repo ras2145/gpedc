@@ -271,7 +271,6 @@
                                           <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
                                           {{title.year}}
                                       </label>
-                                      <label class="label-md">2016</label>
                                   </div>
                                 </div>
                                 <div class="col-md-3 text-right margin-top-btn">
@@ -830,11 +829,11 @@
             <!-- INICIO Map -->
                 <div class="col-md-9 border-div-none" id="div2">
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
-                      <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md"> Map Viewer</button></a>
-                        <a [routerLink]="['/country']"><button type="button" name="button" class="btn btn-md"><img src="assets/001.png"></button></a>
-                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/002.png"></button></a>
-                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/003.png"></button></a>
-                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/004.png"></button></a>
+                      <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md bitmap"> Map Viewer</button></a>
+                        <a [routerLink]="['/country']"><button type="button" name="button" class="btn btn-md"><img src="assets/001.png" class="bitmap"></button></a>
+                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/002.png" class="bitmap"></button></a>
+                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/003.png" class="bitmap"></button></a>
+                        <a [routerLink]="['/partner']"><button type="button" name="button" class="btn btn-md"><img src="assets/004.png" class="bitmap"></button></a>
                       <br><br>
                       <div class="btn-group map-btn" role="group" aria-label="Basic example">
                         <button type="button" class="btn map-button" (click)="zoomIn()"><i class="mdi mdi-plus"></i></button>
