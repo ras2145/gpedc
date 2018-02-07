@@ -474,7 +474,13 @@
             <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/004.png" alt="" srcset="" class="bitmap"> <span>Four</span></a>
         </div>
 
-        <p class="select-indicator top-10 boder-table">2. SELECT TWO COUNTRIES TO COMPARE RESULTS: <i class="mdi mdi-information"></i></p>
+        <p class="select-indicator top-10 boder-table">2. SELECT TWO COUNTRIES TO COMPARE RESULTS:
+          <i class="mdi mdi-information"
+              popover="Aggregate groupings are based on 2017 OECD classification."
+              placement="right"
+              triggers="mouseenter:mouseleave">
+          </i>
+        </p>
         <div class="row-select">
             <div class="col-md-9">
                 <div class="row with-placeholder-conutry">
@@ -568,7 +574,7 @@
                     <td width="4%"></td>
                     <!-- partner comparison -->
                     <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')" *ngIf="availableCountryRow(subcategory)"></td>
-                    <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
                     <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
                     <td width="17.75%" class="center-td background-2"></td>
                 </tr>
