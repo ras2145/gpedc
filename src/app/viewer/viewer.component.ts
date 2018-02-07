@@ -756,7 +756,7 @@ export class ViewerComponent implements OnInit {
       this.setColor();
       if (this.model.category != null) {
         const column = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
-        this.mapService.filterNotNull(column);
+        //this.mapService.filterNotNull(column);
       }
       this.loaderService.end();
     }, error => {
