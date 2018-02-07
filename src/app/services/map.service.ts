@@ -348,6 +348,7 @@ export class MapService {
   }
   getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
     const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year);
+    console.log(sql);
     const tilesOptions = this.getVectorTilesOptions(sql);
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
@@ -477,7 +478,9 @@ export class MapService {
     }
   }
   filterNotNull(column: string) {
-    this._map.setFilter('country-fills', ['has', column]);
+    if (column) {
+      this._map.setFilter('country-fills', ['has', column]);
+    }
   }
 }
 
