@@ -50,12 +50,17 @@ export class CountryComponent implements OnInit {
     console.log("UND",titles);
     this.resetComparer();
     this.year = '2016';
+    console.log(this.model.year, '------!!!year');
     this.model.year = titles[2];
     console.log("YA",this.model.year);
     this.chargeCountryComparison();
     this.countries = {};
   }
-  
+  changeYear(year) {
+    console.log(year.year, 'year----------- pendejo');
+    this.resetComparer();
+    this.year = year.year;
+  }
   resetComparer() {
     this.countryComparer = {};
     this.countryComparer.firstCountry = '';
@@ -83,6 +88,7 @@ export class CountryComponent implements OnInit {
     }
   }
   onSelectedCountry(event, type) {
+    console.log('onSelectedCountry');
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
         setTimeout(() => {
