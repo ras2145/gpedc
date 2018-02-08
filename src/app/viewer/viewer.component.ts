@@ -119,7 +119,7 @@ export class ViewerComponent implements OnInit {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
-    this.mapService.sidsCountriesQuery(undefined, '2016').subscribe(val => {
+    this.mapService.sidsCountriesQuery(undefined, '2016', '', '', '').subscribe(val => {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
@@ -1199,14 +1199,17 @@ export class ViewerComponent implements OnInit {
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
 
+    const region = this.model.region.value;
+    const countryContext = this.model.countryContext.value;
+    const incomeGroup = this.model.incomeGroup.value;
 
     let indicator = null;
     if (!this.indicator) {
       indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     }
 
-    this.mapService.sidsCountriesQuery(indicator, this.model.year.year).subscribe(val => {
-      const countriesObj = {};
+    this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext).subscribe(val => {
+      const countriesObj = {};  
       for (let country of val) {
         if (countriesObj[country.country]) {
           if (countriesObj[country.country].area < country.area) {

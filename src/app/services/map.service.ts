@@ -353,7 +353,7 @@ export class MapService {
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
   }
-  sidsCountriesQuery(column, year) {
+  sidsCountriesQuery(column, year, region, incomeGroup, countryContext) {
     const centerx = 'ST_X(ST_Centroid(the_geom)) as centerx';
     const centery = 'ST_Y(ST_Centroid(the_geom)) as centery';
     const bboxx1 = 'ST_X(ST_StartPoint(ST_BoundingDiagonal(the_geom))) as bboxx1';
@@ -361,9 +361,36 @@ export class MapService {
     const bboxx2 = 'ST_X(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxx2';
     const bboxy2 = 'ST_Y(ST_EndPoint(ST_BoundingDiagonal(the_geom))) as bboxy2';
     const area = 'ST_Area(the_geom) as area';
+    let sqlone: String = '';
+    let where = '';
+    if (year != null && year != '') {
+      where = where + ' upper(' + `_${year}` + ") = 'YES'";
+    }
+    if (region != null && region != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + " region = '" + region + "' ";
+    }
+    if (incomeGroup != null && incomeGroup != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + " inc_group = '" + incomeGroup + "' ";  
+    }
+    if (countryContext != null && countryContext != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + ' upper(' + countryContext + ") = 'YES'";
+    }
+    if (where != '') {
+      sqlone =  where;
+    }
+    // ---------------
     // tslint:disable-next-line:max-line-length
-    const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE ${column} is not null and UPPER(_${year}) = 'YES' ) as st_dump ORDER BY country`);
-    const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE  UPPER(_${year}) = 'YES') as st_dump ORDER BY country`);
+    const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE ${column} is not null and UPPER(_${year}) = 'YES' AND ${sqlone} ) as st_dump ORDER BY country`);
+    const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE  UPPER(_${year}) = 'YES' AND ${sqlone}) as st_dump ORDER BY country`);
     const query = column ? sql1 : sql2;
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
