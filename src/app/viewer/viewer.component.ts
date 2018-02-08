@@ -404,7 +404,6 @@ export class ViewerComponent implements OnInit {
         this.popupText = '';
       });
       this.mapService.clickCountry(event => {
-        console.log('click');
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
@@ -424,12 +423,21 @@ export class ViewerComponent implements OnInit {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
           });
-          if (selectedCountry.length === 0 ) {
-              selectedCountry[0] = feature;
-          }
-          if((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
+          // if (selectedCountry.length === 0 ) {
+          //     selectedCountry[0] = feature;
+          // }
+          selectedCountry[0] = feature;
+
+          const data1 = selectedCountry[0].properties._2016_5b;
+          const data2 = selectedCountry[0].properties._2016_6;
+          const data3 = selectedCountry[0].properties._2016_7;
+          const data4 = selectedCountry[0].properties._2016_7_1;
+
+          if(((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999"))
           {
+            if ((data1.toString() !== '9999' && data2 !== '9999' && data3 !== '9999' && data4 !== '9999')) {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+            }
           }
           // this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           if (this.selectedCountry) {
