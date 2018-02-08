@@ -98,6 +98,7 @@ img.logo.panel-1 {
 
 .bg-color-nav {
     background: #252e47;
+    height: 52px;
 }
 
 .navbar p {
@@ -1965,22 +1966,24 @@ select-dropdown li.selected.highlighted {
     margin-right: 5px;
     cursor: pointer;
 }
+
 .btn-viewer-01 {
-  display: inline-block;
-  padding: 9px 15px;
-  border-radius: 2px;
-  background-color: rgba(26, 35, 61, 1);
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.211);
-  color: #fff !important;
-  text-decoration: none;
-  height: 36px;
-  /* width: 158px; */
-  font-size: 11px;
-  text-align: center;
-  cursor: pointer;
-  margin-right: 10px;
-  margin-left: 4px;
+    display: inline-block;
+    padding: 9px 15px;
+    border-radius: 2px;
+    background-color: rgba(26, 35, 61, 1);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.211);
+    color: #fff !important;
+    text-decoration: none;
+    height: 36px;
+    /* width: 158px; */
+    font-size: 11px;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 4px;
 }
+
 .btn-md {
     background: #fff;
     width: 36px;
@@ -2123,9 +2126,11 @@ body::-webkit-scrollbar-thumb {
     width: 16.6px;
     height: 16.6px;
 }
-.mg-dd{
-  margin-top: 186px;
+
+.mg-dd {
+    margin-top: 186px;
 }
+
 
 /* COUNTRY */
 
@@ -2151,7 +2156,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 11px;
     margin-bottom: 12px;
     text-align: center;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .pp-md {
@@ -2162,6 +2167,7 @@ body::-webkit-scrollbar-thumb {
     font-size: 12px;
     margin: 0px;
 }
+
 .pp-l {
     position: relative;
     top: -8px;
@@ -2182,10 +2188,12 @@ body::-webkit-scrollbar-thumb {
     color: rgba(40, 40, 40, 0.56);
     text-transform: uppercase;
 }
-.menu-tabs{
-  padding-left: 58px;
-  margin-bottom: 20px;
+
+.menu-tabs {
+    padding-left: 58px;
+    margin-bottom: 20px;
 }
+
 
 /* CHECKBOX */
 

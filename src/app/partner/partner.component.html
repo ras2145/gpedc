@@ -448,8 +448,8 @@
             <i class="mdi mdi-information" popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round." placement="right" triggers="mouseenter:mouseleave">
             </i>
         </div>
-        <hr>
-        <div class="row">
+        <br>
+        <div class="row mTop-8">
             <div class="col-md-9">
                 <div class="float-l radio">
                     <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
@@ -466,31 +466,31 @@
     <!-- Lado derecho cabecera -->
     <div class="side-r-main">
         <div class="menu-tabs">
-          <a [routerLink]="['/']">
-            <button type="button" name="button" class="btn btn-md">
+            <a [routerLink]="['/']">
+                <button type="button" name="button" class="btn btn-md">
               <img src="assets/0005-gray.png" class="bitmap img-hh">
               <img src="assets/0005.png" class="bitmap img-hv">
           </button>
-          </a>
+            </a>
             <a [routerLink]="['/country']">
-              <button type="button" name="button" class="btn btn-md">
+                <button type="button" name="button" class="btn btn-md">
                 <img src="assets/001.png" class="bitmap img-hh">
                 <img src="assets/001-white.png" class="bitmap img-hv">
               </button>
             </a>
             <a [routerLink]="['/partner']">
-              <button type="button" name="button" class="btn btn-viewer-01">
+                <button type="button" name="button" class="btn btn-viewer-01">
                 <img src="assets/002-white.png" class="bitmap img-md"> Partner Comparison
               </button>
             </a>
             <a [routerLink]="['/partner']">
-              <button type="button" name="button" class="btn btn-md">
+                <button type="button" name="button" class="btn btn-md">
                 <img src="assets/003.png" class="bitmap img-hh">
                 <img src="assets/003-white.png" class="bitmap img-hv">
               </button>
             </a>
             <a [routerLink]="['/partner']">
-              <button type="button" name="button" class="btn btn-md">
+                <button type="button" name="button" class="btn btn-md">
                 <img src="assets/004.png" class="bitmap img-hh">
                 <img src="assets/004-white.png" class="bitmap img-hv">
               </button>

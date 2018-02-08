@@ -54,7 +54,12 @@
     font-size: 11px;
     color: rgba(40, 40, 40, 0.56);
     display: block;
-    height: 15px;
+    height: 23px;
+}
+
+.year-indicator {
+    border-bottom: 1px solid rgba(40, 40, 40, 0.15);
+    padding-bottom: 30px;
 }
 
 .title-select {
@@ -211,7 +216,7 @@
 }
 
 .boder-table {
-    padding-top: 36px;
+    padding-top: 33px;
     padding-left: 56px;
     background-color: #ffffff;
     box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.08);
@@ -233,7 +238,7 @@
     border-left: solid 2px rgba(151, 151, 151, 0.07);
     /* border-right: solid 1px rgba(151, 151, 151, 0.07);
     box-shadow: inset -1px 0px 1px 0px rgba(0, 0, 0, 0.08); */
-    margin-top: -15px;
+    margin-top: -19px;
     padding-left: 44px;
     padding-top: 10px;
 }
@@ -316,4 +321,12 @@
 
 .left-10 {
     margin-left: 10px;
+}
+
+.mTop-8 {
+    margin-top: -8px;
+}
+
+.mTop-10 {
+    margin-top: -10px;
 }
