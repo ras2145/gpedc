@@ -22,6 +22,10 @@ export class MapService {
   private _firstCountry = '';
   private _secondCountry = '';
   private layers = layers;
+
+  private bounds = [
+    [-220.04728500751165, -84.68392799015035], [220.04728500751165, 84.68392799015035]
+  ];
   public get firstCountry() {
     return this._firstCountry;
   }
@@ -67,7 +71,8 @@ export class MapService {
       style: this.style,
       center: this.mapDefault.tab1.center,
       zoom: this.mapDefault.tab1.zoom,
-      maxBounds: [[-220, -90], [220, 90]],
+      // [[-220, -90], [220, 90]]
+      maxBounds: this.bounds,
       maxZoom: 8,
       minZoom: 0.9,
       pitch: 0
