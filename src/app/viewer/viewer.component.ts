@@ -389,9 +389,7 @@ export class ViewerComponent implements OnInit {
     //     countries[0].properties[column[i]]="Not Applicable";
     //   }
     // }
-        // console.log("countries",countries[0].properties);
-      if(countries[0].properties[countries[0]['layer'].paint['fill-color'].property]!=undefined){
-        if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]).toString()!="9999")
+        if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]?countries[0].properties[countries[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
         {
           this.countryName = countries[0].properties.country;
           this.getTextPopUp(this.countryName);
@@ -399,11 +397,6 @@ export class ViewerComponent implements OnInit {
         else{ 
           this.countryName = 'Country-not';
           this.popupText = '';
-        }
-        }
-        else{
-          this.countryName = countries[0].properties.country;
-          this.getTextPopUp(this.countryName);
         }
       });
       this.mapService.mouseLeave(() => {
@@ -431,11 +424,10 @@ export class ViewerComponent implements OnInit {
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
           });
-           // if (selectedCountry.length > 0) {
-          //     selectedCountry[0] = feature;
-          // }
-          selectedCountry[0] = feature;
-            if((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
+          if (selectedCountry.length === 0 ) {
+              selectedCountry[0] = feature;
+          }
+          if((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
           {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           }
@@ -471,7 +463,6 @@ export class ViewerComponent implements OnInit {
           const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
           this.countryComparer.firstCountry = aux[0];
           this.countryComparer.secondCountry = aux[1];
-          console.log("selectedCountry",selectedCountry,"::",aux);
         }
       });
       this.loaderService.end();
