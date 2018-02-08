@@ -539,8 +539,7 @@
                     <ng-template #thenBlock>
                         <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator)">
                             <!-- Show indicator 1 tp 4 without displaing data -->
-                            <p>
-                                {{indicator.comparison}}
+                            <p [innerHTML]="indicator.comparison">
                             </p>
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         </td>
@@ -551,8 +550,7 @@
                     <ng-template #elseBlock>
                         <!-- Show rows of indicators 5 - 10 and displays data of them  -->
                         <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator)">
-                            <p>
-                                {{indicator.comparison}}
+                            <p [innerHTML]="indicator.comparison">
                             </p>
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                         </td>

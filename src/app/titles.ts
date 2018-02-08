@@ -20,7 +20,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 5a: Annual predictability of development co-operation",
-        "comparison": "Indicator 5a: Annual predictability of development co-operation"
+        "comparison": "<font color='black'>Indicator 5a:</font> Annual predictability of development co-operation"
       },
       {
         "id": "5b",
@@ -36,7 +36,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 5b: Medium-term predictability of development co-operation",
-        "comparison": "Indicator 5b: Medium-term predictability of development co-operation"
+        "comparison": "<font color='black'>Indicator 5b:</font> Medium-term predictability of development co-operation"
       },
       {
         "id": "6",
@@ -52,7 +52,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
-        "comparison": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny"
+        "comparison": "<font color='black'>Indicator 6:</font> Development co-operation is on budgets which are subject to parliamentary scrutiny"
       },
       {
         "id": "7",
@@ -64,26 +64,26 @@ export let titles = [
             "column": "_2014_7_1",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 1: An aid or partnership policy <b>is</b> in place.",
-            "noText": "Criterion 1: An aid or partnership policy <b>is not</b> in place.",
+            "yesText": "Criterion 1: An aid or partnership policy is in place.",
+            "noText": "Criterion 1: An aid or partnership policy is not in place.",
             "legendText": "Is an aid or partnership policy in place?",
             "type": "text",
             "precision": "0",
             "title": "Existence of an aid or partnership policy (Indicator 7)",
-            "comparison": "Indicator 7: Existence of an aid or partnership policy"
+            "comparison": "<font color='black'>Indicator 7:</font> Existence of an aid or partnership policy"
           },
           {
             "label": "Have country-level targets for development co-operation been established?",
             "column": "_2014_7_2",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 2: Local targets for development co-operation <b>have</b> been established.",
-            "noText": "Criterion 2: Local targets for development co-operation <b>have not been</b> established.",
+            "yesText": "Criterion 2: Local targets for development co-operation have been established.",
+            "noText": "Criterion 2: Local targets for development co-operation have not been established.",
             "legendText": "Are country-level partnership targets in place?",
             "type": "text",
             "precision": "0",
             "title": "Existence of country-level targets for development co-operation (Indicator 7)",
-            "comparison": "Indicator 7: Existence of country-level targets for development co-operation"
+            "comparison": "<font color='black'>Indicator 7:</font> Existence of country-level targets for development co-operation"
           },
           {
             "label": "Do governments and development partners conduct regular joint assessments towards country-level targets?",
@@ -96,45 +96,45 @@ export let titles = [
             "type": "text",
             "precision": "0",
             "title": "Existence of joint assessments towards country-level targets (Indicator 7)",
-            "comparison": "Indicator 7: Existence of regular joint assessments between government and development partners"
+            "comparison": "<font color='black'>Indicator 7:</font> Existence of regular joint assessments between government and development partners"
           },
           {
             "label": "Are non-executive stakeholders involved in joint assessments?",
             "column": "_2014_7_4",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 4: Non-executive stakeholders <b>are</b> involved in joint assessments.",
-            "noText": "Criterion 4: Non-executive stakeholders <b>are not</b> involved in joint assessments.",
+            "yesText": "Criterion 4: Non-executive stakeholders are involved in joint assessments.",
+            "noText": "Criterion 4: Non-executive stakeholders are not involved in joint assessments.",
             "legendText": "Are non-executive stakeholders included in joint assessments?",
             "type": "text",
             "precision": "0",
             "title": "Involvement of non-executive stakeholders in joint assessments",
-            "comparison": "Indicator 7: Involvement of non-executive stakeholders in joint assessments"
+            "comparison": "<font color='black'>Indicator 7:</font> Involvement of non-executive stakeholders in joint assessments"
           },
           {
             "label": "Are joint assessments between government and development partners made public?",
             "column": "_2014_7_5",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 5: Results of joint assessments <b>are</b> made public.",
-            "noText": "Criterion 5: Results or joint assessments <b>are not</b> made public.",
+            "yesText": "Criterion 5: Results of joint assessments are made public.",
+            "noText": "Criterion 5: Results or joint assessments are not made public.",
             "legendText": "Are joint assessments made public?",
             "type": "text",
             "precision": "0",
             "title": "Publicly-available joint assessments between development partners (Indicator 7)",
-            "comparison": "Indicator 7: Existence of publicly-available information on joint assessments"
+            "comparison": "<font color='black'>Indicator 7:</font> Existence of publicly-available information on joint assessments"
           }
         ],
         "column": "_2014_7",
         "prefix": "",
         "suffix": "",
-        "yesText": "According to Global Partnership criteria, there <b>is</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
-        "noText": "According to Global Partnership criteria, there <b>is not</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
+        "yesText": "According to Global Partnership criteria, there is an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
+        "noText": "According to Global Partnership criteria, there is not an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
         "legendText": "Is a process for inclusive reviews in place?",
         "type": "text",
         "precision": "0",
         "footer": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
-        "comparison": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews"
+        "comparison": "<font color='black'>Indicator 7:</font> Mutual accountability among development partners is strengthened through inclusive reviews"
       },
       {
         "id": "8",
@@ -146,77 +146,77 @@ export let titles = [
             "column": "_2014_8",
             "prefix": "",
             "suffix": "",
-            "yesText": "According to Global Partnership criteria, there <b>is</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
-            "noText": "According to Global Partnership criteria, there <b>is not</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 <b>and</b> Criteria 4).",
+            "yesText": "According to Global Partnership criteria, there is a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
+            "noText": "According to Global Partnership criteria, there is not a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
             "legendText": "Do partner countries track public allocations for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Indicator 8: According to Global Partnership criteria, do partner countries track public allocations for gender equality?",
-            "comparison": "Indicator 8: Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
+            "comparison": "<font color='black'>Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
           },
           {
             "label": "Does a government statement establishing a tracking system for gender equality exist?",
             "column": "_2014_8_1",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 1: There <b>is</b> an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
-            "noText": "Criterion 1: There <b>is not</b> an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
+            "yesText": "Criterion 1: There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
+            "noText": "Criterion 1: There is not an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
             "legendText": "Is there a government statement on a tracking system for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Existence of a government statement establishing a tracking system for gender equality (Indicator 8)",
-            "comparison": "Indicator 8: Existence of a government statement establishing a tracking system for gender equality and women's empowerment"
+            "comparison": "<font color='black'>Indicator 8:</font> Existence of a government statement establishing a tracking system for gender equality and women's empowerment"
           },
           {
             "label": "Are public allocations for gender equality systematically tracked?",
             "column": "_2014_8_2",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 2: Gender allocations <b>are</b> systematically tracked.",
-            "noText": "Criterion 2: Gender allocations <b>are not</b> systematically tracked.",
+            "yesText": "Criterion 2: Gender allocations are systematically tracked.",
+            "noText": "Criterion 2: Gender allocations are not systematically tracked.",
             "legendText": "Is there a government system for tracking allocations for gender equality?",
             "type": "text",
             "precision": "0",
             "title": "Systematic tracking of public allocations for gender equality (Indicator 8)",
-            "comparison": "Indicator 8: Governments systematically track public allocations for gender equality and women’s empowerment"
+            "comparison": "<font color='black'>Indicator 8:</font> Governments systematically track public allocations for gender equality and women’s empowerment"
           },
           {
             "label": "Does a central government unit provide leadership and oversight of a tracking system for gender equality allocations?",
             "column": "_2014_8_3",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 3: There <b>is</b> a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
-            "noText": "Criterion 3: There <b>is not</b> a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
+            "yesText": "Criterion 3: There is a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
+            "noText": "Criterion 3: There is not a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
             "legendText": "Is there a central government unit providing leadership and oversight for gender allocations?",
             "type": "text",
             "precision": "0",
             "title": "Existence of a central government unit to provide leadership and oversight (Indicator 8)",
-            "comparison": "Indicator 8: A central government unit provides leadership and oversight of a tracking system for gender equality allocations"
+            "comparison": "<font color='black'>Indicator 8:</font> A central government unit provides leadership and oversight of a tracking system for gender equality allocations"
           },
           {
             "label": "Is gender-equality-focused budget information publicly available?",
             "column": "_2014_8_4",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 4: Gender-related budget information <b>is</b> publicly available.",
-            "noText": "Criterion 4: Gender-related budget information <b>is not</b> publicly available.",
+            "yesText": "Criterion 4: Gender-related budget information is publicly available.",
+            "noText": "Criterion 4: Gender-related budget information is not publicly available.",
             "legendText": "Are budget allocations for gender equality publicly available?",
             "type": "text",
             "precision": "0",
             "title": "Public availability of gender-equality-focused budget information (Indicator 8)",
-            "comparison": "Indicator 8: Existence of pubicly-available information on budget allocations for gender equality"
+            "comparison": "<font color='black'>Indicator 8:</font> Existence of pubicly-available information on budget allocations for gender equality"
           }
         ],
         "column": "_2014_8",
         "prefix": "",
         "suffix": "",
-        "yesText": "According to Global Partnership criteria, there <b>is</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
-        "noText": "According to Global Partnership criteria, there <b>is not</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 <b>and</b> Criteria 4).",
+        "yesText": "According to Global Partnership criteria, there is a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
+        "noText": "According to Global Partnership criteria, there is not a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
         "legendText": "Do partner countries track public allocations for gender equality?",
         "type": "text",
         "precision": "0",
         "footer": "Indicator 8: Governments have systems in place to track allocations for gender equality and women’s empowerment",
-        "comparison": "Indicator 8: Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
+        "comparison": "<font color='black'>Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
       },
       {
         "id": "9a",
@@ -232,7 +232,7 @@ export let titles = [
         "type": "number",
         "precision": "1",
         "footer": "Indicator 9a: Quality of partner countries’ public financial management systems",
-        "comparison": "Indicator 9a: Quality of countries’ public financial management systems"
+        "comparison": "<font color='black'>Indicator 9a:</font>Quality of countries’ public financial management systems"
       },
       {
         "id": "9b",
@@ -248,7 +248,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
-        "comparison": "Indicator 9b: Use of partner countries’ public financial management and procurement systems to deliver development co-operation"
+        "comparison": "<font color='black'>Indicator 9b:</font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation"
       },
       {
         "id": "10",
@@ -264,7 +264,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 10. Aid is untied",
-        "comparison": "Indicator 10: Aid is untied"
+        "comparison": "<font color='black'>Indicator 10:</font> Aid is untied"
       }
     ]
   },
@@ -338,7 +338,7 @@ export let titles = [
         "type": "text",
         "precision": "0",
         "footer": "Indicator 1a: Development partners' use of country-led results frameworks ",
-        "comparison": "Indicator 1a: Do development partners use countries' own results frameworks and evaluation processes?"
+        "comparison": "<font color='black'>Indicator 1a:</font> Do development partners use countries' own results frameworks and evaluation processes?"
       },
       {
         "id": "2",
@@ -407,7 +407,7 @@ export let titles = [
         "type": "text",
         "precision": "0",
         "footer": "Indicator 2: Assessment of an enabling environment for civil society participation in development co-operation ",
-        "comparison": "Indicator 2: Are CSOs engaged in the development effectiveness process?"
+        "comparison": "<font color='black'>Indicator 2:</font> Are CSOs engaged in the development effectiveness process?"
       },
       {
         "id": "3",
@@ -476,7 +476,7 @@ export let titles = [
         "type": "text",
         "precision": "0",
         "footer": "Indicator 3: Quality of public-private dialogue ",
-        "comparison": "Indicator 3: What is the quality of public-private dialogue?"
+        "comparison": "<font color='black'>Indicator 3:</font> What is the quality of public-private dialogue?"
       },
       {
         "id": "4",
@@ -532,7 +532,7 @@ export let titles = [
         "type": "text",
         "precision": "0",
         "footer": "Indicator 4: Transparent information on development co-operation is publicly available",
-        "comparison": "Indicator 4: Are development partners making high-quality information on development co-operation publicly accessible?"
+        "comparison": "<font color='black'>Indicator 4:</font> Are development partners making high-quality information on development co-operation publicly accessible?"
       },
       {
         "id": "5a",
@@ -548,7 +548,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 5a: Annual predictability of development co-operation",
-        "comparison": "Indicator 5a: Annual predictability of development co-operation"
+        "comparison": "<font color='black'>Indicator 5a:</font> Annual predictability of development co-operation"
       },
       {
         "id": "5b",
@@ -564,7 +564,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 5b: Medium-term predictability of development co-operation",
-        "comparison": "Indicator 5b: Medium-term predictability of development co-operation"
+        "comparison": "<font color='black'>Indicator 5b:</font> Medium-term predictability of development co-operation"
       },
       {
         "id": "6",
@@ -580,7 +580,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
-        "comparison": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny"
+        "comparison": "<font color='black'>Indicator 6:</font> Development co-operation is on budgets which are subject to parliamentary scrutiny"
       },
       {
         "id": "7",
@@ -592,8 +592,8 @@ export let titles = [
             "column": "_2016_7_1",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 1: An aid or partnership policy <b>is</b> in place.",
-            "noText": "Criterion 1: An aid or partnership policy <b>is not</b> in place.",
+            "yesText": "Criterion 1: An aid or partnership policy is in place.",
+            "noText": "Criterion 1: An aid or partnership policy is not in place.",
             "legendText": "Is an aid or partnership policy in place?",
             "type": "text",
             "precision": "0",
@@ -605,8 +605,8 @@ export let titles = [
             "column": "_2016_7_2",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 2: Local targets for development co-operation <b>have</b> been established.",
-            "noText": "Criterion 2: Local targets for development co-operation <b>have not been</b> established.",
+            "yesText": "Criterion 2: Local targets for development co-operation have been established.",
+            "noText": "Criterion 2: Local targets for development co-operation have not been established.",
             "legendText": "Are country-level partnership targets in place?",
             "type": "text",
             "precision": "0",
@@ -631,8 +631,8 @@ export let titles = [
             "column": "_2016_7_4",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 4: Non-executive stakeholders <b>are</b> involved in joint assessments.",
-            "noText": "Criterion 4: Non-executive stakeholders <b>are not</b> involved in joint assessments.",
+            "yesText": "Criterion 4: Non-executive stakeholders are involved in joint assessments.",
+            "noText": "Criterion 4: Non-executive stakeholders are not involved in joint assessments.",
             "legendText": "Are non-executive stakeholders included in joint assessments?",
             "type": "text",
             "precision": "0",
@@ -644,8 +644,8 @@ export let titles = [
             "column": "_2016_7_5",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 5: Results of joint assessments <b>are</b> made public.",
-            "noText": "Criterion 5: Results of joint assessments <b>are not</b> made public.",
+            "yesText": "Criterion 5: Results of joint assessments are made public.",
+            "noText": "Criterion 5: Results of joint assessments are not made public.",
             "legendText": "Are joint assessments made public?",
             "type": "text",
             "precision": "0",
@@ -656,13 +656,13 @@ export let titles = [
         "column": "_2016_7",
         "prefix": "",
         "suffix": "",
-        "yesText": "According to Global Partnership criteria, there <b>is</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria).",
-        "noText": "According to Global Partnership criteria, there <b>is not</b> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
+        "yesText": "According to Global Partnership criteria, there is an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria).",
+        "noText": "According to Global Partnership criteria, there is not an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria). ",
         "legendText": "Is a process for inclusive reviews in place?",
         "type": "text",
         "precision": "0",
         "footer": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
-        "comparison": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews"
+        "comparison": "<font color='black'>Indicator 7:</font> Mutual accountability among development partners is strengthened through inclusive reviews"
       },
       {
         "id": "8",
@@ -674,8 +674,8 @@ export let titles = [
             "column": "_2016_8_1",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 1: There <b>is</b> an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
-            "noText": "Criterion 1: There <b>is not</b> an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
+            "yesText": "Criterion 1: There is an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
+            "noText": "Criterion 1: There is not an official government statement defining the system for tracking allocations for gender equality and women's empowerment.",
             "legendText": "Is there a government statement on a tracking system for gender equality?",
             "type": "text",
             "precision": "0",
@@ -687,8 +687,8 @@ export let titles = [
             "column": "_2016_8_2",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 2: Gender allocations <b>are</b> systematically tracked.",
-            "noText": "Criterion 2: Gender allocations <b>are not</b> systematically tracked.",
+            "yesText": "Criterion 2: Gender allocations are systematically tracked.",
+            "noText": "Criterion 2: Gender allocations are not systematically tracked.",
             "legendText": "Is there a government system for tracking allocations for gender equality?",
             "type": "text",
             "precision": "0",
@@ -700,8 +700,8 @@ export let titles = [
             "column": "_2016_8_3",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 3: There <b>is</b> a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
-            "noText": "Criterion 3: There <b>is not</b> a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
+            "yesText": "Criterion 3: There is a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
+            "noText": "Criterion 3: There is not a central government unit in charge of oversight for tracking allocations for gender equality and women's empowerment.",
             "legendText": "Is there a central government unit providing leadership and oversight for gender allocations?",
             "type": "text",
             "precision": "0",
@@ -713,8 +713,8 @@ export let titles = [
             "column": "_2016_8_4",
             "prefix": "",
             "suffix": "",
-            "yesText": "Criterion 4: Gender-related budget information <b>is</b> publicly available.",
-            "noText": "Criterion 4: Gender-related budget information <b>is not</b> publicly available.",
+            "yesText": "Criterion 4: Gender-related budget information is publicly available.",
+            "noText": "Criterion 4: Gender-related budget information is not publicly available.",
             "legendText": "Are budget allocations for gender equality publicly available?",
             "type": "text",
             "precision": "0",
@@ -725,13 +725,13 @@ export let titles = [
         "column": "_2016_8",
         "prefix": "",
         "suffix": "",
-        "yesText": "According to Global Partnership criteria, there <b>is</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
-        "noText": "According to Global Partnership criteria, there <b>is not</b> a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 <b>and</b> Criteria 4).",
+        "yesText": "According to Global Partnership criteria, there is a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
+        "noText": "According to Global Partnership criteria, there is not a system in place for tracking allocations for gender equality and women’s empowerment (the country must be positively assessed for Criteria 1-3 and Criteria 4).",
         "legendText": "Do partner countries track public allocations for gender equality?",
         "type": "text",
         "precision": "0",
         "footer": "Indicator 8: Governments have systems in place to track allocations for gender equality and women’s empowerment",
-        "comparison": "Indicator 8: Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
+        "comparison": "<font color='black'>Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?"
       },
       {
         "id": "9a",
@@ -747,7 +747,7 @@ export let titles = [
         "type": "number",
         "precision": "1",
         "footer": "Indicator 9a: Quality of partner countries’ public financial management systems",
-        "comparison": "Indicator 9a: Quality of countries’ public financial management systems"
+        "comparison": "<font color='black'>Indicator 9a:</font> Quality of countries’ public financial management systems"
       },
       {
         "id": "9b",
@@ -763,7 +763,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
-        "comparison": "Indicator 9b: Use of partner countries’ public financial management and procurement systems to deliver development co-operation"
+        "comparison": "<font color='black'>Indicator 9b:</font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation"
       },
       {
         "id": "10",
@@ -779,7 +779,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 10. Aid is untied",
-        "comparison": "Indicator 10: Aid is untied"
+        "comparison": "<font color='black'>Indicator 10:</font> Aid is untied"
       }
     ]
   }

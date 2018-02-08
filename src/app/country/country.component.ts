@@ -47,9 +47,11 @@ export class CountryComponent implements OnInit {
     this.countriesQuery = val;
     });
     this.titles = titles;
+    console.log("UND",titles);
     this.resetComparer();
     this.year = '2016';
     this.model.year = titles[2];
+    console.log("YA",this.model.year);
     this.chargeCountryComparison();
     this.countries = {};
   }
