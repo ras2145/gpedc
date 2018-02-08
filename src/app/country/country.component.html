@@ -465,15 +465,38 @@
     </div>
     <!-- Lado derecho cabecera -->
     <div class="side-r-main">
-
-        <div class="links">
-            <a [routerLink]="['/']" href="" class="link-a"><img src="../../assets/0005-gray.png" alt="" srcset=""> <span>First</span></a>
-            <a [routerLink]="['/country']" href="" class="link-a active"><img src="../../assets/001-white.png" alt="" srcset="" class="bitmap img-md"> <span>Country Comparision</span></a>
-            <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/002.png" alt="" srcset="" class="bitmap"> <span>Second</span></a>
-            <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/003.png" alt="" srcset="" class="bitmap"> <span>Third</span></a>
-            <a [routerLink]="['/partner']" href="" class="link-a"><img src="../../assets/004.png" alt="" srcset="" class="bitmap"> <span>Four</span></a>
-        </div>
-
+      <div class="menu-tabs">
+        <a [routerLink]="['/']">
+          <button type="button" name="button" class="btn btn-md">
+            <img src="assets/0005-gray.png" class="bitmap img-hh">
+            <img src="assets/0005.png" class="bitmap img-hv">
+        </button>
+        </a>
+          <a [routerLink]="['/country']">
+            <button type="button" name="button" class="btn btn-viewer-01">
+              <img src="assets/001-white.png" class="bitmap img-md ">
+              Country Comparison
+            </button>
+          </a>
+          <a [routerLink]="['/partner']">
+            <button type="button" name="button" class="btn btn-md">
+              <img src="assets/002.png" class="bitmap img-hh">
+              <img src="assets/002-white.png" class="bitmap img-hv">
+            </button>
+          </a>
+          <a [routerLink]="['/partner']">
+            <button type="button" name="button" class="btn btn-md">
+              <img src="assets/003.png" class="bitmap img-hh">
+              <img src="assets/003-white.png" class="bitmap img-hv">
+            </button>
+          </a>
+          <a [routerLink]="['/partner']">
+            <button type="button" name="button" class="btn btn-md">
+              <img src="assets/004.png" class="bitmap img-hh">
+              <img src="assets/004-white.png" class="bitmap img-hv">
+            </button>
+          </a>
+      </div>
         <p class="select-indicator top-10 boder-table">2. SELECT TWO COUNTRIES TO COMPARE RESULTS:
           <i class="mdi mdi-information"
               popover="Aggregate groupings are based on 2017 OECD classification."
