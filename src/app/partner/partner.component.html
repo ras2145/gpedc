@@ -442,7 +442,7 @@
         <p class="subtitle">
             On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator. Available data may also be filtered by region, income group or country context.
         </p>
-        <div class="year-indicator">
+        <div class="year-indicator ll-md">
             <p class="float-l space-letter"><i class="mdi mdi-calendar"></i> 1. SELECT YEAR</p>
             <i class="mdi mdi-information" popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round." placement="right" triggers="mouseenter:mouseleave">
             </i>
@@ -538,7 +538,7 @@
                         <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
                         <label for="styled-checkbox-2">UN agencies</label>
                     </div> -->
-                    <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartners">
+                    <div class="col-md-3 md-ll" *ngFor="let partnerGroup of categorizedPartners">
                         <label for="" class="label--checkbox">
                         <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
                         {{partnerGroup.name}}

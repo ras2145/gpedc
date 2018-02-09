@@ -2173,14 +2173,19 @@ body::-webkit-scrollbar-thumb {
     top: -8px;
     left: 30px;
 }
-
+.ll-md{
+  margin-top: 172px;
+}
+.md-ll{
+  margin-bottom: 15px;
+}
 .border-01 {
     border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
     border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 .select-indicator-01 {
-    padding-top: 36px;
+    padding-top: 20px;
     padding-left: 56px;
     letter-spacing: 1px;
     font-weight: 600;
