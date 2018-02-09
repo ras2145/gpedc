@@ -122,7 +122,6 @@ export class PartnerComponent implements OnInit {
     });
   } 
   chargeOrganizationComparison() {
-    this.resetModels();
     this.organizationSelectors = [];
     this.organizationSelectors.push({
       key: '2014',

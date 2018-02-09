@@ -538,10 +538,11 @@
                         <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
                         <label for="styled-checkbox-2">UN agencies</label>
                     </div> -->
-                    <div class="col-md-3 md-ll" *ngFor="let partnerGroup of categorizedPartners">
-                        <label for="" class="label--checkbox">
+                    <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartners; let i=index">
+                        <label   for="" class="label--checkbox">
                         <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                        {{partnerGroup.name}}
+                        {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
+                        <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
                         </label>
                     </div>
                 </div>
