@@ -31,7 +31,7 @@ export class GenerateIndicatorsService {
       return '-';
     }
     const dataObject = query;
-    const field = 'country';
+    const field = isOrganization ? 'partner' : 'country';
     const country = dataObject.filter((a) => {
       if (!a[field]) {
         return false;
@@ -75,10 +75,10 @@ export class GenerateIndicatorsService {
     return value;
   }
 
-  exportCsvFunction(comparerExport, queryExport, model) {
+  exportCsvFunction(comparerExport, queryExport, model, isOrganization?: boolean) {
     const comparer = comparerExport;
-    const first =  'firstCountry';
-    const second = 'secondCountry';
+    const first = isOrganization ? 'firstOrganization' : 'firstCountry';
+    const second = isOrganization ? 'secondOrganization' : 'secondCountry';
     const lines = [];
     const headers = ['Indicator'];
     if (comparer[first] != '') {
@@ -95,13 +95,13 @@ export class GenerateIndicatorsService {
       let line = [];
       line.push(category.title);
       if (comparer[first] != '') {
-        line.push(this.getLabelCountryFunction(category, first,comparerExport,queryExport).trim());
+        line.push(this.getLabelCountryFunction(category, first, comparerExport, queryExport, isOrganization).trim());
       }
       if (comparer[second] != '') {
-        line.push(this.getLabelCountryFunction(category, second,comparerExport,queryExport).trim());
+        line.push(this.getLabelCountryFunction(category, second,comparerExport,queryExport, isOrganization).trim());
       }
       if (comparer.aggregate != '') {
-        line.push(this.getLabelCountryFunction(category, 'aggregate',comparerExport,queryExport).trim());
+        line.push(this.getLabelCountryFunction(category, 'aggregate',comparerExport,queryExport, isOrganization).trim());
       }
       let add = true;
       if (line.length == 2) {
@@ -120,13 +120,13 @@ export class GenerateIndicatorsService {
         line = [];
         line.push(subcategory.label);
         if (comparer[first] != '') {
-          line.push(this.getLabelCountryFunction(subcategory, first,comparerExport,queryExport).trim());
+          line.push(this.getLabelCountryFunction(subcategory, first,comparerExport,queryExport, isOrganization).trim());
         }
         if (comparer[second] != '') {
-          line.push(this.getLabelCountryFunction(subcategory, second,comparerExport,queryExport).trim());
+          line.push(this.getLabelCountryFunction(subcategory, second,comparerExport,queryExport, isOrganization).trim());
         }
         if (comparer.aggregate != '') {
-          line.push(this.getLabelCountryFunction(subcategory, 'aggregate',comparerExport,queryExport).trim());
+          line.push(this.getLabelCountryFunction(subcategory, 'aggregate',comparerExport,queryExport, isOrganization).trim());
         }
         let add = true;
         if (line.length == 2) {
@@ -149,7 +149,7 @@ export class GenerateIndicatorsService {
     result = result.replace(/," /g, ',"');
     result = result.replace(/ ",/g, '",');
     let blob = new Blob([result], { type: 'text/csv' });
-    const fileName = 'countries';
+    const fileName = isOrganization ? 'partner' : 'country';
     saveAs(blob, fileName + '.csv');
   }
 }
