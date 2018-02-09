@@ -539,9 +539,11 @@
                         <label for="styled-checkbox-2">UN agencies</label>
                     </div> -->
                     <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartners">
-                        <input class="styled-checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                        <label for="">{{partnerGroup.name}}</label>
-                    </div>                    
+                        <label for="" class="label--checkbox">
+                        <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
+                        {{partnerGroup.name}}
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -550,7 +552,7 @@
 
         <div class="row-select">
             <div class="col-md-9">
-                <div class="row" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]"> 
+                <div class="row" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
                     <div class="col-md-4 padding-dd-03">
                         <!-- <ng-select (deselected)="onDeselected($event,'first')" (selected)="onSelectedCountry($event, 'first')" [(ngModel)]="countryComparer.firstCountry" [allowClear]="true" placeholder="Select country" [options]="countrySelectors[(year === '2014' ? 0 : 1)]['value']"></ng-select> -->
                         <ng-select
@@ -558,7 +560,7 @@
                         [(ngModel)]="organizationComparer.firstOrganization"
                         [allowClear]="true"
                         placeholder="Select Development Partner"
-                        [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value1']"></ng-select>    
+                        [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value1']"></ng-select>
                     </div>
                     <div class="col-md-4 padding-dd-04">
                         <!-- <ng-select (deselected)="onDeselected($event,'second')" (selected)="onSelectedCountry($event, 'second')" [allowClear]="true" placeholder="Select country" [(ngModel)]="countryComparer.secondCountry" [options]="countrySelectors[(year === '2014' ? 0 : 1)]['value']"></ng-select> -->
@@ -567,7 +569,7 @@
                         [(ngModel)]="organizationComparer.secondOrganization"
                         [allowClear]="true"
                         placeholder="Select Development Partner"
-                        [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value2']"></ng-select>                    
+                        [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value2']"></ng-select>
                     </div>
 
                     <div class="col-md-4 padding-dd-05">
@@ -576,7 +578,7 @@
                         [allowClear]="true"
                         placeholder="Select Aggregate"
                         [(ngModel)]="organizationComparer.aggregate"
-                        [options]="organizationSelectors[2]['value']"></ng-select>                          
+                        [options]="organizationSelectors[2]['value']"></ng-select>
                     </div>
                 </div>
             </div>
