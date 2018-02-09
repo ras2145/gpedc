@@ -452,7 +452,7 @@
             <div class="col-md-9">
                 <div class="float-l radio">
                     <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
-                    <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year"/>
+                    <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)= 'changeYear(model.year)'/>
                     {{title.year}}
                 </label>
                 </div>

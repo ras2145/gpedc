@@ -62,12 +62,17 @@ export class PartnerComponent implements OnInit {
     this.titles = titles;
     this.getPartners();
     this.year = '2016';
-    this.model.year = titles[2];    
+    this.model.year = titles[2];
     this.organizationComparer = {
       firstOrganization: '',
       ssecondOrganization: '',
       aggregate: ''
     };
+  }
+  changeYear(year) {
+    console.log(year.year, '------------');
+    this.resetModels();
+    this.year = year.year;
   }
   resetModels() {
     this.organizationComparer = {
@@ -75,13 +80,13 @@ export class PartnerComponent implements OnInit {
       ssecondOrganization: '',
       aggregate: ''
     };
-    titles.forEach(title => {
-      if (title.year === '2016') {
-        this.model.year = title;
-        this.model.category = title.categories[0];
-        this.model.subcategory = null;
-      }
-    });
+    // titles.forEach(title => {
+    //   if (title.year === '2016') {
+    //     this.model.year = title;
+    //     this.model.category = title.categories[0];
+    //     this.model.subcategory = null;
+    //   }
+    // });
   }
   getPartners() {
     this.mapService.getPartners().subscribe(res => {
