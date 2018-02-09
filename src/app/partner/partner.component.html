@@ -517,16 +517,16 @@
                         <label for="styled-checkbox-2">Other international</label>
                         <label for="styled-checkbox-2" class="pp-l">and regional organizations</label>
                     </div>-->
-                      <div class="col-md-3"  *ngFor="let partnerGroup of categorizedPartners; let i=index">
+                    <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartners; let i=index">
                         <label *ngIf="i<3" for="" class="label--checkbox">
                         <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
                         {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
                         <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
                         </label>
-                    </div>                       
+                    </div>
                 </div>
                 <div class="row no-gutters">
-                <!--     <div class="col-md-3">
+                    <!--     <div class="col-md-3">
                         <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
                         <label for="styled-checkbox-2">Bilateral partners</label>
                         <label for="styled-checkbox-2" class="pp-l">(DAC members)</label>
@@ -546,7 +546,7 @@
                         <label for="styled-checkbox-2">UN agencies</label>
                     </div> -->
                     <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartners; let i=index">
-                        <label  *ngIf="i>2 " for="" class="label--checkbox">
+                        <label *ngIf="i>2 " for="" class="label--checkbox">
                         <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
                         {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
                         <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
@@ -563,30 +563,16 @@
                 <div class="row" *ngIf="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]">
                     <div class="col-md-4 padding-dd-03">
                         <!-- <ng-select (deselected)="onDeselected($event,'first')" (selected)="onSelectedCountry($event, 'first')" [(ngModel)]="countryComparer.firstCountry" [allowClear]="true" placeholder="Select country" [options]="countrySelectors[(year === '2014' ? 0 : 1)]['value']"></ng-select> -->
-                        <ng-select
-                        (selected)="onSelectedOrganization($event, 'first')"
-                        [(ngModel)]="organizationComparer.firstOrganization"
-                        [allowClear]="true"
-                        placeholder="Select Development Partner"
-                        [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value1']"></ng-select>
+                        <ng-select (selected)="onSelectedOrganization($event, 'first')" [(ngModel)]="organizationComparer.firstOrganization" [allowClear]="true" placeholder="Select Development Partner" [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value1']"></ng-select>
                     </div>
                     <div class="col-md-4 padding-dd-04">
                         <!-- <ng-select (deselected)="onDeselected($event,'second')" (selected)="onSelectedCountry($event, 'second')" [allowClear]="true" placeholder="Select country" [(ngModel)]="countryComparer.secondCountry" [options]="countrySelectors[(year === '2014' ? 0 : 1)]['value']"></ng-select> -->
-                        <ng-select
-                        (selected)="onSelectedOrganization($event, 'second')"
-                        [(ngModel)]="organizationComparer.secondOrganization"
-                        [allowClear]="true"
-                        placeholder="Select Development Partner"
-                        [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value2']"></ng-select>
+                        <ng-select (selected)="onSelectedOrganization($event, 'second')" [(ngModel)]="organizationComparer.secondOrganization" [allowClear]="true" placeholder="Select Development Partner" [options]="organizationSelectors[(model.year['year'] === '2014' ? 0 : 1)]['value2']"></ng-select>
                     </div>
 
                     <div class="col-md-4 padding-dd-05">
                         <!-- <ng-select [allowClear]="true" placeholder="Select Aggregate" [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[2]['value']"></ng-select> -->
-                        <ng-select
-                        [allowClear]="true"
-                        placeholder="Select Aggregate"
-                        [(ngModel)]="organizationComparer.aggregate"
-                        [options]="organizationSelectors[2]['value']"></ng-select>
+                        <ng-select [allowClear]="true" placeholder="Select Aggregate" [(ngModel)]="organizationComparer.aggregate" [options]="organizationSelectors[2]['value']"></ng-select>
                     </div>
                 </div>
             </div>
@@ -628,7 +614,7 @@
 
 
     <div class="row">
-        <div class="col-md-12 background-table">
+        <div class="col-md-12 background-table mTop-12">
             <table class="table table-sm table-space" *ngFor="let indicator of model.year.categories">
                 <tr class="border-bottom-1">
                     <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
@@ -639,7 +625,7 @@
                             </p>
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         </td>
-                        <td width="75%" colspan="4" class="table-result center-td background-2 no-padding" *ngIf="hasSubOrganization(indicator)">
+                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubOrganization(indicator)">
                             <div class="back-title"></div>
                         </td>
                     </ng-template>
@@ -650,9 +636,11 @@
                             </p>
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                         </td>
-                        <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
-                        <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'secondOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
-                        <td width="25%" class="table-result center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableOrganizationRow(indicator)"></td>
+                        <td width="4%"></td>
+                        <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
+                        <td width="17.75%" class="center-td border-01" [innerHTML]="getLabelCountry(indicator, 'secondOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
+                        <td width="17.75%" class="center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableOrganizationRow(indicator)"></td>
+                        <td width="17.75%" class="center-td background-2"></td>
                     </ng-template>
                 </tr>
                 <!-- Show row of subcategories of all indicators-->
@@ -662,10 +650,12 @@
                             <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                         </p>
                     </td>
+                    <td width="4%"></td>
                     <!-- partner comparison -->
-                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstOrganization')" *ngIf="availableOrganizationRow(subcategory)"></td>
-                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'secondOrganization')" *ngIf="availableOrganizationRow(subcategory)"></td>
-                    <td width="25%" class="table-result center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableOrganizationRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstOrganization')" *ngIf="availableOrganizationRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondOrganization')" *ngIf="availableOrganizationRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableOrganizationRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2"></td>
                 </tr>
             </table>
         </div>
