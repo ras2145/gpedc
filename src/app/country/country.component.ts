@@ -156,6 +156,11 @@ export class CountryComponent implements OnInit {
       if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') 
       return false;
     }
+    if (category.id === '8') {
+      if (category.subcategories.length > 4) {
+        category.subcategories.splice(0, 1);
+      }
+    }
     return true;
   }
   hasSubCountry(indicator) {

@@ -119,22 +119,22 @@ export class ViewerComponent implements OnInit {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
-    this.mapService.sidsCountriesQuery(undefined, '2016', '', '', '').subscribe(val => {
-      const countriesObj = {};
-      for (let country of val) {
-        if (countriesObj[country.country]) {
-          if (countriesObj[country.country].area < country.area) {
-            countriesObj[country.country] = country;
-          }
-        } else {
-          countriesObj[country.country] = country;
-        }
-      }
-      this.sidsCountries = [];
-      for (let countryName in countriesObj) {
-        this.sidsCountries.push(countriesObj[countryName]);
-      }
-    });
+    // this.mapService.sidsCountriesQuery(undefined, '2016', '', '', '').subscribe(val => {
+    //   const countriesObj = {};
+    //   for (let country of val) {
+    //     if (countriesObj[country.country]) {
+    //       if (countriesObj[country.country].area < country.area) {
+    //         countriesObj[country.country] = country;
+    //       }
+    //     } else {
+    //       countriesObj[country.country] = country;
+    //     }
+    //   }
+    //   this.sidsCountries = [];
+    //   for (let countryName in countriesObj) {
+    //     this.sidsCountries.push(countriesObj[countryName]);
+    //   }
+    // });
     this.getPartners();
     this.countryComparisonOptions = countryComparison;
     this.chargeCountryComparison();
@@ -435,7 +435,7 @@ export class ViewerComponent implements OnInit {
 
           if(((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999"))
           {
-            if ((data1.toString() !== '9999' && data2 !== '9999' && data3 !== '9999' && data4 !== '9999')) {
+            if ((data1 !== '9999' && data2 !== '9999' && data3 !== '9999' && data4 !== '9999')) {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
             }
           }
