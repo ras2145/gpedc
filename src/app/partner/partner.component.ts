@@ -14,6 +14,8 @@ import { saveAs } from 'file-saver';
 })
 export class PartnerComponent implements OnInit {
   categorizedPartners: any;
+  categorizedPartnersP: any;
+  categorizedPartnersS: any;
   partners: any; 
   titles;
   year;
@@ -118,6 +120,8 @@ export class PartnerComponent implements OnInit {
         return 0;
       });
       console.log("Partnets",this.categorizedPartners);
+      this.categorizedPartnersP=this.categorizedPartners.slice(0,3);
+      this.categorizedPartnersS=this.categorizedPartners.slice(3,7);
       this.chargeOrganizationComparison();
     });
   } 
