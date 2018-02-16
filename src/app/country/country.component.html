@@ -5,12 +5,12 @@
             <a class="navbar-brand"> <img src="assets/favicon.png" alt="" height="35px">
                 <label class="global-p">Global Partnership</label>
                 <br>
-                <label class="for-p">for Effective Development Co-operation</label>
+                <label class="for-p">for effective development cooperation</label>
             </a>
-            <!-- <i class="mdi mdi-information i-p" popover="Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
+            <i class="mdi mdi-information i-p" popover="Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
                 Available data may also be filtered by region, income group or country context." placement="bottom" triggers="mouseenter:mouseleave">
 
-          </i> -->
+          </i>
         </div>
         <div class="col-m-8 col-wd">
             <p> {{ !indicator ? mapTitle : '' }} &nbsp;</p>
@@ -449,8 +449,8 @@
             </i>
         </div>
         <br>
-        <div class="row no-gutters mTop-8">
-            <div class="col-md-11">
+        <div class="row mTop-8">
+            <div class="col-md-9">
                 <div class="float-l radio">
                     <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
                     <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change) = 'changeYear(model.year)' />
@@ -458,7 +458,7 @@
                 </label>
                 </div>
             </div>
-            <div class="col-md-1 text-right">
+            <div class="col-md-3 text-right">
                 <a class="btn btn-export-02" (click)="exportCsv()"><i class="mdi mdi-download"></i></a>
             </div>
         </div>
@@ -512,7 +512,7 @@
                     </div>
 
                     <div class="col-md-4 padding-dd-05">
-                        <ng-select [allowClear]="true" placeholder="Select Aggregate" [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[2]['value']"></ng-select>
+                        <ng-select [allowClear]="true" placeholder="Select Context" [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[2]['value']"></ng-select>
                     </div>
                 </div>
             </div>
@@ -530,7 +530,7 @@
                         <span>{{countryComparer.secondCountry ? countryComparer.secondCountry : 'Country'}}</span>
                     </div>
                     <div class="col-md-4 title-select">
-                        <span class="right-10">{{countryComparer.aggregate ? countryComparer.aggregate : 'Aggregate'}}</span>
+                        <span class="right-10">{{countryComparer.aggregate ? countryComparer.aggregate : 'Average'}}</span>
                     </div>
                 </div>
             </div>
@@ -569,37 +569,31 @@
                     </ng-template>
                     <ng-template #elseBlock>
                         <!-- Show rows of indicators 5 - 10 and displays data of them  -->
-                        <div *ngIf = "availableCountryRow(indicator) === true; then thenPass"> </div>
-                        <ng-template #thenPass>
-                          <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator)">
-                              <p [innerHTML]="indicator.comparison">
-                              </p>
-                              <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
-                          </td>
-                          <td width="4%"></td>
-                          <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')" *ngIf="availableCountryRow(indicator)"></td>
-                          <td width="17.75%" class="center-td border-01" [innerHTML]="getLabelCountry(indicator, 'secondCountry')" *ngIf="availableCountryRow(indicator)"></td>
-                          <td width="17.75%" class="center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableCountryRow(indicator)"></td>
-                          <td width="17.75%" class="center-td background-2"></td>
-                        </ng-template>
+                        <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator)">
+                            <p [innerHTML]="indicator.comparison">
+                            </p>
+                            <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
+                        </td>
+                        <td width="4%"></td>
+                        <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')" *ngIf="availableCountryRow(indicator)"></td>
+                        <td width="17.75%" class="center-td border-01" [innerHTML]="getLabelCountry(indicator, 'secondCountry')" *ngIf="availableCountryRow(indicator)"></td>
+                        <td width="17.75%" class="center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableCountryRow(indicator)"></td>
+                        <td width="17.75%" class="center-td background-2"></td>
                     </ng-template>
                 </tr>
                 <!-- Show row of subcategories of all indicators-->
                 <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                    <div *ngIf="availableCountryRow(subcategory) === true; then thenPass"></div>
-                    <ng-template #thenPass>
-                      <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableCountryRow(subcategory)">
-                          <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:','').replace('Indicator 8:','')">
-                          </p>
-                          <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
-                      </td>
-                      <td width="4%"></td>
-                      <!-- partner comparison -->
-                      <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')" *ngIf="availableCountryRow(subcategory)"></td>
-                      <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
-                      <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
-                      <td width="17.75%" class="center-td background-2"></td>
-                    </ng-template>
+                    <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableCountryRow(subcategory)">
+                        <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison">
+                            <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
+                        </p>
+                    </td>
+                    <td width="4%"></td>
+                    <!-- partner comparison -->
+                    <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2"></td>
                 </tr>
             </table>
         </div>

@@ -571,8 +571,7 @@
                     </div>
 
                     <div class="col-md-4 padding-dd-05">
-                        <!-- <ng-select [allowClear]="true" placeholder="Select Aggregate" [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[2]['value']"></ng-select> -->
-                        <ng-select [allowClear]="true" placeholder="Select Aggregate" [(ngModel)]="organizationComparer.aggregate" [options]="organizationSelectors[2]['value']"></ng-select>
+                        <ng-select [allowClear]="true" placeholder="Select Context" [(ngModel)]="organizationComparer.aggregate" [options]="organizationSelectors[2]['value']"></ng-select>
                     </div>
                 </div>
             </div>
@@ -588,7 +587,7 @@
                         <span>{{organizationComparer.secondOrganization ? organizationComparer.secondOrganization : 'Partner'}}</span>
                     </div>
                     <div class="col-md-4 title-select">
-                        <span>{{organizationComparer.aggregate ? organizationComparer.aggregate : 'Aggregate'}}</span>
+                        <span>{{organizationComparer.aggregate ? organizationComparer.aggregate : 'Average'}}</span>
                     </div>
                 </div>
             </div>
