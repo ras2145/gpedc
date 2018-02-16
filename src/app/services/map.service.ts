@@ -97,7 +97,13 @@ export class MapService {
   }
 
   onLoad(cb: Function) {
-    this.map.on('load', cb);
+    if (this.map.isStyleLoaded()) {
+      cb();
+    } else {
+      setTimeout(() => {
+        this.onLoad(cb);
+      }, 1000);
+    }
   }
 
   // build(geojson: any) {
