@@ -35,13 +35,16 @@ export class PartnerComponent implements OnInit {
     'Aggregate'
   ];
   sidsOrder = {
-    'Bilateral partners (DAC members)': 0,
-    'Other bilateral partners (non-DAC members)': 1,
-    'Foundation': 2,
-    'Global funds and vertical initiatives': 3,
-    'Multilateral development banks': 4,
+    'Average for all development partners': 0,
+    'Bilateral partners (DAC members)': 1,
+    'Other bilateral partners (non-DAC members)': 2,
+    'Foundations': 6,
+    'Foundation': 6,
+    'Global funds and vertical initiatives': 7,
+    'Multilateral development banks': 3,
     'Other international and regional organizations': 5,
-    'UN agencies': 6
+    'Other international and regional organisations': 5,
+    'UN agencies': 4
   };  
   model = {
     year: null,
@@ -111,14 +114,6 @@ export class PartnerComponent implements OnInit {
           });
         }
       }
-      this.categorizedPartners.sort((a, b) => {
-        if (this.sidsOrder[a.name] < this.sidsOrder[b.name]) {
-          return -1;
-        } else if (this.sidsOrder[a.name] > this.sidsOrder[b.name]) {
-          return 1;
-        }
-        return 0;
-      });
       console.log("Partnets",this.categorizedPartners);
       this.categorizedPartnersP=this.categorizedPartners.slice(0,3);
       this.categorizedPartnersS=this.categorizedPartners.slice(3,7);
@@ -183,6 +178,19 @@ export class PartnerComponent implements OnInit {
         label: aggregate.label
       });
     }
+    const correctOrder = ['Average for all development partners',
+        'Bilateral partners (DAC members)',
+        'Other bilateral partners (non-DAC members)',
+        'Multilateral development banks',
+        'UN agencies',
+        'Other international and regional organizations',
+        'Foundations',
+        'Global funds and vertical initiatives'];
+    this.organizationSelectors[2]['value'].sort((a,b) => {
+      console.log(a.value, this.sidsOrder[a.value], b.value, this.sidsOrder[b.value]);
+      return this.sidsOrder[a.value] - this.sidsOrder[b.value];
+    });
+    console.log(this.organizationSelectors[2]['value']);
   } 
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
