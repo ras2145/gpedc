@@ -1,3 +1,228 @@
-<p>
-  partner-historical works!
-</p>
+<!-- NAVBAR -->
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <div class="row nav-row">
+        <div class="col-md-3 bg-color-nav">
+          <a class="navbar-brand"> <img src="assets/favicon.png" alt="" height="35px">
+            <label class="global-p">Global Partnership</label>
+            <br>
+            <label class="for-p">for Effective Development Co-operation</label>
+          </a>
+        </div>
+        <div class="col-m-8 col-wd">
+          <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
+        </div>
+        <div class="col-md-1 bg-color-nav">
+          <button type="button" class="btn btn-tutorial" (click)="openModal(tuto)" > <i class="mdi mdi-play" ></i> Tutorial </button>
+        </div>
+      </div>
+    </nav>
+<!-- NAVBAR END -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 historical">
+      <p>On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
+        Available data may also be filtered by region, income group or country context.
+      </p>
+      <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
+          <i class="mdi mdi-information"
+              popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
+              placement="right"
+              triggers="mouseenter:mouseleave" >
+          </i>
+      </p>
+      <div class="row no-gutters">
+        <div class="col-md-11">
+          <div class="radio">
+              <label>
+                  <input type="radio" name="radio-btn" [value]="title"/>
+                  2016
+              </label>
+              <label>
+                  <input type="radio" name="radio-btn" [value]="title"/>
+                  2014
+              </label>
+              <label class="radio-label-checked">
+                  <input type="radio" name="radio-btn" [value]="title"/>
+                  2010
+              </label>
+              <label>
+                  <input type="radio" name="radio-btn" [value]="title"/>
+                  2007
+              </label>
+              <label>
+                  <input type="radio" name="radio-btn" [value]="title"/>
+                  2005
+              </label>
+          </div>
+        </div>
+        <div class="col-md-1 text-right margin-top-btn">
+            <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
+        </div>
+      </div>
+      <br>
+      <!-- DEVELOPMENT -->
+      <p class="result-subtitle space-view-data"> <span _ngcontent-c1="" class="mdi mdi-crosshairs-gps"></span>INDICATOR
+          <i class="mdi mdi-information"
+              popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
+              placement="right"
+              triggers="mouseenter:mouseleave" >
+          </i>
+      </p>
+
+      <div class="btn-group btn-dropdown" dropdown>
+        <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+          <span class="font-selet-dropdown content-select-default">Ethiopia</span>
+          <span class="dropdown-caret mdi mdi-chevron-down"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+          <li role="menuitem">
+              <a class="dropdown-item style-a-default">
+                  .....
+              </a>
+          </li>
+        </ul>
+      </div>
+      <br><br>
+      <div class="form-group style-select">
+        <p for="inputState" class="result-subtitle space-indicator"><img src="assets/004.png" alt="" width="12px"> DEVELOPMENT PARTNER
+            <i class="mdi mdi-information"
+                popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+                placement="right"
+              >
+
+            </i>
+        </p>
+        <!-- CHECKBOX -->
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          Bilateral partner (DAC members)
+        </label>
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          Foundations
+        </label>
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          Global funds and vertical initiatives
+        </label>
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          Multilateral development banks
+        </label>
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          Other bilateral partners <br>
+          <label _ngcontent-c4="" class="line-check-text">(non-DAC members)</label>
+        </label>
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          Other international and regional <br>
+          <label _ngcontent-c4="" class="line-check-text">organizations</label>
+        </label>
+        <label _ngcontent-c2="" class="label--checkbox ll-01" for="">
+          <input _ngcontent-c2="" class="checkbox btn-filters-selected" type="checkbox" ng-reflect-klass="checkbox" ng-reflect-ng-class="[object Object]">
+          UN agencies
+        </label>
+        <!-- CHECKBOX -->
+        <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+            <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+                <span class="font-selet-dropdown content-select-default">UNDP</span>
+                <span class="dropdown-caret mdi mdi-chevron-down"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
+                <li role="menuitem">
+                    <a class="dropdown-item contenido-dropdown">
+                        Indicator 1a: Do development partners use partner countries' own results frameworks and evaluation processes?
+                    </a>
+                </li>
+            </ul>
+        </div>
+      </div>
+      <button type="button" name="button" class="btn btn-run">Run Analysis</button>
+    </div>
+    <div class="col-md-9 level-bg">
+      <div class="menu-tabs">
+          <a [routerLink]="['/']">
+              <button type="button" name="button" class="btn btn-md">
+            <img src="assets/0005-gray.png" class="bitmap img-hh">
+            <img src="assets/0005.png" class="bitmap img-hv">
+        </button>
+          </a>
+          <a [routerLink]="['/country']">
+              <button type="button" name="button" class="btn btn-md">
+              <img src="assets/001.png" class="bitmap img-hh">
+              <img src="assets/001-white.png" class="bitmap img-hv">
+            </button>
+          </a>
+          <a [routerLink]="['/partner']">
+              <button type="button" name="button" class="btn btn-md">
+                <img src="assets/002.png" class="bitmap img-hh">
+              <img src="assets/002-white.png" class="bitmap img-hv">
+            </button>
+          </a>
+          <a [routerLink]="['/country-historical']">
+              <button type="button" name="button" class="btn btn-md">
+                <img src="assets/003.png" class="bitmap img-hh">
+              <img src="assets/003-white.png" class="bitmap img-hv">
+            </button>
+          </a>
+          <a [routerLink]="['/partner-historical']">
+              <button type="button" name="button" class="btn btn-viewer-01">
+              <img src="assets/004-white.png" class="bitmap img-md">Partner-Level Analysis
+            </button>
+          </a>
+      </div>
+      <!-- CONTAINER -->
+      <div class="card-db">
+        <div class="row">
+          <div class="col-md-6">
+            <label>2010 performance across all development partners for Ethiopia: Indicator 1a</label>
+            <p> Click on a development partner to see historical trends in performance</p>
+            <div class="row no-gutters">
+              <div class="col-md-5">
+                <img src="assets/006.png" alt="" width="11px">
+                <label class="title-pp">DEVELOPMENT PARTNER</label>
+                <i class="mdi mdi-information"
+                    popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    placement="right"
+                    triggers="mouseenter:mouseleave" >
+                </i>
+              </div>
+              <div class="col-md-4">
+                <img src="assets/006.png" alt="" width="11px">
+                <label class="title-pp-01">SCORE</label>
+                <i class="mdi mdi-information"
+                    popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    placement="right"
+                    triggers="mouseenter:mouseleave" >
+                </i>
+              </div>
+            </div>
+
+            <div class="title-i">
+              <label>Indicator Score %</label>
+              <i class="mdi mdi-information"
+                  popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                  placement="right"
+                  triggers="mouseenter:mouseleave" >
+              </i>
+            </div>
+            <img src="assets/10.png" alt="">
+          </div>
+          <div class="col-md-6">
+            <div class="card-bd">
+              <div class="card-bd-01">
+                <h6>UNDP</h6>
+                <p>Historical performance for UNDP in Ethiopia: Indicator 1a</p>
+                <img src="assets/007.png" alt="">
+              </div>
+
+              <div class="card-bd-02">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

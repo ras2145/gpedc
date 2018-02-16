@@ -2062,6 +2062,15 @@ body::-webkit-scrollbar-thumb {
     background: rgba(241, 120, 70, 0.5);
     border-radius: 5px;
 }
+.historical::-webkit-scrollbar {
+    width: 7px;
+    height: 50px;
+    /* background: #000; */
+}
+.historical::-webkit-scrollbar-thumb {
+    background: rgba(241, 120, 70, 0.5);
+    border-radius: 5px;
+}
 .img-md {
     margin-right: 10px;
 }
@@ -2280,14 +2289,18 @@ body::-webkit-scrollbar-thumb {
   padding-top: 52px;
   background: #Fff;
   box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  overflow-y:auto;
 }
 .historical p{
-  opacity: 0.6;
   font-size: 11px;
   font-weight: 500;
   line-height: 1.45;
-  color: #4d4d4d;
+  color: rgba(40, 40, 40, 0.56);
   padding-top: 15px;
+}
+.historical i{
+  opacity: 1 !important;
 }
 .btn-run{
   width: 134px;
@@ -2309,6 +2322,7 @@ body::-webkit-scrollbar-thumb {
 .level-bg{
   padding-top: 67px;
   padding-right: 0px;
+  z-index: 0;
 }
 .card-db{
   height: 100%;
@@ -2385,4 +2399,11 @@ body::-webkit-scrollbar-thumb {
   height: 406px;
   background-color: #f9f9f9;
   padding: 15px;
+}
+.ll-01{
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #282828;
+  margin-bottom: 15px;
 }
