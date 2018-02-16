@@ -15,6 +15,8 @@ import { CountryComponent } from './country/country.component';
 import { PartnerComponent } from './partner/partner.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { Routing } from './app.routes';
+import { CountryHistoricalComponent } from './country-historical/country-historical.component';
+import { PartnerHistoricalComponent } from './partner-historical/partner-historical.component';
 
 
 
@@ -27,7 +29,9 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     NavbarComponent,
     CountryComponent,
     PartnerComponent,
-    ViewerComponent
+    ViewerComponent,
+    CountryHistoricalComponent,
+    PartnerHistoricalComponent
   ],
   imports: [
     BrowserModule,
