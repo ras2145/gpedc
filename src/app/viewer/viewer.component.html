@@ -8,15 +8,15 @@
           <a class="navbar-brand"> <img src="assets/favicon.png" alt="" height="35px">
             <label class="global-p">Global Partnership</label>
             <br>
-            <label class="for-p">for effective development cooperation</label>
+            <label class="for-p">for Effective Development Co-operation</label>
           </a>
-          <i class="mdi mdi-information i-p"
+          <!-- <i class="mdi mdi-information i-p"
               popover="Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
                 Available data may also be filtered by region, income group or country context."
               placement="bottom"
               triggers="mouseenter:mouseleave">
 
-          </i>
+          </i> -->
         </div>
         <div class="col-m-8 col-wd">
           <p>  {{ !indicator ? mapTitle : '' }} &nbsp;</p>
@@ -35,7 +35,7 @@
                   <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
                     <div class="tab-viewer">
                       <tabset>
-                        <tab heading="Development Partner">
+                        <tab heading="Partner Country">
                           <div class="result-container">
                               <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
                                   <i class="mdi mdi-information"
@@ -46,7 +46,7 @@
                                   </i>
                               </p>
                               <div class="row no-gutters">
-                                <div class="col-md-9">
+                                <div class="col-md-11">
                                   <div class="radio">
                                       <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
                                           <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
@@ -54,7 +54,7 @@
                                       </label>
                                   </div>
                                 </div>
-                                <div class="col-md-3 text-right margin-top-btn">
+                                <div class="col-md-1 text-right margin-top-btn">
                                     <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
                                 </div>
                               </div>
@@ -202,7 +202,7 @@
                                           </div>
                                       </div>
                                       <br>
-                              <div class="padding-top-line">
+                              <!-- <div class="padding-top-line">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER
                                     <i class="mdi mdi-information"
                                         popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
@@ -215,7 +215,6 @@
 
                               <div class="row">
                                 <div class="col-md-12 acordion-md">
-                                  <!-- ACORDION -->
                                   <div class="acordion">
                                     <accordion>
                                       <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
@@ -239,9 +238,8 @@
                                     </accordion>
                                       <br>
                                   </div>
-                                  <!-- ACORDION -->
                                 </div>
-                              </div>
+                              </div> -->
 
                               <div class="row">
                                 <div class="col-md-12 disclaimer">
@@ -254,7 +252,7 @@
 
                           </div>
                         </tab>
-                        <tab heading="Partner Country">
+                        <tab heading="Development Partner">
                           <div class="result-container">
                               <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
                                   <i class="mdi mdi-information"
@@ -265,7 +263,7 @@
                                   </i>
                               </p>
                               <div class="row no-gutters">
-                                <div class="col-md-9">
+                                <div class="col-md-11">
                                   <div class="radio">
                                       <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}" >
                                           <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)="getCategoriesNotNull();getIndicator(model.year.categories[0].id);changeYearLabel(title)"/>
@@ -273,7 +271,7 @@
                                       </label>
                                   </div>
                                 </div>
-                                <div class="col-md-3 text-right margin-top-btn">
+                                <div class="col-md-1 text-right margin-top-btn">
                                     <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
                                 </div>
                               </div>
@@ -340,7 +338,7 @@
 
 
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:
                                     <i class="mdi mdi-information"
                                         popover="Below you may filter countries by region, income group or country context. Selecting two or more filters will display data for all selected criteria. Selecting a filter will disable data for organisations in the Development Partners section."
@@ -352,11 +350,11 @@
 
                             <div class="form-group style-select">
                                 <label for="inputState" class="result-subtitle width-popUp">Region
-                                    <!-- <i class="mdi mdi-information"
+                                      <i class="mdi mdi-information"
                                         popover="The following regional groupings are based on the OECD classification."
                                         placement="right"
                                         triggers="mouseenter:mouseleave">
-                                      </i> -->
+                                      </i>
                                 </label>
                                 <div class="btn-group btn-dropdown" dropdown>
                                   <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -376,11 +374,11 @@
 
                                       <div class="form-group style-select width-popUp">
                                           <label for="inputState" class="result-subtitle">Income Group
-                                              <!-- <i class="mdi mdi-information"
+                                               <i class="mdi mdi-information"
                                                   popover="The following income groupings are based on the 2017 World Bank income classification."
                                                   placement="right"
                                                   triggers="mouseenter:mouseleave">
-                                              </i> -->
+                                              </i>
                                           </label>
                                           <div class="btn-group btn-dropdown" dropdown>
                                               <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -400,11 +398,11 @@
 
                                       <div class="form-group style-select context-pop">
                                           <label for="inputState" class="result-subtitle">Country context
-                                              <!-- <i class="mdi mdi-information"
+                                             <i class="mdi mdi-information"
                                                   popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
                                                   placement="right"
                                                   triggers="mouseenter:mouseleave">
-                                              </i> -->
+                                              </i>
                                           </label>
                                           <div class="btn-group btn-dropdown" dropdown>
                                               <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -419,7 +417,7 @@
                                                   </li>
                                               </ul>
                                           </div>
-                                      </div>
+                                      </div> -->
                                       <br>
                               <div class="padding-top-line">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER

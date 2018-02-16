@@ -5,12 +5,12 @@
             <a class="navbar-brand"> <img src="assets/favicon.png" alt="" height="35px">
                 <label class="global-p">Global Partnership</label>
                 <br>
-                <label class="for-p">for effective development cooperation</label>
+                <label class="for-p">for Effective Development Co-operation</label>
             </a>
-            <i class="mdi mdi-information i-p" popover="Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
+            <!-- <i class="mdi mdi-information i-p" popover="Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator.
                 Available data may also be filtered by region, income group or country context." placement="bottom" triggers="mouseenter:mouseleave">
 
-          </i>
+          </i> -->
         </div>
         <div class="col-m-8 col-wd">
             <p> {{ !indicator ? mapTitle : '' }} &nbsp;</p>
@@ -448,8 +448,8 @@
             </i>
         </div>
         <br>
-        <div class="row mTop-8">
-            <div class="col-md-9">
+        <div class="row no no-gutters mTop-8">
+            <div class="col-md-11">
                 <div class="float-l radio">
                     <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
                     <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change)= 'changeYear(model.year)'/>
@@ -457,7 +457,7 @@
                 </label>
                 </div>
             </div>
-            <div class="col-md-3 text-right">
+            <div class="col-md-1 text-right">
                 <a class="btn btn-export-02" (click)="exportCsv()"><i class="mdi mdi-download"></i></a>
             </div>
         </div>
@@ -631,7 +631,7 @@
                     </ng-template>
                     <ng-template #elseBlock>
                         <!-- Show rows of indicators 5 - 10 and displays data of them  -->
-                        <div *ngIf="availableOrganizationRow(indicator) === true; then thenPass"></div> 
+                        <div *ngIf="availableOrganizationRow(indicator) === true; then thenPass"></div>
                         <ng-template #thenPass>
                           <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableOrganizationRow(indicator)">
                               <p [innerHTML]="indicator.comparison">

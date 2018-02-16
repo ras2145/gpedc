@@ -532,7 +532,7 @@ select.form-control:not([size]):not([multiple]) {
     width: 107px;
     background: #fff;
     margin-right: 6px;
-    padding: 5px;
+    padding:5px 0px 7px 0px;
     margin-top: 5px;
 }
 
@@ -547,18 +547,18 @@ select.form-control:not([size]):not([multiple]) {
 
 .number-card .left-number p:nth-child(1),
 .number-card .right-number p:nth-child(1) {
-    font-size: 11px;
+    font-size: 24px;
     font-weight: 600;
     text-align: center;
-    color: #757575;
+    color: #F27844;
 }
 
 .number-card .left-number p:nth-child(2),
 .number-card .right-number p:nth-child(2) {
-    font-size: 36px;
-    color: #F27844;
-    font-weight: 300;
-    padding-top: 5px;
+    font-size: 16px;
+    color: #757575;
+    font-weight: 400;
+    padding-top: 2px;
     text-align: center;
 }
 
