@@ -2287,10 +2287,15 @@ body::-webkit-scrollbar-thumb {
 /* COUNTRY LEVEL ANALISYS */
 .historical{
   padding-top: 52px;
-  background: #Fff;
   box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.08);
   z-index: 1;
-  overflow-y:auto;
+  overflow-y: auto;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.cc-mg{
+  padding: 0px !important;
 }
 .historical p{
   font-size: 11px;
