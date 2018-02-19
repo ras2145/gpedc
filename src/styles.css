@@ -2407,3 +2407,6 @@ body::-webkit-scrollbar-thumb {
   color: #282828;
   margin-bottom: 15px;
 }
+.ll-hd{
+  margin-bottom: 80px;
+}
