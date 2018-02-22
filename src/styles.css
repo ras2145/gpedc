@@ -2443,3 +2443,43 @@ body::-webkit-scrollbar-thumb {
 .modal-open .modal {
   background: rgba(255,255,255,0.5);
 }
+.modal-icon .modal-content{
+  border-radius: 2px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  background-color: rgba(26, 35, 61, 0.82);
+  box-shadow: 0 22px 24px 0 rgba(0, 0, 0, 0.1);
+}
+.modal-icon h6{
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+}
+.modal-icon .modal-header{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.modal-icon .modal-body{
+  padding: 15px;
+}
+.modal-icon label{
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  background-color: #1a233d;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.modal-icon .close{
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.modal-icon .modal-header .close {
+  padding: 7px 15px;
+}
+.modal-dialog {
+    max-width: 500px;
+}

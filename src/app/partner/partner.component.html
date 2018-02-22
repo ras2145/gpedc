@@ -519,7 +519,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="row no-gutters">
+                    <div class="row no-">
                         <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersS; let i=index">
                             <label for="" class="label--checkbox">
                             <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
@@ -533,7 +533,67 @@
           </div>
         </template>
 
-
+        <!-- MODAL TABLA -->
+        <!--<div class="modal-icon">
+          <button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
+          <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="row">
+                    <div class="col-md-2 ">
+                      <h6>Module 1</h6>
+                    </div>
+                    <div class="col-md-10">
+                      <h6>Availablity of spaces for multi-stakeholder dialogugeon national development policies</h6>
+                    </div>
+                  </div>
+                  <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-2 text-center">
+                      <h6>1</h6>
+                    </div>
+                    <div class="col-md-8">
+                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <label><i class="mdi mdi-check"></i></label>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-2 text-center">
+                      <h6>2</h6>
+                    </div>
+                    <div class="col-md-8">
+                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <label><i class="mdi mdi-check"></i></label>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-2 text-center">
+                      <h6>3</h6>
+                    </div>
+                    <div class="col-md-8">
+                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <label><i class="mdi mdi-close"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <!-- MODAL TABLA -->
         <p class="select-indicator-01">3. Select two development partners or type their names:</p>
 
         <div class="row-select">
