@@ -499,62 +499,40 @@
             <i class="mdi mdi-information" popover="Below you may view results for development partners characterised as international organisations." placement="right" triggers="mouseenter:mouseleave">
           </i>
         </p>
-        <div class="border-l-row">
-            <div class="col-md-9 pp-md">
-                <div class="row no-gutters">
-                    <!-- <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">Global funds</label>
-                        <label for="styled-checkbox-2" class="pp-l">and vertical initiatives</label>
+        <button type="button" class="btn modal-check" (click)="openModal(template)">Click Here</button>
+        <template #template>
+          <div class="modal-header">
+            <p class="ll-k">SELECT WHICH TYPE OF PARTNERS TO CONSIDER FOR COMPARISON (SELECT ONE OR MANY)</p>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="border-l-row">
+                <div class="col-md-12 pp-md">
+                    <div class="row no-gutters">
+                        <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersP; let i=index">
+                            <label  for="" class="label--checkbox">
+                            <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
+                            {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
+                            <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
+                            </label>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">Multilateral </label>
-                        <label for="styled-checkbox-2" class="pp-l">development banks</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">Other international</label>
-                        <label for="styled-checkbox-2" class="pp-l">and regional organizations</label>
-                    </div>-->
-                    <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersP; let i=index">
-                        <label  for="" class="label--checkbox">
-                        <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                        {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
-                        <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
-                        </label>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <!--     <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">Bilateral partners</label>
-                        <label for="styled-checkbox-2" class="pp-l">(DAC members)</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">Other bilateral partners </label>
-                        <label for="styled-checkbox-2" class="pp-l">(non-DAC members)</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">Foundations</label>
-                    </div>
-
-                    <div class="col-md-3">
-                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
-                        <label for="styled-checkbox-2">UN agencies</label>
-                    </div> -->
-                    <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersS; let i=index">
-                        <label for="" class="label--checkbox">
-                        <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                        {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
-                        <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
-                        </label>
+                    <div class="row no-gutters">
+                        <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersS; let i=index">
+                            <label for="" class="label--checkbox">
+                            <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
+                            {{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}
+                            <label class="line-check-text">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
+        </template>
+
 
         <p class="select-indicator-01">3. Select two development partners or type their names:</p>
 

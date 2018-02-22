@@ -2179,20 +2179,17 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     cursor: pointer;
 }
-
-.pp-md {
-    padding-left: 56px;
-}
-
 .pp-md label {
-    font-size: 12px;
-    margin: 0px;
+  font-size: 12px;
+  margin: 0px;
+  margin-bottom: 15px;
+  padding: 0px 5px;
 }
 
 .pp-l {
-    position: relative;
-    top: -8px;
-    left: 30px;
+  position: relative;
+  top: -8px;
+  left: 30px;
 }
 .ll-md{
   margin-top: 172px;
@@ -2201,8 +2198,8 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 15px;
 }
 .border-01 {
-    border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 .select-indicator-01 {
@@ -2416,4 +2413,33 @@ body::-webkit-scrollbar-thumb {
 }
 .ll-hd{
   margin-bottom: 80px;
+}
+.modal-check{
+  color: #1d2840;
+  background-color: #fafafa;
+  margin: 0px;
+  padding: 4px 24px;
+  position: relative;
+  border: 1px solid #1d2840;
+  border-radius: 2px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-right: 10px;
+  height: 25px;
+  margin-bottom: 5px;
+  margin-left: 56px;
+  width: 160px;
+}
+.modal-check:hover{
+  background-color: #1d2840;
+  color: #fff;
+}
+.ll-k{
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+.modal-open .modal {
+  background: rgba(255,255,255,0.5);
 }
