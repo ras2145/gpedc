@@ -481,7 +481,7 @@ select.form-control:not([size]):not([multiple]) {
     right: 25px;
     background-color: #fff;
     border-radius: 2px;
-    width: 242px;
+    width: 363px;
     z-index: 500;
 }
 
@@ -515,7 +515,7 @@ select.form-control:not([size]):not([multiple]) {
 .number-card {
     background-color: #Fafafa;
     padding-left: 11px;
-    padding-right: 11px;
+    padding-right: 10px;
     min-height: 50px;
     display: inline-flex;
 }
@@ -534,6 +534,7 @@ select.form-control:not([size]):not([multiple]) {
     margin-right: 6px;
     padding:5px 0px 7px 0px;
     margin-top: 5px;
+    margin-left: 3px;
 }
 
 .number-card .right-number {
@@ -543,6 +544,7 @@ select.form-control:not([size]):not([multiple]) {
     background: #fff;
     padding: 5px;
     margin-top: 5px;
+    margin-right: 6px;
 }
 
 .number-card .left-number p:nth-child(1),

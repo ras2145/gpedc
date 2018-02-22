@@ -32,6 +32,7 @@
         <div class="row">
             <!-- INICIO Sidebar -->
                 <div class="col-md-3 padding-left-none with-scroll" id="div1">
+                  <p class="subtitle">On this tab, Global Partnership monitoring results can be displayed by partner country or development partner. Select a type of partner, year and indicator to start exploring.</p>
                   <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
                     <div class="tab-viewer">
                       <tabset>
@@ -897,6 +898,12 @@
                                     </div>
                                     <div class="right-number">
                                         <p>{{getIndicatorValue(countryName, '2016')}}</p>
+                                        <div *ngIf="model.year.year === '2016'; then thenBlock2 else elseBlock2"></div>
+                                        <ng-template #thenBlock2><p><u>2016</u></p></ng-template>
+                                        <ng-template #elseBlock2><p>2016</p></ng-template>
+                                    </div>
+                                    <div class="right-number">
+                                        <p>No Data</p>
                                         <div *ngIf="model.year.year === '2016'; then thenBlock2 else elseBlock2"></div>
                                         <ng-template #thenBlock2><p><u>2016</u></p></ng-template>
                                         <ng-template #elseBlock2><p>2016</p></ng-template>

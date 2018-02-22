@@ -441,7 +441,7 @@
     <div class="side-l-main">
 
         <p class="subtitle">
-            On this tab, Global Partnership monitoring data can be displayed by country or organisation for a specific year and / or indicator. Available data may also be filtered by region, income group or country context.
+            On this tab, results for all countries can be compared against averages by region, income group or country context. Select a country or average to start exploring.
         </p>
         <div class="year-indicator">
             <p class="float-l space-letter"><i class="mdi mdi-calendar"></i> 1. SELECT YEAR</p>
@@ -449,8 +449,8 @@
             </i>
         </div>
         <br>
-        <div class="row mTop-8">
-            <div class="col-md-9">
+        <div class="row mTop-8 no-gutters">
+            <div class="col-md-11">
                 <div class="float-l radio">
                     <label *ngFor="let title of titles" [ngClass]="{'radio-label-checked' : model.year.year == title.year}">
                     <input type="radio" name="radio-btn" [value]="title" [checked]="title.year == model.year.year" [(ngModel)]="model.year" (change) = 'changeYear(model.year)' />
@@ -458,7 +458,7 @@
                 </label>
                 </div>
             </div>
-            <div class="col-md-3 text-right">
+            <div class="col-md-1 text-right">
                 <a class="btn btn-export-02" (click)="exportCsv()"><i class="mdi mdi-download"></i></a>
             </div>
         </div>
