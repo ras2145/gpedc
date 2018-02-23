@@ -16,7 +16,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 5a: Annual predictability of development co-operation",
-        "comparison": "<font color=”black”> Indicator 5a: </font> Annual predictability of development co-operation",
+        "comparison": "<font color=\"black\"> Indicator 5a: </font> Annual predictability of development co-operation",
         "partcntry": "_2010_5a_partcntry",
         "devpart": "_2010_5a_devpart"
       },
@@ -34,7 +34,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
-        "comparison": "<font color=”black”> Indicator 6: </font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
+        "comparison": "<font color=\"black\"�> Indicator 6: </font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2010_6_partcntry",
         "devpart": "_2010_6_devpart"
       },
@@ -43,21 +43,6 @@ export let titles = [
         "label": "7: Are partner countries conducting inclusive mutual reviews with development partners?",
         "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners? ",
         "subcategories": [
-          {
-            "label": "Are partner countries conducting inclusive mutual reviews with development partners?",
-            "column": "_2010_7",
-            "prefix": "",
-            "suffix": "",
-            "yesText": "According to Global Partnership criteria, there <font color='black'>  is </font> an inclusive, transparent mutual accountability review in place among development partners (the country must be positively assessed on 4/5 of the following criteria).",
-            "noText": "",
-            "legendText": "Is a process for inclusive reviews in place?",
-            "type": "text",
-            "precision": "0",
-            "title": "Indicator 7: According to Global Partnership criteria, are partner countries conducting inclusive mutual reviews with development partners? ",
-            "comparison": "<font color=”black”> Indicator 7: </font> Mutual accountability among development partners is strengthened through inclusive reviews",
-            "partcntry": "_2010_7",
-            "devpart": ""
-          },
           {
             "label": "Is there an aid or partnership policy in place?",
             "column": "_2010_7_1",
@@ -143,7 +128,7 @@ export let titles = [
         "type": "text",
         "precision": "0",
         "footer": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
-        "comparison": "<font color=”black”> Indicator 7: </font> Mutual accountability among development partners is strengthened through inclusive reviews",
+        "comparison": "<font color=\"black\"> Indicator 7: </font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2010_7",
         "devpart": ""
       },
@@ -161,7 +146,7 @@ export let titles = [
         "type": "number",
         "precision": "1",
         "footer": "Indicator 9a: Quality of partner countries’ public financial management systems",
-        "comparison": "<font color=”black”> Indicator 9a: </font> Quality of countries’ public financial management systems",
+        "comparison": "<font color=\"black\"> Indicator 9a: </font> Quality of countries’ public financial management systems",
         "partcntry": "_2010_9a",
         "devpart": ""
       },
@@ -179,7 +164,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
-        "comparison": "<font color=”black”> Indicator 9b: </font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
+        "comparison": "<font color=\"black\"�> Indicator 9b: </font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2010_9b",
         "devpart": "_2010_9b"
       },
@@ -197,7 +182,7 @@ export let titles = [
         "type": "percent",
         "precision": "1",
         "footer": "Indicator 10. Aid is untied",
-        "comparison": "<font color=”black”> Indicator 10: </font> Aid is untied",
+        "comparison": "<font color=\"black\"�> Indicator 10: </font> Aid is untied",
         "partcntry": "_2010_10_partcntry",
         "devpart": "_2010_10_devpart"
       }
