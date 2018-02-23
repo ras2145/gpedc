@@ -137,7 +137,6 @@ export class ViewerComponent implements OnInit {
     // });
     this.getPartners();
     this.countryComparisonOptions = countryComparison;
-    this.chargeCountryComparison();
     this.titles = titles;
     this.legends = legends;
     this.regions = regions;
@@ -158,68 +157,7 @@ export class ViewerComponent implements OnInit {
     }
     window.localStorage.setItem('tutorial', 'ok');
   }
-  chargeOrganizationComparison() {
-    this.organizationSelectors = [];
-    this.organizationSelectors.push({
-      key: '2014',
-      value1: new Array<IOption>(),
-      value2: new Array<IOption>()
-    });
-    this.organizationSelectors.push({
-      key: '2016',
-      value1: new Array<IOption>(),
-      value2: new Array<IOption>()
-    });
-    this.organizationSelectors.push({
-      key: 'Aggregate',
-      value: new Array<IOption>()
-    });
-    for (const partnerGroup of this.categorizedPartners) {
-      if (partnerGroup.selected) {
-        const titleObject = {
-          value: partnerGroup.name,
-          label: partnerGroup.name,
-          disabled: true
-        };
-        this.organizationSelectors[0]['value1'].push(titleObject);
-        this.organizationSelectors[0]['value2'].push(titleObject);
-        this.organizationSelectors[1]['value1'].push(titleObject);
-        this.organizationSelectors[1]['value2'].push(titleObject);
-        for (const partner of partnerGroup.partners) {
-          //console.log("partner",partner);
-          if (partner['_2016'].toUpperCase() === 'YES' || partner['_2016'].toUpperCase() === 'TRUE') {
-            const organizationSelector = {
-              value: partner['partner'],
-              label: partner['partner']
-            };
-            this.organizationSelectors[1]['value1'].push(organizationSelector);
-            this.organizationSelectors[1]['value2'].push(organizationSelector);
-          }
-          if (partner['_2014'].toUpperCase() === 'YES' || partner['_2014'].toUpperCase() === 'TRUE') {
-            const organizationSelector = {
-              value: partner['partner'],
-              label: partner['partner']
-            };
-            this.organizationSelectors[0]['value1'].push(organizationSelector);
-            this.organizationSelectors[0]['value2'].push(organizationSelector);
-          }
-        }
-        this.mergeWithSelected(this.organizationSelectors[0]['value1'], this.organizationComparer.firstOrganization);
-        this.mergeWithSelected(this.organizationSelectors[0]['value2'], this.organizationComparer.secondOrganization);
-        this.mergeWithSelected(this.organizationSelectors[1]['value1'], this.organizationComparer.firstOrganization);
-        this.mergeWithSelected(this.organizationSelectors[1]['value2'], this.organizationComparer.secondOrganization);
-        this.mergeWithSelected(this.organizationSelectors[2]['value'], this.organizationComparer.aggregate);
-        // console.log(this.organizationSelectors);
-        // console.log(this.organizationComparer);
-      }
-    }
-    for (const aggregate of partnerAggregate) {
-      this.organizationSelectors[2]['value'].push({
-        value: aggregate.value,
-        label: aggregate.label
-      });
-    }
-}
+
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
       const selectedOptionObject = {
@@ -239,131 +177,7 @@ export class ViewerComponent implements OnInit {
     }
     return false;
   }
-  chargeCountryComparison() {
-    for (const key in countryComparison) {
-      this.countrySelectors.push({
-        key: key,
-        value: new Array<IOption>()
-      });
-      const size = this.countrySelectors.length;
-      // tslint:disable-next-line:forin
-      for (const arrays in countryComparison[key]) {
-        this.countrySelectors[size - 1]['value'].push({
-          value: arrays, label: arrays, disabled: true
-        });
-        for (const ele of countryComparison[key][arrays]) {
-          this.countrySelectors[size - 1]['value'].push({
-            value: ele, label: ele
-          });
-        }
-      }
-    }
-  }
-  availableCountryRow(category) {
-    let d = 0;
-    d += this.countryComparer.firstCountry ? 1 : 0;
-    d += this.countryComparer.secondCountry ? 1 : 0;
-    if (d === 2) {
-      const texa = this.getLabelCountry(category, 'firstCountry');
-      const texb = this.getLabelCountry(category, 'secondCountry');
-      let isValid = false;
-      isValid = (texa !== '-' && !texa.includes('No data'));
-      isValid = isValid || (texb !== '-' && !texb.includes('No data'));
-      return isValid;
-    }
-    if(category.id==null)
-    {
-      if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') 
-      return false;
-    }
-    return true;
-  }
-  hasSubCountry(indicator) {
-    let ans = 0;
-    for (let subcategory of indicator.subcategories) {
-      if (this.availableCountryRow(subcategory)) {
-        ans++;
-      }
-    }
-    return ans;
-  }
-  hasSubOrganization(indicator) {
-    let ans = 0;
-    for (let subcategory of indicator.subcategories) {
-      if (this.availableOrganizationRow(subcategory)) {
-        ans++;
-      }
-    }
-    return ans;
-  }
-  availableOrganizationRow(category) {
-    let d = 0;
-    d += this.organizationComparer.firstOrganization ? 1 : 0;
-    d += this.organizationComparer.secondOrganization ? 1 : 0;
-    if (d === 2) {
-      const texa = this.getLabelCountry(category, 'firstOrganization', true);
-      const texb = this.getLabelCountry(category, 'secondOrganization', true);
-      let isValid = false;
-      isValid = (texa !== '-' && !texa.includes('No data'));
-      isValid = isValid || (texb !== '-' && !texb.includes('No data'));
-      return isValid;
-    }
-    if(category.id==null)
-    {
-      if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') 
-      return false;
-    }
-    return true;
-  }
-  onSelectedCountry(event, type) {
-    if (type === 'first') {
-      if (event.value === this.countryComparer.secondCountry) {
-        this.mapService.paintTwoClearOne('first');
-        setTimeout(() => {
-          this.countryComparer.firstCountry = undefined;
-        }, 10);
-        return;
-      }
-      if (this.countryComparer.firstCountry !== '') {
-        this.mapService.paintTwoCountry(this.countryComparer.firstCountry, 'first');
-      }
-    } else {
-      if (event.value === this.countryComparer.firstCountry) {
-        setTimeout(() => {
-          this.countryComparer.secondCountry = undefined;
-        }, 10);
-        this.mapService.paintTwoClearOne('second');
-        return;
-      }
-      if (this.countryComparer.secondCountry !== '') {
-        this.mapService.secondCountry = '';
-        this.mapService.paintTwoCountry(this.countryComparer.secondCountry, 'second');
-      }
-    }
-  }
-  onSelectedOrganization(event, type) {
-    if (type === 'first') {
-      if (event.value === this.organizationComparer.secondOrganization) {
-        setTimeout(() => {
-          this.organizationComparer.firstOrganization = undefined;
-        }, 10);
-      }
-    } else {
-      if (event.value === this.organizationComparer.firstOrganization) {
-        setTimeout(() => {
-          this.organizationComparer.secondOrganization = undefined;
-        }, 10);
-      }
-    }
-  }
-  onDeselected(event, type) {
-    if (type === 'first') {
-      this.countryComparer.firstCountry = '';
-    } else {
-      this.countryComparer.secondCountry = '';
-    }
-    this.mapService.paintTwoCountry(event.value, 'ok');
-  }
+  
   mapConfig() {
     this.loaderService.start();
     const self = this;
@@ -766,7 +580,6 @@ export class ViewerComponent implements OnInit {
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
     if (this.selectedCountry) {
-      console.log('bapesofjoipsadpof');
       const isCountryDac = this.isDac(this.selectedCountry);
       for (const i of this.model.year.categories) {
         let sw = false;
@@ -1014,7 +827,6 @@ export class ViewerComponent implements OnInit {
       });
       // console.log("CAT",this.categorizedPartners);
       console.log("Partnets",this.categorizedPartners);
-      this.chargeOrganizationComparison();
     });
   }
   isDac(country) {
@@ -1206,16 +1018,13 @@ export class ViewerComponent implements OnInit {
     const category = this.model.category;
     const subcategory = this.model.subcategory;
     const year = this.model.year.year;
-
     const region = this.model.region.value;
     const countryContext = this.model.countryContext.value;
     const incomeGroup = this.model.incomeGroup.value;
-
     let indicator = null;
     if (!this.indicator) {
       indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     }
-
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext).subscribe(val => {
       const countriesObj = {};  
       for (let country of val) {
@@ -1234,7 +1043,6 @@ export class ViewerComponent implements OnInit {
       this.heightDropDown = this.sidsCountries.length < 13 ? '45vh' : '75vh';
     });
     if (this.indicator) {
-
         this.legendTitle = '';
         this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
@@ -1253,7 +1061,6 @@ export class ViewerComponent implements OnInit {
       } else if (subcategory.type === 'number') {
         if (subcategory.column.includes('2_1')) {
           this.legendMap = this.legends.indicator2_1;
-          // console.log('subindicador');
         } else if (subcategory.column.includes('2_2')) {
           this.legendMap = this.legends.indicator2_2;
         } else if (subcategory.column.includes('2_3') || subcategory.column.includes('2_4')) {
@@ -1316,12 +1123,6 @@ export class ViewerComponent implements OnInit {
   switchPartnerGroupOpen(event, partnerGroup) {
     partnerGroup.open = !partnerGroup.open;
   }
-  selectPartnerGroup(partnerGroup) {
-    partnerGroup.selected = !partnerGroup.selected;
-    console.log(partnerGroup);
-    this.chargeOrganizationComparison();
-    return partnerGroup.selected;
-  }
   continueTutorial() {
     let index = -1;
     for (let i = 0; i < this.tutorial.length; i++) {
@@ -1375,6 +1176,9 @@ export class ViewerComponent implements OnInit {
       output = secondCountry == '<p>No data available</p>' ? false : true;
     }
     return output;
+  }
+  changePartnerType(type) {
+    console.log(type);
   }
   viewTableIndicator(indicator, valueIndicator) {
     let output: number = 0;
