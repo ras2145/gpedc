@@ -114,12 +114,23 @@ export class PartnerComponent implements OnInit {
           });
         }
       }
-      console.log("Partnets",this.categorizedPartners);
-      this.categorizedPartnersP=this.categorizedPartners.slice(0,3);
-      this.categorizedPartnersS=this.categorizedPartners.slice(3,7);
+
+      let aux = this.categorizedPartners[0];
+      this.categorizedPartners[0] = this.categorizedPartners[5];
+      this.categorizedPartners[5] = this.categorizedPartners[3];
+      this.categorizedPartners[3] = this.categorizedPartners[6];
+      this.categorizedPartners[6] = aux;
+      aux = this.categorizedPartners[1];
+      this.categorizedPartners[1] = this.categorizedPartners[4];
+      this.categorizedPartners[4] = this.categorizedPartners[2];
+      this.categorizedPartners[2] = aux;
+      console.log("Partnets", this.categorizedPartners);
+      
+      this.categorizedPartnersP = this.categorizedPartners.slice(0,3);
+      this.categorizedPartnersS = this.categorizedPartners.slice(3,7);
       this.chargeOrganizationComparison();
     });
-  } 
+  }
   chargeOrganizationComparison() {
     this.organizationSelectors = [];
     this.organizationSelectors.push({

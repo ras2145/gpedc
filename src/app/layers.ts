@@ -52,7 +52,7 @@ export let layers = {
             stops: [
               ['Yes', '#1FAB9E'],
               ['No', '#F16950'],
-              ['9999', '#ff0000']
+              ['9999', '#BBBBBB']
             ]
           },
           'fill-opacity': 0.75
