@@ -593,7 +593,7 @@
                     <td width="17.75%" class="center-td background-2"  *ngIf="availableCountryRow(subcategory)">
                             <p [innerHTML]="getLabelCountry(subcategory, 'firstCountry')">
                             </p>
-                            <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="hovertab(subcategory, getLabelCountry(subcategory, 'firstCountry'))" (click)="popSubcategori(subcategory);lgModal.show()"></i>                    
+                            <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="popIndicator(subcategory)" (click)="popSubcategori(subcategory);lgModal.show()"></i>                    
                     </td> 
                     <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
                     <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>

@@ -182,14 +182,15 @@ export class CountryComponent implements OnInit {
     }
     return ans;
   }
-  hovertab(subcategory){ 
+  popIndicator(subcategory){ 
     if(subcategory.partcntry.split('_')[2]==2 && this.countryComparer.firstCountry!='')
     {  return true;}else{
       return false;
     }
   }
   popSubcategori(subcategory, valor){
-    this.dateModal=indicator2Exceptions[Number(this.generateIndicatorsService.getLabelCountryFunction(subcategory,'firstCountry', this.countryComparer, this.countriesQuery).replace('<p>', '').replace('</p>',''))-1] ;
+    console.log("susbc",subcategory.column.split('_')[3]);
+    this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1] ;
     this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
   }
 }
