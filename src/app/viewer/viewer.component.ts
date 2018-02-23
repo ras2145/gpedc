@@ -84,14 +84,17 @@ export class ViewerComponent implements OnInit {
     'Aggregate'
   ];
   sidsOrder = {
-    'Bilateral partners (DAC members)': 0,
-    'Other bilateral partners (non-DAC members)': 1,
-    'Foundation': 2,
-    'Global funds and vertical initiatives': 3,
-    'Multilateral development banks': 4,
+    'Average for all development partners': 0,
+    'Bilateral partners (DAC members)': 1,
+    'Other bilateral partners (non-DAC members)': 2,
+    'Foundations': 6,
+    'Foundation': 6,
+    'Global funds and vertical initiatives': 7,
+    'Multilateral development banks': 3,
     'Other international and regional organizations': 5,
-    'UN agencies': 6
-  };
+    'Other international and regional organisations': 5,
+    'UN agencies': 4
+  };  
   heightDropDown: any;
   viewCountryComparer: boolean = true;
   selectFirstCountry: string;
