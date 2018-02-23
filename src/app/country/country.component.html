@@ -590,13 +590,82 @@
                     </td>
                     <td width="4%"></td>
                     <!-- partner comparison -->
-                    <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'firstCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                    <td width="17.75%" class="center-td background-2"  *ngIf="availableCountryRow(subcategory)">
+                            <p [innerHTML]="getLabelCountry(subcategory, 'firstCountry')">
+                            </p>
+                            <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="hovertab(subcategory, getLabelCountry(subcategory, 'firstCountry'))" (click)="popSubcategori(subcategory);lgModal.show()"></i>                    
+                    </td> 
                     <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
                     <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
                     <td width="17.75%" class="center-td background-2"></td>
                 </tr>
             </table>
         </div>
+        <!-- MODAL TABLA -->
+        <div class="modal-icon">
+          <!-- <button class="btn btn-primary" (click)="lgModal.show()">Large modal</button> -->
+          <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="row">
+                    <div class="col-md-2 ">
+                      <h6>Modal {{dateModal.id}}</h6>
+                    </div>
+                    <div class="col-md-10">
+                      <h6>{{dateModal.title}}</h6>
+                    </div>
+                  </div>
+                  <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row" *ngFor="let content of dateModal.content; let i=index">
+                    <div class="col-md-2 text-center">
+                      <h6>{{i+1}}</h6>
+                    </div>
+                    <div class="col-md-8">
+                      <h6>{{content.text}}</h6>
+                    </div>
+                    <div *ngIf="i!=2" class="col-md-2 text-center">
+                      <label><i class="mdi mdi-check"></i></label>
+                    </div>
+                    <div *ngIf="i==2" class="col-md-2 text-center">
+                      <label><i class="mdi mdi-close"></i></label>
+                    </div>
+                  </div>
+                  <br>
+                  <!-- <div class="row">
+                    <div class="col-md-2 text-center">
+                      <h6>2</h6>
+                    </div>
+                    <div class="col-md-8">
+                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <label><i class="mdi mdi-check"></i></label>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-2 text-center">
+                      <h6>3</h6>
+                    </div>
+                    <div class="col-md-8">
+                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <label><i class="mdi mdi-close"></i></label>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- MODAL TABLA -->
+
         <!-- Fila para mostrar resultado
         <div class="row-table">
             <div class="col-table r-boder">

@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from '../titles';
 import { saveAs } from 'file-saver';
 import {GenerateIndicatorsService} from '../services/generate-indicators.service';
+import { indicator2Exceptions } from '../indicator2.exceptions';
 
 @Component({
   selector: 'app-country',
@@ -13,6 +14,7 @@ import {GenerateIndicatorsService} from '../services/generate-indicators.service
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
+  dateModal: any;
   countryComparer: any;
   countrySelectors = [];
   titles;
@@ -28,7 +30,7 @@ export class CountryComponent implements OnInit {
     category: {
       label: 'Select indicator',
       title: '',
-      column: '',
+      partcntry: '',
       id: '',
       legendText: ''
     },
@@ -41,7 +43,7 @@ export class CountryComponent implements OnInit {
   countries: any;
   constructor(private generateIndicatorsService: GenerateIndicatorsService,
   private modalService: BsModalService) { }
-
+  private indicator2Exceptions;
   ngOnInit() {
     this.generateIndicatorsService.allQuery().subscribe(val => {
       this.countriesQuery = val;
@@ -58,10 +60,13 @@ export class CountryComponent implements OnInit {
     console.log("YA",this.model.year);
     this.chargeCountryComparison();
     this.countries = {};
+    this.dateModal={};
   }
   changeYear(year) {
     this.resetComparer();
     this.year = year.year;
+    console.log("YEAR",this.year);
+    
   }
   resetComparer() {
     this.countryComparer = {};
@@ -160,7 +165,7 @@ export class CountryComponent implements OnInit {
     }
     if(category.id==null)
     { 
-      if (category.column=='_2014_8' || category.column=='_2016_8' || category.column=='_2014_7' || category.column=='_2016_7') 
+      if (category.partcntry=='_2014_8' || category.partcntry=='_2016_8' || category.partcntry=='_2014_7' || category.partcntry=='_2016_7') 
       return false;
     }
     if (category.id === '8') {
@@ -178,5 +183,15 @@ export class CountryComponent implements OnInit {
       }
     }
     return ans;
+  }
+  hovertab(subcategory){ 
+    if(subcategory.partcntry.split('_')[2]==2 && this.countryComparer.firstCountry!='')
+    {  return true;}else{
+      return false;
+    }
+  }
+  popSubcategori(subcategory, valor){
+    this.dateModal=indicator2Exceptions[Number(this.generateIndicatorsService.getLabelCountryFunction(subcategory,'firstCountry', this.countryComparer, this.countriesQuery).replace('<p>', '').replace('</p>',''))-1] ;
+    this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
   }
 }
