@@ -584,7 +584,7 @@
                 <!-- Show row of subcategories of all indicators-->
                 <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
                     <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableCountryRow(subcategory)">
-                        <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison">
+                        <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:', '').replace('Indicator 8:', '')">
                             <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
                         </p>
                     </td>
