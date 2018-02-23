@@ -39,25 +39,27 @@ export class CountryComponent implements OnInit {
   };
   year;
   countries: any;
-  constructor(private mapService: MapService, private generateIndicatorsService: GenerateIndicatorsService,
+  constructor(private generateIndicatorsService: GenerateIndicatorsService,
   private modalService: BsModalService) { }
 
   ngOnInit() {
-    this.mapService.allDataCountryQuery().subscribe(val => {
-    this.countriesQuery = val;
+    this.generateIndicatorsService.allQuery().subscribe(val => {
+      this.countriesQuery = val;
     });
     this.titles = titles;
     console.log("UND",titles);
+    this.titles[0].categories.splice(3, 1);
+    this.titles[1].categories.splice(3, 1);
+    this.titles[2].categories.splice(3, 1);
     this.resetComparer();
     this.year = '2016';
-    console.log(this.model.year, '------!!!year');
-    this.model.year = titles[2];
+
+    this.model.year = this.titles[2];
     console.log("YA",this.model.year);
     this.chargeCountryComparison();
     this.countries = {};
   }
   changeYear(year) {
-    console.log(year.year, 'year----------- pendejo');
     this.resetComparer();
     this.year = year.year;
   }
@@ -133,7 +135,12 @@ export class CountryComponent implements OnInit {
     }
   }
   tabsToShow(category) {
-    return (category === '1a' || category === '2' || category === '3' || category === '4');
+    return (category === '1a' || category === '2' || category === '3');
+  }
+  tabsToShowTwo(category) {
+    // tslint:disable-next-line:max-line-length
+    // return (category === '5a' || category === '5b' || category === '6' || category === '7' || category === '8' || category === '9a' || category === '9b' || category === '10');
+    return (category !== '4');
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
     return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, this.countryComparer, this.countriesQuery);

@@ -6,10 +6,11 @@ import { IOption } from '../lib/ng-select/option.interface.d';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from '../titles';
 import { saveAs } from 'file-saver';
+import { SERVER } from '../server.config';
 
 @Injectable()
 export class GenerateIndicatorsService {
-  constructor() { }
+  constructor(private webService: WebService) { }
   countrySelectors = [];
   titles;
   countriesQuery: any;
@@ -24,8 +25,14 @@ export class GenerateIndicatorsService {
   ngOnInit(){
     
   }  
+  allQuery () {
+    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}"`);
+    return this.webService.get(query).map(ans => {
+      return ans.json().rows;
+    });
+  }
   getLabelCountryFunction(indicator, typeOfCountry, comparer, query, isOrganization?: boolean) {
-    let aux = indicator.column;
+    // let aux = indicator.column;
     const countryName = comparer[typeOfCountry];
     if (!countryName || !indicator) {
       return '-';
@@ -42,7 +49,7 @@ export class GenerateIndicatorsService {
     if (!country) {
       return '-';
     }
-    const value = this.formatValue(indicator, country[indicator.column]);
+    const value = this.formatValue(indicator, country[indicator.partcntry]);
     if (indicator['subcategories']) {
       const val = (value.toString() !== '9999') ? value : 'Not Applicable';
       text = text + '<p>' + val   + '</p>';
