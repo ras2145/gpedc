@@ -50,8 +50,6 @@ export class CountryComponent implements OnInit {
     });
     this.titles = titles;
     console.log("UND",titles);
-    this.titles[0].categories.splice(3, 1);
-    this.titles[1].categories.splice(3, 1);
     this.titles[2].categories.splice(3, 1);
     this.resetComparer();
     this.year = '2016';
