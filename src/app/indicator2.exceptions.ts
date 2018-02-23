@@ -1,6 +1,6 @@
 export const indicator2Exceptions = [
   {
-    "id": "2.1",
+    "id": 1,
     "title": "Module 1 • Availability of spaces for multi-stakeholder dialogue on national development policies",
     "content": [
       {
@@ -18,7 +18,7 @@ export const indicator2Exceptions = [
     ]
   },
   {
-    "id": "2.2",
+    "id": 2,
     "title": "Module 2 • CSO development effectiveness: Accountability and transparency",
     "content": [
       {
@@ -44,7 +44,7 @@ export const indicator2Exceptions = [
     ]
   },
   {
-    "id": "2.3",
+    "id": 3,
     "title": "Module 3 • Offcial development co-operation with CSOs",
     "content": [
       {
@@ -66,7 +66,7 @@ export const indicator2Exceptions = [
     ]
   },
   {
-    "id": "2.4",
+    "id": 4,
     "title": "Module 4 • Legal and regulatory environment",
     "content": [
       {

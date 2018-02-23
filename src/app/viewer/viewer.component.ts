@@ -272,19 +272,6 @@ export class ViewerComponent implements OnInit {
           } else {
             this.indicatorSelectedFooter = this.model.year.categories[0].id;
           }
-        } else if (this.selectedTab === 'tab2') {
-          const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
-            layers: ['country-fills']
-          });
-          let send = 'bad';
-          if (!this.countryComparer.firstCountry) {
-            send = 'first';
-          } else if (!this.countryComparer.secondCountry) {
-            send = 'second';
-          }
-          const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
-          this.countryComparer.firstCountry = aux[0];
-          this.countryComparer.secondCountry = aux[1];
         }
       });
       this.loaderService.end();
