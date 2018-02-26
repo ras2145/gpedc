@@ -35,6 +35,7 @@
                   <p class="subtitle">On this tab, Global Partnership monitoring results can be displayed by partner country or development partner. Select a type of partner, year and indicator to start exploring.</p>
                   <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
                     <div class="tab-viewer">
+                        <!-- PARTNER-COUNTRY TAB -->
                       <tabset>
                         <tab heading="Partner Country" (select)="changePartnerType('partcntry')">
                           <div class="result-container">
@@ -43,7 +44,6 @@
                                       popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
                                       placement="right"
                                       triggers="mouseenter:mouseleave" >
-
                                   </i>
                               </p>
                               <div class="row no-gutters">
@@ -253,6 +253,7 @@
 
                           </div>
                         </tab>
+                        <!-- DEV PART TAB -->
                         <tab heading="Development Partner" (select)="changePartnerType('devpart')">
                           <div class="result-container">
                               <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year

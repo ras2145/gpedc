@@ -84,17 +84,14 @@ export class ViewerComponent implements OnInit {
     'Aggregate'
   ];
   sidsOrder = {
-    'Average for all development partners': 0,
-    'Bilateral partners (DAC members)': 1,
-    'Other bilateral partners (non-DAC members)': 2,
-    'Foundations': 6,
-    'Foundation': 6,
-    'Global funds and vertical initiatives': 7,
-    'Multilateral development banks': 3,
+    'Bilateral partners (DAC members)': 0,
+    'Other bilateral partners (non-DAC members)': 1,
+    'Foundation': 2,
+    'Global funds and vertical initiatives': 3,
+    'Multilateral development banks': 4,
     'Other international and regional organizations': 5,
-    'Other international and regional organisations': 5,
-    'UN agencies': 4
-  };  
+    'UN agencies': 6
+  };
   heightDropDown: any;
   viewCountryComparer: boolean = true;
   selectFirstCountry: string;
@@ -180,7 +177,7 @@ export class ViewerComponent implements OnInit {
     }
     return false;
   }
-  
+
   mapConfig() {
     this.loaderService.start();
     const self = this;
@@ -206,12 +203,10 @@ export class ViewerComponent implements OnInit {
     //     countries[0].properties[column[i]]="Not Applicable";
     //   }
     // }
-        if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]?countries[0].properties[countries[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999")
-        {
+        if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]?countries[0].properties[countries[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999") {
           this.countryName = countries[0].properties.country;
           this.getTextPopUp(this.countryName);
-        }
-        else{ 
+        } else {
           this.countryName = 'Country-not';
           this.popupText = '';
         }
@@ -275,6 +270,19 @@ export class ViewerComponent implements OnInit {
           } else {
             this.indicatorSelectedFooter = this.model.year.categories[0].id;
           }
+        } else if (this.selectedTab === 'tab2') {
+          const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
+            layers: ['country-fills']
+          });
+          let send = 'bad';
+          if (!this.countryComparer.firstCountry) {
+            send = 'first';
+          } else if (!this.countryComparer.secondCountry) {
+            send = 'second';
+          }
+          const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
+          this.countryComparer.firstCountry = aux[0];
+          this.countryComparer.secondCountry = aux[1];
         }
       });
       this.loaderService.end();
@@ -864,7 +872,6 @@ export class ViewerComponent implements OnInit {
     this.selectedSidCountry = false;
     this.mapService.paintOneCountry(this.selectedCountry);
     this.selectedCountry = false;
-
   }
   exportCsv(isOrganization?: boolean) {
     const comparer = isOrganization ? this.organizationComparer : this.countryComparer;
@@ -1016,7 +1023,8 @@ export class ViewerComponent implements OnInit {
       indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     }
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext).subscribe(val => {
-      const countriesObj = {};  
+      console.log('Diegox', indicator);
+      const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
           if (countriesObj[country.country].area < country.area) {
