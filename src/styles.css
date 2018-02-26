@@ -2183,7 +2183,7 @@ body::-webkit-scrollbar-thumb {
   font-size: 12px;
   margin: 0px;
   margin-bottom: 15px;
-  padding: 0px 5px;
+  padding: 0px 0px;
 }
 
 .pp-l {

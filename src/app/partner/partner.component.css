@@ -293,7 +293,11 @@
 }
 
 .line-check-text {
-    padding-left: 27px;
+    padding-left: 26px;
+    display: block
+}
+.line-check-text-01 {
+    padding-left: 23px;
     display: block
 }
 
