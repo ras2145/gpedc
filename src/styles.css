@@ -2483,3 +2483,9 @@ body::-webkit-scrollbar-thumb {
 .modal-dialog {
     max-width: 500px;
 }
+.mm-lo{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.0);
+}
+.hh-lo{
+  position: fixed;
+}
