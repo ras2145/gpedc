@@ -388,7 +388,7 @@ export class ViewerComponent implements OnInit {
     this.resetModels();
     this.legendMap = [];
     if (event.target.id) {
-      if (event.target.id != this.selectedTab) {
+      if (event.target.id !== this.selectedTab) {
         this.selectedTab = event.target.id;
         this.mapService.applyFilters(event.target.id);
         this.mapService.resetClickLayer();
@@ -402,7 +402,7 @@ export class ViewerComponent implements OnInit {
         });
         this.indicator = true;
         if (this.selectedTab === 'tab1') {
-          this.viewerTab ='1';
+          this.viewerTab = '1';
           this.mapTitle = '';
           this.model.region = this.regions[0];
           this.model.countryContext = this.countryContexts[0];

@@ -16,12 +16,12 @@ export class PartnerComponent implements OnInit {
   categorizedPartners: any;
   categorizedPartnersP: any;
   categorizedPartnersS: any;
-  partners: any; 
+  partners: any;
   titles;
   year;
   organizationComparer: any;
   regions: any;
-  incomeGroups: any
+  incomeGroups: any;
   countryContexts: any;
   indicatorSelectedFooter: any;
   indicator: any;

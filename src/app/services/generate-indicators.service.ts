@@ -22,9 +22,9 @@ export class GenerateIndicatorsService {
   modalRef: BsModalRef;
   year;
   countries: any;
-  ngOnInit(){
+  ngOnInit() {
     
-  }  
+  }
   allQuery () {
     const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}"`);
     return this.webService.get(query).map(ans => {
