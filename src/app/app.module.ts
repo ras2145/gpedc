@@ -17,6 +17,7 @@ import { ViewerComponent } from './viewer/viewer.component';
 import { Routing } from './app.routes';
 import { CountryHistoricalComponent } from './country-historical/country-historical.component';
 import { PartnerHistoricalComponent } from './partner-historical/partner-historical.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 
 
@@ -31,7 +32,8 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     PartnerComponent,
     ViewerComponent,
     CountryHistoricalComponent,
-    PartnerHistoricalComponent
+    PartnerHistoricalComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
