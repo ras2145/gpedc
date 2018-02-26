@@ -758,12 +758,74 @@
                                     <i class="mdi mdi-information mdi-cursor" *ngIf="footerTab===category.id" (click)="findTabCategory(category.id);openModal(template)" ></i>
                                 </template>
                             <i class="mdi mdi-close pop-up-close" (click)="closeFooter()">  </i>
-                          <p [innerHTML]="footerText"></p>
-
+                               <!-- <p [innerHTML]="footerText"></p>      -->
+                        <!-- modificacion para eliminar innerHtml-footerText-->
+                            <section> 
+                                <div class="tabs-result">
+                                <b>{{listIndicator.title}}</b> 
+                                </div>
+                                 <div *ngIf="listIndicator.yesText!=null || listIndicator.noText!=null" class="tabs-result">{{listIndicator.yesText || listIndicator.noText }}
+                                </div> 
+                                <div *ngFor="let indicator of listIndicator.indicator" class="tabs-result">{{indicator.prefix ||  indicator.yesText || indicator.noText  }}
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <h2 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}} 
+                                                <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(listIndicator.id)" (click)="modalSubcategori(indicator);lgModal.show()"></i>
+                                            </h2>
+                                        </div>
+                                        <div class="col-md-10">{{indicator.suffix}}</div>
+                                    </div>
+                                </div>    
+                            </section>       
                           <!--button type="button" class="btn btn-down" name="button"><i class="mdi mdi-chevron-down"></i></button-->
                         </tab>
                       </tabset>
                     </div>
+                    <!-- MODAL TABLA -->
+                    <div class="modal-icon">
+                    <!-- <button class="btn btn-primary" (click)="lgModal.show()">Large modal</button> -->
+                    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                <h6>Modal {{dateModal.id}}</h6>
+                                </div>
+                                <div class="col-md-10">
+                                <h6>{{dateModal.title}}</h6>
+                                </div>
+                            </div>
+                            <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="row" *ngFor="let content of dateModal.content; let i=index">
+                                <div class="col-md-2 text-center">
+                                <h6>{{i+1}}</h6>
+                                </div>
+                                <div class="col-md-8">
+                                <h6>{{content.text}}</h6>
+                                </div>
+                                <div *ngIf="i!=2" class="col-md-2 text-center">
+                                <label><i class="mdi mdi-check"></i></label>
+                                </div>
+                                <div *ngIf="i==2" class="col-md-2 text-center">
+                                <label><i class="mdi mdi-close"></i></label>
+                                </div>
+                            </div>
+                            <br>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- MODAL TABLA -->
+
+
+
+                    
 
                     <!-- <img src="assets/map-new-screen-1.png" alt="" width="100%"> -->
                     <!-- <iframe style="padding: 0px;" width="100%" height="90%"frameborder="0" src="https://undp.carto.com/u/undp-admin/builder/0b976f06-2a20-402c-ad37-68185f782ad3/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->

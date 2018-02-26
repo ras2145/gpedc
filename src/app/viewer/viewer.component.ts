@@ -10,6 +10,7 @@ import { regions, incomeGroups, countryContexts, partnerAggregate } from '../fil
 import { saveAs } from 'file-saver';
 import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { indicator2Exceptions } from '../indicator2.exceptions';
 @Component({
   selector: 'app-viewer',
   templateUrl: './viewer.component.html',
@@ -59,6 +60,9 @@ export class ViewerComponent implements OnInit {
   firstCountry: any;
   secondCountry: any;
   geoJson: any;
+  listIndicator={ title:'',id:null,yesText:'', noText:'', indicator: [] };
+  dateModal: any;
+  // listIndicator: any
   model = {
     year: null,
     category: {
@@ -110,7 +114,7 @@ export class ViewerComponent implements OnInit {
     private mapService: MapService,
     private loaderService: LoaderService,
   ) { }
-
+ private indicator2Exceptions;
   ngOnInit() {
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
@@ -146,6 +150,7 @@ export class ViewerComponent implements OnInit {
     this.validIndicator = false;
     this.viewerTab = '1';
     this.heightDropDown = '75vh';
+    this.dateModal={};
   }
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
@@ -708,6 +713,7 @@ export class ViewerComponent implements OnInit {
     this.footerTab = indicator;
     this.indicatorSelectedFooter = indicator;
     this.footerText = '';
+    this.listIndicator.indicator=[];
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
       let notPrint = [];
@@ -720,62 +726,70 @@ export class ViewerComponent implements OnInit {
             cols = [3, 9];
           }
           if (!notPrint.includes(i.id)) {
-            if (value === 'Yes') {
-              this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.yesText + '</div>';
-            } else if (value === 'No' ) {
-              this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result"> ' + ((i.id!='7' && i.id!='8')?i.noText:'') + '</div>';
-            } else if (i.id === '8') {
-              this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
-            } else if (i.id == '4') {
-              if (value == 'No data available') {
-                this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div>';
-                // <div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
-              } else {
-                this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '</div>';
-              }
-            } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
-              if (value == 'No data available') {
-                this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div>';
-                // <div class="tabs-result">' + (i.prefix + ' ' + value + ' ' + i.suffix) + '</div>';
-              } else {
-                this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div class="row"><div class="col-md-' + cols[0] + '"><h2>' + value + ' </h2></div><div class="col-md-' + cols[1] + '">' + i.suffix) + '</div></div></div>';
-              }
-            } else if (i.label != '1a') {
-              this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
+            this.listIndicator.title=i.footer;
+            this.listIndicator.id=i.id;
+            this.listIndicator.yesText=(i.yesText)?i.yesText:'';
+            this.listIndicator.noText=(i.noText)?i.noText:'';
+            if(i.subcategories.length==0)
+            {
+              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'',value:value, yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:''});
             }
+            // if (value === 'Yes') {
+            //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.yesText + '</div>';
+            // } else if (value === 'No' ) {
+            //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result"> ' + ((i.id!='7' && i.id!='8')?i.noText:'') + '</div>';
+            // } else if (i.id === '8') {
+            //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
+            // } else if (i.id == '4') {
+            //   if (value == 'No data available') {
+            //     this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div>';
+            //   } else {
+            //     this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <h2>' + value + ' </h2>' + i.suffix) + '</div>';
+            //   }
+            // } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
+            //   if (value == 'No data available') {
+            //     this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div>';
+            //   } else {
+            //     this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div class="row"><div class="col-md-' + cols[0] + '"><h2>' + value + ' </h2></div><div class="col-md-' + cols[1] + '">' + i.suffix) + '</div></div></div>';
+            //   }
+            // } else if (i.label != '1a') {
+            //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + (i.prefix + ' <div>' + value + ' </div>' + i.suffix) + '</div>';
+            // }
           }
           let jumps = 0;
           for (const j of i.subcategories) {
             jumps = 1;
             const subvalue2 = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
-            if (j.label.indexOf('Summary') >= 0) {
-              continue;
-            }
-            if (subvalue === 'Yes') {
-              console.log("yes",subvalue);
-              this.footerText = this.footerText + '<div class="tabs-result">' + j.yesText + '</div>';
-            } else if (subvalue === 'No') {
-              console.log("no",subvalue);
-              this.footerText = this.footerText + '<div class="tabs-result"> ' + j.noText + '</div>';
-            } else if (i.id == '4' || i.id == '7' || i.id == '8') {
-              if (subvalue == 'No data available') {
-                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
-              } else {
-                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <h2>' + subvalue + ' </h2>' + j.suffix + '</div>';
-              }
-            } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
-              if (subvalue == 'No data available') {
-                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
-              } else {
-                this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <div class="row"><div class="col-md-' + cols[0] +'"><h2>' + subvalue + ' </h2></div><div class="col-md-' + cols[1] + '">' + j.suffix + '</div></div></div>';
-              }
-            } else {
-              this.footerText = this.footerText + '<div class="tabs-result">' + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '</div>';
-            }
+            this.listIndicator.indicator.push({column:j.column,prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'',value:subvalue, yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
+            // if (j.label.indexOf('Summary') >= 0) {
+            //   continue;
+            // }
+            // if (subvalue === 'Yes') {
+            //   console.log("yes",subvalue);
+            //   this.footerText = this.footerText + '<div class="tabs-result">' + j.yesText + '</div>';
+            // } else if (subvalue === 'No') {
+            //   console.log("no",subvalue);
+            //   this.footerText = this.footerText + '<div class="tabs-result"> ' + j.noText + '</div>';
+            // } else if (i.id == '4' || i.id == '7' || i.id == '8') {
+            //   if (subvalue == 'No data available') {
+            //     this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
+            //   } else {
+            //     this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <h2>' + subvalue + ' </h2>' + j.suffix + '</div>';
+            //   }
+            // } else if (i.id == '1a' || i.id == '2' || i.id == '3' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9a' || i.id == '9b' || i.id == '10') {
+            //   if (subvalue == 'No data available') {
+            //     this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' ' + subvalue + ' ' + j.suffix + '</div>';
+            //   } else {
+            //     this.footerText = this.footerText + '<div class="tabs-result">' + j.prefix + ' <div class="row"><div class="col-md-' + cols[0] +'"><h2>' + subvalue + ' </h2></div><div class="col-md-' + cols[1] + '">' + j.suffix + '</div></div></div>'; 
+            //   }
+            // } else {
+            //   this.footerText = this.footerText + '<div class="tabs-result">' + (j.prefix + ' <div>' + subvalue + '</div> ' + j.suffix) + '</div>';
+            // }
           }
         }
       }
+      // console.log("listIndicator",this.listIndicator);
     }
   }
 
@@ -1166,4 +1180,13 @@ export class ViewerComponent implements OnInit {
   //     return false;
   //   }else{return true;}
   // };  
+  modalIndicator(indicator){ 
+    if(indicator==2)
+    {  return true;    }  else{ return false;}
+  }
+  modalSubcategori(indicator){
+    // console.log("susbc",indicator.column.split('_')[3]);
+    this.dateModal=indicator2Exceptions[Number(indicator.column.split('_')[3])-1] ;
+    this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
+  }
 }
