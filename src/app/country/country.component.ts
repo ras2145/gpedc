@@ -51,6 +51,9 @@ export class CountryComponent implements OnInit {
     this.titles = titles;
     console.log("UND",titles);
     this.titles[2].categories.splice(3, 1);
+    for (let i = 0; i < 5; ++i ) {
+      this.titles[0].categories[2].subcategories.splice(this.titles[0].categories[2].subcategories[0], 1);
+    }
     this.resetComparer();
     this.year = '2016';
 
