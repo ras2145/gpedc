@@ -3,8 +3,7 @@ import { countryComparison } from '../countryComparison';
 import { WebService } from '../services/web.service';
 import { MapService } from '../services/map.service';
 import { LoaderService } from '../services/loader.service';
-import { Component, Inject, TemplateRef, ViewChild, OnInit} from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Component, Inject, TemplateRef, OnInit} from '@angular/core';
 import { titles } from '../titles';
 import { legends } from '../legends';
 import { regions, incomeGroups, countryContexts, partnerAggregate } from '../filterCountries';
@@ -46,7 +45,6 @@ export class ViewerComponent implements OnInit {
   categorizedPartners: any;
   countryName = 'Country';
   title = 'app';
-  modalRef: BsModalRef;
   name: any;
   titles: any;
   legends: any;
@@ -108,10 +106,8 @@ export class ViewerComponent implements OnInit {
     false
   ];
   changeyear;
-  @ViewChild('tuto') tuto: TemplateRef<any>;
   constructor(
     private mapService: MapService,
-    private modalService: BsModalService,
     private loaderService: LoaderService,
   ) { }
 
@@ -151,13 +147,6 @@ export class ViewerComponent implements OnInit {
     this.viewerTab = '1';
     this.heightDropDown = '75vh';
   }
-  ngAfterViewInit() {
-    if (!window.localStorage.getItem('tutorial')) {
-      this.openModal(this.tuto);
-    }
-    window.localStorage.setItem('tutorial', 'ok');
-  }
-
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
       const selectedOptionObject = {
@@ -301,10 +290,6 @@ export class ViewerComponent implements OnInit {
     }, error => {
       this.loaderService.end();
     });
-  }
-  openModal(template: TemplateRef<any>) {
-     this.viewModal = false;
-     this.modalRef = this.modalService.show(template);
   }
 
   selTab (cid, mcid) {
@@ -892,18 +877,18 @@ export class ViewerComponent implements OnInit {
     this.model.year.categories.forEach(category => {
       let line = [];
       line.push(category.title);
-      if (comparer[first] != '') {
+      if (comparer[first] !== '') {
         line.push(this.getLabelCountry(category, first, isOrganization).trim());
       }
-      if (comparer[second] != '') {
+      if (comparer[second] !== '') {
         line.push(this.getLabelCountry(category, second, isOrganization).trim());
       }
-      if (comparer.aggregate != '') {
+      if (comparer.aggregate !== '') {
         line.push(this.getLabelCountry(category, 'aggregate', isOrganization).trim());
       }
       let add = true;
-      if (line.length == 2) {
-        if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+      if (line.length === 2) {
+        if (line[1] === 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
           add = false;
         }
       } else if (line.length == 3 || line.length == 4) {
@@ -1023,7 +1008,6 @@ export class ViewerComponent implements OnInit {
       indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
     }
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext).subscribe(val => {
-      console.log('Diegox', indicator);
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
@@ -1121,29 +1105,7 @@ export class ViewerComponent implements OnInit {
   switchPartnerGroupOpen(event, partnerGroup) {
     partnerGroup.open = !partnerGroup.open;
   }
-  continueTutorial() {
-    let index = -1;
-    for (let i = 0; i < this.tutorial.length; i++) {
-      if (this.tutorial[i]) {
-        index = i;
-      }
-    }
-    if (index == -1) {
-      this.tutorial[0] = true;
-    } else {
-      this.tutorial[index] = false;
-      this.tutorial[(index + 1) % this.tutorial.length] = true;
-    }
-  }
-  selectTutorial(index) {
-    this.deselectTutorial();
-    this.tutorial[index] = true;
-  }
-  deselectTutorial() {
-    for (let i = 0; i < this.tutorial.length; i++) {
-      this.tutorial[i] = false;
-    }
-  }
+
   isLoading() {
     return this.loaderService.isLoading();
   }
