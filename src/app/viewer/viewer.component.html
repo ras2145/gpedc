@@ -770,7 +770,7 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <h2 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}} 
-                                                <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(listIndicator.id)" (click)="modalSubcategori(indicator);lgModal.show()"></i>
+                                                <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(listIndicator.id)" (click)="modalSubcategory(indicator);lgModal.show()"></i>
                                             </h2>
                                         </div>
                                         <div class="col-md-10">{{indicator.suffix}}</div>
@@ -788,12 +788,12 @@
                         <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <div class="row">
-                                <div class="col-md-2 ">
-                                <h6>Modal {{dateModal.id}}</h6>
+                            <div class="row modal-header-left">
+                                <div class="col-md-2">
+                                    <h6>Modal {{dateModal.id}}</h6>
                                 </div>
                                 <div class="col-md-10">
-                                <h6>{{dateModal.title}}</h6>
+                                    <h6>{{dateModal.title}}</h6>
                                 </div>
                             </div>
                             <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
@@ -801,18 +801,18 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                            <div class="row" *ngFor="let content of dateModal.content; let i=index">
+                            <div class="row" *ngFor="let content of dateModal.content">
                                 <div class="col-md-2 text-center">
-                                <h6>{{i+1}}</h6>
+                                    <h6>{{content.id}}</h6>
                                 </div>
                                 <div class="col-md-8">
-                                <h6>{{content.text}}</h6>
+                                    <h6>{{content.text}}</h6>
                                 </div>
                                 <div *ngIf="i!=2" class="col-md-2 text-center">
-                                <label><i class="mdi mdi-check"></i></label>
+                                    <label><i class="mdi mdi-check"></i></label>
                                 </div>
                                 <div *ngIf="i==2" class="col-md-2 text-center">
-                                <label><i class="mdi mdi-close"></i></label>
+                                    <label><i class="mdi mdi-close"></i></label>
                                 </div>
                             </div>
                             <br>

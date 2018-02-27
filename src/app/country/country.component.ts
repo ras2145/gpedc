@@ -186,16 +186,15 @@ export class CountryComponent implements OnInit {
     }
     return ans;
   }
-  popIndicator(subcategory){ 
+  modalIndicator(subcategory){ 
     if(subcategory.partcntry.split('_')[2]==2 && this.countryComparer.firstCountry!='')
     {  return true;}else{
       return false;
     }
   }
-  popSubcategori(subcategory, valor){
-    console.log("susbc",subcategory.column.split('_')[3]);
+  modalSubcategory(subcategory){
     this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1] ;
-    this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
+    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
   }
   htmlIndicator(indicator){
     return this.generateIndicatorsService.htmlIndicatorFunction(indicator);

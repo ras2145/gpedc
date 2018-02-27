@@ -576,7 +576,7 @@
                       <td width="17.75%" class="center-td background-2"  *ngIf="availableCountryRow(subcategory)">
                               <p [innerHTML]="getLabelCountry(subcategory, 'firstCountry')">
                               </p>
-                              <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="popIndicator(subcategory)" (click)="popSubcategori(subcategory);lgModal.show()"></i>                    
+                              <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory)" (click)="modalSubcategory(subcategory);lgModal.show()"></i>                    
                       </td> 
                       <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
                       <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
@@ -592,8 +592,8 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <div class="row">
-                    <div class="col-md-2 ">
+                  <div class="row modal-header-left">
+                    <div class="col-md-2 text-center">
                       <h6>Modal {{dateModal.id}}</h6>
                     </div>
                     <div class="col-md-10">
@@ -607,7 +607,7 @@
                 <div class="modal-body">
                   <div class="row" *ngFor="let content of dateModal.content; let i=index">
                     <div class="col-md-2 text-center">
-                      <h6>{{i+1}}</h6>
+                      <h6>{{content.id}}</h6>
                     </div>
                     <div class="col-md-8">
                       <h6>{{content.text}}</h6>

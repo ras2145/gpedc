@@ -1184,9 +1184,8 @@ export class ViewerComponent implements OnInit {
     if(indicator==2)
     {  return true;    }  else{ return false;}
   }
-  modalSubcategori(indicator){
-    // console.log("susbc",indicator.column.split('_')[3]);
+  modalSubcategory(indicator){
     this.dateModal=indicator2Exceptions[Number(indicator.column.split('_')[3])-1] ;
-    this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
+    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
   }
 }
