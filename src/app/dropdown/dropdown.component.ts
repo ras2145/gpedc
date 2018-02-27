@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoaderService } from '../services/loader.service';
 import { ModelService } from '../services/model.service';
 
@@ -37,7 +37,7 @@ export class DropdownComponent implements OnInit {
     incomeGroup: null,
     countryContext: null
   };
-
+  @Output() changeValues = new EventEmitter();
 
   constructor(
     private loaderService: LoaderService,
@@ -60,11 +60,20 @@ export class DropdownComponent implements OnInit {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
+    this.changeEmit();
   }
   unselectCategory() {
     this.subIndicator = false;
     this.indicator = true;
     this.subDropdown = false;
+    this.model.category = {
+      label: 'Select indicator',
+      title: '',
+      column: '',
+      id: '',
+      legendText: ''
+    };
+    this.changeEmit();
   }
   noIsInvalidSelection(category) {
     const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
@@ -76,20 +85,26 @@ export class DropdownComponent implements OnInit {
     return true;
   }
   changeyearLabel(year) {
+    this.model.year = year;
     this.unselectCategory();
+    this.changeEmit();
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
     this.indicator = false;
-  //  console.log(this.model);
-  //  console.log(this.indicator);
-  //  console.log(this.subIndicator);
+    this.changeEmit();
   }
   unselectSubCategory() {
     this.subIndicator = false;
     this.model.subcategory = false;
     const category = this.model.category;
+    this.changeEmit();
+  }
+  changeEmit() {
+    this.changeValues.emit({
+      options: this.model
+    });
   }
 }
