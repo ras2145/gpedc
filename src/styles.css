@@ -2505,11 +2505,26 @@ body::-webkit-scrollbar-thumb {
     background: rgba(241, 120, 70, 0.5);
     border-radius: 5px;
 }
-/* etiqueta <i> en popupmap */
+/* etiqueta <i> en modalpmap */
 h2 .pos-default-modal {
     position: relative;
     display: inline-block;
     vertical-align: top;
     color: #ccc;
     font-size: 20px;
+}
+/* icon de indicador */
+.icon-indicator {
+    width: 60.6px;
+    height: 60.6px;  
+}
+.table-title-left img, .table-title-left article{
+    display: inline-block;
+    vertical-align: middle;
+}
+.table-title-left img{
+    width: 20%;
+}
+.table-title-left article{
+    width: 80%;
 }

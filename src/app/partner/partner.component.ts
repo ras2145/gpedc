@@ -294,4 +294,7 @@ export class PartnerComponent implements OnInit {
   exportCsv() {
     this.generateIndicatorsService.exportCsvFunction(this.organizationComparer, this.partners, this.model, true);
   }
+  htmlIndicator(indicator){
+    return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><article>'+indicator.comparison+'</article>';
+  }
 }

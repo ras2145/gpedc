@@ -587,7 +587,7 @@
                     </div>
 
                     <div class="col-md-4 padding-dd-05">
-                        <ng-select [allowClear]="true" placeholder="Select Context" [(ngModel)]="organizationComparer.aggregate" [options]="organizationSelectors[2]['value']"></ng-select>
+                        <ng-select [allowClear]="true" placeholder="Select Average" [(ngModel)]="organizationComparer.aggregate" [options]="organizationSelectors[2]['value']"></ng-select>
                     </div>
                 </div>
             </div>
@@ -636,7 +636,7 @@
                     <ng-template #thenBlock>
                         <td class="table-title-left background-11" width="25%" *ngIf="hasSubOrganization(indicator)">
                             <!-- Show indicator 1 tp 4 without displaing data -->
-                            <p [innerHTML]="indicator.comparison">
+                            <p [innerHTML]="htmlIndicator(indicator)">
                             </p>
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         </td>
@@ -649,8 +649,8 @@
                         <div *ngIf="availableOrganizationRow(indicator) === true; then thenPass"></div>
                         <ng-template #thenPass>
                           <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableOrganizationRow(indicator)">
-                              <p [innerHTML]="indicator.comparison">
-                              </p>
+                               <p [innerHTML]="htmlIndicator(indicator)">
+                              </p> 
                               <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                           </td>
                           <td width="4%"></td>
