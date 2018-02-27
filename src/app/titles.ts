@@ -18,7 +18,8 @@ export let titles = [
         "footer": "Indicator 5a: Annual predictability of development co-operation",
         "comparison": "<font color=\"black\"> Indicator 5a: </font> Annual predictability of development co-operation",
         "partcntry": "_2010_5a_partcntry",
-        "devpart": "_2010_5a_devpart"
+        "devpart": "_2010_5a_devpart",
+        "icon": "icon-5"
       },
       {
         "id": "6",
@@ -36,7 +37,8 @@ export let titles = [
         "footer": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "comparison": "<font color=\"black\"�> Indicator 6: </font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2010_6_partcntry",
-        "devpart": "_2010_6_devpart"
+        "devpart": "_2010_6_devpart",
+        "icon": "icon-3"
       },
       {
         "id": "7",
@@ -56,7 +58,8 @@ export let titles = [
             "title": "Existence of an aid or partnership policy (Indicator 7)",
             "comparison": "Existence of an aid or partnership policy",
             "partcntry": "_2010_7_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Have country-level targets for development co-operation been established?",
@@ -71,7 +74,8 @@ export let titles = [
             "title": "Existence of country-level targets for development co-operation (Indicator 7) ",
             "comparison": "Existence of country-level targets for development co-operation",
             "partcntry": "_2010_7_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Do governments and development partners conduct regular joint assessments towards country-level targets?",
@@ -86,7 +90,8 @@ export let titles = [
             "title": "Existence of joint assessments towards country-level targets (Indicator 7) ",
             "comparison": "Existence of regular joint assessments between government and development partners",
             "partcntry": "_2010_7_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are non-executive stakeholders involved in joint assessments?",
@@ -101,7 +106,8 @@ export let titles = [
             "title": "Involvement of non-executive stakeholders in joint assessments ",
             "comparison": "Involvement of non-executive stakeholders in joint assessments",
             "partcntry": "_2010_7_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are joint assessments between government and development partners made public?",
@@ -116,7 +122,8 @@ export let titles = [
             "title": "Publicly-available joint assessments between development partners (Indicator 7) ",
             "comparison": "Existence of publicly-available information on joint assessments",
             "partcntry": "_2010_7_5",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2010_7",
@@ -130,7 +137,8 @@ export let titles = [
         "footer": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "comparison": "<font color=\"black\"> Indicator 7: </font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2010_7",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-9"
       },
       {
         "id": "9a",
@@ -148,7 +156,8 @@ export let titles = [
         "footer": "Indicator 9a: Quality of partner countries’ public financial management systems",
         "comparison": "<font color=\"black\"> Indicator 9a: </font> Quality of countries’ public financial management systems",
         "partcntry": "_2010_9a",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-12"
       },
       {
         "id": "9b",
@@ -166,7 +175,8 @@ export let titles = [
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
         "comparison": "<font color=\"black\"�> Indicator 9b: </font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2010_9b",
-        "devpart": "_2010_9b"
+        "devpart": "_2010_9b",
+        "icon": "icon-4"
       },
       {
         "id": "10",
@@ -184,7 +194,8 @@ export let titles = [
         "footer": "Indicator 10. Aid is untied",
         "comparison": "<font color=\"black\"�> Indicator 10: </font> Aid is untied",
         "partcntry": "_2010_10_partcntry",
-        "devpart": "_2010_10_devpart"
+        "devpart": "_2010_10_devpart",
+        "icon": "icon-5"
       }
     ]
   },
@@ -207,7 +218,8 @@ export let titles = [
         "footer": "Indicator 5a: Annual predictability of development co-operation",
         "comparison": "<font color=\"black\">Indicator 5a:</font> Annual predictability of development co-operation",
         "partcntry": "_2014_5a_partcntry",
-        "devpart": "_2014_5a_devpart"
+        "devpart": "_2014_5a_devpart",
+        "icon": "icon-5"
       },
       {
         "id": "5b",
@@ -225,7 +237,8 @@ export let titles = [
         "footer": "Indicator 5b: Medium-term predictability of development co-operation",
         "comparison": "<font color=\"black\">Indicator 5b:</font> Medium-term predictability of development co-operation",
         "partcntry": "_2014_5b_partcntry",
-        "devpart": "_2014_5b_devpart"
+        "devpart": "_2014_5b_devpart",
+        "icon": "icon-8"
       },
       {
         "id": "6",
@@ -243,7 +256,8 @@ export let titles = [
         "footer": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "comparison": "<font color=\"black\">Indicator 6:</font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2014_6_partcntry",
-        "devpart": "_2014_6_devpart"
+        "devpart": "_2014_6_devpart",
+        "icon": "icon-3"
       },
       {
         "id": "7",
@@ -263,7 +277,8 @@ export let titles = [
             "title": "Existence of an aid or partnership policy (Indicator 7)",
             "comparison": "<font color=\"black\">Indicator 7:</font> Existence of an aid or partnership policy",
             "partcntry": "_2014_7_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Have country-level targets for development co-operation been established?",
@@ -278,7 +293,8 @@ export let titles = [
             "title": "Existence of country-level targets for development co-operation (Indicator 7)",
             "comparison": "<font color=\"black\">Indicator 7:</font> Existence of country-level targets for development co-operation",
             "partcntry": "_2014_7_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Do governments and development partners conduct regular joint assessments towards country-level targets?",
@@ -293,7 +309,8 @@ export let titles = [
             "title": "Existence of joint assessments towards country-level targets (Indicator 7)",
             "comparison": "<font color=\"black\">Indicator 7:</font> Existence of regular joint assessments between government and development partners",
             "partcntry": "_2014_7_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are non-executive stakeholders involved in joint assessments?",
@@ -308,7 +325,8 @@ export let titles = [
             "title": "Involvement of non-executive stakeholders in joint assessments",
             "comparison": "<font color=\"black\">Indicator 7:</font> Involvement of non-executive stakeholders in joint assessments",
             "partcntry": "_2014_7_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are joint assessments between government and development partners made public?",
@@ -323,7 +341,8 @@ export let titles = [
             "title": "Publicly-available joint assessments between development partners (Indicator 7)",
             "comparison": "<font color=\"black\">Indicator 7:</font> Existence of publicly-available information on joint assessments",
             "partcntry": "_2014_7_5",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2014_7",
@@ -337,7 +356,8 @@ export let titles = [
         "footer": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "comparison": "<font color=\"black\">Indicator 7:</font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2014_7",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-9"
       },
       {
         "id": "8",
@@ -357,7 +377,8 @@ export let titles = [
             "title": "Indicator 8: According to Global Partnership criteria, do partner countries track public allocations for gender equality?",
             "comparison": "<font color=\"black\">Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?",
             "partcntry": "_2014_8",
-            "devpart": ""
+            "devpart": "",
+            "icon": "icon-2"
           },
           {
             "label": "Does a government statement establishing a tracking system for gender equality exist?",
@@ -372,7 +393,8 @@ export let titles = [
             "title": "Existence of a government statement establishing a tracking system for gender equality (Indicator 8)",
             "comparison": "<font color=\"black\">Indicator 8:</font> Existence of a government statement establishing a tracking system for gender equality and women's empowerment",
             "partcntry": "_2014_8_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are public allocations for gender equality systematically tracked?",
@@ -387,7 +409,8 @@ export let titles = [
             "title": "Systematic tracking of public allocations for gender equality (Indicator 8)",
             "comparison": "<font color=\"black\">Indicator 8:</font> Governments systematically track public allocations for gender equality and women’s empowerment",
             "partcntry": "_2014_8_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Does a central government unit provide leadership and oversight of a tracking system for gender equality allocations?",
@@ -402,7 +425,8 @@ export let titles = [
             "title": "Existence of a central government unit to provide leadership and oversight (Indicator 8)",
             "comparison": "<font color=\"black\">Indicator 8:</font> A central government unit provides leadership and oversight of a tracking system for gender equality allocations",
             "partcntry": "_2014_8_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Is gender-equality-focused budget information publicly available?",
@@ -417,7 +441,8 @@ export let titles = [
             "title": "Public availability of gender-equality-focused budget information (Indicator 8)",
             "comparison": "<font color=\"black\">Indicator 8:</font> Existence of pubicly-available information on budget allocations for gender equality",
             "partcntry": "_2014_8_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2014_8",
@@ -431,7 +456,8 @@ export let titles = [
         "footer": "Indicator 8: Governments have systems in place to track allocations for gender equality and women’s empowerment",
         "comparison": "<font color=\"black\">Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?",
         "partcntry": "_2014_8",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-2"
       },
       {
         "id": "9a",
@@ -449,7 +475,8 @@ export let titles = [
         "footer": "Indicator 9a: Quality of partner countries’ public financial management systems",
         "comparison": "<font color=\"black\">Indicator 9a:</font>Quality of countries’ public financial management systems",
         "partcntry": "_2014_9a",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-12"
       },
       {
         "id": "9b",
@@ -467,7 +494,8 @@ export let titles = [
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
         "comparison": "<font color=\"black\">Indicator 9b:</font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2014_9b_partcntry",
-        "devpart": "_2014_9b_devpart"
+        "devpart": "_2014_9b_devpart",
+        "icon": "icon-4"
       },
       {
         "id": "10",
@@ -485,7 +513,8 @@ export let titles = [
         "footer": "Indicator 10. Aid is untied",
         "comparison": "<font color=\"black\">Indicator 10:</font> Aid is untied",
         "partcntry": "_2014_10_partcntry",
-        "devpart": "_2014_10_devpart"
+        "devpart": "_2014_10_devpart",
+        "icon": "icon-5"
       }
     ]
   },
@@ -510,7 +539,8 @@ export let titles = [
             "title": "% of new development interventions that draw their objectives from country-led results frameworks (Indicator 1a)",
             "comparison": "% of new development interventions that draw objectives from country-led results frameworks",
             "partcntry": "_2016_1_1_partcntry",
-            "devpart": "_2016_1_1_devpart"
+            "devpart": "_2016_1_1_devpart",
+            "icon": ""
           },
           {
             "label": "% of results indicators drawn from country-led results frameworks",
@@ -525,7 +555,8 @@ export let titles = [
             "title": "% of results indicators drawn from country-led results frameworks (Indicator 1a)",
             "comparison": "% of results indicators drawn from country-led results frameworks",
             "partcntry": "_2016_1_2_partcntry",
-            "devpart": "_2016_1_2_devpart"
+            "devpart": "_2016_1_2_devpart",
+            "icon": ""
           },
           {
             "label": "% of results indicators monitored using the partner country's own sources",
@@ -540,7 +571,8 @@ export let titles = [
             "title": "% of results indicators monitored using the partner country's own sources (Indicator 1a)",
             "comparison": "% of results indicators monitored using the partner country's own sources",
             "partcntry": "_2016_1_3_partcntry",
-            "devpart": "_2016_1_3_devpart"
+            "devpart": "_2016_1_3_devpart",
+            "icon": ""
           },
           {
             "label": "% of new interventions that plan a final evaluation with partner country involvement",
@@ -555,7 +587,8 @@ export let titles = [
             "title": "% of new interventions that plan a final evaluation with partner country involvement (Indicator 1a)",
             "comparison": "% of new interventions that plan a final evaluation with partner country involvement",
             "partcntry": "_2016_1_4_partcntry",
-            "devpart": "_2016_1_4_devpart"
+            "devpart": "_2016_1_4_devpart",
+            "icon": ""
           }
         ],
         "column": "_2016_1",
@@ -569,7 +602,8 @@ export let titles = [
         "footer": "Indicator 1a: Development partners' use of country-led results frameworks ",
         "comparison": "<font color=\"black\">Indicator 1a:</font> Do development partners use countries' own results frameworks and evaluation processes?",
         "partcntry": "",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-11"
       },
       {
         "id": "2",
@@ -589,7 +623,8 @@ export let titles = [
             "title": "Do governments support multi-stakeholder dialogue on national development policies? (Indicator 2)",
             "comparison": "Availabilty of space for multi-stakeholder dialogue on national development policies (3 is ideal)",
             "partcntry": "_2016_2_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Do CSOs adhere to the development effectiveness principles?",
@@ -604,7 +639,8 @@ export let titles = [
             "title": "Do CSOs adhere to the development effectiveness principles? (Indicator 2)",
             "comparison": "CSOs apply the principles of accountability and transparency (5 is ideal)",
             "partcntry": "_2016_2_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Do official development partners co-operate with CSOs?",
@@ -619,7 +655,8 @@ export let titles = [
             "title": "Do official development partners co-operate with CSOs? (Indicator 2)",
             "comparison": "Official development co-operation with CSOs (4 is ideal)",
             "partcntry": "_2016_2_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "How enabling is the legal and regulatory environment for CSOs?",
@@ -634,7 +671,8 @@ export let titles = [
             "title": "Is there an enabling legal and regulatory environment for CSOs' engagement in development? (Indicator 2)",
             "comparison": "Legal and regulatory environment in place to maximise CSO engagement (4 is ideal)",
             "partcntry": "_2016_2_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2016_2",
@@ -648,7 +686,8 @@ export let titles = [
         "footer": "Indicator 2: Assessment of an enabling environment for civil society participation in development co-operation ",
         "comparison": "<font color=\"black\">Indicator 2:</font> Are CSOs engaged in the development effectiveness process?",
         "partcntry": "",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-7"
       },
       {
         "id": "3",
@@ -668,7 +707,8 @@ export let titles = [
             "title": "Is the private sector willing to engage in public-private dialogue? (Indicator 3)",
             "comparison": "Private sector willingness to engage in public-private dialogue (10 is ideal)",
             "partcntry": "_2016_3_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Is the government willing to engage in public-private dialogue?",
@@ -683,7 +723,8 @@ export let titles = [
             "title": "Is the government willing to engage in public-private dialogue? (Indicator 3)",
             "comparison": "Government willingness to engage in public-private dialogue (10 is ideal)",
             "partcntry": "_2016_3_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Is there a potential champion who can facilitate public-private dialogue?",
@@ -698,7 +739,8 @@ export let titles = [
             "title": "Is there a potential champion who can facilitate public-private dialogue? (Indicator 3)",
             "comparison": "Existence of potential champions to facilitate public-private dialogue (10 is ideal)",
             "partcntry": "_2016_3_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are instruments available to support public-private dialogue?",
@@ -713,7 +755,8 @@ export let titles = [
             "title": "Are instruments available to support public-private dialogue? (Indicator 3)",
             "comparison": "Existence of instruments to support public-private dialogue (10 is ideal)",
             "partcntry": "_2016_3_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2016_3",
@@ -727,7 +770,8 @@ export let titles = [
         "footer": "Indicator 3: Quality of public-private dialogue ",
         "comparison": "<font color=\"black\">Indicator 3:</font> What is the quality of public-private dialogue?",
         "partcntry": "",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-10"
       },
       {
         "id": "4",
@@ -747,7 +791,8 @@ export let titles = [
             "title": "Assessment by the OECD Creditor Reporting System (CRS) - Indicator 4",
             "comparison": "Transparency assessment by the OECD Creditor Reporting System (CRS) - backward-looking data for accountability purposes",
             "partcntry": "",
-            "devpart": "_2016_4_1"
+            "devpart": "_2016_4_1",
+            "icon": ""
           },
           {
             "label": "Assessment of the OECD FSS (data for forecasting purposes)",
@@ -762,7 +807,8 @@ export let titles = [
             "title": "Assessment by the OECD Forward Spending Survey (FSS) - Indicator 4 ",
             "comparison": "Transparency assessment by the OECD Forward Spending Survey (FSS) - data for forecasting purposes",
             "partcntry": "",
-            "devpart": "_2016_4_2"
+            "devpart": "_2016_4_2",
+            "icon": ""
           },
           {
             "label": "Assessment of the IATI (data for aid management and planning purposes)",
@@ -777,7 +823,8 @@ export let titles = [
             "title": "Assessment by the International Aid Transparency Initiative (IATI) - Indicator 4",
             "comparison": "Transparency assessment by the International Aid Transparency Initiative (IATI) - data for aid management and planning purposes",
             "partcntry": "",
-            "devpart": "_2016_4_3"
+            "devpart": "_2016_4_3",
+            "icon": ""
           }
         ],
         "column": "_2016_4",
@@ -791,7 +838,8 @@ export let titles = [
         "footer": "Indicator 4: Transparent information on development co-operation is publicly available",
         "comparison": "<font color=\"black\">Indicator 4:</font> Are development partners making high-quality information on development co-operation publicly accessible?",
         "partcntry": "",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-10"
       },
       {
         "id": "5a",
@@ -809,7 +857,8 @@ export let titles = [
         "footer": "Indicator 5a: Annual predictability of development co-operation",
         "comparison": "<font color=\"black\">Indicator 5a:</font> Annual predictability of development co-operation",
         "partcntry": "_2016_5a_partcntry",
-        "devpart": "_2016_5a_devpart"
+        "devpart": "_2016_5a_devpart",
+        "icon": "icon-5"
       },
       {
         "id": "5b",
@@ -827,7 +876,8 @@ export let titles = [
         "footer": "Indicator 5b: Medium-term predictability of development co-operation",
         "comparison": "<font color=\"black\">Indicator 5b:</font> Medium-term predictability of development co-operation",
         "partcntry": "_2016_5b_partcntry",
-        "devpart": "_2016_5b_devpart"
+        "devpart": "_2016_5b_devpart",
+        "icon": "icon-8"
       },
       {
         "id": "6",
@@ -845,7 +895,8 @@ export let titles = [
         "footer": "Indicator 6: Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "comparison": "<font color=\"black\">Indicator 6:</font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2016_6_partcntry",
-        "devpart": "_2016_6_devpart"
+        "devpart": "_2016_6_devpart",
+        "icon": "icon-3"
       },
       {
         "id": "7",
@@ -865,7 +916,8 @@ export let titles = [
             "title": "Existence of an aid or partnership policy (Indicator 7)",
             "comparison": "Existence of an aid or partnership policy",
             "partcntry": "_2016_7_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Have country-level targets for development co-operation been established?",
@@ -880,7 +932,8 @@ export let titles = [
             "title": "Existence of country-level targets for development co-operation (Indicator 7)",
             "comparison": "Existence of country-level targets for development co-operation",
             "partcntry": "_2016_7_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Do governments and development partners conduct regular joint assessments towards country-level targets?",
@@ -895,7 +948,8 @@ export let titles = [
             "title": "Existence of joint assessments towards country-level targets (Indicator 7)",
             "comparison": "Existence of regular joint assessments between government and development partners",
             "partcntry": "_2016_7_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are non-executive stakeholders involved in joint assessments?",
@@ -910,7 +964,8 @@ export let titles = [
             "title": "Involvement of non-executive stakeholders in joint assessments",
             "comparison": "Involvement of non-executive stakeholders in joint assessments",
             "partcntry": "_2016_7_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are joint assessments between government and development partners made public?",
@@ -925,7 +980,8 @@ export let titles = [
             "title": "Publicly-available joint assessments between development partners (Indicator 7)",
             "comparison": "Existence of publicly-available information on joint assessments",
             "partcntry": "_2016_7_5",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2016_7",
@@ -939,7 +995,8 @@ export let titles = [
         "footer": "Indicator 7: Mutual accountability among development partners is strengthened through inclusive reviews",
         "comparison": "<font color=\"black\">Indicator 7:</font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2016_7",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-9"
       },
       {
         "id": "8",
@@ -959,7 +1016,8 @@ export let titles = [
             "title": "Existence of a government statement establishing a tracking system for gender equality (Indicator 8)",
             "comparison": "Existence of a government statement establishing a tracking system for gender equality and women's empowerment",
             "partcntry": "_2016_8_1",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Are public allocations for gender equality systematically tracked?",
@@ -974,7 +1032,8 @@ export let titles = [
             "title": "Systematic tracking of public allocations for gender equality (Indicator 8)",
             "comparison": "Governments systematically track public allocations for gender equality and women’s empowerment",
             "partcntry": "_2016_8_2",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Does a central government unit provide leadership and oversight of a tracking system for gender equality allocations?",
@@ -989,7 +1048,8 @@ export let titles = [
             "title": "Existence of a central government unit to provide leadership and oversight (Indicator 8)",
             "comparison": "A central government unit provides leadership and oversight of a tracking system for gender equality allocations",
             "partcntry": "_2016_8_3",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           },
           {
             "label": "Is gender-equality-focused budget information publicly available?",
@@ -1004,7 +1064,8 @@ export let titles = [
             "title": "Public availability of gender-equality-focused budget information (Indicator 8)",
             "comparison": "Existence of pubicly-available information on budget allocations for gender equality",
             "partcntry": "_2016_8_4",
-            "devpart": ""
+            "devpart": "",
+            "icon": ""
           }
         ],
         "column": "_2016_8",
@@ -1018,7 +1079,8 @@ export let titles = [
         "footer": "Indicator 8: Governments have systems in place to track allocations for gender equality and women’s empowerment",
         "comparison": "<font color=\"black\">Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?",
         "partcntry": "_2016_8",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-2"
       },
       {
         "id": "9a",
@@ -1036,7 +1098,8 @@ export let titles = [
         "footer": "Indicator 9a: Quality of partner countries’ public financial management systems",
         "comparison": "<font color=\"black\">Indicator 9a:</font> Quality of countries’ public financial management systems",
         "partcntry": "_2016_9a",
-        "devpart": ""
+        "devpart": "",
+        "icon": "icon-12"
       },
       {
         "id": "9b",
@@ -1054,7 +1117,8 @@ export let titles = [
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
         "comparison": "<font color=\"black\">Indicator 9b:</font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2016_9b_partcntry",
-        "devpart": "_2016_9b_devpart"
+        "devpart": "_2016_9b_devpart",
+        "icon": "icon-4"
       },
       {
         "id": "10",
@@ -1072,7 +1136,8 @@ export let titles = [
         "footer": "Indicator 10. Aid is untied",
         "comparison": "<font color=\"black\">Indicator 10:</font> Aid is untied",
         "partcntry": "_2016_10_partcntry",
-        "devpart": "_2016_10_devpart"
+        "devpart": "_2016_10_devpart",
+        "icon": "icon-5"
       }
     ]
   }
