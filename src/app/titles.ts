@@ -687,7 +687,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 2:</font> Are CSOs engaged in the development effectiveness process?",
         "partcntry": "",
         "devpart": "",
-        "icon": "icon-7"
+        "icon": "icon-7.svg"
       },
       {
         "id": "3",
