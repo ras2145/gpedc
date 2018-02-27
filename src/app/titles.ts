@@ -19,7 +19,7 @@ export let titles = [
         "comparison": "<font color=\"black\"> Indicator 5a: </font> Annual predictability of development co-operation",
         "partcntry": "_2010_5a_partcntry",
         "devpart": "_2010_5a_devpart",
-        "icon": "icon-5"
+        "icon": "icon-5.svg"
       },
       {
         "id": "6",
@@ -38,7 +38,7 @@ export let titles = [
         "comparison": "<font color=\"black\"�> Indicator 6: </font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2010_6_partcntry",
         "devpart": "_2010_6_devpart",
-        "icon": "icon-3"
+        "icon": "icon-3.svg"
       },
       {
         "id": "7",
@@ -138,7 +138,7 @@ export let titles = [
         "comparison": "<font color=\"black\"> Indicator 7: </font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2010_7",
         "devpart": "",
-        "icon": "icon-9"
+        "icon": "icon-9.svg"
       },
       {
         "id": "9a",
@@ -157,7 +157,7 @@ export let titles = [
         "comparison": "<font color=\"black\"> Indicator 9a: </font> Quality of countries’ public financial management systems",
         "partcntry": "_2010_9a",
         "devpart": "",
-        "icon": "icon-12"
+        "icon": "icon-12.svg"
       },
       {
         "id": "9b",
@@ -176,7 +176,7 @@ export let titles = [
         "comparison": "<font color=\"black\"�> Indicator 9b: </font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2010_9b",
         "devpart": "_2010_9b",
-        "icon": "icon-4"
+        "icon": "icon-4.svg"
       },
       {
         "id": "10",
@@ -195,7 +195,7 @@ export let titles = [
         "comparison": "<font color=\"black\"�> Indicator 10: </font> Aid is untied",
         "partcntry": "_2010_10_partcntry",
         "devpart": "_2010_10_devpart",
-        "icon": "icon-5"
+        "icon": "icon-5.svg"
       }
     ]
   },
@@ -219,7 +219,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 5a:</font> Annual predictability of development co-operation",
         "partcntry": "_2014_5a_partcntry",
         "devpart": "_2014_5a_devpart",
-        "icon": "icon-5"
+        "icon": "icon-5.svg"
       },
       {
         "id": "5b",
@@ -238,7 +238,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 5b:</font> Medium-term predictability of development co-operation",
         "partcntry": "_2014_5b_partcntry",
         "devpart": "_2014_5b_devpart",
-        "icon": "icon-8"
+        "icon": "icon-8.svg"
       },
       {
         "id": "6",
@@ -257,7 +257,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 6:</font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2014_6_partcntry",
         "devpart": "_2014_6_devpart",
-        "icon": "icon-3"
+        "icon": "icon-3.svg"
       },
       {
         "id": "7",
@@ -357,7 +357,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 7:</font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2014_7",
         "devpart": "",
-        "icon": "icon-9"
+        "icon": "icon-9.svg"
       },
       {
         "id": "8",
@@ -378,7 +378,7 @@ export let titles = [
             "comparison": "<font color=\"black\">Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?",
             "partcntry": "_2014_8",
             "devpart": "",
-            "icon": "icon-2"
+            "icon": "icon-2.svg"
           },
           {
             "label": "Does a government statement establishing a tracking system for gender equality exist?",
@@ -457,7 +457,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?",
         "partcntry": "_2014_8",
         "devpart": "",
-        "icon": "icon-2"
+        "icon": "icon-2.svg"
       },
       {
         "id": "9a",
@@ -476,7 +476,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 9a:</font>Quality of countries’ public financial management systems",
         "partcntry": "_2014_9a",
         "devpart": "",
-        "icon": "icon-12"
+        "icon": "icon-12.svg"
       },
       {
         "id": "9b",
@@ -495,7 +495,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 9b:</font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2014_9b_partcntry",
         "devpart": "_2014_9b_devpart",
-        "icon": "icon-4"
+        "icon": "icon-4.svg"
       },
       {
         "id": "10",
@@ -514,7 +514,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 10:</font> Aid is untied",
         "partcntry": "_2014_10_partcntry",
         "devpart": "_2014_10_devpart",
-        "icon": "icon-5"
+        "icon": "icon-5.svg"
       }
     ]
   },
@@ -603,7 +603,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 1a:</font> Do development partners use countries' own results frameworks and evaluation processes?",
         "partcntry": "",
         "devpart": "",
-        "icon": "icon-11"
+        "icon": "icon-11.svg"
       },
       {
         "id": "2",
@@ -771,7 +771,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 3:</font> What is the quality of public-private dialogue?",
         "partcntry": "",
         "devpart": "",
-        "icon": "icon-10"
+        "icon": "icon-10.svg"
       },
       {
         "id": "4",
@@ -839,7 +839,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 4:</font> Are development partners making high-quality information on development co-operation publicly accessible?",
         "partcntry": "",
         "devpart": "",
-        "icon": "icon-10"
+        "icon": "icon-10.svg"
       },
       {
         "id": "5a",
@@ -858,7 +858,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 5a:</font> Annual predictability of development co-operation",
         "partcntry": "_2016_5a_partcntry",
         "devpart": "_2016_5a_devpart",
-        "icon": "icon-5"
+        "icon": "icon-5.svg"
       },
       {
         "id": "5b",
@@ -877,7 +877,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 5b:</font> Medium-term predictability of development co-operation",
         "partcntry": "_2016_5b_partcntry",
         "devpart": "_2016_5b_devpart",
-        "icon": "icon-8"
+        "icon": "icon-8.svg"
       },
       {
         "id": "6",
@@ -896,7 +896,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 6:</font> Development co-operation is on budgets which are subject to parliamentary scrutiny",
         "partcntry": "_2016_6_partcntry",
         "devpart": "_2016_6_devpart",
-        "icon": "icon-3"
+        "icon": "icon-3.svg"
       },
       {
         "id": "7",
@@ -996,7 +996,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 7:</font> Mutual accountability among development partners is strengthened through inclusive reviews",
         "partcntry": "_2016_7",
         "devpart": "",
-        "icon": "icon-9"
+        "icon": "icon-9.svg"
       },
       {
         "id": "8",
@@ -1080,7 +1080,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 8:</font> Do countries meet the Global Partnership criteria for tracking public allocations for gender equality and women’s empowerment, and making this information publicly available?",
         "partcntry": "_2016_8",
         "devpart": "",
-        "icon": "icon-2"
+        "icon": "icon-2.svg"
       },
       {
         "id": "9a",
@@ -1099,7 +1099,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 9a:</font> Quality of countries’ public financial management systems",
         "partcntry": "_2016_9a",
         "devpart": "",
-        "icon": "icon-12"
+        "icon": "icon-12.svg"
       },
       {
         "id": "9b",
@@ -1118,7 +1118,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 9b:</font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
         "partcntry": "_2016_9b_partcntry",
         "devpart": "_2016_9b_devpart",
-        "icon": "icon-4"
+        "icon": "icon-4.svg"
       },
       {
         "id": "10",
@@ -1137,7 +1137,7 @@ export let titles = [
         "comparison": "<font color=\"black\">Indicator 10:</font> Aid is untied",
         "partcntry": "_2016_10_partcntry",
         "devpart": "_2016_10_devpart",
-        "icon": "icon-5"
+        "icon": "icon-5.svg"
       }
     ]
   }
