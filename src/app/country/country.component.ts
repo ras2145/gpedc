@@ -94,6 +94,7 @@ export class CountryComponent implements OnInit {
         }
       }
     }
+    console.log("country",this.countrySelectors);
   }
   onSelectedCountry(event, type) {
     console.log('onSelectedCountry');
@@ -195,5 +196,8 @@ export class CountryComponent implements OnInit {
     console.log("susbc",subcategory.column.split('_')[3]);
     this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1] ;
     this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
+  }
+  htmlIndicator(indicator){
+    return this.generateIndicatorsService.htmlIndicatorFunction(indicator);
   }
 }
