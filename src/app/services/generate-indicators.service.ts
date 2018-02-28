@@ -159,7 +159,7 @@ export class GenerateIndicatorsService {
     const fileName = isOrganization ? 'partner' : 'country';
     saveAs(blob, fileName + '.csv');
   }
-  htmlIndicatorFunction(indicator){
+  htmlIndicatorFunction(indicator) {
     if (indicator.icon2) {
       return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'"class="icon-indicator"><article>'+indicator.comparison+'</article>'; 
     }else {
