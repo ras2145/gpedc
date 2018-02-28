@@ -110,6 +110,9 @@ export class ViewerComponent implements OnInit {
     false
   ];
   changeyear;
+  column_indicator=[{}];
+  column_content:'';
+  country_modal:'';
   constructor(
     private mapService: MapService,
     private loaderService: LoaderService,
@@ -233,7 +236,7 @@ export class ViewerComponent implements OnInit {
           //     selectedCountry[0] = feature;
           // }
           selectedCountry[0] = feature;
-
+          this.country_modal=feature.properties['country'];
           const data1 = selectedCountry[0].properties._2016_5b;
           const data2 = selectedCountry[0].properties._2016_6;
           const data3 = selectedCountry[0].properties._2016_7;
@@ -1182,12 +1185,33 @@ export class ViewerComponent implements OnInit {
   //   }else{return true;}
   // };  
   modalIndicator(indicator){ 
-    if(indicator==2)
+    if(indicator.id==2)
     {  return true;    }  else{ return false;}
   }
   modalSubcategory(indicator){
+    this.column_indicator=[{}];
     this.dateModal=indicator2Exceptions[Number(indicator.column.split('_')[3])-1] ;
     this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
+    let column_query, column_indicator='';
+    this.column_content=indicator.column;
+      for(let i=0; i<this.dateModal.content.length;i++)
+      { column_indicator=column_indicator+indicator.column+'_'+this.dateModal.content[i].id+','; }
+        column_query=column_indicator.slice(0, column_indicator.length-1);
+        console.log("para query",column_query, this.country_modal);
+        this.mapService.modalQuery(column_query, this.country_modal).subscribe(val => {
+        this.column_indicator = val;
+      });
+  }
+  marcadorIndicatorContent(id)
+  {
+    return (this.column_indicator[0][this.column_content+'_'+id]=='Yes')?'check':'close';
+  }
+  valorIndicatorContent(id)
+  {
+    if(this.column_indicator[0][this.column_content+'_'+id])
+    {
+      return  ((this.column_indicator[0][this.column_content+'_'+id]).toString()!='9999')?true:false;
+    }
   }
   updateValues(event) {
     console.log("EVENT",event);

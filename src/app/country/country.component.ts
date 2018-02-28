@@ -41,6 +41,8 @@ export class CountryComponent implements OnInit {
   };
   year;
   countries: any;
+  column_indicator=[{}];
+  column_content:'';
   constructor(private generateIndicatorsService: GenerateIndicatorsService,
   private modalService: BsModalService) { }
   private indicator2Exceptions;
@@ -188,17 +190,48 @@ export class CountryComponent implements OnInit {
     }
     return ans;
   }
-  modalIndicator(subcategory){ 
-    if(subcategory.partcntry.split('_')[2]==2 && this.countryComparer.firstCountry!='')
-    {  return true;}else{
-      return false;
+  modalIndicator(subcategory, country, valor){
+    if(subcategory.partcntry.split('_')[2]==2)
+    {  
+      if(valor.replace('<p>','').replace('</p>','')!='-' && valor.replace('<p>','').replace('</p>','')!='Not Applicable')
+      {
+        let selectCountry=(country=='firstCountry')?this.countryComparer.firstCountry:this.countryComparer.secondCountry;
+        if(selectCountry!='')    
+        return true;
+          else
+          return false;
+      }else{
+        return false;
+      } 
     }
   }
-  modalSubcategory(subcategory){
-    this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1] ;
+  modalSubcategory(subcategory,countries){
+    this.column_indicator=[{}];
+    this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1];
     this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
+    let column_query, column_indicator='';
+    this.column_content=subcategory.column;
+      for(let i=0; i<this.dateModal.content.length;i++)
+      { column_indicator=column_indicator+subcategory.column+'_'+this.dateModal.content[i].id+','; }
+        column_query=column_indicator.slice(0, column_indicator.length-1);
+        let country=(countries=='firstCountry')?this.countryComparer.firstCountry:this.countryComparer.secondCountry;
+        // console.log("para query",column_query, country);
+        this.generateIndicatorsService.modalQuery(column_query, country).subscribe(val => {
+        this.column_indicator = val;
+      });
   }
   htmlIndicator(indicator){
     return this.generateIndicatorsService.htmlIndicatorFunction(indicator);
+  }
+  marcadorIndicatorContent(id)
+  {
+    return (this.column_indicator[0][this.column_content+'_'+id]=='Yes')?'check':'close';
+  }
+  valorIndicatorContent(id)
+  {
+    if(this.column_indicator[0][this.column_content+'_'+id])
+    {
+      return  ((this.column_indicator[0][this.column_content+'_'+id]).toString()!='9999')?true:false;
+    }
   }
 }

@@ -166,4 +166,11 @@ export class GenerateIndicatorsService {
       return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><article>'+indicator.comparison+'</article>';
     }
   }
+  modalQuery (column_query, country) {
+    const query = SERVER.GET_QUERY(`select ${column_query} from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" where country like '${country}' `);
+    return this.webService.get(query).map(ans => {
+      // console.log("modalquery",ans);
+      return ans.json().rows;
+    });
+  }
 }

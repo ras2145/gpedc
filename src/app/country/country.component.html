@@ -574,11 +574,13 @@
                       <td width="4%"></td>
                       <!-- partner comparison -->
                       <td width="17.75%" class="center-td background-2"  *ngIf="availableCountryRow(subcategory)">
-                              <p [innerHTML]="getLabelCountry(subcategory, 'firstCountry')">
-                              </p>
-                              <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory)" (click)="modalSubcategory(subcategory);lgModal.show()"></i>                    
+                        <p [innerHTML]="getLabelCountry(subcategory, 'firstCountry')"></p>
+                        <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory,'firstCountry',getLabelCountry(subcategory, 'firstCountry'))" (click)="modalSubcategory(subcategory,'firstCountry');lgModal.show()"></i>                    
                       </td> 
-                      <td width="17.75%" class="center-td background-2 border-01" [innerHTML]="getLabelCountry(subcategory, 'secondCountry')" *ngIf="availableCountryRow(subcategory)"></td>
+                      <td width="17.75%" class="center-td background-2 border-01"  *ngIf="availableCountryRow(subcategory)">
+                        <p [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></p>
+                        <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory,'secondCountry',getLabelCountry(subcategory, 'secondCountry'))" (click)="modalSubcategory(subcategory,'secondCountry');lgModal.show()"></i>                    
+                      </td>
                       <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
                       <td width="17.75%" class="center-td background-2"></td>
                     </ng-template>
@@ -607,17 +609,17 @@
                 <div class="modal-body">
                   <div class="row" *ngFor="let content of dateModal.content; let i=index">
                     <div class="col-md-2 text-center">
-                      <h6>{{content.id}}</h6>
+                      <h6>{{content.id }}</h6>
                     </div>
                     <div class="col-md-8">
                       <h6>{{content.text}}</h6>
                     </div>
-                    <div *ngIf="i!=2" class="col-md-2 text-center">
-                      <label><i class="mdi mdi-check"></i></label>
+                    <div  class="col-md-2 text-center">
+                      <label *ngIf="valorIndicatorContent(content.id)"><i class="mdi mdi-{{marcadorIndicatorContent(content.id)}}"></i></label>
                     </div>
-                    <div *ngIf="i==2" class="col-md-2 text-center">
+                    <!-- <div *ngIf="i==2" class="col-md-2 text-center">
                       <label><i class="mdi mdi-close"></i></label>
-                    </div>
+                    </div> -->
                   </div>
                   <br>
                   <!-- <div class="row">
