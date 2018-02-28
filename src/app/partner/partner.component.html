@@ -492,18 +492,20 @@
                         <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersP; let i=index">
                             <label  for="" class="label--checkbox">
                             <input class="checkbox col-md-1"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                            <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label><br>
-                            <label class="line-check-text col-md-11">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
-                            </label>
+                                <label class="col-md-11 hh-lo">{{partnerGroup.name}}</label>
+                            <!-- <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label><br> -->
+                            <!-- <label class="line-check-text col-md-11">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label> -->
+                            </label> 
                         </div>
                     </div>
                     <div class="row no-">
                         <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersS; let i=index">
                             <label for="" class="label--checkbox">
                             <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                            <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label>
-                            <label class="line-check-text-01">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>
-                            </label>
+                                <label class="col-md-11 hh-lo">{{partnerGroup.name}}</label>
+                              <!-- <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label> -->
+                            <!-- <label class="line-check-text-01">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>  -->
+                            </label> 
                         </div>
                     </div>
                 </div>
