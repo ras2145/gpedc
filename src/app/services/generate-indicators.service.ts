@@ -160,6 +160,10 @@ export class GenerateIndicatorsService {
     saveAs(blob, fileName + '.csv');
   }
   htmlIndicatorFunction(indicator){
-    return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><article>'+indicator.comparison+'</article>';
+    if (indicator.icon2) {
+      return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'"class="icon-indicator"><article>'+indicator.comparison+'</article>'; 
+    }else {
+      return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><article>'+indicator.comparison+'</article>';
+    }
   }
 }
