@@ -94,6 +94,7 @@ export class CountryComponent implements OnInit {
         }
       }
     }
+    console.log("country",this.countrySelectors);
   }
   onSelectedCountry(event, type) {
     console.log('onSelectedCountry');
@@ -149,16 +150,18 @@ export class CountryComponent implements OnInit {
     return (category !== '4');
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
-    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, this.countryComparer, this.countriesQuery);
+    const global = this;
+    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, global.countryComparer, global.countriesQuery);
   }
 
   availableCountryRow(category) {
+    const global = this;
     let d = 0;
     d += this.countryComparer.firstCountry ? 1 : 0;
     d += this.countryComparer.secondCountry ? 1 : 0;
     if (d === 2) {  
-      const texa = this.generateIndicatorsService.getLabelCountryFunction(category, 'firstCountry', this.countryComparer, this.countriesQuery);
-      const texb = this.generateIndicatorsService.getLabelCountryFunction(category, 'secondCountry', this.countryComparer, this.countriesQuery);
+      const texa = this.generateIndicatorsService.getLabelCountryFunction(category, 'firstCountry', global.countryComparer, global.countriesQuery);
+      const texb = this.generateIndicatorsService.getLabelCountryFunction(category, 'secondCountry', global.countryComparer, global.countriesQuery);
       let isValid = false;
       isValid = (texa !== '-' && !texa.includes('No data'));
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
@@ -185,15 +188,17 @@ export class CountryComponent implements OnInit {
     }
     return ans;
   }
-  popIndicator(subcategory){ 
+  modalIndicator(subcategory){ 
     if(subcategory.partcntry.split('_')[2]==2 && this.countryComparer.firstCountry!='')
     {  return true;}else{
       return false;
     }
   }
-  popSubcategori(subcategory, valor){
-    console.log("susbc",subcategory.column.split('_')[3]);
+  modalSubcategory(subcategory){
     this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1] ;
-    this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
+    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
+  }
+  htmlIndicator(indicator){
+    return this.generateIndicatorsService.htmlIndicatorFunction(indicator);
   }
 }

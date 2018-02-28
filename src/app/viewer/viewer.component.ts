@@ -461,19 +461,20 @@ export class ViewerComponent implements OnInit {
     this.indicator = false;
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
-    this.changeYearLabel(this.model.year.year);
+    this.changeYearLabel(this.model.year);
   }
   unselectSubCategory() {
     this.subIndicator = false;
     const category = this.model.category;
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
-    this.changeYearLabel(this.model.year.year);
+    this.changeYearLabel(this.model.year);
     this.selectCategory(category);
   }
   changeYearLabel(y) {
     this.changeyear = y.year;
-    console.log(this.changeyear, 'change ');
+    console.log("AAAAAAAA",y);
+    console.log(this.changeyear, 'change YEAR ');
     this.mapService.resetLayer();
     this.legendMap = [];
     let currentCategory = this.model.category;
@@ -516,6 +517,7 @@ export class ViewerComponent implements OnInit {
       });
     }
     this.setColor();
+    console.log('TITO',y.year);
     return y.year;
   }
   getText(value, indicator) {
@@ -595,7 +597,6 @@ export class ViewerComponent implements OnInit {
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
     let aux = indicator.column;
-
 
     //const countryName = isOrganization ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
     const countryName = this.organizationComparer[typeOfCountry] ? this.organizationComparer[typeOfCountry] : this.countryComparer[typeOfCountry];
@@ -1184,9 +1185,38 @@ export class ViewerComponent implements OnInit {
     if(indicator==2)
     {  return true;    }  else{ return false;}
   }
-  modalSubcategori(indicator){
-    // console.log("susbc",indicator.column.split('_')[3]);
+  modalSubcategory(indicator){
     this.dateModal=indicator2Exceptions[Number(indicator.column.split('_')[3])-1] ;
-    this.dateModal.title=this.dateModal.title.slice(8,this.dateModal.title.length);
+    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
+  }
+  updateValues(event) {
+    console.log("EVENT",event);
+    console.log("EXTRa",event.options.year);
+    console.log("YEAR MORDEL",this.model.year.year);
+      if(event.options){
+      if( event.options.year !==  this.model.year.year ) {
+        console.log("change Year");
+        this.changeYearLabel(event.options);
+        this.getCategoriesNotNull();
+        //this.getIndicator(model.);
+      }else {
+        if(event.options.category.label === 'Select indicator') {
+          console.log("SELECT INDICATOR");
+            this.unselectCategory();
+        }
+        if(this.model.category !== event.options.category) {
+          console.log("CHANGE CATE");
+          this.noIsInvalidSelection(event.options.category);
+          this.selectCategory(event.options.category);
+        }
+        if( event.options.subcategory == null ) {
+            console.log("UNSELECT SUBCAT");
+            this.unselectSubCategory();
+        }else if( this.model.subcategory !== event.options.subcategory ) {
+          console.log("subcategory");
+            this.selectSubcategory( event.options.category , event.options.subcategory );
+        }
+      }
+    }
   }
 }
