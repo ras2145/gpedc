@@ -2180,18 +2180,18 @@ body::-webkit-scrollbar-thumb {
 }
 .pp-md label {
   font-size: 12px;
-  margin: 0px;
-  margin-bottom: 15px;
-  padding: 0px 0px;
 }
-
+.pp-md .ll-h{
+  padding: 5px 5px 0px 7px;
+  margin-bottom: 20px;
+}
 .pp-l {
   position: relative;
   top: -8px;
   left: 30px;
 }
 .ll-md{
-  margin-top: 172px;
+  margin-top: 118px;
 }
 .md-ll{
   margin-bottom: 15px;
@@ -2520,7 +2520,7 @@ h2 .pos-default-modal {
 /* icon de indicador */
 .icon-indicator {
     width: 60.6px;
-    height: 60.6px;  
+    height: 60.6px;
 }
 .table-title-left img, .table-title-left article{
     display: inline-block;

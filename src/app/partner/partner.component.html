@@ -490,22 +490,36 @@
                 <div class="col-md-12 pp-md">
                     <div class="row no-gutters">
                         <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersP; let i=index">
-                            <label  for="" class="label--checkbox">
-                            <input class="checkbox col-md-1"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                                <label class="col-md-11 hh-lo">{{partnerGroup.name}}</label>
-                            <!-- <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label><br> -->
-                            <!-- <label class="line-check-text col-md-11">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label> -->
-                            </label> 
+                          <div class="row no-gutters">
+                            <div class="col-md-2">
+                              <label  for="" class="label--checkbox">
+                              <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
+
+                              <!-- <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label><br> -->
+                              <!-- <label class="line-check-text col-md-11">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label> -->
+                              </label>
+                            </div>
+                            <div class="col-md-10">
+                              <label class="ll-h">{{partnerGroup.name}}</label>
+                            </div>
+
+                          </div>
                         </div>
                     </div>
-                    <div class="row no-">
+                    <div class="row no-gutters">
                         <div class="col-md-3" *ngFor="let partnerGroup of categorizedPartnersS; let i=index">
-                            <label for="" class="label--checkbox">
-                            <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
-                                <label class="col-md-11 hh-lo">{{partnerGroup.name}}</label>
-                              <!-- <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label> -->
-                            <!-- <label class="line-check-text-01">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>  -->
-                            </label> 
+                          <div class="row no-gutters">
+                            <div class="col-md-2">
+                              <label for="" class="label--checkbox">
+                              <input class="checkbox"  type="checkbox" [ngClass]="{'btn-filters-selected': partnerGroup.selected}" (change)="selectPartnerGroup(partnerGroup)" [checked]="true">
+                                <!-- <label class="col-md-11 hh-lo">{{partnerGroup.name.split(' ')[0] }} {{partnerGroup.name.split(' ')[1] }}</label> -->
+                              <!-- <label class="line-check-text-01">{{partnerGroup.name.split(' ')[2] }} {{partnerGroup.name.split(' ')[3] }} {{partnerGroup.name.split(' ')[4] }}</label>  -->
+                              </label>
+                            </div>
+                            <div class="col-md-10">
+                              <label class="ll-h">{{partnerGroup.name}}</label>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -652,7 +666,7 @@
                         <ng-template #thenPass>
                           <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableOrganizationRow(indicator)">
                                <p [innerHTML]="htmlIndicator(indicator)">
-                              </p> 
+                              </p>
                               <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                           </td>
                           <td width="4%"></td>
