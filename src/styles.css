@@ -822,7 +822,7 @@ td.table-title-left {
 }
 
 .table-title-left p {
-    padding: 0px 18px 0px 20px;
+    padding: 0px 18px 0px 5px;
     margin: 0px;
 }
 
@@ -2517,18 +2517,30 @@ h2 .pos-default-modal {
     color: #ccc;
     font-size: 20px;
 }
-/* icon de indicador */
-.icon-indicator {
-    width: 60.6px;
-    height: 60.6px;
-}
-.table-title-left img, .table-title-left article{
+/* icon-indicator */
+ .div-img-two .icon-indicator {
+    width: 47px;
+    height: 70.6px;
+    padding: 2px,2px,2px,2px;
+}   
+.table-title-left div, .table-title-left article{
     display: inline-block;
     vertical-align: middle;
 }
-.table-title-left img{
+.table-title-left .div-img-two{
+    width: 100px;
+}
+.table-title-left .article-img-two{
+    width: 65%;
+}
+.div-img-two img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 40%;
+}
+ .table-title-left .div-img-one{
     width: 20%;
 }
-.table-title-left article{
-    width: 80%;
-}
+.table-title-left .article-img-one{
+    width: 75%;
+} 

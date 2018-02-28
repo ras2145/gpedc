@@ -161,9 +161,9 @@ export class GenerateIndicatorsService {
   }
   htmlIndicatorFunction(indicator) {
     if (indicator.icon2) {
-      return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'"class="icon-indicator"><article>'+indicator.comparison+'</article>'; 
+      return '<div class="div-img-two"><img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'"class="icon-indicator"></div><article class="article-img-two">'+indicator.comparison+'</article>'; 
     }else {
-      return '<img src="assets/'+indicator.icon+'"class="icon-indicator"><article>'+indicator.comparison+'</article>';
+      return '<div class="div-img-one"><img src="assets/'+indicator.icon+'"class="icon-indicator"></div><article class="article-img-one">'+indicator.comparison+'</article>';
     }
   }
   modalQuery (column_query, country) {
