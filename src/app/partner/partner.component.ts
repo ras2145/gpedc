@@ -6,7 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import {GenerateIndicatorsService} from '../services/generate-indicators.service';
 import { titles } from '../titles';
 import { saveAs } from 'file-saver';
-
+declare var ga: Function;
 @Component({
   selector: 'app-partner',
   templateUrl: './partner.component.html',
@@ -64,6 +64,8 @@ export class PartnerComponent implements OnInit {
   private modalService: BsModalService) { }
 
   ngOnInit() {
+    ga('set', 'page', `/partnercomparison.html`);
+    ga('send', 'pageview');
     this.titles = titles;
     this.getPartners();
     this.year = '2016';
@@ -134,6 +136,11 @@ export class PartnerComponent implements OnInit {
   chargeOrganizationComparison() {
     this.organizationSelectors = [];
     this.organizationSelectors.push({
+      key: '2010',
+      value1: new Array<IOption>(),
+      value2: new Array<IOption>()
+    });
+    this.organizationSelectors.push({
       key: '2014',
       value1: new Array<IOption>(),
       value2: new Array<IOption>()
@@ -158,8 +165,18 @@ export class PartnerComponent implements OnInit {
         this.organizationSelectors[0]['value2'].push(titleObject);
         this.organizationSelectors[1]['value1'].push(titleObject);
         this.organizationSelectors[1]['value2'].push(titleObject);
+        this.organizationSelectors[2]['value1'].push(titleObject);
+        this.organizationSelectors[2]['value2'].push(titleObject);
         for (const partner of partnerGroup.partners) {
-          if (partner['_2016'].toUpperCase() === 'YES' || partner['_2016'].toUpperCase() === 'TRUE') {
+          if (partner['yr2016']) {
+            const organizationSelector = {
+              value: partner['partner'],
+              label: partner['partner']
+            };
+            this.organizationSelectors[2]['value1'].push(organizationSelector);
+            this.organizationSelectors[2]['value2'].push(organizationSelector);
+          }
+          if (partner['yr2014']) {
             const organizationSelector = {
               value: partner['partner'],
               label: partner['partner']
@@ -167,7 +184,7 @@ export class PartnerComponent implements OnInit {
             this.organizationSelectors[1]['value1'].push(organizationSelector);
             this.organizationSelectors[1]['value2'].push(organizationSelector);
           }
-          if (partner['_2014'].toUpperCase() === 'YES' || partner['_2014'].toUpperCase() === 'TRUE') {
+          if (partner['yr2010']) {
             const organizationSelector = {
               value: partner['partner'],
               label: partner['partner']
@@ -180,11 +197,13 @@ export class PartnerComponent implements OnInit {
         this.mergeWithSelected(this.organizationSelectors[0]['value2'], this.organizationComparer.secondOrganization);
         this.mergeWithSelected(this.organizationSelectors[1]['value1'], this.organizationComparer.firstOrganization);
         this.mergeWithSelected(this.organizationSelectors[1]['value2'], this.organizationComparer.secondOrganization);
-        this.mergeWithSelected(this.organizationSelectors[2]['value'], this.organizationComparer.aggregate);
+        this.mergeWithSelected(this.organizationSelectors[2]['value1'], this.organizationComparer.firstOrganization);
+        this.mergeWithSelected(this.organizationSelectors[2]['value2'], this.organizationComparer.secondOrganization);  
+        this.mergeWithSelected(this.organizationSelectors[3]['value'], this.organizationComparer.aggregate);
       }
     }
     for (const aggregate of partnerAggregate) {
-      this.organizationSelectors[2]['value'].push({
+      this.organizationSelectors[3]['value'].push({
         value: aggregate.value,
         label: aggregate.label
       });
@@ -197,11 +216,9 @@ export class PartnerComponent implements OnInit {
         'Other international and regional organizations',
         'Foundations',
         'Global funds and vertical initiatives'];
-    this.organizationSelectors[2]['value'].sort((a,b) => {
-      console.log(a.value, this.sidsOrder[a.value], b.value, this.sidsOrder[b.value]);
+    this.organizationSelectors[3]['value'].sort((a,b) => {
       return this.sidsOrder[a.value] - this.sidsOrder[b.value];
     });
-    console.log(this.organizationSelectors[2]['value']);
   } 
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
