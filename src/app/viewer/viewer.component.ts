@@ -11,6 +11,8 @@ import { saveAs } from 'file-saver';
 import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { indicator2Exceptions } from '../indicator2.exceptions';
+declare var ga: Function;
+
 @Component({
   selector: 'app-viewer',
   templateUrl: './viewer.component.html',
@@ -119,6 +121,8 @@ export class ViewerComponent implements OnInit {
   ) { }
  private indicator2Exceptions;
   ngOnInit() {
+    ga('set', 'page', `/viewer.html`);
+    ga('send', 'pageview');
     this.mapService.allDataCountryQuery().subscribe(val => {
       this.countriesQuery = val;
     });
