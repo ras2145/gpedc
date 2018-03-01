@@ -7,6 +7,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { titles } from '../titles';
 import { saveAs } from 'file-saver';
 import { SERVER } from '../server.config';
+import { element } from 'protractor';
 
 @Injectable()
 export class GenerateIndicatorsService {
@@ -151,7 +152,12 @@ export class GenerateIndicatorsService {
         }
       });
     });
-    let linesString = lines.map(line => line.map(element => '"' + element.replace('<p>', '').replace('</p>', '') + '"').join(','));
+    let linesString = lines.map(line => line.map(element => {
+      if (!element) {
+        return '""';
+      }
+      return '"' + element.replace('<p>', '').replace('</p>', '') + '"';
+    }).join(','));
     let result = linesString.join('\n');
     result = result.replace(/ ?<\/?b> ?/g, ' ');
     result = result.replace(/," /g, ',"');
