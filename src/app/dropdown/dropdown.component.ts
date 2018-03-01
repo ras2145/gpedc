@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LoaderService } from '../services/loader.service';
 import { ModelService } from '../services/model.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-dropdown',
@@ -40,6 +41,7 @@ export class DropdownComponent implements OnInit {
     incomeGroup: null,
     countryContext: null
   };
+  @Input() optionsSubject: Subject<any>;
   @Output() changeSubindicator = new EventEmitter();
   @Output() changeYear = new EventEmitter();
   @Output() changeIndicator = new EventEmitter();
@@ -50,6 +52,15 @@ export class DropdownComponent implements OnInit {
 
   ngOnInit() {
     this.titles = this.modelService.getTitles();
+  }
+  ngOnChanges() {
+    this.optionsSubject.subscribe(event => {
+      this.model = event;
+      this.newValues();
+    });
+  }
+  newValues() {
+    this.changeyearLabel(this.model.year);
   }
   getYears() {
     this.years = this.modelService.getYears();
@@ -89,6 +100,7 @@ export class DropdownComponent implements OnInit {
     return true;
   }
   changeyearLabel(year) {
+    this.unselectCategory();
     this.changeYearEmit();
   }
   selectSubcategory(category, subcategory) {

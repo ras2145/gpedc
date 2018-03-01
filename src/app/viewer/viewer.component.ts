@@ -11,6 +11,7 @@ import { saveAs } from 'file-saver';
 import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { indicator2Exceptions } from '../indicator2.exceptions';
+import { Subject } from 'rxjs/Subject';
 declare var ga: Function;
 
 @Component({
@@ -20,6 +21,7 @@ declare var ga: Function;
   // changeDetection: ChangeDetectionStrategy.Default
 })
 export class ViewerComponent implements OnInit {
+  optionsSubject: Subject <any> = new Subject();
   subDropdown = false;
   viewModal = true;
   notFromTab = true;
@@ -467,6 +469,7 @@ export class ViewerComponent implements OnInit {
   unselectCategory() {
     this.subIndicator = false;
     this.indicator = false;
+    console.log('UNSELECT',this.model);
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year);
@@ -476,10 +479,12 @@ export class ViewerComponent implements OnInit {
     const category = this.model.category;
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
+    console.log("UNSELECT",this.model.year);
     this.changeYearLabel(this.model.year);
     this.selectCategory(category);
   }
   changeYearLabel(y) {
+    console.log("CHANGE",y);
     this.changeyear = y.year;
     console.log(this.changeyear, 'change YEAR ');
     this.iconIndicator = '';
@@ -1102,8 +1107,6 @@ export class ViewerComponent implements OnInit {
     this.mapService.zoomOut();
   }
   updateMapTitle() {
-    console.log("UPDATE MAP",this.model);
-    console.log(this.indicator,this.subIndicator);
     this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
@@ -1164,7 +1167,8 @@ export class ViewerComponent implements OnInit {
     return output;
   }
   changePartnerType(type) {
-    console.log(type);
+    this.resetModels();
+    this.optionsSubject.next(this.model);
   }
   viewTableIndicator(indicator, valueIndicator) {
     let output: number = 0;
@@ -1222,13 +1226,18 @@ export class ViewerComponent implements OnInit {
     }
   }
   updateSubindicatorValues(event) {
-    console.log("Subindicator");
+    console.log("Subindicator", event);
+    if (event.options.subcategory !== false && event.options.subcategory !== null) {
+      this.selectSubcategory(event.options.category, event.options.subcategory);
+    } else {
+      console.log("ELSE SUBCATEGORY ");
+      this.unselectSubCategory();
+    }
   }
   updateIndicatorValues(event) {
     console.log("INDICATOR");
     this.iconIndicator='';
     const category = event.options.category;
-    console.log(category);
     if (category.label !== 'Select indicator') {
     this.noIsInvalidSelection(category);
     this.selectCategory(category);
@@ -1238,8 +1247,9 @@ export class ViewerComponent implements OnInit {
     }
   }
   updateYearValues(event) {
+    console.log('EVENT',event);
     if (event.options) {
-      this.changeYearLabel(event.options);
+      this.changeYearLabel(event.options.year);
       this.getCategoriesNotNull();
       this.getIndicator(event.options.year === '2016'?'1a':'5a');
     }
