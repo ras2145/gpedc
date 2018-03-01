@@ -24,7 +24,10 @@ export class DropdownComponent implements OnInit {
   subDropdown: any;
   subIndicator = false;
   model = {
-    year: '2016',
+    year: {
+      year: '2016',
+      categories: []
+    },
     category: {
       label: 'Select indicator',
       title: '',
@@ -86,7 +89,6 @@ export class DropdownComponent implements OnInit {
     return true;
   }
   changeyearLabel(year) {
-    this.model.year = year;
     this.unselectCategory();
     this.changeYearEmit();
   }

@@ -9,8 +9,8 @@
   <div class="row no-gutters">
     <div class="col-md-11">
       <div class="radio">
-        <label *ngFor="let year of getYears()" [ngClass]="{'radio-label-checked' : model.year == year.year}" > 
-          <input type = "radio" name = "radio-btn" [value]="year.year" [(ngModel)] = "model.year" [checked] = "model.year == year.year" (change)="changeyearLabel(year.year)" /> 
+        <label *ngFor="let year of getYears()" [ngClass]="{'radio-label-checked' : model.year.year === year.year}" > 
+          <input type = "radio" name = "radio-btn" [value]="year" [(ngModel)] = "model.year" [checked] = "model.year.year === year.year" (change)="changeyearLabel()" /> 
           {{year.year}}
         </label>
       </div>
@@ -41,7 +41,7 @@
             Select an indicator
           </a>
         </li>
-        <li role="menuitem" *ngFor="let category of getIndicators(model.year)" dropdown placement="right" container="body"
+        <li role="menuitem" *ngFor="let category of getIndicators(model.year.year)" dropdown placement="right" container="body"
           [isOpen]="openedIndicator == category.id">
           <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="noIsInvalidSelection(category) && selectCategory(category)">
             {{category.label}}
