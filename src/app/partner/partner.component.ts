@@ -17,6 +17,7 @@ export class PartnerComponent implements OnInit {
   categorizedPartnersP: any;
   categorizedPartnersS: any;
   partners: any;
+  notFromTab: any;
   titles;
   year;
   organizationComparer: any;
@@ -292,7 +293,7 @@ export class PartnerComponent implements OnInit {
     return true;
   }
   findViewerCategory(category, subcategory, indicator, subIndicator) {
-    // this.notFromTab = true;
+    this.notFromTab = true;
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.indicator = indicator;
@@ -314,4 +315,5 @@ export class PartnerComponent implements OnInit {
   htmlIndicator(indicator){
     return this.generateIndicatorsService.htmlIndicatorFunction(indicator);
   }
+  
 }
