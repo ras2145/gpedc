@@ -34,8 +34,15 @@ export class ModelService {
   getYears() {
     const years = [];
     for (const title of titles) {
-      years.push(title.year);
+      years.push(title);
     }
     return years;
+  }
+  getCategoriesYear(year) {
+    for (const title of titles) {
+      if (title.year === year) {
+        return title.categories;
+      }
+    }
   }
 }

@@ -13,7 +13,7 @@
                         <tab heading="Partner Country" (select)="changePartnerType('partcntry')">
 
                           <div class="result-container">
-                                <app-dropdown (changeValues)="updateValues($event)" ></app-dropdown>
+                                <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"></app-dropdown>
 
                             <div class="form-group">
                                 <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:
@@ -150,7 +150,7 @@
                         <tab heading="Development Partner" (select)="changePartnerType('devpart')">
                             
                           <div class="result-container">
-                              <app-dropdown (changeValues)="updateValues($event)" ></app-dropdown>
+                              <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"></app-dropdown>
                               <div class="padding-top-line">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER
                                     <i class="mdi mdi-information"

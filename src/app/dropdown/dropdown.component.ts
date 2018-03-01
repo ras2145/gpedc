@@ -37,8 +37,9 @@ export class DropdownComponent implements OnInit {
     incomeGroup: null,
     countryContext: null
   };
-  @Output() changeValues = new EventEmitter();
-
+  @Output() changeSubindicator = new EventEmitter();
+  @Output() changeYear = new EventEmitter();
+  @Output() changeIndicator = new EventEmitter();
   constructor(
     private loaderService: LoaderService,
     private modelService: ModelService
@@ -60,7 +61,7 @@ export class DropdownComponent implements OnInit {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
-    this.changeEmit();
+    this.changeIndicatorEmit();
   }
   unselectCategory() {
     this.subIndicator = false;
@@ -73,7 +74,7 @@ export class DropdownComponent implements OnInit {
       id: '',
       legendText: ''
     };
-    this.changeEmit();
+    this.changeIndicatorEmit();
   }
   noIsInvalidSelection(category) {
     const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
@@ -87,7 +88,7 @@ export class DropdownComponent implements OnInit {
   changeyearLabel(year) {
     this.model.year = year;
     this.unselectCategory();
-    this.changeEmit();
+    this.changeYearEmit();
   }
   selectSubcategory(category, subcategory) {
     this.model.category = category;
@@ -102,8 +103,18 @@ export class DropdownComponent implements OnInit {
     const category = this.model.category;
     this.changeEmit();
   }
+  changeYearEmit() {
+    this.changeYear.emit({
+      options: this.model
+    });
+  }
+  changeIndicatorEmit() {
+    this.changeIndicator.emit({
+      options: this.model
+    });
+  }
   changeEmit() {
-    this.changeValues.emit({
+    this.changeSubindicator.emit({
       options: this.model
     });
   }

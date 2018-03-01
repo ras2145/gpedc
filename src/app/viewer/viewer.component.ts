@@ -480,7 +480,7 @@ export class ViewerComponent implements OnInit {
   }
   changeYearLabel(y) {
     this.changeyear = y.year;
-    console.log("AAAAAAAA",y);
+
     console.log(this.changeyear, 'change YEAR ');
     this.mapService.resetLayer();
     this.legendMap = [];
@@ -524,7 +524,6 @@ export class ViewerComponent implements OnInit {
       });
     }
     this.setColor();
-    console.log('TITO',y.year);
     return y.year;
   }
   getText(value, indicator) {
@@ -1101,10 +1100,12 @@ export class ViewerComponent implements OnInit {
     this.mapService.zoomOut();
   }
   updateMapTitle() {
-    if (!this.indicator && !this.subIndicator) {
+    console.log("UPDATE MAP",this.model);
+    console.log(this.indicator,this.subIndicator);
+    if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
-    } else if (!this.indicator) {
-      this.mapTitle = this.model.category.title;
+    } else if (!this.indicator  && this.model.category.title) {
+      this.mapTitle = this.model.subcategory.title;
     } else {
       this.mapTitle = '';
     }
@@ -1217,34 +1218,26 @@ export class ViewerComponent implements OnInit {
       return  ((this.column_indicator[0][this.column_content+'_'+id]).toString()!='9999')?true:false;
     }
   }
-  updateValues(event) {
-    console.log("EVENT",event);
-    console.log("EXTRa",event.options.year);
-    console.log("YEAR MORDEL",this.model.year.year);
-      if(event.options){
-      if( event.options.year !==  this.model.year.year ) {
-        console.log("change Year");
-        this.changeYearLabel(event.options);
-        this.getCategoriesNotNull();
-        //this.getIndicator(model.);
-      }else {
-        if(event.options.category.label === 'Select indicator') {
-          console.log("SELECT INDICATOR");
-            this.unselectCategory();
-        }
-        if(this.model.category !== event.options.category) {
-          console.log("CHANGE CATE");
-          this.noIsInvalidSelection(event.options.category);
-          this.selectCategory(event.options.category);
-        }
-        if( event.options.subcategory == null ) {
-            console.log("UNSELECT SUBCAT");
-            this.unselectSubCategory();
-        }else if( this.model.subcategory !== event.options.subcategory ) {
-          console.log("subcategory");
-            this.selectSubcategory( event.options.category , event.options.subcategory );
-        }
-      }
+  updateSubindicatorValues(event) {
+    console.log("Subindicator");
+  }
+  updateIndicatorValues(event) {
+    console.log("INDICATOR");
+    const category = event.options.category;
+    console.log(category);
+    if (category.label !== 'Select indicator') {
+    this.noIsInvalidSelection(category);
+    this.selectCategory(category);
+    } else {
+      this.unselectCategory();
+    }
+  }
+  updateYearValues(event) {
+    console.log("YEARS",event.options);
+    if (event.options) {
+      this.changeYearLabel(event.options);
+      this.getCategoriesNotNull();
+      this.getIndicator(event.options.year === '2016'?'1a':'5a');
     }
   }
 }
