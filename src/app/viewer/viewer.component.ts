@@ -480,7 +480,6 @@ export class ViewerComponent implements OnInit {
   }
   changeYearLabel(y) {
     this.changeyear = y.year;
-
     console.log(this.changeyear, 'change YEAR ');
     this.mapService.resetLayer();
     this.legendMap = [];
@@ -1229,11 +1228,11 @@ export class ViewerComponent implements OnInit {
     this.noIsInvalidSelection(category);
     this.selectCategory(category);
     } else {
+      this.model.category = category;
       this.unselectCategory();
     }
   }
   updateYearValues(event) {
-    console.log("YEARS",event.options);
     if (event.options) {
       this.changeYearLabel(event.options);
       this.getCategoriesNotNull();

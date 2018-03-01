@@ -89,7 +89,6 @@ export class DropdownComponent implements OnInit {
     return true;
   }
   changeyearLabel(year) {
-    this.unselectCategory();
     this.changeYearEmit();
   }
   selectSubcategory(category, subcategory) {
