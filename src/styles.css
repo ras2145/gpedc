@@ -108,7 +108,7 @@ img.logo.panel-1 {
 }
 
 .col-wd {
-     width: 50% !important; 
+     width: 50% !important;
 }
 
 .btn-tutorial .mdi-play {
@@ -2524,9 +2524,8 @@ h2 .pos-default-modal {
 /* icon-indicator */
  .div-img-two .icon-indicator {
     width: 47px;
-    height: 70.6px;
-    padding: 2px,2px,2px,2px;
-}   
+    height: 47px;
+}
 .table-title-left div, .table-title-left article{
     display: inline-block;
     vertical-align: middle;
@@ -2537,17 +2536,16 @@ h2 .pos-default-modal {
 .table-title-left .article-img-two{
     width: 65%;
 }
-.div-img-two img{
+.div-img-two{
     display: inline-block;
     vertical-align: middle;
-    width: 40%;
 }
  .table-title-left .div-img-one{
     width: 20%;
 }
 .table-title-left .article-img-one{
     width: 75%;
-} 
+}
 .iconIndicator img{
   width: 175px;
   height: 80px;

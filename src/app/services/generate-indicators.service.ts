@@ -24,7 +24,7 @@ export class GenerateIndicatorsService {
   year;
   countries: any;
   ngOnInit() {
-    
+
   }
   allQuery () {
     const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2_WITHOUT_GEOMETRY}"`);
@@ -75,7 +75,7 @@ export class GenerateIndicatorsService {
       } else {
         value = 'Not Applicable';
       }
-        
+
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
@@ -168,7 +168,7 @@ export class GenerateIndicatorsService {
   }
   htmlIndicatorFunction(indicator) {
     if (indicator.icon2) {
-      return '<div class="div-img-two"><img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'"class="icon-indicator"></div><article class="article-img-two">'+indicator.comparison+'</article>'; 
+      return '<div class="div-img-two"><img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'" width="47px"></div><article class="article-img-two">'+indicator.comparison+'</article>'; 
     }else {
       return '<div class="div-img-one"><img src="assets/'+indicator.icon+'"class="icon-indicator"></div><article class="article-img-one">'+indicator.comparison+'</article>';
     }
