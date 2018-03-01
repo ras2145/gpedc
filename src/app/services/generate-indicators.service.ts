@@ -107,10 +107,10 @@ export class GenerateIndicatorsService {
         line.push(this.getLabelCountryFunction(category, first, comparerExport, queryExport, isOrganization).trim());
       }
       if (comparer[second] != '') {
-        line.push(this.getLabelCountryFunction(category, second,comparerExport,queryExport, isOrganization).trim());
+        line.push(this.getLabelCountryFunction(category, second, comparerExport, queryExport, isOrganization).trim());
       }
       if (comparer.aggregate != '') {
-        line.push(this.getLabelCountryFunction(category, 'aggregate',comparerExport,queryExport, isOrganization).trim());
+        line.push(this.getLabelCountryFunction(category, 'aggregate', comparerExport, queryExport, isOrganization).trim());
       }
       let add = true;
       if (line.length == 2) {
@@ -129,13 +129,13 @@ export class GenerateIndicatorsService {
         line = [];
         line.push(subcategory.label);
         if (comparer[first] != '') {
-          line.push(this.getLabelCountryFunction(subcategory, first,comparerExport,queryExport, isOrganization).trim());
+          line.push(this.getLabelCountryFunction(subcategory, first, comparerExport, queryExport, isOrganization).trim());
         }
         if (comparer[second] != '') {
-          line.push(this.getLabelCountryFunction(subcategory, second,comparerExport,queryExport, isOrganization).trim());
+          line.push(this.getLabelCountryFunction(subcategory, second, comparerExport, queryExport, isOrganization).trim());
         }
         if (comparer.aggregate != '') {
-          line.push(this.getLabelCountryFunction(subcategory, 'aggregate',comparerExport,queryExport, isOrganization).trim());
+          line.push(this.getLabelCountryFunction(subcategory, 'aggregate', comparerExport, queryExport, isOrganization).trim());
         }
         let add = true;
         if (line.length == 2) {
