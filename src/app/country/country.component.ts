@@ -7,7 +7,7 @@ import { titles } from '../titles';
 import { saveAs } from 'file-saver';
 import {GenerateIndicatorsService} from '../services/generate-indicators.service';
 import { indicator2Exceptions } from '../indicator2.exceptions';
-
+declare var ga: Function;
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
@@ -47,6 +47,8 @@ export class CountryComponent implements OnInit {
   private modalService: BsModalService) { }
   private indicator2Exceptions;
   ngOnInit() {
+    ga('set', 'page', `/countrycomparison.html`);
+    ga('send', 'pageview');
     this.generateIndicatorsService.allQuery().subscribe(val => {
       this.countriesQuery = val;
     });
