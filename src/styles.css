@@ -2523,12 +2523,13 @@ h2 .pos-default-modal {
 }
 /* icon-indicator */
  .div-img-two .icon-indicator {
-    width: 52px;
-    height: 52px;
+    width: 47px;
+    height: 47px;
+    margin-left: -3px;
 }
 .div-img-one .icon-indicator{
-  width: 47px;
-  height: 47px;
+  width: 52px;
+  height: 52px;
 }
 .table-title-left div, .table-title-left article{
     display: inline-block;
@@ -2553,6 +2554,9 @@ h2 .pos-default-modal {
 .iconIndicator img{
   width: 175px;
   height: 80px;
+}
+.ll-po{
+  margin-left: 3px;
 }
 @media (min-width: 1600px){
   .logo-navbar{
