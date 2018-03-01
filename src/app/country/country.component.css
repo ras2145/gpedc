@@ -261,7 +261,7 @@
 
 .pos-default {
     position: absolute;
-    top: 10px;
+    top: 36%;
     right: 10px;
     color: #D0D6D9;
     font-size: 16px;
@@ -269,7 +269,7 @@
 
 .pos-default-2 {
     position: absolute;
-    top: 8px;
+    top: 25%;
     right: 10px;
     color: #D0D6D9;
     font-size: 16px;
@@ -337,4 +337,3 @@ td .pos-default-modal {
     color: #D0D6D9;
     font-size: 16px;
 }
-
