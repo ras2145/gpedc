@@ -26,30 +26,31 @@ export class GenerateIndicatorsService {
     
   }
   allQuery () {
-    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}"`);
+    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2_WITHOUT_GEOMETRY}"`);
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
     });
   }
-  getLabelCountryFunction(indicator, typeOfCountry, comparer, query, isOrganization?: boolean) {
+  getLabelCountryFunction(indicator, type, comparer, query, isOrganization?: boolean) {
     // let aux = indicator.column;
-    const countryName = comparer[typeOfCountry];
-    if (!countryName || !indicator) {
+    const name = comparer[type];
+    const column = isOrganization ? 'column' : 'partcntry';
+    if (!name || !indicator) {
       return '-';
     }
     const dataObject = query;
     const field = isOrganization ? 'partner' : 'country';
-    const country = dataObject.filter((a) => {
+    const data = dataObject.filter((a) => {
       if (!a[field]) {
         return false;
       }
-      return a[field].toLowerCase().trim() === countryName.toLowerCase().trim();
+      return a[field].toLowerCase().trim() === name.toLowerCase().trim();
     })[0];
     let text = '';
-    if (!country) {
+    if (!data) {
       return '-';
     }
-    const value = this.formatValue(indicator, country[indicator.partcntry]);
+    const value = this.formatValue(indicator, data[indicator[column]]);
     if (indicator['subcategories']) {
       const val = (value.toString() !== '9999') ? value : 'Not Applicable';
       text = text + '<p>' + val   + '</p>';
