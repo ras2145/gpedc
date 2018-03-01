@@ -11,7 +11,15 @@
   <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
   <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
   <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.core.js"></script>
-  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    // -112934786-1 15462500-1
+    ga('create', 'UA-46141626-1', 'auto');  // <- add the UA-ID 
+                                           // <- remove the last line 
+  </script>
 
 
 </head>
@@ -22,10 +30,11 @@
 
 
   <!-- <script type="text/javascript">
-  window.onload = function(){
+  Freddy: voy a probar mis funciones de JS en el codigo de UNDP porque no tengo otro lugar
+  Addis: pero que infeliz.
+    window.onload = function(){
   crear_select();
   }
-
   var Navegador_ = (window.navigator.userAgent||window.navigator.vendor||window.opera),
       Firfx = /Firefox/i.test(Navegador_),
       Mobile_ = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(Navegador_),
