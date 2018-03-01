@@ -52,13 +52,15 @@ export class GenerateIndicatorsService {
       return '-';
     }
     const value = this.formatValue(indicator, data[indicator[column]]);
-    if (indicator['subcategories']) {
-      const val = (value.toString() !== '9999') ? value : 'Not Applicable';
-      text = text + '<p>' + val   + '</p>';
-    } else {
-      const val = value.toString() !== '9999'? value : 'Not Applicable';
-      text = text + '<p>' + val + '</p>';
-    }
+    const val = (Math.round(Number(value)).toString() !== '9999') ? value : 'Not Applicable';
+    text = text + '<p>' + val   + '</p>';
+    // if (indicator['subcategories']) {
+    //   const val = (Math.round(Number(value)).toString() !== '9999') ? value : 'Not Applicable';
+    //   text = text + '<p>' + val   + '</p>';
+    // } else {
+    //   const val = value.toString() !== '9999'? value : 'Not Applicable';
+    //   text = text + '<p>' + val + '</p>';
+    // }
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
       return '-';
     }
