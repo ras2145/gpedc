@@ -267,7 +267,7 @@
                             and accountability for the use of development co-operation funding for best results.
                             <br><br> Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                     </div>
-                    <div *ngIf="(model.category.column==='_2014_7' || model.category.column==='_2016_7') && notFromTab" class="modal-contet">
+                    <div *ngIf="(model.category.column==='_2010_7'  && (!indicator && subIndicator)  || model.category.column==='_2014_7'  && (!indicator && subIndicator) || model.category.column==='_2016_7' && (!indicator && subIndicator) ) && notFromTab" class="modal-contet">
                         <p class="result-modal">
                         Indicator 7 seeks to measure progress made by developing countries in undertaking mutual assessment reviews with their development partners. The principle of mutual accountability recognises that development impacts improve when all parties take responsibility
                         for their contributions.
@@ -281,7 +281,7 @@
                         </ul>
                         Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                     </div>
-                    <div *ngIf="(model.category.column==='_2014_8' || model.category.column==='_2016_8') && notFromTab" class="modal-contet">
+                    <div *ngIf="(model.category.column==='_2010_8' && (!indicator && subIndicator)  || model.category.column==='_2014_8' && (!indicator && subIndicator) || model.category.column==='_2016_8' && (!indicator && subIndicator)) && notFromTab" class="modal-contet">
                             <p class="result-modal">
                                 This indicator seeks to measure government efforts to track and make public resource allocations for gender equality and women’s empowerment. It does so by encouraging national governments to develop appropriate budget tracking and monitoring systems
                                 and commit to making information about allocations for gender equality readily accessible to the public.
@@ -299,7 +299,7 @@
                                 Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                         </div>
                     <div *ngIf="(model.subcategory!== null)">
-                        <div *ngIf="(model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7') && notFromTab" class="modal-contet">
+                        <!-- <div *ngIf="(model.subcategory.column==='_2014_7' || model.subcategory.column==='_2016_7') && notFromTab" class="modal-contet">
                             <p class="result-modal">
                                 Indicator 7 seeks to measure progress made by developing countries in undertaking mutual assessment reviews with their development partners. The principle of mutual accountability recognises that development impacts improve when all parties take responsibility
                                 for their contributions.
@@ -312,8 +312,8 @@
                                     <li>Results of joint assessments are made public.</li>
                                 </ul>
                                 Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                        </div>
-                        <div *ngIf="(model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1') && notFromTab" class="modal-contet">
+                        </div> -->
+                        <div *ngIf="(model.subcategory.column==='_2014_7_1' || model.subcategory.column==='_2016_7_1' ) && notFromTab" class="modal-contet">
                             <p class="result-modal">
                                 This dimension of Indicator 7 assesses whether there is an aid or partnership policy in place to define a country’s development co-operation priorities, or if elements of such a policy are agreed through other instruments (yes / no).
                                 <br><br> An aid or partnership policy is defined here as a document which sets out agreed approaches to the delivery of development co-operation in the partner country, containing agreed principles, processes and / or targets
@@ -350,7 +350,7 @@
                                 <br><br> Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
                         </div>
 
-                        <div *ngIf="(model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8') && notFromTab" class="modal-contet">
+                        <!-- <div *ngIf="(model.subcategory.column==='_2014_8' || model.subcategory.column==='_2016_8') && notFromTab" class="modal-contet">
                             <p class="result-modal">
                                 This indicator seeks to measure government efforts to track and make public resource allocations for gender equality and women’s empowerment. It does so by encouraging national governments to develop appropriate budget tracking and monitoring systems
                                 and commit to making information about allocations for gender equality readily accessible to the public.
@@ -366,7 +366,7 @@
                                     <li>Budget information that focuses on gender equality is made publicly available.</li>
                                 </ul>
                                 Further information on the methodology for all indicators can be found in the <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                        </div>
+                        </div> -->
                         <div *ngIf="(model.subcategory.column==='_2014_8_1' || model.subcategory.column==='_2016_8_1') && notFromTab" class="modal-contet">
                             <p class="result-modal">
                                 This dimension of Indicator 8 assesses whether there exists an official government statement on a system for tracking allocations for gender equality and women’s empowerment (yes / no).
