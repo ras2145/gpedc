@@ -195,7 +195,7 @@ export class CountryComponent implements OnInit {
   modalIndicator(subcategory, country, valor){
     if(subcategory.partcntry.split('_')[2]==2)
     {  
-      if(valor.replace('<p>','').replace('</p>','')!='-' && valor.replace('<p>','').replace('</p>','')!='Not Applicable')
+      if(valor.replace('<p>','').replace('</p>','')!='-' && valor.replace('<p>','').replace('</p>','')!='Not Applicable' && valor.replace('<p>','').replace('</p>','')!='No data available')
       {
         let selectCountry=(country=='firstCountry')?this.countryComparer.firstCountry:this.countryComparer.secondCountry;
         if(selectCountry!='')    
