@@ -2548,3 +2548,7 @@ h2 .pos-default-modal {
 .table-title-left .article-img-one{
     width: 75%;
 } 
+.iconIndicator img{
+  width: 175px;
+  height: 80px;
+}

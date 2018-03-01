@@ -115,6 +115,7 @@ export class ViewerComponent implements OnInit {
   column_indicator=[{}];
   column_content:'';
   country_modal:'';
+  iconIndicator;
   constructor(
     private mapService: MapService,
     private loaderService: LoaderService,
@@ -481,6 +482,7 @@ export class ViewerComponent implements OnInit {
   changeYearLabel(y) {
     this.changeyear = y.year;
     console.log(this.changeyear, 'change YEAR ');
+    this.iconIndicator = '';
     this.mapService.resetLayer();
     this.legendMap = [];
     let currentCategory = this.model.category;
@@ -870,6 +872,7 @@ export class ViewerComponent implements OnInit {
     this.isNumber = false;
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
+    this.iconIndicator = '';
   }
   resetSmallState() {
     this.mapService.switchMapCenter('tab1');
@@ -1101,6 +1104,7 @@ export class ViewerComponent implements OnInit {
   updateMapTitle() {
     console.log("UPDATE MAP",this.model);
     console.log(this.indicator,this.subIndicator);
+    this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator  && this.model.category.title) {
@@ -1222,6 +1226,7 @@ export class ViewerComponent implements OnInit {
   }
   updateIndicatorValues(event) {
     console.log("INDICATOR");
+    this.iconIndicator='';
     const category = event.options.category;
     console.log(category);
     if (category.label !== 'Select indicator') {
@@ -1238,5 +1243,10 @@ export class ViewerComponent implements OnInit {
       this.getCategoriesNotNull();
       this.getIndicator(event.options.year === '2016'?'1a':'5a');
     }
+  }
+  icon1a_8(event) {
+    console.log('----> indicator -->  ', event.options.category.id);
+    const indi = event.options.category.id;
+    return this.mapService.iconIndicator_1_8(indi);
   }
 }

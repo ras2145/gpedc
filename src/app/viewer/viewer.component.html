@@ -14,6 +14,7 @@
 
                           <div class="result-container">
                                 <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"></app-dropdown>
+                                <div class="iconIndicator"  [innerHtml] = "iconIndicator"> </div>
 
                             <div class="form-group">
                                 <p for="inputState" class="result-subtitle space-line"><span class="mdi mdi-filter"></span> Filter countries by:

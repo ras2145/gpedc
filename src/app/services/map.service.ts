@@ -527,6 +527,14 @@ export class MapService {
       return ans.json().rows;
     });
   }
+  iconIndicator_1_8(indicator) {
+    if (indicator === '1a' || indicator === '8') {
+      const text = '<img src="assets/' + 'indicator' + indicator + '.png" > ';
+      return text;
+    } else {
+      return '';
+    }
+  }
 }
 
 
