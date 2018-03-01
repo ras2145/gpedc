@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<ng-template #template>
+<ng-template #info>
     <div class="modal-body">
         <div class="container">
             <div class="row">
@@ -682,7 +682,7 @@
                             <!-- Show indicator 1 tp 4 without displaing data -->
                             <p [innerHTML]="htmlIndicator(indicator)">
                             </p>
-                            <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
+                            <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(info)"></i>
                         </td>
                         <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubOrganization(indicator)">
                             <div class="back-title"></div>
@@ -695,7 +695,7 @@
                           <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableOrganizationRow(indicator)">
                                <p [innerHTML]="htmlIndicator(indicator)">
                               </p>
-                              <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
+                              <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(info)"></i>
                           </td>
                           <td width="4%"></td>
                           <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
@@ -712,7 +712,7 @@
                       <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableOrganizationRow(subcategory)">
                           <p id="{{getLabelCountry(subcategory, 'firstOrganization')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:','').replace('Indicator 8:','')">
                           </p>
-                          <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(template)"></i>
+                          <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(info)"></i>
                       </td>
                       <td width="4%"></td>
                       <!-- partner comparison -->
