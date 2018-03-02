@@ -1,14 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, TemplateRef } from '@angular/core';
 import { LoaderService } from '../services/loader.service';
 import { ModelService } from '../services/model.service';
 import { Subject } from 'rxjs/Subject';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.css']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements OnInit, OnChanges {
   categoriesNotNull: any;
   selectedCountry: any = false;
   indicatorsSelectedCountry: any;
@@ -47,9 +48,14 @@ export class DropdownComponent implements OnInit {
   @Output() changeYear = new EventEmitter();
   @Output() changeIndicator = new EventEmitter();
   @Output() optionExportCsv = new EventEmitter();
+
+  viewModal: boolean;
+  modalRef: BsModalRef;
+
   constructor(
     private loaderService: LoaderService,
-    private modelService: ModelService
+    private modelService: ModelService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -117,7 +123,7 @@ export class DropdownComponent implements OnInit {
     this.changeEmit();
   }
   unselectSubCategory() {
-    this.subIndicator = false;
+    this.subIndicator = true;
     this.model.subcategory = false;
     const category = this.model.category;
     this.disabledExport=true;
@@ -138,13 +144,20 @@ export class DropdownComponent implements OnInit {
       options: this.model
     });
   }
-  exportCsvViewer(){
+  exportCsvViewer() {
     this.exportCsvEmit();
   }
-  exportCsvEmit()
-  {
+  exportCsvEmit() {
     this.optionExportCsv.emit({
       options: this.model
     });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.viewModal = false;
+    this.modalRef = this.modalService.show(template);
+    console.log('Indicator ' + this.indicator);
+    console.log('SubIndicator ' + this.subIndicator);
+    console.log(this.model !== null);
   }
 }

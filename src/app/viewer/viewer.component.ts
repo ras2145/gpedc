@@ -12,6 +12,7 @@ import { getValueFromObject } from 'ngx-bootstrap/typeahead/typeahead-utils';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { indicator2Exceptions } from '../indicator2.exceptions';
 import { Subject } from 'rxjs/Subject';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 declare var ga: Function;
 
 @Component({
@@ -118,9 +119,12 @@ export class ViewerComponent implements OnInit {
   column_content:'';
   country_modal:'';
   iconIndicator;
+  modalRef: BsModalRef;
+
   constructor(
     private mapService: MapService,
     private loaderService: LoaderService,
+    private modalService: BsModalService
   ) { }
  private indicator2Exceptions;
   ngOnInit() {
@@ -1186,5 +1190,9 @@ export class ViewerComponent implements OnInit {
     console.log('----> indicator -->  ', event.options.category.id);
     const indi = event.options.category.id;
     return this.mapService.iconIndicator_1_8(indi);
+  }
+  openModal(template: TemplateRef<any>) {
+    this.viewModal = false;
+    this.modalRef = this.modalService.show(template);
   }
 }
