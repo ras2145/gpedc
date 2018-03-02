@@ -16,9 +16,9 @@
       </div>
     </div>
     <div class="col-md-1 text-right margin-top-btn">
-      <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle">
+      <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="disabledExport">  <!-->[disabled]="indicator || !mapTitle"<-->
         <i class="mdi mdi-download"></i>
-      </button>
+      </button> 
     </div>
   </div>
 

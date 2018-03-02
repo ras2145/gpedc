@@ -24,6 +24,7 @@ export class DropdownComponent implements OnInit {
   indicator = true;
   subDropdown: any;
   subIndicator = false;
+  disabledExport:boolean=true;
   model = {
     year: {
       year: '2016',
@@ -45,6 +46,7 @@ export class DropdownComponent implements OnInit {
   @Output() changeSubindicator = new EventEmitter();
   @Output() changeYear = new EventEmitter();
   @Output() changeIndicator = new EventEmitter();
+  @Output() optionExportCsv = new EventEmitter();
   constructor(
     private loaderService: LoaderService,
     private modelService: ModelService
@@ -75,12 +77,15 @@ export class DropdownComponent implements OnInit {
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
+    this.disabledExport=(category.subcategories.length!=0)?true:false;
     this.changeIndicatorEmit();
+    // this.exportCsvEmit();
   }
   unselectCategory() {
     this.subIndicator = false;
     this.indicator = true;
     this.subDropdown = false;
+    this.disabledExport=true;
     this.model.category = {
       label: 'Select indicator',
       title: '',
@@ -108,12 +113,14 @@ export class DropdownComponent implements OnInit {
     this.model.subcategory = subcategory;
     this.subIndicator = false;
     this.indicator = false;
+    this.disabledExport=false;
     this.changeEmit();
   }
   unselectSubCategory() {
     this.subIndicator = false;
     this.model.subcategory = false;
     const category = this.model.category;
+    this.disabledExport=true;
     this.changeEmit();
   }
   changeYearEmit() {
@@ -128,6 +135,15 @@ export class DropdownComponent implements OnInit {
   }
   changeEmit() {
     this.changeSubindicator.emit({
+      options: this.model
+    });
+  }
+  exportCsvViewer(){
+    this.exportCsvEmit();
+  }
+  exportCsvEmit()
+  {
+    this.optionExportCsv.emit({
       options: this.model
     });
   }

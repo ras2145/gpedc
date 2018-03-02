@@ -14,7 +14,7 @@
 
                           <div class="result-container">
 
-                                <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
+                                <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)" (optionExportCsv)="exportCsvViewer($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
                                  <div class="iconIndicator"  [innerHtml] = "iconIndicator"> </div>
 
                             <div class="form-group">

@@ -440,7 +440,7 @@ export class ViewerComponent implements OnInit {
     }
   }
   selectCategory(category) {
-    // console.log("cat",category);
+    console.log("cat",category);
     this.model.category = category;
     this.model.subcategory = null;
     this.indicator = false;
@@ -467,12 +467,14 @@ export class ViewerComponent implements OnInit {
   //  console.log(this.subIndicator);
   }
   unselectCategory() {
+    console.log("unselected");
     this.subIndicator = false;
     this.indicator = false;
     console.log('UNSELECT',this.model);
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year);
+    // this.exportCsvViewer(this.model);
   }
   unselectSubCategory() {
     this.subIndicator = false;
@@ -745,7 +747,7 @@ export class ViewerComponent implements OnInit {
             this.listIndicator.noText=(i.noText)?i.noText:'';
             if(i.subcategories.length==0)
             {
-              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'',value:value, yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:''});
+              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:value, yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:''});
             }
             // if (value === 'Yes') {
             //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.yesText + '</div>';
@@ -774,7 +776,7 @@ export class ViewerComponent implements OnInit {
             jumps = 1;
             const subvalue2 = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
             const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
-            this.listIndicator.indicator.push({column:j.column,prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'',value:subvalue, yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
+            this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:subvalue, yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
             // if (j.label.indexOf('Summary') >= 0) {
             //   continue;
             // }
@@ -886,88 +888,13 @@ export class ViewerComponent implements OnInit {
     this.mapService.paintOneCountry(this.selectedCountry);
     this.selectedCountry = false;
   }
-  exportCsv(isOrganization?: boolean) {
-    const comparer = isOrganization ? this.organizationComparer : this.countryComparer;
-    const first = isOrganization ? 'firstOrganization' : 'firstCountry';
-    const second = isOrganization ? 'secondOrganization' : 'secondCountry';
-    const lines = [];
-    const headers = ['Indicator'];
-    if (comparer[first] != '') {
-      headers.push(comparer[first]);
-    }
-    if (comparer[second] != '') {
-      headers.push(comparer[second]);
-    }
-    if (comparer.aggregate != '') {
-      headers.push(comparer.aggregate);
-    }
-    lines.push(headers);
-    this.model.year.categories.forEach(category => {
-      let line = [];
-      line.push(category.title);
-      if (comparer[first] !== '') {
-        line.push(this.getLabelCountry(category, first, isOrganization).trim());
-      }
-      if (comparer[second] !== '') {
-        line.push(this.getLabelCountry(category, second, isOrganization).trim());
-      }
-      if (comparer.aggregate !== '') {
-        line.push(this.getLabelCountry(category, 'aggregate', isOrganization).trim());
-      }
-      let add = true;
-      if (line.length === 2) {
-        if (line[1] === 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
-          add = false;
-        }
-      } else if (line.length == 3 || line.length == 4) {
-        if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
-          add = false;
-        }
-      }
-      if (add) {
-        lines.push(line);
-      }
-      category.subcategories.forEach(subcategory => {
-        line = [];
-        line.push(subcategory.label);
-        if (comparer[first] != '') {
-          line.push(this.getLabelCountry(subcategory, first, isOrganization).trim());
-        }
-        if (comparer[second] != '') {
-          line.push(this.getLabelCountry(subcategory, second, isOrganization).trim());
-        }
-        if (comparer.aggregate != '') {
-          line.push(this.getLabelCountry(subcategory, 'aggregate', isOrganization).trim());
-        }
-        let add = true;
-        if (line.length == 2) {
-          if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
-            add = false;
-          }
-        } else if (line.length == 3 || line.length == 4) {
-          if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
-            add = false;
-          }
-        }
-        if (add) {
-          lines.push(line);
-        }
-      });
-    });
-    let linesString = lines.map(line => line.map(element => '"' + element.replace('<p>', '').replace('</p>', '') + '"').join(','));
-    let result = linesString.join('\n');
-    result = result.replace(/ ?<\/?b> ?/g, ' ');
-    result = result.replace(/," /g, ',"');
-    result = result.replace(/ ",/g, '",');
-    console.log("result",result);
-    let blob = new Blob([result], { type: 'text/csv' });
-    const fileName = isOrganization ? 'organizations' : 'countries';
-    saveAs(blob, fileName + '.csv');
-  }
-  exportCsvViewer() {
+  exportCsvViewer(event) {
     this.loaderService.start();
+    console.log(event.options.category);
+    let nameIndicator=(event.options.subcategory!=null)?event.options.subcategory.label:event.options.category.label;
     const lines = [];
-    const headers = ['Country', this.mapTitle];
+    // const headers = ['Country', this.mapTitle];
+    const headers = ['Country', nameIndicator];
     lines.push(headers);
     let column = this.model.category.column;
     let indicator = this.model.category;
@@ -1252,6 +1179,7 @@ export class ViewerComponent implements OnInit {
       this.changeYearLabel(event.options.year);
       this.getCategoriesNotNull();
       this.getIndicator(event.options.year === '2016'?'1a':'5a');
+      // this.exportCsvViewer(event.options.indicator);
     }
   }
   icon1a_8(event) {
