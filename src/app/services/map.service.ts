@@ -267,7 +267,7 @@ export class MapService {
     this.map.on('click', 'country-fills', cb);
   }
   allDataCountryQuery() {
-    const query = SERVER.GET_QUERY(`select ${SERVER.COLUMS_OF_COUNTRIES} from "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}"`);
+    const query = SERVER.GET_QUERY(`select * from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2_WITHOUT_GEOMETRY}"`);
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
     });
@@ -287,7 +287,7 @@ export class MapService {
     return tilesOptions;
   }
   getCountriesYearQuery(year: string): string {
-    const sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE} WHERE UPPER(_${year}) = 'YES'`;
+    const sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
     return sql;
   }
   getCountriesYearGeoJSON(year: string): Observable<any> {
@@ -316,10 +316,11 @@ export class MapService {
     return observable(tilesOptions);
   }
   getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): string {
-    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.COUNTRY_TABLE}`;
+    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2}`;
     let where = '';
     if (year != null && year != '') {
-      where = where + ' upper(' + `_${year}` + ") = 'YES'";
+      // where = where + ' upper(' + `_${year}` + ") = 'YES'";
+      where = where + `yr${year}` + ' = true';
     }
     if (indicator != null && indicator != '') {
       if (where != '') {
@@ -375,7 +376,7 @@ export class MapService {
     let sqlone: String = '';
     let where = '';
     if (year != null && year != '') {
-      where = where + ' upper(' + `_${year}` + ") = 'YES'";
+      where = where + `yr${year}` + " = true";
     }
     if (region != null && region != '') {
       if (where != '') {
@@ -400,8 +401,8 @@ export class MapService {
     }
     // ---------------
     // tslint:disable-next-line:max-line-length
-    const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE ${column} is not null and UPPER(_${year}) = 'YES' AND ${sqlone} ) as st_dump ORDER BY country`);
-    const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.COUNTRY_TABLE}" WHERE  UPPER(_${year}) = 'YES' AND ${sqlone}) as st_dump ORDER BY country`);
+    const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${column} is not null and yr${year} = true AND ${sqlone} ) as st_dump ORDER BY country`);
+    const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE  yr${year} = true AND ${sqlone}) as st_dump ORDER BY country`);
     const query = column ? sql1 : sql2;
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
@@ -431,27 +432,41 @@ export class MapService {
   zoomOut() {
     this.map.zoomOut();
   }
-  paintForIndicator(category: any, subcategory: any, year: any) {
+  paintForIndicator(category: any, subcategory: any, year: any, partnerType?: any) {
+    console.log("PAINT",category,subcategory);
     this.map.removeLayer('country-fills');
     let indicator: any;
     let layer: any;
+    let columnCat = '';
+    let columnSub = '';
+    if (partnerType === 'devpart') {
+      columnCat = category.devpart;
+      columnSub = subcategory ? subcategory.devpart : '';
+    } else if (partnerType === 'partcntry') {
+      columnCat = category.partcntry;
+      columnSub = subcategory ? subcategory.partcntry : '';
+    } else {
+      columnCat = category.column;
+      columnSub = subcategory ? subcategory.column : '';
+    }
     // tslint:disable-next-line:prefer-const
     let layerone: any;
     if (subcategory != null) {
-      indicator = subcategory.column;
-      if (indicator === '_2016_2_1') {
+      // indicator = subcategory.column;
+      indicator = columnSub;
+      if (indicator.includes ('2016_2_1')) {
         layer = this.layers.indicator2_1;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
-      if (indicator === '_2016_2_2') {
+      if (indicator.includes ('2016_2_2')) {
         layer = this.layers.indicator2_2;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
-      if (indicator === '_2016_2_3' || indicator === '_2016_2_4') {
+      if (indicator.includes('2016_2_3') || indicator.includes('2016_2_4')) {
         layer = this.layers.indicator2_34;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
@@ -464,7 +479,6 @@ export class MapService {
         this.map.addLayer(layer, 'waterway-label');
       }
       if (subcategory.type === 'text') {
-        console.log(category.id,"CATEr");
         if (category.id === '4') {
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
@@ -487,7 +501,7 @@ export class MapService {
         this.map.addLayer(layer, 'waterway-label');
       }
     } else {
-      indicator = category.column;
+      indicator = columnCat;
       if (category.id === '9a') {
         layer = this.layers.indicator9a;
         layer['paint']['fill-color'].property = indicator;
