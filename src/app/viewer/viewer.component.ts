@@ -1069,15 +1069,15 @@ export class ViewerComponent implements OnInit {
   isLoading() {
     return this.loaderService.isLoading();
   }
-  isCategoryTop() {
-    if (this.model.category == null) {
-      return false;
-    }
-    if (this.model.category.id == '7' || this.model.category.id == '8') {
-      return true;
-    }
-    return false;
-  }
+  // isCategoryTop() {
+  //   if (this.model.category == null) {
+  //     return false;
+  //   }
+  //   if (this.model.category.id == '7' || this.model.category.id == '8') {
+  //     return true;
+  //   }
+  //   return false;
+  // }
   selectCountryComparer(firstCountry, secondCountry) {
     this.selectFirstCountry = firstCountry || '';
     this.selectSecondCountry = secondCountry || '';

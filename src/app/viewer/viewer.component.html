@@ -6,7 +6,7 @@
             <!-- INICIO Sidebar -->
                 <div class="col-md-3 padding-left-none with-scroll" id="div1">
                   <p class="subtitle">On this tab, Global Partnership monitoring results can be displayed by partner country or development partner. Select a type of partner, year and indicator to start exploring.</p>
-                  <div class="filtros-tab" [ngClass]="{'map-top-01': isCategoryTop()}">
+                  <div class="filtros-tab" > <!-- [ngClass]="{'map-top-01': isCategoryTop()}"-->
                     <div class="tab-viewer">
                         <!-- PARTNER-COUNTRY TAB -->
                       <tabset>
@@ -153,6 +153,7 @@
                             
                           <div class="result-container">
                               <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
+                              <div class="iconIndicator"  [innerHtml] = "iconIndicator"> </div>
                               <div class="padding-top-line">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER
                                     <i class="mdi mdi-information"
@@ -411,7 +412,7 @@
 
             <!-- INICIO Map -->
                 <div class="col-md-9 border-div-none" id="div2">
-                    <div class="map-option" *ngIf="selectedTab !== 'tab3'" [ngClass]="{'map-top': isCategoryTop()}">
+                    <div class="map-option" *ngIf="selectedTab !== 'tab3'" > <!-- [ngClass]="{'map-top': isCategoryTop()}"-->
                       <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md bitmap"> Map Viewer</button></a>
                         <a [routerLink]="['/country']">
                           <button type="button" name="button" class="btn btn-md">
