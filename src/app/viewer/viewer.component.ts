@@ -708,9 +708,13 @@ export class ViewerComponent implements OnInit {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
     } else if (indicator.type === 'text') {
-      value = oldValue ? oldValue : 'No data';
+      if (indicator.id === '7') {
+        value = oldValue === true || oldValue === 'No data' ? 'Yes' : 'No';
+      } else {
+        value = oldValue ? oldValue : 'No data';
+      }
     }
-    const val=(value.toString()=='9999'|| value.toString()=='')?"Not Applicable":value;
+    const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Applicable' : value;
     return val;
   }
   checkIfString(val) {
@@ -833,6 +837,7 @@ export class ViewerComponent implements OnInit {
     this.mapService.getPartners().subscribe(res => {
       this.partners = res;
       const categorizedPartners = {};
+      const arrayPartner = [{}];
       for (const partner of this.partners) {
         if (!categorizedPartners[partner.type_partner]) {
           categorizedPartners[partner.type_partner] = [];
@@ -858,7 +863,15 @@ export class ViewerComponent implements OnInit {
         }
         return 0;
       });
-      // console.log("CAT",this.categorizedPartners);
+      arrayPartner.push(this.categorizedPartners[4]);
+      arrayPartner.push(this.categorizedPartners[5]);
+      arrayPartner.push(this.categorizedPartners[1]);
+      arrayPartner.push(this.categorizedPartners[6]);
+      arrayPartner.push(this.categorizedPartners[2]);
+      arrayPartner.push(this.categorizedPartners[3]);
+      arrayPartner.push(this.categorizedPartners[0]);
+      this.categorizedPartners = arrayPartner;
+      this.categorizedPartners.shift();
       console.log("Partnets",this.categorizedPartners);
     });
   }
