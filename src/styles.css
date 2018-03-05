@@ -1536,8 +1536,8 @@ select-dropdown li.selected.highlighted {
 }
 
 .btn-learn {
-    background: #e3e5e2 !important;
-    color: #282828;
+    background: #e07e52 !important;
+    color: #ffffff;
     font-size: 11px;
     cursor: pointer;
     margin-top: 12px;
