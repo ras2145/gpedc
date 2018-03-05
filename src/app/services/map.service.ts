@@ -553,11 +553,7 @@ export class MapService {
   }
   }
   filterNotNull(column: string) {
-    
-      this._map.setFilter('country-fills', ['has', '_2016_4_1']);
-      this._map.setFilter('country-fills', ['has', '_2016_4_3']);
-      this._map.setFilter('country-fills', ['has', '_2016_4_2']);
-    
+      this._map.setFilter('country-fills', ['!=', column, '']);   
   }
   modalQuery (column_query, country) {
     const query = SERVER.GET_QUERY(`select ${column_query} from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" where country like '${country}' `);
