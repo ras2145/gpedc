@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     console.log('navbar loaded!');
+    this.openModal(this.tuto);
   }
 
   ngAfterViewInit () {
