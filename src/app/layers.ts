@@ -52,13 +52,15 @@ export let layers = {
             stops: [
               ['Yes', '#1FAB9E'],
               ['No', '#F16950'],
+              ['true', '#1FAB9E'],
+              ['false', '#F16950'],
               ['9999', '#BBBBBB']
             ]
           },
           'fill-opacity': 0.75
         }
     },
-    'indicator9a': {
+     'indicator9a': {
         'id': 'country-fills',
         'source': 'countries',
         "source-layer": "layer0",

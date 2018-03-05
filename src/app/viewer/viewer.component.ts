@@ -22,6 +22,7 @@ declare var ga: Function;
   // changeDetection: ChangeDetectionStrategy.Default
 })
 export class ViewerComponent implements OnInit {
+  partnerType = 'partcntry';
   optionsSubject: Subject <any> = new Subject();
   subDropdown = false;
   viewModal = true;
@@ -75,7 +76,9 @@ export class ViewerComponent implements OnInit {
       title: '',
       column: '',
       id: '',
-      legendText: ''
+      legendText: '',
+      devpart:'',
+      partcntry: ''
     },
     subcategory: null,
     region: null,
@@ -164,7 +167,7 @@ export class ViewerComponent implements OnInit {
     this.validIndicator = false;
     this.viewerTab = '1';
     this.heightDropDown = '75vh';
-    this.dateModal={};
+    this.dateModal = {};
   }
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
@@ -204,6 +207,7 @@ export class ViewerComponent implements OnInit {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
           layers: ['country-fills']
         });
+        console.log('COUNTRIES',countries);
     //     const column=Object.keys(countries[0].properties);
     // for(var i=0;i<column.length;i++) {
     //   const val=(countries[0].properties[column[i]]).toString();
@@ -224,6 +228,7 @@ export class ViewerComponent implements OnInit {
         this.popupText = '';
       });
       this.mapService.clickCountry(event => {
+        console.log('CLICK ', event);
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
@@ -246,8 +251,9 @@ export class ViewerComponent implements OnInit {
           // if (selectedCountry.length === 0 ) {
           //     selectedCountry[0] = feature;
           // }
+          console.log('SELECTED COUYNTRY', selectedCountry);
           selectedCountry[0] = feature;
-          this.country_modal=feature.properties['country'];
+          this.country_modal = feature.properties['country'];
           const data1 = selectedCountry[0].properties._2016_5b;
           const data2 = selectedCountry[0].properties._2016_6;
           const data3 = selectedCountry[0].properties._2016_7;
@@ -432,7 +438,9 @@ export class ViewerComponent implements OnInit {
             title: 'Select two countries for comparing indicators: ',
             column: '',
             id: '',
-            legendText: ''
+            legendText: '',
+            devpart:'',
+            partcntry: ''
           };
           this.selectedSidCountry = null;
         }
@@ -485,14 +493,11 @@ export class ViewerComponent implements OnInit {
     const category = this.model.category;
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
-    console.log("UNSELECT",this.model.year);
     this.changeYearLabel(this.model.year);
     this.selectCategory(category);
   }
   changeYearLabel(y) {
-    console.log("CHANGE",y);
     this.changeyear = y.year;
-    console.log(this.changeyear, 'change YEAR ');
     this.iconIndicator = '';
     this.mapService.resetLayer();
     this.legendMap = [];
@@ -561,29 +566,41 @@ export class ViewerComponent implements OnInit {
     this.selectedCountry = '';
     this.mapService.resetClickLayer();
     let indicator = null;
-    if (!this.indicator) {
-      indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
-    }
     const region = this.model.region.value;
     const incomeGroup = this.model.incomeGroup.value;
     const countryContext = this.model.countryContext.value;
     const year = this.model.year.year;
     this.loaderService.start();
     this.mapService.resetLayer();
-    console.log("update-ind");
+    indicator = this.getColumn();
     this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year).subscribe(tiles => {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
       this.setColor();
       if (this.model.category != null) {
+        console.log(this.model);
         const column = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
-        //this.mapService.filterNotNull(column);
+        console.log('COLUMN ',column, indicator);
+        this.mapService.filterNotNull(indicator);
       }
       this.loaderService.end();
     }, error => {
       this.loaderService.end();
       console.log("error");
     });
+  }
+  getColumn() {
+    const indicator = this.model.category;
+    const subindicator = this.model.subcategory;
+    let column = '';
+    console.log(this.model);
+    if ( subindicator ) {
+      column = this.partnerType === 'devpart' ? this.model.subcategory.devpart : this.model.subcategory.partcntry;
+    } else if ( indicator ) {
+      column = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
+    }
+    console.log('COLUMN',column);
+    return column;
   }
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
@@ -962,9 +979,14 @@ export class ViewerComponent implements OnInit {
     const region = this.model.region.value;
     const countryContext = this.model.countryContext.value;
     const incomeGroup = this.model.incomeGroup.value;
+    const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
+    let columnSub = null;
+    if (this.model.subcategory) {
+      columnSub = this.partnerType === 'devpart' ? this.model.subcategory.devpart : (this.model.subcategory.partcntry);
+    }
     let indicator = null;
     if (!this.indicator) {
-      indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
+      indicator = this.model.subcategory ? (columnSub) : (columnCat);
     }
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext).subscribe(val => {
       const countriesObj = {};
@@ -1000,13 +1022,13 @@ export class ViewerComponent implements OnInit {
       } else if (subcategory.type === 'percent') {
         this.legendMap = this.legends.percent;
       } else if (subcategory.type === 'number') {
-        if (subcategory.column.includes('2_1')) {
+        if (columnSub.includes('2_1')) {
           this.legendMap = this.legends.indicator2_1;
-        } else if (subcategory.column.includes('2_2')) {
+        } else if (columnSub.includes('2_2')) {
           this.legendMap = this.legends.indicator2_2;
-        } else if (subcategory.column.includes('2_3') || subcategory.column.includes('2_4')) {
+        } else if (columnSub.includes('2_3') || columnSub.includes('2_4')) {
           this.legendMap = this.legends.indicator2_34;
-        } else if (subcategory.column.includes('_3_')) {
+        } else if (columnSub.includes('_3_')) {
           this.legendMap = this.legends.number;
         }
       }
@@ -1029,7 +1051,7 @@ export class ViewerComponent implements OnInit {
     {
       this.legendMap.unshift({ color: '#BBBBBB', textFirst: 'Not Available', textMiddle: '', textLast: ''});
     }
-    return this.mapService.paintForIndicator(category, subcategory, year);
+    return this.mapService.paintForIndicator(category, subcategory, year,this.partnerType);
   }
   zoomIn() {
     this.mapService.zoomIn();
@@ -1039,10 +1061,11 @@ export class ViewerComponent implements OnInit {
   }
   updateMapTitle() {
     this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
+    //console.log('title error', this.model);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator  && this.model.category.title) {
-      this.mapTitle = this.model.subcategory.title;
+      this.mapTitle = this.model.category.title;
     } else {
       this.mapTitle = '';
     }
@@ -1059,7 +1082,7 @@ export class ViewerComponent implements OnInit {
     this.loaderService.start();
     setTimeout(() => {
       this.mapService.map.fire('click', [sidCountry.firstx, sidCountry.firsty]);
-      this.loaderService.end()
+      this.loaderService.end();
     }, 5000);
   }
   switchPartnerGroupOpen(event, partnerGroup) {
@@ -1098,8 +1121,13 @@ export class ViewerComponent implements OnInit {
     return output;
   }
   changePartnerType(type) {
+    this.partnerType = type;
     this.resetModels();
-    this.optionsSubject.next(this.model);
+    const send = {
+      model: this.model,
+      partnerType : this.partnerType
+    }
+    this.optionsSubject.next(send);
   }
   viewTableIndicator(indicator, valueIndicator) {
     let output: number = 0;
@@ -1166,7 +1194,6 @@ export class ViewerComponent implements OnInit {
     }
   }
   updateIndicatorValues(event) {
-    console.log("INDICATOR");
     this.iconIndicator='';
     const category = event.options.category;
     if (category.label !== 'Select indicator') {
