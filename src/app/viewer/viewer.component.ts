@@ -224,6 +224,7 @@ export class ViewerComponent implements OnInit {
         this.popupText = '';
       });
       this.mapService.clickCountry(event => {
+        console.log('CLICK ', event);
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
@@ -559,34 +560,41 @@ export class ViewerComponent implements OnInit {
     this.selectedCountry = '';
     this.mapService.resetClickLayer();
     let indicator = null;
-    if (!this.indicator) {
-      indicator = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
-    }
     const region = this.model.region.value;
     const incomeGroup = this.model.incomeGroup.value;
     const countryContext = this.model.countryContext.value;
     const year = this.model.year.year;
     this.loaderService.start();
     this.mapService.resetLayer();
-    if (this.partnerType === 'devpart') {
-      indicator = this.model.category.devpart ? this.model.category.devpart : indicator;
-    } else {
-      indicator = this.model.category.partcntry ? this.model.category.partcntry : indicator;
-    }
-    console.log(indicator);
+    indicator = this.getColumn();
     this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year).subscribe(tiles => {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
       this.setColor();
       if (this.model.category != null) {
+        console.log(this.model);
         const column = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
-        //this.mapService.filterNotNull(column);
+        console.log('COLUMN ',column, indicator);
+        this.mapService.filterNotNull(indicator);
       }
       this.loaderService.end();
     }, error => {
       this.loaderService.end();
       console.log("error");
     });
+  }
+  getColumn() {
+    const indicator = this.model.category;
+    const subindicator = this.model.subcategory;
+    let column = '';
+    console.log(this.model);
+    if ( subindicator ) {
+      column = this.partnerType === 'devpart' ? this.model.subcategory.devpart : this.model.subcategory.partcntry;
+    } else if ( indicator ) {
+      column = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
+    }
+    console.log('COLUMN',column);
+    return column;
   }
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
@@ -1112,7 +1120,7 @@ export class ViewerComponent implements OnInit {
     {
       this.legendMap.unshift({ color: '#BBBBBB', textFirst: 'Not Available', textMiddle: '', textLast: ''});
     }
-    return this.mapService.paintForIndicator(category, subcategory, year);
+    return this.mapService.paintForIndicator(category, subcategory, year,this.partnerType);
   }
   zoomIn() {
     this.mapService.zoomIn();
@@ -1122,10 +1130,11 @@ export class ViewerComponent implements OnInit {
   }
   updateMapTitle() {
     this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
+    //console.log('title error', this.model);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator  && this.model.category.title) {
-      this.mapTitle = this.model.subcategory.title;
+      this.mapTitle = this.model.category.title;
     } else {
       this.mapTitle = '';
     }
@@ -1183,7 +1192,11 @@ export class ViewerComponent implements OnInit {
   changePartnerType(type) {
     this.partnerType = type;
     this.resetModels();
-    this.optionsSubject.next(this.model);
+    const send = {
+      model: this.model,
+      partnerType : this.partnerType
+    }
+    this.optionsSubject.next(send);
   }
   viewTableIndicator(indicator, valueIndicator) {
     let output: number = 0;

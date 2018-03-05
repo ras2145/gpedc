@@ -41,6 +41,10 @@ export class DropdownComponent implements OnInit {
     incomeGroup: null,
     countryContext: null
   };
+  partnerType = 'partcntry';
+  arrayPartner =  ['1a', '2', '3', '5a', '5b', '6', '7', '8', '9a', '9b', '10'];
+  arrayDev = ['1a', '4', '5a', '5b', '6', '9b', '10'];
+
   @Input() optionsSubject: Subject<any>;
   @Output() changeSubindicator = new EventEmitter();
   @Output() changeYear = new EventEmitter();
@@ -55,7 +59,9 @@ export class DropdownComponent implements OnInit {
   }
   ngOnChanges() {
     this.optionsSubject.subscribe(event => {
-      this.model = event;
+      this.model = event.model;
+      this.partnerType = event.partnerType;
+      console.log('GOOD', this.partnerType);
       this.newValues();
     });
   }
@@ -68,7 +74,15 @@ export class DropdownComponent implements OnInit {
   }
   getIndicators(year) {
     const categories = this.modelService.getIndicators(year);
-    return categories;
+    const array = this.partnerType === 'devpart' ? this.arrayDev : this.arrayPartner;
+    const categoriesShow = [];
+    for (const cat of categories) {
+      if (array.includes(cat.id) ) {
+        categoriesShow.push(cat);
+      }
+    }
+    return categoriesShow;
+
   }
   selectCategory(category) {
     this.model.category = category;
