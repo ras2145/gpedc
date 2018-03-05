@@ -5,8 +5,8 @@
         <div class="row">
             <!-- INICIO Sidebar -->
                 <div class="col-md-3 padding-left-none with-scroll" id="div1">
-                  <p class="subtitle">On this tab, Global Partnership monitoring results can be displayed by partner country or development partner. Select a type of partner, year and indicator to start exploring.</p>
-                  <div class="filtros-tab" > <!-- [ngClass]="{'map-top-01': isCategoryTop()}"-->
+                  <div class="filtros-tab" >
+                    <p class="subtitle">On this tab, Global Partnership monitoring results can be displayed by partner country or development partner. Select a type of partner, year and indicator to start exploring.</p> <!-- [ngClass]="{'map-top-01': isCategoryTop()}"-->
                     <div class="tab-viewer">
                         <!-- PARTNER-COUNTRY TAB -->
                       <tabset>
@@ -150,7 +150,7 @@
                         </tab>
                         <!-- DEV PART TAB -->
                         <tab heading="Development Partner" (select)="changePartnerType('devpart')">
-                            
+
                           <div class="result-container">
                               <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
                               <div class="iconIndicator"  [innerHtml] = "iconIndicator"> </div>
@@ -293,7 +293,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -385,7 +385,7 @@
                                     </div>
                                 </div>
 
-                             
+
 
                                 <div class="row padding-top-line col-line">
                                   <div class="col-md-12 disclaimer">
@@ -520,23 +520,23 @@
                             <i class="mdi mdi-close pop-up-close" (click)="closeFooter()">  </i>
                                <!-- <p [innerHTML]="footerText"></p>      -->
                         <!-- modificacion para eliminar innerHtml-footerText-->
-                            <section> 
+                            <section>
                                 <div class="tabs-result">
-                                <b>{{listIndicator.title}}</b> 
+                                <b>{{listIndicator.title}}</b>
                                 </div>
                                  <div *ngIf="listIndicator.yesText!=null || listIndicator.noText!=null" class="tabs-result">{{listIndicator.yesText || listIndicator.noText }}
-                                </div> 
+                                </div>
                                 <div *ngFor="let indicator of listIndicator.indicator" class="tabs-result">{{indicator.prefix ||  indicator.yesText || indicator.noText  }}
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <h2 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}} 
+                                            <h2 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}}
                                                 <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(listIndicator)" (click)="modalSubcategory(indicator);lgModal.show()"></i>
                                             </h2>
                                         </div>
                                         <div class="col-md-10">{{indicator.suffix}}</div>
                                     </div>
-                                </div>    
-                            </section>       
+                                </div>
+                            </section>
                           <!--button type="button" class="btn btn-down" name="button"><i class="mdi mdi-chevron-down"></i></button-->
                         </tab>
                       </tabset>
@@ -585,7 +585,7 @@
 
 
 
-                    
+
 
                     <!-- <img src="assets/map-new-screen-1.png" alt="" width="100%"> -->
                     <!-- <iframe style="padding: 0px;" width="100%" height="90%"frameborder="0" src="https://undp.carto.com/u/undp-admin/builder/0b976f06-2a20-402c-ad37-68185f782ad3/embed" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
@@ -718,7 +718,7 @@
                             <br> For further results from Module 2, please read the country’s monitoring profile. Further information on the methodology
                             for all indicators can be found in the
                             <a target="_blank" href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2015 Monitoring Guide</a>.
-                    
+
                     </div>
                     <div *ngIf="(notFromTab?model.category.id:footerTab) ==='4'" class="modal-contet">
                         <p class="result-modal">
