@@ -210,7 +210,7 @@ export class CountryComponent implements OnInit {
   modalSubcategory(subcategory,countries){
     this.column_indicator=[{}];
     this.dateModal=indicator2Exceptions[Number(subcategory.column.split('_')[3])-1];
-    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
+    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' • ','');
     let column_query, column_indicator='';
     this.column_content=subcategory.column;
       for(let i=0; i<this.dateModal.content.length;i++)

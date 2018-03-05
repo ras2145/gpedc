@@ -251,7 +251,7 @@ export class ViewerComponent implements OnInit {
           // if (selectedCountry.length === 0 ) {
           //     selectedCountry[0] = feature;
           // }
-          console.log('SELECTED COUYNTRY', selectedCountry);
+          console.log('SELECTED COUYNTRY', selectedCountry,"valor", selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property] );
           selectedCountry[0] = feature;
           this.country_modal = feature.properties['country'];
           const data1 = selectedCountry[0].properties._2016_5b;
@@ -1162,7 +1162,7 @@ export class ViewerComponent implements OnInit {
   modalSubcategory(indicator){
     this.column_indicator=[{}];
     this.dateModal=indicator2Exceptions[Number(indicator.column.split('_')[3])-1] ;
-    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' ','');
+    this.dateModal.title=this.dateModal.title.replace('Module '+this.dateModal.id+' • ','');
     let column_query, column_indicator='';
     this.column_content=indicator.column;
       for(let i=0; i<this.dateModal.content.length;i++)

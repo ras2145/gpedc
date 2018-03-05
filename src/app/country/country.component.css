@@ -333,6 +333,7 @@
 td .pos-default-modal {
     position: absolute;
     margin-top: -50px;
+    margin-left: 10px;
     padding: 5px;
     color: #D0D6D9;
     font-size: 16px;
