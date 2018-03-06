@@ -256,16 +256,11 @@ export class ViewerComponent implements OnInit {
           console.log('SELECTED COUYNTRY', selectedCountry,"valor", selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property] );
           selectedCountry[0] = feature;
           this.country_modal = feature.properties['country'];
-          const data1 = selectedCountry[0].properties._2016_5b;
-          const data2 = selectedCountry[0].properties._2016_6;
-          const data3 = selectedCountry[0].properties._2016_7;
-          const data4 = selectedCountry[0].properties._2016_7_1;
+
           console.log('VALUE THAT CHANGE', selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]);
           if(((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999"))
           {
-            if ((data1 !== '9999' && data2 !== '9999' && data3 !== '9999' && data4 !== '9999')) {
-              this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-            }
+            this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           }
           // this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           if (this.selectedCountry) {
