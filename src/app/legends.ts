@@ -63,6 +63,12 @@ export let legends = {
           textLast: ''
         }
       ],
+      'noLegend2010' : [
+        {
+          color: '#F07848',
+          textFirst: 'Data available for 2010'
+        }
+      ],
       'noLegend2016' : [
         {
           color: '#F07848',
