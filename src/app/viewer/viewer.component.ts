@@ -96,10 +96,10 @@ export class ViewerComponent implements OnInit {
   sidsOrder = {
     'Bilateral partners (DAC members)': 0,
     'Other bilateral partners (non-DAC members)': 1,
-    'Foundation': 2,
+    'Foundations': 2,
     'Global funds and vertical initiatives': 3,
     'Multilateral development banks': 4,
-    'Other international and regional organizations': 5,
+    'Other international and regional organisations': 5,
     'UN agencies': 6
   };
   heightDropDown: any;
@@ -851,27 +851,30 @@ export class ViewerComponent implements OnInit {
             name: partnerName,
             partners: categorizedPartners[partnerName],
             open: true,
-            selected: true
+            selected: true,
+            value: this.sidsOrder[partnerName]
           });
         }
       }
-      this.categorizedPartners.sort((a, b) => {
-        if (this.sidsOrder[a.name] < this.sidsOrder[b.name]) {
-          return -1;
-        } else if (this.sidsOrder[a.name] > this.sidsOrder[b.name]) {
-          return 1;
-        }
-        return 0;
-      });
-      arrayPartner.push(this.categorizedPartners[4]);
-      arrayPartner.push(this.categorizedPartners[5]);
-      arrayPartner.push(this.categorizedPartners[1]);
-      arrayPartner.push(this.categorizedPartners[6]);
-      arrayPartner.push(this.categorizedPartners[2]);
-      arrayPartner.push(this.categorizedPartners[3]);
-      arrayPartner.push(this.categorizedPartners[0]);
-      this.categorizedPartners = arrayPartner;
-      this.categorizedPartners.shift();
+      this.categorizedPartners.sort((a, b) => (a.value < b.value ? -1 : (a.value > b.value ? 1 : 0)));
+      // this.categorizedPartners.sort((a, b) => {
+      //   if (a.value < b.value) {
+      //     return -1;
+      //   }
+      //   if (a.value > b.value) {
+      //     return 1;
+      //   }
+      //   return 0;
+      // });
+      // arrayPartner.push(this.categorizedPartners[4]);
+      // arrayPartner.push(this.categorizedPartners[5]);
+      // arrayPartner.push(this.categorizedPartners[1]);
+      // arrayPartner.push(this.categorizedPartners[6]);
+      // arrayPartner.push(this.categorizedPartners[2]);
+      // arrayPartner.push(this.categorizedPartners[3]);
+      // arrayPartner.push(this.categorizedPartners[0]);
+      // this.categorizedPartners = arrayPartner;
+      // this.categorizedPartners.shift();
       console.log("Partnets",this.categorizedPartners);
     });
   }
