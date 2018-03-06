@@ -1,14 +1,17 @@
-import { Component, OnInit, TemplateRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, AfterViewInit, ViewChild, Input, OnChanges } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, AfterViewInit {
+export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   modalRef: BsModalRef;
   viewModal: boolean;
+  mapTitle = '';
+  indicator = true;
   @ViewChild('tuto') tuto: TemplateRef<any>;
   tutorial = [
     true,
@@ -21,13 +24,19 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     false,
     false
   ];
-
+  @Input() titleSubject: Subject<any>;
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
     console.log('navbar loaded!');
   }
-
+  ngOnChanges() {
+    this.titleSubject.subscribe(event => {
+      this.indicator = event.indicator ;
+      this.mapTitle = event.mapTitle ;
+      console.log('cambio', event.indicator);
+    });
+  }
   ngAfterViewInit () {
     if (!window.localStorage.getItem('tutorial')) {
       this.openModal(this.tuto);
@@ -39,7 +48,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this.viewModal = false;
     this.modalRef = this.modalService.show(template);
   }
-
   continueTutorial() {
     let index = -1;
     for (let i = 0; i < this.tutorial.length; i++) {

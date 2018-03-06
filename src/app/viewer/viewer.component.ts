@@ -494,6 +494,7 @@ export class ViewerComponent implements OnInit {
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year);
     // this.exportCsvViewer(this.model);
+    this.sendTitle();
   }
   unselectSubCategory() {
     this.subIndicator = false;
@@ -1092,7 +1093,15 @@ export class ViewerComponent implements OnInit {
     } else {
       this.mapTitle = '';
     }
-    this.titleSubject.next(this.mapTitle);
+    this.sendTitle();
+  }
+  sendTitle() {
+    const send = {
+      mapTitle: this.mapTitle,
+      indicator: this.indicator
+    };
+    console.log('IND',this.indicator);
+    this.titleSubject.next(send);
   }
   tabsToShow(category) {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
