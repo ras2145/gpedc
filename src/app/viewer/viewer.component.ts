@@ -24,6 +24,7 @@ declare var ga: Function;
 export class ViewerComponent implements OnInit {
   partnerType = 'partcntry';
   optionsSubject: Subject <any> = new Subject();
+  titleSubject: Subject <any> = new Subject();
   subDropdown = false;
   viewModal = true;
   notFromTab = true;
@@ -207,11 +208,7 @@ export class ViewerComponent implements OnInit {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
           layers: ['country-fills']
         });
-<<<<<<< Updated upstream
-        //console.log('COUNTRIES',countries);
-=======
         // console.log('COUNTRIES',countries);
->>>>>>> Stashed changes
     //     const column=Object.keys(countries[0].properties);
     // for(var i=0;i<column.length;i++) {
     //   const val=(countries[0].properties[column[i]]).toString();
@@ -1095,6 +1092,7 @@ export class ViewerComponent implements OnInit {
     } else {
       this.mapTitle = '';
     }
+    this.titleSubject.next(this.mapTitle);
   }
   tabsToShow(category) {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
@@ -1152,7 +1150,7 @@ export class ViewerComponent implements OnInit {
     const send = {
       model: this.model,
       partnerType : this.partnerType
-    }
+    };
     this.optionsSubject.next(send);
   }
   viewTableIndicator(indicator, valueIndicator) {
