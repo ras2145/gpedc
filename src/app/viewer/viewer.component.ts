@@ -218,8 +218,7 @@ export class ViewerComponent implements OnInit {
     // }
         if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]?countries[0].properties[countries[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999") {
           this.countryName = countries[0].properties.country;
-          console.log('--> ', this.countryName);
-          // this.getTextPopUp(this.countryName);
+          this.getTextPopUp(this.countryName);
         } else {
           this.countryName = 'Country-not';
           this.popupText = '';
@@ -349,19 +348,32 @@ export class ViewerComponent implements OnInit {
         }
       });
     }
-    console.log('-->  !! --> ', ind);
+    // console.log('-->  !! --> ', ind);
 
     if (ind === '1a') {
       ind = ind.replace('a', '');
     }
-
-    const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
-    console.log('--> parnet type --> ---> ', columnCat);
-    ind = columnCat;
-    // ind = `_${year}_${ind}`;
-    if (index !== -1) {
-      ind = `${ind}_${index}`;
-    }
+    const columnCat = this.getColumn();
+    // console.log('--> ', columnCat);
+    // const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
+    console.log('--> ', columnCat);
+    // ind = columnCat;
+    const options = columnCat.toString().slice(6);
+    const yearone = year;
+    ind = '_' + year + '_' + options;
+    console.log('options --> ', ind);
+    // console.log('--> column cat', columnCat);
+    // if (ind !== '7') {
+    //   const options = columnCat.toString().slice(9, 18);
+    //   ind = `_${year}_${ind}` + '_' + options.trim();
+    // } else {
+    //   ind = `_${year}_${ind}`.trim();
+    //   // console.log('--> indicator -->  ', ind);
+    // }
+    // if (index !== -1) {
+    //   ind = `${ind}_${index}`;
+    //   console.log('mno llega --> ', ind);
+    // }
     if (this.countriesQuery) {
       const countryQuery = this.countriesQuery.filter(ele => {
         return ele.country === country;
@@ -729,28 +741,37 @@ export class ViewerComponent implements OnInit {
   }
   getTextPopUp(countryName) {
     this.popupText = '';
+    // const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
+    // console.log('-----> column ', columnCat);
+    const columnCat = this.getColumn();
+    // console.log('sub categorias --> ', this.model.subcategory);
+    // const options = columnCat.toString().slice(9, 18);
+    const options = columnCat;
+    // console.log('options --> ', options);
+
     if (countryName !== 'Country') {
       const country = this.countriesQuery.filter((a) => a.country === countryName)[0];
       if (this.model.category == null) {
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null) {
-        if (country[this.model.category.column] != null) {
-          if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'YES') {
+        if (country[options] != null) {
+          // console.log('console log --> ', this.checkIfString(country[options]) && country[options].toUpperCase());
+          if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'YES') {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['yesText'];
-          } else if (this.checkIfString(country[this.model.category.column]) && country[this.model.category.column].toUpperCase() === 'NO') {
+          } else if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'NO') {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
           } else {
-            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValuePopUp(this.model.category, country[this.model.category.column]) + '</b> ' + this.model.category['suffix'];
+            this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValuePopUp(this.model.category, country[options]) + '</b> ' + this.model.category['suffix'];
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
-        if (country[this.model.subcategory.column] != null) {
-          if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'YES') {
+        if (country[options] != null) {
+          if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'YES') {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.yesText;
-          } else if (this.checkIfString(country[this.model.subcategory.column]) && country[this.model.subcategory.column].toUpperCase() === 'NO') {
+          } else if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'NO') {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.noText;
           } else {
-            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValuePopUp(this.model.subcategory, country[this.model.subcategory.column]) + ' </b>' + this.model.subcategory.suffix;
+            this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValuePopUp(this.model.subcategory, country[options]) + ' </b>' + this.model.subcategory.suffix;
           }
         }
       }
