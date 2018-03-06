@@ -164,7 +164,7 @@
                             </i>
                           </div>
                           <div class="result-container">
-                              <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
+                              <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject" (optionExportCsv)="exportCsvViewer($event)"></app-dropdown>
                               <div class="iconIndicator"  [innerHtml] = "iconIndicator"> </div>
                               <div class="padding-top-line">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER

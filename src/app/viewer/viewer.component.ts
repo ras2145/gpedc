@@ -256,7 +256,7 @@ export class ViewerComponent implements OnInit {
           // if (selectedCountry.length === 0 ) {
           //     selectedCountry[0] = feature;
           // }
-          console.log('SELECTED COUYNTRY', selectedCountry,"valor", selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property] );
+          // console.log('SELECTED COUYNTRY', selectedCountry,"valor", selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property] );
           selectedCountry[0] = feature;
           this.country_modal = feature.properties['country'];
 
@@ -265,12 +265,14 @@ export class ViewerComponent implements OnInit {
           {
             this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           }
-          // this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+          // console.log("select-paint", selectedCountry[0].properties.country);
+          this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
           if (this.selectedCountry) {
             this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
             this.categoriesNotNull = [];
             setTimeout(() => {
               this.getCategoriesNotNull();
+              console.log("getcate", this.categoriesNotNull);
               for (let ind of this.categoriesNotNull){
                 if (ind.id == this.model.category.id){
                   this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
@@ -397,7 +399,6 @@ export class ViewerComponent implements OnInit {
   findTabCategory(tabId) {
     this.footerTab = tabId;
     this.notFromTab = false;
-    // console.log(this.footerTab);
   }
   setTrueTab() {
     this.notFromTab = true;
@@ -627,11 +628,11 @@ export class ViewerComponent implements OnInit {
       const isCountryDac = this.isDac(this.selectedCountry);
       for (const i of this.model.year.categories) {
         let sw = false;
-        if (this.indicatorsSelectedCountry[i.column] != null) {
+        if (this.partnerType==='devpart' ?this.indicatorsSelectedCountry[i.devpart]: this.indicatorsSelectedCountry[i.partcntry] != null) {
           sw = true;
         }
         for (const j of i.subcategories) {
-          if (this.indicatorsSelectedCountry[j.column] != null) {
+          if (this.partnerType==='devpart' ?this.indicatorsSelectedCountry[j.devpart]:this.indicatorsSelectedCountry[j.partcntry] != null) {
             sw = true;
           }
         }
@@ -710,11 +711,19 @@ export class ViewerComponent implements OnInit {
       } else {
         value = 'Not Applicable';
       }
-        
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
-      value = oldValue ? oldValue : 'No data available';
+        if(oldValue!=undefined){
+            value = oldValue.toString() ? oldValue.toString():'No data available';
+            if(indicator.id==7 || indicator.id==8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
+              value=value=='true'?'Yes':'No';
+            }
+        }
+    }
+    if(Number(value).toString()=='9999')
+    {
+      value='No data available';
     }
     return value;
   }
@@ -727,10 +736,11 @@ export class ViewerComponent implements OnInit {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
     } else if (indicator.type === 'text') {
-      if (indicator.id === '7') {
-        value = oldValue === true || oldValue === 'No data' ? 'Yes' : 'No';
-      } else {
-        value = oldValue ? oldValue : 'No data';
+        if(oldValue!=undefined){
+          value = oldValue.toString() ? oldValue.toString():'No data available';
+          if(indicator.id==7 || indicator.id==8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
+            value=value=='true'?'Yes':'No';
+          }
       }
     }
     const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Applicable' : value;
@@ -787,12 +797,15 @@ export class ViewerComponent implements OnInit {
       let notPrint = [];
       for (const i of categories) {
         if (i.id === indicator) {
-          const value2 = this.formatValue(i, this.indicatorsSelectedCountry[i.column]);
+          const value2 = this.formatValue(i, this.partnerType==='devpart'?this.indicatorsSelectedCountry[i.devpart]:this.indicatorsSelectedCountry[i.partcntry]);
+          // if(i){
+
+          // }
           const value=(value2=='9999')?"Not Applicable":value2;
-          let cols = [1, 11];
-          if (i.id == '1a' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
-            cols = [3, 9];
-          }
+          // let cols = [1, 11];
+          // if (i.id == '1a' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
+          //   cols = [3, 9];
+          // }
           if (!notPrint.includes(i.id)) {
             this.listIndicator.title=i.footer;
             this.listIndicator.id=i.id;
@@ -827,7 +840,7 @@ export class ViewerComponent implements OnInit {
           let jumps = 0;
           for (const j of i.subcategories) {
             jumps = 1;
-            const subvalue2 = this.formatValue(j, this.indicatorsSelectedCountry[j.column]);
+            const subvalue2 = this.formatValue(j, this.partnerType==='devpart'?this.indicatorsSelectedCountry[j.devpart]:this.indicatorsSelectedCountry[j.partcntry]);
             const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
             this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:subvalue, yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
             // if (j.label.indexOf('Summary') >= 0) {
@@ -954,22 +967,22 @@ export class ViewerComponent implements OnInit {
     this.selectedCountry = false;
   }
   exportCsvViewer(event) {
+    // console.log("export",  this.partnerType); 
     this.loaderService.start();
-    console.log(event.options.category);
     let nameIndicator=(event.options.subcategory!=null)?event.options.subcategory.label:event.options.category.label;
     const lines = [];
     // const headers = ['Country', this.mapTitle];
     const headers = ['Country', nameIndicator];
     lines.push(headers);
-    let column = this.model.category.column;
+    let column = this.partnerType==='devpart'?this.model.category.devpart:this.model.category.partcntry;
     let indicator = this.model.category;
     if (this.model.subcategory != null) {
-      column = this.model.subcategory.column;
+      column = this.partnerType==='devpart'?this.model.subcategory.devpart:this.model.subcategory.partcntry;
       indicator = this.model.subcategory;
     }
     let countriesList = [];
     const self = this;
-    this.mapService.getIndicatorFilterGeoJSON(indicator.column, this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year).subscribe(geojson => {
+    this.mapService.getIndicatorFilterGeoJSON(this.partnerType==='devpart'?this.indicator.devpart:indicator.partcntry, this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year).subscribe(geojson => {
       self.geoJson = geojson;
       for (const feature of self.geoJson.features) {
         const line = [];
@@ -1007,6 +1020,7 @@ export class ViewerComponent implements OnInit {
       self.loaderService.end();
     });
   }
+
   noIsInvalidSelection(category) {
     const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
     if (!validSelection) {
@@ -1221,7 +1235,7 @@ export class ViewerComponent implements OnInit {
       for(let i=0; i<this.dateModal.content.length;i++)
       { column_indicator=column_indicator+indicator.column+'_'+this.dateModal.content[i].id+','; }
         column_query=column_indicator.slice(0, column_indicator.length-1);
-        console.log("para query",column_query, this.country_modal);
+        // console.log("para query",column_query, this.country_modal);
         this.mapService.modalQuery(column_query, this.country_modal).subscribe(val => {
         this.column_indicator = val;
       });

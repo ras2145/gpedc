@@ -241,7 +241,7 @@ export class MapService {
     }
   }
   paintOneCountry(country) {
-    if (this.filterOneCountry.includes(country)) {
+    if (this.filterOneCountry.includes(country,3)) {
       this.filterOneCountry.pop();
       this.map.setFilter('country-fills-click', this.filterOneCountry);
       return false;
