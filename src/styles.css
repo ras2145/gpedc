@@ -2565,9 +2565,12 @@ h2 .pos-default-modal {
   padding-left: 7px;
   cursor: pointer;
   font-size: 14px;
-  position: absolute;
+  /* position: absolute;
   right: 16px;
-  top: 85px;
+  top: 85px; */
+  float: right;
+  margin-top: -45px;
+  margin-right: 16px;
 }
 @media (min-width: 1600px){
   .logo-navbar{
