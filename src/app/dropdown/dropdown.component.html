@@ -2,20 +2,21 @@
 
   <p class="result-subtitle space-view-data">
     <span class="mdi mdi-calendar"></span> Select year
-    <i class="mdi mdi-information" 
+    <i class="mdi mdi-information"
       popover="Global Partnership monitoring data is available for the 2014 and 2016 monitoring rounds. 2010 data is drawn from the Paris
       Declaration on Aid Effectiveness monitoring results, and is available for indicators with comparable methodology to Global
       Partnership monitoring. 2010 data is drawn from the Paris Declaration on Aid Effectiveness monitoring results, and is available
       for indicators with comparable methodology to Global Partnership monitoring."
-      placement="right" 
-      triggers="mouseenter:mouseleave">
+      placement="right"
+      triggers="mouseenter:mouseleave" >
+
     </i>
   </p>
   <div class="row no-gutters">
     <div class="col-md-11">
       <div class="radio">
-        <label *ngFor="let year of getYears()" [ngClass]="{'radio-label-checked' : model.year.year === year.year}" > 
-          <input type = "radio" name = "radio-btn" [value]="year" [(ngModel)] = "model.year" [checked] = "model.year.year === year.year" (change)="changeyearLabel()" /> 
+        <label *ngFor="let year of getYears()" [ngClass]="{'radio-label-checked' : model.year.year === year.year}" >
+          <input type = "radio" name = "radio-btn" [value]="year" [(ngModel)] = "model.year" [checked] = "model.year.year === year.year" (change)="changeyearLabel()" />
           {{year.year}}
         </label>
       </div>
@@ -23,7 +24,7 @@
     <div class="col-md-1 text-right margin-top-btn">
       <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="disabledExport">  <!-->[disabled]="indicator || !mapTitle"<-->
         <i class="mdi mdi-download"></i>
-      </button> 
+      </button>
     </div>
   </div>
 

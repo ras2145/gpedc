@@ -11,7 +11,11 @@
                         <!-- PARTNER-COUNTRY TAB -->
                       <tabset>
                         <tab heading="Partner Country" (select)="changePartnerType('partcntry')">
-
+                          <i class="mdi mdi-information i-info"
+                              popover="Partner Countries include the low and middle-income countries who participate in Global Partnership monitoring."
+                              placement="right"
+                              triggers="mouseenter:mouseleave">
+                          </i>
                           <div class="result-container">
 
                                 <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)" (optionExportCsv)="exportCsvViewer($event)"  [optionsSubject]="optionsSubject"></app-dropdown>

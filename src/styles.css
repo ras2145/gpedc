@@ -2139,7 +2139,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .result-subtitle .popover-body {
-    width: 220px;
+    width: 280px;
 }
 
 .result-subtitle-one .popover-body {
@@ -2557,6 +2557,15 @@ h2 .pos-default-modal {
 }
 .ll-po{
   margin-left: 3px;
+}
+.i-info{
+  color: #9b9b9b;
+  padding-left: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  position: absolute;
+  right: 16px;
+  top: 85px;
 }
 @media (min-width: 1600px){
   .logo-navbar{
