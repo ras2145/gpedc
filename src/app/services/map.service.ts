@@ -281,7 +281,7 @@ export class MapService {
       user_name: SERVER.USERNAME,
       sublayers: [{
         sql: sql,
-        cartocss: '#layer { polygon-fill: #000000; }'
+        cartocss: '#layer { polygon-fill: #555000; }'
       }]
     };
     return tilesOptions;
@@ -344,7 +344,7 @@ export class MapService {
       if (where != '') {
         where = where + ' AND ';
       }
-      where = where + ' upper(' + countryContext + ") = 'YES'";
+      where = where + ' ' + countryContext + " = true";
     }
     if (where != '') {
       sql = sql + ' WHERE ' + where;
@@ -394,7 +394,7 @@ export class MapService {
       if (where != '') {
         where = where + ' AND ';
       }
-      where = where + ' upper(' + countryContext + ") = 'YES'";
+      where = where + ' ' + countryContext + " = true";
     }
     if (where != '') {
       sqlone =  where;
