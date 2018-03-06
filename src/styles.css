@@ -2144,6 +2144,18 @@ body::-webkit-scrollbar-thumb {
 .i-infoo .popover-body {
     width: 260px;
 }
+.popover-header {
+  padding: .5rem .75rem 0rem .75rem !important;
+  margin-bottom: 0 !important;
+  font-size: 12px !important;
+  color: #212529 !important;
+  background-color: #fff !important;
+  border-bottom: 1px solid #fff !important;
+  border-top-left-radius: calc(.3rem - 1px) !important;
+  border-top-right-radius: calc(.3rem - 1px);
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
 .result-subtitle-one .popover-body {
     width: 220px;
 }
