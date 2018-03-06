@@ -978,8 +978,8 @@ td.table-title-left {
 
 .modal-content {
     background-color: #fafafa;
-    left: -50px;
-    top: 120px;
+    left: -54px;
+    top: 95px;
     width: 600px
 }
 
@@ -2141,7 +2141,9 @@ body::-webkit-scrollbar-thumb {
 .result-subtitle .popover-body {
     width: 280px;
 }
-
+.i-infoo .popover-body {
+    width: 260px;
+}
 .result-subtitle-one .popover-body {
     width: 220px;
 }
@@ -2489,7 +2491,7 @@ body::-webkit-scrollbar-thumb {
   padding: 7px 15px;
 }
 .modal-dialog {
-    max-width: 500px;
+  max-width: 500px;
 }
 
 .mm-lo{
