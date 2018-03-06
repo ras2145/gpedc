@@ -246,6 +246,10 @@ export class ViewerComponent implements OnInit {
           } else if (!self.mapUrlProfile.includes('http://')) {
             self.mapUrlProfile = 'http://' + self.mapUrlProfile;
           }
+          if (self.mapUrlProfile === 'http://') {
+            self.mapUrlProfile = '#';
+          }
+          console.log('COUNTRY PDF URL ', self.mapUrlProfile);
           const point = event.point ? event.point : [self.mapService.map.getCanvas().width / 2, self.mapService.map.getCanvas().height / 2];
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
