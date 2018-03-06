@@ -116,8 +116,10 @@ export class DropdownComponent implements OnInit, OnChanges {
     this.changeIndicatorEmit();
   }
   noIsInvalidSelection(category) {
+    const modificYear = category.column.substr(1, 4).trim();
+    // tslint:disable-next-line:max-line-length
     const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
-    if (!validSelection) {
+    if (!validSelection || modificYear === '2010') {
       this.subDropdown = false;
     } else {
       this.subDropdown = category;
