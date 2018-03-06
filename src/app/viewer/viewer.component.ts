@@ -207,7 +207,11 @@ export class ViewerComponent implements OnInit {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
           layers: ['country-fills']
         });
+<<<<<<< Updated upstream
         //console.log('COUNTRIES',countries);
+=======
+        // console.log('COUNTRIES',countries);
+>>>>>>> Stashed changes
     //     const column=Object.keys(countries[0].properties);
     // for(var i=0;i<column.length;i++) {
     //   const val=(countries[0].properties[column[i]]).toString();
@@ -217,7 +221,8 @@ export class ViewerComponent implements OnInit {
     // }
         if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]?countries[0].properties[countries[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999") {
           this.countryName = countries[0].properties.country;
-          this.getTextPopUp(this.countryName);
+          console.log('--> ', this.countryName);
+          // this.getTextPopUp(this.countryName);
         } else {
           this.countryName = 'Country-not';
           this.popupText = '';
@@ -348,11 +353,16 @@ export class ViewerComponent implements OnInit {
         }
       });
     }
+    console.log('-->  !! --> ', ind);
 
     if (ind === '1a') {
       ind = ind.replace('a', '');
     }
-    ind = `_${year}_${ind}`;
+
+    const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
+    console.log('--> parnet type --> ---> ', columnCat);
+    ind = columnCat;
+    // ind = `_${year}_${ind}`;
     if (index !== -1) {
       ind = `${ind}_${index}`;
     }
