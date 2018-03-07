@@ -2588,6 +2588,9 @@ h2 .pos-default-modal {
   width: 210px !important;
   font-size: 12px;
 }
+.iconIndicator .tooltip-inner, .nav-tool .tooltip-inner{
+      text-align: left !important;
+}
 .nav-tool .tooltip{
   /* width: 210px !important; */
   font-size: 12px;
