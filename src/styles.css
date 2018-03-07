@@ -2566,7 +2566,7 @@ h2 .pos-default-modal {
     width: 75%;
 }
 .iconIndicator img{
-  width: 86px;
+  height: 86px;
 }
 .ll-po{
   margin-left: 3px;
@@ -2582,6 +2582,14 @@ h2 .pos-default-modal {
   float: right;
   margin-top: -45px;
   margin-right: 16px;
+}
+.iconIndicator .tooltip{
+  width: 210px !important;
+  font-size: 12px;
+}
+.nav-tool .tooltip{
+  /* width: 210px !important; */
+  font-size: 12px;
 }
 @media (min-width: 1600px){
   .logo-navbar{
