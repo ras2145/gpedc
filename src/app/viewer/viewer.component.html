@@ -23,7 +23,7 @@
                                 <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)" (optionExportCsv)="exportCsvViewer($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
                                 <div class="iconIndicator" *ngIf="iconIndicator"> 
                                    <img src="assets/0001.png" > 
-                                   <img [src]="getImage()" tooltip="This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment. "  placement="right"> 
+                                   <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right"> 
                                 </div>
 
                             <div class="form-group">

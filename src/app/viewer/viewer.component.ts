@@ -1161,13 +1161,17 @@ export class ViewerComponent implements OnInit {
     this.sendTitle();
   }
   getImage() {
-    console.log('HELO');
     if(this.model.category.id ==='8' ) {
-      console.log('888888888888888888');
       return 'assets/icon5.svg';
-    } else if (this.model.category.id === '1a') {
-      console.log('1111111111111aaaaaaaa');
+    } else if (this.model.category.id === '1a') {    
       return 'assets/icon17.svg';
+    }
+  }
+  getTextIcon() {
+    if(this.model.category.id ==='8' ) {
+      return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
+    } else if (this.model.category.id === '1a') {
+      return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
     }
   }
   sendTitle() {
