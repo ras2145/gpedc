@@ -102,9 +102,10 @@ img.logo.panel-1 {
 }
 
 .navbar p {
-    font-size: 11px;
-    padding-top: 16px;
-    padding-left: 20px;
+  font-size: 11px;
+  padding-top: 18px;
+  padding-left: 20px;
+  line-height: 1;
 }
 
 .col-wd {
