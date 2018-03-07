@@ -182,24 +182,28 @@
                                   <!-- ACORDION -->
                                   <div class="acordion">
                                     <accordion>
-                                      <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)">
-                                        <div accordion-heading class="clearfix">
-                                          {{partnerGroup.name}}
-                                          <span class="float-right pull-right">
-                                            <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
-                                            <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
-                                          </span>
-                                        </div>
-                                        <table class="table table-sm">
-                                          <tbody>
-                                            <tr *ngFor="let partner of partnerGroup.partners">
-                                              <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
-                                              <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
-                                              <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </accordion-group>
+                                        <!-- <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)"> -->
+                                        <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open">
+                                            <div accordion-heading class="clearfix">
+                                                {{partnerGroup.name}}
+                                                <span class="float-right pull-right">
+                                                    <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
+                                                    <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
+                                                </span>
+                                            </div>
+                                            <table class="table table-sm">
+                                                <tbody>
+                                                    <div *ngIf="partnerGroup.open; then thenpass"> </div>
+                                                    <ng-template #thenpass>
+                                                        <tr *ngFor="let partner of partnerGroup.partners">
+                                                            <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
+                                                            <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
+                                                            <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </tbody>
+                                            </table>
+                                        </accordion-group>
                                     </accordion>
                                       <br>
                                   </div>
