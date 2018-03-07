@@ -1124,6 +1124,9 @@ export class ViewerComponent implements OnInit {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator  && this.model.category.title) {
       this.mapTitle = this.model.category.title;
+      if (this.model.category.id === '7') {
+        this.mapTitle = 'Indicator 7: Are ' + this.model.category.title.replace('Indicator 7: According to Global Partnership criteria, are', '');
+      }
     } else {
       this.mapTitle = '';
     }
