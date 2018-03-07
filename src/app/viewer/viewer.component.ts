@@ -1146,18 +1146,29 @@ export class ViewerComponent implements OnInit {
   }
   updateMapTitle() {
     this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
-    //console.log('title error', this.model);
+    console.log('ICON', this.iconIndicator);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator  && this.model.category.title) {
       this.mapTitle = this.model.category.title;
       if (this.model.category.id === '7') {
-        this.mapTitle = 'Indicator 7: Are ' + this.model.category.title.replace('Indicator 7: According to Global Partnership criteria, are', '');
+        this.mapTitle = 'Indicator 7: Are ' +
+        this.model.category.title.replace('Indicator 7: According to Global Partnership criteria, are', '');
       }
     } else {
       this.mapTitle = '';
     }
     this.sendTitle();
+  }
+  getImage() {
+    console.log('HELO');
+    if(this.model.category.id ==='8' ) {
+      console.log('888888888888888888');
+      return 'assets/icon5.svg';
+    } else if (this.model.category.id === '1a') {
+      console.log('1111111111111aaaaaaaa');
+      return 'assets/icon17.svg';
+    }
   }
   sendTitle() {
     const send = {

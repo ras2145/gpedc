@@ -563,8 +563,14 @@ export class MapService {
     });
   }
   iconIndicator_1_8(indicator) {
-    if (indicator === '1a' || indicator === '8') {
-      const text = '<img src="assets/' + 'indicator' + indicator + '.png" > ';
+      let text = '<img src="assets/0001.png" > ';
+    if (indicator === '1a') {
+       text = text + ' <img src="assets/' + 'icon17.svg" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="right" > ';
+      return text;
+    } else if ( indicator === '8') {
+       text = text + ' <img src="assets/' + 'icon5.svg" ' +
+      'tooltip="This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment. " ' +
+      'placement="right"> ';
       return text;
     } else {
       return '';

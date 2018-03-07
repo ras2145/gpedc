@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
     this.titleSubject.subscribe(event => {
       this.indicator = event.indicator ;
       this.mapTitle = event.mapTitle ;
-      console.log('cambio', event.indicator);
+      console.log('cambio', event.mapTitle);
     });
   }
   ngAfterViewInit () {
