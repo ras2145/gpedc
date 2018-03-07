@@ -573,8 +573,11 @@
                     <ng-template #thenBlock>
                         <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator)">
                             <!-- Show indicator 1 tp 4 without displaing data -->
-                            <p [innerHTML]="htmlIndicator(indicator)">
-                            </p>
+                            <div *ngIf="false"> 
+                                    <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon(indicator.id)"  placement="right"> 
+                            </div>
+                                <p [innerHTML]="htmlIndicator(indicator)">
+                            
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         </td>
                         <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator)">
@@ -586,8 +589,13 @@
                         <div *ngIf = "availableCountryRow(indicator); then thenPassIndicator"></div>
                         <ng-template #thenPassIndicator>
                           <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator)">
-                              <p [innerHTML]="htmlIndicator(indicator)">
-                            </p>
+                                <div *ngIf="false"> 
+                                        <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon()"  placement="right"> 
+                                </div>
+                                
+                                        <p [innerHTML]="htmlIndicator(indicator)">
+                                
+                            
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
                           </td>
                           <td width="4%"></td>
