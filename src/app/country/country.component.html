@@ -576,9 +576,10 @@
                             <div *ngIf="false"> 
                                     <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon(indicator.id)"  placement="right"> 
                             </div>
-                                <p [innerHTML]="htmlIndicator(indicator)">
-                            
+                                <div [innerHTML]="htmlIndicator(indicator)"></div>
+                            <p>
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
+                        </p>
                         </td>
                         <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator)">
                             <div class="back-title"></div>
@@ -590,10 +591,10 @@
                         <ng-template #thenPassIndicator>
                           <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator)">
                                 <div *ngIf="false"> 
-                                        <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon()"  placement="right"> 
+                                    <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon()"  placement="right"> 
                                 </div>
                                 
-                                        <p [innerHTML]="htmlIndicator(indicator)">
+                                    <p [innerHTML]="htmlIndicator(indicator)">
                                 
                             
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(template)"></i>
@@ -694,103 +695,6 @@
             </div>
           </div>
         </div>
-        <!-- MODAL TABLA -->
-
-        <!-- Fila para mostrar resultado
-        <div class="row-table">
-            <div class="col-table r-boder">
-                % of new development interventions that draw objectives from country-led results frameworks
-                <a href="#" class="icon-table"><i class="mdi mdi-information"></i></a>
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table"></div>
-        </div>-->
-        <!-- Fila para mostrar resultado
-        <div class="row-table">
-            <div class="col-table r-boder">
-                % of new development interventions that draw objectives from country-led results frameworks
-                <a href="#" class="icon-table"><i class="mdi mdi-information"></i></a>
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table"></div>
-        </div>-->
-        <!-- Fila para mostrar resultado
-        <div class="row-table">
-            <div class="col-table r-boder">
-                % of new development interventions that draw objectives from country-led results frameworks
-                <a href="#" class="icon-table"><i class="mdi mdi-information"></i></a>
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table"></div>
-        </div>-->
-
-        <!-- Fila titulo
-        <div class="row-table-title">
-            <div class="col-table">
-                <span>Indicator 2a:</span> Do development partners use countries' own results frameworks and evaluation processes?
-                <a href="#" class="icon-table"><i class="mdi mdi-information"></i></a>
-            </div>
-            <div class="col-table"></div>
-            <div class="col-table"></div>
-            <div class="col-table"></div>
-        </div> -->
-        <!-- Fila para mostrar resultado
-        <div class="row-table">
-            <div class="col-table r-boder">
-                % of new development interventions that draw objectives from country-led results frameworks
-                <a href="#" class="icon-table"><i class="mdi mdi-information"></i></a>
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table"></div>
-        </div>-->
-        <!-- Fila para mostrar resultado
-        <div class="row-table">
-            <div class="col-table r-boder">
-                % of new development interventions that draw objectives from country-led results frameworks
-                <a href="#" class="icon-table"><i class="mdi mdi-information"></i></a>
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                94.1%
-            </div>
-            <div class="col-table text">
-                No data available
-            </div>
-            <div class="col-table"></div>-->
     </div>
 
 </div>
