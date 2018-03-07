@@ -122,6 +122,7 @@ export class ViewerComponent implements OnInit {
   column_indicator=[{}];
   column_content:'';
   country_modal:'';
+  country_before:'';
   iconIndicator;
   modalRef: BsModalRef;
 
@@ -208,14 +209,6 @@ export class ViewerComponent implements OnInit {
         const countries = self.mapService.map.queryRenderedFeatures(event.point, {
           layers: ['country-fills']
         });
-        // console.log('COUNTRIES',countries);
-    //     const column=Object.keys(countries[0].properties);
-    // for(var i=0;i<column.length;i++) {
-    //   const val=(countries[0].properties[column[i]]).toString();
-    //   if (val=="9999") {
-    //     countries[0].properties[column[i]]="Not Applicable";
-    //   }
-    // }
         if((countries[0].properties[countries[0]['layer'].paint['fill-color'].property]?countries[0].properties[countries[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999") {
           this.countryName = countries[0].properties.country;
           this.getTextPopUp(this.countryName);
@@ -228,9 +221,11 @@ export class ViewerComponent implements OnInit {
         this.countryName = 'Country';
         this.popupText = '';
       });
+
       this.mapService.clickCountry(event => {
+        this.selectedCountry=null;
         console.log('CLICK ', event);
-        if (this.selectedTab === 'tab1') {
+        // if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
             for (let feature1 of event.features) {
@@ -256,50 +251,55 @@ export class ViewerComponent implements OnInit {
           // if (selectedCountry.length === 0 ) {
           //     selectedCountry[0] = feature;
           // }
-          // console.log('SELECTED COUYNTRY', selectedCountry,"valor", selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property] );
           selectedCountry[0] = feature;
           this.country_modal = feature.properties['country'];
 
-          console.log('VALUE THAT CHANGE', selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]);
-          if(((selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]?selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]:"null").toString()!="9999"))
-          {
-            this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-          }
-          // console.log("select-paint", selectedCountry[0].properties.country);
-          this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-          if (this.selectedCountry) {
-            this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
-            this.categoriesNotNull = [];
-            setTimeout(() => {
-              this.getCategoriesNotNull();
-              console.log("getcate", this.categoriesNotNull);
-              for (let ind of this.categoriesNotNull){
-                if (ind.id == this.model.category.id){
-                  this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
-                  break;
-                } else {
-                  this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
+          if(this.country_before!=feature.properties['country']){        
+            if((Math.round(Number(selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property])).toString())!='9999' )
+            {
+              console.log('VALUE THAT CHANGE', selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]);
+              this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+            } 
+            if (this.selectedCountry) {
+              this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
+              this.categoriesNotNull = [];
+              setTimeout(() => {
+                this.getCategoriesNotNull();
+                console.log("getcate", this.categoriesNotNull);
+                for (let ind of this.categoriesNotNull){
+                  if (ind.id == this.model.category.id){
+                    this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
+                    break;
+                  } else {
+                    this.indicatorSelectedFooter = this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id;
+                  }
                 }
-              }
-              this.getIndicator(this.indicatorSelectedFooter);
-            }, 100);
-          } else {
-            this.indicatorSelectedFooter = this.model.year.categories[0].id;
+                this.getIndicator(this.indicatorSelectedFooter);
+              }, 100);
+            } else {
+              this.mapService.resetClickLayer();
+              this.indicatorSelectedFooter = this.model.year.categories[0].id;
+            }
+            this.country_before=feature.properties['country'];
+          }else{
+            this.mapService.resetClickLayer();
+            this.country_before='';
           }
-        } else if (this.selectedTab === 'tab2') {
-          const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
-            layers: ['country-fills']
-          });
-          let send = 'bad';
-          if (!this.countryComparer.firstCountry) {
-            send = 'first';
-          } else if (!this.countryComparer.secondCountry) {
-            send = 'second';
-          }
-          const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
-          this.countryComparer.firstCountry = aux[0];
-          this.countryComparer.secondCountry = aux[1];
-        }
+        // } 
+        // else if (this.selectedTab === 'tab2') {
+        //   const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
+        //     layers: ['country-fills']
+        //   });
+        //   let send = 'bad';
+        //   if (!this.countryComparer.firstCountry) {
+        //     send = 'first';
+        //   } else if (!this.countryComparer.secondCountry) {
+        //     send = 'second';
+        //   }
+        //   const aux = self.mapService.paintTwoCountry(selectedCountry[0].properties.country, send);
+        //   this.countryComparer.firstCountry = aux[0];
+        //   this.countryComparer.secondCountry = aux[1];
+        // }
       });
       this.loaderService.end();
     });
@@ -358,12 +358,12 @@ export class ViewerComponent implements OnInit {
     const columnCat = this.getColumn();
     // console.log('--> ', columnCat);
     // const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
-    console.log('--> ', columnCat);
+    // console.log('--> ', columnCat);
     // ind = columnCat;
     const options = columnCat.toString().slice(6);
     const yearone = year;
     ind = '_' + year + '_' + options;
-    console.log('options --> ', ind);
+    // console.log('options --> ', ind);
     // console.log('--> column cat', columnCat);
     // if (ind !== '7') {
     //   const options = columnCat.toString().slice(9, 18);
@@ -411,6 +411,7 @@ export class ViewerComponent implements OnInit {
   closeFooter() {
     this.mapService.paintOneCountry(this.selectedCountry);
     this.selectedCountry = null;
+    this.mapService.resetClickLayer();
   }
 
   selectTab(event) {
@@ -601,7 +602,7 @@ export class ViewerComponent implements OnInit {
       if (this.model.category != null) {
         console.log(this.model);
         const column = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
-        console.log('COLUMN ',column, indicator);
+        // console.log('COLUMN ',column, indicator);
         this.mapService.filterNotNull(indicator);
       }
       this.loaderService.end();
@@ -614,13 +615,13 @@ export class ViewerComponent implements OnInit {
     const indicator = this.model.category;
     const subindicator = this.model.subcategory;
     let column = '';
-    console.log(this.model);
+    // console.log(this.model);
     if ( subindicator ) {
       column = this.partnerType === 'devpart' ? this.model.subcategory.devpart : this.model.subcategory.partcntry;
     } else if ( indicator ) {
       column = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
     }
-    console.log('COLUMN',column);
+    // console.log('COLUMN',column);
     return column;
   }
   getCategoriesNotNull() {
@@ -722,10 +723,10 @@ export class ViewerComponent implements OnInit {
             }
         }
     }
-    if(Number(value).toString()=='9999')
-    {
-      value='No data available';
-    }
+    // if(Number(value).toString()=='9999')
+    // {
+    //   value='No data available';
+    // }
     return value;
   }
   formatValuePopUp(indicator, oldValue) {
@@ -754,24 +755,8 @@ export class ViewerComponent implements OnInit {
         }
       }
     }
-    // if (indicator.type === 'percent' && oldValue!=9999) {
-    //   const previousValue = oldValue;
-    //   oldValue = oldValue * 100;
-    //   value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data';
-    // } else if (indicator.type === 'number') {
-    //   value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
-    // } else 
-    //   if (indicator.type === 'text') {
-    //     console.log('pass--------------');
-    //     if(oldValue!=undefined){
-    //       value = oldValue.toString() ? oldValue.toString():'No data available';
-    //       if(indicator.id==7 || indicator.id==8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
-    //         value=value=='true'?'Yes':'No';
-    //     } 
-    //   }
-    // }
-    // const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Applicable' : value;
-    return value;
+    const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Data' : value;
+    return val;
   }
   checkIfString(val) {
     return typeof val === 'string';
@@ -840,7 +825,7 @@ export class ViewerComponent implements OnInit {
             this.listIndicator.noText=(i.noText)?i.noText:'';
             if(i.subcategories.length==0)
             {
-              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:value, yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:''});
+              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:(value!='Not Applicable' && value!='No data available')?value:'', yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:''});
             }
             // if (value === 'Yes') {
             //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.yesText + '</div>';
@@ -869,7 +854,7 @@ export class ViewerComponent implements OnInit {
             jumps = 1;
             const subvalue2 = this.formatValue(j, this.partnerType==='devpart'?this.indicatorsSelectedCountry[j.devpart]:this.indicatorsSelectedCountry[j.partcntry]);
             const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
-            this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:subvalue, yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
+            this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:(subvalue!='Not Applicable' && subvalue!='No data available')?subvalue:'', yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
             // if (j.label.indexOf('Summary') >= 0) {
             //   continue;
             // }
@@ -1144,7 +1129,7 @@ export class ViewerComponent implements OnInit {
   zoomOut() {
     this.mapService.zoomOut();
   }
-  updateMapTitle() {
+updateMapTitle() {
     this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
     console.log('ICON', this.iconIndicator);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
@@ -1170,6 +1155,7 @@ export class ViewerComponent implements OnInit {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
     }
   }
+
   sendTitle() {
     const send = {
       mapTitle: this.mapTitle,
@@ -1182,6 +1168,7 @@ export class ViewerComponent implements OnInit {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   selectSid(sidCountry) {
+    console.log("jejesids");
     this.closeFooter();
     this.isSmallStateSelected = true;
     this.selectedSidCountry = sidCountry;
