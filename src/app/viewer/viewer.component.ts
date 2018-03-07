@@ -381,6 +381,7 @@ export class ViewerComponent implements OnInit {
         return ele.country === country;
       })[0];
       if (countryQuery && countryQuery.hasOwnProperty(ind)) {
+        // console.log('indiator --> ', ind, '---> ', countryQuery, '...> ',category);
         return this.formatValuePopUp(category, countryQuery[ind]);
       }
     }
@@ -728,23 +729,49 @@ export class ViewerComponent implements OnInit {
     return value;
   }
   formatValuePopUp(indicator, oldValue) {
+    // console.log('indictor --> ', indicator, 'olvalue ---> ', oldValue);
     let value = '';
-    if (indicator.type === 'percent' && oldValue!=9999) {
+    if (indicator.type === 'percent' && oldValue != 9999) {
       const previousValue = oldValue;
       oldValue = oldValue * 100;
       value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data';
-    } else if (indicator.type === 'number') {
-      value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
-    } else if (indicator.type === 'text') {
-        if(oldValue!=undefined){
-          value = oldValue.toString() ? oldValue.toString():'No data available';
-          if(indicator.id==7 || indicator.id==8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
-            value=value=='true'?'Yes':'No';
+    } else {
+      if (indicator.type === 'number') {
+        value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
+      } else {
+        if (indicator.type === 'text') {
+          if (oldValue === null || oldValue === '9999') {
+            value = 'No data';
+          } else {
+            let valueBol = oldValue.toString();
+            if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
+              valueBol = (oldValue ? ' Yes' : 'No');
+              console.log('valoes true false', valueBol);
+              oldValue = valueBol;
+            } 
+            value = oldValue ? (valueBol) : 'No data';
           }
+        }
       }
     }
-    const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Applicable' : value;
-    return val;
+    // if (indicator.type === 'percent' && oldValue!=9999) {
+    //   const previousValue = oldValue;
+    //   oldValue = oldValue * 100;
+    //   value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data';
+    // } else if (indicator.type === 'number') {
+    //   value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data';
+    // } else 
+    //   if (indicator.type === 'text') {
+    //     console.log('pass--------------');
+    //     if(oldValue!=undefined){
+    //       value = oldValue.toString() ? oldValue.toString():'No data available';
+    //       if(indicator.id==7 || indicator.id==8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
+    //         value=value=='true'?'Yes':'No';
+    //     } 
+    //   }
+    // }
+    // const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Applicable' : value;
+    return value;
   }
   checkIfString(val) {
     return typeof val === 'string';
