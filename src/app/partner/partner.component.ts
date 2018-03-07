@@ -315,6 +315,13 @@ export class PartnerComponent implements OnInit {
   htmlIndicator(indicator){
     return this.generateIndicatorsService.htmlIndicatorFunction(indicator);
   }
+  getImage(indicator) {
+    if(indicator.id ==='8' ) {
+      return 'assets/icon5.svg';
+    } else if (indicator.id === '1a') {    
+      return 'assets/icon17.svg';
+    }
+  }
   getTextIcon(indicator) {
     if(indicator.id ==='8' ) {
       return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';

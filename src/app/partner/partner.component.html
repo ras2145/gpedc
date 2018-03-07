@@ -718,7 +718,7 @@
                             <div class="iconIndicator" *ngIf="indicator.icon2">
                                 <div class="div-img-two" >
                                     <img src="assets/{{indicator.icon}}" class="icon-indicator">
-                                    <img src="assets/{{indicator.icon2}}" width="47px" class="ll-po" [tooltip]="getTextIcon(indicator)" placement="right">
+                                    <img [src]="getImage(indicator)"  width="47px" class="ll-po" [tooltip]="getTextIcon(indicator)" placement="right">
                                 </div>
                                 <article class="article-img-two" [innerHTML]="indicator.comparison"></article>  
                             </div>
@@ -743,7 +743,7 @@
                             <div class="iconIndicator" *ngIf="indicator.icon2">
                                 <div class="div-img-two" >
                                     <img src="assets/{{indicator.icon}}" class="icon-indicator">
-                                    <img src="assets/{{indicator.icon2}}" width="47px" class="ll-po" [tooltip]="getTextIcon(indicator)" placement="right">
+                                    <img [src]="getImage(indicator)"  width="47px" class="ll-po" [tooltip]="getTextIcon(indicator)" placement="right">
                                 </div>
                                 <article class="article-img-two" [innerHTML]="indicator.comparison"></article>  
                             </div>
