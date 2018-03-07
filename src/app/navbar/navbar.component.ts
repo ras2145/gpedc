@@ -73,4 +73,14 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
       this.tutorial[i] = false;
     }
   }
+  alinear(){
+    console.log("class:",this.mapTitle.substr(0,11),"l"); 
+    if(this.mapTitle.substr(0,11) =='Indicator 7')
+    {
+      return 'text-exception';
+    }
+    else{
+      return 'text-regular';
+    }
+  }
 }

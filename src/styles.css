@@ -100,12 +100,16 @@ img.logo.panel-1 {
     background: #252e47;
     height: 52px;
 }
-
 .navbar p {
   font-size: 12px;
-  padding-top: 18px;
   padding-left: 20px;
-  line-height: 1;
+   line-height: 1; 
+}
+.text-regular{
+  padding-top: 18px;
+}
+.text-exception{
+  padding-top: 13px;
 }
 
 .col-wd {
