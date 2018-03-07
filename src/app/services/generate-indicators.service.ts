@@ -169,6 +169,7 @@ export class GenerateIndicatorsService {
     saveAs(blob, fileName + '.csv');
   }
   htmlIndicatorFunction(indicator) {
+    // console.log("ind2",indicator.icon2);
     if (indicator.icon2) {
       return '<div class="div-img-two"><img src="assets/'+indicator.icon+'"class="icon-indicator"><img src="assets/'+indicator.icon2+'" width="47px" class="ll-po"></div><article class="article-img-two">'+indicator.comparison+'</article>'; 
     }else {

@@ -236,4 +236,11 @@ export class CountryComponent implements OnInit {
       return  ((this.column_indicator[0][this.column_content+'_'+id]).toString()!='9999')?true:false;
     }
   }
+  getTextIcon(indicator) {
+    if(indicator.id ==='8' ) {
+      return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
+    } else if (indicator.id === '1a') {
+      return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
+    }
+  }
 }

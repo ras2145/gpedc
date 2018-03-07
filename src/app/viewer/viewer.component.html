@@ -22,7 +22,7 @@
 
                                 <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)" (optionExportCsv)="exportCsvViewer($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
                                 <div class="iconIndicator" *ngIf="iconIndicator"> 
-                                   <img src="assets/0001.png" > 
+                                   <!-- <img src="assets/0001.png" >  -->
                                    <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right"> 
                                 </div>
 
@@ -168,7 +168,10 @@
                           </div>
                           <div class="result-container">
                               <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject" (optionExportCsv)="exportCsvViewer($event)"></app-dropdown>
-                              <div class="iconIndicator"  [innerHtml] = "iconIndicator"> </div>
+                                <div class="iconIndicator" *ngIf="iconIndicator"> 
+                                   <!-- <img src="assets/0001.png" >  -->
+                                   <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right"> 
+                                </div>
                               <div class="padding-top-line">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER
                                     <!-- <i class="mdi mdi-information"
