@@ -26,6 +26,7 @@ export class DropdownComponent implements OnInit, OnChanges {
   subDropdown: any;
   subIndicator = false;
   disabledExport:boolean=true;
+  valueSubindicator: any;
   model = {
     year: {
       year: '2016',
@@ -137,6 +138,7 @@ export class DropdownComponent implements OnInit, OnChanges {
     this.indicator = false;
     this.disabledExport=false;
     this.changeEmit();
+    this.valueSubindicator = this.selecSubIndicator4(category, subcategory);
   }
   unselectSubCategory() {
     this.subIndicator = true;
@@ -175,5 +177,18 @@ export class DropdownComponent implements OnInit, OnChanges {
     console.log('Indicator ' + this.indicator);
     console.log('SubIndicator ' + this.subIndicator);
     console.log(this.model !== null);
+  }
+  selecSubIndicator4 (category, subcategory) {
+    if (category.id === '4') {
+      if (subcategory.column === '_2016_4_3') {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      if (category.id === '1a') {
+        return false;
+      }
+    }
   }
 }
