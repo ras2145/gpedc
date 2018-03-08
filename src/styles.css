@@ -2599,6 +2599,22 @@ h2 .pos-default-modal {
   /* width: 210px !important; */
   font-size: 12px;
 }
+.i-info-label {
+  color: #9b9b9b;
+  padding-left: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  float: right;
+  margin-top: -20px;
+  /* margin-right: -86px; */
+}
+.label-size{
+  width: 100%;
+}
+.p-01{
+  margin: 0px !important;
+  height: 0px;
+}
 @media (min-width: 1600px){
   .logo-navbar{
       margin:0px !important;
