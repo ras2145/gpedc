@@ -286,17 +286,49 @@ export class MapService {
     };
     return tilesOptions;
   }
-  getCountriesYearQuery(year: string): string {
-    const sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
+  getCountriesYearQuery(year: string, categories: any, partnerType: string): string {
+    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
+    sql = sql + this.getDevPartCondition(categories, partnerType);
     return sql;
   }
-  getCountriesYearGeoJSON(year: string): Observable<any> {
+  getDevPartCondition(categories: any, partnerType: string) {
+    let res = ' AND ( ';
+    for ( const cat of categories) {
+
+      for (const sub of cat.subcategories) {
+        if ( partnerType === 'devpart') {
+          if (sub.devpart !== '') {
+            res += ' ' + sub.devpart + '::text != \'9999\'  OR';
+          }
+        } else {
+          if (sub.partcntry !== '') {
+            res += ' ' + sub.partcntry + '::text != \'9999\'  OR';
+          }
+        }
+      }
+
+      if ( partnerType === 'devpart') {
+        if (cat.devpart !== '') {
+          res += ' ' + cat.devpart + '::text != \'9999\' OR';
+        }
+      } else {
+        if (cat.partcntry !== '') {
+          res += ' ' + cat.partcntry + '::text != \'9999\'  OR';
+        }
+      }
+    }
+    res = res.substring(0, res.length - 2);
+    res += ')';
+    console.log(' RES ', res);
+    return res;
+  }
+  /*getCountriesYearGeoJSON(year: string): Observable<any> {
     const sql = this.getCountriesYearQuery(year);
     const query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
-  }
+  }*/
   mapTiles(tilesUrl, error) {
     if (tilesUrl == null) {
       console.log("error: ", error.errors.join('\n'));
@@ -309,8 +341,8 @@ export class MapService {
     console.log("url template is ", tilesUrls);
     return tilesUrls;
   }
-  getCountriesYearVectorUrl(year: string): Observable<any> {
-    const sql = this.getCountriesYearQuery(year);
+  getCountriesYearVectorUrl(year: string, categories: any, partnerType: string): Observable<any> {
+    const sql = this.getCountriesYearQuery( year, categories, partnerType );
     const tilesOptions = this.getVectorTilesOptions(sql);
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);

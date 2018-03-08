@@ -198,7 +198,7 @@ export class ViewerComponent implements OnInit {
       this.mapTitle = '';
       this.setColor();
       this.loaderService.start();
-      this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+      this.mapService.getCountriesYearVectorUrl(this.model.year.year,this.model.year.categories, this.partnerType).subscribe(tiles => {
         self.mapService.buildVectorSource(tiles);
         self.geoJson = tiles;
         this.loaderService.end();
@@ -311,7 +311,7 @@ export class ViewerComponent implements OnInit {
     this.countryComparer.firstCountry = '';
     this.countryComparer.secondCountry = '';
     this.loaderService.start();
-    this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+    this.mapService.getCountriesYearVectorUrl(this.model.year.year,this.model.year.categories,this.partnerType).subscribe(tiles => {
       this.mapService.updateVectorSource(tiles);
       this.loaderService.end();
     }, error => {
@@ -439,7 +439,7 @@ export class ViewerComponent implements OnInit {
           this.model.countryContext = this.countryContexts[0];
           this.model.incomeGroup = this.incomeGroups[0];
           this.loaderService.start();
-          this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+          this.mapService.getCountriesYearVectorUrl(this.model.year.year,this.model.year.categories,this.partnerType).subscribe(tiles => {
             this.mapService.updateVectorSource(tiles);
             this.loaderService.end();
           }, error => {
@@ -555,13 +555,14 @@ export class ViewerComponent implements OnInit {
     } else {
       this.validIndicator = false;
       this.loaderService.start();
-      this.mapService.getCountriesYearVectorUrl(this.model.year.year).subscribe(tiles => {
+      this.mapService.getCountriesYearVectorUrl(this.model.year.year,this.model.year.categories,this.partnerType).subscribe(tiles => {
         this.loaderService.end();
         this.mapService.updateVectorSource(tiles);
       }, error => {
         this.loaderService.end();
       });
     }
+    
     this.setColor();
     return y.year;
   }
