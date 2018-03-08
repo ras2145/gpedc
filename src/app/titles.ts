@@ -97,8 +97,8 @@ export let titles = [
         "precision": "1",
         "footer": "Indicator 9b: Use of partner countries’ own public financial management and procurement systems to deliver development co-operation",
         "comparison": "<font color=\"black\"�> Indicator 9b: </font> Use of partner countries’ public financial management and procurement systems to deliver development co-operation",
-        "partcntry": "_2010_9b",
-        "devpart": "_2010_9b",
+        "partcntry": "_2010_9b_partcntry",
+        "devpart": "_2010_9b_devpart",
         "icon": "icon-4.svg",
         "icon2": ""
       },
