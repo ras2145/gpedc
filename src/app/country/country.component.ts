@@ -43,6 +43,7 @@ export class CountryComponent implements OnInit {
   countries: any;
   column_indicator=[{}];
   column_content:'';
+  // othermodel={};
   constructor(private generateIndicatorsService: GenerateIndicatorsService,
   private modalService: BsModalService) { }
   private indicator2Exceptions;
@@ -54,11 +55,11 @@ export class CountryComponent implements OnInit {
     });
     this.titles = titles;
     console.log("UND",titles);
-    this.titles[2].categories.splice(3, 1);
-    for (let i = 0; i < 5; ++i ) {
-      this.titles[0].categories[2].subcategories.splice(this.titles[0].categories[2].subcategories[0], 1);
-    }
     this.resetComparer();
+    // this.titles[2].categories.splice(3, 1);
+    // for (let i = 0; i < 5; ++i ) {
+    //   this.titles[0].categories[2].subcategories.splice(this.titles[0].categories[2].subcategories[0], 1);
+    // }
     this.year = '2016';
 
     this.model.year = this.titles[2];
@@ -146,7 +147,7 @@ export class CountryComponent implements OnInit {
     }
   }
   tabsToShow(category) {
-    return (category === '1a' || category === '2' || category === '3');
+    return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   tabsToShowTwo(category) {
     // tslint:disable-next-line:max-line-length
