@@ -43,6 +43,8 @@ export class CountryComponent implements OnInit {
   countries: any;
   column_indicator=[{}];
   column_content:'';
+  partnerType = '';
+  partnerTypeSecond = '';
   // othermodel={};
   constructor(private generateIndicatorsService: GenerateIndicatorsService,
   private modalService: BsModalService) { }
@@ -94,7 +96,7 @@ export class CountryComponent implements OnInit {
         });
         for (const ele of countryComparison[key][arrays]) {
           this.countrySelectors[size - 1]['value'].push({
-            value: ele, label: ele
+            value: ele, label: ele, partnerType:arrays
           });
         }
       }
@@ -112,6 +114,8 @@ export class CountryComponent implements OnInit {
         return;
       }
       this.countries.firstCountry = event.value;
+      this.partnerType=(event.partnerType === 'Partner Country')? 'partcntry': 'devpart';
+      // this.partnerType=event.partnerType;
     } else {
       if (event.value === this.countryComparer.firstCountry) {
         setTimeout(() => {
@@ -121,7 +125,9 @@ export class CountryComponent implements OnInit {
         return;
       }
       this.countries.secondCountry = event.value;
+      this.partnerTypeSecond=(event.partnerType === 'Partner Country')? 'partcntry': 'devpart';
     }
+    // console.log("devpart", this.partnerType);
   }
   openModal(template: TemplateRef<any>) {
     this.viewModal = false;
@@ -136,7 +142,7 @@ export class CountryComponent implements OnInit {
   }
   // TODO: Blanca, Ayar other generic function
   exportCsv() {
-    this.generateIndicatorsService.exportCsvFunction(this.countryComparer, this.countriesQuery, this.model);
+    this.generateIndicatorsService.exportCsvFunction(this.countryComparer, this.countriesQuery, this.model, this.partnerType);
   }
 
   onDeselected(event, type) {
@@ -156,17 +162,22 @@ export class CountryComponent implements OnInit {
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
     const global = this;
-    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, global.countryComparer, global.countriesQuery);
+    // console.log("type-parteene", this.partnerType);
+    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, global.countryComparer, global.countriesQuery, this.partnerType);
   }
-
+  getLabelCountrySecond(indicator, typeOfCountry, isOrganization?: boolean) {
+    const global = this;
+    // console.log("type-parteene", this.partnerType);
+    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, global.countryComparer, global.countriesQuery, this.partnerTypeSecond);
+  }
   availableCountryRow(category) {
     const global = this;
     let d = 0;
     d += this.countryComparer.firstCountry ? 1 : 0;
     d += this.countryComparer.secondCountry ? 1 : 0;
     if (d === 2) {  
-      const texa = this.generateIndicatorsService.getLabelCountryFunction(category, 'firstCountry', global.countryComparer, global.countriesQuery);
-      const texb = this.generateIndicatorsService.getLabelCountryFunction(category, 'secondCountry', global.countryComparer, global.countriesQuery);
+      const texa = this.generateIndicatorsService.getLabelCountryFunction(category, 'firstCountry', global.countryComparer, global.countriesQuery, this.partnerType);
+      const texb = this.generateIndicatorsService.getLabelCountryFunction(category, 'secondCountry', global.countryComparer, global.countriesQuery, this.partnerTypeSecond);
       let isValid = false;
       isValid = (texa !== '-' && !texa.includes('No data'));
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
@@ -249,6 +260,19 @@ export class CountryComponent implements OnInit {
       return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
     } else if (indicator.id === '1a') {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
+    }
+  }
+  showIndicator(indicator){
+    // console.log("show-ind", indicator.column.substr(1,4));
+    // if(){
+
+    // }
+    if(indicator.id!='4')
+    {
+      return true;
+    }
+    else{
+      return false;
     }
   }
 }

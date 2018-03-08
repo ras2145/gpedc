@@ -572,7 +572,7 @@
                         <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
 
                     <ng-template #thenBlock>
-                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator) && indicator.id!='4'">
+                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator) && showIndicator(indicator)">
                             <!-- Show indicator 1 tp 4 without displaing data -->
                             <!-- <div *ngIf="false"> 
                                     <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon(indicator.id)"  placement="right"> 
@@ -594,7 +594,7 @@
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         
                         </td>
-                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator) && indicator.id!='4'">
+                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator) && showIndicator(indicator)">
                             <div class="back-title"></div>
                         </td>
                     </ng-template>
@@ -624,7 +624,7 @@
                           </td>
                           <td width="4%"></td>
                           <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstCountry')" *ngIf="availableCountryRow(indicator)"></td>
-                          <td width="17.75%" class="center-td border-01" [innerHTML]="getLabelCountry(indicator, 'secondCountry')" *ngIf="availableCountryRow(indicator)"></td>
+                          <td width="17.75%" class="center-td border-01" [innerHTML]="getLabelCountrySecond(indicator, 'secondCountry')" *ngIf="availableCountryRow(indicator)"></td>
                           <td width="17.75%" class="center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableCountryRow(indicator)"></td>
                           <td width="17.75%" class="center-td background-2"></td>
                         </ng-template>
@@ -632,7 +632,7 @@
                 </tr>
                 <!-- Show row of subcategories of all indicators-->
                 <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                    <div *ngIf= "availableCountryRow(subcategory) && indicator.id!='4'; then thenPassSubcategory"></div>
+                    <div *ngIf= "availableCountryRow(subcategory) && showIndicator(indicator); then thenPassSubcategory"></div>
                     <ng-template #thenPassSubcategory>
                       <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableCountryRow(subcategory)">
                           <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:', '').replace('Indicator 8:', '')">
@@ -646,8 +646,8 @@
                         <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory,'firstCountry',getLabelCountry(subcategory, 'firstCountry'))" (click)="modalSubcategory(subcategory,'firstCountry');lgModal.show()"></i>                    
                       </td> 
                       <td width="17.75%" class="center-td background-2 border-01"  *ngIf="availableCountryRow(subcategory)">
-                        <p [innerHTML]="getLabelCountry(subcategory, 'secondCountry')"></p>
-                        <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory,'secondCountry',getLabelCountry(subcategory, 'secondCountry'))" (click)="modalSubcategory(subcategory,'secondCountry');lgModal.show()"></i>                    
+                        <p [innerHTML]="getLabelCountrySecond(subcategory, 'secondCountry')"></p>
+                        <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(subcategory,'secondCountry',getLabelCountrySecond(subcategory, 'secondCountry'))" (click)="modalSubcategory(subcategory,'secondCountry');lgModal.show()"></i>                    
                       </td>
                       <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(subcategory, 'aggregate')" *ngIf="availableCountryRow(subcategory)"></td>
                       <td width="17.75%" class="center-td background-2"></td>

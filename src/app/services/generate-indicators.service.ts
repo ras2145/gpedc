@@ -32,14 +32,17 @@ export class GenerateIndicatorsService {
       return ans.json().rows;
     });
   }
-  getLabelCountryFunction(indicator, type, comparer, query, isOrganization?: boolean) {
+  getLabelCountryFunction(indicator, type, comparer, query, partnerType, isOrganization?: boolean) {
     // let aux = indicator.column;
+    // console.log("getL", partnerType);
     const name = comparer[type];
-    const column = isOrganization ? 'column' : 'partcntry';
+    const column = isOrganization ? 'column' : partnerType === 'partcntry'? 'partcntry':'devpart';
+    // const column = isOrganization ? 'column' : 'partcntry';
     if (!name || !indicator) {
       return '-';
     }
     const dataObject = query;
+    // console.log("qery", query);
     const field = isOrganization ? 'partner' : 'country';
     const data = dataObject.filter((a) => {
       if (!a[field]) {
@@ -64,6 +67,7 @@ export class GenerateIndicatorsService {
     if (text == null || text.trim() == 'null' || text.trim() == 'undefined') {
       return '-';
     }
+    // console.log("text", text);
     return text;
   }
 
@@ -86,7 +90,7 @@ export class GenerateIndicatorsService {
     return value;
   }
 
-  exportCsvFunction(comparerExport, queryExport, model, isOrganization?: boolean) {
+  exportCsvFunction(comparerExport, queryExport, model, partnerType, isOrganization?: boolean) {
     const comparer = comparerExport;
     const first = isOrganization ? 'firstOrganization' : 'firstCountry';
     const second = isOrganization ? 'secondOrganization' : 'secondCountry';
@@ -106,13 +110,13 @@ export class GenerateIndicatorsService {
       let line = [];
       line.push(category.title);
       if (comparer[first] != '') {
-        line.push(this.getLabelCountryFunction(category, first, comparerExport, queryExport, isOrganization).trim());
+        line.push(this.getLabelCountryFunction(category, first, comparerExport, queryExport, partnerType, isOrganization).trim());
       }
       if (comparer[second] != '') {
-        line.push(this.getLabelCountryFunction(category, second, comparerExport, queryExport, isOrganization).trim());
+        line.push(this.getLabelCountryFunction(category, second, comparerExport, queryExport, partnerType, isOrganization).trim());
       }
       if (comparer.aggregate != '') {
-        line.push(this.getLabelCountryFunction(category, 'aggregate', comparerExport, queryExport, isOrganization).trim());
+        line.push(this.getLabelCountryFunction(category, 'aggregate', comparerExport, queryExport, partnerType, isOrganization).trim());
       }
       let add = true;
       if (line.length == 2) {
@@ -131,13 +135,13 @@ export class GenerateIndicatorsService {
         line = [];
         line.push(subcategory.label);
         if (comparer[first] != '') {
-          line.push(this.getLabelCountryFunction(subcategory, first, comparerExport, queryExport, isOrganization).trim());
+          line.push(this.getLabelCountryFunction(subcategory, first, comparerExport, queryExport, partnerType, isOrganization).trim());
         }
         if (comparer[second] != '') {
-          line.push(this.getLabelCountryFunction(subcategory, second, comparerExport, queryExport, isOrganization).trim());
+          line.push(this.getLabelCountryFunction(subcategory, second, comparerExport, queryExport, partnerType, isOrganization).trim());
         }
         if (comparer.aggregate != '') {
-          line.push(this.getLabelCountryFunction(subcategory, 'aggregate', comparerExport, queryExport, isOrganization).trim());
+          line.push(this.getLabelCountryFunction(subcategory, 'aggregate', comparerExport, queryExport, partnerType, isOrganization).trim());
         }
         let add = true;
         if (line.length == 2) {

@@ -278,8 +278,8 @@ export class PartnerComponent implements OnInit {
     d += this.organizationComparer.firstOrganization ? 1 : 0;
     d += this.organizationComparer.secondOrganization ? 1 : 0;
     if (d === 2) {
-      const texa = this.generateIndicatorsService.getLabelCountryFunction(category, 'firstOrganization', this.organizationComparer, this.partners, true);
-      const texb = this.generateIndicatorsService.getLabelCountryFunction(category, 'secondOrganization', this.organizationComparer, this.partners, true);
+      const texa = this.generateIndicatorsService.getLabelCountryFunction(category, 'firstOrganization', this.organizationComparer, this.partners, '', true);
+      const texb = this.generateIndicatorsService.getLabelCountryFunction(category, 'secondOrganization', this.organizationComparer, this.partners, '', true);
       let isValid = false;
       isValid = (texa !== '-' && !texa.includes('No data'));
       isValid = isValid || (texb !== '-' && !texb.includes('No data'));
@@ -304,7 +304,7 @@ export class PartnerComponent implements OnInit {
      this.modalRef = this.modalService.show(template);
   }
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
-    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, this.organizationComparer, this.partners, true);
+    return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, this.organizationComparer, this.partners, '', true);
   }
   tabsToShow(category) {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
