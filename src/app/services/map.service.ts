@@ -1,3 +1,4 @@
+import { titles } from './../titles';
 import { Injectable } from '@angular/core';
 import { Map, MapboxOptions, GeoJSONSource } from 'mapbox-gl';
 import * as mapboxgl from 'mapbox-gl';
@@ -5,7 +6,6 @@ import VectorSource = mapboxgl.VectorSource;
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/bindCallback';
-
 import { WebService } from './web.service';
 import { SERVER } from '../server.config';
 import { layers } from '../layers';
@@ -22,6 +22,7 @@ export class MapService {
   private _firstCountry = '';
   private _secondCountry = '';
   private layers = layers;
+  private titles = titles;
 
   private bounds = [
     [-220.04728500751165, -84.68392799015035], [220.04728500751165, 84.68392799015035]
@@ -241,7 +242,7 @@ export class MapService {
     }
   }
   paintOneCountry(country) {
-    if (this.filterOneCountry.includes(country,3)) {
+    if (this.filterOneCountry.includes(country, 3)) {
       this.filterOneCountry.pop();
       this.map.setFilter('country-fills-click', this.filterOneCountry);
       return false;
@@ -288,7 +289,8 @@ export class MapService {
   }
   getCountriesYearQuery(year: string, categories: any, partnerType: string): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
-    sql = sql + this.getDevPartCondition(categories, partnerType);
+    // tslint:disable-next-line:max-line-length
+    sql = sql + this.getDevPartCondition(categories, partnerType) + this.getDevPartConditionAny(categories, partnerType);
     return sql;
   }
   getDevPartCondition(categories: any, partnerType: string) {
@@ -322,6 +324,36 @@ export class MapService {
     console.log(' RES ', res);
     return res;
   }
+  getDevPartConditionAny (categories: any, partnerType: string) {
+    let res = ' AND ( ';
+    for ( const cat of categories) {
+      for (const sub of cat.subcategories) {
+        if ( partnerType === 'devpart') {
+          if (sub.devpart !== '') {
+            res += ' ' + sub.devpart + '::text != \'\'  OR';
+          }
+        } else {
+          if (sub.partcntry !== '') {
+            res += ' ' + sub.partcntry + '::text != \'\'  OR';
+          }
+        }
+      }
+
+      if ( partnerType === 'devpart') {
+        if (cat.devpart !== '') {
+          res += ' ' + cat.devpart + '::text != \'\' OR';
+        }
+      } else {
+        if (cat.partcntry !== '') {
+          res += ' ' + cat.partcntry + '::text != \'\'  OR';
+        }
+      }
+    }
+    res = res.substring(0, res.length - 2);
+    res += ')';
+    // console.log(' RES -------------------------------------____> aaaaaaaa           ', res);
+    return res;
+  }
   /*getCountriesYearGeoJSON(year: string): Observable<any> {
     const sql = this.getCountriesYearQuery(year);
     const query = SERVER.GET_QUERY(sql, true);
@@ -331,14 +363,14 @@ export class MapService {
   }*/
   mapTiles(tilesUrl, error) {
     if (tilesUrl == null) {
-      console.log("error: ", error.errors.join('\n'));
+      console.log('error: ', error.errors.join('\n'));
       throw error;
     }
     const tilesUrls = [];
     for (const tile of tilesUrl.tiles) {
       tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?').split('?cache_policy=persist').join(''));
     }
-    console.log("url template is ", tilesUrls);
+    console.log('url template is ', tilesUrls);
     return tilesUrls;
   }
   getCountriesYearVectorUrl(year: string, categories: any, partnerType: string): Observable<any> {
@@ -347,53 +379,123 @@ export class MapService {
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
   }
-  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any ): string {
+  // tslint:disable-next-line:max-line-length
+  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any, indicatorType?): string {
+    // console.log('--------------------____>--->---------> indicator type --_>    ', indicatorType);
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2}`;
     let where = '';
-    if (year != null && year != '') {
-      // where = where + ' upper(' + `_${year}` + ") = 'YES'";
-      where = where + `yr${year}` + ' = true';
-    }
-    if (indicator != null && indicator != '') {
-      if (where != '') {
-        where = where + ' AND ';
+    let completeQuery = '';
+    let notAvailable = '';
+    let anyColumn = '';
+    // console.log('indicator ---> indicator --> ', indicator);
+    // tslint:disable-next-line:max-line-length
+    if ((indicator === '')) {
+      // console.log('--> -------------------------------------------___> indicator ------------___-----------------------__> >  ', indicator );
+      for (const t of this.titles) {
+        if (t.year === year) {
+          for (const i of t.categories) {
+            if (i.id === category.id) {
+              for (const j of i.subcategories) {
+                completeQuery =  completeQuery + ' OR ' + j[indicatorType] + ' IS NOT NULL ';
+                notAvailable = notAvailable + ' OR '  + j[indicatorType] + '::text != \'9999\'';
+                anyColumn = anyColumn + ' OR ' + j[indicatorType] + '::text != \'\'';
+              }
+            }
+          }
+        }
       }
-      where = where + ' ' + indicator + ' IS NOT NULL ';
-    }
-    
-    if (region != null && region != '') {
-      if (where != '') {
-        where = where + ' AND ';
+      const dataAvailable = notAvailable.slice(3).trim();
+      const dataAny = anyColumn.slice(3).trim();
+      const dataQuery = completeQuery.slice(3).trim();
+      // console.log('-------------____> not available  --------------------------------___>    ', dataAvailable);
+      // console.log('-------------____> data Any  --------------------------------___>    ', dataAny);
+      // console.log('-------------____> dataQuery  --------------------------------___>    ', dataQuery);
+      if (year != null && year !== '') {
+        // where = where + ' upper(' + `_${year}` + ") = 'YES'";
+        where = where + `yr${year}` + ' = true';
       }
-      where = where + " region = '" + region + "' ";
-    }
-    if (incomeGroup != null && incomeGroup != '') {
-      if (where != '') {
-        where = where + ' AND ';
+      if (indicator !== null && indicator !== '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + ' ' + indicator + ' IS NOT NULL ';
       }
-      where = where + " inc_group = '" + incomeGroup + "' ";
-    }
-    if (countryContext != null && countryContext != '') {
-      if (where != '') {
-        where = where + ' AND ';
+      // console.log('indicator --> ', indicator);
+      // console.log('------------- > tiles -------------   >  ', this.titles);
+      if (region != null && region !== '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + " region = '" + region + "' ";
       }
-      where = where + ' ' + countryContext + " = true";
+      if (incomeGroup !== null && incomeGroup !== '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + " inc_group = '" + incomeGroup + "' ";
+      }
+      if (countryContext != null && countryContext != '') {
+        if (where != '') {
+          where = where + ' AND ';
+        }
+        where = where + ' ' + countryContext + " = true";
+      }
+      if (where != '') {
+        sql = sql + ' WHERE ' + where;
+      }
+      sql = sql + ' AND (' + dataQuery + ')' + ' AND (' + dataAvailable + ')' + ' AND (' + dataAny + ')';
+      console.log('----> indicators ---->  1 2 3 4 ---> ', sql);
+    } else {
+      if (year !== null && year !== '') {
+        // where = where + ' upper(' + `_${year}` + ") = 'YES'";
+        where = where + `yr${year}` + ' = true';
+      }
+      if (indicator != null && indicator !== '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + ' ' + indicator + ' IS NOT NULL ';
+      }
+      // console.log('indicator --> ', indicator);
+      // console.log('------------- > tiles -------------   >  ', this.titles);
+      if (region !== null && region !== '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + " region = '" + region + "' ";
+      }
+      if (incomeGroup != null && incomeGroup != '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + " inc_group = '" + incomeGroup + "' ";
+      }
+      if (countryContext != null && countryContext != '') {
+        if (where !== '') {
+          where = where + ' AND ';
+        }
+        where = where + ' ' + countryContext + " = true";
+      }
+      if (where !== '') {
+        sql = sql + ' WHERE ' + where;
+      }
     }
-    if (where != '') {
-      sql = sql + ' WHERE ' + where;
-    }
+    console.log('__---- >  completeQuery --->  ', completeQuery);
+    // console.log('-----------------------------_> sql pendejo ----->   ', sql);
     return sql;
   }
-  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
-    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year);
+  // tslint:disable-next-line:max-line-length
+  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, indicatorType?): Observable<any> {
+    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, indicatorType);
     const query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
     });
   }
-  getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any): Observable<any> {
-    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, category);
-    console.log(sql);
+  // tslint:disable-next-line:max-line-length
+  getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any, indicatorType?): Observable<any> {
+    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, category, indicatorType);
+    // console.log('----------------------------- sql ahora miercoles ----------------  >    ', sql);
     const tilesOptions = this.getVectorTilesOptions(sql);
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
@@ -448,14 +550,14 @@ export class MapService {
       return;
     }
     this.map.addLayer({
-      "id": "country-fills",
-      "type": "fill",
-      "source": "countries",
-      "source-layer": "layer0",
-      "layout": {},
-      "paint": {
-        "fill-color": "#F07848",
-        "fill-opacity": 0.5
+      'id': 'country-fills',
+      'type': 'fill',
+      'source': 'countries',
+      'source-layer': 'layer0',
+      'layout': {},
+      'paint': {
+        'fill-color': '#F07848',
+        'fill-opacity': 0.5
       },
     });
   }
@@ -466,7 +568,7 @@ export class MapService {
     this.map.zoomOut();
   }
   paintForIndicator(category: any, subcategory: any, year: any, partnerType?: any) {
-    console.log("PAINT" , category, subcategory);
+    console.log('PAINT' , category, subcategory);
     this.map.removeLayer('country-fills');
     let indicator: any;
     let layer: any;
@@ -482,7 +584,7 @@ export class MapService {
       columnCat = category.column;
       columnSub = subcategory ? subcategory.column : '';
     }
-    console.log('columns',partnerType, columnCat, columnSub);
+    console.log('columns', partnerType, columnCat, columnSub);
     if (!columnCat && !columnSub) {
       this.resetLayer();
     } else {
@@ -516,7 +618,7 @@ export class MapService {
         this.map.addLayer(layer, 'waterway-label');
       }
       console.log('ID', category.id);
-      if (category.id == '3') {
+      if (category.id === '3') {
         console.log('3');
         console.log(indicator);
         layer = this.layers.indicator3;
@@ -534,7 +636,7 @@ export class MapService {
           this.map.addLayer(layer, 'waterway-label');
           // layer gris
         } else {
-          console.log("ELSE",this.layers);
+          console.log('ELSE', this.layers);
           console.log(indicator);
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
@@ -543,7 +645,7 @@ export class MapService {
         }
       }
       if (subcategory.type === 'percent') {
-        console.log(category.id,"CSECCONDCAT");
+        console.log(category.id, 'CSECCONDCAT');
         console.log(indicator);
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
@@ -562,13 +664,13 @@ export class MapService {
       }
       if (category.type === 'text') {
         if (category.id === '4') {
-          console.log('4aaaa');console.log(indicator);
+          console.log('4aaaa'); console.log(indicator);
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
         } else {
-          console.log('else 4 ');console.log(indicator);
+          console.log('else 4 '); console.log(indicator);
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
@@ -576,7 +678,7 @@ export class MapService {
         }
       }
       if (category.type === 'percent') {
-        console.log('percent');console.log(indicator);
+        console.log('percent'); console.log(indicator);
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
@@ -586,9 +688,10 @@ export class MapService {
   }
   }
   filterNotNull(column: string) {
-      this._map.setFilter('country-fills', ['!=', column, '']);   
+      this._map.setFilter('country-fills', ['!=', column, '']);
   }
   modalQuery (column_query, country) {
+    // tslint:disable-next-line:max-line-length
     const query = SERVER.GET_QUERY(`select ${column_query} from "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" where country like '${country}' `);
     return this.webService.get(query).map(ans => {
       // console.log("modalquery",ans);
@@ -598,10 +701,12 @@ export class MapService {
   iconIndicator_1_8(indicator) {
       let text = '<img src="assets/0001.png" > ';
     if (indicator === '1a') {
+       // tslint:disable-next-line:max-line-length
        text = text + ' <img src="assets/' + 'icon17.svg" tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="right" > ';
       return text;
     } else if ( indicator === '8') {
        text = text + ' <img src="assets/' + 'icon5.svg" ' +
+      // tslint:disable-next-line:max-line-length
       'tooltip="This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment. " ' +
       'placement="right"> ';
       return text;

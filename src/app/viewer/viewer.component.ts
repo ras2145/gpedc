@@ -595,7 +595,10 @@ export class ViewerComponent implements OnInit {
     this.mapService.resetLayer();
     indicator = this.getColumn();
     console.log('CHANGE YEAR', indicator);
-    this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year,this.model.category).subscribe(tiles => {
+    console.log('---------------------------------------------____>  ------------------------------>      ', this.model.category.id );
+    const indicatorType = this.partnerType;
+    console.log('---------------------------------------------____> indicatorType ------------------------------>      ', indicatorType);
+    this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year,this.model.category, indicatorType).subscribe(tiles => {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
       this.setColor();
