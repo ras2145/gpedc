@@ -479,6 +479,7 @@ export class ViewerComponent implements OnInit {
     this.indicator = false;
     this.subIndicator = true;
     // if (!this.subDropdown) {
+      console.log('CATE ',category);
       this.updateIndicatorVector();
     // }
     this.validIndicator = true;
@@ -596,7 +597,8 @@ export class ViewerComponent implements OnInit {
     this.loaderService.start();
     this.mapService.resetLayer();
     indicator = this.getColumn();
-    this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year).subscribe(tiles => {
+    console.log('CHANGE YEAR', indicator);
+    this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year,this.model.category).subscribe(tiles => {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
       this.setColor();

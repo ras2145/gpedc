@@ -347,7 +347,7 @@ export class MapService {
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
   }
-  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): string {
+  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any ): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2}`;
     let where = '';
     if (year != null && year != '') {
@@ -360,6 +360,7 @@ export class MapService {
       }
       where = where + ' ' + indicator + ' IS NOT NULL ';
     }
+    
     if (region != null && region != '') {
       if (where != '') {
         where = where + ' AND ';
@@ -390,8 +391,8 @@ export class MapService {
       return ans.json();
     });
   }
-  getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string): Observable<any> {
-    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year);
+  getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any): Observable<any> {
+    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, category);
     console.log(sql);
     const tilesOptions = this.getVectorTilesOptions(sql);
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
