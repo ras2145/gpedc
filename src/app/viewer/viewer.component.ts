@@ -763,24 +763,18 @@ export class ViewerComponent implements OnInit {
   }
   getTextPopUp(countryName) {
     this.popupText = '';
-    // const columnCat = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
-    // console.log('-----> column ', columnCat);
     const columnCat = this.getColumn();
-    // console.log('sub categorias --> ', this.model.subcategory);
-    // const options = columnCat.toString().slice(9, 18);
     const options = columnCat;
-    // console.log('options --> ', options);
-
     if (countryName !== 'Country') {
       const country = this.countriesQuery.filter((a) => a.country === countryName)[0];
       if (this.model.category == null) {
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null) {
         if (country[options] != null) {
-          // console.log('console log --> ', this.checkIfString(country[options]) && country[options].toUpperCase());
-          if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'YES') {
+          let condition = this.checkIfString(country[options].toString()) && country[options].toString().toUpperCase();
+          if ((condition === 'YES') || (condition === 'TRUE')) {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['yesText'];
-          } else if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'NO') {
+          } else if ((condition === 'NO') || (condition === 'FALSE')) {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
           } else {
             this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValuePopUp(this.model.category, country[options]) + '</b> ' + this.model.category['suffix'];
@@ -788,9 +782,10 @@ export class ViewerComponent implements OnInit {
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
         if (country[options] != null) {
-          if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'YES') {
+          let condition = this.checkIfString(country[options].toString()) && country[options].toString().toUpperCase();
+          if ((condition === 'YES') || (condition === 'TRUE')) {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.yesText;
-          } else if (this.checkIfString(country[options]) && country[options].toUpperCase() === 'NO') {
+          } else if ((condition === 'NO') || (condition === 'FALSE')) {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.noText;
           } else {
             this.popupText = this.popupText + ' ' + this.model.subcategory.prefix + ' <b>' + this.formatValuePopUp(this.model.subcategory, country[options]) + ' </b>' + this.model.subcategory.suffix;
