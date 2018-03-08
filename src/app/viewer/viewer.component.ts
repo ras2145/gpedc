@@ -243,7 +243,6 @@ export class ViewerComponent implements OnInit {
           if (self.mapUrlProfile === 'http://') {
             self.mapUrlProfile = '#';
           }
-          console.log('COUNTRY PDF URL ', self.mapUrlProfile);
           const point = event.point ? event.point : [self.mapService.map.getCanvas().width / 2, self.mapService.map.getCanvas().height / 2];
           const selectedCountry = self.mapService.map.queryRenderedFeatures(point, {
             layers: ['country-fills']
@@ -255,19 +254,16 @@ export class ViewerComponent implements OnInit {
           this.country_modal = feature.properties['country'];
 
           if(this.country_before!=feature.properties['country']){        
-            if((Math.round(Number(selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property])).toString())!='9999' )
-            {
-              console.log('VALUE THAT CHANGE', selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property]);
+            if((Math.round(Number(selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property])).toString())!='9999' ) {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
-            } 
+            }
             if (this.selectedCountry) {
               this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
               this.categoriesNotNull = [];
               setTimeout(() => {
                 this.getCategoriesNotNull();
-                console.log("getcate", this.categoriesNotNull);
-                for (let ind of this.categoriesNotNull){
-                  if (ind.id == this.model.category.id){
+                for (let ind of this.categoriesNotNull) {
+                  if (ind.id === this.model.category.id) {
                     this.indicatorSelectedFooter = this.model.category.id ? this.model.category.id : (this.categoriesNotNull.length ? this.categoriesNotNull[0].id : this.model.year.categories[0].id);
                     break;
                   } else {
@@ -276,6 +272,7 @@ export class ViewerComponent implements OnInit {
                 }
                 this.getIndicator(this.indicatorSelectedFooter);
               }, 100);
+              console.log('CATEGORIES NOT NULL', this.categoriesNotNull);
             } else {
               this.mapService.resetClickLayer();
               this.indicatorSelectedFooter = this.model.year.categories[0].id;
@@ -627,17 +624,18 @@ export class ViewerComponent implements OnInit {
     // console.log('COLUMN',column);
     return column;
   }
+
   getCategoriesNotNull() {
     this.categoriesNotNull = [];
     if (this.selectedCountry) {
       const isCountryDac = this.isDac(this.selectedCountry);
       for (const i of this.model.year.categories) {
         let sw = false;
-        if (this.partnerType==='devpart' ?this.indicatorsSelectedCountry[i.devpart]: this.indicatorsSelectedCountry[i.partcntry] != null) {
+        if (this.partnerType === 'devpart' ? this.indicatorsSelectedCountry[i.devpart] !== null : this.indicatorsSelectedCountry[i.partcntry] != null) {
           sw = true;
         }
         for (const j of i.subcategories) {
-          if (this.partnerType==='devpart' ?this.indicatorsSelectedCountry[j.devpart]:this.indicatorsSelectedCountry[j.partcntry] != null) {
+          if (this.partnerType === 'devpart' ? this.indicatorsSelectedCountry[j.devpart] !== null : this.indicatorsSelectedCountry[j.partcntry] != null) {
             sw = true;
           }
         }
