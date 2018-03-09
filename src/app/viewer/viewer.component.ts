@@ -223,9 +223,9 @@ export class ViewerComponent implements OnInit {
       });
 
       this.mapService.clickCountry(event => {
-        this.selectedCountry=null;
+        
         console.log('CLICK ', event);
-        // if (this.selectedTab === 'tab1') {
+        if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
             for (let feature1 of event.features) {
@@ -256,6 +256,9 @@ export class ViewerComponent implements OnInit {
           if(this.country_before!=feature.properties['country']){        
             if((Math.round(Number(selectedCountry[0].properties[selectedCountry[0]['layer'].paint['fill-color'].property])).toString())!='9999' ) {
               this.selectedCountry = self.mapService.paintOneCountry(selectedCountry[0].properties.country);
+            }else{
+              this.selectedCountry=null;
+              this.country_before='';
             }
             if (this.selectedCountry) {
               this.indicatorsSelectedCountry = this.countriesQuery.filter((a) => a.country === this.selectedCountry)[0];
@@ -281,8 +284,9 @@ export class ViewerComponent implements OnInit {
           }else{
             this.mapService.resetClickLayer();
             this.country_before='';
+            this.selectedCountry=null;
           }
-        // } 
+        } 
         // else if (this.selectedTab === 'tab2') {
         //   const selectedCountry = self.mapService.map.queryRenderedFeatures(event.point, {
         //     layers: ['country-fills']
