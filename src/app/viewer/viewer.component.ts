@@ -742,7 +742,7 @@ export class ViewerComponent implements OnInit {
   formatValuePopUp(indicator, oldValue) {
     // console.log('indictor --> ', indicator, 'olvalue ---> ', oldValue);
     let value = '';
-    if (indicator.type === 'percent' && oldValue != 9999) {
+    if (indicator.type === 'percent' && oldValue !== 9999) {
       const previousValue = oldValue;
       oldValue = oldValue * 100;
       value = (previousValue != null) ? (parseFloat(oldValue + '').toFixed(indicator.precision) + '%') : 'No data';
@@ -759,7 +759,7 @@ export class ViewerComponent implements OnInit {
               valueBol = (oldValue ? ' Yes' : 'No');
               console.log('valoes true false', valueBol);
               oldValue = valueBol;
-            } 
+            }
             value = oldValue ? (valueBol) : 'No data';
           }
         }
@@ -767,6 +767,14 @@ export class ViewerComponent implements OnInit {
     }
     const val = (value.toString() === '9999' || value.toString() === '') ? 'Not Data' : value;
     return val;
+  }
+  alinear (country, year) {
+    const value = this.getIndicatorValue(country, year);
+    if (value === 'Needs Improvement') {
+      return 'hoverData';
+    } else {
+      return '';
+    }
   }
   checkIfString(val) {
     return typeof val === 'string';

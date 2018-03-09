@@ -2615,6 +2615,9 @@ h2 .pos-default-modal {
   margin: 0px !important;
   height: 0px;
 }
+.hoverData {
+  font-size: 12px !important;
+}
 @media (min-width: 1600px){
   .logo-navbar{
       margin:0px !important;

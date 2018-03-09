@@ -497,19 +497,19 @@
                                 </div>
                                 <div *ngIf="!indicator" class="number-card">
                                     <div class="right-number">
-                                        <p>{{getIndicatorValue(countryName, '2010')}}</p>
+                                        <p [ngClass]="alinear(countryName, '2010')">{{getIndicatorValue(countryName, '2010')}}</p>
                                         <div *ngIf="model.year.year === '2010'; then thenBlock1 else elseBlock1"></div>
                                         <ng-template #thenBlock1><p><u>2010</u></p></ng-template>
                                         <ng-template #elseBlock1><p>2010</p></ng-template>
                                     </div>
                                     <div class="left-number">
-                                        <p>{{getIndicatorValue(countryName, '2014')}}</p>
+                                        <p [ngClass]="alinear(countryName, '2014')">{{getIndicatorValue(countryName, '2014')}}</p>
                                         <div *ngIf="model.year.year === '2014'; then thenBlock2 else elseBlock2"></div>
                                         <ng-template #thenBlock2><p><u>2014</u></p></ng-template>
                                         <ng-template #elseBlock2><p>2014</p></ng-template>
                                     </div>
                                     <div class="right-number">
-                                        <p>{{getIndicatorValue(countryName, '2016')}}</p>
+                                        <p [ngClass]="alinear(countryName, '2016')" >{{getIndicatorValue(countryName, '2016')}}</p>
                                         <div *ngIf="model.year.year === '2016'; then thenBlock3 else elseBlock3"></div>
                                         <ng-template #thenBlock3><p><u>2016</u></p></ng-template>
                                         <ng-template #elseBlock3><p>2016</p></ng-template>
