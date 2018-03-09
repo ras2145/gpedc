@@ -310,7 +310,7 @@ export class PartnerComponent implements OnInit {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   exportCsv() {
-    this.generateIndicatorsService.exportCsvFunction(this.organizationComparer, this.partners, this.model, true);
+    this.generateIndicatorsService.exportCsvFunction(this.organizationComparer, this.partners, this.model, '', '', true);
   }
   htmlIndicator(indicator){
     return this.generateIndicatorsService.htmlIndicatorFunction(indicator);

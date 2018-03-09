@@ -142,7 +142,7 @@ export class CountryComponent implements OnInit {
   }
   // TODO: Blanca, Ayar other generic function
   exportCsv() {
-    this.generateIndicatorsService.exportCsvFunction(this.countryComparer, this.countriesQuery, this.model, this.partnerType);
+    this.generateIndicatorsService.exportCsvFunction(this.countryComparer, this.countriesQuery, this.model, this.partnerType, this.partnerTypeSecond);
   }
 
   onDeselected(event, type) {

@@ -90,7 +90,7 @@ export class GenerateIndicatorsService {
     return value;
   }
 
-  exportCsvFunction(comparerExport, queryExport, model, partnerType, isOrganization?: boolean) {
+  exportCsvFunction(comparerExport, queryExport, model, partnerType,partnerTypeSecond, isOrganization?: boolean) {
     const comparer = comparerExport;
     const first = isOrganization ? 'firstOrganization' : 'firstCountry';
     const second = isOrganization ? 'secondOrganization' : 'secondCountry';
@@ -113,7 +113,7 @@ export class GenerateIndicatorsService {
         line.push(this.getLabelCountryFunction(category, first, comparerExport, queryExport, partnerType, isOrganization).trim());
       }
       if (comparer[second] != '') {
-        line.push(this.getLabelCountryFunction(category, second, comparerExport, queryExport, partnerType, isOrganization).trim());
+        line.push(this.getLabelCountryFunction(category, second, comparerExport, queryExport, partnerTypeSecond, isOrganization).trim());
       }
       if (comparer.aggregate != '') {
         line.push(this.getLabelCountryFunction(category, 'aggregate', comparerExport, queryExport, partnerType, isOrganization).trim());
