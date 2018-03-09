@@ -289,14 +289,15 @@ export class MapService {
   }
   getCountriesYearQuery(year: string, categories: any, partnerType: string): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
-    // tslint:disable-next-line:max-line-length
-    sql = sql + this.getDevPartCondition(categories, partnerType) + this.getDevPartConditionAny(categories, partnerType);
+    const countrydest1 = ' AND (CARTODB_ID != 142)'; // paises no se filtra.
+    const countrydest2 = ' AND (CARTODB_ID != 33)'; // pais no se filtra.
+    const countrydest3 = ' AND (CARTODB_ID != 76)'; // pais no se filtra.
+    sql = sql + this.getDevPartCondition(categories, partnerType) + countrydest1 + countrydest2 + countrydest3;
     return sql;
   }
   getDevPartCondition(categories: any, partnerType: string) {
     let res = ' AND ( ';
     for ( const cat of categories) {
-
       for (const sub of cat.subcategories) {
         if ( partnerType === 'devpart') {
           if (sub.devpart !== '') {
@@ -308,7 +309,6 @@ export class MapService {
           }
         }
       }
-
       if ( partnerType === 'devpart') {
         if (cat.devpart !== '') {
           res += ' ' + cat.devpart + '::text != \'9999\' OR';
@@ -321,41 +321,10 @@ export class MapService {
     }
     res = res.substring(0, res.length - 2);
     res += ')';
-    console.log(' RES ', res);
-    return res;
-  }
-  getDevPartConditionAny (categories: any, partnerType: string) {
-    let res = ' AND ( ';
-    for ( const cat of categories) {
-      for (const sub of cat.subcategories) {
-        if ( partnerType === 'devpart') {
-          if (sub.devpart !== '') {
-            res += ' ' + sub.devpart + '::text != \'\'  OR';
-          }
-        } else {
-          if (sub.partcntry !== '') {
-            res += ' ' + sub.partcntry + '::text != \'\'  OR';
-          }
-        }
-      }
-
-      if ( partnerType === 'devpart') {
-        if (cat.devpart !== '') {
-          res += ' ' + cat.devpart + '::text != \'\' OR';
-        }
-      } else {
-        if (cat.partcntry !== '') {
-          res += ' ' + cat.partcntry + '::text != \'\'  OR';
-        }
-      }
-    }
-    res = res.substring(0, res.length - 2);
-    res += ')';
-    // console.log(' RES -------------------------------------____> aaaaaaaa           ', res);
     return res;
   }
   /*getCountriesYearGeoJSON(year: string): Observable<any> {
-    const sql = this.getCountriesYearQuery(year);
+    const sql = this.getCountriesYearQuery(year); 
     const query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
@@ -379,109 +348,76 @@ export class MapService {
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
   }
-  // tslint:disable-next-line:max-line-length
-  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any, indicatorType?): string {
-    // console.log('--------------------____>--->---------> indicator type --_>    ', indicatorType);
-    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2}`;
-    let where = '';
+  TypeDataFilterIndicator(category?, year?, indicatorType?) {
     let completeQuery = '';
     let notAvailable = '';
     let anyColumn = '';
-    // console.log('indicator ---> indicator --> ', indicator);
-    // tslint:disable-next-line:max-line-length
-    if ((indicator === '')) {
-      // console.log('--> -------------------------------------------___> indicator ------------___-----------------------__> >  ', indicator );
-      for (const t of this.titles) {
-        if (t.year === year) {
-          for (const i of t.categories) {
-            if (i.id === category.id) {
-              for (const j of i.subcategories) {
-                completeQuery =  completeQuery + ' OR ' + j[indicatorType] + ' IS NOT NULL ';
-                notAvailable = notAvailable + ' OR '  + j[indicatorType] + '::text != \'9999\'';
-                anyColumn = anyColumn + ' OR ' + j[indicatorType] + '::text != \'\'';
-              }
+    const indicatorTypeQuery = '';
+    for (const t of this.titles) {
+      if (t.year === year) {
+        for (const i of t.categories) {
+          if (i.id === category.id) {
+            for (const j of i.subcategories) {
+              completeQuery = completeQuery + ' OR ' + j[indicatorType] + ' IS NOT NULL ';
+              notAvailable = notAvailable + ' OR ' + j[indicatorType] + '::text != \'9999\'';
+              anyColumn = anyColumn + ' OR ' + j[indicatorType] + '::text != \'\'';
             }
           }
         }
       }
-      const dataAvailable = notAvailable.slice(3).trim();
-      const dataAny = anyColumn.slice(3).trim();
-      const dataQuery = completeQuery.slice(3).trim();
-      // console.log('-------------____> not available  --------------------------------___>    ', dataAvailable);
-      // console.log('-------------____> data Any  --------------------------------___>    ', dataAny);
-      // console.log('-------------____> dataQuery  --------------------------------___>    ', dataQuery);
-      if (year != null && year !== '') {
-        // where = where + ' upper(' + `_${year}` + ") = 'YES'";
-        where = where + `yr${year}` + ' = true';
-      }
-      if (indicator !== null && indicator !== '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + ' ' + indicator + ' IS NOT NULL ';
-      }
-      // console.log('indicator --> ', indicator);
-      // console.log('------------- > tiles -------------   >  ', this.titles);
-      if (region != null && region !== '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + " region = '" + region + "' ";
-      }
-      if (incomeGroup !== null && incomeGroup !== '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + " inc_group = '" + incomeGroup + "' ";
-      }
-      if (countryContext != null && countryContext != '') {
-        if (where != '') {
-          where = where + ' AND ';
-        }
-        where = where + ' ' + countryContext + " = true";
-      }
-      if (where != '') {
-        sql = sql + ' WHERE ' + where;
-      }
-      sql = sql + ' AND (' + dataQuery + ')' + ' AND (' + dataAvailable + ')' + ' AND (' + dataAny + ')';
-      console.log('----> indicators ---->  1 2 3 4 ---> ', sql);
-    } else {
-      if (year !== null && year !== '') {
-        // where = where + ' upper(' + `_${year}` + ") = 'YES'";
-        where = where + `yr${year}` + ' = true';
-      }
-      if (indicator != null && indicator !== '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + ' ' + indicator + ' IS NOT NULL ';
-      }
-      // console.log('indicator --> ', indicator);
-      // console.log('------------- > tiles -------------   >  ', this.titles);
-      if (region !== null && region !== '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + " region = '" + region + "' ";
-      }
-      if (incomeGroup != null && incomeGroup != '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + " inc_group = '" + incomeGroup + "' ";
-      }
-      if (countryContext != null && countryContext != '') {
-        if (where !== '') {
-          where = where + ' AND ';
-        }
-        where = where + ' ' + countryContext + " = true";
-      }
-      if (where !== '') {
-        sql = sql + ' WHERE ' + where;
-      }
     }
-    console.log('__---- >  completeQuery --->  ', completeQuery);
-    // console.log('-----------------------------_> sql pendejo ----->   ', sql);
+    const dataAvailable = notAvailable.slice(3).trim();
+    const dataAny = anyColumn.slice(3).trim();
+    const dataQuery = completeQuery.slice(3).trim();
+    indicatorType = ' AND (' + dataQuery + ') AND ' + '(' + dataAvailable + ') AND ' + '(' + dataAny + ')';
+    return indicatorType;
+  }
+  queryGlobalDataOfIndicatorType(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any): string {
+    let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2}`;
+    let where = '';
+    if (year != null && year !== '') {
+      where = where + `yr${year}` + ' = true';
+    }
+    if (indicator !== null && indicator !== '') {
+      if (where !== '') {
+        where = where + ' AND ';
+      }
+      where = where + ' ' + indicator + ' IS NOT NULL ';
+    }
+    if (region != null && region !== '') {
+      if (where !== '') {
+        where = where + ' AND ';
+      }
+      where = where + " region = '" + region + "' ";
+    }
+    if (incomeGroup !== null && incomeGroup !== '') {
+      if (where !== '') {
+        where = where + ' AND ';
+      }
+      where = where + " inc_group = '" + incomeGroup + "' ";
+    }
+    if (countryContext != null && countryContext != '') {
+      if (where != '') {
+        where = where + ' AND ';
+      }
+      where = where + ' ' + countryContext + " = true";
+    }
+    if (where != '') {
+      sql = sql + ' WHERE ' + where;
+    }
+    return sql;
+  }
+  // tslint:disable-next-line:max-line-length
+  getIndicatorFilterQuery(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any, indicatorType?): string {
+    let sql = '';
+    let globalData = '';
+    if ((indicator === '')) {
+      sql = this.queryGlobalDataOfIndicatorType(indicator, region, incomeGroup, countryContext, year, category);
+      globalData = this.TypeDataFilterIndicator(category, year, indicatorType);
+      sql = sql + globalData;
+    } else {
+      sql = this.queryGlobalDataOfIndicatorType(indicator, region, incomeGroup, countryContext, year, category);
+    }
     return sql;
   }
   // tslint:disable-next-line:max-line-length
@@ -495,7 +431,6 @@ export class MapService {
   // tslint:disable-next-line:max-line-length
   getIndicatorFilterVectorUrl(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, category?: any, indicatorType?): Observable<any> {
     const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, category, indicatorType);
-    // console.log('----------------------------- sql ahora miercoles ----------------  >    ', sql);
     const tilesOptions = this.getVectorTilesOptions(sql);
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
