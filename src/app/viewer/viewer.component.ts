@@ -224,7 +224,8 @@ export class ViewerComponent implements OnInit {
       });
 
       this.mapService.clickCountry(event => {
-        console.log('CLICK ', event);
+        
+       // console.log('CLICK ', event);
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
@@ -275,7 +276,7 @@ export class ViewerComponent implements OnInit {
                 }
                 this.getIndicator(this.indicatorSelectedFooter);
               }, 100);
-              console.log('CATEGORIES NOT NULL', this.categoriesNotNull);
+            //  console.log('CATEGORIES NOT NULL', this.categoriesNotNull);
             } else {
               this.mapService.resetClickLayer();
               this.indicatorSelectedFooter = this.model.year.categories[0].id;
@@ -1188,14 +1189,14 @@ updateMapTitle() {
       mapTitle: this.mapTitle,
       indicator: this.indicator
     };
-    console.log('IND',this.indicator);
+    //console.log('IND',this.indicator);
     this.titleSubject.next(send);
   }
   tabsToShow(category) {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   selectSid(sidCountry) {
-    console.log("jejesids");
+  //  console.log("jejesids");
     this.closeFooter();
     this.isSmallStateSelected = true;
     this.selectedSidCountry = sidCountry;
@@ -1307,11 +1308,11 @@ updateMapTitle() {
     }
   }
   updateSubindicatorValues(event) {
-    console.log("Subindicator", event);
+    //console.log("Subindicator", event);
     if (event.options.subcategory !== false && event.options.subcategory !== null) {
       this.selectSubcategory(event.options.category, event.options.subcategory);
     } else {
-      console.log("ELSE SUBCATEGORY ");
+      //console.log("ELSE SUBCATEGORY ");
       this.unselectSubCategory();
     }
   }
@@ -1327,7 +1328,7 @@ updateMapTitle() {
     }
   }
   updateYearValues(event) {
-    console.log('EVENT',event);
+   // console.log('EVENT',event);
     if (event.options) {
       this.changeYearLabel(event.options.year);
       this.getCategoriesNotNull();
@@ -1336,7 +1337,7 @@ updateMapTitle() {
     }
   }
   icon1a_8(event) {
-    console.log('----> indicator -->  ', event.options.category.id);
+    //console.log('----> indicator -->  ', event.options.category.id);
     const indi = event.options.category.id;
     return this.mapService.iconIndicator_1_8(indi);
   }

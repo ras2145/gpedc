@@ -289,7 +289,7 @@ export class MapService {
   }
   getCountriesYearQuery(year: string, categories: any, partnerType: string): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
-    sql = sql + this.getDevPartCondition(categories, partnerType) + (year === '2016' ? ' AND (CARTODB_ID != 76)' : '' );
+    sql = sql + this.getDevPartCondition(categories, partnerType) + (year === '2016' ? ' AND (CARTODB_ID != 76)' : '' ) + (year === '2016' && partnerType === 'partcntry' ? ' AND country != \'Mexico\' ' : ' ');
     return sql;
   }
   getDevPartCondition(categories: any, partnerType: string) {
@@ -477,7 +477,7 @@ export class MapService {
     const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${column} is not null and ${sqlone} ${partSQL}) as st_dump ORDER BY country`);
     const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${sqlone} ${partSQL}) as st_dump ORDER BY country`);
     const query = column ? sql1 : sql2;
-    console.log('QUERY', query);
+    //console.log('QUERY', query);
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
     });
@@ -507,7 +507,7 @@ export class MapService {
     this.map.zoomOut();
   }
   paintForIndicator(category: any, subcategory: any, year: any, partnerType?: any) {
-    console.log('PAINT' , category, subcategory);
+   // console.log('PAINT' , category, subcategory);
     this.map.removeLayer('country-fills');
     let indicator: any;
     let layer: any;
