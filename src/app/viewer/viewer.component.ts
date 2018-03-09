@@ -67,7 +67,7 @@ export class ViewerComponent implements OnInit {
   firstCountry: any;
   secondCountry: any;
   geoJson: any;
-  listIndicator={ title:'',id:null,yesText:'', noText:'', indicator: [] };
+  listIndicator={ title:'',id:null,yesText:'', noText:'', value:'', indicator: [] };
   dateModal: any;
   // listIndicator: any
   model = {
@@ -276,7 +276,7 @@ export class ViewerComponent implements OnInit {
                 }
                 this.getIndicator(this.indicatorSelectedFooter);
               }, 100);
-            //  console.log('CATEGORIES NOT NULL', this.categoriesNotNull);
+              // console.log('CATEGORIES NOT NULL', this.categoriesNotNull);
             } else {
               this.mapService.resetClickLayer();
               this.indicatorSelectedFooter = this.model.year.categories[0].id;
@@ -421,6 +421,7 @@ export class ViewerComponent implements OnInit {
     this.mapService.resetLayer();
     this.resetModels();
     this.legendMap = [];
+    this.country_before='';
     if (event.target.id) {
       if (event.target.id !== this.selectedTab) {
         this.selectedTab = event.target.id;
@@ -482,7 +483,7 @@ export class ViewerComponent implements OnInit {
     this.indicator = false;
     this.subIndicator = true;
     // if (!this.subDropdown) {
-      console.log('CATE ',category);
+      // console.log('CATE ',category);
       this.updateIndicatorVector();
     // }
     this.validIndicator = true;
@@ -547,6 +548,7 @@ export class ViewerComponent implements OnInit {
     });
     this.footerTab = '';
     this.footerText = '';
+    this.country_before='';
     this.mapService.resetClickLayer();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.indicator = true;
@@ -591,6 +593,7 @@ export class ViewerComponent implements OnInit {
   updateIndicatorVector() {
     const self = this;
     this.selectedCountry = '';
+    this.country_before='';
     this.mapService.resetClickLayer();
     let indicator = null;
     const region = this.model.region.value;
@@ -601,9 +604,9 @@ export class ViewerComponent implements OnInit {
     this.mapService.resetLayer();
     indicator = this.getColumn();
     console.log('CHANGE YEAR', indicator);
-    console.log('---------------------------------------------____>  ------------------------------>      ', this.model.category.id );
+    // console.log('---------------------------------------------____>  ------------------------------>      ', this.model.category.id );
     const indicatorType = this.partnerType;
-    console.log('---------------------------------------------____> indicatorType ------------------------------>      ', indicatorType);
+    // console.log('---------------------------------------------____> indicatorType ------------------------------>      ', indicatorType);
     this.mapService.getIndicatorFilterVectorUrl(indicator, region, incomeGroup, countryContext, year,this.model.category, indicatorType).subscribe(tiles => {
       self.geoJson = tiles;
       this.mapService.updateVectorSource(tiles);
@@ -726,22 +729,30 @@ export class ViewerComponent implements OnInit {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
-        if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
-              value = 'No data available';
-          } else {
-          let valueBol = oldValue.toString();
-          if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
-              valueBol = (oldValue ? ' Yes' : 'No');
-              oldValue = valueBol;
-          } 
-          value = oldValue ? (valueBol) : 'No data available';
-        }
-        // if(oldValue !== undefined){
-        //     value = oldValue.toString() ? oldValue.toString():'No data available';
-        //     if(indicator.id === 7 || indicator.id === 8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
-        //       value=value=='true'?'Yes':'No';
-        //     }
+        // if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
+        //       value = 'No data available';
+        //   } else {
+        //   let valueBol = oldValue.toString().trim();
+        //   if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
+        //       valueBol = (oldValue ? ' Yes' : 'No');
+        //       oldValue = valueBol;
+        //   } 
+        //   value = oldValue ? (valueBol) : 'No data available';
         // }
+        if(oldValue !== undefined){
+            value = oldValue.toString() ? oldValue.toString():'No data available';
+            if(indicator.id === 7 || indicator.id === 8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
+              if(value === 'true' || value === 'false')
+              {
+                value=value=='true'?'Yes':'No';
+              }else{
+                value='No data available';      
+              }
+            }
+        }else{
+          value='No data available';
+        }
+        
     }
     return value;
   }
@@ -763,7 +774,7 @@ export class ViewerComponent implements OnInit {
             let valueBol = oldValue.toString();
             if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
               valueBol = (oldValue ? ' Yes' : 'No');
-              console.log('valoes true false', valueBol);
+              // console.log('valoes true false', valueBol);
               oldValue = valueBol;
             }
             value = oldValue ? (valueBol) : 'No data';
@@ -834,14 +845,11 @@ export class ViewerComponent implements OnInit {
 
           // }
           const value=(value2=='9999')?"Not Applicable":value2;
-          console.log("idññ", i.id);
           if(i.id === '3'){
             classValueF='col-md-1'; classValueS='col-md-11';
           }else{
             classValueF='col-md-2'; classValueS='col-md-10';
           }
-          
-          console.log("kdjkdj",classValueF, classValueS);
           // let cols = [1, 11];
           // if (i.id == '1a' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
           //   cols = [3, 9];
@@ -851,6 +859,8 @@ export class ViewerComponent implements OnInit {
             this.listIndicator.id=i.id;
             this.listIndicator.yesText=(i.yesText)?i.yesText:'';
             this.listIndicator.noText=(i.noText)?i.noText:'';
+            this.listIndicator.value=value;
+            console.log("indi", i.id, "valor",value);
             if(i.subcategories.length==0)
             {
               this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:(value!='Not Applicable' && value!='No data available')?value:'', yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:'', classValueF:classValueF, classValueS:classValueS});
@@ -1159,7 +1169,7 @@ export class ViewerComponent implements OnInit {
   }
 updateMapTitle() {
     this.iconIndicator = this.mapService.iconIndicator_1_8(this.model.category.id);
-    console.log('ICON', this.iconIndicator);
+    // console.log('ICON', this.iconIndicator);
     if ((!this.indicator && !this.subIndicator) && this.model.subcategory.title ) {
       this.mapTitle = this.model.subcategory.title;
     } else if (!this.indicator  && this.model.category.title) {
@@ -1189,14 +1199,14 @@ updateMapTitle() {
       mapTitle: this.mapTitle,
       indicator: this.indicator
     };
-    //console.log('IND',this.indicator);
+    // console.log('IND',this.indicator);
     this.titleSubject.next(send);
   }
   tabsToShow(category) {
     return (category === '1a' || category === '2' || category === '3' || category === '4');
   }
   selectSid(sidCountry) {
-  //  console.log("jejesids");
+    // console.log("jejesids");
     this.closeFooter();
     this.isSmallStateSelected = true;
     this.selectedSidCountry = sidCountry;
@@ -1308,11 +1318,11 @@ updateMapTitle() {
     }
   }
   updateSubindicatorValues(event) {
-    //console.log("Subindicator", event);
+    // console.log("Subindicator", event);
     if (event.options.subcategory !== false && event.options.subcategory !== null) {
       this.selectSubcategory(event.options.category, event.options.subcategory);
     } else {
-      //console.log("ELSE SUBCATEGORY ");
+      // console.log("ELSE SUBCATEGORY ");
       this.unselectSubCategory();
     }
   }
@@ -1328,7 +1338,7 @@ updateMapTitle() {
     }
   }
   updateYearValues(event) {
-   // console.log('EVENT',event);
+    // console.log('EVENT',event);
     if (event.options) {
       this.changeYearLabel(event.options.year);
       this.getCategoriesNotNull();
@@ -1337,7 +1347,7 @@ updateMapTitle() {
     }
   }
   icon1a_8(event) {
-    //console.log('----> indicator -->  ', event.options.category.id);
+    // console.log('----> indicator -->  ', event.options.category.id);
     const indi = event.options.category.id;
     return this.mapService.iconIndicator_1_8(indi);
   }
