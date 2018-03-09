@@ -729,17 +729,16 @@ export class ViewerComponent implements OnInit {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
-        if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
+        if (oldValue === null || oldValue === '9999' || oldValue === undefined || oldValue === '') {
             value = (oldValue === '9999')?'Not Applicable':'No data available';
         } else {
-        if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
-            value = (oldValue.toString()? 'Yes' : 'No');
-        }else{
-          value = oldValue ? (oldValue) : 'No data available';
-        } 
+          if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
+              value =(oldValue.toString() === 'true')? 'Yes' : 'No';
+          }else{
+            value = oldValue ? (oldValue) : 'No data available';
+          } 
+        }
       }
-        
-    }
     return value;
   }
   formatValuePopUp(indicator, oldValue) {
@@ -846,8 +845,7 @@ export class ViewerComponent implements OnInit {
             this.listIndicator.yesText=(i.yesText)?i.yesText:'';
             this.listIndicator.noText=(i.noText)?i.noText:'';
             this.listIndicator.value=value;
-            console.log("indi", i.id, "valor",value);
-            if(i.subcategories.length==0)
+            if(i.subcategories.length === 0 || i.id === '7')
             {
               this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:(value!='Not Applicable' && value!='No data available')?value:'', yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:'', classValueF:classValueF, classValueS:classValueS});
             }
