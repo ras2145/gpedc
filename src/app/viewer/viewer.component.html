@@ -467,7 +467,8 @@
                       </div>
                       <div class="btn-group btn-scroll" dropdown>
                         <button dropdownToggle *ngIf="selectedTab !== 'tab2'" type="button" class="btn dropdown-toggle drop-map map-body-i">
-                          {{selectedSidCountry ? selectedSidCountry.country : 'View All Countries'}}
+                          <!-- {{selectedSidCountry ? selectedSidCountry.country : 'View All Countries'}} -->
+                          {{selectedSidCountry ? selectedSidCountry.country : 'View all countries / territories'}}
                           <!-- <i class="mdi mdi-information"
                               popover="The ‘small state’ designation is based on the World Bank classification of ‘small states’ and ‘other small states’ as of December 2017. Only small states that reported to the selected criteria will appear in this menu."
                               placement="right"
