@@ -84,16 +84,14 @@ export class GenerateIndicatorsService {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
-      // value = oldValue ? oldValue :'No data available';
         if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
-            value = 'No data available';
+            value = (oldValue === '9999')?'Not Applicable':'No data available';
         } else {
-        let valueBol = oldValue.toString();
         if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
-            valueBol = (oldValue ? ' Yes' : 'No');
-            oldValue = valueBol;
+            value = (oldValue.toString()? ' Yes' : 'No');
+        }else{
+          value = oldValue ? (oldValue) : 'No data available';
         } 
-        value = oldValue ? (valueBol) : 'No data available';
       }
     }
     return value;

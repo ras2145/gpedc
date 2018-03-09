@@ -729,29 +729,15 @@ export class ViewerComponent implements OnInit {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
-        // if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
-        //       value = 'No data available';
-        //   } else {
-        //   let valueBol = oldValue.toString().trim();
-        //   if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
-        //       valueBol = (oldValue ? ' Yes' : 'No');
-        //       oldValue = valueBol;
-        //   } 
-        //   value = oldValue ? (valueBol) : 'No data available';
-        // }
-        if(oldValue !== undefined){
-            value = oldValue.toString() ? oldValue.toString():'No data available';
-            if(indicator.id === 7 || indicator.id === 8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
-              if(value === 'true' || value === 'false')
-              {
-                value=value=='true'?'Yes':'No';
-              }else{
-                value='No data available';      
-              }
-            }
+        if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
+            value = (oldValue === '9999')?'Not Applicable':'No data available';
+        } else {
+        if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
+            value = (oldValue.toString()? 'Yes' : 'No');
         }else{
-          value='No data available';
-        }
+          value = oldValue ? (oldValue) : 'No data available';
+        } 
+      }
         
     }
     return value;
@@ -844,7 +830,7 @@ export class ViewerComponent implements OnInit {
           // if(i){
 
           // }
-          const value=(value2=='9999')?"Not Applicable":value2;
+          const value=(value2 === '9999')?"Not Applicable":value2;
           if(i.id === '3'){
             classValueF='col-md-1'; classValueS='col-md-11';
           }else{
@@ -891,7 +877,7 @@ export class ViewerComponent implements OnInit {
           for (const j of i.subcategories) {
             jumps = 1;
             const subvalue2 = this.formatValue(j, this.partnerType==='devpart'?this.indicatorsSelectedCountry[j.devpart]:this.indicatorsSelectedCountry[j.partcntry]);
-            const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
+            const subvalue=(subvalue2 === '9999')?"Not Applicable":subvalue2;
             this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:(subvalue!='Not Applicable' && subvalue!='No data available')?subvalue:'', yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:'', classValueF:classValueF, classValueS:classValueS});
             // if (j.label.indexOf('Summary') >= 0) {
             //   continue;

@@ -551,8 +551,8 @@
                                 <div *ngIf="listIndicator.value === 'No'" [innerHTML]="listIndicator.noText" class="tabs-result"></div>
                                 <div *ngFor="let indicator of listIndicator.indicator" class="tabs-result">
                                     <div [innerHTML]="indicator.prefix"></div>
-                                    <div *ngIf="indicator.value === 'Yes'" [innerHTML]="indicator.yesText"></div> 
-                                    <div *ngIf="indicator.value === 'No'" [innerHTML]="indicator.noText"></div>
+                                    <div *ngIf="indicator.value === 'Yes' && listIndicator.value !== indicator.value" [innerHTML]="indicator.yesText"></div> 
+                                    <div *ngIf="indicator.value === 'No' && listIndicator.value !== indicator.value" [innerHTML]="indicator.noText"></div>
                                     <div class="row">
                                         <div class="{{indicator.classValueF}}">
                                             <h3 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}}
