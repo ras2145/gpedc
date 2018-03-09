@@ -1019,20 +1019,21 @@ export class ViewerComponent implements OnInit {
   exportCsvViewer(event) {
     // console.log("export",  this.partnerType); 
     this.loaderService.start();
-    let nameIndicator=(event.options.subcategory!=null)?event.options.subcategory.label:event.options.category.label;
+    const nameIndicator = (event.options.subcategory !== null) ? event.options.subcategory.label : event.options.category.label;
     const lines = [];
     // const headers = ['Country', this.mapTitle];
     const headers = ['Country', nameIndicator];
     lines.push(headers);
-    let column = this.partnerType==='devpart'?this.model.category.devpart:this.model.category.partcntry;
+    let column = this.partnerType === 'devpart' ? this.model.category.devpart : this.model.category.partcntry;
     let indicator = this.model.category;
-    if (this.model.subcategory != null) {
-      column = this.partnerType==='devpart'?this.model.subcategory.devpart:this.model.subcategory.partcntry;
+    if (this.model.subcategory !== null) {
+      column = this.partnerType === 'devpart' ? this.model.subcategory.devpart : this.model.subcategory.partcntry;
       indicator = this.model.subcategory;
     }
-    let countriesList = [];
+    const countriesList = [];
     const self = this;
-    this.mapService.getIndicatorFilterGeoJSON(this.partnerType==='devpart'?this.indicator.devpart:indicator.partcntry, this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year).subscribe(geojson => {
+    // tslint:disable-next-line:max-line-length
+    this.mapService.getIndicatorFilterGeoJSON(this.indicator, this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year, this.partnerType).subscribe(geojson => {
       self.geoJson = geojson;
       for (const feature of self.geoJson.features) {
         const line = [];

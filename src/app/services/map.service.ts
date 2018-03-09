@@ -422,8 +422,8 @@ export class MapService {
     return sql;
   }
   // tslint:disable-next-line:max-line-length
-  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, indicatorType?): Observable<any> {
-    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, indicatorType);
+  getIndicatorFilterGeoJSON(indicator?: string, region?: string, incomeGroup?: string, countryContext?: string, year?: string, partnerType?): Observable<any> {
+    const sql = this.getIndicatorFilterQuery(indicator, region, incomeGroup, countryContext, year, partnerType);
     const query = SERVER.GET_QUERY(sql, true);
     return this.webService.get(query).map(ans => {
       return ans.json();
