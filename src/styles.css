@@ -2553,6 +2553,7 @@ h2 .pos-default-modal {
 .table-title-left div, .table-title-left article{
     display: inline-block;
     vertical-align: middle;
+    width:100%
 }
 .table-title-left .div-img-two{
     width: 100px;
