@@ -720,17 +720,23 @@ export class ViewerComponent implements OnInit {
     } else if (indicator.type === 'number') {
       value = oldValue ? (parseFloat(oldValue).toFixed(indicator.precision)) : 'No data available';
     } else if (indicator.type === 'text') {
-        if(oldValue!=undefined){
-            value = oldValue.toString() ? oldValue.toString():'No data available';
-            if(indicator.id==7 || indicator.id==8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
-              value=value=='true'?'Yes':'No';
-            }
+        if (oldValue === null || oldValue === '9999' || oldValue === undefined) {
+              value = 'No data available';
+          } else {
+          let valueBol = oldValue.toString();
+          if (oldValue.toString() === 'true' || oldValue.toString() === 'false') {
+              valueBol = (oldValue ? ' Yes' : 'No');
+              oldValue = valueBol;
+          } 
+          value = oldValue ? (valueBol) : 'No data available';
         }
+        // if(oldValue !== undefined){
+        //     value = oldValue.toString() ? oldValue.toString():'No data available';
+        //     if(indicator.id === 7 || indicator.id === 8 || indicator.column.substr(0,7)=='_2014_7' || indicator.column.substr(0,7)=='_2014_8'){
+        //       value=value=='true'?'Yes':'No';
+        //     }
+        // }
     }
-    // if(Number(value).toString()=='9999')
-    // {
-    //   value='No data available';
-    // }
     return value;
   }
   formatValuePopUp(indicator, oldValue) {
@@ -806,6 +812,7 @@ export class ViewerComponent implements OnInit {
     if (this.selectedCountry) {
       const categories = this.model.year.categories;
       let notPrint = [];
+      let classValueF, classValueS='';
       for (const i of categories) {
         if (i.id === indicator) {
           const value2 = this.formatValue(i, this.partnerType==='devpart'?this.indicatorsSelectedCountry[i.devpart]:this.indicatorsSelectedCountry[i.partcntry]);
@@ -813,6 +820,14 @@ export class ViewerComponent implements OnInit {
 
           // }
           const value=(value2=='9999')?"Not Applicable":value2;
+          console.log("idññ", i.id);
+          if(i.id === '3'){
+            classValueF='col-md-1'; classValueS='col-md-11';
+          }else{
+            classValueF='col-md-2'; classValueS='col-md-10';
+          }
+          
+          console.log("kdjkdj",classValueF, classValueS);
           // let cols = [1, 11];
           // if (i.id == '1a' || i.id == '5a' || i.id == '5b' || i.id == '6' || i.id == '9b' || i.id == '10') {
           //   cols = [3, 9];
@@ -824,7 +839,7 @@ export class ViewerComponent implements OnInit {
             this.listIndicator.noText=(i.noText)?i.noText:'';
             if(i.subcategories.length==0)
             {
-              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:(value!='Not Applicable' && value!='No data available')?value:'', yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:''});
+              this.listIndicator.indicator.push({prefix:(i.prefix)?i.prefix:'', suffix:(i.suffix)?i.suffix:'', value:(value!='Not Applicable' && value!='No data available')?value:'', yesText:(i.yesText)?i.yesText:'', noText:(i.noText)?i.noText:'', classValueF:classValueF, classValueS:classValueS});
             }
             // if (value === 'Yes') {
             //   this.footerText = this.footerText + '<div class="tabs-result"><b> ' + i.footer + '</b> </div><div class="tabs-result">' + i.yesText + '</div>';
@@ -853,7 +868,7 @@ export class ViewerComponent implements OnInit {
             jumps = 1;
             const subvalue2 = this.formatValue(j, this.partnerType==='devpart'?this.indicatorsSelectedCountry[j.devpart]:this.indicatorsSelectedCountry[j.partcntry]);
             const subvalue=(subvalue2=='9999')?"Not Applicable":subvalue2;
-            this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:(subvalue!='Not Applicable' && subvalue!='No data available')?subvalue:'', yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:''});
+            this.listIndicator.indicator.push({column:j.column, prefix:(j.prefix)?j.prefix:'', suffix:(j.suffix)?j.suffix:'', value:(subvalue!='Not Applicable' && subvalue!='No data available')?subvalue:'', yesText:(j.yesText)?j.yesText:'', noText:(j.noText)?j.noText:'', classValueF:classValueF, classValueS:classValueS});
             // if (j.label.indexOf('Summary') >= 0) {
             //   continue;
             // }

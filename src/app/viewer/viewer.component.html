@@ -550,12 +550,12 @@
                                 </div>
                                 <div *ngFor="let indicator of listIndicator.indicator" class="tabs-result">{{indicator.prefix ||  indicator.yesText || indicator.noText  }}
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <h2 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}}
+                                        <div class="{{indicator.classValueF}}">
+                                            <h3 *ngIf="indicator.value!='Yes' && indicator.value!='No'">{{indicator.value}}
                                                 <i class="mdi mdi-information mdi-cursor pos-default-modal" *ngIf="modalIndicator(listIndicator)" (click)="modalSubcategory(indicator);lgModal.show()"></i>
-                                            </h2>
+                                            </h3>
                                         </div>
-                                        <div class="col-md-10">{{indicator.suffix}}</div>
+                                        <div class="{{indicator.classValueS}}">{{indicator.suffix}}</div>
                                     </div>
                                 </div>
                             </section>

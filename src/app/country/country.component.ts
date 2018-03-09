@@ -262,17 +262,13 @@ export class CountryComponent implements OnInit {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
     }
   }
-  showIndicator(indicator){
-    // console.log("show-ind", indicator.column.substr(1,4));
-    // if(){
-
-    // }
-    if(indicator.id!='4')
-    {
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
+  // showIndicator(indicator){
+  //   if(indicator.id!='4')
+  //   {
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  // }
 }

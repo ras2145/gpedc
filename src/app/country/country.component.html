@@ -572,7 +572,7 @@
                         <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
 
                     <ng-template #thenBlock>
-                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator) && showIndicator(indicator)">
+                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator)">
                             <!-- Show indicator 1 tp 4 without displaing data -->
                             <!-- <div *ngIf="false"> 
                                     <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon(indicator.id)"  placement="right"> 
@@ -594,7 +594,7 @@
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         
                         </td>
-                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator) && showIndicator(indicator)">
+                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator)">
                             <div class="back-title"></div>
                         </td>
                     </ng-template>
@@ -632,7 +632,7 @@
                 </tr>
                 <!-- Show row of subcategories of all indicators-->
                 <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                    <div *ngIf= "availableCountryRow(subcategory) && showIndicator(indicator); then thenPassSubcategory"></div>
+                    <div *ngIf= "availableCountryRow(subcategory); then thenPassSubcategory"></div>
                     <ng-template #thenPassSubcategory>
                       <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableCountryRow(subcategory)">
                           <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:', '').replace('Indicator 8:', '')">
