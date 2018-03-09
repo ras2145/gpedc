@@ -52,8 +52,8 @@ export let analysisData = [
       },
       {
         "indicator": "9b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
-        "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
+        "titlecountry": "",
+        "titlepartner": "",
         "dropdowncountry": "9b: Development partners use partner countries' own systems for disbursing funding",
         "dropdownpartner": "9b:Use of partner countries' own systems for disbursing funding",
         "subdropdown": [
@@ -63,7 +63,7 @@ export let analysisData = [
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "yes"
           },
           {
             "indicator": "9b_1",
@@ -100,7 +100,7 @@ export let analysisData = [
         ],
         "type": "",
         "charttext": "",
-        "autoselect": "yes"
+        "autoselect": ""
       },
       {
         "indicator": "10",
@@ -168,8 +168,8 @@ export let analysisData = [
       },
       {
         "indicator": "9b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
-        "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
+        "titlecountry": "",
+        "titlepartner": "",
         "dropdowncountry": "9b: Development partners use partner countries' own systems for disbursing funding",
         "dropdownpartner": "9b:Use of partner countries' own systems for disbursing funding",
         "subdropdown": [
@@ -179,7 +179,7 @@ export let analysisData = [
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "yes"
           },
           {
             "indicator": "9b_1",
@@ -216,7 +216,7 @@ export let analysisData = [
         ],
         "type": "",
         "charttext": "",
-        "autoselect": "yes"
+        "autoselect": ""
       },
       {
         "indicator": "10",
@@ -284,8 +284,8 @@ export let analysisData = [
       },
       {
         "indicator": "9b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
-        "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
+        "titlecountry": "",
+        "titlepartner": "",
         "dropdowncountry": "9b: Development partners use partner countries' own systems for disbursing funding",
         "dropdownpartner": "9b:Use of partner countries' own systems for disbursing funding",
         "subdropdown": [
@@ -295,7 +295,7 @@ export let analysisData = [
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "yes"
           },
           {
             "indicator": "9b_1",
@@ -332,7 +332,7 @@ export let analysisData = [
         ],
         "type": "",
         "charttext": "",
-        "autoselect": "yes"
+        "autoselect": ""
       },
       {
         "indicator": "10",
@@ -452,8 +452,8 @@ export let analysisData = [
       },
       {
         "indicator": "9b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
-        "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
+        "titlecountry": "",
+        "titlepartner": "",
         "dropdowncountry": "9b: Development partners use partner countries' own systems for disbursing funding",
         "dropdownpartner": "9b:Use of partner countries' own systems for disbursing funding",
         "subdropdown": [
@@ -463,7 +463,7 @@ export let analysisData = [
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "yes"
           },
           {
             "indicator": "9b_1",
@@ -500,7 +500,7 @@ export let analysisData = [
         ],
         "type": "",
         "charttext": "",
-        "autoselect": "yes"
+        "autoselect": ""
       },
       {
         "indicator": "10",
@@ -664,8 +664,8 @@ export let analysisData = [
       },
       {
         "indicator": "9b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
-        "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
+        "titlecountry": "",
+        "titlepartner": "",
         "dropdowncountry": "9b: Development partners use partner countries' own systems for disbursing funding",
         "dropdownpartner": "9b:Use of partner countries' own systems for disbursing funding",
         "subdropdown": [
@@ -675,7 +675,7 @@ export let analysisData = [
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "yes"
           },
           {
             "indicator": "9b_1",
@@ -712,7 +712,7 @@ export let analysisData = [
         ],
         "type": "",
         "charttext": "",
-        "autoselect": "yes"
+        "autoselect": ""
       },
       {
         "indicator": "10",
