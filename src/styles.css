@@ -1486,6 +1486,7 @@ select-dropdown li.selected.highlighted {
     border-radius: 2px;
     font-size: 12px;
     color: #757575;
+    text-align: left;
 }
 
 .drop-map:hover {
