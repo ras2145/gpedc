@@ -170,6 +170,7 @@ export class ViewerComponent implements OnInit {
     this.viewerTab = '1';
     this.heightDropDown = '75vh';
     this.dateModal = {};
+    this.country_before='';
   }
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
@@ -223,7 +224,6 @@ export class ViewerComponent implements OnInit {
       });
 
       this.mapService.clickCountry(event => {
-        
         console.log('CLICK ', event);
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
@@ -413,6 +413,7 @@ export class ViewerComponent implements OnInit {
     this.mapService.paintOneCountry(this.selectedCountry);
     this.selectedCountry = null;
     this.mapService.resetClickLayer();
+    this.country_before='';
   }
 
   selectTab(event) {
