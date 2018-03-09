@@ -289,13 +289,13 @@ export class MapService {
   }
   getCountriesYearQuery(year: string, categories: any, partnerType: string): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
-    const countrydest1 = ' AND (CARTODB_ID != 142)'; // paises no se filtra.
-    const countrydest2 = ' AND (CARTODB_ID != 33)'; // pais no se filtra.
-    const countrydest3 = ' AND (CARTODB_ID != 76)'; // pais no se filtra.
-    sql = sql + this.getDevPartCondition(categories, partnerType) + countrydest1 + countrydest2 + countrydest3;
+    sql = sql + this.getDevPartCondition(categories, partnerType) + (year === '2016' ? ' AND (CARTODB_ID != 76)' : '' );
     return sql;
   }
   getDevPartCondition(categories: any, partnerType: string) {
+    const countrydest1 = ' AND (CARTODB_ID != 142)'; // paises no se filtra.
+    const countrydest2 = ' AND (CARTODB_ID != 33)'; // pais no se filtra.
+    //const countrydest3 = ' AND (CARTODB_ID != 76)'; // pais no se filtra.
     let res = ' AND ( ';
     for ( const cat of categories) {
       for (const sub of cat.subcategories) {
@@ -319,8 +319,9 @@ export class MapService {
         }
       }
     }
+
     res = res.substring(0, res.length - 2);
-    res += ')';
+    res += ') '  + countrydest1 + countrydest2 ;
     return res;
   }
   /*getCountriesYearGeoJSON(year: string): Observable<any> {
@@ -435,7 +436,8 @@ export class MapService {
     const observable: any = Observable.bindCallback(cartodb.Tiles.getTiles, this.mapTiles);
     return observable(tilesOptions);
   }
-  sidsCountriesQuery(column, year, region, incomeGroup, countryContext) {
+  sidsCountriesQuery(column, year, region, incomeGroup, countryContext, categories, partnerType) {
+
     const centerx = 'ST_X(ST_Centroid(the_geom)) as centerx';
     const centery = 'ST_Y(ST_Centroid(the_geom)) as centery';
     const bboxx1 = 'ST_X(ST_StartPoint(ST_BoundingDiagonal(the_geom))) as bboxx1';
@@ -469,11 +471,13 @@ export class MapService {
     if (where != '') {
       sqlone =  where;
     }
+    const partSQL = this.getDevPartCondition(categories, partnerType);
     // ---------------
     // tslint:disable-next-line:max-line-length
-    const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${column} is not null and ${sqlone} ) as st_dump ORDER BY country`);
-    const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${sqlone}) as st_dump ORDER BY country`);
+    const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${column} is not null and ${sqlone} ${partSQL}) as st_dump ORDER BY country`);
+    const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${sqlone} ${partSQL}) as st_dump ORDER BY country`);
     const query = column ? sql1 : sql2;
+    console.log('QUERY', query);
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
     });

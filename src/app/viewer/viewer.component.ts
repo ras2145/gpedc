@@ -1072,7 +1072,7 @@ export class ViewerComponent implements OnInit {
     if (!this.indicator) {
       indicator = this.model.subcategory ? (columnSub) : (columnCat);
     }
-    this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext).subscribe(val => {
+    this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext, this.model.year.categories,this.partnerType).subscribe(val => {
       const countriesObj = {};
       for (let country of val) {
         if (countriesObj[country.country]) {
