@@ -38,13 +38,19 @@
 
       <div class="btn-group btn-dropdown" dropdown>
         <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-          <span class="font-selet-dropdown content-select-default">Ethiopia</span>
+          <span class="font-selet-dropdown content-select-default">{{selectedCountry}}</span>
           <span class="dropdown-caret mdi mdi-chevron-down"></span>
         </button>
         <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
           <li role="menuitem">
-              <a class="dropdown-item style-a-default">
-                  .....
+            <a class="dropdown-item contenido-dropdown" (click)="resetCountry()">
+              Select Country
+            </a>
+          </li>
+          
+          <li *ngFor="let country of countries" role="menuitem">
+              <a class="dropdown-item style-a-default" (click)="changeCountry(country.country)">
+                  {{country.country}}
               </a>
           </li>
         </ul>
@@ -103,7 +109,7 @@
       </div>
 
       <button *ngIf="mapTitle!==''"type="button" name="button" class="btn btn-learn">What does this indicator measure?</button>
-      <button type="button" name="button" class="btn btn-run">Run Analysis</button>
+      <button type="button" name="button" class="btn btn-run" (click)="run()">Run Analysis</button>
       </div>
     </div>
     <div class="col-md-9 level-bg">
@@ -142,7 +148,7 @@
       <div class="card-db">
         <div class="row">
           <div class="col-md-6 ll-hd">
-            <label>2010 performance across all development partners for Ethiopia: Indicator 1a</label>
+            <label>{{title}} {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</label>
             <p> Click on a development partner to see historical trends in performance</p>
             <div class="row no-gutters">
               <div class="col-md-5">
@@ -156,31 +162,22 @@
               </div>
               <div class="col-md-4">
                 <img src="assets/006.png" alt="" width="11px">
-                <label class="title-pp-01">SCORE</label>
-                <i class="mdi mdi-information"
-                    popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    placement="right"
-                    triggers="mouseenter:mouseleave" >
-                </i>
+                <label class="title-pp-01">Performance</label>
               </div>
             </div>
 
             <div class="title-i">
-              <label>Indicator Score %</label>
-              <i class="mdi mdi-information"
-                  popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                  placement="right"
-                  triggers="mouseenter:mouseleave" >
-              </i>
+              <label>{{charttext}}</label>
+              
             </div>
-            <img src="assets/10.png" alt="">
+            <div id="chart"></div>
           </div>
           <div class="col-md-6 ll-hd">
             <div class="card-bd">
               <div class="card-bd-01">
                 <h6>UNDP</h6>
                 <p>Historical performance for UNDP in Ethiopia: Indicator 1a</p>
-                <img src="assets/007.png" alt="">
+                <div id="chart2"></div>
               </div>
 
               <div class="card-bd-02">
