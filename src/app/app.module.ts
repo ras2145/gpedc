@@ -19,6 +19,7 @@ import { Routing } from './app.routes';
 import { CountryHistoricalComponent } from './country-historical/country-historical.component';
 import { PartnerHistoricalComponent } from './partner-historical/partner-historical.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { PartnerHistoricalService } from './services/partner-historical.service';
 
 
 
@@ -45,6 +46,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     SelectModule
   ],
   providers: [
+    PartnerHistoricalService,
     MapService,
     WebService,
     GenerateIndicatorsService,
