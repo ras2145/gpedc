@@ -2,8 +2,9 @@ import { WebService } from './services/web.service';
 import { MapService } from './services/map.service';
 import { LoaderService } from './services/loader.service';
 import { GenerateIndicatorsService} from './services/generate-indicators.service';
-import { ModelService } from './services/model.service';
 import { RouterModule, Routes } from '@angular/router';
+import { CountryAnalysisService } from './services/country-analysis.service';
+import { ModelService } from './services/model.service';
 import {HttpModule, RequestOptions, XHRBackend} from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -52,6 +53,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     GenerateIndicatorsService,
     LoaderService,
     ModelService,
+    CountryAnalysisService,
     {
       provide: WebService,
       useFactory: httpServiceFactory,
