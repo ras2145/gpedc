@@ -10,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   modalRef: BsModalRef;
   viewModal: boolean;
-  mapTitle = '';
+  @Input() mapTitle = '';
   indicator = true;
   @ViewChild('tuto') tuto: TemplateRef<any>;
   tutorial = [
@@ -24,18 +24,13 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
     false,
     false
   ];
-  @Input() titleSubject: Subject<any>;
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
     console.log('navbar loaded!');
   }
   ngOnChanges() {
-    this.titleSubject.subscribe(event => {
-      this.indicator = event.indicator ;
-      this.mapTitle = event.mapTitle ;
-      console.log('cambio', event.mapTitle);
-    });
+
   }
   ngAfterViewInit () {
     if (!window.localStorage.getItem('tutorial')) {
@@ -74,6 +69,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
     }
   }
   alinear(){
-    return (this.mapTitle.substr(0,11) =='Indicator 7')?'text-exception':'text-regular';
+    if (this.mapTitle) {
+      return (this.mapTitle.substr(0,11) =='Indicator 7')?'text-exception':'text-regular';
+    }
+    return '';
   }
 }
