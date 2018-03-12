@@ -40,7 +40,7 @@ export let analysisData = [
             "autoselect": ""
           },
           {
-            "indicator": "6.2",
+            "indicator": "6_2",
             "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
@@ -164,7 +164,7 @@ export let analysisData = [
             "autoselect": ""
           },
           {
-            "indicator": "6.2",
+            "indicator": "6_2",
             "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
@@ -288,7 +288,7 @@ export let analysisData = [
             "autoselect": ""
           },
           {
-            "indicator": "6.2",
+            "indicator": "6_2",
             "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
@@ -469,7 +469,7 @@ export let analysisData = [
             "autoselect": ""
           },
           {
-            "indicator": "6.2",
+            "indicator": "6_2",
             "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
@@ -698,7 +698,7 @@ export let analysisData = [
             "autoselect": ""
           },
           {
-            "indicator": "6.2",
+            "indicator": "6_2",
             "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",

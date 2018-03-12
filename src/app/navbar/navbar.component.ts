@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-    console.log('navbar loaded!');
+    // console.log('navbar loaded!');
   }
   ngOnChanges() {
 
@@ -68,9 +68,10 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
       this.tutorial[i] = false;
     }
   }
-  alinear(){
+
+  alinear() {
     if (this.mapTitle) {
-      return (this.mapTitle.substr(0,11) =='Indicator 7')?'text-exception':'text-regular';
+      return (this.mapTitle.substr(0, 11) === 'Indicator 7') ? 'text-exception' : 'text-regular';
     }
     return '';
   }

@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [mapTitle] = "navbarTitle"></app-navbar>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 cc-mg">
@@ -16,26 +16,10 @@
       <div class="row no-gutters">
         <div class="col-md-11">
           <div class="radio">
-              <label>
-                  <input type="radio" name="radio-btn" [value]="title"/>
-                  2016
-              </label>
-              <label>
-                  <input type="radio" name="radio-btn" [value]="title"/>
-                  2014
-              </label>
-              <label class="radio-label-checked">
-                  <input type="radio" name="radio-btn" [value]="title"/>
-                  2010
-              </label>
-              <label>
-                  <input type="radio" name="radio-btn" [value]="title"/>
-                  2007
-              </label>
-              <label>
-                  <input type="radio" name="radio-btn" [value]="title"/>
-                  2005
-              </label>
+              <label *ngFor="let year of years" [ngClass]="{'radio-label-checked' : year === yearModel.year}">
+                <input type="radio" name="radio-btn" [value]="year" [(ngModel)]="yearModel" [checked]="year === yearModel.year" (change)="changeYear(year)"/> 
+                {{ year }}
+              </label> 
           </div>
         </div>
         <div class="col-md-1 text-right margin-top-btn">
@@ -44,28 +28,64 @@
       </div>
       <br>
       <!-- DEVELOPMENT -->
-      <p class="result-subtitle space-view-data"> <span _ngcontent-c1="" class="mdi mdi-crosshairs-gps"></span>INDICATOR
+      
+      <!-- INDICATORS -->
+      <p class="result-subtitle space-view-data">
+          <span class="mdi mdi-crosshairs-gps"></span>
+          Indicator
           <i class="mdi mdi-information"
               popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
               placement="right"
               triggers="mouseenter:mouseleave" >
           </i>
       </p>
-
-      <div class="btn-group btn-dropdown" dropdown>
+      <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
         <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-          <span class="font-selet-dropdown content-select-default">Ethiopia</span>
+          <span *ngIf="!selectedIndicator" class="font-selet-dropdown content-select-default">Select an Indicator</span>
+          <span *ngIf="selectedIndicator" class="font-selet-dropdown content-select-default">{{ selectedIndicator.dropdown }}</span>
           <span class="dropdown-caret mdi mdi-chevron-down"></span>
         </button>
-        <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
           <li role="menuitem">
-              <a class="dropdown-item style-a-default">
-                  .....
+              <a class="dropdown-item contenido-dropdown" (click)="unselectIndicator()">
+                Select an Indicator
               </a>
+          </li>
+          <li role="menuitem" *ngFor="let indicator of yearModel.indicators" dropdown >
+            <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectIndicator(indicator)" >
+              {{ indicator.dropdown }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- SUBINDICATORS -->
+      <p class="result-subtitle space-view-data" *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0">
+        Sub Indicator
+        <i class="mdi mdi-information" 
+          popover="Information for this sub-indicator is drawn from the IATI registry, and constitutes a snapshot of progress at the time of Global Partnership monitoring. Up-to-date information for this sub-indicator can be found on the IATI Dashboard, which is updated nightly with current data."
+          placement="right" 
+          triggers="mouseenter:mouseleave">
+        </i>
+      </p>
+      <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
+        <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+          <span *ngIf="!selectedSubindicator" class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+          <span *ngIf="selectedSubindicator" class="font-selet-dropdown content-select-default"> {{ selectedSubindicator.subdropdown }}</span>          
+          <span class="dropdown-caret mdi mdi-chevron-down"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem">
+            <a class="dropdown-item contenido-dropdown" (click)="unselectSubindicator()">
+              Select a Sub-Indicator
+            </a>
+          </li>
+          <li role="menuitem" *ngFor="let subindicator of selectedIndicator.subindicators">
+            <a class="dropdown-item contenido-dropdown" (click)="selectSubindicator(subindicator)"> {{ subindicator.subdropdown }}</a>
           </li>
         </ul>
       </div>
       <br><br>
+      <!-- DEVELOPMENT PARTNER -->
       <div class="form-group style-select">
         <p for="inputState" class="result-subtitle space-indicator"><img src="assets/004.png" alt="" width="12px"> DEVELOPMENT PARTNER
             <i class="mdi mdi-information"
@@ -107,6 +127,7 @@
           UN agencies
         </label>
         <!-- CHECKBOX -->
+
         <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
             <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
                 <span class="font-selet-dropdown content-select-default">UNDP</span>
