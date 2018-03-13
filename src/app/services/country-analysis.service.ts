@@ -29,7 +29,7 @@ export class CountryAnalysisService {
         if (!this.isNumeric(res[key]) || (+res[key] < 0 || +res[key] > 1)) {
           delete res[key];
         } else {
-          ans.push({label: key, value: +res[key] * 100});
+          ans.push({label: key, value: +(+res[key] * 100).toFixed(3)});
         }
       }
       ans.sort((a, b) => {

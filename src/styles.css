@@ -2633,8 +2633,7 @@ h2 .pos-default-modal {
 /*STYLES FOR D3*/
 #chart {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width: 600px;
-    height: 600px;
+    width: 610px;
     position: relative;
 }
 svg {
@@ -2658,10 +2657,10 @@ svg {
     text-align: center;
 }
 
-text {
-    font: 10px sans-serif;
+text.label {
+    font: 12px sans-serif;
     color: white;
-    word-break: break-all;
+    display: inline-block;
     width: 20px;
 }
 text.value {
@@ -2679,6 +2678,6 @@ text.value {
 }
 
 .bar {
-    fill: steelblue;
+    fill: #f17846;
     fill-opacity: .9;
 }

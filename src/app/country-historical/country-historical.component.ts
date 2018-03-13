@@ -160,18 +160,28 @@ export class CountryHistoricalComponent implements OnInit {
     for (let d of data) {
       d.label = this.firstRow[d.label];
     }
+    const MAGIC = 30;
+    const length = data.length;
+    console.log('length ', length);
     let div = d3.select("#chart").attr("class", "toolTip");
-    let axisMargin = 20,
-            margin = 40,
-            valueMargin = 4,
-            width = parseInt(d3.select('#chart').style('width'), 10),
-            height = parseInt(d3.select('#chart').style('height'), 10),
-            barHeight = (height - axisMargin - margin * 2) * 0.4 / data.length,
-            barPadding = (height - axisMargin - margin * 2) * 0.6 / data.length,
-            bar, svg, scale, xAxis, labelWidth = 0, max;
+    let axisMargin = 90,
+    margin = 10,
+    valueMargin = 4,
+    barHeight = 20,
+    barPadding = 20,
+    bar, svg, scale, xAxis, labelWidth = 0, max;
+    console.log(length * (barHeight + barPadding * 2) + 10);
+    const width = parseInt(d3.select('#chart').style('width'), 10),
+    height = MAGIC * length;
+    console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
     console.log(width, height);
     max = 100;
     console.log('my max is ', max, data);
+
+    const content = document.getElementById("chart"); 
+    while (content.firstChild) { 
+      content.removeChild(content.firstChild); 
+    } 
     svg = d3.select('#chart')
             .append("svg")
             .attr("width", width)
@@ -195,6 +205,8 @@ export class CountryHistoricalComponent implements OnInit {
             .text(function(d){
                 return d.label;
             }).each(function() {
+              console.log(this.getBBox());
+        // labelWidth = 50;
         labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
     });
     console.log(bar);
