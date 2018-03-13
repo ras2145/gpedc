@@ -88,7 +88,7 @@ export class CountryHistoricalComponent implements OnInit {
     }
   }
   changeIndicator(indicator) {
-    this.indicator = indicator;
+    this.indicator = JSON.parse(JSON.stringify(indicator));
     console.log(this.indicator);
     this.sendTitle();
     this.subDropdown = (this.indicator.subdropdown.length > 0);
@@ -104,7 +104,7 @@ export class CountryHistoricalComponent implements OnInit {
     }
   }
   changeSubIndicator(subIndicator) {
-    this.subIndicator = subIndicator;
+    this.subIndicator = JSON.parse(JSON.stringify(subIndicator));
     this.charttext = this.subIndicator.charttext;
     this.sendTitle();
   }
@@ -170,12 +170,12 @@ export class CountryHistoricalComponent implements OnInit {
     barHeight = 20,
     barPadding = 20,
     bar, svg, scale, xAxis, labelWidth = 0, max;
-    console.log(length * (barHeight + barPadding * 2) + 10);
+    console.log(length * (barHeight + margin * 2) + 10);
     const width = parseInt(d3.select('#chart').style('width'), 10),
-    height = MAGIC * length;
+    height = length * (barHeight + barPadding ) + 120;
     console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
     console.log(width, height);
-    max = 100;
+    max = 109;
     console.log('my max is ', max, data);
 
     const content = document.getElementById("chart"); 
