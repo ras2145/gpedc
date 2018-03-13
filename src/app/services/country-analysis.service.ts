@@ -9,6 +9,10 @@ export class CountryAnalysisService {
   isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
+  getFirstRow() {
+    const query = SERVER.GET_QUERY(`SELECT * from ${SERVER.GPEDC_SCREENS_4_5} WHERE cartodb_id = 1`);
+    return this.webService.get(query).map(res => res.json().rows[0]);
+  }
   getCountries(conditions?): Observable<any> {
     const query = SERVER.GET_QUERY(`SELECT DISTINCT country FROM ${SERVER.GPEDC_SCREENS_4_5} WHERE cartodb_id <> 1 ORDER BY country`);
     return this.webService.get(query).map(res => {
@@ -25,7 +29,7 @@ export class CountryAnalysisService {
         if (!this.isNumeric(res[key]) || (+res[key] < 0 || +res[key] > 1)) {
           delete res[key];
         } else {
-          ans.push({label: key, value: +res[key]});
+          ans.push({label: key, value: +res[key] * 100});
         }
       }
       ans.sort((a, b) => {

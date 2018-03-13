@@ -13,6 +13,7 @@ export class CountryHistoricalComponent implements OnInit {
   filters;
   charttext;
   countries: any;
+  firstRow: any;
   selectedCountry = 'Select Country';
   chartData: any;
   model = {   };
@@ -37,6 +38,9 @@ export class CountryHistoricalComponent implements OnInit {
     this.countryAnalysisService.getCountries().subscribe(res => {
       this.countries = res;
       console.log(this.countries);
+    });
+    this.countryAnalysisService.getFirstRow().subscribe(res => {
+      this.firstRow = res;
     });
     this.filters = analysisData;
     this.filters.forEach(filter => {
@@ -152,12 +156,80 @@ export class CountryHistoricalComponent implements OnInit {
     console.log(event);
   }
   draw() {
-    const margin = {top: 20, right: 20, bottom: 30, left: 40};
-    const width = 400;
-    const height = 600;
-    let svg = d3.select("#chart").append("svg:svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    let data = this.chartData;
+    for (let d of data) {
+      d.label = this.firstRow[d.label];
+    }
+    let div = d3.select("#chart").attr("class", "toolTip");
+    let axisMargin = 20,
+            margin = 40,
+            valueMargin = 4,
+            width = parseInt(d3.select('#chart').style('width'), 10),
+            height = parseInt(d3.select('#chart').style('height'), 10),
+            barHeight = (height - axisMargin - margin * 2) * 0.4 / data.length,
+            barPadding = (height - axisMargin - margin * 2) * 0.6 / data.length,
+            bar, svg, scale, xAxis, labelWidth = 0, max;
+    console.log(width, height);
+    max = 100;
+    console.log('my max is ', max, data);
+    svg = d3.select('#chart')
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+    console.log(svg);
+    svg.selectAll('.bar').remove();
+    bar = svg.selectAll("g")
+    .data(data)
+    .enter()
     .append("g");
+    
+    bar.attr("class", "bar")
+            .attr("cx", 0)
+            .attr("transform", function(d, i) {
+                return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+            });
+    bar.append("text")
+            .attr("class", "label")
+            .attr("y", barHeight / 2)
+            .attr("dy", ".35em") //vertical align middle
+            .text(function(d){
+                return d.label;
+            }).each(function() {
+        labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
+    });
+    console.log(bar);
+    scale = d3.scaleLinear()
+            .domain([0, max])
+            .range([0, width - margin*2 - labelWidth]);
+
+    xAxis = d3.axisBottom(scale).
+    tickSize(-height + 2 * margin + axisMargin);
+    
+    bar.append("rect")
+            .attr("transform", "translate("+labelWidth+", 0)")
+            .attr("height", barHeight)
+            .attr("width", function(d){
+                return scale(d.value);
+            });
+
+    bar.append("text")
+            .attr("class", "value")
+            .attr("y", barHeight / 2)
+            .attr("dx", -valueMargin + labelWidth) //margin right
+            .attr("dy", ".35em") //vertical align middle
+            .attr("text-anchor", "end")
+            .text(function(d){
+                return (d.value+"%");
+            })
+            .attr("x", function(d){
+                var width = this.getBBox().width;
+                return Math.max(width + valueMargin, scale(d.value));
+            });
+    
+    svg.insert("g",":first-child")
+            .attr("class", "axisHorizontal")
+            .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+            .call(xAxis);
+            
   }
 }
