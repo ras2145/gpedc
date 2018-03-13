@@ -3,13 +3,15 @@ import { analysisData } from '../analysisData';
 import { Indicator } from '../partner-historical/indicator.model';
 import { Subindicator } from '../partner-historical/subindicator.model';
 import { Year } from '../partner-historical/year.model';
+import { SERVER } from '../server.config';
+import { WebService } from './web.service';
 
 @Injectable()
 export class PartnerHistoricalService {
 
   years: Array<Number>;
 
-  constructor() {
+  constructor(private webService: WebService) {
     this.years = [2005, 2007, 2010, 2014, 2016];
   }
 
@@ -55,5 +57,10 @@ export class PartnerHistoricalService {
     data.year = analysisData[yearId].year;
     data.indicators = this.getIndicatorsByYear(yearId);
     return data;
+  }
+
+  getAllPartners() {
+    const query = SERVER.GET_QUERY(`SELECT type_partner, partner from ${SERVER.PARTNER_TABLE}`);
+    return this.webService.get(query).map(res => res.json().rows);
   }
 }

@@ -12,6 +12,15 @@ enum Years {
   _2014,
   _2016
 }
+enum EnumPartner {
+  'Bilateral',
+  'OtherBilateral',
+  'Multilateral',
+  'UNAgencies',
+  'OtherIntAndReg',
+  'Foundations',
+  'Global'
+}
 @Component({
   selector: 'app-partner-historical',
   templateUrl: './partner-historical.component.html',
@@ -19,11 +28,11 @@ enum Years {
 })
 export class PartnerHistoricalComponent implements OnInit {
   years: Array<number>;
+  partnerTypes: Array<string>;
+
   selectedYear: number;
 
   selectedYearId: number;
-  selectedIndicatorId: string;
-  selectedSubindicatorId: string;
 
   selectedIndicator: Indicator;
   selectedSubindicator: Subindicator;
@@ -32,22 +41,30 @@ export class PartnerHistoricalComponent implements OnInit {
 
   navbarTitle: string;
 
+  partners: Map<string, Array<string>>;
+
+  rawPartners;
+
   constructor(private phService: PartnerHistoricalService) {
     this.selectedYearId = Years._2016; // defalut year
     this.years = [2005, 2007, 2010, 2014, 2016];
+    this.partnerTypes = [];
     this.selectedYear = this.years[this.selectedYearId];
 
-    this.selectedIndicatorId = null;
-    this.selectedSubindicatorId = null;
     this.yearModel = new Year();
 
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
+
+    this.partners = new Map<string, Array<string>>();
   }
 
   ngOnInit() {
     this.yearModel = this.phService.getDataByYear(this.selectedYearId);
-    console.log(this.yearModel);
+    this.phService.getAllPartners().subscribe(res => {
+      this.rawPartners = res;
+    });
+    console.log(this.rawPartners);
   }
 
   changeYear(year) {
@@ -89,8 +106,8 @@ export class PartnerHistoricalComponent implements OnInit {
         return i;
       }
     }
-    return -1;
   }
+
   getNavbarTitle() {
     let ans = '';
     if (this.selectedSubindicator) {
@@ -98,5 +115,9 @@ export class PartnerHistoricalComponent implements OnInit {
       ans = ans.replace('[YEAR]', String(this.yearModel.year));
     }
     this.navbarTitle = ans;
+  }
+
+  getPartners() {
+
   }
 }
