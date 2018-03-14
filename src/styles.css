@@ -103,7 +103,7 @@ img.logo.panel-1 {
 .navbar p {
   font-size: 12px;
   padding-left: 20px;
-   line-height: 1; 
+   line-height: 1;
 }
 .text-regular{
   padding-top: 18px;
@@ -148,6 +148,7 @@ img.logo.panel-1 {
     color: rgba(40, 40, 40, 0.56);
     border-bottom: solid 1px rgba(40, 40, 40, 0.15);
     letter-spacing: 1px;
+    line-height: 25px !important
 }
 
 .result-subtitle i,
@@ -2680,4 +2681,7 @@ text.value {
 .bar {
     fill: #f17846;
     fill-opacity: .9;
+}
+.oo-ll .popover{
+  width: 400px;
 }

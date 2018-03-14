@@ -19,7 +19,7 @@
             <label  *ngFor="let filter of filters" [ngClass]="{'radio-label-checked' : model.year == filter.year}">
               <input type="radio" name="radio-btn"  [value]="filter" [checked]="filter.year===model.year" [(ngModel)]="model" (change)='changeYear(model)'>
               {{filter.year}}
-            </label>              
+            </label>
           </div>
         </div>
         <div class="col-md-1 text-right margin-top-btn">
@@ -47,7 +47,7 @@
               Select Country
             </a>
           </li>
-          
+
           <li *ngFor="let country of countries" role="menuitem">
               <a class="dropdown-item style-a-default" (click)="changeCountry(country.country)">
                   {{country.country}}
@@ -151,7 +151,7 @@
             <label>{{title}} {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</label>
             <p> Click on a development partner to see historical trends in performance</p>
             <div class="row no-gutters">
-              <div class="col-md-5">
+              <div class="col-md-5 oo-ll">
                 <img src="assets/006.png" alt="" width="11px">
                 <label class="title-pp">DEVELOPMENT PARTNER</label>
                 <i class="mdi mdi-information"
@@ -168,7 +168,7 @@
 
             <div class="title-i">
               <label>{{charttext}}</label>
-              
+
             </div>
             <div id="chart"></div>
           </div>
