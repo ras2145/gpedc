@@ -2633,7 +2633,7 @@ h2 .pos-default-modal {
 /*STYLES FOR D3*/
 #chart {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width: 610px;
+    width: 440px;
     position: relative;
 }
 svg {
