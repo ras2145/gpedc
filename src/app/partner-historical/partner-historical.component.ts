@@ -12,15 +12,7 @@ enum Years {
   _2014,
   _2016
 }
-enum EnumPartner {
-  'Bilateral',
-  'OtherBilateral',
-  'Multilateral',
-  'UNAgencies',
-  'OtherIntAndReg',
-  'Foundations',
-  'Global'
-}
+
 @Component({
   selector: 'app-partner-historical',
   templateUrl: './partner-historical.component.html',
@@ -28,10 +20,8 @@ enum EnumPartner {
 })
 export class PartnerHistoricalComponent implements OnInit {
   years: Array<number>;
-  partnerTypes: Array<string>;
 
   selectedYear: number;
-
   selectedYearId: number;
 
   selectedIndicator: Indicator;
@@ -41,37 +31,54 @@ export class PartnerHistoricalComponent implements OnInit {
 
   navbarTitle: string;
 
-  partners: Map<string, Array<string>>;
+  partners: any;
+  dropdownContent: Array<any>;
 
-  rawPartners;
+  selectedDevPartner: any;
+  selectedPartnerTypes: Array<boolean>;
 
   constructor(private phService: PartnerHistoricalService) {
     this.selectedYearId = Years._2016; // defalut year
     this.years = [2005, 2007, 2010, 2014, 2016];
-    this.partnerTypes = [];
+
     this.selectedYear = this.years[this.selectedYearId];
-
-    this.yearModel = new Year();
-
+    this.selectedDevPartner = null;
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
 
-    this.partners = new Map<string, Array<string>>();
+    this.yearModel = new Year();
+
+    this.dropdownContent = new Array<any>();
+    this.selectedPartnerTypes = new Array<boolean>();
   }
 
   ngOnInit() {
     this.yearModel = this.phService.getDataByYear(this.selectedYearId);
-    this.phService.getAllPartners().subscribe(res => {
-      this.rawPartners = res;
-    });
-    console.log(this.rawPartners);
+    this.partners = this.phService.getPartners();
+    this.resetSelectedPartnerTypes();
+    this.fillDropdown();
   }
 
+  resetSelectedPartnerTypes() {
+    this.selectedPartnerTypes = new Array<boolean>();
+    for (let i = 0; i < this.partners.length; i++) {
+      this.selectedPartnerTypes.push(true);
+    }
+  }
+  onSelected(event) {
+    this.getNavbarTitle();
+  }
+  onDeselected(event) {
+    this.getNavbarTitle();
+  }
   changeYear(year) {
     this.yearModel = this.phService.getDataByYear(this.getYearId(year));
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
     this.getNavbarTitle();
+    this.resetSelectedPartnerTypes();
+    this.fillDropdown();
+    this.selectedDevPartner = null;
     console.log(this.yearModel);
   }
 
@@ -110,14 +117,47 @@ export class PartnerHistoricalComponent implements OnInit {
 
   getNavbarTitle() {
     let ans = '';
-    if (this.selectedSubindicator) {
+    if (this.selectedSubindicator && this.selectedDevPartner) {
       ans = this.selectedSubindicator.title;
       ans = ans.replace('[YEAR]', String(this.yearModel.year));
+      ans = ans.replace('[DEVELOPMENT PARTNER]', this.selectedDevPartner);
     }
     this.navbarTitle = ans;
   }
+  updateCheck(i) {
+    this.selectedPartnerTypes[i] = !this.selectedPartnerTypes[i];
+    this.fillDropdown();
+  }
 
-  getPartners() {
+  fillDropdown() {
+    let dropdownItem, i;
+    i = 0;
+    this.dropdownContent = [];
+    for (const it1 of this.partners) {
+      if (this.selectedPartnerTypes[i] === true) {
+        dropdownItem = {
+          value: it1.type,
+          label: it1.type,
+          disabled: true
+        };
+        this.dropdownContent.push(dropdownItem);
+        for (const p of it1.partners) {
+          dropdownItem = {
+            value: p,
+            label: p,
+            disabled: false
+          };
+          this.dropdownContent.push(dropdownItem);
+        }
+      }
+      i++;
+    }
+  }
 
+  runAnalysis() {
+    console.log(this.selectedYear);
+    console.log(this.selectedIndicator.id);
+    console.log(this.selectedSubindicator.id);
+    console.log(this.selectedDevPartner);
   }
 }

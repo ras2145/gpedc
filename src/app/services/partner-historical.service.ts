@@ -5,6 +5,7 @@ import { Subindicator } from '../partner-historical/subindicator.model';
 import { Year } from '../partner-historical/year.model';
 import { SERVER } from '../server.config';
 import { WebService } from './web.service';
+import { partnerTypes } from '../partner-historical/partner-types';
 
 @Injectable()
 export class PartnerHistoricalService {
@@ -58,9 +59,7 @@ export class PartnerHistoricalService {
     data.indicators = this.getIndicatorsByYear(yearId);
     return data;
   }
-
-  getAllPartners() {
-    const query = SERVER.GET_QUERY(`SELECT type_partner, partner from ${SERVER.PARTNER_TABLE}`);
-    return this.webService.get(query).map(res => res.json().rows);
+  getPartners() {
+    return partnerTypes;
   }
 }
