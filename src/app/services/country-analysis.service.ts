@@ -39,4 +39,10 @@ export class CountryAnalysisService {
       return ans;
     });
   }
+  getSecondChartData(country, indicator, column) {
+    const query = SERVER.GET_QUERY(`SELECT ${column} as value, year FROM ${SERVER.GPEDC_SCREENS_4_5} WHERE country = '${country}' AND indicator = '${indicator}'`);
+    return this.webService.get(query).map(res => {
+      return res.json().rows;
+    });
+  } 
 }
