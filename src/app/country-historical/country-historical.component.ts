@@ -16,6 +16,7 @@ export class CountryHistoricalComponent implements OnInit {
   firstRow: any;
   selectedCountry = 'Select Country';
   chartData: any;
+  selectedChart = '';
   model = {   };
   indicator = {
     dropdowncountry: 'Select an indicator',
@@ -156,11 +157,11 @@ export class CountryHistoricalComponent implements OnInit {
     console.log(event);
   }
   draw() {
+    const scope = this;
     let data = this.chartData;
     for (let d of data) {
       d.label = this.firstRow[d.label];
     }
-    const MAGIC = 30;
     const length = data.length;
     console.log('length ', length);
     let div = d3.select("#chart").attr("class", "toolTip");
@@ -177,7 +178,6 @@ export class CountryHistoricalComponent implements OnInit {
     console.log(width, height);
     max = 109;
     console.log('my max is ', max, data);
-
     const content = document.getElementById("chart"); 
     while (content.firstChild) { 
       content.removeChild(content.firstChild); 
@@ -186,62 +186,110 @@ export class CountryHistoricalComponent implements OnInit {
             .append("svg")
             .attr("width", width)
             .attr("height", height);
-    console.log(svg);
     svg.selectAll('.bar').remove();
     bar = svg.selectAll("g")
     .data(data)
     .enter()
     .append("g");
-    
+    let inRangeCoord = [];
     bar.attr("class", "bar")
-            .attr("cx", 0)
-            .attr("transform", function(d, i) {
-                return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
-            });
+      .attr("cy", 0)
+      .attr("transform", (d, i) => {
+        if (i) {
+          inRangeCoord.push((i * (barHeight + barPadding) + barPadding));
+        }
+        return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+      });
+    inRangeCoord.push(Number.MAX_VALUE);
     bar.append("text")
-            .attr("class", "label")
-            .attr("y", barHeight / 2)
-            .attr("dy", ".35em") //vertical align middle
-            .text(function(d){
-                return d.label;
-            }).each(function() {
-              console.log(this.getBBox());
+      .attr("class", "label")
+      .attr("y", barHeight / 2)
+      .attr("dy", ".35em") //vertical align middle
+      .text(function(d){
+          return d.label;
+      }).each(function() {
         // labelWidth = 50;
         labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
-    });
+      });
     console.log(bar);
     scale = d3.scaleLinear()
-            .domain([0, max])
-            .range([0, width - margin*2 - labelWidth]);
+      .domain([0, max])
+      .range([0, width - margin*2 - labelWidth]);
 
     xAxis = d3.axisBottom(scale).
     tickSize(-height + 2 * margin + axisMargin);
     
     bar.append("rect")
-            .attr("transform", "translate("+labelWidth+", 0)")
-            .attr("height", barHeight)
-            .attr("width", function(d){
-                return scale(d.value);
-            });
+      .attr("transform", "translate("+labelWidth+", 0)")
+      .attr("height", barHeight)
+      .attr("width", function(d){
+          return scale(d.value);
+      });
 
     bar.append("text")
-            .attr("class", "value")
-            .attr("y", barHeight / 2)
-            .attr("dx", -valueMargin + labelWidth) //margin right
-            .attr("dy", ".35em") //vertical align middle
-            .attr("text-anchor", "end")
-            .text(function(d){
-                return (d.value+"%");
-            })
-            .attr("x", function(d){
-                var width = this.getBBox().width;
-                return Math.max(width + valueMargin, scale(d.value));
-            });
+      .attr("class", "value")
+      .attr("y", barHeight / 2)
+      .attr("dx", -valueMargin + labelWidth) //margin right
+      .attr("dy", ".35em") //vertical align middle
+      .attr("text-anchor", "end")
+      .text(d => {
+          return (d.value+"%");
+      })
+      .attr("x", function(d) {
+          var width = this.getBBox().width;
+          return Math.max(width + valueMargin, scale(d.value));
+      });
     
     svg.insert("g",":first-child")
-            .attr("class", "axisHorizontal")
-            .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
-            .call(xAxis);
+      .attr("class", "axisHorizontal")
+      .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+      .call(xAxis);
+    svg.on('click', function() {
+      const self = this; 
+      bar.on('click', () => {
+        const coords = d3.mouse(self);
+        let pos = -1;
+        for (let index = 0; index < inRangeCoord.length; index++) {
+          const coord = inRangeCoord[index];
+          if (coords[1] < coord) {
+            pos = index;
+            break;
+          }
+        }
+        scope.drawSecondChart(pos);    
+      });
+    });
             
+  }
+  drawSecondChart(pos) {
+    let toDraw = this.chartData[pos];
+    this.selectedChart = toDraw.label;
+    const content = document.getElementById("chart2"); 
+    while (content.firstChild) { 
+      content.removeChild(content.firstChild); 
+    } 
+    console.log('to draw ', toDraw);
+    let ind = '';
+    if (this.subDropdown) {
+      ind = this.subIndicator.indicator;
+    } else {
+      ind = this.indicator.indicator;
+    }
+    this.countryAnalysisService.getSecondChartData(this.selectedCountry, ind, toDraw['column']).subscribe(res => {
+      console.log(res);
+      const years = ['2005', '2007', '2010', '2014', '2016'];
+      const data = [];
+      years.forEach(year => {
+        data.push({label: year, value: 0});
+      });
+      res.forEach(r => {
+        for (let d of data) {
+          if (d.label === r.year) {
+            d.value = +(+r.value * 100).toFixed(3);
+          }
+        }
+      });
+      console.log('my data is ', data);
+    });
   }
 }

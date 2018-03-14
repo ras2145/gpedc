@@ -175,8 +175,8 @@
           <div class="col-md-6 ll-hd">
             <div class="card-bd">
               <div class="card-bd-01">
-                <h6>UNDP</h6>
-                <p>Historical performance for UNDP in Ethiopia: Indicator 1a</p>
+                <h6>{{selectedChart}}</h6>
+                <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
                 <div id="chart2"></div>
               </div>
 
