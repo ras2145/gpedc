@@ -208,8 +208,7 @@ export class CountryHistoricalComponent implements OnInit {
       .text(function(d){
           return d.label;
       }).each(function() {
-        // labelWidth = 50;
-        labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
+        labelWidth = Math.min(115, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
       });
     console.log(bar);
     scale = d3.scaleLinear()
