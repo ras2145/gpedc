@@ -2405,7 +2405,6 @@ body::-webkit-scrollbar-thumb {
 .card-bd{
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 8px;
-  margin-top: 40px;
 }
 .card-bd-01{
   /* height: 406px; */
