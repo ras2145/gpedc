@@ -39,7 +39,7 @@ export class PartnerHistoricalComponent implements OnInit {
 
   constructor(private phService: PartnerHistoricalService) {
     this.selectedYearId = Years._2016; // defalut year
-    this.years = [2005, 2007, 2010, 2014, 2016];
+    this.years = this.phService.getYears();
 
     this.selectedYear = this.years[this.selectedYearId];
     this.selectedDevPartner = null;
@@ -54,7 +54,7 @@ export class PartnerHistoricalComponent implements OnInit {
 
   ngOnInit() {
     this.yearModel = this.phService.getDataByYear(this.selectedYearId);
-    this.partners = this.phService.getPartners();
+    this.partners = this.phService.getDevPartners();
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
   }
@@ -121,6 +121,10 @@ export class PartnerHistoricalComponent implements OnInit {
       ans = this.selectedSubindicator.title;
       ans = ans.replace('[YEAR]', String(this.yearModel.year));
       ans = ans.replace('[DEVELOPMENT PARTNER]', this.selectedDevPartner);
+    } if (this.selectedIndicator && this.selectedIndicator.id == '10' && this.selectedDevPartner) {
+      ans = this.selectedIndicator.title;
+      ans = ans.replace('[YEAR]', String(this.yearModel.year));
+      ans = ans.replace('[DEVELOPMENT PARTNER]', this.selectedDevPartner);
     }
     this.navbarTitle = ans;
   }
@@ -141,7 +145,7 @@ export class PartnerHistoricalComponent implements OnInit {
           disabled: true
         };
         this.dropdownContent.push(dropdownItem);
-        for (const p of it1.partners) {
+        for (const p of it1.devpartners) {
           dropdownItem = {
             value: p,
             label: p,
@@ -155,9 +159,22 @@ export class PartnerHistoricalComponent implements OnInit {
   }
 
   runAnalysis() {
-    console.log(this.selectedYear);
-    console.log(this.selectedIndicator.id);
-    console.log(this.selectedSubindicator.id);
-    console.log(this.selectedDevPartner);
+    if (this.selectedDevPartner &&  (this.selectedSubindicator || (this.selectedIndicator && this.selectedIndicator.id === '10'))) {
+      const sYear = String(this.selectedYear);
+      let sIndicator;
+      if (!this.selectedSubindicator) { // special case for indicator 10
+        sIndicator = this.selectedIndicator.id;
+      } else {
+        sIndicator = this.selectedSubindicator.id;
+      }
+      const sDevPartner = this.selectedDevPartner;
+      this.phService.getChartData(sYear, sIndicator, sDevPartner).subscribe(
+        res => {
+          console.log(res);
+        }
+      );
+    } else {
+      alert('Select a indicator, subindicator and a development partner');
+    }
   }
 }

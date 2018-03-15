@@ -1,3 +1,8 @@
 .line-check-text{
   margin-left: 8%;
 }
+
+ng-select {
+  z-index: 1000;
+  font-size: 12px;
+}
