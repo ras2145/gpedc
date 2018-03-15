@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { analysisData } from '../../app/analysisData';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Subject } from 'rxjs/Subject';
 import { CountryAnalysisService } from '../services/country-analysis.service';
 import * as d3 from 'd3';
@@ -30,10 +31,12 @@ export class CountryHistoricalComponent implements OnInit {
     titlecountry: '',
     indicator: '',
     charttext: ''
-  };  
+  };
+  modalRef: BsModalRef;
+  @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
   subDropdown = false;
   title = '';
-  constructor(private countryAnalysisService: CountryAnalysisService) { 
+  constructor(private countryAnalysisService: CountryAnalysisService, private modalService: BsModalService) { 
   }
   ngOnInit() {
     this.countryAnalysisService.getCountries().subscribe(res => {
@@ -241,7 +244,7 @@ export class CountryHistoricalComponent implements OnInit {
     
     svg.insert("g",":first-child")
       .attr("class", "axisHorizontal")
-      .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+      .attr("transform", "translate(" + (margin + labelWidth) + "," + (height - axisMargin - margin)+")")
       .call(xAxis);
     bar.on('click', function() {
       const self = this; 
@@ -255,10 +258,13 @@ export class CountryHistoricalComponent implements OnInit {
             break;
           }
         }
-        scope.drawSecondChart(pos);    
+        scope.openModal();
+        scope.drawSecondChart(pos);
       });
     });
-            
+  }
+  openModal() {
+    this.modalRef = this.modalService.show(this.secondGraph);
   }
   drawSecondChart(pos) {
     let toDraw = this.chartData[pos];
@@ -287,13 +293,13 @@ export class CountryHistoricalComponent implements OnInit {
           }
         }
       });
-      const content = document.getElementById("chart2"); 
+      const content = document.getElementById("secondChart");
       while (content.firstChild) { 
         content.removeChild(content.firstChild); 
       } 
       const length = data.length;
       console.log('length ', length);
-      let div = d3.select("#chart2").attr("class", "toolTip");
+      let div = d3.select("#secondChart");
       let axisMargin = 90,
       margin = 10,
       valueMargin = 4,
@@ -301,13 +307,13 @@ export class CountryHistoricalComponent implements OnInit {
       barPadding = 20,
       bar, svg, scale, xAxis, labelWidth = 0, max;
       console.log(length * (barHeight + margin * 2) + 10);
-      const width = parseInt(d3.select('#chart2').style('width'), 10),
+      const width = parseInt(d3.select('#secondChart').style('width'), 10),
       height = length * (barHeight + barPadding ) + 120;
       console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
       console.log(width, height);
       max = 109;
       console.log('my max is ', max, data);
-      svg = d3.select('#chart2')
+      svg = d3.select('#secondChart')
             .append("svg")
             .attr("width", width)
             .attr("height", height);

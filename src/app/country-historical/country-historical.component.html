@@ -188,4 +188,25 @@
       </div>
     </div>
   </div>
+
+<!-- MODAL TUTORIAL -->
+<template #secondGraph class="">
+  <div class="modal-tutorial">
+    
+      <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    
+    <div class="card-bd">
+      <div class="card-bd-01">
+        <h6>{{selectedChart}}</h6>
+        <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
+        <div id="secondChart"></div>
+      </div>
+    </div>
+      
+  </div>
+</template>
+<!-- END MODAL TUTORIAL -->
+
 </div>
