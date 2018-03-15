@@ -205,7 +205,7 @@ export class CountryHistoricalComponent implements OnInit {
       .attr("class", "label")
       .attr("y", barHeight / 2)
       .attr("dy", ".35em") //vertical align middle
-      .text(function(d){
+      .text(function(d){  
           return d.label;
       }).each(function() {
         labelWidth = Math.min(115, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
@@ -243,10 +243,10 @@ export class CountryHistoricalComponent implements OnInit {
       .attr("class", "axisHorizontal")
       .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
       .call(xAxis);
-    svg.on('click', function() {
+    bar.on('click', function() {
       const self = this; 
-      bar.on('click', () => {
-        const coords = d3.mouse(self);
+      svg.on('click', function() {
+        const coords = d3.mouse(this);
         let pos = -1;
         for (let index = 0; index < inRangeCoord.length; index++) {
           const coord = inRangeCoord[index];
@@ -263,10 +263,6 @@ export class CountryHistoricalComponent implements OnInit {
   drawSecondChart(pos) {
     let toDraw = this.chartData[pos];
     this.selectedChart = toDraw.label;
-    const content = document.getElementById("chart2"); 
-    while (content.firstChild) { 
-      content.removeChild(content.firstChild); 
-    } 
     console.log('to draw ', toDraw);
     let ind = '';
     if (this.subDropdown) {
@@ -284,11 +280,94 @@ export class CountryHistoricalComponent implements OnInit {
       res.forEach(r => {
         for (let d of data) {
           if (d.label === r.year) {
-            d.value = +(+r.value * 100).toFixed(3);
+            if (+r.value > 1) {
+              continue;
+            }
+            d.value = +(+r.value * 100).toFixed(1);
           }
         }
       });
-      console.log('my data is ', data);
+      const content = document.getElementById("chart2"); 
+      while (content.firstChild) { 
+        content.removeChild(content.firstChild); 
+      } 
+      const length = data.length;
+      console.log('length ', length);
+      let div = d3.select("#chart2").attr("class", "toolTip");
+      let axisMargin = 90,
+      margin = 10,
+      valueMargin = 4,
+      barHeight = 20,
+      barPadding = 20,
+      bar, svg, scale, xAxis, labelWidth = 0, max;
+      console.log(length * (barHeight + margin * 2) + 10);
+      const width = parseInt(d3.select('#chart2').style('width'), 10),
+      height = length * (barHeight + barPadding ) + 120;
+      console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
+      console.log(width, height);
+      max = 109;
+      console.log('my max is ', max, data);
+      svg = d3.select('#chart2')
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+      svg.selectAll('.bar').remove();
+      bar = svg.selectAll("g")
+      .data(data)
+      .enter()
+      .append("g");
+      let inRangeCoord = [];
+      bar.attr("class", "bar")
+        .attr("cy", 0)
+        .attr("transform", (d, i) => {
+          if (i) {
+            inRangeCoord.push((i * (barHeight + barPadding) + barPadding));
+          }
+          return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+        });
+      inRangeCoord.push(Number.MAX_VALUE);
+      bar.append("text")
+        .attr("class", "label")
+        .attr("y", barHeight / 2)
+        .attr("dy", ".35em") //vertical align middle
+        .text(function(d){  
+            return d.label;
+        }).each(function() {
+          labelWidth = Math.min(115, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
+        });
+      console.log(bar);
+      scale = d3.scaleLinear()
+        .domain([0, max])
+        .range([0, width - margin*2 - labelWidth]);
+
+      xAxis = d3.axisBottom(scale).
+      tickSize(-height + 2 * margin + axisMargin);
+      
+      bar.append("rect")
+        .attr("transform", "translate("+labelWidth+", 0)")
+        .attr("height", barHeight)
+        .attr("width", function(d){
+            return scale(d.value);
+        });
+
+      bar.append("text")
+        .attr("class", "value")
+        .attr("y", barHeight / 2)
+        .attr("dx", -valueMargin + labelWidth) //margin right
+        .attr("dy", ".35em") //vertical align middle
+        .attr("text-anchor", "end")
+        .text(d => {
+            return (d.value+"%");
+        })
+        .attr("x", function(d) {
+            var width = this.getBBox().width;
+            return Math.max(width + valueMargin, scale(d.value));
+        });
+      
+      svg.insert("g",":first-child")
+        .attr("class", "axisHorizontal")
+        .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+        .call(xAxis);
     });
   }
 }
