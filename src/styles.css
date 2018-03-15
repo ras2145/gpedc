@@ -2347,6 +2347,9 @@ body::-webkit-scrollbar-thumb {
   background: #1d2840;
   color: #fff;
 }
+.run-mg{
+  margin-top: 15px;
+}
 .level-bg{
   padding-top: 67px;
   padding-right: 0px;
