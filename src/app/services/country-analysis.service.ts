@@ -36,9 +36,11 @@ export class CountryAnalysisService {
         }
       }
       ans.sort((a, b) => {
+        if (b.value === a.value) {
+          return a.label.localeCompare(b.label);
+        }
         return b.value - a.value;
       });
-      console.log(ans);
       return ans;
     });
   }
