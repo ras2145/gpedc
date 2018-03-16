@@ -2357,9 +2357,14 @@ body::-webkit-scrollbar-thumb {
     font-weight: 500;
     color: #282828;
     padding: 4px;
+    margin-top: 15px;
     float: left;
     cursor: pointer;
-  }
+}
+.btn-more:hover{
+    background: #1d2840;
+    color: #fff;
+}
 .run-mg{
   margin-top: 15px;
 }

@@ -33,6 +33,8 @@ export class CountryHistoricalComponent implements OnInit {
     charttext: ''
   };
   isData = true;
+  lessData = true;
+  buttonMore = true;
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
   subDropdown = false;
@@ -163,6 +165,7 @@ export class CountryHistoricalComponent implements OnInit {
   draw( allData?) {
     const scope = this;
     let data = this.chartData;
+    this.lessData = data.length <= 10 ? true : false;
     let length = data.length - 10;
     if( allData ) {
       for (let i = 0; i < length; i++) {
@@ -197,7 +200,7 @@ export class CountryHistoricalComponent implements OnInit {
       svg = d3.select('#chart')
               .append("svg")
               .attr("width", width + 30)
-              .attr("height", height - 62);
+              .attr("height", height - 35);
       svg.selectAll('.bar').remove();
       bar = svg.selectAll("g")
       .data(data)
@@ -221,16 +224,16 @@ export class CountryHistoricalComponent implements OnInit {
             console.log('LABEL', d.label);
             return d.label;
         }).each(function() {
+          console.log('Width', this.getBBox() );
           labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
         });
-      console.log(bar);
       scale = d3.scaleLinear()
         .domain([0, max])
         .range([0, width - margin*2 - labelWidth]);
 
       xAxis = d3.axisBottom(scale).
       tickSize(-height + 2 * margin + axisMargin);
-      
+      console.log('LABEL WIDTH', labelWidth);
       bar.append("rect")
         .attr("transform", "translate("+labelWidth+", 0)")
         .attr("height", barHeight)
@@ -275,6 +278,17 @@ export class CountryHistoricalComponent implements OnInit {
     } else {
       this.isData = false;
     }
+  }
+  drawComplete() {
+    this.buttonMore = false;
+    this.countryAnalysisService.getCharData(this.selectedCountry, this.subIndicator.indicator, this.model['year']).subscribe(res => {
+      this.chartData = res;
+      this.draw();
+    });
+  }
+  drawLess() {
+    this.buttonMore = true;
+    this.run();
   }
   openModal() {
     this.modalRef = this.modalService.show(this.secondGraph);

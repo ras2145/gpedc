@@ -152,7 +152,7 @@
               <label>{{title}} {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</label>
               <p> Click on a development partner to see historical trends in performance</p>
               <div class="row no-gutters">
-                <div class="col-md-5 oo-ll">
+                <div class="col-md-6 oo-ll">
                   <img src="assets/006.png" alt="" width="11px">
                   <label class="title-pp">DEVELOPMENT PARTNER</label>
                   <i class="mdi mdi-information"
@@ -173,10 +173,11 @@
               
             </div>
             <ng-template #noData>
-              HEllo
+                <div style="text-transform: uppercase; letter-spacing: 1px;">Data not available for the selected combination.</div>
             </ng-template>
             <div id="chart"  [hidden] = "!isData"></div>
-            <button type="button" name="button" class="btn btn-more run-mg"> More </button>
+            <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
+            <button *ngIf="!lessData && !buttonMore" type="button" name="button" class="btn-more" (click)="drawLess()"> Less </button>
           </div>
          
         </div>
