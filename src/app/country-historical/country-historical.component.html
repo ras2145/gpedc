@@ -148,7 +148,7 @@
       <div class="card-db">
         <div class="row">
           <div class="col-md-10 ll-hd">
-            <div *ngIf="isData; else noData">
+            <div *ngIf="isData">
               <label>{{title}} {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</label>
               <p> Click on a development partner to see historical trends in performance</p>
               <div class="row no-gutters">
@@ -189,7 +189,7 @@
         <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
           </button>
-      <div class="card-bd-01">
+      <div>
         <h6>{{selectedChart}}</h6>
         <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
         <div id="secondChart"></div>
