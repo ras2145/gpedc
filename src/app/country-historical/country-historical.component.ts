@@ -32,6 +32,7 @@ export class CountryHistoricalComponent implements OnInit {
     indicator: '',
     charttext: ''
   };
+  isData = true;
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
   subDropdown = false;
@@ -78,7 +79,7 @@ export class CountryHistoricalComponent implements OnInit {
       if (this.subIndicator.subdropdown !== 'Select Sub-Indicator') {
         this.countryAnalysisService.getCharData(this.selectedCountry, this.subIndicator.indicator, this.model['year']).subscribe(res => {
           this.chartData = res;
-          this.draw();
+          this.draw(10);
         });
       } else {
         alert('Please select a Sub-Indicator');
@@ -87,7 +88,7 @@ export class CountryHistoricalComponent implements OnInit {
     } else {
       this.countryAnalysisService.getCharData(this.selectedCountry, this.indicator.indicator, this.model['year']).subscribe(res => {
         this.chartData = res;
-        this.draw();
+        this.draw(10);
       });
     }
   }
@@ -159,109 +160,121 @@ export class CountryHistoricalComponent implements OnInit {
   show(event) {
     console.log(event);
   }
-  draw() {
+  draw( allData?) {
     const scope = this;
     let data = this.chartData;
+    let length = data.length - 10;
+    if( allData ) {
+      for (let i = 0; i < length; i++) {
+        data.pop();
+      }
+    }
     for (let d of data) {
       d.label = this.firstRow[d.label];
     }
-    const length = data.length;
+    length = data.length;
     console.log('length ', length);
-    let div = d3.select("#chart").attr("class", "toolTip");
-    let axisMargin = 90,
-    margin = 10,
-    valueMargin = 4,
-    barHeight = 20,
-    barPadding = 20,
-    bar, svg, scale, xAxis, labelWidth = 0, max;
-    console.log(length * (barHeight + margin * 2) + 10);
-    const width = parseInt(d3.select('#chart').style('width'), 10),
-    height = length * (barHeight + barPadding ) + 120;
-    console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
-    console.log(width, height);
-    max = 109;
-    console.log('my max is ', max, data);
-    const content = document.getElementById("chart"); 
-    while (content.firstChild) { 
-      content.removeChild(content.firstChild); 
-    } 
-    svg = d3.select('#chart')
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
-    svg.selectAll('.bar').remove();
-    bar = svg.selectAll("g")
-    .data(data)
-    .enter()
-    .append("g");
-    let inRangeCoord = [];
-    bar.attr("class", "bar")
-      .attr("cy", 0)
-      .attr("transform", (d, i) => {
-        if (i) {
-          inRangeCoord.push((i * (barHeight + barPadding) + barPadding));
-        }
-        return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
-      });
-    inRangeCoord.push(Number.MAX_VALUE);
-    bar.append("text")
-      .attr("class", "label")
-      .attr("y", barHeight / 2)
-      .attr("dy", ".35em") //vertical align middle
-      .text(function(d){  
-          return d.label;
-      }).each(function() {
-        labelWidth = Math.min(115, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
-      });
-    console.log(bar);
-    scale = d3.scaleLinear()
-      .domain([0, max])
-      .range([0, width - margin*2 - labelWidth]);
-
-    xAxis = d3.axisBottom(scale).
-    tickSize(-height + 2 * margin + axisMargin);
-    
-    bar.append("rect")
-      .attr("transform", "translate("+labelWidth+", 0)")
-      .attr("height", barHeight)
-      .attr("width", function(d){
-          return scale(d.value);
-      });
-
-    bar.append("text")
-      .attr("class", "value")
-      .attr("y", barHeight / 2)
-      .attr("dx", -valueMargin + labelWidth) //margin right
-      .attr("dy", ".35em") //vertical align middle
-      .attr("text-anchor", "end")
-      .text(d => {
-          return (d.value+"%");
-      })
-      .attr("x", function(d) {
-          var width = this.getBBox().width;
-          return Math.max(width + valueMargin, scale(d.value));
-      });
-    
-    svg.insert("g",":first-child")
-      .attr("class", "axisHorizontal")
-      .attr("transform", "translate(" + (margin + labelWidth) + "," + (height - axisMargin - margin)+")")
-      .call(xAxis);
-    bar.on('click', function() {
-      const self = this; 
-      svg.on('click', function() {
-        const coords = d3.mouse(this);
-        let pos = -1;
-        for (let index = 0; index < inRangeCoord.length; index++) {
-          const coord = inRangeCoord[index];
-          if (coords[1] < coord) {
-            pos = index;
-            break;
+    if(length > 0) {
+      this.isData = true;
+      let div = d3.select("#chart").attr("class", "toolTip");
+      let axisMargin = 90,
+      margin = 10,
+      valueMargin = 4,
+      barHeight = 20,
+      barPadding = 20,
+      bar, svg, scale, xAxis, labelWidth = 0, max;
+      console.log(length * (barHeight + margin * 2) + 10);
+      const width = parseInt(d3.select('#chart').style('width'), 10),
+      height = length * (barHeight + barPadding ) + 120;
+      console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
+      console.log(width, height);
+      max = 109;
+      console.log('my max is ', max, data);
+      const content = document.getElementById("chart");
+      while (content.firstChild) {
+        content.removeChild(content.firstChild);
+      }
+      svg = d3.select('#chart')
+              .append("svg")
+              .attr("width", width + 30)
+              .attr("height", height - 62);
+      svg.selectAll('.bar').remove();
+      bar = svg.selectAll("g")
+      .data(data)
+      .enter()
+      .append("g");
+      let inRangeCoord = [];
+      bar.attr("class", "bar")
+        .attr("cy", 0)
+        .attr("transform", (d, i) => {
+          if (i) {
+            inRangeCoord.push((i * (barHeight + barPadding) + barPadding));
           }
-        }
-        scope.openModal();
-        scope.drawSecondChart(pos);
+          return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+        });
+      inRangeCoord.push(Number.MAX_VALUE);
+      bar.append("text")
+        .attr("class", "label")
+        .attr("y", barHeight / 2)
+        .attr("dy", ".35em") //vertical align middle
+        .text(function(d){
+            console.log('LABEL', d.label);
+            return d.label;
+        }).each(function() {
+          labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
+        });
+      console.log(bar);
+      scale = d3.scaleLinear()
+        .domain([0, max])
+        .range([0, width - margin*2 - labelWidth]);
+
+      xAxis = d3.axisBottom(scale).
+      tickSize(-height + 2 * margin + axisMargin);
+      
+      bar.append("rect")
+        .attr("transform", "translate("+labelWidth+", 0)")
+        .attr("height", barHeight)
+        .attr("width", function(d){
+            return scale(d.value);
+        });
+
+      bar.append("text")
+        .attr("class", "value")
+        .attr("y", barHeight / 2)
+        .attr("dx", -valueMargin + labelWidth) //margin right
+        .attr("dy", ".35em") //vertical align middle
+        .attr("text-anchor", "end")
+        .text(d => {
+            return (d.value+"%");
+        })
+        .attr("x", function(d) {
+            var width = this.getBBox().width;
+            return Math.max(width + valueMargin, scale(d.value));
+        });
+
+      svg.insert("g",":first-child")
+        .attr("class", "axisHorizontal")
+        .attr("transform", "translate(" + (margin + labelWidth) + "," + (height - axisMargin - margin)+")")
+        .call(xAxis);
+      bar.on('click', function() {
+        const self = this; 
+        svg.on('click', function() {
+          const coords = d3.mouse(this);
+          let pos = -1;
+          for (let index = 0; index < inRangeCoord.length; index++) {
+            const coord = inRangeCoord[index];
+            if (coords[1] < coord) {
+              pos = index;
+              break;
+            }
+          }
+          scope.openModal();
+          scope.drawSecondChart(pos);
+        });
       });
-    });
+    } else {
+      this.isData = false;
+    }
   }
   openModal() {
     this.modalRef = this.modalService.show(this.secondGraph);

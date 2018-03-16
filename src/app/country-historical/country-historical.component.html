@@ -147,43 +147,38 @@
       <!-- CONTAINER -->
       <div class="card-db">
         <div class="row">
-          <div class="col-md-6 ll-hd">
-            <label>{{title}} {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</label>
-            <p> Click on a development partner to see historical trends in performance</p>
-            <div class="row no-gutters">
-              <div class="col-md-5 oo-ll">
-                <img src="assets/006.png" alt="" width="11px">
-                <label class="title-pp">DEVELOPMENT PARTNER</label>
-                <i class="mdi mdi-information"
-                    popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    placement="right"
-                    triggers="mouseenter:mouseleave" >
-                </i>
+          <div class="col-md-10 ll-hd">
+            <div *ngIf="isData; else noData">
+              <label>{{title}} {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</label>
+              <p> Click on a development partner to see historical trends in performance</p>
+              <div class="row no-gutters">
+                <div class="col-md-5 oo-ll">
+                  <img src="assets/006.png" alt="" width="11px">
+                  <label class="title-pp">DEVELOPMENT PARTNER</label>
+                  <i class="mdi mdi-information"
+                      popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                      placement="right"
+                      triggers="mouseenter:mouseleave" >
+                  </i>
+                </div>
+                <div class="col-md-4">
+                  <img src="assets/006.png" alt="" width="11px">
+                  <label class="title-pp-01">Performance</label>
+                </div>
               </div>
-              <div class="col-md-4">
-                <img src="assets/006.png" alt="" width="11px">
-                <label class="title-pp-01">Performance</label>
+              <div class="title-i">
+                <label>{{charttext}}</label>
+
               </div>
+              
             </div>
-
-            <div class="title-i">
-              <label>{{charttext}}</label>
-
-            </div>
-            <div id="chart"></div>
+            <ng-template #noData>
+              HEllo
+            </ng-template>
+            <div id="chart"  [hidden] = "!isData"></div>
+            <button type="button" name="button" class="btn btn-more run-mg"> More </button>
           </div>
-          <!-- <div class="col-md-6 ll-hd">
-            <div class="card-bd">
-              <div class="card-bd-01">
-                <h6>{{selectedChart}}</h6>
-                <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
-                <div id="chart2"></div>
-              </div>
-
-              <div class="card-bd-02">
-              </div>
-            </div>
-          </div> -->
+         
         </div>
       </div>
     </div>
