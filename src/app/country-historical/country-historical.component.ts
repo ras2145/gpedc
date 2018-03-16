@@ -330,7 +330,7 @@ export class CountryHistoricalComponent implements OnInit {
       } 
       const length = data.length;
       const margin = {top: 20, right: 20, bottom: 30, left: 40};
-      const width = 600 - margin.left - margin.right;
+      const width = 580 - margin.left - margin.right;
       const height = 500 - margin.top - margin.bottom;
       const formatPercent = d3.format('.0%');
       let x = d3.scaleBand()
