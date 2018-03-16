@@ -1,111 +1,106 @@
-<app-navbar [mapTitle] = "navbarTitle"></app-navbar>
+<app-navbar [mapTitle]="navbarTitle"></app-navbar>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 cc-mg">
       <div class="historical">
-      <p>
-        On this tab, development partners’ performance can be explored across all partner countries who reported on their engagement. Select a development partner and indicator to explore global performance for a given year.
-      </p>
-      <p class="result-subtitle space-view-data"><span class="mdi mdi-calendar"></span> Select year
-          <i class="mdi mdi-information"
-              popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
-              placement="right"
-              triggers="mouseenter:mouseleave" >
+        <p>
+          On this tab, development partners’ performance can be explored across all partner countries who reported on their engagement.
+          Select a development partner and indicator to explore global performance for a given year.
+        </p>
+        <p class="result-subtitle space-view-data">
+          <span class="mdi mdi-calendar"></span> Select year
+          <i class="mdi mdi-information" popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
+            placement="right" triggers="mouseenter:mouseleave">
           </i>
-      </p>
-      <div class="row no-gutters">
-        <div class="col-md-11">
-          <div class="radio">
+        </p>
+        <div class="row no-gutters">
+          <div class="col-md-11">
+            <div class="radio">
               <label *ngFor="let year of years" [ngClass]="{'radio-label-checked' : year === yearModel.year}">
-                <input type="radio" name="radio-btn" [value]="year" [(ngModel)]="yearModel" [checked]="year === yearModel.year" (change)="changeYear(year)"/>
-                {{ year }}
+                <input type="radio" name="radio-btn" [value]="year" [(ngModel)]="yearModel" [checked]="year === yearModel.year" (change)="changeYear(year)"
+                /> {{ year }}
               </label>
+            </div>
+          </div>
+          <div class="col-md-1 text-right margin-top-btn">
+            <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle">
+              <i class="mdi mdi-download"></i>
+            </button>
           </div>
         </div>
-        <div class="col-md-1 text-right margin-top-btn">
-            <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
-        </div>
-      </div>
-      <br>
-      <!-- DEVELOPMENT -->
+        <br>
+        <!-- DEVELOPMENT -->
 
-      <!-- INDICATORS -->
-      <p class="result-subtitle space-view-data">
+        <!-- INDICATORS -->
+        <p class="result-subtitle space-view-data">
           <span class="mdi mdi-crosshairs-gps"></span>
           Indicator
-          <i class="mdi mdi-information"
-              popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
-              placement="right"
-              triggers="mouseenter:mouseleave" >
+          <i class="mdi mdi-information" popover="Global Partnership monitoring data is available for both the first (2013-2014) and second (2015-2016) monitoring rounds. Data for Indicators 1-4 is only available for the 2015-2016 round."
+            placement="right" triggers="mouseenter:mouseleave">
           </i>
-      </p>
-      <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
-        <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-          <span *ngIf="!selectedIndicator" class="font-selet-dropdown content-select-default">Select an Indicator</span>
-          <span *ngIf="selectedIndicator" class="font-selet-dropdown content-select-default">{{ selectedIndicator.dropdown }}</span>
-          <span class="dropdown-caret mdi mdi-chevron-down"></span>
-        </button>
-        <ul *dropdownMenu class="dropdown-menu" role="menu">
-          <li role="menuitem">
+        </p>
+        <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+            <span *ngIf="!selectedIndicator" class="font-selet-dropdown content-select-default">Select an Indicator</span>
+            <span *ngIf="selectedIndicator" class="font-selet-dropdown content-select-default">{{ selectedIndicator.dropdown }}</span>
+            <span class="dropdown-caret mdi mdi-chevron-down"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem">
               <a class="dropdown-item contenido-dropdown" (click)="unselectIndicator()">
                 Select an Indicator
               </a>
-          </li>
-          <li role="menuitem" *ngFor="let indicator of yearModel.indicators" dropdown >
-            <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectIndicator(indicator)" >
-              {{ indicator.dropdown }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- SUBINDICATORS -->
-      <p class="result-subtitle space-view-data" *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0">
-        Sub Indicator
-        <i class="mdi mdi-information"
-          popover="Information for this sub-indicator is drawn from the IATI registry, and constitutes a snapshot of progress at the time of Global Partnership monitoring. Up-to-date information for this sub-indicator can be found on the IATI Dashboard, which is updated nightly with current data."
-          placement="right"
-          triggers="mouseenter:mouseleave">
-        </i>
-      </p>
-      <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
-        <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-          <span *ngIf="!selectedSubindicator" class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
-          <span *ngIf="selectedSubindicator" class="font-selet-dropdown content-select-default"> {{ selectedSubindicator.subdropdown }}</span>
-          <span class="dropdown-caret mdi mdi-chevron-down"></span>
-        </button>
-        <ul *dropdownMenu class="dropdown-menu" role="menu">
-          <li role="menuitem">
-            <a class="dropdown-item contenido-dropdown" (click)="unselectSubindicator()">
-              Select a Sub-Indicator
-            </a>
-          </li>
-          <li role="menuitem" *ngFor="let subindicator of selectedIndicator.subindicators">
-            <a class="dropdown-item contenido-dropdown" (click)="selectSubindicator(subindicator)"> {{ subindicator.subdropdown }}</a>
-          </li>
-        </ul>
-      </div>
-      <br><br>
-      <!-- DEVELOPMENT PARTNER -->
-      <div class="form-group style-select">
-        <p for="inputState" class="result-subtitle space-indicator"><img src="assets/004.png" alt="" width="12px"> DEVELOPMENT PARTNER
-            <i class="mdi mdi-information"
-                popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
-                placement="right"
-              triggers="mouseenter:mouseleave">
+            </li>
+            <li role="menuitem" *ngFor="let indicator of yearModel.indicators" dropdown>
+              <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectIndicator(indicator)">
+                {{ indicator.dropdown }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- SUBINDICATORS -->
+        <p class="result-subtitle space-view-data" *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0">
+          Sub Indicator
+          <i class="mdi mdi-information" popover="Information for this sub-indicator is drawn from the IATI registry, and constitutes a snapshot of progress at the time of Global Partnership monitoring. Up-to-date information for this sub-indicator can be found on the IATI Dashboard, which is updated nightly with current data."
+            placement="right" triggers="mouseenter:mouseleave">
+          </i>
+        </p>
+        <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
+          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+            <span *ngIf="!selectedSubindicator" class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+            <span *ngIf="selectedSubindicator" class="font-selet-dropdown content-select-default"> {{ selectedSubindicator.subdropdown }}</span>
+            <span class="dropdown-caret mdi mdi-chevron-down"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem">
+              <a class="dropdown-item contenido-dropdown" (click)="unselectSubindicator()">
+                Select a Sub-Indicator
+              </a>
+            </li>
+            <li role="menuitem" *ngFor="let subindicator of selectedIndicator.subindicators">
+              <a class="dropdown-item contenido-dropdown" (click)="selectSubindicator(subindicator)"> {{ subindicator.subdropdown }}</a>
+            </li>
+          </ul>
+        </div>
+        <br>
+        <br>
+        <button *ngIf="(selectedIndicator && selectedSubindicator) || (selectedIndicator && selectedIndicator.id === '10')" type="button"
+          name="button" class="btn btn-learn">What does this indicator measure?</button>
+
+        <!-- DEVELOPMENT PARTNER -->
+        <div class="form-group style-select">
+          <p for="inputState" class="result-subtitle space-indicator">
+            <img src="assets/004.png" alt="" width="12px"> DEVELOPMENT PARTNER
+            <i class="mdi mdi-information" popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+              placement="right" triggers="mouseenter:mouseleave">
 
             </i>
-        </p>
-        <!-- DROPDOWN -->
-        <ng-select [(ngModel)]="selectedDevPartner"
-                  (selected)="onSelected($event)"
-                  (deselected)="onDeselected($event)"
-                  [allowClear]="true"
-                  [options]="dropdownContent"
-                  placeholder="Select a development partner..."
-                  filterPlaceholder="Type to search..."
-                  notFoundMsg="No partners found">
-        </ng-select>
-        <!-- <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+          </p>
+          <!-- DROPDOWN -->
+          <ng-select [(ngModel)]="selectedDevPartner" (selected)="onSelected($event)" (deselected)="onDeselected($event)" [allowClear]="true"
+            [options]="dropdownContent" placeholder="Select a development partner" filterPlaceholder="Type to search" notFoundMsg="No partners found">
+          </ng-select>
+          <!-- <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
           <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
             <span class="font-selet-dropdown content-select-default">UNDP</span>
             <span class="dropdown-caret mdi mdi-chevron-down"></span>
@@ -118,100 +113,93 @@
             </li>
           </ul>
         </div> -->
-        <!-- CHECKBOX -->
-        <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
-          <input class="checkbox btn-filters-selected" type="checkbox" [checked]="selectedPartnerTypes[i]" (click)="updateCheck(i)">
-          {{ pType.type }}
-        </label>
-      </div>
-      <button type="button" name="button" class="btn btn-run" (click)="runAnalysis()">Run Analysis</button>
-      <br><br>
+          <!-- CHECKBOX -->
+          <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
+            <input class="checkbox btn-filters-selected" type="checkbox" [checked]="selectedPartnerTypes[i]" (click)="updateCheck(i)"> {{ pType.type }}
+          </label>
+        </div>
+        <button type="button" name="button" class="btn btn-run" (click)="runAnalysis()">Run Analysis</button>
+        <br>
+        <br>
       </div>
     </div>
     <div class="col-md-9 level-bg">
       <div class="menu-tabs">
-          <a [routerLink]="['/']">
-              <button type="button" name="button" class="btn btn-md">
+        <a [routerLink]="['/']">
+          <button type="button" name="button" class="btn btn-md">
             <img src="assets/0005-gray.png" class="bitmap img-hh">
             <img src="assets/0005.png" class="bitmap img-hv">
-        </button>
-          </a>
-          <a [routerLink]="['/country']">
-              <button type="button" name="button" class="btn btn-md">
-              <img src="assets/001.png" class="bitmap img-hh">
-              <img src="assets/001-white.png" class="bitmap img-hv">
-            </button>
-          </a>
-          <a [routerLink]="['/partner']">
-              <button type="button" name="button" class="btn btn-md">
-                <img src="assets/002.png" class="bitmap img-hh">
-              <img src="assets/002-white.png" class="bitmap img-hv">
-            </button>
-          </a>
-          <a [routerLink]="['/country-historical']">
-              <button type="button" name="button" class="btn btn-md">
-                <img src="assets/003.png" class="bitmap img-hh">
-              <img src="assets/003-white.png" class="bitmap img-hv">
-            </button>
-          </a>
-          <a [routerLink]="['/partner-historical']">
-              <button type="button" name="button" class="btn btn-viewer-01">
-              <img src="assets/004-white.png" class="bitmap img-md">Partner-Level Analysis
-            </button>
-          </a>
+          </button>
+        </a>
+        <a [routerLink]="['/country']">
+          <button type="button" name="button" class="btn btn-md">
+            <img src="assets/001.png" class="bitmap img-hh">
+            <img src="assets/001-white.png" class="bitmap img-hv">
+          </button>
+        </a>
+        <a [routerLink]="['/partner']">
+          <button type="button" name="button" class="btn btn-md">
+            <img src="assets/002.png" class="bitmap img-hh">
+            <img src="assets/002-white.png" class="bitmap img-hv">
+          </button>
+        </a>
+        <a [routerLink]="['/country-historical']">
+          <button type="button" name="button" class="btn btn-md">
+            <img src="assets/003.png" class="bitmap img-hh">
+            <img src="assets/003-white.png" class="bitmap img-hv">
+          </button>
+        </a>
+        <a [routerLink]="['/partner-historical']">
+          <button type="button" name="button" class="btn btn-viewer-01">
+            <img src="assets/004-white.png" class="bitmap img-md">Partner-Level Analysis
+          </button>
+        </a>
       </div>
       <!-- GRAPHS -->
       <div class="card-db">
         <div class="row">
-          <div class="col-md-6 ll-hd">
-            <label>2010 performance across all development partners for Ethiopia: Indicator 1a</label>
-            <p> Click on a development partner to see historical trends in performance</p>
-            <div class="row no-gutters">
-              <div class="col-md-5 oo-ll">
-                <img src="assets/006.png" alt="" width="11px">
-                <label class="title-pp">DEVELOPMENT PARTNER</label>
-                <i class="mdi mdi-information"
-                    popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    placement="right"
-                    triggers="mouseenter:mouseleave" >
-
-                </i>
+          <div class="col-md-10 ll-hd">
+            <div *ngIf="isData; else noData">
+              <label *ngIf="selectedIndicator">{{ navbarTitle }}: Indicator {{selectedIndicator.id}}</label>
+              <p> Click on a development partner to see historical trends in performance</p>
+              <div class="row no-gutters">
+                <div class="col-md-5 oo-ll">
+                  <img src="assets/006.png" alt="" width="11px">
+                  <label class="title-pp">DEVELOPMENT PARTNER</label>
+                  <i class="mdi mdi-information" popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    placement="right" triggers="mouseenter:mouseleave">
+                  </i>
+                </div>
+                <div class="col-md-4">
+                  <img src="assets/006.png" alt="" width="11px">
+                  <label class="title-pp-01">PERFORMANCE</label>
+                </div>
               </div>
-              <div class="col-md-4 oo-ll">
-                <img src="assets/006.png" alt="" width="11px">
-                <label class="title-pp-01">SCORE</label>
-                <i class="mdi mdi-information"
-                    popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    placement="right"
-                    triggers="mouseenter:mouseleave" >
-                </i>
+              <div class="title-i">
+                <label>{{ chartTitle }}</label>
               </div>
             </div>
-
-            <div class="title-i oo-ll">
-              <label>Indicator Score %</label>
-              <i class="mdi mdi-information"
-                  popover="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                  placement="right"
-                  triggers="mouseenter:mouseleave" >
-              </i>
-            </div>
-            <img src="assets/10.png" alt="">
-          </div>
-          <div class="col-md-6 ll-hd">
-            <div class="card-bd">
-              <div class="card-bd-01">
-                <h6>UNDP</h6>
-                <p>Historical performance for UNDP in Ethiopia: Indicator 1a</p>
-                <img src="assets/007.png" alt="">
-              </div>
-
-              <div class="card-bd-02">
-              </div>
-            </div>
+            <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData">Data not available for the selected combination.</div>
+            <div id="chart" [ngClass]="{'hide' : !isData}"></div>
+            <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
+            <button *ngIf="!lessData && !buttonMore" type="button" name="button" class="btn-more" (click)="drawLess()"> Less </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- MODAL CHART -->
+  <template #secondGraph>
+    <div class="card-bd">
+      <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div>
+        <h6>{{selectedChart}}</h6>
+        <p>Historical performance for {{ selectedDevPartner }} in {{ selectedChart }}: Indicator {{ selectedIndicator.id }}</p>
+        <div id="secondChart"></div>
+      </div>
+    </div>
+  </template>
+  <!-- END MODAL CHART -->
 </div>

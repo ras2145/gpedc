@@ -76,16 +76,29 @@ export class PartnerHistoricalService {
     return 'not found';
   }
 
-  getChartData(year, subindicator, devpartner) {
+  getChartData(year, indicator, devpartner) {
     const column = this.getColumn(devpartner);
-    alert(column);
-    console.log(year);
-    console.log(subindicator);
-    console.log(devpartner);
-    const query = SERVER.GET_QUERY(`select ${column}, country from ${SERVER.GPEDC_SCREENS_4_5} where indicator = '${subindicator}' and year = '${year}' and ${column} != '888' and ${column} != '999' order by ${column} desc`);
+    const query = SERVER.GET_QUERY(`select country as label, ${column} as value from ${SERVER.GPEDC_SCREENS_4_5} where indicator = '${indicator}' and year = '${year}' and ${column} != '888' and ${column} != '999' order by ${column} desc, country`);
     console.log(query);
     return this.webService.get(query).map(res => {
-       return res.json().rows;
-     });
+      res = res.json().rows;
+      for (let i = 0; i < res.length; i++) {
+        res[i].value = (+res[i].value * 100.0).toFixed(1);
+      }
+      return res;
+    });
+  }
+
+  getSecondChartData(devpartner, indicator, country) {
+    country = country.replace('\'', '\'\'');
+    const column = this.getColumn(devpartner);
+    const query = SERVER.GET_QUERY(`select year, ${column} as value from ${SERVER.GPEDC_SCREENS_4_5} where indicator = '${indicator}' and country = '${country}' and ${column} != '888' and ${column} != '999'`);
+    console.log(query);
+    return this.webService.get(query).map(res => {
+      res = res.json().rows;
+      console.log(res);
+
+      return res;
+    });
   }
 }
