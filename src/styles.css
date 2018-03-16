@@ -2347,6 +2347,19 @@ body::-webkit-scrollbar-thumb {
   background: #1d2840;
   color: #fff;
 }
+.btn-more{
+    width: 134px;
+    height: 25px;
+    border-radius: 2px;
+    border: solid 1px rgba(117, 117, 117, 0.59);
+    background: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    color: #282828;
+    padding: 4px;
+    float: left;
+    cursor: pointer;
+  }
 .run-mg{
   margin-top: 15px;
 }
@@ -2636,7 +2649,7 @@ h2 .pos-default-modal {
 /*STYLES FOR D3*/
 #chart {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width: 440px;
+    width: 850px;
     position: relative;
 }
 #secondChart {
