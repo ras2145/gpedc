@@ -172,10 +172,8 @@
               </div>
               
             </div>
-            <ng-template #noData>
-                <div style="text-transform: uppercase; letter-spacing: 1px;">Data not available for the selected combination.</div>
-            </ng-template>
-            <div id="chart"  [hidden] = "!isData"></div>
+            <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData">Data not available for the selected combination.</div>
+            <div id="chart" [ngClass]="{'hide' : !isData}"></div>
             <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
             <button *ngIf="!lessData && !buttonMore" type="button" name="button" class="btn-more" (click)="drawLess()"> Less </button>
           </div>

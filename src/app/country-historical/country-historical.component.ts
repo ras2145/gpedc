@@ -32,7 +32,7 @@ export class CountryHistoricalComponent implements OnInit {
     indicator: '',
     charttext: ''
   };
-  isData = true;
+  isData = false;
   lessData = true;
   buttonMore = true;
   modalRef: BsModalRef;
@@ -277,6 +277,10 @@ export class CountryHistoricalComponent implements OnInit {
       });
     } else {
       this.isData = false;
+      const content = document.getElementById("chart");
+      while (content.firstChild) {
+        content.removeChild(content.firstChild);
+      }
     }
   }
   drawComplete() {
