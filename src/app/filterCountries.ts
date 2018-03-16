@@ -94,8 +94,8 @@ export const partnerAggregate = [
     value: 'Global funds and vertical initiatives'
   },
   {
-    label: 'Other international and regional organizations',
-    value: 'Other international and regional organizations'
+    label: 'Other international and regional organisations',
+    value: 'Other international and regional organisations'
   },
   {
     value: 'Foundations',
