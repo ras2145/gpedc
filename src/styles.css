@@ -2660,7 +2660,9 @@ h2 .pos-default-modal {
   }
 }
 
-
+.orange-border {
+    border: 1px solid #e07e52 !important;
+}
 
 
 /*STYLES FOR D3*/
