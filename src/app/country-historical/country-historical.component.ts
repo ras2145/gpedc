@@ -65,11 +65,16 @@ export class CountryHistoricalComponent implements OnInit {
     this.sendTitle();
     console.log(this.selectedCountry);
   }
+  canRun() {
+    let can = true;
+    can = (can && (this.selectedCountry !== 'Select Country'));
+    can = (can && (this.indicator.dropdowncountry !== 'Select an indicator'));
+    if (this.subDropdown) {
+      can = (can && (this.subIndicator.subdropdown !== 'Select Sub-Indicator'));
+    }
+    return can;
+  }
   run() {
-    console.log(this.indicator);
-    console.log(this.subIndicator);
-    console.log(this.selectedCountry);
-    console.log(this.model['year']);
     if (this.selectedCountry === 'Select Country') {
       alert('Please select a country');
     }
@@ -176,7 +181,6 @@ export class CountryHistoricalComponent implements OnInit {
       d.label = this.firstRow[d.label];
     }
     length = data.length;
-    console.log('length ', length);
     if(length > 0) {
       this.isData = true;
       let div = d3.select("#chart").attr("class", "toolTip");
@@ -186,13 +190,9 @@ export class CountryHistoricalComponent implements OnInit {
       barHeight = 20,
       barPadding = 20,
       bar, svg, scale, xAxis, labelWidth = 0, max;
-      console.log(length * (barHeight + margin * 2) + 10);
       const width = parseInt(d3.select('#chart').style('width'), 10),
       height = length * (barHeight + barPadding ) + 120;
-      console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
-      console.log(width, height);
       max = 109;
-      console.log('my max is ', max, data);
       const content = document.getElementById("chart");
       while (content.firstChild) {
         content.removeChild(content.firstChild);
@@ -221,10 +221,8 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("y", barHeight / 2)
         .attr("dy", ".35em") //vertical align middle
         .text(function(d){
-            console.log('LABEL', d.label);
-            return d.label;
+          return d.label;
         }).each(function() {
-          console.log('Width', this.getBBox() );
           labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
         });
       scale = d3.scaleLinear()
@@ -233,7 +231,6 @@ export class CountryHistoricalComponent implements OnInit {
 
       xAxis = d3.axisBottom(scale).
       tickSize(-height + 2 * margin + axisMargin);
-      console.log('LABEL WIDTH', labelWidth);
       bar.append("rect")
         .attr("transform", "translate("+labelWidth+", 0)")
         .attr("height", barHeight)
