@@ -2639,9 +2639,10 @@ h2 .pos-default-modal {
     width: 440px;
     position: relative;
 }
-#chart2 {
+#secondChart {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    width: 440px;
+    width: 800px;
+    height: 500px;
     position: relative;
 }
 svg {

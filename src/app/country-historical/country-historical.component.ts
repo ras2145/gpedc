@@ -289,7 +289,7 @@ export class CountryHistoricalComponent implements OnInit {
             if (+r.value > 1) {
               continue;
             }
-            d.value = +(+r.value * 100).toFixed(1);
+            d.value = +(+r.value);
           }
         }
       });
@@ -298,82 +298,47 @@ export class CountryHistoricalComponent implements OnInit {
         content.removeChild(content.firstChild); 
       } 
       const length = data.length;
-      console.log('length ', length);
-      let div = d3.select("#secondChart");
-      let axisMargin = 90,
-      margin = 10,
-      valueMargin = 4,
-      barHeight = 20,
-      barPadding = 20,
-      bar, svg, scale, xAxis, labelWidth = 0, max;
-      console.log(length * (barHeight + margin * 2) + 10);
-      const width = parseInt(d3.select('#secondChart').style('width'), 10),
-      height = length * (barHeight + barPadding ) + 120;
-      console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
-      console.log(width, height);
-      max = 109;
-      console.log('my max is ', max, data);
-      svg = d3.select('#secondChart')
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
-      svg.selectAll('.bar').remove();
-      bar = svg.selectAll("g")
-      .data(data)
-      .enter()
-      .append("g");
-      let inRangeCoord = [];
-      bar.attr("class", "bar")
-        .attr("cy", 0)
-        .attr("transform", (d, i) => {
-          if (i) {
-            inRangeCoord.push((i * (barHeight + barPadding) + barPadding));
-          }
-          return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
-        });
-      inRangeCoord.push(Number.MAX_VALUE);
-      bar.append("text")
-        .attr("class", "label")
-        .attr("y", barHeight / 2)
-        .attr("dy", ".35em") //vertical align middle
-        .text(function(d){  
-            return d.label;
-        }).each(function() {
-          labelWidth = Math.min(115, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
-        });
-      console.log(bar);
-      scale = d3.scaleLinear()
-        .domain([0, max])
-        .range([0, width - margin*2 - labelWidth]);
-
-      xAxis = d3.axisBottom(scale).
-      tickSize(-height + 2 * margin + axisMargin);
-      
-      bar.append("rect")
-        .attr("transform", "translate("+labelWidth+", 0)")
-        .attr("height", barHeight)
-        .attr("width", function(d){
-            return scale(d.value);
-        });
-
-      bar.append("text")
-        .attr("class", "value")
-        .attr("y", barHeight / 2)
-        .attr("dx", -valueMargin + labelWidth) //margin right
-        .attr("dy", ".35em") //vertical align middle
-        .attr("text-anchor", "end")
-        .text(d => {
-            return (d.value+"%");
-        })
-        .attr("x", function(d) {
-            var width = this.getBBox().width;
-            return Math.max(width + valueMargin, scale(d.value));
-        });
-      
-      svg.insert("g",":first-child")
-        .attr("class", "axisHorizontal")
-        .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+      const margin = {top: 20, right: 20, bottom: 30, left: 40};
+      const width = 600 - margin.left - margin.right;
+      const height = 500 - margin.top - margin.bottom;
+      const formatPercent = d3.format('.0%');
+      let x = d3.scaleBand()
+      .rangeRound([0, width])
+      .padding(0.1);
+      let y = d3.scaleLinear().range([height, 0]);
+      let xAxis = d3.axisBottom(x);
+      let yAxis = d3.axisLeft(y).tickFormat(formatPercent).tickSize(-width + margin.left / 2);
+      let svg = d3.select('#secondChart').append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+      console.log(svg);
+      x.domain(data.map(d => d.label));
+      y.domain([0, 1]);
+      svg.append('g')
+        .attr('class', 'x axis')
+        .attr('transform', `translate(0,${height})`)
         .call(xAxis);
+      svg.append('g')
+        .attr('class', 'y axis')
+        .call(yAxis)
+        .append('text')
+        .attr('transform',  'rotate(-90)')
+        .attr('y', 6)
+        .attr('dy', '.71em')
+        .style('text-anchor', 'end')
+        .text(ind);
+        
+      console.log(x.bandwidth());
+      svg.selectAll('.bar')
+        .data(data)
+        .enter().append('rect')
+          .attr('class', 'bar')
+          .attr('x', d => x(d.label) + 23.75)
+          .attr('width', x.bandwidth() / 2)
+          .attr('y', d => y(d.value))
+          .attr('height', d => height - y(d.value));
     });
   }
 }
