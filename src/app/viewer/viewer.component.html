@@ -172,7 +172,7 @@
                                    <!-- <img src="assets/0001.png" >  -->
                                    <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right"> 
                                 </div>
-                              <div class="padding-top-line">
+                              <div class="padding-top-line" *ngIf="showAccordion">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER
                                     <!-- <i class="mdi mdi-information"
                                         popover="Below you may view results for development partners characterised as foundations, global funds, international organisations, multilateral development banks and UN agencies. Results will only be shown for those indicators with available data."
@@ -180,10 +180,10 @@
                                         triggers="mouseenter:mouseleave">
                                     </i> -->
                                   </p>
-                                  <span class="span-md">In alphabetical order</span>
+                                  <span class="span-md">In alphabetical order {{showAccordion}}</span>
                               </div>
 
-                              <div class="row">
+                              <div class="row" *ngIf="showAccordion">
                                 <div class="col-md-12 acordion-md">
                                   <!-- ACORDION -->
                                   <div class="acordion">

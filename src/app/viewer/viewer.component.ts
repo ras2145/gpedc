@@ -69,6 +69,7 @@ export class ViewerComponent implements OnInit {
   geoJson: any;
   listIndicator={ title:'',id:null,yesText:'', noText:'', value:'', indicator: [] };
   dateModal: any;
+  showAccordion: boolean;
   // listIndicator: any
   model = {
     year: null,
@@ -170,7 +171,8 @@ export class ViewerComponent implements OnInit {
     this.viewerTab = '1';
     this.heightDropDown = '75vh';
     this.dateModal = {};
-    this.country_before='';
+    this.country_before = '';
+    this.showAccordion = false;
   }
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
@@ -477,22 +479,25 @@ export class ViewerComponent implements OnInit {
     }
   }
   selectCategory(category) {
-    console.log("cat",category);
+    console.log('cat', category, 'sub', category.subcategories);
     this.model.category = category;
     this.model.subcategory = null;
     this.indicator = false;
     this.subIndicator = true;
+    this.showAccordion = category.subcategories.length > 0 ? false : true;
     // if (!this.subDropdown) {
       // console.log('CATE ',category);
       this.updateIndicatorVector();
     // }
     this.validIndicator = true;
     this.updateMapTitle();
+    
    // console.log(this.model);
    // console.log(this.indicator);
    // console.log(this.subIndicator);
   }
   selectSubcategory(category, subcategory) {
+    console.log('subcategoryrr', subcategory);
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
@@ -500,6 +505,8 @@ export class ViewerComponent implements OnInit {
     this.updateIndicatorVector();
     this.validIndicator = true;
     this.updateMapTitle();
+    this.showAccordion =  subcategory.length > 0 ? false : true;
+    /* this.showAccordion = category.subcategory !== null && subcategory !== null ? true : false; */
   //  console.log(this.model);
   //  console.log(this.indicator);
   //  console.log(this.subIndicator);
@@ -508,6 +515,7 @@ export class ViewerComponent implements OnInit {
     console.log("unselected");
     this.subIndicator = false;
     this.indicator = false;
+    this.showAccordion = false;
     console.log('UNSELECT',this.model);
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
@@ -517,6 +525,7 @@ export class ViewerComponent implements OnInit {
   unselectSubCategory() {
     this.subIndicator = false;
     const category = this.model.category;
+    this.showAccordion = false;
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year);
