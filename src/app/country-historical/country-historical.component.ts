@@ -60,7 +60,9 @@ export class CountryHistoricalComponent implements OnInit {
   }
   resetCountry() {
     this.selectedCountry = '';
+    this.loadIndicators = false;
     this.sendTitle();
+    this.resetIndicators();
   }
   filterIndicator(data) {
     console.log(this.indicators);
@@ -82,6 +84,7 @@ export class CountryHistoricalComponent implements OnInit {
   }
   changeCountry(country) {
     this.selectedCountry = country;
+    console.log('COUNTRY ', country);
     this.resetIndicators();
     this.sendTitle();
     this.loadIndicators = false;
@@ -89,7 +92,7 @@ export class CountryHistoricalComponent implements OnInit {
       this.loadIndicators = true;
       this.indicators = res;
     });
-    console.log(this.selectedCountry);
+    console.log(this.selectedCountry);  
   }
   canRun() {
     let can = true;
