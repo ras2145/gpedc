@@ -241,15 +241,19 @@ export class CountryHistoricalComponent implements OnInit {
       bar.append("text")
         .attr("class", "value")
         .attr("y", barHeight / 2)
-        .attr("dx", -valueMargin + labelWidth) //margin right
+        .attr("dx", d => {
+          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -1 : 0);
+        }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
+        .style('fill', '#282828')
+        .style('font-size', '100%')
         .text(d => {
             return (d.value+"%");
         })
         .attr("x", function(d) {
             var width = this.getBBox().width;
-            return Math.max(width + valueMargin, scale(d.value));
+            return Math.max(width + valueMargin, scale(d.value) + 42);
         });
 
       svg.insert("g",":first-child")
