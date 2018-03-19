@@ -77,7 +77,11 @@ export class PartnerHistoricalComponent implements OnInit {
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
   }
-
+  clearChart() {
+    this.isData = false;
+    this.lessData = true;
+    this.buttonMore = true;
+  }
   resetSelectedPartnerTypes() {
     this.selectedPartnerTypes = new Array<boolean>();
     for (let i = 0; i < this.partners.length; i++) {
@@ -101,13 +105,18 @@ export class PartnerHistoricalComponent implements OnInit {
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
     this.selectedDevPartner = null;
+    this.clearChart();
     console.log(this.yearModel);
   }
 
   selectIndicator(indicator) {
     this.selectedIndicator = indicator;
     this.selectedSubindicator = null;
+    if (this.selectedIndicator.id === '9b') { // autoselect
+      this.selectedSubindicator = this.selectedIndicator.subindicators[0];
+    }
     this.getNavbarTitle();
+    this.clearChart();
     console.log(this.selectedIndicator);
   }
 
@@ -115,18 +124,21 @@ export class PartnerHistoricalComponent implements OnInit {
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
     this.getNavbarTitle();
+    this.clearChart();
     console.log(this.selectedIndicator);
   }
 
   selectSubindicator(subindicator) {
     this.selectedSubindicator = subindicator;
     this.getNavbarTitle();
+    this.clearChart();
     console.log(this.selectedSubindicator);
   }
 
   unselectSubindicator() {
     this.selectedSubindicator = null;
     this.getNavbarTitle();
+    this.clearChart();
   }
 
   getYearId(year) {
@@ -136,7 +148,12 @@ export class PartnerHistoricalComponent implements OnInit {
       }
     }
   }
-
+  canRun() {
+    if (this.selectedDevPartner && (this.selectedSubindicator || (this.selectedIndicator && this.selectedIndicator.id === '10'))) {
+      return true;
+    }
+    return false;
+  }
   getNavbarTitle() {
     let ans = '';
     if (this.selectedSubindicator && this.selectedDevPartner) {
@@ -156,7 +173,17 @@ export class PartnerHistoricalComponent implements OnInit {
       ans = this.selectedSubindicator.chartText;
     } else if (this.selectedIndicator && this.selectedIndicator.id === '10' && this.selectedDevPartner) {
       ans = this.selectedIndicator.chartText;
-    }
+    } 0
+    10
+    20
+    30
+    40
+    50
+    60
+    70
+    80
+    90
+    100
     this.chartTitle = ans;
   }
   updateCheck(i) {
@@ -233,13 +260,12 @@ export class PartnerHistoricalComponent implements OnInit {
         barHeight = 20,
         barPadding = 20,
         bar, svg, scale, xAxis, labelWidth = 0, max;
-      console.log(length * (barHeight + margin * 2) + 10);
+
       const width = parseInt(d3.select('#chart').style('width'), 10),
         height = length * (barHeight + barPadding) + 120;
-      console.log(length, barHeight, barPadding, (length * (barHeight + barPadding * 2)));
-      console.log(width, height);
+
       max = 109;
-      console.log('my max is ', max, data);
+
       const content = document.getElementById("chart");
       while (content.firstChild) {
         content.removeChild(content.firstChild);
@@ -253,6 +279,7 @@ export class PartnerHistoricalComponent implements OnInit {
         .data(data)
         .enter()
         .append("g");
+
       let inRangeCoord = [];
       bar.attr("class", "bar")
         .attr("cy", 0)
@@ -268,7 +295,6 @@ export class PartnerHistoricalComponent implements OnInit {
         .attr("y", barHeight / 2)
         .attr("dy", ".35em") //vertical align middle
         .text(function (d) {
-          console.log('LABEL', d.label);
           return d.label;
         }).each(function () {
           console.log('Width', this.getBBox());
@@ -287,19 +313,22 @@ export class PartnerHistoricalComponent implements OnInit {
         .attr("width", function (d) {
           return scale(d.value);
         });
-
       bar.append("text")
         .attr("class", "value")
         .attr("y", barHeight / 2)
-        .attr("dx", -valueMargin + labelWidth) //margin right
+        .attr("dx",d => {
+          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : 0);
+        }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
+        .style('fill', '#282828')
+        .style('font-size', '100%')
         .text(d => {
           return (d.value + "%");
         })
         .attr("x", function (d) {
           var width = this.getBBox().width;
-          return Math.max(width + valueMargin, scale(d.value));
+          return Math.max(width + valueMargin, scale(d.value) + 50);
         });
 
       svg.insert("g", ":first-child")
@@ -398,7 +427,7 @@ export class PartnerHistoricalComponent implements OnInit {
           content.removeChild(content.firstChild);
         }
         const length = data.length;
-        const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+        const margin = { top: 20, right: 20, bottom: 30, left: 60 };
         const width = 580 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
         const formatPercent = d3.format('.0%');
@@ -415,7 +444,7 @@ export class PartnerHistoricalComponent implements OnInit {
           .attr('transform', `translate(${margin.left},${margin.top})`);
         console.log(svg);
         x.domain(data.map(d => d.label));
-        y.domain([0, 1]);
+        y.domain([0, 1.05]);
         svg.append('g')
           .attr('class', 'x axis')
           .attr('transform', `translate(0,${height})`)
@@ -430,7 +459,17 @@ export class PartnerHistoricalComponent implements OnInit {
           .style('text-anchor', 'end')
           .text(sIndicator);
 
-        console.log(x.bandwidth());
+        svg.append('text')
+          .attr('x', -(height / 2))
+          .attr('y', -40)
+          .attr('text-anchor', 'middle')
+          .style('font-size', '10px')
+          .style('color', '#282828')
+          .style('font-weight', 'bold')
+          .style('letter-spacing', '1px')
+          .style('transform', 'rotate(-90deg)')
+          .text(this.chartTitle);
+
         svg.selectAll('.bar')
           .data(data)
           .enter().append('rect')

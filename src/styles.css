@@ -2432,7 +2432,7 @@ body::-webkit-scrollbar-thumb {
   margin-top: 15px;
 }
 .card-bd{
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
   padding: 8px;
 }
 .card-bd-01{
