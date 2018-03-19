@@ -15,7 +15,9 @@ export class CountryHistoricalComponent implements OnInit {
   charttext;
   countries: any;
   firstRow: any;
-  selectedCountry = 'Select Country';
+  loadIndicators: boolean;
+  selectedCountry = '';
+  indicators = [];
   chartData: any;
   selectedChart = '';
   model = {   };
@@ -57,17 +59,41 @@ export class CountryHistoricalComponent implements OnInit {
     });
   }
   resetCountry() {
-    this.selectedCountry = 'Select Country';
+    this.selectedCountry = '';
     this.sendTitle();
+  }
+  filterIndicator(data) {
+    console.log(this.indicators);
+    return data.filter(d => {
+      let search = [];
+      search.push(d.indicator);
+      for (let i = 1; i <= 6; i++) {
+        search.push(d.indicator + '_' + i);
+      }
+      return search.filter(s => {
+        return this.indicators.filter(ind => ind.indicator === s).length > 0;
+      }).length > 0;
+    });
+  }
+  filterSubIndicator(data) {
+    return data.filter(d => {
+      return this.indicators.filter(ind => d.indicator === ind.indicator).length > 0;
+    });
   }
   changeCountry(country) {
     this.selectedCountry = country;
+    this.resetIndicators();
     this.sendTitle();
+    this.loadIndicators = false;
+    this.countryAnalysisService.getIndicators(this.selectedCountry, this.model['year']).subscribe((res) => {
+      this.loadIndicators = true;
+      this.indicators = res;
+    });
     console.log(this.selectedCountry);
   }
   canRun() {
     let can = true;
-    can = (can && (this.selectedCountry !== 'Select Country'));
+    can = (can && (this.selectedCountry !== ''));
     can = (can && (this.indicator.dropdowncountry !== 'Select an indicator'));
     if (this.subDropdown) {
       can = (can && (this.subIndicator.subdropdown !== 'Select Sub-Indicator'));
@@ -75,7 +101,7 @@ export class CountryHistoricalComponent implements OnInit {
     return can;
   }
   run() {
-    if (this.selectedCountry === 'Select Country') {
+    if (this.selectedCountry === '') {
       alert('Please select a country');
     }
     if (this.indicator.dropdowncountry === 'Select an indicator') {
@@ -108,7 +134,7 @@ export class CountryHistoricalComponent implements OnInit {
     this.subIndicator.subdropdown = 'Select Sub-Indicator';
     if (this.subDropdown) {
       this.indicator.subdropdown.forEach(sub => {
-        if (sub.autoselect) {
+        if (sub.autoselect && this.indicators.filter(ind => sub.indicator === ind.indicator).length > 0) {
           this.subIndicator = sub;
           this.sendTitle();
         }    
@@ -131,9 +157,24 @@ export class CountryHistoricalComponent implements OnInit {
     }
     this.title = this.title.replace('[YEAR]', this.model['year']);
     this.title = this.title.replace('[DEVELOPING COUNTRY]', this.selectedCountry);
-    if (this.selectedCountry === 'Select Country') {
+    if (this.selectedCountry === '') {
       this.title = '';
     }
+  }
+  resetIndicators() {
+    this.indicator = {
+      dropdowncountry: 'Select an indicator',
+      subdropdown: [],
+      titlecountry: '',
+      indicator: '',
+      charttext: ''
+    };
+    this.subIndicator = {
+      subdropdown: 'Select Sub-Indicator',
+      titlecountry: '',
+      indicator: '',
+      charttext: ''
+    };
   }
   reset() {
     this.indicator = {
@@ -151,7 +192,7 @@ export class CountryHistoricalComponent implements OnInit {
     };
     this.subDropdown = false;
     this.title = '';
-    this.selectedCountry = 'Select Country';
+    this.selectedCountry = '';
     this.charttext = '';
   }
   resetSub() {
@@ -347,7 +388,7 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('transform', `translate(${margin.left},${margin.top})`);
       console.log(svg);
       x.domain(data.map(d => d.label));
-      y.domain([0, 1]);
+      y.domain([0, 1.09]);
       svg.append('g')
         .attr('class', 'x axis')
         .attr('transform', `translate(0,${height})`)

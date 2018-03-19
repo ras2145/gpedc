@@ -49,5 +49,9 @@ export class CountryAnalysisService {
     return this.webService.get(query).map(res => {
       return res.json().rows;
     });
-  } 
+  }
+  getIndicators(country, year) {
+    const query = SERVER.GET_QUERY(`SELECT indicator FROM ${SERVER.GPEDC_SCREENS_4_5} WHERE available='4' AND country='${country}' AND year = '${year}'`);
+    return this.webService.get(query).map(res => res.json().rows);
+  }
 }
