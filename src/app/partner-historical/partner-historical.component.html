@@ -118,7 +118,7 @@
             <input class="checkbox btn-filters-selected" type="checkbox" [checked]="selectedPartnerTypes[i]" (click)="updateCheck(i)"> {{ pType.type }}
           </label>
         </div>
-        <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': true}" (click)="runAnalysis()" [disabled]="!canRun()">Run Analysis</button>
+        <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': canRun()}" (click)="runAnalysis()" [disabled]="!canRun()">Run Analysis</button>
         <br>
         <br>
       </div>
