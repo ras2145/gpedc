@@ -547,7 +547,7 @@ export class ViewerComponent implements OnInit {
     });
     this.footerTab = '';
     this.footerText = '';
-    this.country_before='';
+    this.country_before = '';
     this.mapService.resetClickLayer();
     this.indicatorSelectedFooter = this.model.year.categories[0].id;
     this.indicator = true;
@@ -567,7 +567,6 @@ export class ViewerComponent implements OnInit {
         this.loaderService.end();
       });
     }
-    
     this.setColor();
     return y.year;
   }
@@ -949,7 +948,7 @@ export class ViewerComponent implements OnInit {
       // arrayPartner.push(this.categorizedPartners[0]);
       // this.categorizedPartners = arrayPartner;
       // this.categorizedPartners.shift();
-      console.log("Partnets",this.categorizedPartners);
+      console.log("Partners",this.categorizedPartners);
     });
   }
   isDac(country) {

@@ -202,9 +202,9 @@
                                                     <div *ngIf="partnerGroup.open; then thenpass"> </div>
                                                     <ng-template #thenpass>
                                                         <tr *ngFor="let partner of partnerGroup.partners">
-                                                            <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available'">{{partner.partner}}</td>
+                                                            <td class="result-table-letter" *ngIf="getText(partner[model.category.column], model.category) != 'No data available' || (model.subcategory != null && getText(partner[model.subcategory.column], model.subcategory) != 'No data available')">{{partner.partner}}</td>
                                                             <td *ngIf="model.subcategory == null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.category.column], model.category)}}</td>
-                                                            <td *ngIf="model.subcategory != null && getText(partner[model.category.column], model.category) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
+                                                            <td *ngIf="model.subcategory != null && getText(partner[model.subcategory.column], model.subcategory) != 'No data available'" class="result-table-number">{{getText(partner[model.subcategory.column], model.subcategory)}}</td>
                                                         </tr>
                                                     </ng-template>
                                                 </tbody>
