@@ -508,11 +508,10 @@
             </a>
         </div>
         <p class="select-indicator top-10 boder-table">2. SELECT TWO COUNTRIES TO COMPARE RESULTS:
-            <i class="mdi mdi-information" popover="Aggregate groupings are based on 2017 OECD classification." placement="right" triggers="mouseenter:mouseleave">
-          </i>
+            <!-- <i class="mdi mdi-information" popover="Aggregate groupings are based on 2017 OECD classification." placement="right" triggers="mouseenter:mouseleave"> </i> -->
         </p>
         <div class="row-select">
-            <div class="col-md-9">
+            <div class="col-md-9 information-i">
                 <div class="row with-placeholder-conutry">
                     <div class="col-md-4 padding-dd-03">
                         <!-- <ng-select (deselected)="onDeselected($event,'first')" (selected)="onSelectedCountry($event, 'first')" [(ngModel)]="countryComparer.firstCountry" [allowClear]="true" placeholder="Select country" [options]="countrySelectors[(year === '2014' ? 0 : 1)]['value']"></ng-select> -->
@@ -527,9 +526,10 @@
                         <ng-select [allowClear]="true" placeholder="Select Average" [(ngModel)]="countryComparer.aggregate" [options]="countrySelectors[3]['value']"></ng-select>
                     </div>
                 </div>
+                <i class="mdi mdi-information information-country" popover="Aggregate groupings are based on 2017 OECD classification." placement="right" triggers="mouseenter:mouseleave"> </i>
             </div>
         </div>
-
+        
 
 
         <div class="row row-select">

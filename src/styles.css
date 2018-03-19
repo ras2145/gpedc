@@ -2729,4 +2729,16 @@ text.value {
 .hide {
     display: none;
 }
+.information-country {
+  color: #9b9b9b;
+  padding-left: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  float: right;
+  margin-top: -26px;
+  margin-right: -30px;
+}
+.information-i .popover-body {
+    width: 200px;
+}
 
