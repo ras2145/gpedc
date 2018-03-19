@@ -592,7 +592,7 @@ export class ViewerComponent implements OnInit {
   updateIndicatorVector() {
     const self = this;
     this.selectedCountry = '';
-    this.country_before='';
+    this.country_before = '';
     this.mapService.resetClickLayer();
     let indicator = null;
     const region = this.model.region.value;
@@ -1000,7 +1000,7 @@ export class ViewerComponent implements OnInit {
     this.selectedCountry = false;
   }
   exportCsvViewer(event) {
-    // console.log("export",  this.partnerType); 
+    // console.log("export",  this.partnerType);
     this.loaderService.start();
     const nameIndicator = (event.options.subcategory !== null) ? event.options.subcategory.label : event.options.category.label;
     const lines = [];
@@ -1102,6 +1102,7 @@ export class ViewerComponent implements OnInit {
         this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
     }
+    console.log('LEGEND FIRST', this.legendMap);
     this.legendTitle = category.legendText;
     if (subcategory != null) {
       this.legendTitle = subcategory.legendText;
@@ -1125,24 +1126,34 @@ export class ViewerComponent implements OnInit {
         }
       }
     } else {
-      if (category['type'] === 'text') {
-        this.legendMap = this.legends.yesNo;
-      } else if (category['type'] === 'percent') {
-        this.legendMap = this.legends.percent;
-      } else if (category['type'] === 'number') {
-        if (category.id === '9a') {
-          this.legendMap = this.legends.indicator9a;
-        } else if (category['precision'] == '0') {
-          this.legendMap = this.legends.number;
+        if(category.id === '1a') {
+          this.legendMap = this.legends.noLegend1a;
+        } else if (category.id === '2') {
+          this.legendMap = this.legends.noLegend2;
+        } else if (category.id === '3') {
+          this.legendMap = this.legends.noLegend3;
+       } else if (category.id === '4'){
+          this.legendMap = this.legends.noLegend4;
         } else {
-          this.legendMap = this.legends.number2;
+          if (category['type'] === 'text') {
+            this.legendMap = this.legends.yesNo;
+          } else if (category['type'] === 'percent') {
+            this.legendMap = this.legends.percent;
+          } else if (category['type'] === 'number') {
+            if (category.id === '9a') {
+              this.legendMap = this.legends.indicator9a;
+            } else if (category['precision'] == '0') {
+              this.legendMap = this.legends.number;
+            } else {
+              this.legendMap = this.legends.number2;
+            }
+          }
+        if(this.legendMap[0].textFirst != 'Not Available') {
+          this.legendMap.unshift({ color: '#BBBBBB', textFirst: 'Not Available', textMiddle: '', textLast: ''});
         }
       }
     }
-    if(this.legendMap[0].textFirst!='Not Available')
-    {
-      this.legendMap.unshift({ color: '#BBBBBB', textFirst: 'Not Available', textMiddle: '', textLast: ''});
-    }
+    console.log('LEGEND LAST', this.legendMap);
     return this.mapService.paintForIndicator(category, subcategory, year,this.partnerType);
   }
   zoomIn() {
