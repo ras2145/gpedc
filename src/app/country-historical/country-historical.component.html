@@ -38,7 +38,7 @@
 
       <div class="btn-group btn-dropdown" dropdown>
         <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-          <span class="font-selet-dropdown content-select-default">{{selectedCountry}}</span>
+          <span class="font-selet-dropdown content-select-default">{{selectedCountry?selectedCountry:'Select Country'}}</span>
           <span class="dropdown-caret mdi mdi-chevron-down"></span>
         </button>
         <ul *dropdownMenu class="dropdown-menu style-default" role="menu">
@@ -56,7 +56,7 @@
         </ul>
       </div>
       <br><br>
-      <div class="form-group style-select">
+      <div class="form-group style-select" *ngIf="loadIndicators">
         <p for="inputState" class="result-subtitle space-indicator"><span class="mdi mdi-crosshairs-gps"></span> Indicator
             <i class="mdi mdi-information"
                 popover="Choose one of the Global Partnership's ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
@@ -75,7 +75,7 @@
                 Select an Indicator
               </a>
             </li>
-            <li role="menuitem" *ngFor="let data of model.data">
+            <li role="menuitem" *ngFor="let data of filterIndicator(model.data)">
               <a class="dropdown-item contenido-dropdown" (click)="changeIndicator(data)">
                   {{data.dropdowncountry}}
               </a>
@@ -101,7 +101,7 @@
                 Select a Sub-Indicator
               </a>
             </li>
-            <li role="menuitem" *ngFor="let sub of indicator.subdropdown">
+            <li role="menuitem" *ngFor="let sub of filterSubIndicator(indicator.subdropdown)">
               <a class="dropdown-item contenido-dropdown" (click)="changeSubIndicator(sub)"> {{sub.subdropdown}}</a>
             </li>
           </ul>
