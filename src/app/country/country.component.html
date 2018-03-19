@@ -570,11 +570,8 @@
                         <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
 
                     <ng-template #thenBlock>
-                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator)">
+                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubCountry(indicator) && showIndicator(indicator)">
                             <!-- Show indicator 1 tp 4 without displaing data -->
-                            <!-- <div *ngIf="false"> 
-                                    <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon(indicator.id)"  placement="right"> 
-                            </div> -->
                                    <!-- <p [innerHTML]="htmlIndicator(indicator)">  </p>  -->
                                  <div class="iconIndicator" *ngIf="indicator.icon2">
                                     <div class="div-img-two" >
@@ -592,7 +589,7 @@
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(template)"></i>
                         
                         </td>
-                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator)">
+                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubCountry(indicator) && showIndicator(indicator)">
                             <div class="back-title"></div>
                         </td>
                     </ng-template>
@@ -600,7 +597,7 @@
                         <!-- Show rows of indicators 5 - 10 and displays data of them  -->
                         <div *ngIf = "availableCountryRow(indicator); then thenPassIndicator"></div>
                         <ng-template #thenPassIndicator>
-                          <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator)">
+                          <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableCountryRow(indicator) ">
                                 <!-- <div *ngIf="false"> 
                                         <img [src]="getImage(indicator.id)" [tooltip]="getTextIcon()"  placement="right"> 
                                 </div> -->
@@ -630,7 +627,7 @@
                 </tr>
                 <!-- Show row of subcategories of all indicators-->
                 <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                    <div *ngIf= "availableCountryRow(subcategory); then thenPassSubcategory"></div>
+                    <div *ngIf= "availableCountryRow(subcategory) && showIndicator(indicator); then thenPassSubcategory"></div>
                     <ng-template #thenPassSubcategory>
                       <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableCountryRow(subcategory)">
                           <p id="{{getLabelCountry(subcategory, 'firstCountry')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:', '').replace('Indicator 8:', '')">
@@ -688,29 +685,6 @@
                     </div> -->
                   </div>
                   <br>
-                  <!-- <div class="row">
-                    <div class="col-md-2 text-center">
-                      <h6>2</h6>
-                    </div>
-                    <div class="col-md-8">
-                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
-                    </div>
-                    <div class="col-md-2 text-center">
-                      <label><i class="mdi mdi-check"></i></label>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-2 text-center">
-                      <h6>3</h6>
-                    </div>
-                    <div class="col-md-8">
-                      <h6>Fusce vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend.</h6>
-                    </div>
-                    <div class="col-md-2 text-center">
-                      <label><i class="mdi mdi-close"></i></label>
-                    </div>
-                  </div> -->
                 </div>
               </div>
             </div>

@@ -712,7 +712,7 @@
                 <tr class="border-bottom-1">
                     <div *ngIf="tabsToShow(indicator.id); then thenBlock else elseBlock"></div>
                     <ng-template #thenBlock>
-                        <td class="table-title-left background-11" width="25%" *ngIf="hasSubOrganization(indicator)">
+                        <td class="table-title-left background-11" width="25%" *ngIf="showIndicator(indicator)"> <!-- hasSubOrganization(indicator) -->
                             <!-- Show indicator 1 tp 4 without displaing data -->
                             <!-- <p [innerHTML]="htmlIndicator(indicator)"></p> -->
                             <div class="iconIndicator" *ngIf="indicator.icon2">
@@ -730,15 +730,15 @@
                             </div>                            
                             <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,indicator.subcategories[0],false,true);openModal(info)"></i>
                         </td>
-                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="hasSubOrganization(indicator)">
+                        <td width="75%" colspan="5" class="center-td background-2 no-padding" *ngIf="showIndicator(indicator)">  <!-- hasSubOrganization(indicator) -->
                             <div class="back-title"></div>
                         </td>
                     </ng-template>
                     <ng-template #elseBlock>
                         <!-- Show rows of indicators 5 - 10 and displays data of them  -->
-                        <div *ngIf="availableOrganizationRow(indicator) === true; then thenPass"></div>
+                        <div *ngIf="availableOrganizationRow(indicator) === true && showIndicator(indicator); then thenPass"></div>
                         <ng-template #thenPass>
-                          <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableOrganizationRow(indicator)">
+                          <td class="table-title-left bg-white bg-01" width="25%" *ngIf="availableOrganizationRow(indicator)  && showIndicator(indicator)">
                                <!-- <p [innerHTML]="htmlIndicator(indicator)"></p> -->
                             <div class="iconIndicator" *ngIf="indicator.icon2">
                                 <div class="div-img-two" >
@@ -757,7 +757,7 @@
                               <i class="mdi mdi-information mdi-cursor pos-default" (click)="findViewerCategory(indicator,null, false, true);openModal(info)"></i>
                           </td>
                           <td width="4%"></td>
-                          <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
+                          <td width="17.75%" class="center-td background-2" [innerHTML]="getLabelCountry(indicator, 'firstOrganization')" *ngIf="availableOrganizationRow(indicator) "></td>
                           <td width="17.75%" class="center-td border-01" [innerHTML]="getLabelCountry(indicator, 'secondOrganization')" *ngIf="availableOrganizationRow(indicator)"></td>
                           <td width="17.75%" class="center-td" [innerHTML]="getLabelCountry(indicator, 'aggregate')" *ngIf="availableOrganizationRow(indicator)"></td>
                           <td width="17.75%" class="center-td background-2"></td>
@@ -766,9 +766,9 @@
                 </tr>
                 <!-- Show row of subcategories of all indicators-->
                 <tr class="border-bottom-1" *ngFor="let subcategory of indicator.subcategories">
-                    <div *ngIf="availableOrganizationRow(subcategory); then thenPass else elseNoPass"></div>
+                    <div *ngIf="availableOrganizationRow(subcategory) && showIndicator(indicator); then thenPass else elseNoPass"></div>
                     <ng-template #thenPass>
-                      <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableOrganizationRow(subcategory)">
+                      <td width="25%" class="table-subtible bg-white bg-02" *ngIf="availableOrganizationRow(subcategory) ">
                           <p id="{{getLabelCountry(subcategory, 'firstOrganization')}}" [innerHTML]="subcategory.comparison.replace('Indicator 7:','').replace('Indicator 8:','')">
                           </p>
                           <i class="mdi mdi-information mdi-cursor pos-default-2" (click)="findViewerCategory(indicator,subcategory,true,false);openModal(info)"></i>

@@ -23,6 +23,8 @@ export class GenerateIndicatorsService {
   modalRef: BsModalRef;
   year;
   countries: any;
+  arrayPartner =  ['1a', '2', '3', '5a', '5b', '6', '7', '8', '9a', '9b', '10'];
+  arrayDev = ['1a', '4', '5a', '5b', '6', '9b', '10'];
   ngOnInit() {
 
   }
@@ -36,7 +38,7 @@ export class GenerateIndicatorsService {
     // let aux = indicator.column;
     // console.log("getL", partnerType);
     const name = comparer[type];
-    const column = isOrganization ? 'column' : partnerType === 'partcntry'? 'partcntry':'devpart';
+    const column = isOrganization ? 'column' : partnerType === 'partcntry' ? 'partcntry' : 'devpart';
     // const column = isOrganization ? 'column' : 'partcntry';
     if (!name || !indicator) {
       return '-';
@@ -97,71 +99,80 @@ export class GenerateIndicatorsService {
     return value;
   }
 
-  exportCsvFunction(comparerExport, queryExport, model, partnerType,partnerTypeSecond, isOrganization?: boolean) {
+  exportCsvFunction(comparerExport, queryExport, model, partnerType, partnerTypeSecond, isOrganization?: boolean) {
     const comparer = comparerExport;
     const first = isOrganization ? 'firstOrganization' : 'firstCountry';
     const second = isOrganization ? 'secondOrganization' : 'secondCountry';
     const lines = [];
     const headers = ['Indicator'];
-    if (comparer[first] != '') {
+    if (comparer[first] !== '') {
       headers.push(comparer[first]);
     }
-    if (comparer[second] != '') {
+    if (comparer[second] !== '') {
       headers.push(comparer[second]);
     }
-    if (comparer.aggregate != '') {
+    if (comparer.aggregate !== '') {
       headers.push(comparer.aggregate);
     }
     lines.push(headers);
     model.year.categories.forEach(category => {
       let line = [];
+      if (this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
       line.push(category.title);
-      if (comparer[first] != '') {
+      }
+      // console.log('category-export', category);
+      if (comparer[first] !== '' &&  this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
         line.push(this.getLabelCountryFunction(category, first, comparerExport, queryExport, partnerType, isOrganization).trim());
       }
-      if (comparer[second] != '') {
+      if (comparer[second] !== '' &&  this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
         line.push(this.getLabelCountryFunction(category, second, comparerExport, queryExport, partnerTypeSecond, isOrganization).trim());
       }
-      if (comparer.aggregate != '') {
+      if (comparer.aggregate !== '' &&  this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
         line.push(this.getLabelCountryFunction(category, 'aggregate', comparerExport, queryExport, partnerType, isOrganization).trim());
       }
       let add = true;
-      if (line.length == 2) {
-        if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+      if (line.length === 2) {
+        if (line[1] === 'No data available' || line[1] === '<p>No data available</p>' || line[1] === '-' || line[1] === '' || line[1] === null) {
           add = false;
         }
-      } else if (line.length == 3 || line.length == 4) {
-        if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+      } else if (line.length === 3 || line.length === 4) {
+        if ((line[1] === 'No data available' || line[1] === '<p>No data available</p>' || line[1] === '-' || line[1] === '' || line[1] === null) && (line[2] === 'No data available' || line[2] === '<p>No data available</p>' || line[2] === '-' || line[2] === '' || line[2] === null)) {
           add = false;
         }
       }
       if (add) {
-        lines.push(line);
+        if (this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
+          lines.push(line);
+        }
       }
       category.subcategories.forEach(subcategory => {
         line = [];
+        if (this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
         line.push(subcategory.label);
-        if (comparer[first] != '') {
+        }
+        if (comparer[first] !== '' &&  this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
           line.push(this.getLabelCountryFunction(subcategory, first, comparerExport, queryExport, partnerType, isOrganization).trim());
         }
-        if (comparer[second] != '') {
+        if (comparer[second] !== '' &&  this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
           line.push(this.getLabelCountryFunction(subcategory, second, comparerExport, queryExport, partnerType, isOrganization).trim());
         }
-        if (comparer.aggregate != '') {
+        if (comparer.aggregate !== '' &&  this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
           line.push(this.getLabelCountryFunction(subcategory, 'aggregate', comparerExport, queryExport, partnerType, isOrganization).trim());
         }
         let add = true;
-        if (line.length == 2) {
-          if (line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) {
+        if (line.length === 2) {
+          if (line[1] === 'No data available' || line[1] === '<p>No data available</p>' || line[1] === '-' || line[1] === '' || line[1] === null) {
             add = false;
           }
-        } else if (line.length == 3 || line.length == 4) {
-          if ((line[1] == 'No data available' || line[1] == '<p>No data available</p>' || line[1] == '-' || line[1] == '' || line[1] == null) && (line[2] == 'No data available' || line[2] == '<p>No data available</p>' || line[2] == '-' || line[2] == '' || line[2] == null)) {
+        } else if (line.length === 3 || line.length === 4) {
+          if ((line[1] === 'No data available' || line[1] === '<p>No data available</p>' || line[1] === '-' || line[1] === '' || line[1] === null) && (line[2] === 'No data available' || line[2] === '<p>No data available</p>' || line[2] === '-' || line[2] === '' || line[2] === null)) {
             add = false;
           }
         }
         if (add) {
-          lines.push(line);
+          if (this.showIndicatorFunction(category, isOrganization ? this.arrayDev : this.arrayPartner)) {
+            lines.push(line);
+          }
         }
       });
     });
@@ -179,6 +190,7 @@ export class GenerateIndicatorsService {
     const fileName = isOrganization ? 'partner' : 'country';
     saveAs(blob, fileName + '.csv');
   }
+
   htmlIndicatorFunction(indicator) {
     // console.log("ind2",indicator.icon2);
     if (indicator.icon2) {
@@ -193,5 +205,8 @@ export class GenerateIndicatorsService {
       // console.log("modalquery",ans);
       return ans.json().rows;
     });
+  }
+  showIndicatorFunction(indicator, array) {
+    return (array.indexOf(indicator.id) !== -1) ? true : false ;
   }
 }

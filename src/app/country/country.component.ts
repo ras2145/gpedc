@@ -101,7 +101,7 @@ export class CountryComponent implements OnInit {
         }
       }
     }
-    console.log("country",this.countrySelectors);
+    console.log('country', this.countrySelectors);
   }
   onSelectedCountry(event, type) {
     console.log('onSelectedCountry');
@@ -114,7 +114,7 @@ export class CountryComponent implements OnInit {
         return;
       }
       this.countries.firstCountry = event.value;
-      this.partnerType=(event.partnerType === 'Partner Country')? 'partcntry': 'devpart';
+      this.partnerType = (event.partnerType === 'Partner Country') ? 'partcntry' : 'devpart';
       // this.partnerType=event.partnerType;
     } else {
       if (event.value === this.countryComparer.firstCountry) {
@@ -125,7 +125,7 @@ export class CountryComponent implements OnInit {
         return;
       }
       this.countries.secondCountry = event.value;
-      this.partnerTypeSecond=(event.partnerType === 'Partner Country')? 'partcntry': 'devpart';
+      this.partnerTypeSecond = (event.partnerType === 'Partner Country') ? 'partcntry' : 'devpart';
     }
     // console.log("devpart", this.partnerType);
   }
@@ -243,32 +243,26 @@ export class CountryComponent implements OnInit {
   }
   valorIndicatorContent(id)
   {
-    if(this.column_indicator[0][this.column_content+'_'+id])
+    if(this.column_indicator[0][this.column_content + '_' + id])
     {
       return  ((this.column_indicator[0][this.column_content+'_'+id]).toString()!='9999')?true:false;
     }
   }
   getImage(indicator) {
-    if(indicator.id ==='8' ) {
+    if (indicator.id === '8' ) {
       return 'assets/icon5.svg';
-    } else if (indicator.id === '1a') {    
+    } else if (indicator.id === '1a') {
       return 'assets/icon17.svg';
     }
   }
   getTextIcon(indicator) {
-    if(indicator.id ==='8' ) {
+    if (indicator.id === '8' ) {
       return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
     } else if (indicator.id === '1a') {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
     }
   }
-  // showIndicator(indicator){
-  //   if(indicator.id!='4')
-  //   {
-  //     return true;
-  //   }
-  //   else{
-  //     return false;
-  //   }
-  // }
+  showIndicator(indicator) {
+  return this.generateIndicatorsService.showIndicatorFunction(indicator, this.generateIndicatorsService.arrayPartner);
+  }
 }
