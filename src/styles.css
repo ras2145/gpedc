@@ -550,6 +550,7 @@ select.form-control:not([size]):not([multiple]) {
     padding:5px 0px 7px 0px;
     margin-top: 5px;
     margin-left: 3px;
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.05);
 }
 
 .number-card .right-number {
@@ -560,6 +561,8 @@ select.form-control:not([size]):not([multiple]) {
     padding: 5px;
     margin-top: 5px;
     margin-right: 6px;
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.05);
+
 }
 
 .number-card .left-number p:nth-child(1),
@@ -2348,7 +2351,7 @@ body::-webkit-scrollbar-thumb {
     float: right;
     cursor: pointer;
   }
-.btn-run-disabled{ 
+.btn-run-disabled{
   width: 134px;
   height: 25px;
   border-radius: 2px;
@@ -2751,4 +2754,3 @@ text.value {
 .information-i .popover-body {
     width: 200px;
 }
-
