@@ -214,6 +214,20 @@ export class CountryHistoricalComponent implements OnInit {
   }
   draw(allData?, sort?) {
     const scope = this;
+    console.log('mierda ', this.chartData);
+    if (sort === 'devpart') {
+      this.chartData.sort((a, b) => {
+        return a.label.localeCompare(b.label);
+      });
+    }
+    if (sort === 'value') {
+      this.chartData.sort((a, b) => {
+        if (a.value === b.value) {
+          return a.label.localeCompare(b.label);
+        }
+        return b.value - a.value;
+      });
+    }
     let data = JSON.parse(JSON.stringify(this.chartData));
     console.log('le ', this.chartData);
     this.lessData = data.length <= 10 ? true : false;
@@ -229,20 +243,6 @@ export class CountryHistoricalComponent implements OnInit {
     length = data.length;
     if(length > 0) {
       this.isData = true;
-      if (sort === 'devpart') {
-        console.log('le data ', data);
-        data.sort((a, b) => {
-          return a.label.localeCompare(b.label);
-        });
-      }
-      if (sort === 'value') {
-        data.sort((a, b) => {
-          if (a.value === b.value) {
-            return a.label.localeCompare(b.label);
-          }
-          return b.value - a.value;
-        });
-      }
       let div = d3.select("#chart").attr("class", "toolTip");
       let axisMargin = 90,
       margin = 10,
@@ -346,21 +346,18 @@ export class CountryHistoricalComponent implements OnInit {
   }
   drawComplete() {
     this.buttonMore = false;
-    this.countryAnalysisService.getCharData(this.selectedCountry, this.subIndicator.indicator, this.model['year']).subscribe(res => {
-      this.chartData = res;
-      this.draw();
-    });
+    this.draw();
   }
   drawLess() {
     this.buttonMore = true;
-    this.run();
+    this.draw(10);
   }
   openModal() {
     this.modalRef = this.modalService.show(this.secondGraph);
   }
   drawSecondChart(pos) {
     let toDraw = this.chartData[pos];
-    this.selectedChart = toDraw.label;
+    this.selectedChart = this.firstRow[toDraw.label];
     console.log('to draw ', toDraw);
     let ind = '';
     if (this.subDropdown) {
@@ -441,6 +438,10 @@ export class CountryHistoricalComponent implements OnInit {
     });
   }
   sortDraw(type) {
-    this.draw(10, type);
+    if (this.buttonMore) {
+      this.draw(10, type);
+    } else {
+      this.draw(null , type);
+    }
   }
 }
