@@ -494,9 +494,9 @@
                             <div class="col-md-12">
                                 <div class="head-card">
                                     <p>{{countryName}}</p>
-                                    <p *ngIf="!indicator">INDICATOR {{!indicator?model.category.id:''}}</p>
+                                    <p *ngIf="!indicator && (hideIndicatorHover(model.category) || model.subcategory)">INDICATOR {{!indicator?model.category.id:''}}</p>
                                 </div>
-                                <div *ngIf="!indicator" class="number-card" [ngClass]="!hideIndicatorHover(model.category)? 'hide-hover':''" >
+                                <div *ngIf="!indicator  && (hideIndicatorHover(model.category) || model.subcategory)" class="number-card" [ngClass]="!hideIndicatorHover(model.category)? 'hide-hover':''" >
                                     <div class="right-number" *ngIf="hideIndicatorHover(model.category)">
                                         <p [ngClass]="alinear(countryName, '2010')">{{getIndicatorValue(countryName, '2010')}}</p>
                                         <div *ngIf="model.year.year === '2010'; then thenBlock1 else elseBlock1"></div>
@@ -516,8 +516,8 @@
                                         <ng-template #elseBlock3><p>2016</p></ng-template>
                                     </div>
                                 </div>
-
-                                <div *ngIf="!indicator" class="content-card">
+ 
+                                <div *ngIf="!indicator  && (hideIndicatorHover(model.category) || model.subcategory)" class="content-card">
                                     <p [innerHTML]="popupText">
                                     </p>
                                 </div>

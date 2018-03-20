@@ -228,7 +228,6 @@ export class ViewerComponent implements OnInit {
       });
 
       this.mapService.clickCountry(event => {
-       // console.log('CLICK ', event);
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
           if (event.features.length > 1) {
@@ -310,7 +309,7 @@ export class ViewerComponent implements OnInit {
     });
   }
   resetComparer() {
-    console.log(this.model);
+    
     this.legendMap = this.legends['noLegend' + this.model.year.year];
     this.mapService.paintTwoCountryClear();
     this.countryComparer.firstCountry = '';
@@ -479,8 +478,7 @@ export class ViewerComponent implements OnInit {
       }
     }
   }
-  selectCategory(category) {
-    console.log('cat', category, 'sub', category.subcategories);
+  selectCategory(category) {    
     this.model.category = category;
     this.model.subcategory = null;
     this.indicator = false;
@@ -498,7 +496,6 @@ export class ViewerComponent implements OnInit {
    // console.log(this.subIndicator);
   }
   selectSubcategory(category, subcategory) {
-    console.log('subcategoryrr', subcategory);
     this.model.category = category;
     this.model.subcategory = subcategory;
     this.subIndicator = false;
@@ -513,11 +510,11 @@ export class ViewerComponent implements OnInit {
   //  console.log(this.subIndicator);
   }
   unselectCategory() {
-    console.log("unselected");
+    
     this.subIndicator = false;
     this.indicator = false;
     this.showAccordion = false;
-    console.log('UNSELECT',this.model);
+    
     this.getCategoriesNotNull();
     this.getIndicator(this.model.year.categories[0].id);
     this.changeYearLabel(this.model.year);
@@ -794,23 +791,32 @@ export class ViewerComponent implements OnInit {
     const columnCat = this.getColumn();
     const options = columnCat;
     if (countryName !== 'Country') {
+      
       const country = this.countriesQuery.filter((a) => a.country === countryName)[0];
       if (this.model.category == null) {
+        
         this.popupText = 'No indicator selected.<br>';
       } else if (this.model.category != null && this.model.subcategory == null) {
+        
         if (country[options] != null) {
+          
           let condition = this.checkIfString(country[options].toString()) && country[options].toString().toUpperCase();
           if ((condition === 'YES') || (condition === 'TRUE')) {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['yesText'];
+            
           } else if ((condition === 'NO') || (condition === 'FALSE')) {
             this.popupText = this.model.category['prefix'] + ' ' + this.model.category['noText'];
+            
           } else {
             this.popupText = this.popupText + ' ' + this.model.category['prefix'] + ' <b>' + this.formatValuePopUp(this.model.category, country[options]) + '</b> ' + this.model.category['suffix'];
+            
           }
         }
       } else if (this.model.category != null && this.model.subcategory != null) {
+        
         if (country[options] != null) {
           let condition = this.checkIfString(country[options].toString()) && country[options].toString().toUpperCase();
+          
           if ((condition === 'YES') || (condition === 'TRUE')) {
             this.popupText = this.model.subcategory['prefix'] + ' ' + this.model.subcategory.yesText;
           } else if ((condition === 'NO') || (condition === 'FALSE')) {
@@ -1063,7 +1069,9 @@ export class ViewerComponent implements OnInit {
       self.loaderService.end();
     });
   }
-
+  needSubcat(category) {
+    return category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4' ;
+  }
   noIsInvalidSelection(category) {
     const validSelection = (category.id === '7' || category.id === '8' || category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4');
     if (!validSelection) {
@@ -1352,6 +1360,7 @@ updateMapTitle() {
     this.modalRef = this.modalService.show(template);
   }
   hideIndicatorHover( category ) {
+    console.log('MM',category);
     if  (category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4') {
       this.hideHover = 'card-map2';
       return false;
