@@ -50,6 +50,7 @@ a:hover {
 
 .result-container label {
     border: none;
+    width: 100%;
 }
 
 
@@ -804,7 +805,7 @@ div#map {
 }
 
 .nav-item {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 
@@ -985,7 +986,7 @@ td.table-title-left {
 .modal-content {
     background-color: #fafafa;
     left: -54px;
-    top: 95px;
+    top: 50px;
     width: 600px
 }
 
@@ -1696,7 +1697,7 @@ select-dropdown li.selected.highlighted {
 
 .modal-tutorial .tab-content>.active {
     display: block;
-    height: 405px;
+    height: 426px;
 }
 
 .btn-modal {
@@ -2343,7 +2344,7 @@ body::-webkit-scrollbar-thumb {
     float: right;
     cursor: pointer;
   }
-.btn-run-disabled{ 
+.btn-run-disabled{
   width: 134px;
   height: 25px;
   border-radius: 2px;
@@ -2741,4 +2742,3 @@ text.value {
 .information-i .popover-body {
     width: 200px;
 }
-
