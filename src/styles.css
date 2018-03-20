@@ -2249,6 +2249,9 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 20px;
 }
 
+.lll-o{
+  width: 100%;
+}
 
 /* CHECKBOX */
 .label--checkbox,
@@ -2441,7 +2444,7 @@ body::-webkit-scrollbar-thumb {
 }
 .card-bd{
   /* border: 1px solid rgba(0, 0, 0, 0.1); */
-  padding: 8px;
+  /* padding: 8px; */
 }
 .card-bd-01{
   /* height: 406px; */
@@ -2452,9 +2455,11 @@ body::-webkit-scrollbar-thumb {
 }
 .card-bd h6{
   font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: #282828;
+  font-weight: 500;
+  color: #fff;
+  padding: 0px;
+  padding-top: 5px;
+
 }
 .card-bd p{
   opacity: 0.6;
@@ -2463,6 +2468,23 @@ body::-webkit-scrollbar-thumb {
   color: #4d4d4d;
   margin-bottom: 10px;
 }
+.card-bd .modal-header{
+  background: #252e47;
+  padding: 10px 15px;
+}
+.card-bd .close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff !important;
+  text-shadow: 0 0px 0 #fff !important;
+  opacity: 1 !important;
+}
+.card-bd .modal-body{
+  padding: 15px
+}
+
 .card-bd-02{
   height: 406px;
   background-color: #f9f9f9;
@@ -2744,7 +2766,7 @@ text.value {
 }
 .information-country {
   color: #9b9b9b;
-  padding-left: 7px;
+  padding-left: 7px;    
   cursor: pointer;
   font-size: 14px;
   float: right;
