@@ -302,7 +302,7 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("class", "value")
         .attr("y", barHeight / 2)
         .attr("dx", d => {
-          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : 0);
+          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -1 : 0);
         }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
@@ -313,7 +313,7 @@ export class CountryHistoricalComponent implements OnInit {
         })
         .attr("x", function(d) {
             var width = this.getBBox().width;
-            return Math.max(width + valueMargin, scale(d.value) + 50);
+            return Math.max(width + valueMargin, scale(d.value) + 42);
         });
 
       svg.insert("g",":first-child")
@@ -421,16 +421,16 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('dy', '.71em')
         .style('text-anchor', 'end')
         .text(ind);
-
+        
       console.log(x.bandwidth());
       svg.selectAll('.bar')
         .data(data)
-        .enter().append('rect')
+        .enter().append('g').append('rect')
           .attr('class', 'bar')
           .attr('x', d => x(d.label) + 23.75)
           .attr('width', x.bandwidth() / 2)
           .attr('y', d => y(d.value))
-          .attr('height', d => height - y(d.value));
+          .attr('height', d => height - y(d.value))         
     });
   }
   sortDraw(type) {
