@@ -180,7 +180,7 @@
                                         triggers="mouseenter:mouseleave">
                                     </i> -->
                                   </p>
-                                  <span class="span-md">In alphabetical order {{showAccordion}}</span>
+                                  <span class="span-md">In alphabetical order </span>
                               </div>
 
                               <div class="row" *ngIf="showAccordion">
@@ -189,12 +189,12 @@
                                   <div class="acordion">
                                     <accordion>
                                         <!-- <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)"> -->
-                                        <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open">
+                                        <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open"  (click)="switchPartnerGroupOpen($event, partnerGroup)">
                                             <div accordion-heading class="clearfix">
-                                                {{partnerGroup.name}}
+                                                {{partnerGroup.name}} {{!partnerGroup.open}}
                                                 <span class="float-right pull-right">
-                                                    <i class="mdi mdi-menu-right" *ngIf="!partnerGroup.open"></i>
-                                                    <i class="mdi mdi-menu-down" *ngIf="partnerGroup.open"></i>
+                                                    <i class="mdi mdi-menu-right" *ngIf="partnerGroup.selected"></i>
+                                                    <i class="mdi mdi-menu-down" *ngIf="!partnerGroup.selected"></i>
                                                 </span>
                                             </div>
                                             <table class="table table-sm">

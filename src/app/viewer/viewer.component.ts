@@ -1223,7 +1223,7 @@ updateMapTitle() {
     }, 5000);
   }
   switchPartnerGroupOpen(event, partnerGroup) {
-    partnerGroup.open = !partnerGroup.open;
+    partnerGroup.selected = !partnerGroup.selected;
   }
 
   isLoading() {
