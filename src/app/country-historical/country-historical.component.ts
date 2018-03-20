@@ -421,16 +421,23 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('dy', '.71em')
         .style('text-anchor', 'end')
         .text(ind);
-        
-      console.log(x.bandwidth());
-      svg.selectAll('.bar')
+
+      const bars = svg.selectAll('.bar')
         .data(data)
-        .enter().append('g').append('rect')
-          .attr('class', 'bar')
-          .attr('x', d => x(d.label) + 23.75)
-          .attr('width', x.bandwidth() / 2)
-          .attr('y', d => y(d.value))
-          .attr('height', d => height - y(d.value))         
+        .enter().append('g');
+
+      bars.append('rect')
+        .attr('class', 'bar')
+        .attr('x', d => x(d.label) + 23.75)
+        .attr('width', x.bandwidth() / 2)
+        .attr('y', d => y(d.value))
+        .attr('height', d => height - y(d.value));
+
+
+      // align here
+      bars.append('text')
+        .text('TEST');
+
     });
   }
   sortDraw(type) {
