@@ -196,6 +196,7 @@ export class CountryHistoricalComponent implements OnInit {
     this.subDropdown = false;
     this.title = '';
     this.selectedCountry = '';
+    this.loadIndicators = false;
     this.charttext = '';
   }
   resetSub() {
