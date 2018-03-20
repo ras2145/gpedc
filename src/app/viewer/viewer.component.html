@@ -21,9 +21,9 @@
                           <div class="result-container">
 
                                 <app-dropdown  (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)" (optionExportCsv)="exportCsvViewer($event)"  [optionsSubject]="optionsSubject"></app-dropdown>
-                                <div class="iconIndicator" *ngIf="iconIndicator"> 
+                                <div class="iconIndicator" *ngIf="iconIndicator">
                                    <!-- <img src="assets/0001.png" >  -->
-                                   <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right"> 
+                                   <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right">
                                 </div>
 
                             <div class="form-group">
@@ -37,12 +37,12 @@
                             </div>
 
                             <div class="form-group style-select">
-                                <label for="inputState" class="result-subtitle width-popUp">Region
+                                <label for="inputState" class="result-subtitle width-popUp lll-o">Region
                                      <i class="mdi mdi-information"
                                         popover="The following regional groupings are based on the OECD classification."
                                         placement="right"
                                         triggers="mouseenter:mouseleave">
-                                      </i> 
+                                      </i>
                                 </label>
                                 <div class="btn-group btn-dropdown" dropdown>
                                   <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -61,12 +61,12 @@
 
 
                                       <div class="form-group style-select width-popUp">
-                                          <label for="inputState" class="result-subtitle">Income Group
+                                          <label for="inputState" class="result-subtitle lll-o">Income Group
                                               <i class="mdi mdi-information"
                                                   popover="The following income groupings are based on the 2017 World Bank income classification."
                                                   placement="right"
                                                   triggers="mouseenter:mouseleave">
-                                              </i> 
+                                              </i>
                                           </label>
                                           <div class="btn-group btn-dropdown" dropdown>
                                               <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -85,12 +85,12 @@
 
 
                                       <div class="form-group style-select context-pop">
-                                          <label for="inputState" class="result-subtitle">Country context
+                                          <label for="inputState" class="result-subtitle lll-o">Country context
                                               <i class="mdi mdi-information"
                                                   popover="The designation 'Least Developed Country' or LDC is based on the present classification by the UN as of December 2017. The 'Small Island Developing State' or SIDS designation is based on the classification of UN Member States by the UN-OHRLLS as of December 2017."
                                                   placement="right"
                                                   triggers="mouseenter:mouseleave">
-                                              </i> 
+                                              </i>
                                           </label>
                                           <div class="btn-group btn-dropdown" dropdown>
                                               <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
@@ -168,9 +168,9 @@
                           </div>
                           <div class="result-container">
                               <app-dropdown (changeSubindicator)="updateSubindicatorValues($event)" (changeYear)="updateYearValues($event)" (changeIndicator)="updateIndicatorValues($event)"  [optionsSubject]="optionsSubject" (optionExportCsv)="exportCsvViewer($event)"></app-dropdown>
-                                <div class="iconIndicator" *ngIf="iconIndicator"> 
+                                <div class="iconIndicator" *ngIf="iconIndicator">
                                    <!-- <img src="assets/0001.png" >  -->
-                                   <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right"> 
+                                   <img [src]="getImage()" [tooltip]="getTextIcon()"  placement="right">
                                 </div>
                               <div class="padding-top-line" *ngIf="showAccordion">
                                 <p class="result-subtitle-one">DEVELOPMENT PARTNER
@@ -549,7 +549,7 @@
                                 </div>
                                 <div *ngFor="let indicator of listIndicator.indicator" class="tabs-result">
                                     <div [innerHTML]="indicator.prefix"></div>
-                                    <div *ngIf="indicator.value === 'Yes'" [innerHTML]="indicator.yesText"></div> 
+                                    <div *ngIf="indicator.value === 'Yes'" [innerHTML]="indicator.yesText"></div>
                                     <div *ngIf="indicator.value === 'No'" [innerHTML]="indicator.noText"></div>
                                     <div class="row">
                                         <div class="{{indicator.classValueF}}">

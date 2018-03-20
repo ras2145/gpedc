@@ -169,31 +169,33 @@
                 <label>{{charttext}}</label>
 
               </div>
-              
+
             </div>
             <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData">Data not available for the selected combination.</div>
             <div id="chart" [ngClass]="{'hide' : !isData}"></div>
             <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
             <button *ngIf="!lessData && !buttonMore" type="button" name="button" class="btn-more" (click)="drawLess()"> Less </button>
           </div>
-         
+
         </div>
       </div>
     </div>
   </div>
 
 <!-- MODAL CHART -->
-<template #secondGraph >    
-    <div class="card-bd">
-        <button type="button" class="close pull-right" style="cursor: pointer;" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      <div>
-        <h6>{{selectedChart}}</h6>
-        <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
-        <div id="secondChart"></div>
-      </div>
+<template #secondGraph >
+  <div class="card-bd">
+    <div class="modal-header">
+      <h6 class="modal-title pull-left">{{selectedChart}}</h6>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
+      <div id="secondChart"></div>
+    </div>
+  </div>     
 </template>
 <!-- END MODAL CHART -->
 
