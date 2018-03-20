@@ -489,7 +489,7 @@
 
                     <!-- CARD map -->
                     <!-- *ngIf="selectedTab==='tab1' && countryName !== 'Country'" -->
-                    <div class="card-map" *ngIf="countryName !== 'Country-not'  &&  countryName !== 'Country'">
+                    <div class="card-map" [ngClass]="hideHover" *ngIf="countryName !== 'Country-not'  &&  countryName !== 'Country'">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="head-card">
@@ -497,13 +497,13 @@
                                     <p *ngIf="!indicator">INDICATOR {{!indicator?model.category.id:''}}</p>
                                 </div>
                                 <div *ngIf="!indicator" class="number-card">
-                                    <div class="right-number">
+                                    <div class="right-number" *ngIf="hideIndicatorHover(model.category)">
                                         <p [ngClass]="alinear(countryName, '2010')">{{getIndicatorValue(countryName, '2010')}}</p>
                                         <div *ngIf="model.year.year === '2010'; then thenBlock1 else elseBlock1"></div>
                                         <ng-template #thenBlock1><p><u>2010</u></p></ng-template>
                                         <ng-template #elseBlock1><p>2010</p></ng-template>
                                     </div>
-                                    <div class="left-number">
+                                    <div class="left-number" *ngIf="hideIndicatorHover(model.category)">
                                         <p [ngClass]="alinear(countryName, '2014')">{{getIndicatorValue(countryName, '2014')}}</p>
                                         <div *ngIf="model.year.year === '2014'; then thenBlock2 else elseBlock2"></div>
                                         <ng-template #thenBlock2><p><u>2014</u></p></ng-template>

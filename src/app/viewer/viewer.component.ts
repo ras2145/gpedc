@@ -126,6 +126,7 @@ export class ViewerComponent implements OnInit {
   country_before:'';
   iconIndicator;
   modalRef: BsModalRef;
+  hideHover:string;
 
   constructor(
     private mapService: MapService,
@@ -173,6 +174,7 @@ export class ViewerComponent implements OnInit {
     this.dateModal = {};
     this.country_before = '';
     this.showAccordion = false;
+    this.hideHover = '';
   }
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
@@ -1348,5 +1350,14 @@ updateMapTitle() {
   openModal(template: TemplateRef<any>) {
     this.viewModal = false;
     this.modalRef = this.modalService.show(template);
+  }
+  hideIndicatorHover( category ) {
+    if  (category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4') {
+      this.hideHover = 'card-map2';
+      return false;
+    } else {
+      this.hideHover = '';
+      return true;
+    }
   }
 }
