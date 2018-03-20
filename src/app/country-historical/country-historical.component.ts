@@ -88,6 +88,7 @@ export class CountryHistoricalComponent implements OnInit {
     this.resetIndicators();
     this.sendTitle();
     this.loadIndicators = false;
+    this.subDropdown = false;
     this.countryAnalysisService.getIndicators(this.selectedCountry, this.model['year']).subscribe((res) => {
       this.loadIndicators = true;
       this.indicators = res;
@@ -214,7 +215,6 @@ export class CountryHistoricalComponent implements OnInit {
   }
   draw(allData?, sort?) {
     const scope = this;
-    console.log('mierda ', this.chartData);
     if (sort === 'devpart') {
       this.chartData.sort((a, b) => {
         return a.label.localeCompare(b.label);
@@ -229,7 +229,6 @@ export class CountryHistoricalComponent implements OnInit {
       });
     }
     let data = JSON.parse(JSON.stringify(this.chartData));
-    console.log('le ', this.chartData);
     this.lessData = data.length <= 10 ? true : false;
     let length = data.length - 10;
     if( allData ) {
@@ -281,7 +280,8 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("y", barHeight / 2)
         .attr("dy", ".35em") //vertical align middle
         .text(function(d){
-          return d.label;
+          console.log(d.label);
+          return d.label + '\t';
         }).each(function() {
           labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
         });
