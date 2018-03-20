@@ -2668,7 +2668,12 @@ h2 .pos-default-modal {
 .orange-border {
     border: 1px solid #e07e52 !important;
 }
-
+.btn-invisible {
+    background: #fff;
+    border: #fff;
+    cursor: pointer;
+    padding: 0px;
+}
 
 /*STYLES FOR D3*/
 #chart {

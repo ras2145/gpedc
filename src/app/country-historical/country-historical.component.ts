@@ -212,9 +212,10 @@ export class CountryHistoricalComponent implements OnInit {
   show(event) {
     console.log(event);
   }
-  draw( allData?) {
+  draw(allData?, sort?) {
     const scope = this;
-    let data = this.chartData;
+    let data = JSON.parse(JSON.stringify(this.chartData));
+    console.log('le ', this.chartData);
     this.lessData = data.length <= 10 ? true : false;
     let length = data.length - 10;
     if( allData ) {
@@ -228,6 +229,20 @@ export class CountryHistoricalComponent implements OnInit {
     length = data.length;
     if(length > 0) {
       this.isData = true;
+      if (sort === 'devpart') {
+        console.log('le data ', data);
+        data.sort((a, b) => {
+          return a.label.localeCompare(b.label);
+        });
+      }
+      if (sort === 'value') {
+        data.sort((a, b) => {
+          if (a.value === b.value) {
+            return a.label.localeCompare(b.label);
+          }
+          return b.value - a.value;
+        });
+      }
       let div = d3.select("#chart").attr("class", "toolTip");
       let axisMargin = 90,
       margin = 10,
@@ -394,9 +409,9 @@ export class CountryHistoricalComponent implements OnInit {
       x.domain(data.map(d => d.label));
       y.domain([0, 1.09]);
       svg.append('g')
+      .call(xAxis)
         .attr('class', 'x axis')
         .attr('transform', `translate(0,${height})`)
-        .call(xAxis);
       svg.append('g')
         .attr('class', 'y axis')
         .call(yAxis)
@@ -417,5 +432,8 @@ export class CountryHistoricalComponent implements OnInit {
           .attr('y', d => y(d.value))
           .attr('height', d => height - y(d.value));
     });
+  }
+  sortDraw(type) {
+    this.draw(10, type);
   }
 }
