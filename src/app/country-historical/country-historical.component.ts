@@ -302,7 +302,7 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("class", "value")
         .attr("y", barHeight / 2)
         .attr("dx", d => {
-          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -1 : 0);
+          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : -2);
         }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
@@ -313,7 +313,7 @@ export class CountryHistoricalComponent implements OnInit {
         })
         .attr("x", function(d) {
             var width = this.getBBox().width;
-            return Math.max(width + valueMargin, scale(d.value) + 42);
+            return Math.max(width + valueMargin, scale(d.value) + 50);
         });
 
       svg.insert("g",":first-child")
