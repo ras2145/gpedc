@@ -78,7 +78,7 @@ export class PartnerHistoricalService {
 
   getChartData(year, indicator, devpartner) {
     const column = this.getColumn(devpartner);
-    const query = SERVER.GET_QUERY(`select country as label, ${column} as value from ${SERVER.GPEDC_SCREENS_4_5} where indicator = '${indicator}' and year = '${year}' and ${column} != '888' and ${column} != '999' order by ${column} desc, country`);
+    const query = SERVER.GET_QUERY(`select country as label, ${column} as value from ${SERVER.GPEDC_SCREENS_4} where indicator = '${indicator}' and year = '${year}' and ${column} != '888' and ${column} != '999' order by ${column} desc, country`);
     console.log(query);
     return this.webService.get(query).map(res => {
       res = res.json().rows;
@@ -92,7 +92,7 @@ export class PartnerHistoricalService {
   getSecondChartData(devpartner, indicator, country) {
     country = country.replace('\'', '\'\'');
     const column = this.getColumn(devpartner);
-    const query = SERVER.GET_QUERY(`select year, ${column} as value from ${SERVER.GPEDC_SCREENS_4_5} where indicator = '${indicator}' and country = '${country}' and ${column} != '888' and ${column} != '999'`);
+    const query = SERVER.GET_QUERY(`select year, ${column} as value from ${SERVER.GPEDC_SCREENS_4} where indicator = '${indicator}' and country = '${country}' and ${column} != '888' and ${column} != '999'`);
     console.log(query);
     return this.webService.get(query).map(res => {
       res = res.json().rows;
