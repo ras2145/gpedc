@@ -32,7 +32,7 @@ export class CountryAnalysisService {
           if (+res[key] > 1) {
             continue;
           }
-          ans.push({label: key, value: +(+res[key] * 100).toFixed(1), column: key});
+          ans.push({label: key, value: (+res[key] * 100.0).toFixed(1), column: key});
         }
       }
       ans.sort((a, b) => {
@@ -41,6 +41,7 @@ export class CountryAnalysisService {
         }
         return b.value - a.value;
       });
+      console.log('ANS', ans);
       return ans;
     });
   }

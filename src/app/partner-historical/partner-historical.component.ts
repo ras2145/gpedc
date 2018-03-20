@@ -444,7 +444,7 @@ export class PartnerHistoricalComponent implements OnInit {
           .attr('transform', `translate(${margin.left},${margin.top})`);
         console.log(svg);
         x.domain(data.map(d => d.label));
-        y.domain([0, 1.05]);
+        y.domain([0, 1.09]);
         svg.append('g')
           .attr('class', 'x axis')
           .attr('transform', `translate(0,${height})`)

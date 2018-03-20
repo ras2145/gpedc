@@ -97,7 +97,6 @@ export class PartnerHistoricalService {
     return this.webService.get(query).map(res => {
       res = res.json().rows;
       console.log(res);
-
       return res;
     });
   }
