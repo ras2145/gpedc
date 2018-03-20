@@ -13,7 +13,7 @@ export let layers = {
               [0.60, '#FAD02F'],
               [0.80, '#B1D781'],
               [1, '#1FAB9E'],
-              [9999, '#BBBBBB']
+              [9999, 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -34,7 +34,7 @@ export let layers = {
               ['Fair', '#F69229'],
               ['Good', '#B1D781'],
               ['Excellent', '#1FAB9E'],
-              ['9999', '#BBBBBB']
+              ['9999', 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -54,7 +54,7 @@ export let layers = {
               ['No', '#F16950'],
               ['true', '#1FAB9E'],
               ['false', '#F16950'],
-              ['9999', '#BBBBBB']
+              ['9999', 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -80,7 +80,7 @@ export let layers = {
               [5, '#50a89e'],
               [5.5, '#599BA8'],
               [6, '#5878A8'],
-              [9999, '#BBBBBB']
+              [9999, 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -100,7 +100,7 @@ export let layers = {
               [5, '#FAD02F'],
               [7, '#B1D781'],
               [9, '#1FAB9E'],
-              [9999, '#BBBBBB']
+              [9999, 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -118,7 +118,7 @@ export let layers = {
               [1, '#F16950'],
               [2, '#FAD02F'],
               [3, '#1FAB9E'],
-              [9999, '#BBBBBB']
+              [9999, 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -138,7 +138,7 @@ export let layers = {
               [3, '#FAD02F'],
               [4, '#B1D781'],
               [5, '#1FAB9E'],
-              [9999, '#BBBBBB']
+              [9999, 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75
@@ -157,7 +157,7 @@ export let layers = {
               [2, '#F69229'],
               [3, '#B1D781'],
               [4, '#1FAB9E'],
-              [9999, '#BBBBBB']
+              [9999, 'rgba(0,0,0,0)']
             ]
           },
           'fill-opacity': 0.75

@@ -228,7 +228,6 @@ export class ViewerComponent implements OnInit {
       });
 
       this.mapService.clickCountry(event => {
-        
        // console.log('CLICK ', event);
         if (this.selectedTab === 'tab1') {
           let feature = event.features[ event.features.length - 1 ];
@@ -1158,9 +1157,10 @@ export class ViewerComponent implements OnInit {
               this.legendMap = this.legends.number2;
             }
           }
-        if(this.legendMap[0].textFirst != 'Not Available') {
-          this.legendMap.unshift({ color: '#BBBBBB', textFirst: 'Not Available', textMiddle: '', textLast: ''});
-        }
+          //removes not available from legend
+        // if(this.legendMap[0].textFirst != 'Not Available') {
+        //   this.legendMap.unshift({ color: '#BBBBBB', textFirst: 'Not Available', textMiddle: '', textLast: ''});
+        // }
       }
     }
     console.log('LEGEND LAST', this.legendMap);
