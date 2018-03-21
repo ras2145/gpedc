@@ -108,6 +108,9 @@
         </div>
       </div>
       <button *ngIf="indicator.dropdowncountry!=='Select an indicator'"type="button" name="button" class="btn btn-learn">What does this indicator measure?</button>
+      <div *ngIf="indicator.image">
+        <img [src]="indicator.image" width="47px" class="ll-po" [tooltip]="getTextIcon(indicator)" placement="right">
+      </div>
       <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': canRun()}" (click)="run()" [disabled]="!canRun()">Run Analysis</button>
       </div>
     </div>
