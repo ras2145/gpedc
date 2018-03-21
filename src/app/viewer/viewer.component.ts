@@ -1031,7 +1031,7 @@ export class ViewerComponent implements OnInit {
     const countriesList = [];
     const self = this;
     // tslint:disable-next-line:max-line-length
-    this.mapService.getIndicatorFilterGeoJSON(this.indicator, this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year, this.partnerType).subscribe(geojson => {
+    this.mapService.getIndicatorFilterGeoJSON(this.getColumn(), this.model.region.value, this.model.incomeGroup.value, this.model.countryContext.value, this.model.year.year, this.partnerType).subscribe(geojson => {
       self.geoJson = geojson;
       for (const feature of self.geoJson.features) {
         const line = [];
@@ -1099,6 +1099,7 @@ export class ViewerComponent implements OnInit {
     }
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext, this.model.year.categories,this.partnerType).subscribe(val => {
       const countriesObj = {};
+      console.log('query sids ', val);
       for (let country of val) {
         if (countriesObj[country.country]) {
           if (countriesObj[country.country].area < country.area) {
@@ -1360,7 +1361,7 @@ updateMapTitle() {
     this.modalRef = this.modalService.show(template);
   }
   hideIndicatorHover( category ) {
-    console.log('MM',category);
+    //console.log('MM',category);
     if  (category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4') {
       this.hideHover = 'card-map2';
       return false;
