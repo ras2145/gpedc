@@ -191,7 +191,7 @@
                                         <!-- <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open" (click)="switchPartnerGroupOpen($event, partnerGroup)"> -->
                                         <accordion-group #group *ngFor="let partnerGroup of categorizedPartners" [(isOpen)]="!partnerGroup.open"  (click)="switchPartnerGroupOpen($event, partnerGroup)">
                                             <div accordion-heading class="clearfix">
-                                                {{partnerGroup.name}} {{!partnerGroup.open}}
+                                                {{partnerGroup.name}}
                                                 <span class="float-right pull-right">
                                                     <i class="mdi mdi-menu-right" *ngIf="partnerGroup.selected"></i>
                                                     <i class="mdi mdi-menu-down" *ngIf="!partnerGroup.selected"></i>

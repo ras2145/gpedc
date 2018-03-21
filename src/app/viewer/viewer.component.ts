@@ -126,7 +126,6 @@ export class ViewerComponent implements OnInit {
   country_before:'';
   iconIndicator;
   modalRef: BsModalRef;
-  hideHover:string;
 
   constructor(
     private mapService: MapService,
@@ -174,7 +173,6 @@ export class ViewerComponent implements OnInit {
     this.dateModal = {};
     this.country_before = '';
     this.showAccordion = false;
-    this.hideHover = '';
   }
   mergeWithSelected(options, selectedOption) {
     if (selectedOption) {
@@ -1043,16 +1041,18 @@ export class ViewerComponent implements OnInit {
       for (const line of countriesList) {
         lines.push(line);
       }
-      lines.push(['', '']);
-      lines.push(['Development Partners', '']);
-      for (const partnerGroup of self.categorizedPartners) {
-        lines.push([partnerGroup.name, '']);
-        for (const partner of partnerGroup.partners) {
-          const line = [];
-          line.push(partner.partner);
-          line.push(self.formatValue(indicator, partner[column]));
-          if (line[1] != 'No data available' && line[1] != '-' && line[1] != '' && line[1] != null) {
-            lines.push(line);
+      if (this.partnerType === 'devpart') {
+        lines.push(['', '']);
+        lines.push(['Development Partners', '']);
+        for (const partnerGroup of self.categorizedPartners) {
+          lines.push([partnerGroup.name, '']);
+          for (const partner of partnerGroup.partners) {
+            const line = [];
+            line.push(partner.partner);
+            line.push(self.formatValue(indicator, partner[indicator.column]));
+            if (line[1] !== 'No data available' && line[1] !== '-' && line[1] !== '' && line[1] !== null) {
+              lines.push(line);
+            }
           }
         }
       }
@@ -1363,10 +1363,8 @@ updateMapTitle() {
   hideIndicatorHover( category ) {
     //console.log('MM',category);
     if  (category.id === '1a' || category.id === '2' || category.id === '3' || category.id === '4') {
-      this.hideHover = 'card-map2';
       return false;
     } else {
-      this.hideHover = '';
       return true;
     }
   }
