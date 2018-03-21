@@ -99,6 +99,7 @@ export class PartnerHistoricalComponent implements OnInit {
 
   changeYear(year) {
     this.yearModel = this.phService.getDataByYear(this.getYearId(year));
+    this.selectedYear = this.yearModel.year;
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
     this.selectedYear = year;

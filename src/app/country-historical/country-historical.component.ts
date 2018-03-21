@@ -287,7 +287,7 @@ export class CountryHistoricalComponent implements OnInit {
         });
       scale = d3.scaleLinear()
         .domain([0, max])
-        .range([0, width - margin*2 - labelWidth]);
+        .range([0, width - margin * 2 - labelWidth]);
 
       xAxis = d3.axisBottom(scale).
       tickSize(-height + 2 * margin + axisMargin);
@@ -366,28 +366,24 @@ export class CountryHistoricalComponent implements OnInit {
       ind = this.indicator.indicator;
     }
     this.countryAnalysisService.getSecondChartData(this.selectedCountry, ind, toDraw['column']).subscribe(res => {
-      console.log(res);
-      const years = ['2005', '2007', '2010', '2014', '2016'];
+
       const data = [];
-      years.forEach(year => {
-        data.push({label: year, value: 0});
-      });
-      res.forEach(r => {
-        for (let d of data) {
-          if (d.label === r.year) {
-            if (+r.value > 1) {
-              continue;
-            }
-            d.value = +(+r.value);
-          }
+
+      for (let i = 0; i < res.length; i++) {
+        const v = +res[i].value;
+        if (v === 888) {
+          continue;
         }
-      });
+        data.push({label: res[i].year, value: v});
+      }
+      console.log(data);
+
       const content = document.getElementById("secondChart");
-      while (content.firstChild) { 
-        content.removeChild(content.firstChild); 
-      } 
+      while (content.firstChild) {
+        content.removeChild(content.firstChild);
+      }
       const length = data.length;
-      const margin = {top: 20, right: 20, bottom: 30, left: 40};
+      const margin = {top: 20, right: 20, bottom: 30, left: 60};
       const width = 580 - margin.left - margin.right;
       const height = 500 - margin.top - margin.bottom;
       const formatPercent = d3.format('.0%');
@@ -404,11 +400,12 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('transform', `translate(${margin.left},${margin.top})`);
       console.log(svg);
       x.domain(data.map(d => d.label));
-      y.domain([0, 1.09]);
+      y.domain([0, 1.1]);
       svg.append('g')
       .call(xAxis)
         .attr('class', 'x axis')
-        .attr('transform', `translate(0,${height})`)
+        .attr('transform', `translate(0,${height})`);
+
       svg.append('g')
         .attr('class', 'y axis')
         .call(yAxis)
@@ -419,21 +416,35 @@ export class CountryHistoricalComponent implements OnInit {
         .style('text-anchor', 'end')
         .text(ind);
 
+      svg.append('text')
+        .attr('x', -(height / 2))
+        .attr('y', -40)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '10px')
+        .style('color', '#282828')
+        .style('font-weight', 'bold')
+        .style('letter-spacing', '1px')
+        .style('transform', 'rotate(-90deg)')
+        .text(this.charttext);
+
       const bars = svg.selectAll('.bar')
         .data(data)
         .enter().append('g');
 
       bars.append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d.label) + 23.75)
+        .attr('class', 'bar2')
+        .attr('x', d => x(d.label) + x.bandwidth() / 4)
         .attr('width', x.bandwidth() / 2)
-        .attr('y', d => y(d.value))
-        .attr('height', d => height - y(d.value));
+        .attr('y', d => d.value === 999 ? 0 : y(d.value))
+        .attr('height', d => d.value === 999 ? 0 : height - y(d.value));
 
 
       // align here
       bars.append('text')
-        .text('TEST');
+        .attr('x', d => x(d.label) + x.bandwidth() / 4 + x.bandwidth() / 8)
+        .attr('y', d => d.value === 999 ? 445 : y(d.value) - 5)
+        .style('font-size', '12px')
+        .text((d => (d.value === 999 ? 'Not applicable' : (d.value * 100.0).toFixed(1) + '%')));
 
     });
   }

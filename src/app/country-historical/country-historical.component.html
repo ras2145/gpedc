@@ -186,13 +186,15 @@
 <template #secondGraph >
   <div class="card-bd">
     <div class="modal-header">
-      <h6 class="modal-title pull-left">{{selectedChart}}</h6>
+      <h6 class="modal-title pull-left">
+        Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}
+      </h6>
       <button type="button" class="close pull-right" style="cursor: pointer" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <p>Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</p>
+      <p>  On this tab, development partners' performance can be explored at the country level for each available year. </p>
       <div id="secondChart"></div>
     </div>
   </div>     

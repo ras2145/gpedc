@@ -999,7 +999,7 @@ td.table-title-left {
 
 .modal-title,
 .modal-title span {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
 }
 
 .modal-title {
@@ -2454,7 +2454,7 @@ body::-webkit-scrollbar-thumb {
   width: 640px;
 }
 .card-bd h6{
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: #fff;
   padding: 0px;
@@ -2758,6 +2758,11 @@ text.value {
     fill: #f17846;
     fill-opacity: .9;
 }
+.bar2 {
+    fill: #1c243b;
+    /* fill-opacity: .9; */
+}
+
 .oo-ll .popover{
   width: 400px;
 }
