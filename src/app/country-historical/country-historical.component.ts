@@ -13,6 +13,7 @@ export class CountryHistoricalComponent implements OnInit {
   titleSubject: Subject <any> = new Subject();
   filters;
   charttext;
+  first = true;
   countries: any;
   firstRow: any;
   loadIndicators: boolean;
@@ -228,6 +229,7 @@ export class CountryHistoricalComponent implements OnInit {
     }
   }  
   draw(allData?, sort?) {
+    this.first = false;
     const scope = this;
     if (sort === 'devpart') {
       this.chartData.sort((a, b) => {
