@@ -15,6 +15,13 @@ export class PartnerHistoricalService {
   constructor(private webService: WebService) {
     this.years = [2005, 2007, 2010, 2014, 2016];
   }
+  isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+  getFirstRow() {
+    const query = SERVER.GET_QUERY(`SELECT * from ${SERVER.GPEDC_SCREENS_5} WHERE cartodb_id = 1`);
+    return this.webService.get(query).map(res => res.json().rows[0]);
+  }
 
   getAll() {
     return analysisData;
@@ -36,7 +43,7 @@ export class PartnerHistoricalService {
       indicator.type = it1.type;
       indicator.chartText = it1.charttext;
       indicator.autoselect = it1.autoselect === '' ? false : true;
-
+      indicator.image = it1.image;
       const subindicators = new Array<Subindicator>();
       for (const it2 of it1.subdropdown) {
         const subindicator = new Subindicator();
@@ -46,6 +53,7 @@ export class PartnerHistoricalService {
         subindicator.subdropdown = it2.subdropdown;
         subindicator.chartText = it2.charttext;
         subindicator.autoselect = it2.autoselect === '' ? false : true;
+        subindicator.image = it2.image;
         subindicators.push(subindicator);
       }
       indicator.subindicators = subindicators;
@@ -75,17 +83,30 @@ export class PartnerHistoricalService {
     }
     return 'not found';
   }
-
   getChartData(year, indicator, devpartner) {
-    const column = this.getColumn(devpartner);
-    const query = SERVER.GET_QUERY(`select country as label, ${column} as value from ${SERVER.GPEDC_SCREENS_4} where indicator = '${indicator}' and year = '${year}' and ${column} != '888' and ${column} != '999' order by ${column} desc, country`);
+    const query = SERVER.GET_QUERY(`SELECT * FROM ${SERVER.GPEDC_SCREENS_5} WHERE development_partner = '${devpartner}' AND indicator = '${indicator}' AND year = '${year}'`);
     console.log(query);
     return this.webService.get(query).map(res => {
-      res = res.json().rows;
-      for (let i = 0; i < res.length; i++) {
-        res[i].value = (+res[i].value * 100.0).toFixed(1);
+      res = res.json().rows[0];
+      let ans = [];
+      for (let key in res) {
+        if (!this.isNumeric(res[key]) || (+res[key] < 0 || +res[key] > 1)) {
+          delete res[key];
+        } else {
+          if (+res[key] > 1) {
+            continue;
+          }
+          ans.push({label: key, value: (+res[key] * 100.0).toFixed(1), column: key});
+        }
       }
-      return res;
+      ans.sort((a, b) => {
+        if (b.value === a.value) {
+          return a.label.localeCompare(b.label);
+        }
+        return b.value - a.value;
+      });
+      console.log('ANS', ans);
+      return ans;
     });
   }
 
