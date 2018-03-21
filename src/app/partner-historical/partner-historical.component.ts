@@ -101,6 +101,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.yearModel = this.phService.getDataByYear(this.getYearId(year));
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
+    this.selectedYear = year;
     this.getNavbarTitle();
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
@@ -173,17 +174,7 @@ export class PartnerHistoricalComponent implements OnInit {
       ans = this.selectedSubindicator.chartText;
     } else if (this.selectedIndicator && this.selectedIndicator.id === '10' && this.selectedDevPartner) {
       ans = this.selectedIndicator.chartText;
-    } 0
-    10
-    20
-    30
-    40
-    50
-    60
-    70
-    80
-    90
-    100
+    } 
     this.chartTitle = ans;
   }
   updateCheck(i) {
@@ -241,6 +232,7 @@ export class PartnerHistoricalComponent implements OnInit {
   drawChart(allData?) {
     const scope = this;
     let data = this.chartData;
+    
     this.lessData = data.length <= 10 ? true : false;
     let length = data.length - 10;
     if (allData) {
