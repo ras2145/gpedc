@@ -414,7 +414,7 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('transform', `translate(${margin.left},${margin.top})`);
       console.log(svg);
       x.domain(data.map(d => d.label));
-      y.domain([0, 1.1]);
+      y.domain([0, 1.09999]);
       svg.append('g')
       .call(xAxis)
         .attr('class', 'x axis')
