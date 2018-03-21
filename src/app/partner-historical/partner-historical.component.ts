@@ -47,7 +47,7 @@ export class PartnerHistoricalComponent implements OnInit {
 
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
-
+  
   selectedChart: string;
 
   constructor(private phService: PartnerHistoricalService, private modalService: BsModalService) {
@@ -387,7 +387,9 @@ export class PartnerHistoricalComponent implements OnInit {
     this.buttonMore = true;
     this.runAnalysis();
   }
-
+  openPartnersModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
   openModal() {
     this.modalRef = this.modalService.show(this.secondGraph);
   }

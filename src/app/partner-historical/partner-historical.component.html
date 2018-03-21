@@ -99,6 +99,24 @@
             </i>
           </p>
           <!-- DROPDOWN -->
+          <button type="button" class="btn modal-check" (click)="openPartnersModal(template)">Click Here</button>
+          <template #template>
+            <div class="modal-header mm-lo">
+              <p class="ll-k">SELECT WHICH TYPE OF PARTNERS TO CONSIDER FOR COMPARISON (SELECT ONE OR MANY)</p>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-4">
+                  <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
+                    <input class="checkbox btn-filters-selected" type="checkbox" [checked]="selectedPartnerTypes[i]" (click)="updateCheck(i)"> {{ pType.type }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </template>
           <ng-select [(ngModel)]="selectedDevPartner" (selected)="onSelected($event)" (deselected)="onDeselected($event)" [allowClear]="true"
             [options]="dropdownContent" placeholder="Select a development partner" filterPlaceholder="Type to search" notFoundMsg="No partners found">
           </ng-select>
@@ -116,9 +134,7 @@
           </ul>
         </div> -->
           <!-- CHECKBOX -->
-          <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
-            <input class="checkbox btn-filters-selected" type="checkbox" [checked]="selectedPartnerTypes[i]" (click)="updateCheck(i)"> {{ pType.type }}
-          </label>
+          
         </div>
         <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': canRun()}" (click)="runAnalysis()" [disabled]="!canRun()">Run Analysis</button>
         <br>
