@@ -8,6 +8,7 @@ export class Indicator {
     type: string;
     chartText: string;
     autoselect: boolean;
+    image: string;
 
     constructor() {
         this.id = this.title = this.dropdown = this.type = this.chartText = '';
