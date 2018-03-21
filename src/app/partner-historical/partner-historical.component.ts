@@ -44,6 +44,7 @@ export class PartnerHistoricalComponent implements OnInit {
   isData: boolean;
   lessData: boolean;
   buttonMore: boolean;
+  firstRow: any;
 
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
@@ -76,6 +77,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.partners = this.phService.getDevPartners();
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
+    this.phService.getFirstRow().subscribe(row => this.firstRow = row);
   }
   clearChart() {
     this.isData = false;
@@ -207,7 +209,13 @@ export class PartnerHistoricalComponent implements OnInit {
       i++;
     }
   }
-
+  getTextIcon() {
+    if(this.selectedIndicator.id ==='8' ) {
+      return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
+    } else if (this.selectedIndicator.id === '1') {
+      return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
+    }
+  }
   runAnalysis() {
     if (this.selectedDevPartner && (this.selectedSubindicator || (this.selectedIndicator && this.selectedIndicator.id === '10'))) {
       const sYear = String(this.selectedYear);
@@ -232,8 +240,10 @@ export class PartnerHistoricalComponent implements OnInit {
 
   drawChart(allData?) {
     const scope = this;
-    let data = this.chartData;
-    
+    let data = JSON.parse(JSON.stringify(this.chartData));
+    data.forEach(d => {
+      d.label = this.firstRow[d.label];
+    });
     this.lessData = data.length <= 10 ? true : false;
     let length = data.length - 10;
     if (allData) {

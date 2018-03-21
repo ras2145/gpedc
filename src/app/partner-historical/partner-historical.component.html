@@ -88,7 +88,10 @@
         <br>
         <button *ngIf="(selectedIndicator && selectedSubindicator) || (selectedIndicator && selectedIndicator.id === '10')" type="button"
           name="button" class="btn btn-learn">What does this indicator measure?</button>
-
+        <div *ngIf="selectedIndicator && selectedIndicator.image">
+          <img [src]="selectedIndicator.image" width="47px" class="ll-po" [tooltip]="getTextIcon(selectedIndicator)" placement="right">
+        </div>
+          <!-- selectedIndicator -->
         <!-- DEVELOPMENT PARTNER -->
         <div class="form-group style-select">
           <p for="inputState" class="result-subtitle space-indicator">
