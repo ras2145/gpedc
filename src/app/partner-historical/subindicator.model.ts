@@ -5,6 +5,7 @@ export class Subindicator {
     subdropdown: string;
     chartText: string;
     autoselect: boolean;
+    image: string;
 
     constructor() {
         this.id = this.title = this.type = this.chartText = '';
