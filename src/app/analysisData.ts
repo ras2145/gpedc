@@ -16,12 +16,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "6",
@@ -37,7 +39,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "6_2",
@@ -46,12 +49,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "9b",
@@ -67,7 +72,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
             "charttext": "% of funding",
-            "autoselect": "yes"
+            "autoselect": "yes",
+            "image": ""
           },
           {
             "indicator": "9b_1",
@@ -76,7 +82,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_2",
@@ -85,7 +92,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_3",
@@ -94,7 +102,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_4",
@@ -103,12 +112,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "10",
@@ -119,7 +130,8 @@ export let analysisData = [
         "subdropdown": [],
         "type": "Percentage",
         "charttext": "% of aid ",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       }
     ]
   },
@@ -140,12 +152,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "6",
@@ -161,7 +175,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "6_2",
@@ -170,12 +185,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "9b",
@@ -191,7 +208,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
             "charttext": "% of funding",
-            "autoselect": "yes"
+            "autoselect": "yes",
+            "image": ""
           },
           {
             "indicator": "9b_1",
@@ -200,7 +218,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_2",
@@ -209,7 +228,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_3",
@@ -218,7 +238,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_4",
@@ -227,12 +248,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "10",
@@ -243,7 +266,8 @@ export let analysisData = [
         "subdropdown": [],
         "type": "Percentage",
         "charttext": "% of aid ",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       }
     ]
   },
@@ -264,12 +288,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "6",
@@ -285,7 +311,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "6_2",
@@ -294,12 +321,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "9b",
@@ -315,7 +344,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
             "charttext": "% of funding",
-            "autoselect": "yes"
+            "autoselect": "yes",
+            "image": ""
           },
           {
             "indicator": "9b_1",
@@ -324,7 +354,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_2",
@@ -333,7 +364,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_3",
@@ -342,7 +374,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_4",
@@ -351,12 +384,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "10",
@@ -367,7 +402,8 @@ export let analysisData = [
         "subdropdown": [],
         "type": "Percentage",
         "charttext": "% of aid ",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       }
     ]
   },
@@ -388,7 +424,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5a_2",
@@ -397,12 +434,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed beyond scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "5b",
@@ -418,7 +457,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 1 year ahead",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5b_2",
@@ -427,7 +467,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 2 years ahead",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5b_3",
@@ -436,7 +477,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 3 years ahead",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5b_4",
@@ -445,12 +487,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding covered by forward spending plans (1-3 years ahead)",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "6",
@@ -466,7 +510,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "6_2",
@@ -475,12 +520,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "9b",
@@ -496,7 +543,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
             "charttext": "% of funding",
-            "autoselect": "yes"
+            "autoselect": "yes",
+            "image": ""
           },
           {
             "indicator": "9b_1",
@@ -505,7 +553,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_2",
@@ -514,7 +563,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_3",
@@ -523,7 +573,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_4",
@@ -532,12 +583,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "10",
@@ -548,7 +601,8 @@ export let analysisData = [
         "subdropdown": [],
         "type": "Percentage",
         "charttext": "% of aid ",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       }
     ]
   },
@@ -569,7 +623,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of new development interventions that draw their objectives from country-led results frameworks",
             "charttext": "% of new interventions",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "1_2",
@@ -578,7 +633,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of results indicators drawn from partner country-led results frameworks",
             "charttext": "% of results indicators",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "1_3",
@@ -587,7 +643,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of results indicators monitored using the partner country's own sources",
             "charttext": "% of results indicators",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "1_4",
@@ -596,12 +653,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of new interventions that plan a final evaluation with partner country involvement",
             "charttext": "% of new interventions",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": "assets/icon17.svg"
       },
       {
         "indicator": "5a",
@@ -617,7 +676,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5a_2",
@@ -626,12 +686,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed beyond scheduled",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "5b",
@@ -647,7 +709,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 1 year ahead",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5b_2",
@@ -656,7 +719,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 2 years ahead",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5b_3",
@@ -665,7 +729,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 3 years ahead",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "5b_4",
@@ -674,12 +739,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding covered by forward spending plans (1-3 years ahead)",
             "charttext": "% of funding ",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "6",
@@ -695,7 +762,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "6_2",
@@ -704,12 +772,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
             "charttext": "% of aid",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "9b",
@@ -725,7 +795,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
             "charttext": "% of funding",
-            "autoselect": "yes"
+            "autoselect": "yes",
+            "image": ""
           },
           {
             "indicator": "9b_1",
@@ -734,7 +805,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_2",
@@ -743,7 +815,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_3",
@@ -752,7 +825,8 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           },
           {
             "indicator": "9b_4",
@@ -761,12 +835,14 @@ export let analysisData = [
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
             "charttext": "% of funding",
-            "autoselect": ""
+            "autoselect": "",
+            "image": ""
           }
         ],
         "type": "",
         "charttext": "",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       },
       {
         "indicator": "10",
@@ -777,7 +853,8 @@ export let analysisData = [
         "subdropdown": [],
         "type": "Percentage",
         "charttext": "% of aid ",
-        "autoselect": ""
+        "autoselect": "",
+        "image": ""
       }
     ]
   }
