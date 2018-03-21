@@ -12,6 +12,7 @@ export const SERVER = (function () {
     const GPEDC_SCREENS_1_2 = 'gpedc_screens_1_and_2';
     const GPEDC_SCREENS_1_2_WITHOUT_GEOMETRY = 'gpedc_screens_1_and_2_without_geometry';
     const GPEDC_SCREENS_4 = 'gpedc_screens_4';
+    const GPEDC_SCREENS_5 = 'gpedc_screen_5';
     return {
         COLUMS_OF_COUNTRIES: COLUMS_OF_COUNTRIES,
         API_KEY: API_KEY,
@@ -22,6 +23,7 @@ export const SERVER = (function () {
         GPEDC_SCREENS_1_2: GPEDC_SCREENS_1_2,
         GPEDC_SCREENS_1_2_WITHOUT_GEOMETRY: GPEDC_SCREENS_1_2_WITHOUT_GEOMETRY,
         GPEDC_SCREENS_4: GPEDC_SCREENS_4,
+        GPEDC_SCREENS_5: GPEDC_SCREENS_5,
         GET_QUERY: function (sql, geojson?: boolean) {
             let url = `${BASE_URL}/sql?q=${sql}${API_KEY}`;
             if (geojson) {
