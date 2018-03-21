@@ -410,7 +410,7 @@ export class PartnerHistoricalComponent implements OnInit {
         sIndicator = this.selectedSubindicator.id;
       }
       const sDevPartner = this.selectedDevPartner;
-      this.phService.getSecondChartData(sDevPartner, sIndicator, this.selectedChart).subscribe(res => {
+      this.phService.getSecondChartData(sDevPartner, sIndicator, this.firstRow[this.selectedChart]).subscribe(res => {
         console.log(res);
         const years = ['2005', '2007', '2010', '2014', '2016'];
         const data = [];

@@ -113,7 +113,7 @@ export class PartnerHistoricalService {
   getSecondChartData(devpartner, indicator, country) {
     country = country.replace('\'', '\'\'');
     const column = this.getColumn(devpartner);
-    const query = SERVER.GET_QUERY(`select year, ${column} as value from ${SERVER.GPEDC_SCREENS_4} where indicator = '${indicator}' and country = '${country}' and ${column} != '888' and ${column} != '999'`);
+    const query = SERVER.GET_QUERY(`select year, ${column} as value from ${SERVER.GPEDC_SCREENS_4} where indicator = '${indicator}' and country = '${country}'`);
     console.log(query);
     return this.webService.get(query).map(res => {
       res = res.json().rows;
