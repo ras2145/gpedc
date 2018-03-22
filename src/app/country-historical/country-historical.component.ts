@@ -266,6 +266,7 @@ export class CountryHistoricalComponent implements OnInit {
     for (let d of data) {
       d.label = this.firstRow[d.label];
     }
+
     length = data.length;
     if(length > 0) {
       this.isData = true;
@@ -404,6 +405,7 @@ export class CountryHistoricalComponent implements OnInit {
         }
         data.push({label: res[i].year, value: v});
       }
+
       const content = document.getElementById("secondChart");
       while (content.firstChild) {
         content.removeChild(content.firstChild);

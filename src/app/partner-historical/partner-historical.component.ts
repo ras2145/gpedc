@@ -283,7 +283,6 @@ export class PartnerHistoricalComponent implements OnInit {
     }
 
     length = data.length;
-    console.log('length ', length);
     if (length > 0) {
       this.isData = true;
       let div = d3.select("#chart").attr("class", "toolTip");
@@ -350,7 +349,7 @@ export class PartnerHistoricalComponent implements OnInit {
         .attr("class", "value")
         .attr("y", barHeight / 2)
         .attr("dx",d => {
-          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : 0);
+          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : -4);
         }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
@@ -441,37 +440,31 @@ export class PartnerHistoricalComponent implements OnInit {
       }
       const sDevPartner = this.selectedDevPartner;
       this.phService.getSecondChartData(sDevPartner, sIndicator, this.firstRow[this.selectedChart]).subscribe(res => {
-        console.log(res);
-        const years = ['2005', '2007', '2010', '2014', '2016'];
         const data = [];
-        years.forEach(year => {
-          data.push({ label: year, value: 0 });
-        });
-        res.forEach(r => {
-          for (let d of data) {
-            if (d.label === r.year) {
-              if (+r.value > 1) {
-                continue;
-              }
-              d.value = +(+r.value);
-            }
+
+        for (let i = 0; i < res.length; i++) {
+          const v = +res[i].value;
+          if (v === 888) {
+            continue;
           }
-        });
+          data.push({ label: res[i].year, value: v });
+        }
+
         const content = document.getElementById("secondChart");
         while (content.firstChild) {
           content.removeChild(content.firstChild);
         }
         const length = data.length;
         const margin = { top: 20, right: 20, bottom: 30, left: 60 };
-        const width = 580 - margin.left - margin.right;
-        const height = 500 - margin.top - margin.bottom;
+        const width = 550 - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
         const formatPercent = d3.format('.0%');
         let x = d3.scaleBand()
           .rangeRound([0, width])
           .padding(0.1);
         let y = d3.scaleLinear().range([height, 0]);
         let xAxis = d3.axisBottom(x);
-        let yAxis = d3.axisLeft(y).tickFormat(formatPercent).tickSize(-width + margin.left / 2);
+        let yAxis = d3.axisLeft(y).tickFormat(formatPercent).tickSize(-6);
         let svg = d3.select('#secondChart').append('svg')
           .attr('width', width + margin.left + margin.right)
           .attr('height', height + margin.top + margin.bottom)
@@ -479,7 +472,7 @@ export class PartnerHistoricalComponent implements OnInit {
           .attr('transform', `translate(${margin.left},${margin.top})`);
         console.log(svg);
         x.domain(data.map(d => d.label));
-        y.domain([0, 1.09]);
+        y.domain([0, 1.09999]);
         svg.append('g')
           .attr('class', 'x axis')
           .attr('transform', `translate(0,${height})`)
@@ -498,21 +491,31 @@ export class PartnerHistoricalComponent implements OnInit {
           .attr('x', -(height / 2))
           .attr('y', -40)
           .attr('text-anchor', 'middle')
-          .style('font-size', '10px')
+          .style('font-size', '12px')
           .style('color', '#282828')
           .style('font-weight', 'bold')
           .style('letter-spacing', '1px')
           .style('transform', 'rotate(-90deg)')
           .text(this.chartTitle);
 
-        svg.selectAll('.bar')
+        const bars = svg.selectAll('.bar')
           .data(data)
-          .enter().append('rect')
-          .attr('class', 'bar')
-          .attr('x', d => x(d.label) + 23.75)
+          .enter().append('g');
+
+        bars.append('rect')
+          .attr('class', 'bar2')
+          .attr('x', d => x(d.label) + x.bandwidth() / 4)
           .attr('width', x.bandwidth() / 2)
-          .attr('y', d => y(d.value))
-          .attr('height', d => height - y(d.value));
+          .attr('y', d => d.value === 999 ? 0 : y(d.value))
+          .attr('height', d => d.value === 999 ? 0 : height - y(d.value));
+
+        // align here
+        bars.append('text')
+          .attr('x', d => x(d.label) + 2 * (x.bandwidth() / 4) - (d.value < 0.1 ? 7 : d.value < 1.0 ? 12 : d.value === 1.0 ? 16 : 37))
+          .attr('y', d => d.value === 999 ? height - 5 : y(d.value) - 5)
+          .style('font-size', '12px')
+          .text((d => (d.value === 999 ? 'Not applicable' : (d.value * 100.0).toFixed(0) + '%')));
+
       });
     }
   }
