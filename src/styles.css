@@ -2784,3 +2784,8 @@ text.value {
 .o-lll{
   padding: 25px;  
 }
+.click-btn {
+    margin-bottom: 15px !important;
+    margin-left: 0px !important;
+    width: 100% !important;
+}

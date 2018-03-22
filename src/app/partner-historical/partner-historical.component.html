@@ -134,7 +134,7 @@
             </i>
           </p>
           <!-- DROPDOWN -->
-          <button type="button" class="btn modal-check" (click)="showModal(template)">Click Here</button>
+          <button type="button" class="btn modal-check click-btn" (click)="showModal(template)">Click Here</button>
           <template #template>
             <div class="modal-header mm-lo">
               <p class="ll-k">SELECT WHICH TYPE OF PARTNERS TO CONSIDER FOR COMPARISON (SELECT ONE OR MANY)</p>
@@ -232,7 +232,7 @@
                 <label>{{ chartTitle }}</label>
               </div>
             </div>
-            <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="first">* Select a Development Partner, indicator and year to start exploring.</div>
+            <div style="margin-left: 12px; font-size: 13px" *ngIf="first">* Select a Development Partner, indicator and year to start exploring.</div>
             <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData && !first">Data not available for the selected combination.</div>
             <div id="chart" [ngClass]="{'hide' : !isData}"></div>
             <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
