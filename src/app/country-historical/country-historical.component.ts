@@ -23,7 +23,7 @@ export class CountryHistoricalComponent implements OnInit {
   selectedChart = '';
   model = {   };
   indicator = {
-    dropdowncountry: 'Select an indicator',
+    dropdowncountry: '',
     subdropdown: [],
     titlecountry: '',
     indicator: '',
@@ -32,7 +32,7 @@ export class CountryHistoricalComponent implements OnInit {
     whatdoes: ''
   };
   subIndicator = {
-    subdropdown: 'Select Sub-Indicator',
+    subdropdown: '',
     titlecountry: '',
     indicator: '',
     charttext: '',
@@ -103,9 +103,9 @@ export class CountryHistoricalComponent implements OnInit {
   canRun() {
     let can = true;
     can = (can && (this.selectedCountry !== ''));
-    can = (can && (this.indicator.dropdowncountry !== 'Select an indicator'));
+    can = (can && (this.indicator.dropdowncountry !== ''));
     if (this.subDropdown) {
-      can = (can && (this.subIndicator.subdropdown !== 'Select Sub-Indicator'));
+      can = (can && (this.subIndicator.subdropdown !== ''));
     }
     return can;
   }
@@ -113,12 +113,12 @@ export class CountryHistoricalComponent implements OnInit {
     if (this.selectedCountry === '') {
       alert('Please select a country');
     }
-    if (this.indicator.dropdowncountry === 'Select an indicator') {
-      alert('Please select an Indicator');
+    if (this.indicator.dropdowncountry === '') {
+      alert('Please ');
       return;
     }
     if (this.subDropdown) {
-      if (this.subIndicator.subdropdown !== 'Select Sub-Indicator') {
+      if (this.subIndicator.subdropdown !== '') {
         this.countryAnalysisService.getCharData(this.selectedCountry, this.subIndicator.indicator, this.model['year']).subscribe(res => {
           this.chartData = res;
           this.draw(10);
@@ -140,7 +140,7 @@ export class CountryHistoricalComponent implements OnInit {
     this.sendTitle();
     this.subDropdown = (this.indicator.subdropdown.length > 0);
     this.charttext = this.indicator.charttext;
-    this.subIndicator.subdropdown = 'Select Sub-Indicator';
+    this.subIndicator.subdropdown = '';
     if (this.subDropdown) {
       this.indicator.subdropdown.forEach(sub => {
         if (sub.autoselect && this.indicators.filter(ind => sub.indicator === ind.indicator).length > 0) {
@@ -160,7 +160,7 @@ export class CountryHistoricalComponent implements OnInit {
   }
   sendTitle() {
     this.title = (this.indicator.titlecountry ? this.indicator.titlecountry : '');
-    if (this.subDropdown && this.subIndicator.subdropdown !== 'Select Sub-Indicator') {
+    if (this.subDropdown && this.subIndicator.subdropdown !== '') {
       this.title = (this.subIndicator.titlecountry ? this.subIndicator.titlecountry : '');
       this.charttext = this.subIndicator.charttext;
     }
@@ -172,7 +172,7 @@ export class CountryHistoricalComponent implements OnInit {
   }
   resetIndicators() {
     this.indicator = {
-      dropdowncountry: 'Select an indicator',
+      dropdowncountry: '',
       subdropdown: [],
       titlecountry: '',
       indicator: '',
@@ -180,8 +180,9 @@ export class CountryHistoricalComponent implements OnInit {
       image: '',
       whatdoes: ''
     };
+    this.subDropdown = false;
     this.subIndicator = {
-      subdropdown: 'Select Sub-Indicator',
+      subdropdown: '',
       titlecountry: '',
       indicator: '',
       charttext: '',
@@ -191,7 +192,7 @@ export class CountryHistoricalComponent implements OnInit {
   }
   reset() {
     this.indicator = {
-      dropdowncountry: 'Select an indicator',
+      dropdowncountry: '',
       subdropdown: [],
       titlecountry: '',
       indicator: '',
@@ -200,7 +201,7 @@ export class CountryHistoricalComponent implements OnInit {
       whatdoes: ''
     };
     this.subIndicator = {
-      subdropdown: 'Select Sub-Indicator',
+      subdropdown: '',
       titlecountry: '',
       indicator: '',
       charttext: '',
@@ -215,7 +216,7 @@ export class CountryHistoricalComponent implements OnInit {
   }
   resetSub() {
     this.subIndicator = {
-      subdropdown: 'Select Sub-Indicator',
+      subdropdown: '',
       titlecountry: '',
       indicator: '',
       charttext: '',
@@ -483,8 +484,8 @@ export class CountryHistoricalComponent implements OnInit {
   }
   f() {
     console.log(this.indicator && this.indicator.indicator==='10');
-    console.log(this.subIndicator && this.subIndicator.subdropdown!=='Select Sub-Indicator');
-    console.log(this.subIndicator.subdropdown, this.subIndicator.subdropdown!=='Select Sub-Indicator');
-    return ((this.indicator && this.indicator.indicator==='10') || (this.subIndicator && this.subIndicator.subdropdown!=='Select Sub-Indicator'));
+    console.log(this.subIndicator && this.subIndicator.subdropdown!=='');
+    console.log(this.subIndicator.subdropdown, this.subIndicator.subdropdown!=='');
+    return ((this.indicator && this.indicator.indicator==='10') || (this.subIndicator && this.subIndicator.subdropdown!==''));
   }
 }
