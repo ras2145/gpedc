@@ -28,14 +28,16 @@ export class CountryHistoricalComponent implements OnInit {
     titlecountry: '',
     indicator: '',
     charttext: '',
-    image: ''
+    image: '',
+    whatdoes: ''
   };
   subIndicator = {
     subdropdown: 'Select Sub-Indicator',
     titlecountry: '',
     indicator: '',
     charttext: '',
-    image: ''
+    image: '',
+    whatdoes: ''
   };
   isData = false;
   lessData = true;
@@ -175,14 +177,16 @@ export class CountryHistoricalComponent implements OnInit {
       titlecountry: '',
       indicator: '',
       charttext: '',
-      image: ''
+      image: '',
+      whatdoes: ''
     };
     this.subIndicator = {
       subdropdown: 'Select Sub-Indicator',
       titlecountry: '',
       indicator: '',
       charttext: '',
-      image: ''
+      image: '',
+      whatdoes: ''
     };
   }
   reset() {
@@ -192,14 +196,16 @@ export class CountryHistoricalComponent implements OnInit {
       titlecountry: '',
       indicator: '',
       charttext: '',
-      image: ''
+      image: '',
+      whatdoes: ''
     };
     this.subIndicator = {
       subdropdown: 'Select Sub-Indicator',
       titlecountry: '',
       indicator: '',
       charttext: '',
-      image: ''
+      image: '',
+      whatdoes: ''
     };
     this.subDropdown = false;
     this.title = '';
@@ -213,7 +219,8 @@ export class CountryHistoricalComponent implements OnInit {
       titlecountry: '',
       indicator: '',
       charttext: '',
-      image: ''
+      image: '',
+      whatdoes: ''
     };
     this.charttext = '';
     this.title = (this.indicator.titlecountry ? this.indicator.titlecountry : '');
@@ -227,7 +234,10 @@ export class CountryHistoricalComponent implements OnInit {
     } else if (this.indicator.indicator === '1') {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
     }
-  }  
+  }
+  showModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
   draw(allData?, sort?) {
     this.first = false;
     const scope = this;
@@ -470,5 +480,11 @@ export class CountryHistoricalComponent implements OnInit {
     } else {
       this.draw(null , type);
     }
+  }
+  f() {
+    console.log(this.indicator && this.indicator.indicator==='10');
+    console.log(this.subIndicator && this.subIndicator.subdropdown!=='Select Sub-Indicator');
+    console.log(this.subIndicator.subdropdown, this.subIndicator.subdropdown!=='Select Sub-Indicator');
+    return ((this.indicator && this.indicator.indicator==='10') || (this.subIndicator && this.subIndicator.subdropdown!=='Select Sub-Indicator'));
   }
 }
