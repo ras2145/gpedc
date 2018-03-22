@@ -349,14 +349,14 @@ export class PartnerHistoricalComponent implements OnInit {
         .attr("class", "value")
         .attr("y", barHeight / 2)
         .attr("dx",d => {
-          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : -4);
+          return -valueMargin + labelWidth + (d.value < 10 ? -22 : d.value < 100 ? -16 : -12);
         }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
         .style('fill', '#282828')
         .style('font-size', '100%')
         .text(d => {
-          return (d.value + "%");
+          return ((d.value * 1.0).toFixed(0) + "%");
         })
         .attr("x", function (d) {
           var width = this.getBBox().width;
