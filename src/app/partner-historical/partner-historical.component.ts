@@ -45,7 +45,7 @@ export class PartnerHistoricalComponent implements OnInit {
   lessData: boolean;
   buttonMore: boolean;
   firstRow: any;
-
+  first = true;
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
   
@@ -268,6 +268,7 @@ export class PartnerHistoricalComponent implements OnInit {
   }
 
   drawChart(allData?) {
+    this.first = false;
     const scope = this;
     let data = JSON.parse(JSON.stringify(this.chartData));
     data.forEach(d => {
