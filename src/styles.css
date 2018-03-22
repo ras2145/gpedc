@@ -2731,7 +2731,7 @@ svg {
     font: 12px sans-serif;
     padding: 5px;
     text-align: center;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
 }
 
 text.label {
@@ -2780,4 +2780,7 @@ text.value {
 }
 .information-i .popover-body {
     width: 200px;
+}
+.o-lll{
+  padding: 25px;  
 }
