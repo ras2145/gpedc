@@ -2709,7 +2709,7 @@ h2 .pos-default-modal {
 #secondChart {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     width: 700px;
-    height: 500px;
+    height: 400px;
     position: relative;
 }
 svg {
@@ -2750,7 +2750,7 @@ text.value {
 }
 
 .axisHorizontal .tick line {
-    stroke-width: 1;
+    stroke-width: 0 !important;
     stroke: rgba(0, 0, 0, 0.2);
 }
 

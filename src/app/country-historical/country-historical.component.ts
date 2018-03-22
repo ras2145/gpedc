@@ -329,14 +329,14 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("class", "value")
         .attr("y", barHeight / 2)
         .attr("dx", d => {
-          return -valueMargin + labelWidth + (d.value < 10 ? -14 : d.value < 100 ? -8 : -4);
+          return -valueMargin + labelWidth + (d.value < 10 ? -22 : d.value < 100 ? -16 : -12);
         }) //margin right
         .attr("dy", ".35em") //vertical align middle
         .attr("text-anchor", "end")
         .style('fill', '#282828')
         .style('font-size', '100%')
         .text(d => {
-            return (d.value+"%");
+            return ((d.value * 1.0).toFixed(0) + "%");
         })
         .attr("x", function(d) {
             var width = this.getBBox().width;
@@ -347,6 +347,7 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("class", "axisHorizontal")
         .attr("transform", "translate(" + (margin + labelWidth) + "," + (height - axisMargin - margin)+")")
         .call(xAxis);
+
       bar.on('click', function() {
         const self = this; 
         svg.on('click', function() {
@@ -403,16 +404,14 @@ export class CountryHistoricalComponent implements OnInit {
         }
         data.push({label: res[i].year, value: v});
       }
-      console.log(data);
-
       const content = document.getElementById("secondChart");
       while (content.firstChild) {
         content.removeChild(content.firstChild);
       }
       const length = data.length;
       const margin = {top: 20, right: 20, bottom: 30, left: 60};
-      const width = 580 - margin.left - margin.right;
-      const height = 500 - margin.top - margin.bottom;
+      const width = 550 - margin.left - margin.right;
+      const height = 400 - margin.top - margin.bottom;
       const formatPercent = d3.format('.0%');
       let x = d3.scaleBand()
       .rangeRound([0, width])
@@ -425,7 +424,6 @@ export class CountryHistoricalComponent implements OnInit {
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
-      console.log(svg);
       x.domain(data.map(d => d.label));
       y.domain([0, 1.09999]);
       svg.append('g')
@@ -447,7 +445,7 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('x', -(height / 2))
         .attr('y', -40)
         .attr('text-anchor', 'middle')
-        .style('font-size', '10px')
+        .style('font-size', '12px')
         .style('color', '#282828')
         .style('font-weight', 'bold')
         .style('letter-spacing', '1px')
@@ -465,13 +463,12 @@ export class CountryHistoricalComponent implements OnInit {
         .attr('y', d => d.value === 999 ? 0 : y(d.value))
         .attr('height', d => d.value === 999 ? 0 : height - y(d.value));
 
-
       // align here
       bars.append('text')
-        .attr('x', d => x(d.label) + x.bandwidth() / 4 + x.bandwidth() / 8)
-        .attr('y', d => d.value === 999 ? 445 : y(d.value) - 5)
+        .attr('x', d => x(d.label) + 2 * (x.bandwidth() / 4) - (d.value < 0.1 ? 7 : d.value < 1.0 ? 12 : d.value === 1.0 ? 16 : 37))
+        .attr('y', d => d.value === 999 ? height - 5 : y(d.value) - 5)
         .style('font-size', '12px')
-        .text((d => (d.value === 999 ? 'Not applicable' : (d.value * 100.0).toFixed(1) + '%')));
+        .text((d => (d.value === 999 ? 'Not applicable' : (d.value * 100.0).toFixed(0) + '%')));
 
     });
   }
