@@ -267,9 +267,22 @@ export class PartnerHistoricalComponent implements OnInit {
     }
   }
 
-  drawChart(allData?) {
+  drawChart(allData?, sort?) {
     this.first = false;
     const scope = this;
+    if (sort === 'devpart') {
+      this.chartData.sort((a, b) => {
+        return a.label.localeCompare(b.label);
+      });
+    }
+    if (sort === 'value') {
+      this.chartData.sort((a, b) => {
+        if (a.value === b.value) {
+          return a.label.localeCompare(b.label);
+        }
+        return b.value - a.value;
+      });
+    }
     let data = JSON.parse(JSON.stringify(this.chartData));
     data.forEach(d => {
       d.label = this.firstRow[d.label];
@@ -517,6 +530,13 @@ export class PartnerHistoricalComponent implements OnInit {
           .text((d => (d.value === 999 ? 'Not applicable' : (d.value * 100.0).toFixed(0) + '%')));
 
       });
+    }
+  }
+  sortDraw(type) {
+    if (this.buttonMore) {
+      this.drawChart(10, type);
+    } else {
+      this.drawChart(null , type);
     }
   }
 }
