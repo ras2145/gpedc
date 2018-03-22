@@ -48,6 +48,7 @@ export class PartnerHistoricalService {
       indicator.chartText = it1.charttext;
       indicator.autoselect = it1.autoselect === '' ? false : true;
       indicator.image = it1.image;
+      indicator.whatdoes = it1.whatdoes;
       const subindicators = new Array<Subindicator>();
       for (const it2 of it1.subdropdown) {
         const subindicator = new Subindicator();
@@ -58,6 +59,7 @@ export class PartnerHistoricalService {
         subindicator.chartText = it2.charttext;
         subindicator.autoselect = it2.autoselect === '' ? false : true;
         subindicator.image = it2.image;
+        subindicator.whatdoes = it2.whatdoes;
         subindicators.push(subindicator);
       }
       indicator.subindicators = subindicators;

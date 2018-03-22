@@ -9,7 +9,7 @@ export class Indicator {
     chartText: string;
     autoselect: boolean;
     image: string;
-
+    whatdoes: string;
     constructor() {
         this.id = this.title = this.dropdown = this.type = this.chartText = '';
         this.autoselect = false;

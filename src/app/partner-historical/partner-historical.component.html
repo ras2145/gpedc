@@ -87,7 +87,39 @@
         <br>
         <br>
         <button *ngIf="(selectedIndicator && selectedSubindicator) || (selectedIndicator && selectedIndicator.id === '10')" type="button"
-          name="button" class="btn btn-learn">What does this indicator measure?</button>
+          name="button" class="btn btn-learn" (click)="showModal(whatdoes)">What does this indicator measure?</button>
+        <ng-template #whatdoes>
+          <div class="modal-body o-lll">
+              <div class="container" >
+                  <div class="row" >
+                      <div class="col-md-10">
+                          <p class="modal-title pull-left">What does this indicator measure?<br><span>indicator {{selectedIndicator.id}}</span></p>
+                      </div>
+                      <div class="col-2">
+                          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">{{selectedIndicator.whatdoes}}</div> 
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12"> {{selectedSubindicator.whatdoes}}</div> 
+                  </div>
+                  <br *ngIf="selectedIndicator.id!='10'">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                      For more information on the methodology for this indicator, 
+                      please refer to the
+                        <a href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2016 Monitoring Guide.</a></div>
+                      
+                  </div>
+                  
+              </div>
+          </div>
+        </ng-template>
         <div *ngIf="selectedIndicator && selectedIndicator.image">
           <img [src]="selectedIndicator.image" width="47px" class="ll-po" [tooltip]="getTextIcon(selectedIndicator)" placement="right">
         </div>
