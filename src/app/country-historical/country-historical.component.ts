@@ -418,7 +418,7 @@ export class CountryHistoricalComponent implements OnInit {
       .padding(0.1);
       let y = d3.scaleLinear().range([height, 0]);
       let xAxis = d3.axisBottom(x);
-      let yAxis = d3.axisLeft(y).tickFormat(formatPercent).tickSize(-width + margin.left / 2);
+      let yAxis = d3.axisLeft(y).tickFormat(formatPercent).tickSize(-6);
       let svg = d3.select('#secondChart').append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
