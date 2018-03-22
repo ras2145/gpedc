@@ -49,6 +49,8 @@ export class PartnerHistoricalComponent implements OnInit {
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
   
+  loadedPartners = false;
+  availablePartners = [];
   selectedChart: string;
 
   constructor(private phService: PartnerHistoricalService, private modalService: BsModalService) {
@@ -108,6 +110,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.getNavbarTitle();
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
+    this.loadedPartners = false;
     this.selectedDevPartner = null;
     this.clearChart();
     console.log(this.yearModel);
@@ -121,6 +124,17 @@ export class PartnerHistoricalComponent implements OnInit {
     }
     this.getNavbarTitle();
     this.clearChart();
+    this.loadedPartners = false;
+    if (this.selectedIndicator.id === '10') {
+      this.phService.getValidPartners(this.selectedIndicator.id, this.yearModel.year).subscribe(res => {
+        this.availablePartners = [];
+        this.loadedPartners = true;
+        res.forEach(r => {
+          this.availablePartners.push(r.development_partner);
+        });
+        this.fillDropdown();
+      });
+    }
     console.log(this.selectedIndicator);
   }
 
@@ -129,6 +143,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.selectedSubindicator = null;
     this.getNavbarTitle();
     this.clearChart();
+    this.loadedPartners = false;
     console.log(this.selectedIndicator);
   }
 
@@ -137,12 +152,24 @@ export class PartnerHistoricalComponent implements OnInit {
     this.getNavbarTitle();
     this.clearChart();
     console.log(this.selectedSubindicator);
+    this.loadedPartners = false;
+    this.phService.getValidPartners(this.selectedSubindicator.id, this.yearModel.year).subscribe(res => {
+      this.availablePartners = [];
+      this.loadedPartners = true;
+      res.forEach(r => {
+        this.availablePartners.push(r.development_partner);
+      });
+      this.fillDropdown();
+    });
   }
-
+  showPartners() {
+    return (this.loadedPartners && ((this.selectedIndicator && this.selectedIndicator.id === '10') || (this.selectedSubindicator)));
+  }
   unselectSubindicator() {
     this.selectedSubindicator = null;
     this.getNavbarTitle();
     this.clearChart();
+    this.loadedPartners = false;
   }
 
   getYearId(year) {
@@ -203,7 +230,9 @@ export class PartnerHistoricalComponent implements OnInit {
             label: p,
             disabled: false
           };
-          this.dropdownContent.push(dropdownItem);
+          if (this.availablePartners.includes(p)) {
+            this.dropdownContent.push(dropdownItem);
+          }
         }
       }
       i++;
@@ -390,7 +419,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.buttonMore = true;
     this.runAnalysis();
   }
-  openPartnersModal(template: TemplateRef<any>) {
+  showModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
   openModal() {

@@ -30,6 +30,10 @@ export class PartnerHistoricalService {
   getYears() {
     return this.years;
   }
+  getValidPartners(indicator, year) {
+    const query = SERVER.GET_QUERY(`SELECT development_partner FROM ${SERVER.GPEDC_SCREENS_5} WHERE year = '${year}' AND indicator = '${indicator}' AND available = '4'`);
+    return this.webService.get(query).map(res => res.json().rows);
+  }
 
   getIndicatorsByYear(yearId): Array<Indicator> {
     const dataYear = analysisData[yearId];

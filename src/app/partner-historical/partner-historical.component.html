@@ -93,7 +93,7 @@
         </div>
           <!-- selectedIndicator -->
         <!-- DEVELOPMENT PARTNER -->
-        <div class="form-group style-select">
+        <div class="form-group style-select" *ngIf="showPartners()">
           <p for="inputState" class="result-subtitle space-indicator">
             <img src="assets/004.png" alt="" width="12px"> DEVELOPMENT PARTNER
             <i class="mdi mdi-information" popover="Development Partners include bilateral partners and development organisations, including multilateral development banks, UN agencies and philanthropy, among others."
@@ -102,7 +102,7 @@
             </i>
           </p>
           <!-- DROPDOWN -->
-          <button type="button" class="btn modal-check" (click)="openPartnersModal(template)">Click Here</button>
+          <button type="button" class="btn modal-check" (click)="showModal(template)">Click Here</button>
           <template #template>
             <div class="modal-header mm-lo">
               <p class="ll-k">SELECT WHICH TYPE OF PARTNERS TO CONSIDER FOR COMPARISON (SELECT ONE OR MANY)</p>
