@@ -107,7 +107,7 @@
           </ul>
         </div>
       </div>
-      <button *ngIf="((indicator&&indicator.indicator==='10')||(subIndicator&&subIndicator.subdropdown!=='Select Sub-Indicator'))" type="button" name="button" class="btn btn-learn" (click)="showModal(whatdoes)">What does this indicator measure?</button>
+      <button *ngIf="((indicator&&indicator.indicator==='10')||(subIndicator&&subIndicator.subdropdown))" type="button" name="button" class="btn btn-learn" (click)="showModal(whatdoes)">What does this indicator measure?</button>
       <ng-template #whatdoes>
         <div class="modal-body o-lll">
             <div class="container" >
