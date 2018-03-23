@@ -311,7 +311,7 @@ export class CountryHistoricalComponent implements OnInit {
           console.log(d.label);
           return d.label + '\t';
         }).each(function() {
-          labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width)));
+          labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width))) + 2;
         });
       scale = d3.scaleLinear()
         .domain([0, max])
