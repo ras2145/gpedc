@@ -1705,6 +1705,7 @@ select-dropdown li.selected.highlighted {
 .modal-tutorial .tab-content>.active {
     display: block;
     height: 426px;
+    font-size: 14px;
 }
 
 .btn-modal {
