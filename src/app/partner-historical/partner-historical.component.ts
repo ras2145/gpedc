@@ -352,9 +352,11 @@ export class PartnerHistoricalComponent implements OnInit {
 
       xAxis = d3.axisBottom(scale).
         tickSize(-height + 2 * margin + axisMargin);
-      console.log('LABEL WIDTH', labelWidth);
+
+
       bar.append("rect")
         .attr("transform", "translate(" + labelWidth + ", 0)")
+        .transition()
         .attr("height", barHeight)
         .attr("width", function (d) {
           return scale(d.value);
@@ -372,6 +374,8 @@ export class PartnerHistoricalComponent implements OnInit {
         .text(d => {
           return ((d.value * 1.0).toFixed(0) + "%");
         })
+        .attr("x", 45)
+        .transition()
         .attr("x", function (d) {
           var width = this.getBBox().width;
           return Math.max(width + valueMargin, scale(d.value) + 50);
@@ -523,12 +527,11 @@ export class PartnerHistoricalComponent implements OnInit {
 
         bars.append('rect')
           .attr('class', 'bar2')
-          .attr('x', d => x(d.label) + x.bandwidth() / 4)
           .attr('width', x.bandwidth() / 2)
           .attr('y', d => d.value === 999 ? 0 : y(d.value))
-          .attr('height', d => d.value === 999 ? 0 : height - y(d.value));
+          .attr('height', d => d.value === 999 ? 0 : height - y(d.value))
+          .attr('x', d => x(d.label) + x.bandwidth() / 4);
 
-        // align here
         bars.append('text')
           .attr('x', d => x(d.label) + 2 * (x.bandwidth() / 4) - (d.value < 0.1 ? 7 : d.value < 1.0 ? 12 : d.value === 1.0 ? 16 : 37))
           .attr('y', d => d.value === 999 ? height - 5 : y(d.value) - 5)

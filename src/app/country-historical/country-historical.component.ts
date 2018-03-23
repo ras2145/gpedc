@@ -321,6 +321,7 @@ export class CountryHistoricalComponent implements OnInit {
       tickSize(-height + 2 * margin + axisMargin);
       bar.append("rect")
         .attr("transform", "translate("+labelWidth+", 0)")
+        .transition()
         .attr("height", barHeight)
         .attr("width", function(d){
             return scale(d.value);
@@ -339,6 +340,8 @@ export class CountryHistoricalComponent implements OnInit {
         .text(d => {
             return ((d.value * 1.0).toFixed(0) + "%");
         })
+        .attr("x", 45)
+        .transition()
         .attr("x", function(d) {
             var width = this.getBBox().width;
             return Math.max(width + valueMargin, scale(d.value) + 50);
