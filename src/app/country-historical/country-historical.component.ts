@@ -365,6 +365,11 @@ export class CountryHistoricalComponent implements OnInit {
           scope.drawSecondChart(pos);
         });
       });
+      bar.append("title")
+        .text(function (d) {
+          return 'Click to see historical trends in performance';
+        });
+
     } else {
       this.isData = false;
       const content = document.getElementById("chart");

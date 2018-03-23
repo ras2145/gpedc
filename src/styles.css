@@ -2769,12 +2769,15 @@ text.value {
 .bar {
     fill: #f17846;
     fill-opacity: .9;
+    cursor: pointer;
 }
 .bar2 {
     fill: #1c243b;
     /* fill-opacity: .9; */
 }
-
+.margin-st {
+    margin-left: 7px;
+}
 .oo-ll .popover{
   width: 400px;
 }

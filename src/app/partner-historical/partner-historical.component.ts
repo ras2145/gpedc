@@ -334,6 +334,7 @@ export class PartnerHistoricalComponent implements OnInit {
           }
           return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
         });
+
       inRangeCoord.push(Number.MAX_VALUE);
       bar.append("text")
         .attr("class", "label")
@@ -396,6 +397,11 @@ export class PartnerHistoricalComponent implements OnInit {
           scope.drawSecondChart(pos);
         });
       });
+      bar.append("title")
+        .text(function (d) {
+          return 'Click to see historical trends in performance';
+        });
+
     } else {
       this.isData = false;
       const content = document.getElementById("chart");
