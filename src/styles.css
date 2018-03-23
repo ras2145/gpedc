@@ -812,7 +812,7 @@ div#map {
 }
 
 .nav-item {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 
@@ -1704,7 +1704,7 @@ select-dropdown li.selected.highlighted {
 
 .modal-tutorial .tab-content>.active {
     display: block;
-    height: 405px;
+    height: 426px;
 }
 
 .btn-modal {
@@ -2662,11 +2662,12 @@ h2 .pos-default-modal {
     font-size: 12px;
   }
 .tooltip-01 .tooltip-inner, .nav-tool .tooltip-inner{
-  text-align: left !important;  
-} 
+  text-align: left !important;
+}
 .tooltip-01 img{
    height: 86px;
-   width: 86px; 
+   width: 86px;
+   margin-top: 1rem;
 }
 .iconIndicator .tooltip-inner, .nav-tool .tooltip-inner{
       text-align: left !important;
@@ -2782,7 +2783,7 @@ text.value {
 }
 .information-country {
   color: #9b9b9b;
-  padding-left: 7px;    
+  padding-left: 7px;
   cursor: pointer;
   font-size: 14px;
   float: right;
@@ -2793,10 +2794,13 @@ text.value {
     width: 200px;
 }
 .o-lll{
-  padding: 25px;  
+  padding: 25px;
 }
 .click-btn {
     margin-bottom: 15px !important;
     margin-left: 0px !important;
     width: 100% !important;
+}
+.btn-md01{
+  margin-top: 18px;
 }

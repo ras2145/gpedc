@@ -9,7 +9,7 @@
         </p>
         <p class="result-subtitle space-view-data">
           <span class="mdi mdi-calendar"></span> Select year
-          <i class="mdi mdi-information" 
+          <i class="mdi mdi-information"
             popoverTitle="Global Partnership monitoring data is available for the 2014 and 2016 monitoring rounds." popover="2005, 2007 and 2010 data are drawn from the Paris Declaration on Aid Effectiveness monitoring results, and is available for indicators with comparable methodology to Global Partnership monitoring."
             placement="right" triggers="mouseenter:mouseleave">
           </i>
@@ -36,7 +36,7 @@
         <p class="result-subtitle space-view-data">
           <span class="mdi mdi-crosshairs-gps"></span>
           Indicator
-          <i class="mdi mdi-information" 
+          <i class="mdi mdi-information"
             popover="Choose one of the global Partnership’s ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
             placement="right" triggers="mouseenter:mouseleave">
           </i>
@@ -84,10 +84,8 @@
             </li>
           </ul>
         </div>
-        <br>
-        <br>
         <button *ngIf="(selectedIndicator && selectedSubindicator) || (selectedIndicator && selectedIndicator.id === '10')" type="button"
-          name="button" class="btn btn-learn" (click)="showModal(whatdoes)">What does this indicator measure?</button>
+          name="button" class="btn btn-learn btn-md01" (click)="showModal(whatdoes)">What does this indicator measure?</button>
         <ng-template #whatdoes>
           <div class="modal-body o-lll">
               <div class="container" >
@@ -102,21 +100,21 @@
                       </div>
                   </div>
                   <div class="row">
-                    <div class="col-lg-12 col-md-12">{{selectedIndicator.whatdoes}}</div> 
+                    <div class="col-lg-12 col-md-12">{{selectedIndicator.whatdoes}}</div>
                   </div>
                   <br>
                   <div class="row">
-                    <div class="col-lg-12 col-md-12"> {{selectedSubindicator.whatdoes}}</div> 
+                    <div class="col-lg-12 col-md-12"> {{selectedSubindicator.whatdoes}}</div>
                   </div>
                   <br *ngIf="selectedIndicator.id!='10'">
                   <div class="row">
                     <div class="col-lg-12 col-md-12">
-                      For more information on the methodology for this indicator, 
+                      For more information on the methodology for this indicator,
                       please refer to the
                         <a href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2016 Monitoring Guide.</a></div>
-                      
+
                   </div>
-                  
+
               </div>
           </div>
         </ng-template>
@@ -169,7 +167,7 @@
           </ul>
         </div> -->
           <!-- CHECKBOX -->
-          
+
         </div>
         <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': canRun()}" (click)="runAnalysis()" [disabled]="!canRun()">Run Analysis</button>
         <br>
@@ -242,7 +240,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- MODAL CHART -->
   <template #secondGraph>
     <div class="card-bd">
