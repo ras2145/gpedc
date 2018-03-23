@@ -53,6 +53,9 @@ export class PartnerHistoricalComponent implements OnInit {
   availablePartners = [];
   selectedChart: string;
 
+  sortLabel: boolean = false;
+  sortValue: boolean = false;
+
   constructor(private phService: PartnerHistoricalService, private modalService: BsModalService) {
     this.selectedYearId = Years._2016; // defalut year
     this.years = this.phService.getYears();
@@ -247,6 +250,8 @@ export class PartnerHistoricalComponent implements OnInit {
   }
   runAnalysis() {
     if (this.selectedDevPartner && (this.selectedSubindicator || (this.selectedIndicator && this.selectedIndicator.id === '10'))) {
+      this.sortLabel = false;
+      this.sortValue = false;
       const sYear = String(this.selectedYear);
       let sIndicator;
       if (!this.selectedSubindicator) { // special case for indicator 10
@@ -271,17 +276,32 @@ export class PartnerHistoricalComponent implements OnInit {
     this.first = false;
     const scope = this;
     if (sort === 'devpart') {
-      this.chartData.sort((a, b) => {
-        return a.label.localeCompare(b.label);
-      });
+      if (this.sortLabel) {
+        this.chartData.sort((a, b) => {
+          return -(a.label.localeCompare(b.label));
+        });
+      } else {
+        this.chartData.sort((a, b) => {
+          return a.label.localeCompare(b.label);
+        });
+      }
     }
     if (sort === 'value') {
-      this.chartData.sort((a, b) => {
-        if (a.value === b.value) {
-          return a.label.localeCompare(b.label);
-        }
-        return b.value - a.value;
-      });
+      if (this.sortValue) {
+        this.chartData.sort((a, b) => {
+          if (a.value === b.value) {
+            return a.label.localeCompare(b.label);
+          }
+          return b.value - a.value;
+        });
+      } else {
+        this.chartData.sort((a, b) => {
+          if (a.value === b.value) {
+            return -(a.label.localeCompare(b.label));
+          }
+          return a.value - b.value;
+        });
+      }
     }
     let data = JSON.parse(JSON.stringify(this.chartData));
     data.forEach(d => {
@@ -542,6 +562,11 @@ export class PartnerHistoricalComponent implements OnInit {
     }
   }
   sortDraw(type) {
+    if (type == 'devpart') {
+      this.sortLabel = !this.sortLabel;
+    } else {
+      this.sortValue = !this.sortValue;
+    }
     if (this.buttonMore) {
       this.drawChart(10, type);
     } else {

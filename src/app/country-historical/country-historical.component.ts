@@ -46,6 +46,10 @@ export class CountryHistoricalComponent implements OnInit {
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
   subDropdown = false;
   title = '';
+
+  sortLabel: boolean = false;
+  sortValue: boolean = false;
+
   constructor(private countryAnalysisService: CountryAnalysisService, private modalService: BsModalService) { 
   }
   ngOnInit() {
@@ -119,6 +123,8 @@ export class CountryHistoricalComponent implements OnInit {
     }
     if (this.subDropdown) {
       if (this.subIndicator.subdropdown !== '') {
+        this.sortLabel = false;
+        this.sortValue = false;
         this.countryAnalysisService.getCharData(this.selectedCountry, this.subIndicator.indicator, this.model['year']).subscribe(res => {
           this.chartData = res;
           this.draw(10);
@@ -128,6 +134,8 @@ export class CountryHistoricalComponent implements OnInit {
         return;
       }
     } else {
+      this.sortLabel = false;
+      this.sortValue = false;
       this.countryAnalysisService.getCharData(this.selectedCountry, this.indicator.indicator, this.model['year']).subscribe(res => {
         this.chartData = res;
         this.draw(10);
@@ -243,17 +251,32 @@ export class CountryHistoricalComponent implements OnInit {
     this.first = false;
     const scope = this;
     if (sort === 'devpart') {
-      this.chartData.sort((a, b) => {
-        return a.label.localeCompare(b.label);
-      });
+      if (this.sortLabel) {
+        this.chartData.sort((a, b) => {
+          return -(a.label.localeCompare(b.label));
+        });
+      } else {
+        this.chartData.sort((a, b) => {
+          return a.label.localeCompare(b.label);
+        });
+      }
     }
     if (sort === 'value') {
-      this.chartData.sort((a, b) => {
-        if (a.value === b.value) {
-          return a.label.localeCompare(b.label);
-        }
-        return b.value - a.value;
-      });
+      if (this.sortValue) {
+        this.chartData.sort((a, b) => {
+          if (a.value === b.value) {
+            return -(a.label.localeCompare(b.label));
+          }
+          return a.value - b.value;
+        });
+      } else {
+        this.chartData.sort((a, b) => {
+          if (a.value === b.value) {
+            return a.label.localeCompare(b.label);
+          }
+          return b.value - a.value;
+        });
+      }
     }
     let data = JSON.parse(JSON.stringify(this.chartData));
     this.lessData = data.length <= 10 ? true : false;
@@ -483,6 +506,11 @@ export class CountryHistoricalComponent implements OnInit {
     });
   }
   sortDraw(type) {
+    if (type == 'devpart') {
+      this.sortLabel = !this.sortLabel;
+    } else {
+      this.sortValue = !this.sortValue;
+    }
     if (this.buttonMore) {
       this.draw(10, type);
     } else {

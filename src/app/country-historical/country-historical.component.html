@@ -187,7 +187,7 @@
               <p> Click on a development partner to see historical trends in performance</p>
               <div class="row no-gutters">
                 <div class="col-md-6 oo-ll">
-                  <button class="btn btn-invisible btn-padding-right" (click)="sortDraw('devpart')"><img src="assets/006.png" alt="" width="11px"></button>
+                  <button class="btn btn-invisible btn-padding-right" (click)="sortDraw('devpart')"><img src="assets/006.png" alt="" width="11px" [ngClass]="{'reverse-image-arrow': sortLabel}"></button>
                   <label class="title-pp margin-st">DEVELOPMENT PARTNER</label>
                   <i class="mdi mdi-information"
                       popover="Partner Countries include the low and middle-income countries who participated in Global Partnership monitoring."
@@ -196,7 +196,7 @@
                   </i>
                 </div>
                 <div class="col-md-4">
-                  <button class="btn btn-invisible btn-padding-right" (click)="sortDraw('value')"><img src="assets/006.png" alt="" width="11px"></button>
+                  <button class="btn btn-invisible btn-padding-right" (click)="sortDraw('value')"><img src="assets/006.png" alt="" width="11px" [ngClass]="{'reverse-image-arrow': sortValue}"></button>
                   <label class="title-pp-01 margin-st">PERFORMANCE</label>
                 </div>
               </div>
