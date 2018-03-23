@@ -2807,3 +2807,6 @@ text.value {
 .btn-md01{
   margin-top: 18px;
 }
+.btn-padding-right {
+    padding-right: 8px;
+}
