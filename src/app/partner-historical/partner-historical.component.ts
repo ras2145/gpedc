@@ -243,7 +243,7 @@ export class PartnerHistoricalComponent implements OnInit {
   getTextIcon() {
     if(this.selectedIndicator.id ==='8' ) {
       return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
-    } else if (this.selectedIndicator.id === '1') {
+    } else if (this.selectedIndicator.id === '1a') {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
     }
   }
