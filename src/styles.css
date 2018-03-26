@@ -2822,3 +2822,9 @@ text.value {
 .btn-padding-right {
     padding-right: 8px;
 }
+reverse-image-arrow {
+	-moz-transform: scaleY(-1);
+	-o-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+}
