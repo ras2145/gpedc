@@ -21,6 +21,7 @@ export class CountryAnalysisService {
     });
   }
   getCharData(country, indicator, year) {
+    country = country.replace('\'', '\'\'');
     const query = SERVER.GET_QUERY(`SELECT * FROM ${SERVER.GPEDC_SCREENS_4} WHERE country = '${country}' AND indicator = '${indicator}' AND year = '${year}'`);
     return this.webService.get(query).map(res => {
       res = res.json().rows[0];
@@ -42,17 +43,18 @@ export class CountryAnalysisService {
         }
         return b.value - a.value;
       });
-      console.log('ANS', ans);
       return ans;
     });
   }
   getSecondChartData(country, indicator, column) {
+    country = country.replace('\'', '\'\'');
     const query = SERVER.GET_QUERY(`SELECT ${column} as value, year FROM ${SERVER.GPEDC_SCREENS_4} WHERE country = '${country}' AND indicator = '${indicator}'`);
     return this.webService.get(query).map(res => {
       return res.json().rows;
     });
   }
   getIndicators(country, year) {
+    country = country.replace('\'', '\'\'');
     const query = SERVER.GET_QUERY(`SELECT indicator FROM ${SERVER.GPEDC_SCREENS_4} WHERE available='4' AND country='${country}' AND year = '${year}'`);
     return this.webService.get(query).map(res => res.json().rows);
   }

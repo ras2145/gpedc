@@ -224,6 +224,9 @@ export class CountryHistoricalComponent implements OnInit {
     this.selectedCountry = '';
     this.loadIndicators = false;
     this.charttext = '';
+    this.isData = false;
+    this.buttonMore = true;
+    this.lessData = true;
   }
   resetSub() {
     this.subIndicator = {

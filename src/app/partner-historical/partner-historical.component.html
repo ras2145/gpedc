@@ -140,15 +140,41 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-lg-4 col-md-4">
-                  <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
-                    <input class="checkbox btn-filters-selected" type="checkbox" [checked]="selectedPartnerTypes[i]" (click)="updateCheck(i)"> {{ pType.type }}
-                  </label>
+          <div class="modal-body">
+            <div class="border-l-row">
+              <div class="col-md-12 pp-md">
+                <div class="row no-gutters">
+                  <div class="col-md-3" *ngFor="let pType of partners; let i=index">
+                    <div class="row no-gutters">
+                      <div class="col-md-2">
+                        <label for="" class="label--checkbox">
+                          <input class="checkbox" type="checkbox"
+                            [checked]="selectedPartnerTypes[i]"
+                            (click)="updateCheck(i)">
+                        </label>
+                      </div>
+                      <div class="col-md-10">
+                        <label class="ll-h">{{ pType.type }}</label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+            <!-- <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-4">
+                  <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
+                    <input 
+                    class="checkbox btn-filters-selected" 
+                    type="checkbox" 
+                    [checked]="selectedPartnerTypes[i]" 
+                    (click)="updateCheck(i)"> {{ pType.type }}
+                  </label>
+                </div>
+              </div>
+            </div> -->
           </template>
           <ng-select [(ngModel)]="selectedDevPartner" (selected)="onSelected($event)" (deselected)="onDeselected($event)" [allowClear]="true"
             [options]="dropdownContent" placeholder="Select a development partner" filterPlaceholder="Type to search" notFoundMsg="No partners found">

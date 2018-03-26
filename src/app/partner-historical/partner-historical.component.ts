@@ -49,7 +49,7 @@ export class PartnerHistoricalComponent implements OnInit {
   first = true;
   modalRef: BsModalRef;
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
-  
+
   loadedPartners = false;
   availablePartners = [];
   selectedChart: string;
@@ -362,7 +362,7 @@ export class PartnerHistoricalComponent implements OnInit {
       bar.append("text")
         .attr("class", "label")
         .attr("y", barHeight / 2)
-        .attr("dy", ".35em") //vertical align middle
+        .attr("dy", ".35em") // vertical align middle
         .text(function (d) {
           return d.label;
         }).each(function () {

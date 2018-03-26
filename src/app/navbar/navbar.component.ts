@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
     false,
     false,
     false,
+    false,
     false
   ];
   constructor(private modalService: BsModalService) { }
