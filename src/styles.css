@@ -360,6 +360,16 @@ a.btn-export-01:hover {
     width: 25px;
     padding: 0px;
 }
+.btn-export-02-disabled {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    padding: 0px;
+}
 
 .btn-export-02:hover {
     color: #fff;
@@ -2799,7 +2809,6 @@ text.value {
 }
 .o-lll{
   padding: 25px;
-  font-size: 14px;
 }
 .click-btn {
     margin-bottom: 15px !important;
@@ -2811,10 +2820,4 @@ text.value {
 }
 .btn-padding-right {
     padding-right: 8px;
-}
-.reverse-image-arrow {
-    -moz-transform: scaleY(-1);
-    -o-transform: scaleY(-1);
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
 }
