@@ -119,7 +119,6 @@ export class PartnerHistoricalComponent implements OnInit {
     this.loadedPartners = false;
     this.selectedDevPartner = null;
     this.clearChart();
-    console.log(this.yearModel);
   }
 
   selectIndicator(indicator) {
@@ -141,7 +140,6 @@ export class PartnerHistoricalComponent implements OnInit {
         this.fillDropdown();
       });
     }
-    console.log(this.selectedIndicator);
   }
 
   unselectIndicator() {
@@ -150,14 +148,12 @@ export class PartnerHistoricalComponent implements OnInit {
     this.getNavbarTitle();
     this.clearChart();
     this.loadedPartners = false;
-    console.log(this.selectedIndicator);
   }
 
   selectSubindicator(subindicator) {
     this.selectedSubindicator = subindicator;
     this.getNavbarTitle();
     this.clearChart();
-    console.log(this.selectedSubindicator);
     this.loadedPartners = false;
     this.phService.getValidPartners(this.selectedSubindicator.id, this.yearModel.year).subscribe(res => {
       this.availablePartners = [];
@@ -206,7 +202,6 @@ export class PartnerHistoricalComponent implements OnInit {
   }
   getChartTitle() {
     let ans = '';
-    console.log(this.selectedIndicator, this.selectedDevPartner);
     if (this.selectedSubindicator && this.selectedDevPartner) {
       ans = this.selectedSubindicator.chartText;
     } else if (this.selectedIndicator && this.selectedIndicator.id === '10' && this.selectedDevPartner) {
@@ -367,7 +362,6 @@ export class PartnerHistoricalComponent implements OnInit {
         .text(function (d) {
           return d.label;
         }).each(function () {
-          console.log('Width', this.getBBox());
           labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width))) + 2;
         });
       scale = d3.scaleLinear()
@@ -494,7 +488,6 @@ export class PartnerHistoricalComponent implements OnInit {
   }
 
   drawSecondChart(pos) {
-    console.log(pos);
     let toDraw = this.chartData[pos];
     this.selectedChart = toDraw.label;
     if (this.selectedDevPartner && (this.selectedSubindicator || (this.selectedIndicator && this.selectedIndicator.id === '10'))) {
@@ -537,7 +530,6 @@ export class PartnerHistoricalComponent implements OnInit {
           .attr('height', height + margin.top + margin.bottom)
           .append('g')
           .attr('transform', `translate(${margin.left},${margin.top})`);
-        console.log(svg);
         x.domain(data.map(d => d.label));
         y.domain([0, 1.09999]);
         svg.append('g')

@@ -58,7 +58,6 @@ export class CountryHistoricalComponent implements OnInit {
   ngOnInit() {
     this.countryAnalysisService.getCountries().subscribe(res => {
       this.countries = res;
-      console.log(this.countries);
     });
     this.countryAnalysisService.getFirstRow().subscribe(res => {
       this.firstRow = res;
@@ -77,7 +76,6 @@ export class CountryHistoricalComponent implements OnInit {
     this.resetIndicators();
   }
   filterIndicator(data) {
-    console.log(this.indicators);
     return data.filter(d => {
       let search = [];
       search.push(d.indicator);
@@ -96,7 +94,6 @@ export class CountryHistoricalComponent implements OnInit {
   }
   changeCountry(country) {
     this.selectedCountry = country;
-    console.log('COUNTRY ', country);
     this.resetIndicators();
     this.sendTitle();
     this.loadIndicators = false;
@@ -105,7 +102,6 @@ export class CountryHistoricalComponent implements OnInit {
       this.loadIndicators = true;
       this.indicators = res;
     });
-    console.log(this.selectedCountry);  
   }
   canRun() {
     let can = true;
@@ -147,7 +143,6 @@ export class CountryHistoricalComponent implements OnInit {
   }
   changeIndicator(indicator) {
     this.indicator = JSON.parse(JSON.stringify(indicator));
-    console.log(this.indicator);
     this.sendTitle();
     this.subDropdown = (this.indicator.subdropdown.length > 0);
     this.charttext = this.indicator.charttext;
@@ -337,7 +332,6 @@ export class CountryHistoricalComponent implements OnInit {
         .attr("y", barHeight / 2)
         .attr("dy", ".35em") //vertical align middle
         .text(function(d){
-          console.log(d.label);
           return d.label + '\t';
         }).each(function() {
           labelWidth = Math.min(1500, Math.ceil(Math.max(labelWidth, this.getBBox().width))) + 2;
@@ -430,8 +424,7 @@ export class CountryHistoricalComponent implements OnInit {
         });
         this.generateService.exportCSV4_5(this.title + ' Indicator ' + this.indicator.indicator, '4', res);
       });
-    }
-    
+    } 
   }
   drawComplete() {
     this.buttonMore = false;
@@ -447,7 +440,6 @@ export class CountryHistoricalComponent implements OnInit {
   drawSecondChart(pos) {
     let toDraw = this.chartData[pos];
     this.selectedChart = this.firstRow[toDraw.label];
-    console.log('to draw ', toDraw);
     let ind = '';
     if (this.subDropdown) {
       ind = this.subIndicator.indicator;
