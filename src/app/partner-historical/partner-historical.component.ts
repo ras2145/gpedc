@@ -6,6 +6,7 @@ import { Year } from './year.model';
 import { IOption } from '../lib/ng-select/option.interface.d';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import * as d3 from 'd3';
+import { GenerateIndicatorsService } from '../services/generate-indicators.service';
 
 enum Years {
   _2005,
@@ -56,7 +57,9 @@ export class PartnerHistoricalComponent implements OnInit {
   sortLabel: boolean = false;
   sortValue: boolean = false;
 
-  constructor(private phService: PartnerHistoricalService, private modalService: BsModalService) {
+  constructor(private phService: PartnerHistoricalService, 
+    private modalService: BsModalService,
+    private generateService: GenerateIndicatorsService) {
     this.selectedYearId = Years._2016; // defalut year
     this.years = this.phService.getYears();
 
@@ -434,7 +437,24 @@ export class PartnerHistoricalComponent implements OnInit {
       }
     }
   }
-
+  exportCSV() {
+    const sYear = String(this.selectedYear);
+    let sIndicator;
+    if (!this.selectedSubindicator) { // special case for indicator 10
+      sIndicator = this.selectedIndicator.id;
+    } else {
+      sIndicator = this.selectedSubindicator.id;
+    }
+    const sDevPartner = this.selectedDevPartner;
+    this.phService.getChartData(sYear, sIndicator, sDevPartner).subscribe(
+      res => {
+        res.forEach(r => {
+          r.label = this.firstRow[r.label];
+        });
+        this.generateService.exportCSV4_5(this.getNavbarTitle(), '5', res);
+      }
+    );
+  }
   drawComplete() {
     this.buttonMore = false;
     if (this.selectedDevPartner && (this.selectedSubindicator || (this.selectedIndicator && this.selectedIndicator.id === '10'))) {

@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="col-md-1 text-right margin-top-btn">
-            <button class="btn btn-export-02" (click)="exportCsvViewer()" [disabled]="indicator || !mapTitle"> <i class="mdi mdi-download"></i> </button>
+            <button [ngClass]="{'btn': true, 'btn-export-02': canRun(), 'btn-export-02-disabled': !canRun() }" (click)="exportCSV()" [disabled]="!canRun()"> <i class="mdi mdi-download"></i> </button>
         </div>
       </div>
       <br>

@@ -98,7 +98,18 @@ export class GenerateIndicatorsService {
     }
     return value;
   }
-
+  exportCSV4_5(title, tab, data) {
+    console.log(title, tab, data);
+    let linesString = data.map(d => d.label + ',' + d.value);
+    let result = title + '\n';
+    result += 'Developmment Partner,Performance\n';
+    result += linesString.join('\n');
+    result = result.replace(/," /g, ',"');
+    result = result.replace(/ ",/g, '",');
+    let blob = new Blob([result], { type: 'text/csv' });
+    const fileName = ((tab === '5') ? 'partner' : 'country') + '-historical';
+    saveAs(blob, fileName + '.csv');
+  }
   exportCsvFunction(comparerExport, queryExport, model, partnerType, partnerTypeSecond, isOrganization?: boolean) {
     const comparer = comparerExport;
     const first = isOrganization ? 'firstOrganization' : 'firstCountry';

@@ -3,6 +3,7 @@ import { analysisData } from '../../app/analysisData';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Subject } from 'rxjs/Subject';
 import { CountryAnalysisService } from '../services/country-analysis.service';
+import { GenerateIndicatorsService } from '../services/generate-indicators.service';
 import * as d3 from 'd3';
 @Component({
   selector: 'app-country-historical',
@@ -50,7 +51,9 @@ export class CountryHistoricalComponent implements OnInit {
   sortLabel: boolean = false;
   sortValue: boolean = false;
 
-  constructor(private countryAnalysisService: CountryAnalysisService, private modalService: BsModalService) { 
+  constructor(private countryAnalysisService: CountryAnalysisService, 
+    private modalService: BsModalService, 
+    private generateService: GenerateIndicatorsService) { 
   }
   ngOnInit() {
     this.countryAnalysisService.getCountries().subscribe(res => {
@@ -403,6 +406,29 @@ export class CountryHistoricalComponent implements OnInit {
         content.removeChild(content.firstChild);
       }
     }
+  }
+  exportCSV() {
+    if (this.subDropdown) {
+      if (this.subIndicator.subdropdown !== '') {
+        this.countryAnalysisService.getCharData(this.selectedCountry, this.subIndicator.indicator, this.model['year']).subscribe(res => {
+          res.forEach(r => {
+            r.label = this.firstRow[r.label];
+          });
+          this.generateService.exportCSV4_5(this.title, '4', res);
+        });
+      } else {
+        alert('Please select a Sub-Indicator');
+        return;
+      }
+    } else {
+      this.countryAnalysisService.getCharData(this.selectedCountry, this.indicator.indicator, this.model['year']).subscribe(res => {
+        res.forEach(r => {
+          r.label = this.firstRow[r.label];
+        });
+        this.generateService.exportCSV4_5(this.title, '4', res);
+      });
+    }
+    
   }
   drawComplete() {
     this.buttonMore = false;
