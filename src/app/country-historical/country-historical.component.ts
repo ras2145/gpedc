@@ -417,7 +417,7 @@ export class CountryHistoricalComponent implements OnInit {
           res.forEach(r => {
             r.label = this.firstRow[r.label];
           });
-          this.generateService.exportCSV4_5(this.title, '4', res);
+          this.generateService.exportCSV4_5(this.title + ' Indicator ' + this.indicator.indicator, '4', res);
         });
       } else {
         alert('Please select a Sub-Indicator');
@@ -428,7 +428,7 @@ export class CountryHistoricalComponent implements OnInit {
         res.forEach(r => {
           r.label = this.firstRow[r.label];
         });
-        this.generateService.exportCSV4_5(this.title, '4', res);
+        this.generateService.exportCSV4_5(this.title + ' Indicator ' + this.indicator.indicator, '4', res);
       });
     }
     

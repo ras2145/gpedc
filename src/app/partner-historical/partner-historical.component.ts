@@ -206,6 +206,7 @@ export class PartnerHistoricalComponent implements OnInit {
   }
   getChartTitle() {
     let ans = '';
+    console.log(this.selectedIndicator, this.selectedDevPartner);
     if (this.selectedSubindicator && this.selectedDevPartner) {
       ans = this.selectedSubindicator.chartText;
     } else if (this.selectedIndicator && this.selectedIndicator.id === '10' && this.selectedDevPartner) {
@@ -438,6 +439,7 @@ export class PartnerHistoricalComponent implements OnInit {
     }
   }
   exportCSV() {
+    const self = this;
     const sYear = String(this.selectedYear);
     let sIndicator;
     if (!this.selectedSubindicator) { // special case for indicator 10
@@ -448,10 +450,12 @@ export class PartnerHistoricalComponent implements OnInit {
     const sDevPartner = this.selectedDevPartner;
     this.phService.getChartData(sYear, sIndicator, sDevPartner).subscribe(
       res => {
+        this.getChartTitle();
+        this.getNavbarTitle();
         res.forEach(r => {
           r.label = this.firstRow[r.label];
         });
-        this.generateService.exportCSV4_5(this.getNavbarTitle(), '5', res);
+        this.generateService.exportCSV4_5(this.navbarTitle + ' Indicator ' + this.selectedIndicator.id, '5', res);
       }
     );
   }
