@@ -31,99 +31,7 @@
         </div>
         <br>
         <!-- DEVELOPMENT -->
-
-        <!-- INDICATORS -->
-        <p class="result-subtitle space-view-data">
-          <span class="mdi mdi-crosshairs-gps"></span>
-          Indicator
-          <i class="mdi mdi-information"
-            popover="Choose one of the global Partnership’s ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
-            placement="right" triggers="mouseenter:mouseleave">
-          </i>
-        </p>
-        <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle orange-border">
-            <span *ngIf="!selectedIndicator" class="font-selet-dropdown content-select-default">Select an Indicator</span>
-            <span *ngIf="selectedIndicator" class="font-selet-dropdown content-select-default">{{ selectedIndicator.dropdown }}</span>
-            <span class="dropdown-caret mdi mdi-chevron-down"></span>
-          </button>
-          <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li role="menuitem">
-              <a class="dropdown-item contenido-dropdown" (click)="unselectIndicator()">
-                Select an Indicator
-              </a>
-            </li>
-            <li role="menuitem" *ngFor="let indicator of yearModel.indicators" dropdown>
-              <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectIndicator(indicator)">
-                {{ indicator.dropdown }}
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- SUBINDICATORS -->
-        <p class="result-subtitle space-view-data" *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0">
-          Sub Indicator
-          <i class="mdi mdi-information" popover="Information for this sub-indicator is drawn from the IATI registry, and constitutes a snapshot of progress at the time of Global Partnership monitoring. Up-to-date information for this sub-indicator can be found on the IATI Dashboard, which is updated nightly with current data."
-            placement="right" triggers="mouseenter:mouseleave">
-          </i>
-        </p>
-        <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle orange-border">
-            <span *ngIf="!selectedSubindicator" class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
-            <span *ngIf="selectedSubindicator" class="font-selet-dropdown content-select-default"> {{ selectedSubindicator.subdropdown }}</span>
-            <span class="dropdown-caret mdi mdi-chevron-down"></span>
-          </button>
-          <ul *dropdownMenu class="dropdown-menu" role="menu">
-            <li role="menuitem">
-              <a class="dropdown-item contenido-dropdown" (click)="unselectSubindicator()">
-                Select a Sub-Indicator
-              </a>
-            </li>
-            <li role="menuitem" *ngFor="let subindicator of selectedIndicator.subindicators">
-              <a class="dropdown-item contenido-dropdown" (click)="selectSubindicator(subindicator)"> {{ subindicator.subdropdown }}</a>
-            </li>
-          </ul>
-        </div>
-        <button *ngIf="(selectedIndicator && selectedSubindicator) || (selectedIndicator && selectedIndicator.id === '10')" type="button"
-          name="button" class="btn btn-learn btn-md01" (click)="showModal(whatdoes)">What does this indicator measure?</button>
-        <ng-template #whatdoes>
-          <div class="modal-body o-lll">
-              <div class="container" >
-                  <div class="row" >
-                      <div class="col-md-10">
-                          <p class="modal-title pull-left">What does this indicator measure?<br><span>Indicator {{selectedIndicator.id}}</span></p>
-                      </div>
-                      <div class="col-2">
-                          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12">{{selectedIndicator.whatdoes}}</div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12"> {{selectedSubindicator.whatdoes}}</div>
-                  </div>
-                  <br *ngIf="selectedIndicator.id!='10'">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                      For more information on the methodology for this indicator,
-                      please refer to the
-                        <a href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2016 Monitoring Guide.</a></div>
-
-                  </div>
-
-              </div>
-          </div>
-        </ng-template>
-        <div class="tooltip-01" *ngIf="selectedIndicator && selectedIndicator.image">
-          <img [src]="selectedIndicator.image" width="47px" class="ll-po tooltip-01" [tooltip]="getTextIcon(selectedIndicator)" placement="right">
-        </div>
-
-        <!-- DEVELOPMENT PARTNER -->
-        <div class="form-group style-select" *ngIf="showPartners()">
+        <div class="form-group style-select">
           <p for="inputState" class="result-subtitle space-indicator">
             <img src="assets/004.png" alt="" width="12px"> DEVELOPMENT PARTNER
             <i class="mdi mdi-information" popover="Development Partners include bilateral partners and development organisations, including multilateral development banks, UN agencies and philanthropy, among others."
@@ -169,6 +77,99 @@
           </ng-select>
 
         </div>
+        <div *ngIf="loadIndicators">
+          <!-- INDICATORS -->
+          <p class="result-subtitle space-view-data">
+            <span class="mdi mdi-crosshairs-gps"></span>
+            Indicator
+            <i class="mdi mdi-information"
+              popover="Choose one of the global Partnership’s ten current indicators to view the performance of relevant countries, territories and organisations. You may also choose to view performance by different dimensions of the indicator, where available."
+              placement="right" triggers="mouseenter:mouseleave">
+            </i>
+          </p>
+          <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
+            <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle  orange-border">
+              <span *ngIf="!selectedIndicator" class="font-selet-dropdown content-select-default">Select an Indicator</span>
+              <span *ngIf="selectedIndicator" class="font-selet-dropdown content-select-default">{{ selectedIndicator.dropdown }}</span>
+              <span class="dropdown-caret mdi mdi-chevron-down"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+              <li role="menuitem">
+                <a class="dropdown-item contenido-dropdown" (click)="unselectIndicator()">
+                  Select an Indicator
+                </a>
+              </li>
+              <li role="menuitem" *ngFor="let indicator of filterIndicator(yearModel.indicators)" dropdown>
+                <a class="dropdown-item contenido-dropdown" dropdownToggle (click)="selectIndicator(indicator)">
+                  {{ indicator.dropdown }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- SUBINDICATORS -->
+          <p class="result-subtitle space-view-data" *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0">
+            Sub Indicator
+            <i class="mdi mdi-information" popover="Information for this sub-indicator is drawn from the IATI registry, and constitutes a snapshot of progress at the time of Global Partnership monitoring. Up-to-date information for this sub-indicator can be found on the IATI Dashboard, which is updated nightly with current data."
+              placement="right" triggers="mouseenter:mouseleave">
+            </i>
+          </p>
+          <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
+            <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle  orange-border">
+              <span *ngIf="!selectedSubindicator" class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
+              <span *ngIf="selectedSubindicator" class="font-selet-dropdown content-select-default"> {{ selectedSubindicator.subdropdown }}</span>
+              <span class="dropdown-caret mdi mdi-chevron-down"></span>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+              <li role="menuitem">
+                <a class="dropdown-item contenido-dropdown" (click)="unselectSubindicator()">
+                  Select a Sub-Indicator
+                </a>
+              </li>
+              <li role="menuitem" *ngFor="let subindicator of filterSubIndicator(selectedIndicator.subindicators)">
+                <a class="dropdown-item contenido-dropdown" (click)="selectSubindicator(subindicator)"> {{ subindicator.subdropdown }}</a>
+              </li>
+            </ul>
+          </div>
+          <button *ngIf="(selectedIndicator && selectedSubindicator) || (selectedIndicator && selectedIndicator.id === '10')" type="button"
+            name="button" class="btn btn-learn btn-md01" (click)="showModal(whatdoes)">What does this indicator measure?</button>
+          <ng-template #whatdoes>
+            <div class="modal-body o-lll">
+                <div class="container" >
+                    <div class="row" >
+                        <div class="col-md-10">
+                            <p class="modal-title pull-left">What does this indicator measure?<br><span>Indicator {{selectedIndicator.id}}</span></p>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12">{{selectedIndicator.whatdoes}}</div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12"> {{selectedSubindicator.whatdoes}}</div>
+                    </div>
+                    <br *ngIf="selectedIndicator.id!='10'">
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12">
+                        For more information on the methodology for this indicator,
+                        please refer to the
+                          <a href="http://effectivecooperation.org/wp-content/uploads/2016/08/2015-2016-GPEDC-Monitoring-Guide.pdf">2016 Monitoring Guide.</a></div>
+  
+                    </div>
+  
+                </div>
+            </div>
+          </ng-template>
+          <div class="tooltip-01" *ngIf="selectedIndicator && selectedIndicator.image">
+            <img [src]="selectedIndicator.image" width="47px" class="ll-po tooltip-01" [tooltip]="getTextIcon(selectedIndicator)" placement="right">
+          </div>
+        </div>
+
+        <!-- DEVELOPMENT PARTNER -->
         <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': canRun()}" (click)="runAnalysis()" [disabled]="!canRun()">Run Analysis</button>
         <br>
         <br>

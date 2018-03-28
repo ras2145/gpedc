@@ -127,4 +127,9 @@ export class PartnerHistoricalService {
       return res;
     });
   }
+  getIndicators(devpartner, year) {
+    devpartner = devpartner.replace('\'', '\'\'');
+    const query = SERVER.GET_QUERY(`SELECT indicator FROM ${SERVER.GPEDC_SCREENS_5} WHERE available='4' AND development_partner='${devpartner}' AND year = '${year}'`);
+    return this.webService.get(query).map(res => res.json().rows);
+  }
 }

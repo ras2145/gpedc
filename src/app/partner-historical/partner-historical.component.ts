@@ -40,6 +40,8 @@ export class PartnerHistoricalComponent implements OnInit {
 
   selectedDevPartner: any;
   selectedPartnerTypes: Array<boolean>;
+  loadIndicators = false;
+  indicators: any;
 
   chartData: any;
   isData: boolean;
@@ -51,7 +53,6 @@ export class PartnerHistoricalComponent implements OnInit {
   @ViewChild('secondGraph') secondGraph: TemplateRef<any>;
 
   loadedPartners = false;
-  availablePartners = [];
   selectedChart: string;
 
   sortLabel: boolean = false;
@@ -100,13 +101,39 @@ export class PartnerHistoricalComponent implements OnInit {
   }
 
   onSelected(event) {
+    this.loadIndicators = false;
+    this.selectedIndicator = null;
+    this.selectedSubindicator = null;
+    this.phService.getIndicators(event.value, this.yearModel.year).subscribe(res => {
+      this.loadIndicators = true;
+      this.indicators = res;
+    });
     this.getNavbarTitle();
   }
 
   onDeselected(event) {
+    this.loadIndicators = false;
+    this.selectedIndicator = null;
+    this.selectedSubindicator = null;
     this.getNavbarTitle();
   }
-
+  filterIndicator(data) {
+    return data.filter(d => {
+      let search = [];
+      search.push(d.id);
+      for (let i = 1; i <= 6; i++) {
+        search.push(d.id + '_' + i);
+      }
+      return search.filter(s => {
+        return this.indicators.filter(ind => ind.indicator === s).length > 0;
+      }).length > 0;
+    });
+  }
+  filterSubIndicator(data) {
+    return data.filter(d => {
+      return this.indicators.filter(ind => d.id === ind.indicator).length > 0;
+    });
+  }
   changeYear(year) {
     this.yearModel = this.phService.getDataByYear(this.getYearId(year));
     this.selectedYear = this.yearModel.year;
@@ -116,6 +143,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.getNavbarTitle();
     this.resetSelectedPartnerTypes();
     this.fillDropdown();
+    this.loadIndicators = false;
     this.loadedPartners = false;
     this.selectedDevPartner = null;
     this.clearChart();
@@ -130,16 +158,6 @@ export class PartnerHistoricalComponent implements OnInit {
     this.getNavbarTitle();
     this.clearChart();
     this.loadedPartners = false;
-    if (this.selectedIndicator.id === '10') {
-      this.phService.getValidPartners(this.selectedIndicator.id, this.yearModel.year).subscribe(res => {
-        this.availablePartners = [];
-        this.loadedPartners = true;
-        res.forEach(r => {
-          this.availablePartners.push(r.development_partner);
-        });
-        this.fillDropdown();
-      });
-    }
   }
 
   unselectIndicator() {
@@ -155,14 +173,6 @@ export class PartnerHistoricalComponent implements OnInit {
     this.getNavbarTitle();
     this.clearChart();
     this.loadedPartners = false;
-    this.phService.getValidPartners(this.selectedSubindicator.id, this.yearModel.year).subscribe(res => {
-      this.availablePartners = [];
-      this.loadedPartners = true;
-      res.forEach(r => {
-        this.availablePartners.push(r.development_partner);
-      });
-      this.fillDropdown();
-    });
   }
   showPartners() {
     return (this.loadedPartners && ((this.selectedIndicator && this.selectedIndicator.id === '10') || (this.selectedSubindicator)));
@@ -234,9 +244,7 @@ export class PartnerHistoricalComponent implements OnInit {
             label: p,
             disabled: false
           };
-          if (this.availablePartners.includes(p)) {
-            this.dropdownContent.push(dropdownItem);
-          }
+          this.dropdownContent.push(dropdownItem);
         }
       }
       i++;
