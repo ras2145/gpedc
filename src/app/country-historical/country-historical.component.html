@@ -66,7 +66,7 @@
             </i>
         </p>
         <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle orange-border">
             <span class="font-selet-dropdown content-select-default">{{indicator.dropdowncountry?indicator.dropdowncountry:'Select an indicator'}}</span>
           </button>
           <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
@@ -91,7 +91,7 @@
           </p>
         </label>
         <div *ngIf="subDropdown" class="btn-group btn-dropdown" dropdown container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle orange-border">
             <span class="font-selet-dropdown content-select-default">{{subIndicator.subdropdown?subIndicator.subdropdown:'Select Sub-Indicator'}}</span>
             <span class="dropdown-caret mdi mdi-chevron-down"></span>
           </button>

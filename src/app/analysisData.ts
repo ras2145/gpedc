@@ -11,7 +11,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "5a_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed as scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
@@ -36,7 +36,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "6_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (of scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
@@ -47,7 +47,7 @@ export let analysisData = [
           },
           {
             "indicator": "6_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
@@ -72,7 +72,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "9b",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
@@ -83,7 +83,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own budget execution systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
@@ -94,7 +94,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own financial reporting systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
@@ -105,7 +105,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own auditing systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
@@ -116,7 +116,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own procurement systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
@@ -134,7 +134,7 @@ export let analysisData = [
       },
       {
         "indicator": "10",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid untied",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid untied",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid untied",
         "dropdowncountry": "10: % of aid untied ",
         "dropdownpartner": "10: % of aid untied",
@@ -159,7 +159,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "5a_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed as scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
@@ -184,7 +184,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "6_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (of scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
@@ -195,7 +195,7 @@ export let analysisData = [
           },
           {
             "indicator": "6_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
@@ -220,7 +220,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "9b",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
@@ -231,7 +231,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own budget execution systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
@@ -242,7 +242,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own financial reporting systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
@@ -253,7 +253,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own auditing systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
@@ -264,7 +264,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own procurement systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
@@ -282,7 +282,7 @@ export let analysisData = [
       },
       {
         "indicator": "10",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid untied",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid untied",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid untied",
         "dropdowncountry": "10: % of aid untied ",
         "dropdownpartner": "10: % of aid untied",
@@ -307,7 +307,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "5a_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed as scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
@@ -332,7 +332,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "6_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (of scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
@@ -343,7 +343,7 @@ export let analysisData = [
           },
           {
             "indicator": "6_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
@@ -368,7 +368,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "9b",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
@@ -379,7 +379,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own budget execution systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
@@ -390,7 +390,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own financial reporting systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
@@ -401,7 +401,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own auditing systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
@@ -412,7 +412,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own procurement systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
@@ -430,7 +430,7 @@ export let analysisData = [
       },
       {
         "indicator": "10",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid untied",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid untied",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid untied",
         "dropdowncountry": "10: % of aid untied ",
         "dropdownpartner": "10: % of aid untied",
@@ -455,7 +455,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "5a_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed as scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
@@ -466,7 +466,7 @@ export let analysisData = [
           },
           {
             "indicator": "5a_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed beyond scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed beyond scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed beyond scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed beyond scheduled",
@@ -484,14 +484,14 @@ export let analysisData = [
       },
       {
         "indicator": "5b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: provision of medium-term information on planned funding",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: provision of medium-term information on planned funding",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: provision of medium-term information on planned funding",
         "dropdowncountry": "5b: Development partners provide medium-term information on planned funding",
         "dropdownpartner": "5b: Provision of medium-term information on planned funding",
         "subdropdown": [
           {
             "indicator": "5b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 1 year ahead",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 1 year ahead",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding covered by forward spending plans, 1 year ahead",
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 1 year ahead",
@@ -502,7 +502,7 @@ export let analysisData = [
           },
           {
             "indicator": "5b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 2 years ahead",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 2 years ahead",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding covered by forward spending plans, 2 years ahead",
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 2 years ahead",
@@ -513,7 +513,7 @@ export let analysisData = [
           },
           {
             "indicator": "5b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 3 years ahead",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 3 years ahead",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding covered by forward spending plans, 3 years ahead",
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 3 years ahead",
@@ -524,7 +524,7 @@ export let analysisData = [
           },
           {
             "indicator": "5b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding covered by forward spending plans (1-3 years ahead)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding covered by forward spending plans (1-3 years ahead)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding covered by forward spending plans (1-3 years ahead)",
             "type": "Percentage",
             "subdropdown": "Average % of funding covered by forward spending plans (1-3 years ahead)",
@@ -549,7 +549,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "6_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (of scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
@@ -560,7 +560,7 @@ export let analysisData = [
           },
           {
             "indicator": "6_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
@@ -585,7 +585,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "9b",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
@@ -596,7 +596,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own budget execution systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
@@ -607,7 +607,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own financial reporting systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
@@ -618,7 +618,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own auditing systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
@@ -629,7 +629,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own procurement systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
@@ -647,7 +647,7 @@ export let analysisData = [
       },
       {
         "indicator": "10",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid untied",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid untied",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid untied",
         "dropdowncountry": "10: % of aid untied ",
         "dropdownpartner": "10: % of aid untied",
@@ -672,7 +672,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "1a_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of new development interventions that draw their objectives from partner country-led results frameworks",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of new development interventions that draw their objectives from partner country-led results frameworks",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of new development interventions that draw their objectives from partner country-led results frameworks",
             "type": "Percentage",
             "subdropdown": "% of new development interventions that draw their objectives from country-led results frameworks",
@@ -683,7 +683,7 @@ export let analysisData = [
           },
           {
             "indicator": "1a_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of results indicators drawn from partner country-led results frameworks",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of results indicators drawn from partner country-led results frameworks",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of results indicators drawn from partner country-led results frameworks",
             "type": "Percentage",
             "subdropdown": "% of results indicators drawn from partner country-led results frameworks",
@@ -694,7 +694,7 @@ export let analysisData = [
           },
           {
             "indicator": "1a_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of results indicators monitored using the partner country's own sources",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of results indicators monitored using the partner country's own sources",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of results indicators monitored using the partner country's own sources",
             "type": "Percentage",
             "subdropdown": "% of results indicators monitored using the partner country's own sources",
@@ -705,7 +705,7 @@ export let analysisData = [
           },
           {
             "indicator": "1a_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of new interventions that plan a final evaluation with partner country involvement",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of new interventions that plan a final evaluation with partner country involvement",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of new interventions that plan a final evaluation with partner country involvement",
             "type": "Percentage",
             "subdropdown": "% of new interventions that plan a final evaluation with partner country involvement",
@@ -730,7 +730,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "5a_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed as scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed as scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed as scheduled",
@@ -741,7 +741,7 @@ export let analysisData = [
           },
           {
             "indicator": "5a_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed beyond scheduled",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed beyond scheduled",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed beyond scheduled",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed beyond scheduled",
@@ -759,14 +759,14 @@ export let analysisData = [
       },
       {
         "indicator": "5b",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: provision of medium-term information on planned funding",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: provision of medium-term information on planned funding",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: provision of medium-term information on planned funding",
         "dropdowncountry": "5b: Development partners provide medium-term information on planned funding",
         "dropdownpartner": "5b: Provision of medium-term information on planned funding",
         "subdropdown": [
           {
             "indicator": "5b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 1 year ahead",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 1 year ahead",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding covered by forward spending plans, 1 year ahead",
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 1 year ahead",
@@ -777,7 +777,7 @@ export let analysisData = [
           },
           {
             "indicator": "5b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 2 years ahead",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 2 years ahead",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding covered by forward spending plans, 2 years ahead",
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 2 years ahead",
@@ -788,7 +788,7 @@ export let analysisData = [
           },
           {
             "indicator": "5b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 3 years ahead",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding covered by forward spending plans, 3 years ahead",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding covered by forward spending plans, 3 years ahead",
             "type": "Percentage",
             "subdropdown": "% of funding covered by forward spending plans, 3 years ahead",
@@ -799,7 +799,7 @@ export let analysisData = [
           },
           {
             "indicator": "5b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding covered by forward spending plans (1-3 years ahead)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding covered by forward spending plans (1-3 years ahead)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding covered by forward spending plans (1-3 years ahead)",
             "type": "Percentage",
             "subdropdown": "Average % of funding covered by forward spending plans (1-3 years ahead)",
@@ -824,7 +824,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "6_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (of scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (of scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (of scheduled)",
@@ -835,7 +835,7 @@ export let analysisData = [
           },
           {
             "indicator": "6_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid on budget (beyond scheduled)",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid on budget (beyond scheduled)",
             "type": "Percentage",
             "subdropdown": "% of aid on budget (beyond scheduled)",
@@ -860,7 +860,7 @@ export let analysisData = [
         "subdropdown": [
           {
             "indicator": "9b",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: average % of funding disbursed through the partner country's own systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: average % of funding disbursed through the partner country's own systems",
             "type": "Percentage",
             "subdropdown": "Average % of funding disbursed through partner country's own systems",
@@ -871,7 +871,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_1",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own budget execution systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own budget execution systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own budget execution systems",
@@ -882,7 +882,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_2",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own financial reporting systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own financial reporting systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own financial reporting systems",
@@ -893,7 +893,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_3",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own auditing systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own auditing systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own auditing systems",
@@ -904,7 +904,7 @@ export let analysisData = [
           },
           {
             "indicator": "9b_4",
-            "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
+            "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of funding disbursed using the partner country's own procurement systems",
             "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of funding disbursed using the partner country's own procurement systems",
             "type": "Percentage",
             "subdropdown": "% of funding disbursed using the partner country's own procurement systems",
@@ -922,7 +922,7 @@ export let analysisData = [
       },
       {
         "indicator": "10",
-        "titlecountry": "[YEAR] performance for all development partners in [DEVELOPING COUNTRY]: % of aid untied",
+        "titlecountry": "[YEAR] development performance for [DEVELOPING COUNTRY]: % of aid untied",
         "titlepartner": "[YEAR] global performance for [DEVELOPMENT PARTNER]: % of aid untied",
         "dropdowncountry": "10: % of aid untied ",
         "dropdownpartner": "10: % of aid untied",

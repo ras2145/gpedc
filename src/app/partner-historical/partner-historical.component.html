@@ -42,7 +42,7 @@
           </i>
         </p>
         <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle orange-border">
             <span *ngIf="!selectedIndicator" class="font-selet-dropdown content-select-default">Select an Indicator</span>
             <span *ngIf="selectedIndicator" class="font-selet-dropdown content-select-default">{{ selectedIndicator.dropdown }}</span>
             <span class="dropdown-caret mdi mdi-chevron-down"></span>
@@ -68,7 +68,7 @@
           </i>
         </p>
         <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
+          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle orange-border">
             <span *ngIf="!selectedSubindicator" class="font-selet-dropdown content-select-default"> Select a Sub-Indicator</span>
             <span *ngIf="selectedSubindicator" class="font-selet-dropdown content-select-default"> {{ selectedSubindicator.subdropdown }}</span>
             <span class="dropdown-caret mdi mdi-chevron-down"></span>
