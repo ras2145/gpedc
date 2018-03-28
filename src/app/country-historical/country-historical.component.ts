@@ -165,9 +165,9 @@ export class CountryHistoricalComponent implements OnInit {
     this.reset();
   }
   sendTitle() {
-    this.title = (this.indicator.titlecountry ? this.indicator.titlecountry : '');
+    this.title = (this.indicator.titlecountry ? '[YEAR] development performance for [DEVELOPING COUNTRY]' : '');
     if (this.subDropdown && this.subIndicator.subdropdown !== '') {
-      this.title = (this.subIndicator.titlecountry ? this.subIndicator.titlecountry : '');
+      this.title = (this.subIndicator.titlecountry ? '[YEAR] development performance for [DEVELOPING COUNTRY]' : '');
       this.charttext = this.subIndicator.charttext;
     }
     this.title = this.title.replace('[YEAR]', this.model['year']);

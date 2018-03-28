@@ -103,7 +103,8 @@ img.logo.panel-1 {
 .navbar p {
   font-size: 12px;
   padding-left: 20px;
-   line-height: 1;
+  line-height: 1;
+  font-weight: 500;
 }
 .text-regular{
   padding-top: 18px;

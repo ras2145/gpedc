@@ -190,11 +190,13 @@ export class PartnerHistoricalComponent implements OnInit {
   getNavbarTitle() {
     let ans = '';
     if (this.selectedSubindicator && this.selectedDevPartner) {
-      ans = this.selectedSubindicator.title;
+      // ans = this.selectedSubindicator.title;
+      ans = '[YEAR] global performance for [DEVELOPMENT PARTNER]';
       ans = ans.replace('[YEAR]', String(this.yearModel.year));
       ans = ans.replace('[DEVELOPMENT PARTNER]', this.selectedDevPartner);
     } else if (this.selectedIndicator && this.selectedIndicator.id === '10' && this.selectedDevPartner) {
-      ans = this.selectedIndicator.title;
+      // ans = this.selectedIndicator.title;
+      ans = '[YEAR] global performance for [DEVELOPMENT PARTNER]';
       ans = ans.replace('[YEAR]', String(this.yearModel.year));
       ans = ans.replace('[DEVELOPMENT PARTNER]', this.selectedDevPartner);
     }
