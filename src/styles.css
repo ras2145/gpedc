@@ -2436,7 +2436,7 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 1px !important;
   color: rgba(40, 40, 40, 0.56) !important;
   display: inline-flex;
-  width: 95px;
+  /* width: 135px; */
 }
 .card-db i{
   color: #96a3ab !important;

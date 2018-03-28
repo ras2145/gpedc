@@ -121,7 +121,7 @@
         <div class="tooltip-01" *ngIf="selectedIndicator && selectedIndicator.image">
           <img [src]="selectedIndicator.image" width="47px" class="ll-po tooltip-01" [tooltip]="getTextIcon(selectedIndicator)" placement="right">
         </div>
-          <!-- selectedIndicator -->
+
         <!-- DEVELOPMENT PARTNER -->
         <div class="form-group style-select" *ngIf="showPartners()">
           <p for="inputState" class="result-subtitle space-indicator">
@@ -162,37 +162,11 @@
               </div>
             </div>
           </div>
-            <!-- <div class="modal-body">
-              <div class="row">
-                <div class="col-lg-4 col-md-4">
-                  <label class="label--checkbox ll-01" *ngFor="let pType of partners; let i = index">
-                    <input 
-                    class="checkbox btn-filters-selected" 
-                    type="checkbox" 
-                    [checked]="selectedPartnerTypes[i]" 
-                    (click)="updateCheck(i)"> {{ pType.type }}
-                  </label>
-                </div>
-              </div>
-            </div> -->
+
           </template>
           <ng-select [(ngModel)]="selectedDevPartner" (selected)="onSelected($event)" (deselected)="onDeselected($event)" [allowClear]="true"
             [options]="dropdownContent" placeholder="Select a development partner" filterPlaceholder="Type to search" notFoundMsg="No partners found">
           </ng-select>
-          <!-- <div class="btn-group btn-dropdown" dropdown [autoClose]="true" container="body">
-          <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle">
-            <span class="font-selet-dropdown content-select-default">UNDP</span>
-            <span class="dropdown-caret mdi mdi-chevron-down"></span>
-          </button>
-          <ul *dropdownMenu class="dropdown-menu dropdown-width" role="menu">
-            <li role="menuitem">
-              <a class="dropdown-item contenido-dropdown">
-                Indicator 1a: Do development partners use partner countries' own results frameworks and evaluation processes?
-              </a>
-            </li>
-          </ul>
-        </div> -->
-          <!-- CHECKBOX -->
 
         </div>
         <button type="button" name="button" [ngClass]="{'btn': true, 'btn-run': canRun(), 'btn-run-disabled': !canRun(), 'run-mg': true, 'orange-border': canRun()}" (click)="runAnalysis()" [disabled]="!canRun()">Run Analysis</button>
@@ -242,7 +216,7 @@
               <div class="row no-gutters">
                 <div class="col-md-5 oo-ll">
                   <button class="btn btn-invisible btn-padding-right" (click)="sortDraw('devpart')"><img src="assets/006.png" alt="" width="11px" [ngClass]="{'reverse-image-arrow': sortLabel}"></button>
-                  <label class="title-pp margin-st">DEVELOPMENT PARTNER</label>
+                  <label class="title-pp margin-st">PARTNER COUNTRY</label>
                   <i class="mdi mdi-information" popover="Development Partners include bilateral partners and development organisations, including multilateral development banks,
                   UN agencies and philanthropy, among others."
                     placement="right" triggers="mouseenter:mouseleave">
@@ -257,7 +231,7 @@
                 <label>{{ chartTitle }}</label>
               </div>
             </div>
-            <div style="margin-left: 12px; font-size: 13px" *ngIf="first">* Select a Development Partner, indicator and year to start exploring.</div>
+            <div style="margin-left: 12px; font-size: 13px" *ngIf="first">*Select a Year, Development Partner, and Indicator to start exploring.</div>
             <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData && !first">Data not available for the selected combination.</div>
             <div id="chart" [ngClass]="{'hide' : !isData}"></div>
             <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
