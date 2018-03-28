@@ -1425,10 +1425,13 @@ select-dropdown li.selected.highlighted {
 
 .row.with-placeholder-conutry div.placeholder {
     text-transform: capitalize;
-    font-size: 11px
+    font-size: 11px;
 }
 
-
+ng-select > div > div.single > div.placeholder {
+    color: #757575;
+    font-size: 11px;
+}
 /*MAP BUTTONS*/
 
 .map-button {

@@ -56,7 +56,7 @@ export const countryContexts = [
     value: ''
   },
   {
-    label: 'Least Developed Countries (LDC)',
+    label: 'Landlocked Developing Countries (LDC)',
     value: 'ldc'
   },
   {
