@@ -92,6 +92,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.isData = false;
     this.lessData = true;
     this.buttonMore = true;
+    this.first = true;
   }
   resetSelectedPartnerTypes() {
     this.selectedPartnerTypes = new Array<boolean>();
