@@ -152,6 +152,22 @@ export class PartnerHistoricalComponent implements OnInit {
   selectIndicator(indicator) {
     this.selectedIndicator = indicator;
     this.selectedSubindicator = null;
+    if (this.selectedIndicator.subindicators.length > 0) {
+      this.selectedIndicator.subindicators.forEach(sub => {
+        if (sub.autoselect && this.indicators.filter(ind => sub.id === ind.indicator).length > 0) {
+          this.selectedSubindicator = {
+            id: sub.id,
+            title: sub.title,
+            type: sub.type,
+            subdropdown: sub.subdropdown,
+            chartText: sub.chartText,
+            autoselect: sub.autoselect,
+            image: sub.image,
+            whatdoes: sub.whatdoes
+          };
+        }    
+      });
+    }
     if (this.selectedIndicator.id === '9b') { // autoselect
       this.selectedSubindicator = this.selectedIndicator.subindicators[0];
     }
