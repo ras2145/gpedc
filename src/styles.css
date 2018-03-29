@@ -1464,6 +1464,7 @@ ng-select > div > div.single > div.placeholder {
     position: absolute;
     top: 15px;
     left: 75px;
+    width: 40%;
 }
 
 .map-option .dropdown-toggle::after {
@@ -1662,7 +1663,9 @@ ng-select > div > div.single > div.placeholder {
 }
 
 .modal-tutorial {
-    background: #fff;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
 }
 
 .modal-tutorial .flex-column {
@@ -2397,11 +2400,11 @@ body::-webkit-scrollbar-thumb {
 }
 .run-mg{
   margin-top: 15px;
+  margin-bottom: 20px;
 }
 .level-bg{
   padding-top: 67px;
   padding-right: 0px;
-  z-index: 8;
 }
 .card-db{
   height: 100%;
@@ -2480,7 +2483,7 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 10px;
 }
 .card-bd .modal-header{
-  border-top-left-radius: 0.2rem; 
+  border-top-left-radius: 0.2rem;
   border-top-right-radius: 0.2rem;
   background: #252e47;
   padding: 10px 15px;
@@ -2829,4 +2832,11 @@ text.value {
 	-o-transform: scaleY(-1);
 	-webkit-transform: scaleY(-1);
 	transform: scaleY(-1);
+}
+.modal-content {
+  border: 1px solid rgba(0,0,0,.0) !important;
+}
+.modal-llo-01{
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
 }

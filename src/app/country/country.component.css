@@ -84,7 +84,7 @@
 }
 
 .title-select span::-webkit-scrollbar-thumb {
-    background: rgba(234, 98, 57, 0.9);
+    /* background: rgba(234, 98, 57, 0.9); */
     border-radius: 5px;
 }
 
