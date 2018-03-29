@@ -1664,8 +1664,8 @@ ng-select > div > div.single > div.placeholder {
 
 .modal-tutorial {
   background: #fff;
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: .3rem;
+  /* border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem; */
 }
 
 .modal-tutorial .flex-column {
@@ -2833,10 +2833,10 @@ text.value {
 	-webkit-transform: scaleY(-1);
 	transform: scaleY(-1);
 }
-.modal-content {
+/* .modal-content {
   border: 1px solid rgba(0,0,0,.0) !important;
 }
 .modal-llo-01{
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .3rem;
-}
+} */
