@@ -108,6 +108,7 @@ export class PartnerHistoricalComponent implements OnInit {
       this.loadIndicators = true;
       this.indicators = res;
     });
+    this.clearChart();
     this.getNavbarTitle();
   }
 
@@ -115,6 +116,7 @@ export class PartnerHistoricalComponent implements OnInit {
     this.loadIndicators = false;
     this.selectedIndicator = null;
     this.selectedSubindicator = null;
+    this.clearChart();
     this.getNavbarTitle();
   }
   filterIndicator(data) {

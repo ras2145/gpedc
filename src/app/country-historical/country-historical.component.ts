@@ -74,6 +74,9 @@ export class CountryHistoricalComponent implements OnInit {
     this.loadIndicators = false;
     this.sendTitle();
     this.resetIndicators();
+    this.isData = false;
+    this.lessData = true;
+    this.buttonMore = true;
   }
   filterIndicator(data) {
     return data.filter(d => {
@@ -102,6 +105,9 @@ export class CountryHistoricalComponent implements OnInit {
       this.loadIndicators = true;
       this.indicators = res;
     });
+    this.isData = false;
+    this.lessData = true;
+    this.buttonMore = true;
   }
   canRun() {
     let can = true;
