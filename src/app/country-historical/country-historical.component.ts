@@ -155,7 +155,7 @@ export class CountryHistoricalComponent implements OnInit {
         if (sub.autoselect && this.indicators.filter(ind => sub.indicator === ind.indicator).length > 0) {
           this.subIndicator = sub;
           this.sendTitle();
-        }    
+        }
       });
     }
   }
@@ -206,6 +206,7 @@ export class CountryHistoricalComponent implements OnInit {
       image: '',
       whatdoes: ''
     };
+    this.clearChart();
   }
   reset() {
     this.indicator = {
@@ -245,6 +246,7 @@ export class CountryHistoricalComponent implements OnInit {
     };
     this.charttext = '';
     this.title = (this.indicator.titlecountry ? this.indicator.titlecountry : '');
+    this.clearChart();
   }
   show(event) {
     console.log(event);
