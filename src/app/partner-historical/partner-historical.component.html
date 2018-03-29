@@ -108,7 +108,7 @@
           </div>
           <!-- SUBINDICATORS -->
           <p class="result-subtitle space-view-data" *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0">
-            Sub Indicator
+            Sub Indicator}
           </p>
           <div *ngIf="selectedIndicator && selectedIndicator.subindicators.length > 0" class="btn-group btn-dropdown" dropdown container="body">
             <button dropdownToggle type="button" class="btn btn-dropdown dropdown-toggle  orange-border">
@@ -229,7 +229,7 @@
                 <label>{{ chartTitle }}</label>
               </div>
             </div>
-            <div style="margin-left: 12px; font-size: 13px" *ngIf="first">*Select a Year, Development Partner, and Indicator to start exploring.</div>
+            <div style="margin-left: 12px; font-size: 13px" *ngIf="first">Select a Year, Development Partner, and Indicator to start exploring.</div>
             <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData && !first">Data not available for the selected combination.</div>
             <div id="chart" [ngClass]="{'hide' : !isData}"></div>
             <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
