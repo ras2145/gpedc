@@ -74,10 +74,7 @@ export class CountryHistoricalComponent implements OnInit {
     this.loadIndicators = false;
     this.sendTitle();
     this.resetIndicators();
-    this.isData = false;
-    this.lessData = true;
-    this.buttonMore = true;
-    this.first = true;
+    this.clearChart();
   }
   filterIndicator(data) {
     return data.filter(d => {
@@ -106,10 +103,7 @@ export class CountryHistoricalComponent implements OnInit {
       this.loadIndicators = true;
       this.indicators = res;
     });
-    this.isData = false;
-    this.lessData = true;
-    this.buttonMore = true;
-    this.first = true;
+    this.clearChart();
   }
   canRun() {
     let can = true;
@@ -150,6 +144,7 @@ export class CountryHistoricalComponent implements OnInit {
     }
   }
   changeIndicator(indicator) {
+    this.clearChart();
     this.indicator = JSON.parse(JSON.stringify(indicator));
     this.sendTitle();
     this.subDropdown = (this.indicator.subdropdown.length > 0);
@@ -164,7 +159,14 @@ export class CountryHistoricalComponent implements OnInit {
       });
     }
   }
+  clearChart() {
+    this.isData = false;
+    this.lessData = true;
+    this.buttonMore = true;
+    this.first = true;
+  }
   changeSubIndicator(subIndicator) {
+    this.clearChart();
     this.subIndicator = JSON.parse(JSON.stringify(subIndicator));
     this.charttext = this.subIndicator.charttext;
     this.sendTitle();
@@ -247,7 +249,7 @@ export class CountryHistoricalComponent implements OnInit {
     console.log(event);
   }
   getTextIcon() {
-    if(this.indicator.indicator ==='8' ) {
+    if (this.indicator.indicator ==='8' ) {
       return 'This indicator provides evidence to follow up and review of SDG target 5.c.1, which tracks the proportion of countries with systems to monitor and make public allocations for gender equality and women’s empowerment.';
     } else if (this.indicator.indicator === '1a') {
       return 'This indicator provides evidence to follow up and review of SDG target 17.15.1 on the use of country-owned results frameworks and planning tools by providers of development co-operation.';
