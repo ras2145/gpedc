@@ -223,7 +223,9 @@
   <div class="card-bd">
     <div class="modal-header">
       <h6 class="modal-title pull-left">
-        Historical performance for {{selectedChart}} in {{selectedCountry}}: {{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}
+        Historical performance for {{selectedChart}} in {{selectedCountry}} 
+        <br> 
+        <span>{{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</span>
       </h6>
       <button type="button" class="close pull-right" style="cursor: pointer" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>

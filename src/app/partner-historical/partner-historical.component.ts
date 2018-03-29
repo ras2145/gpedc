@@ -598,7 +598,7 @@ export class PartnerHistoricalComponent implements OnInit {
           .attr('x', d => x(d.label) + 2 * (x.bandwidth() / 4) - (d.value < 0.1 ? 7 : d.value < 1.0 ? 12 : d.value === 1.0 ? 16 : 37))
           .attr('y', d => d.value === 999 ? height - 5 : y(d.value) - 5)
           .style('font-size', '12px')
-          .text((d => (d.value === 999 ? 'Not applicable' : (d.value * 100.0).toFixed(0) + '%')));
+          .text((d => (d.value === 999 ? 'Not Available' : (d.value * 100.0).toFixed(0) + '%')));
 
       });
     }
