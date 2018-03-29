@@ -173,6 +173,7 @@ export class CountryHistoricalComponent implements OnInit {
   }
   changeYear(year) {
     this.reset();
+    this.clearChart();
   }
   sendTitle() {
     this.title = (this.indicator.titlecountry ? '[YEAR] development performance for [DEVELOPING COUNTRY]' : '');
