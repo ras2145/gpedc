@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- Contenedor general -->
     <app-navbar [mapTitle] = "mapTitle"></app-navbar>
-    <div class="container-fluid body-height">
-        <div class="row">
+    <div class="container-fluid ">
+        <div class="row body-height">
             <!-- INICIO Sidebar -->
                 <div class="col-md-3 padding-left-none with-scroll" id="div1">
                   <div class="filtros-tab" >
@@ -437,27 +437,28 @@
             <!-- INICIO Map -->
                 <div class="col-md-9 border-div-none" id="div2">
                     <div class="map-option" *ngIf="selectedTab !== 'tab3'" > <!-- [ngClass]="{'map-top': isCategoryTop()}"-->
-                      <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer"><img src="assets/0005.png" class="img-md bitmap"> Map Viewer</button></a>
+                      <a [routerLink]="['/']"><button type="button" name="button" class="btn btn-viewer" tooltip="Map Viewer" placement="top">
+                        <img src="assets/0005.png" class="img-md bitmap"> Map Viewer</button></a>
                         <a [routerLink]="['/country']">
-                          <button type="button" name="button" class="btn btn-md">
+                          <button type="button" name="button" class="btn btn-md" tooltip="Country Comparison" placement="top">
                             <img src="assets/001.png" class="bitmap img-hh">
                             <img src="assets/001-white.png" class="bitmap img-hv">
                           </button>
                         </a>
                         <a [routerLink]="['/partner']">
-                          <button type="button" name="button" class="btn btn-md">
+                          <button type="button" name="button" class="btn btn-md" tooltip="Partner Comparison" placement="top">
                             <img src="assets/002.png" class="bitmap img-hh">
                             <img src="assets/002-white.png" class="bitmap img-hv">
                           </button>
                         </a>
                         <a [routerLink]="['/country-historical']">
-                          <button type="button" name="button" class="btn btn-md">
+                          <button type="button" name="button" class="btn btn-md" tooltip="Country-Level Analysis" placement="top">
                             <img src="assets/003.png" class="bitmap img-hh">
                             <img src="assets/003-white.png" class="bitmap img-hv">
                           </button>
                         </a>
                         <a [routerLink]="['/partner-historical']">
-                          <button type="button" name="button" class="btn btn-md">
+                          <button type="button" name="button" class="btn btn-md" tooltip="Partner-Level Analysis" placement="top">
                             <img src="assets/004.png" class="bitmap img-hh">
                             <img src="assets/004-white.png" class="bitmap img-hv">
                           </button>
@@ -518,7 +519,7 @@
                                         <ng-template #elseBlock3><p>2016</p></ng-template>
                                     </div>
                                 </div>
- 
+
                                 <div *ngIf="!indicator  && (hideIndicatorHover(model.category) || model.subcategory)" class="content-card">
                                     <p [innerHTML]="popupText">
                                     </p>

@@ -87,7 +87,7 @@ img.logo.panel-1 {
     color: #fff;
     position: fixed;
     width: 100%;
-    z-index: 8;
+    z-index: 2;
 }
 
 .nav-row {
@@ -1490,13 +1490,6 @@ ng-select > div > div.single > div.placeholder {
     border-radius: 2px;
 }
 
-.map-option {
-    z-index: 4;
-    position: absolute;
-    top: 15px;
-    left: 75px;
-}
-
 .drop-map {
     background: #fff !important;
     height: 32px;
@@ -2408,7 +2401,7 @@ body::-webkit-scrollbar-thumb {
 .level-bg{
   padding-top: 67px;
   padding-right: 0px;
-  z-index: 0;
+  z-index: 8;
 }
 .card-db{
   height: 100%;
