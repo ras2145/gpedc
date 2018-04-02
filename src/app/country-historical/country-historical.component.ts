@@ -176,13 +176,13 @@ export class CountryHistoricalComponent implements OnInit {
     this.clearChart();
   }
   sendTitle() {
-    this.title = (this.indicator.titlecountry ? '[YEAR] development performance for [DEVELOPING COUNTRY]' : '');
+    this.title = (this.indicator.titlecountry ? "[YEAR] Development Partners' performance for [COUNTRY]" : '');
     if (this.subDropdown && this.subIndicator.subdropdown !== '') {
-      this.title = (this.subIndicator.titlecountry ? '[YEAR] development performance for [DEVELOPING COUNTRY]' : '');
+      this.title = (this.subIndicator.titlecountry ? "[YEAR] Development Partners' performance for [COUNTRY]" : '');
       this.charttext = this.subIndicator.charttext;
     }
     this.title = this.title.replace('[YEAR]', this.model['year']);
-    this.title = this.title.replace('[DEVELOPING COUNTRY]', this.selectedCountry);
+    this.title = this.title.replace('[COUNTRY]', this.selectedCountry);
     if (this.selectedCountry === '') {
       this.title = '';
     }
