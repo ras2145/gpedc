@@ -1960,7 +1960,8 @@ ng-select > div > div.single > div.placeholder {
 }
 
 .carto-attribution-img {
-    max-height: 26px;
+    height: 26px !important;
+    width: 66.44px;
 }
 
 
@@ -2839,3 +2840,6 @@ text.value {
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .3rem;
 } */
+.logo-pp{
+  height: 34px !important;
+}
