@@ -38,6 +38,12 @@ export class GenerateIndicatorsService {
     // let aux = indicator.column;
     // console.log("getL", partnerType);
     const name = comparer[type];
+    if (type === 'aggregate' && comparer['aggregate']) {
+      if (!comparer['firstCountry'] && !comparer['secondCountry']) {
+        console.log('ok');
+        return 'No data available';
+      }
+    }
     const column = isOrganization ? 'column' : partnerType === 'partcntry' ? 'partcntry' : 'devpart';
     // const column = isOrganization ? 'column' : 'partcntry';
     if (!name || !indicator) {
