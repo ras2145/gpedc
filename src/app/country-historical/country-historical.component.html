@@ -226,7 +226,7 @@
         <h6 class="modal-title pull-left">
           Historical performance for {{selectedChart}} in {{selectedCountry}}
           <br>
-          <span>{{indicator.dropdowncountry === 'Select an indicator' ? '' : 'Indicator ' + indicator.indicator}}</span>
+          <span>{{subDropdown? 'Indicator ' + indicator.indicator + ': ' + subIndicator.subdropdown :'Indicator ' + indicator.dropdowncountry}}</span>
         </h6>
         <button type="button" class="close pull-right" style="cursor: pointer" aria-label="Close" (click)="modalRef.hide()">
           <span aria-hidden="true">&times;</span>

@@ -244,7 +244,9 @@
     <div class="card-bd">
       <div class="modal-header">
         <h6 class="modal-title pull-left" *ngIf="selectedIndicator">
-         Historical performance for {{ selectedDevPartner }} in {{ firstRow[selectedChart] }} <br> <span>Indicator {{ selectedIndicator.id }}</span>
+         Historical performance for {{ selectedDevPartner }} in {{ firstRow[selectedChart] }} <br> 
+         <span>{{selectedSubindicator ? 'Indicator ' + selectedIndicator.id + ': ' + selectedSubindicator.subdropdown :'Indicator ' + selectedIndicator.dropdown}}</span>
+        
         </h6>
         <button type="button" class="close pull-right" style="cursor: pointer" aria-label="Close" (click)="modalRef.hide()">
           <span aria-hidden="true">&times;</span>
