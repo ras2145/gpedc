@@ -2839,3 +2839,6 @@ text.value {
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .3rem;
 } */
+.title-size {
+    font-size: 16px !important;
+}

@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnChanges {
   modalRef: BsModalRef;
   viewModal: boolean;
   @Input() mapTitle = '';
+  @Input() tab45 = false;
   indicator = true;
   @ViewChild('tuto') tuto: TemplateRef<any>;
   tutorial = [
