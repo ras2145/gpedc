@@ -370,7 +370,7 @@ export let countryComparison = {
     ],
     "Country Context": [
       "Landlocked Developing Countries (LDC)",
-      "Landlocked Least Developed Countries (LLDC)",
+      "Least Developed Countries (LLDC)",
       "Small Island Developing States (SIDS)"
     ]
   }

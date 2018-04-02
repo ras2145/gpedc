@@ -39,8 +39,7 @@ export class GenerateIndicatorsService {
     // console.log("getL", partnerType);
     const name = comparer[type];
     if (type === 'aggregate' && comparer['aggregate']) {
-      if (!comparer['firstCountry'] && !comparer['secondCountry']) {
-        console.log('ok');
+      if ((!comparer['firstCountry'] && !comparer['firstOrganization']) && (!comparer['secondCountry'] && !comparer['secondOrganization'])) {
         return 'No data available';
       }
     }
