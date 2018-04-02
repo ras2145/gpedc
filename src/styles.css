@@ -2716,6 +2716,13 @@ h2 .pos-default-modal {
       margin:0px !important;
       padding-top: 0px;
   }
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  .logo-pp {
+    height: auto !important;
+  }
 }
 
 .orange-border {
@@ -2841,5 +2848,5 @@ text.value {
   border-radius: .3rem;
 } */
 .logo-pp{
-  height: 34px !important;
+  height: 34px;
 }
