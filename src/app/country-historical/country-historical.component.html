@@ -113,7 +113,7 @@
             <div class="container" >
                 <div class="row" >
                     <div class="col-md-10">
-                        <p class="modal-title pull-left">What does this indicator measure?<br><span>Indicator {{indicator.indicator}}</span></p>
+                        <p class="modal-title pull-left">What does this indicator measure?<br><span>{{subDropdown? 'Indicator ' + indicator.indicator + ': ' + subIndicator.subdropdown :'Indicator ' + indicator.dropdowncountry}}</span></p>
                     </div>
                     <div class="col-2">
                         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
