@@ -228,7 +228,7 @@
                 <label>{{ chartTitle }}</label>
               </div>
             </div>
-            <div style="margin-left: 12px; font-size: 16px" *ngIf="first">Select a year, Development Partner, and indicator to start exploring.</div>
+            <div style="margin-left: 8px; font-size: 16px" *ngIf="first">Select a year, Development Partner, and indicator to start exploring.</div>
             <div style="text-transform: uppercase; letter-spacing: 1px;" *ngIf="!isData && !first">Data not available for the selected combination.</div>
             <div id="chart" [ngClass]="{'hide' : !isData}"></div>
             <button *ngIf="!lessData && buttonMore" type="button" name="button" class="btn-more" (click)="drawComplete()"> More </button>
