@@ -1332,6 +1332,9 @@ updateMapTitle() {
     }
   }
   updateIndicatorValues(event) {
+    this.categorizedPartners.forEach(e => {
+      e.selected = true;
+    })
     this.iconIndicator='';
     const category = event.options.category;
     if (category.label !== 'Select indicator') {
