@@ -163,6 +163,9 @@ export class CountryComponent implements OnInit {
   getLabelCountry(indicator, typeOfCountry, isOrganization?: boolean) {
     const global = this;
     // console.log("type-parteene", this.partnerType);
+    if (typeOfCountry === 'aggregate' && !this.partnerType) {
+      this.partnerType = 'partcntry';
+    }
     return this.generateIndicatorsService.getLabelCountryFunction(indicator,  typeOfCountry, global.countryComparer, global.countriesQuery, this.partnerType);
   }
   getLabelCountrySecond(indicator, typeOfCountry, isOrganization?: boolean) {
