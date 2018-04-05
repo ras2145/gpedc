@@ -90,8 +90,7 @@ export class PartnerHistoricalService {
     return 'not found';
   }
   getChartData(year, indicator, devpartner) {
-    const query = SERVER.GET_QUERY(`SELECT * FROM ${SERVER.GPEDC_SCREENS_5} WHERE development_partner = '${devpartner}' AND indicator = '${indicator}' AND year = '${year}'`);
-    console.log(query);
+    const query = SERVER.GET_QUERY(encodeURIComponent(`SELECT * FROM ${SERVER.GPEDC_SCREENS_5} WHERE development_partner = '${devpartner}' AND indicator = '${indicator}' AND year = '${year}'`));
     return this.webService.get(query).map(res => {
       res = res.json().rows[0];
       let ans = [];
@@ -120,16 +119,14 @@ export class PartnerHistoricalService {
     country = country.replace('\'', '\'\'');
     const column = this.getColumn(devpartner);
     const query = SERVER.GET_QUERY(`select year, ${column} as value from ${SERVER.GPEDC_SCREENS_4} where indicator = '${indicator}' and country = '${country}'`);
-    console.log(query);
     return this.webService.get(query).map(res => {
       res = res.json().rows;
-      console.log(res);
       return res;
     });
   }
   getIndicators(devpartner, year) {
     devpartner = devpartner.replace('\'', '\'\'');
-    const query = SERVER.GET_QUERY(`SELECT indicator FROM ${SERVER.GPEDC_SCREENS_5} WHERE available='4' AND development_partner='${devpartner}' AND year = '${year}'`);
+    const query = SERVER.GET_QUERY(encodeURIComponent(`SELECT indicator FROM ${SERVER.GPEDC_SCREENS_5} WHERE available='4' AND development_partner='${devpartner}' AND year = '${year}'`));
     return this.webService.get(query).map(res => res.json().rows);
   }
 }
