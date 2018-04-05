@@ -82,7 +82,6 @@ export class MapService {
     this.map.touchZoomRotate.disableRotation();
   }
   switchMapCenter(index) {
-    console.log(this.mapDefault[index]);
     this.map.setCenter(this.mapDefault[index].center);
     this.map.setZoom(this.mapDefault[index].zoom);
   }
@@ -192,7 +191,6 @@ export class MapService {
     }
     this.twoCountriesFilter = ['in', 'country', this.firstCountry, this.secondCountry];
     this.map.setFilter('country-fills-click', this.twoCountriesFilter);
-    console.log('click');
   }
   paintTwoCountryClear() {
     this.firstCountry = '';
@@ -290,7 +288,6 @@ export class MapService {
   getCountriesYearQuery(year: string, categories: any, partnerType: string): string {
     let sql = `SELECT * FROM "${SERVER.USERNAME}" .${SERVER.GPEDC_SCREENS_1_2} WHERE yr${year} = true`;
     sql = sql + this.getDevPartCondition(categories, partnerType) + (year === '2016' ? ' AND (CARTODB_ID != 76)' : '' ) + (year === '2016' && partnerType === 'partcntry' ? ' AND country != \'Mexico\' ' : ' ');
-    console.log('SQL ', sql);
     return sql;
   }
   getDevPartCondition(categories: any, partnerType: string) {
@@ -334,14 +331,12 @@ export class MapService {
   }*/
   mapTiles(tilesUrl, error) {
     if (tilesUrl == null) {
-      console.log('error: ', error.errors.join('\n'));
       throw error;
     }
     const tilesUrls = [];
     for (const tile of tilesUrl.tiles) {
       tilesUrls.push(tile.split('{s}.').join('').split('.png?').join('.mvt?').split('?cache_policy=persist').join(''));
     }
-    console.log('url template is ', tilesUrls);
     return tilesUrls;
   }
   getCountriesYearVectorUrl(year: string, categories: any, partnerType: string): Observable<any> {
@@ -438,7 +433,6 @@ export class MapService {
     return observable(tilesOptions);
   }
   sidsCountriesQuery(column, year, region, incomeGroup, countryContext, categories, partnerType) {
-    console.log('INDICATOR', column);
     const centerx = 'ST_X(ST_Centroid(the_geom)) as centerx';
     const centery = 'ST_Y(ST_Centroid(the_geom)) as centery';
     const bboxx1 = 'ST_X(ST_StartPoint(ST_BoundingDiagonal(the_geom))) as bboxx1';
@@ -478,7 +472,6 @@ export class MapService {
     const sql1 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${column} is not null and ${column}::text !='' and ${column}::text !='9999'  and ${sqlone} ${partSQL}) as st_dump ORDER BY country`);
     const sql2 = SERVER.GET_QUERY(`SELECT ${centerx}, ${centery}, ${bboxx1}, ${bboxy1}, ${bboxx2}, ${bboxy2}, ${area}, country, sids FROM (SELECT country, (ST_Dump(the_geom)).geom as the_geom, sids FROM "${SERVER.USERNAME}"."${SERVER.GPEDC_SCREENS_1_2}" WHERE ${sqlone} ${partSQL}) as st_dump ORDER BY country`);
     const query = column ? sql1 : sql2;
-    console.log('query', query, column);
     //console.log('QUERY', query);
     return this.webService.get(query).map(ans => {
       return ans.json().rows;
@@ -525,7 +518,6 @@ export class MapService {
       columnCat = category.column;
       columnSub = subcategory ? subcategory.column : '';
     }
-    console.log('columns', partnerType, columnCat, columnSub);
     if (!columnCat && !columnSub) {
       this.resetLayer();
     } else {
@@ -535,33 +527,24 @@ export class MapService {
       // indicator = subcategory.column;
       indicator = columnSub;
       if (indicator.includes ('2016_2_1')) {
-        console.log('2_1');
-        console.log(indicator);
         layer = this.layers.indicator2_1;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (indicator.includes ('2016_2_2')) {
-        console.log('2_2');
-        console.log(indicator);
         layer = this.layers.indicator2_2;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
       if (indicator.includes('2016_2_3') || indicator.includes('2016_2_4')) {
-        console.log('2_3 % 2_4');
-        console.log(indicator);
         layer = this.layers.indicator2_34;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
         this.map.addLayer(layer, 'waterway-label');
       }
-      console.log('ID', category.id);
       if (category.id === '3') {
-        console.log('3');
-        console.log(indicator);
         layer = this.layers.indicator3;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
@@ -569,16 +552,12 @@ export class MapService {
       }
       if (subcategory.type === 'text') {
         if (category.id === '4') {
-          console.log('4');
-          console.log(indicator);
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
           // layer gris
         } else {
-          console.log('ELSE', this.layers);
-          console.log(indicator);
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
@@ -586,8 +565,6 @@ export class MapService {
         }
       }
       if (subcategory.type === 'percent') {
-        console.log(category.id, 'CSECCONDCAT');
-        console.log(indicator);
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
@@ -596,8 +573,6 @@ export class MapService {
     } else {
       indicator = columnCat;
       if (category.id === '9a') {
-        console.log('9a');
-        console.log(indicator);
         layer = this.layers.indicator9a;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';
@@ -605,13 +580,11 @@ export class MapService {
       }
       if (category.type === 'text') {
         if (category.id === '4') {
-          console.log('4aaaa'); console.log(indicator);
           layer = this.layers.indicator4;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
           this.map.addLayer(layer, 'waterway-label');
         } else {
-          console.log('else 4 '); console.log(indicator);
           layer = this.layers.yesNo;
           layer['paint']['fill-color'].property = indicator;
           layer['source-layer'] = 'layer0';
@@ -619,7 +592,6 @@ export class MapService {
         }
       }
       if (category.type === 'percent') {
-        console.log('percent'); console.log(indicator);
         layer = this.layers.percent;
         layer['paint']['fill-color'].property = indicator;
         layer['source-layer'] = 'layer0';

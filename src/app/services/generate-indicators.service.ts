@@ -104,7 +104,6 @@ export class GenerateIndicatorsService {
     return value;
   }
   exportCSV4_5(title, tab, data) {
-    console.log(title, tab, data);
     let linesString = data.map(d => d.label + ',' + d.value + '%');
     let result = title + '\n';
     result += 'Developmment Partner,Performance\n';

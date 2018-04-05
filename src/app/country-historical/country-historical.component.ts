@@ -249,7 +249,7 @@ export class CountryHistoricalComponent implements OnInit {
     this.clearChart();
   }
   show(event) {
-    console.log(event);
+    // console.log(event);
   }
   getTextIcon() {
     if (this.indicator.indicator ==='8' ) {
@@ -552,9 +552,6 @@ export class CountryHistoricalComponent implements OnInit {
     }
   }
   f() {
-    console.log(this.indicator && this.indicator.indicator==='10');
-    console.log(this.subIndicator && this.subIndicator.subdropdown!=='');
-    console.log(this.subIndicator.subdropdown, this.subIndicator.subdropdown!=='');
     return ((this.indicator && this.indicator.indicator==='10') || (this.subIndicator && this.subIndicator.subdropdown!==''));
   }
 }

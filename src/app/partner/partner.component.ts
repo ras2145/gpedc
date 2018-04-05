@@ -78,7 +78,7 @@ export class PartnerComponent implements OnInit {
     };
   }
   changeYear(year) {
-    console.log(year.year, '------------');
+    // console.log(year.year, '------------');
     this.resetModels();
     this.year = year.year;
   }
@@ -127,8 +127,8 @@ export class PartnerComponent implements OnInit {
       this.categorizedPartners[1] = this.categorizedPartners[4];
       this.categorizedPartners[4] = this.categorizedPartners[2];
       this.categorizedPartners[2] = aux;
-      console.log("Partnets", this.categorizedPartners);
-      
+      // console.log("Partnets", this.categorizedPartners);
+
       this.categorizedPartnersP = this.categorizedPartners.slice(0,3);
       this.categorizedPartnersS = this.categorizedPartners.slice(3,7);
       this.chargeOrganizationComparison();

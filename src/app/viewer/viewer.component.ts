@@ -606,7 +606,6 @@ export class ViewerComponent implements OnInit {
     this.loaderService.start();
     this.mapService.resetLayer();
     indicator = this.getColumn();
-    console.log('CHANGE YEAR', indicator);
     // console.log('---------------------------------------------____>  ------------------------------>      ', this.model.category.id );
     const indicatorType = this.partnerType;
     // console.log('---------------------------------------------____> indicatorType ------------------------------>      ', indicatorType);
@@ -615,7 +614,6 @@ export class ViewerComponent implements OnInit {
       this.mapService.updateVectorSource(tiles);
       this.setColor();
       if (this.model.category != null) {
-        console.log(this.model);
         const column = this.model.subcategory ? this.model.subcategory.column : this.model.category.column;
         // console.log('COLUMN ',column, indicator);
         this.mapService.filterNotNull(indicator);
@@ -623,7 +621,7 @@ export class ViewerComponent implements OnInit {
       this.loaderService.end();
     }, error => {
       this.loaderService.end();
-      console.log("error");
+      // console.log("error");
     });
   }
   getColumn() {
@@ -962,7 +960,6 @@ export class ViewerComponent implements OnInit {
       // arrayPartner.push(this.categorizedPartners[0]);
       // this.categorizedPartners = arrayPartner;
       // this.categorizedPartners.shift();
-      console.log("Partners",this.categorizedPartners);
     });
   }
   isDac(country) {
@@ -1099,7 +1096,6 @@ export class ViewerComponent implements OnInit {
     }
     this.mapService.sidsCountriesQuery(indicator, this.model.year.year, region, incomeGroup, countryContext, this.model.year.categories,this.partnerType).subscribe(val => {
       const countriesObj = {};
-      console.log('query sids ', val);
       for (let country of val) {
         if (countriesObj[country.country]) {
           if (countriesObj[country.country].area < country.area) {
@@ -1120,7 +1116,7 @@ export class ViewerComponent implements OnInit {
         this.legendMap = this.legends['noLegend' + this.model.year.year];
         return;
     }
-    console.log('LEGEND FIRST', this.legendMap);
+
     this.legendTitle = category.legendText;
     if (subcategory != null) {
       this.legendTitle = subcategory.legendText;
@@ -1172,7 +1168,7 @@ export class ViewerComponent implements OnInit {
         // }
       }
     }
-    console.log('LEGEND LAST', this.legendMap);
+
     return this.mapService.paintForIndicator(category, subcategory, year,this.partnerType);
   }
   zoomIn() {

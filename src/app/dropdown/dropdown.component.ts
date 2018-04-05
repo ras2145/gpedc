@@ -70,7 +70,6 @@ export class DropdownComponent implements OnInit, OnChanges {
     this.optionsSubject.subscribe(event => {
       this.model = event.model;
       this.partnerType = event.partnerType;
-      console.log('GOOD', this.partnerType);
       this.newValues();
     });
   }
@@ -174,9 +173,6 @@ export class DropdownComponent implements OnInit, OnChanges {
   openModal(template: TemplateRef<any>) {
     this.viewModal = false;
     this.modalRef = this.modalService.show(template);
-    console.log('Indicator ' + this.indicator);
-    console.log('SubIndicator ' + this.subIndicator);
-    console.log(this.model !== null);
   }
   selecSubIndicator4 (category, subcategory) {
     if (category.id === '4') {

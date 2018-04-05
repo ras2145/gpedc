@@ -110,7 +110,6 @@ export class PartnerHistoricalService {
         }
         return b.value - a.value;
       });
-      console.log('ANS', ans);
       return ans;
     });
   }

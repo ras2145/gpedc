@@ -56,7 +56,6 @@ export class CountryComponent implements OnInit {
       this.countriesQuery = val;
     });
     this.titles = titles;
-    console.log("UND",titles);
     this.resetComparer();
     // this.titles[2].categories.splice(3, 1);
     // for (let i = 0; i < 5; ++i ) {
@@ -65,7 +64,6 @@ export class CountryComponent implements OnInit {
     this.year = '2016';
 
     this.model.year = this.titles[2];
-    console.log("YA",this.model.year);
     this.chargeCountryComparison();
     this.countries = {};
     this.dateModal={};
@@ -73,8 +71,6 @@ export class CountryComponent implements OnInit {
   changeYear(year) {
     this.resetComparer();
     this.year = year.year;
-    console.log("YEAR",this.year);
-    
   }
   resetComparer() {
     this.countryComparer = {};
@@ -101,10 +97,8 @@ export class CountryComponent implements OnInit {
         }
       }
     }
-    console.log('country', this.countrySelectors);
   }
   onSelectedCountry(event, type) {
-    console.log('onSelectedCountry');
     if (type === 'first') {
       if (event.value === this.countryComparer.secondCountry) {
         setTimeout(() => {
