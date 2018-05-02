@@ -210,7 +210,7 @@ export let countryComparison = {
       "Spain",
       "Sweden",
       "Switzerland",
-      "Taiwan Province of China",
+      "Chinese Taipei",
       "Turkey",
       "United Arab Emirates",
       "United Kingdom of Great Britain and Northern Ireland",
@@ -347,7 +347,7 @@ export let countryComparison = {
       "Spain",
       "Sweden",
       "Switzerland",
-      "Taiwan Province of China",
+      "Chinese Taipei",
       "Turkey",
       "United Arab Emirates",
       "United Kingdom of Great Britain and Northern Ireland",
@@ -369,7 +369,7 @@ export let countryComparison = {
       "Upper middle income"
     ],
     "Country Context": [
-      "Landlocked Developing Countries (LDC)",
+      "Landlocked Developing Countries (LDC) ",
       "Least Developed Countries (LLDC)",
       "Small Island Developing States (SIDS)"
     ]
